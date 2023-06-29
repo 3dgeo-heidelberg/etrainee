@@ -17,7 +17,7 @@ The course is primarily developed for MSc students of geoinformatics and geograp
 
 ## Course website
 
-The course site is hosted on GitHub Pages and can be accessed at [INSERT LINK](). It is automatically built from the source files in this repository (contained in `/course`).
+The course site is hosted on GitHub Pages and can be accessed at [https://3dgeo-heidelberg.github.io/etrainee/](https://3dgeo-heidelberg.github.io/etrainee/). It is automatically built from the source files in this repository (contained in `/course`).
 
 ### Downloading the course website documents
 
