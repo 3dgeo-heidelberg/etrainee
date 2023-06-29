@@ -9,7 +9,7 @@ on:
   push:
     branches:
       - main
-  fork
+  fork:
 permissions:
   contents: write
 jobs:
