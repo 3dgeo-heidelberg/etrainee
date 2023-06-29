@@ -1,5 +1,5 @@
 site_name: E-TRAINEE Course
-repo_url: https://3dtools.geog.uni-heidelberg.de/etrainee/etrainee
+repo_url: https://github.com/3dgeo-heidelberg/etrainee
 docs_dir: ../course
 site_dir: ../site
 
