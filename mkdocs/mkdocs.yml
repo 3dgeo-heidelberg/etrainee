@@ -1,0 +1,120 @@
+site_name: E-TRAINEE Course
+repo_url: https://3dtools.geog.uni-heidelberg.de/etrainee/etrainee
+docs_dir: ../course
+site_dir: ../site
+
+theme:
+  logo: assets/img/logo_etrainee.svg
+  favicon: assets/img/logo_etrainee.svg
+  name: material
+  custom_dir: overrides
+  palette:
+    primary: teal
+    accent: indigo
+  features:
+    - search.highlight
+    - content.code.copy
+    - navigation.top
+    - navigation.footer
+use_directory_urls: false
+plugins:
+  - mkdocs-jupyter:
+      include_source: True
+      ignore_h1_titles: True
+  - search
+markdown_extensions:
+  - attr_list
+  - pymdownx.arithmatex:
+      generic: true
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - assets/javascripts/quiz_evaluation.js
+
+nav:
+- 'Home': 'index.md'
+- 'Prerequisites': 'module0/module0.md'
+- 'Module 1':
+    - 'Overview': 'module1/module1.md'
+    - 'Principles of remote sensing time series': 'module1/01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.md'
+    - 'Large time series datasets in remote sensing': 'module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.md'
+    - 'Time series analysis based on classification': 'module1/03_time_series_analysis_based_on_classification/03_time_series_analysis_based_on_classification.md'
+    - 'Trajectory-based analysis': 'module1/04_trajectory-based_analysis/04_trajectory_based_analysis.md'
+    - 'Spatio-temporal data fusion': 'module1/05_spatio_temporal_data_fusion/05_spatio-temporal_data_fusion.md'
+    - 'Reference data, validation and accuracy assessment': 'module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.md'
+- 'Module 2':
+    - 'Overview': 'module2/module2.md'
+    - 'Principles of multispectral imaging' :
+        - 'Lesson' : 'module2/01_multispectral_principles/01_multispectral_principles.md'
+        - 'Exercise' : 'module2/01_multispectral_principles/01_multispectral_principles_exercise.md'
+    - 'Temporal information in satellite data' :
+        - 'Lesson' : 'module2/02_temporal_information/02_temporal_information.md'
+        - 'Exercise' : 'module2/02_temporal_information/02_temporal_information_exercise.md'
+    - 'Image processing workflow' :
+        - 'Lesson' : 'module2/03_image_processing/03_image_processing.md'
+        - 'Exercise' : 'module2/03_image_processing/03_image_processing_exercise.md'
+    - 'Multitemporal classification of vegetation types' :
+        - 'Lesson' : 'module2/04_multitemporal_classification/04_multitemporal_classification.md'
+        - 'Exercise' : 'module2/04_multitemporal_classification/04_multitemporal_classification_exercise.md'
+    - 'Vegetation monitoring and disturbance detection' :
+        - 'Lesson' : 'module2/05_vegetation_monitoring/05_vegetation_monitoring.md'
+        - 'Exercise' : 'module2/05_vegetation_monitoring/05_vegetation_monitoring_exercise.md'
+    - 'Case studies' :
+        - 'Case study: Monitoring tundra grasslands (Karkonosze)': 'module2/06_cs_tundra_grasslands/06_cs_tundra_grasslands.md'
+        - 'Case study: Effects of pollution in Ore Mountains': 'module2/07_cs_forest_changes/07_cs_forest_changes.md'
+        - 'Case study: Forest disturbance detection (Tatras)': 'module2/08_cs_disturbance_detection/08_cs_disturbance_detection.md'
+- 'Module 3':
+    - 'Overview': 'module3/module3.md'
+    - 'Principles of 3D/4D geographic point clouds' :
+        - 'Lesson' : 'module3/01_pointcloud_principles/01_pointcloud_principles.md'
+        - 'Exercise' : 'module3/01_pointcloud_principles/exercise/m3_theme1_exercise1.md'
+    - 'Programming for point cloud analysis with Python' :
+        - 'Lesson' : 'module3/02_pointcloud_programming_python/02_pointcloud_programming_python.ipynb'
+        - 'Exercise' : 'module3/02_pointcloud_programming_python/exercise/m3_theme2_exercise1.ipynb'
+    - 'Principles and basic algorithms of 3D change detection and analysis' :
+        - 'Lesson' : 'module3/03_3d_change_analysis/03_3d_change_analysis.ipynb'
+        - 'Exercise' : 'module3/03_3d_change_analysis/exercise/m3_theme3_exercise1.md'
+    - 'Time series analysis of 3D point clouds' :
+        - 'Lesson' : 'module3/04_3d_timeseries_analysis/04_3d_timeseries_analysis.ipynb'
+        - 'Exercise' : 'module3/04_3d_timeseries_analysis/exercise/m3_theme4_exercise1.md'
+    - 'Machine learning-based 3D/4D point cloud analysis' :
+        - 'Lesson' : 'module3/05_pointcloud_machine_learning/05_pointcloud_machine_learning.ipynb'
+        - 'Exercise' : 'module3/05_pointcloud_machine_learning/exercise/m3_theme5_exercise1.md'
+    - 'Case studies' :
+        - 'Multitemporal 3D change analysis at an active rock glacier' : 'module3/06_casestudy_rockglacier/06_casestudy_rockglacier.ipynb'
+        - 'Time series-based change analysis of sandy beach dynamics' : 'module3/06_casestudy_sandybeach/06_casestudy_sandybeach.ipynb'
+- 'Module 4':
+    - 'Overview': 'module4/module4.md'
+    - 'Principles of imaging and laboratory spectroscopy':
+        - 'Lesson': 'module4/01_spectroscopy_principles/01_spectroscopy_principles.md'
+        - 'Exercise': 'module4/01_spectroscopy_principles/01_spectroscopy_principles_exercise.md'
+    - 'Aerial/RPAS hyperspectral data acquisition and pre-processing':
+        - 'Lesson': 'module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.md'
+        - 'Exercise': 'module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing_exercise_geometric.md'
+    - 'In situ and laboratory spectroscopy of vegetation':
+        - 'Lesson – Optical properties of vegetation': 'module4/03_relating_imagery_lab_vegetation/03_01_optical_parameters_of_foliage.md'
+        - 'Lesson – Laboratory spectroscopy': 'module4/03_relating_imagery_lab_vegetation/03_02_principles_of_laboratory_spectroscopy.md'
+        - 'Lesson – Relating imaging and laboratory spectroscopy': 'module4/03_relating_imagery_lab_vegetation/03_03_relating_imagery_lab_vegetation.md'
+    - 'Machine learning in imaging spectroscopy':
+        - 'Lesson': 'module4/04_time_series_specifics/04_time_series_specifics.md'
+        - 'Exercise – Subpixel': 'module4/04_time_series_specifics/04_time_series_specifics_exercise_subpixel.md'
+        - 'Exercise – Machine Learning': 'module4/04_time_series_specifics/04_time_series_specifics_exercise_ml.ipynb'
+        - 'Exercise – Deep Learning': 'module4/04_time_series_specifics/04_time_series_specifics_exercise_cnn.md'
+    - 'Temporal vs. spatial and spectral resolution':
+        - 'Lesson': 'module4/05_specific_resolution_contribution/05_specific_resolution_contribution.md'
+    - 'Case studies':
+        - 'Monitoring tundra grasslands in the Krkonoše Mts.': 'module4/06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.md'
+        - 'Seasonal dynamics of flood-plain forest': 'module4/07_flood_plain_forest/07_flood_plain_forest.md'
+        - 'Evaluation of physiological status of Norway Spruce forest in the Ore Mts.': 'module4/08_OreMts_Spruce_status/08_OreMts_Spruce_status.md'
+- 'Software':
+    - 'CloudCompare': 'software/software_cloudcompare.md'
+    - 'EnMAP-Box': 'software/software_enmap_box.md'
+    - 'Python': 'software/software_python.md'
+    - 'QGIS': 'software/software_qgis.md'
+    - 'R': 'software/software_r_language.md'
+- 'Use Cases and Data':
+    - 'Multitemporal 3D point clouds of an active rock glacier' : 'data_usecases/usecase_rockglacier_ahk.md'
+    - '4D point clouds of a sandy beach' : 'data_usecases/usecase_beach_kijkduin.md'
+    - 'Vegetation disturbance detection in Polish-Slovak Tatra Mountains' : 'data_usecases/usecase_forests_tatras.md'
+    - 'Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)' : 'data_usecases/usecase_tundra_karkonosze.md'
+    

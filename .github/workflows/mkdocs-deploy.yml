@@ -1,0 +1,33 @@
+# This is the E-TRAINEE GitHub Actions configuration file.
+#
+# A pipeline is composed of independent jobs that run scripts, grouped into stages.
+# Stages run in sequential order, but jobs within stages run in parallel.
+
+name: deploy_to_gh-pages
+
+on:
+  push:
+    branches:
+      - main
+permissions:
+  contents: write
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+      - run: pip install --upgrade pip && pip install -U urlextract bs4 requests 
+      - run: python scripts/link_checker.py
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+      - run: pip install --upgrade pip && pip install -U mkdocs mkdocs-jupyter jupyter_contrib_nbextensions
+      - run: git config user.name 'github-actions[bot]' && git config user.email 'github-actions[bot]@users.noreply.github.com'
+      - run: mkdocs gh-deploy --config-file mkdocs/mkdocs.yml --force --strict --clean

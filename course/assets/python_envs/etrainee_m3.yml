@@ -1,0 +1,28 @@
+name: etrainee_m3
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - polyscope
+  - matplotlib
+  - geopandas
+  - pyogrio
+  - numpy
+  - jupyter
+  - ipython
+  - python-pdal
+  - rasterio
+  - laspy
+  - scipy
+  - ipyleaflet
+  - pyproj
+  - scikit-learn
+  - tqdm
+  - shapely
+  - jupyter_contrib_nbextensions
+  - pip:
+    - py4dgeo
+
+

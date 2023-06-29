@@ -1,0 +1,57 @@
+# This is the E-TRAINEE GitLab CI/CD configuration file.
+#
+# A pipeline is composed of independent jobs that run scripts, grouped into stages.
+# Stages run in sequential order, but jobs within stages run in parallel.
+#
+# For more information, see: https://docs.gitlab.com/ee/ci/yaml/index.html#stages
+#
+
+stages:
+  - test
+  - deploy
+  
+
+#image: python:3.8-buster
+image: python:3.10-slim
+
+before_script:
+  - pip install --upgrade pip && pip install -U mkdocs mkdocs-jupyter jupyter_contrib_nbextensions urlextract bs4 requests 
+
+Link-checker:
+  stage: test
+  script:
+      - cd scripts
+      - python link_checker_404.py
+      - cd ..
+  only:
+    - main
+    - dev
+
+mkdocs-build:
+  stage: deploy
+  script:
+      - rm -rf site
+      - cd mkdocs
+      - mkdocs build --clean --site-dir ../site
+      - cd ..
+  artifacts:
+    paths:
+    - site/
+  only:
+    - main
+    - dev
+    
+
+
+#pages:
+#  stage: deploy
+#  script:
+#    - cd mkdocs
+#    - mkdocs build
+#    - cd ..
+#    - mv site public
+#  artifacts:
+#    paths:
+#    - public
+#  only:
+#  - main

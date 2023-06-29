@@ -1,0 +1,54 @@
+cff-version: 1.2.0
+message: "If you use the course material, please cite it as below."
+authors:
+  - family-names: E-TRAINEE Development Team
+title: "E-TRAINEE - E-learning course on Time Series Analysis in Remote Sensing for Understanding Human-Environment Interactions"
+version: 0.1
+date-released: 2023-06-30
+license: ["MIT License","CC-BY-SA-4.0"]
+repository-code: "https://github.com/3dgeo-heidelberg/etrainee"
+url: "https://web.natur.cuni.cz/gis/etrainee"
+identifiers:
+  - type: doi
+    value: NA
+	description: The versioned DOI for the version 1.0 of the Citation File Format.
+references:
+  - authors:
+      - family-names: Potůčková
+        given-names: M.
+      - family-names: Albrechtová
+        given-names: J.
+      - family-names: Anders
+        given-names: K.
+      - family-names: Červená
+        given-names: L.
+      - family-names: Dvořák
+        given-names: J.
+      - family-names: Gryguc
+        given-names: K.
+      - family-names: Höfle
+        given-names: B.
+      - family-names: Lhotáková
+        given-names: Z.	
+      - family-names: Marcinkowska-Ochtyra
+        given-names: A.	
+      - family-names: Mayr
+        given-names: A.	
+      - family-names: Neuwirthová
+        given-names: E.	
+      - family-names: Ochtyra
+        given-names: A.	
+      - family-names: Rutzinger
+        given-names: M.	
+      - family-names: Šedová
+        given-names: A.	
+      - family-names: Šrollerů
+        given-names: A.	
+      - family-names: Kupková
+        given-names: L.		
+    journal: "ISPRS Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences"
+    title: "E-TRAINEE: Open e-learning course on time series analysis in remote sensing"
+    type: article
+    volume: NA
+    year: 2023
+	doi: NA
