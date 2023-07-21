@@ -72,7 +72,7 @@ It is recommended to go through the following tutorials and excercises (one per 
 * Theme 5
     * *Work in progress*
 * Theme 6
-    * Exercise: [Assessment of landcover classification accuracy](./06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.md/#exercise-assessment-of-landcover-classification-accuracy), with a solution provided in [this Notebook](./06_reference_data_validation_accuracy_assessment/T6_S2_landcover_classification_accuracy_solution.ipynb).
+    * Exercise: [Assessment of landcover classification accuracy](./06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.html#exercise-assessment-of-landcover-classification-accuracy), with a solution provided in [this Notebook](./06_reference_data_validation_accuracy_assessment/T6_S2_landcover_classification_accuracy_solution.ipynb).
 
 ### Optional parts
 
