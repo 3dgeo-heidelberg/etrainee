@@ -208,7 +208,7 @@ Depending on the type of data that you compare against reference data, different
 
 **The confusion matrix**
 
-A basic, yet quite useful way of presenting the output of a classification model (*predicted labels*) compared with values at validation samples (*reference labels*) is the *confusion matrix* (also known as *cross-tabulation matrix* or *error matrix*). This is a cross-tabulation of how many classification units (pixels, points or polygons) were predicted for a certain class vs. how any actually belong to this class (according to the reference data). The matrix allows us to see if a classifier confuses two classes (hence the name), i.e. mislabels one class as another.
+A basic, yet quite useful way of presenting the output of a classification model (*predicted labels*) compared with values at validation samples (*reference labels*) is the *confusion matrix* (also known as *cross-tabulation matrix* or *error matrix*). This is a cross-tabulation of how many classification units (pixels, points or polygons) were predicted for a certain class vs. how many actually belong to this class (according to the reference data). The matrix allows us to see if a classifier confuses two classes (hence the name), i.e. mislabels one class as another.
 
 The following figure illustrates this for a binary classification. The two classes ('positive' and 'negative') could be, for example, 'snow' and 'no snow'.
 
@@ -223,25 +223,33 @@ Here, we display the predicted values along the rows, the reference values along
 
 **Classification metrics**
 
-The confusion matrix itself is already very informative, especially if colourized as a heatmap (i.e. colorized by the (relative) number of samples in a matrix cell). Moreover, it forms the basis of many different accuracy metrics, e.g.:
+The confusion matrix itself is already very informative, especially if colourized as a heatmap (i.e. colorized by the (relative) number of samples in a matrix cell). Moreover, it forms the basis of different accuracy metrics , e.g.:
 
 * *Overall accuracy*: The fraction of correctly classified samples (TP + TN) out of all reference samples, a value ranging from 0 to 1 (or from 0% to 100%).
 
-* *Precision (User's accuracy / Correctness)*
+* *Precision* (a.k.a. *user's accuracy* or *correctness*)
 
-        Precision = TP / TP + FP
+        precision = TP / TP + FP
 
-* *Recall (Producers's accuracy / Completeness)*
+* *Recall* (a.k.a. *producers's accuracy* or *completeness* or *sensitivity*)
 
-        Recall = TP / TP + FN
+        recall = TP / TP + FN
 
-* *F1 score*, the harmonic mean of precision and recall (equal contributions of the two measures)
+* [*F1 score*](https://en.wikipedia.org/wiki/F-score), the harmonic mean of precision and recall (equal contributions of the two measures)
 
         F1 score = 2 * (precision * recall) / (precision + recall)
 
+    As the different types of mis-classification are not for all applications equally important, measures with different a weighting of precision and recall have been proposed (see e.g. [here](https://en.wikipedia.org/wiki/Precision_and_recall#F-measure)).
+
+* *Error of omission* and *error of commission*
+
+        error of omission = 1 - recall
+
+        error of commission = 1 - precision
+
 To understand the performance of a model, it is often a good idea to look at a few different metrics as well as the confusion matrix itself. The 'Kappa' metric, despite being widely used to assess remote sensing classifications, is critized as providing redundant or misleading information for practical decision making and is, therefore, no longer recommended ([Pontius and Millones 2011](https://doi.org/10.1080/01431161.2011.552923), [Foody 2020](https://doi.org/10.1016/j.rse.2019.111630)).
 
-Most metrics range from 0 to 1, with 1 being the best rating. We recommend to look up details on interpretation as well as advantages and drawbacks of the metrics or options to calculate with specific settings (especially in the multilabel case), e.g. in [Olson and Delen](https://doi.org/10.1007/978-3-540-76917-0), [Congalton and Green 2019](https://doi.org/10.1201/9780429052729), [Stehman et al. 2019](https://doi.org/10.1016/j.rse.2019.05.018), [Hand et al. 2012](https://doi.org/10.1111/j.1751-5823.2012.00183.x). Also the documentation of software packages often provides details on the implementation and advice on the use of available accuracy metrics, e.g. in Python [scikit-learn](https://scikit-learn.org/stable/modules/model_evaluation.html).
+Most metrics range from 0 to 1, with 1 being the best rating. We recommend to look up details on interpretation as well as advantages and drawbacks of the metrics or options to calculate with specific settings (especially in the multilabel case), e.g. in [Olson and Delen 2008](https://doi.org/10.1007/978-3-540-76917-0), [Congalton and Green 2019](https://doi.org/10.1201/9780429052729), [Stehman et al. 2019](https://doi.org/10.1016/j.rse.2019.05.018), [Hand et al. 2012](https://doi.org/10.1111/j.1751-5823.2012.00183.x). Also the documentation of software packages often provides details on the implementation and advice on the use of available accuracy metrics, e.g. in Python [scikit-learn](https://scikit-learn.org/stable/modules/model_evaluation.html).
 
 
 **Confusion matrix with more than two categories**
@@ -256,7 +264,6 @@ In such multiclass scenarios, accuracy metrics can be calculated for each class 
 </p>
 
 <i>Left: Schematic confusion matrix for multiple classes (classes A, B, and C). Right: Confusion matrix for the landcover map produced in the classification tutorial of theme 3. Here, the confusion matrix is normalized over the predicted conditions, i.e. the displayed values indicate the fraction of predictions per class being correct or misclassified as a certain other class.</i>
-
 
 In the matrix above, *n<sub>ij</sub>* is the number of samples labelled as class *i* in the reference and predicted as class *j* by the model. *n<sub>i+</sub>* is the total number of samples actually being class *i*, *n<sub>+i</sub>* is the total number of samples predicted as class *i*, and *n* is the total number of samples. <!--Is this correct and understandable?-->
 
