@@ -48,6 +48,8 @@ Hence, we can distinguish three general approaches to (semi-)automatic classific
 * Unsupervised classification (e.g. clustering NDSI and possibly brightness to classify snow/no-snow)
 * Supervised classification (usually with machine learning approaches, including deep learning)
 
+Often input data comprising many features is sensed (e.g. from multitemporal or hyperspectral remote sensing) or a large number of features is extracted from the input data (such as spectral indices, time series metrics or morphometric variables, potentially at different scales), and some of the features are actually redundant or irrelevant for the classification. In such cases, feature selection (different techniques to select a subset of features) or some other form of dimensionality reduction (such as [principal component analysis (PCA)](https://en.wikipedia.org/wiki/Principal_component_analysis)) is often applied. The main motivation for this step is usually to avoid negative effects known as the [curse of dimensionality](https://en.wikipedia.org/wiki/Curse_of_dimensionality) and/or to reduce the time and computing power needed to train a classifier (and for feature extraction on the full dataset). Learn more about feature selection for multitemporal classification in [Module 2](https://3dgeo-heidelberg.github.io/etrainee/module2/04_multitemporal_classification/04_multitemporal_classification.html#feature-selection-as-potential-to-optimise-multitemporal-classification).
+
 Some external tutorials:
 
 * Intermediate Earth Eata Science Textbook Course [here](https://www.earthdatascience.org/courses/use-data-open-source-python/intro-raster-data-python/raster-data-processing/classify-plot-raster-data-in-python/) by [Wasser et al. (2021)](https://doi.org/10.5281/zenodo.4683910) - Rule-based classification of a LiDAR canopy height model
@@ -165,7 +167,8 @@ Machine learning classification tools are most commonly used for classification 
     * [Pyspatialml](https://github.com/stevenpawley/pyspatialml) - ML classification and regression modelling for spatial raster data.
     * [Optuna](https://optuna.org/) - Hyperparameter optimization for different frameworks (incl. scikit-learn, PyTorch, Keras, ...)
 * Machine learning packages for the R language
-    * [overview](https://cran.r-project.org/web/views/MachineLearning.html)
+    * ["Official" overview](https://cran.r-project.org/web/views/MachineLearning.html)
+    * [Overview](https://3dgeo-heidelberg.github.io/etrainee/module2/04_multitemporal_classification/04_multitemporal_classification.html#r-packages-including-machinestatistical-learning-algorithms) in E-TRAINEE Module 2
     * [mlr3](https://mlr3.mlr-org.com/) - A framework for ML regression and classification in the R language, and its extension [mlr3spatial](https://mlr3spatial.mlr-org.com/) that facilitates handling spatial objects (vector and raster data), see e.g. the [landcover classification tutorial](https://mlr-org.com/gallery/technical/2023-02-27-land-cover-classification/)
 
 
