@@ -52,6 +52,7 @@ Some key principles of validation and accuracy analysis are
         * Often an initial reference data set is split into a training data set and a validation (or 'test') data set. Then, the training data is used for building the model (*training*), while the validation data is excluded from this (put aside) and subsequently used for accuracy assessment.
         * Such a split can be random with a defined ratio (e.g., 70% of the data for training, 30% of the data for validation), or by spatial subsets of your study area (i.e. use one part of the area for training and the other one for validation).
         * Looking not only at the (in-sample) *training error* but also at the (out-of-sample) *test error* is important to evaluate how good the model generalizes, i.e. avoids *overfitting* (to the training data). In most cases we want a model that does not only fit well to the data it was trained on but also accurately predicts cases not seen during training.
+        * Using only one hold-out test set from a single (random) split is straightforward. However, the resulting accuracy estimate lacks robustness because, if the proceedure is repeated with different random splits, the variance of estimated accuracy is large. More robust estimates and confidence intervals (or variance) for classification accuracy can be obtained by resampling frameworks, typically using bootstrapping or cross-validation, into the classification and accuracy assessment (further reading in [Module 2](https://3dgeo-heidelberg.github.io/etrainee/module2/04_multitemporal_classification/04_multitemporal_classification.html#results-validation-and-accuracy-assesment) and in [Lyons et al. 2018](https://doi.org/10.1016/j.rse.2018.02.026)).
         * Cross-validation (CV) - In the basic version, *k*-fold CV, the training set is split into *k* smaller sets of data (called *folds*), and for each fold a model is trained on the other (*k* - 1) folds and then validated on the current fold.
         * Cross validation can be used to assess the performance of a (final) model, but also for tuning hyperparameters of a machine learning model
         * If you have multi-temporal reference data, you can also make a temporal split (e.g. use one year for training, the other years for validation or set up a temporal cross-validation with years as folds).
@@ -98,7 +99,7 @@ When looking for reference data, you can search public archives hosted by govern
 <center>
 <img src="media/LUCAS_overview.png" title="Land Use/Cover Area frame Survey and harmonisation of datasets" width="700">
 
-<i>Schematic overview of the LUCAS initiative and harmonisation of Land Use/Cover Area frame Survey and harmonisation of datasets (figure by [d'Andrimont et al. 2020](https://doi.org/10.1038/s41597-020-00675-z)/ [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)).</i>
+<i>Schematic overview of the LUCAS initiative and harmonisation of datasets (figure by [d'Andrimont et al. 2020](https://doi.org/10.1038/s41597-020-00675-z)/ [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)).</i>
 </center>
 
 
@@ -274,7 +275,7 @@ How would you calculate precision and recall for class A? Write down the two for
 
 For a comparison of continuous variables, such as a variable estimated through a regression vs. an observed (reference) variable, we need different measures than for categorical data. In addition to a visual inspection of (i) predicted values plotted against actual values (reference data) or (ii) residuals plotted against predicted values, these are a few metrics commonly used to assess the performance of regression:
 
-* **R<sup>2</sup> ('R-square')** - The 'coefficient of determination' R<sup>2</sup> provides a measure for the goodness of fit (model output vs. reference) and indicates the proportion of variance (of a target variable *y*) that is explained by the model based on the independent variables. Ideally, R<sup>2</sup> yields 1.0 (or 100%) but, unlike most other metrics, the R<sup>2</sup> can be negative for badly performing models.
+* **R<sup>2</sup>** - The 'coefficient of determination' R<sup>2</sup> provides a measure for the goodness of fit (model output vs. reference) and indicates the proportion of variance (of a target variable *y*) that is explained by the model based on the independent variables. Ideally, R<sup>2</sup> yields 1.0 (or 100%) but, unlike most other metrics, the R<sup>2</sup> can be negative for badly performing models.
 * **Mean error (ME)** - The average of the errors (or 'residuals' if computed on the training set), i.e. the differences between observed (reference) values and estimated values. An accurate prediction has a small ME. However, large positive and negative errors can balance each other out and lead to a small ME as well. A large ME points to systematic errors into one direction (bias).
 * **Mean squared error (MSE)** - The MSE is the average of the squared errors. Squaring the errors avoids that positive and negative ones cancel each other out. Squaring both the errors and their units, however, makes them difficult to interpret.
 * **Root mean squared error (RMSE)** - The RMSE is the square root of the MSE and, thus, has the same unit as the estimated quantity. As a result of squaring each error, both MSE and RMSE put more weight to large errors than to small ones and, therefore, are sensitive to outliers (more than, e.g., the MAE). If occasional large outliers in the prediction of a model are acceptable for an application or cannot be avoided, RMSE and MSE are the wrong metrics. If you want to penalize large errors strongly, RMSE may be suitable.
@@ -365,6 +366,8 @@ Kullenberg, C., & Kasperowski, D. (2016). What is citizen science? – A sciento
 Lague, D., Brodu, N., & Leroux, J. (2013). Accurate 3D comparison of complex topography with terrestrial laser scanner: Application to the Rangitikei canyon (NZ). ISPRS Journal of Photogrammetry and Remote Sensing, 82, 10-26. https://doi.org/10.1016/j.isprsjprs.2013.04.009
 
 Lane, S.N., Westaway, R.M., Murray HD., (2003). Estimation of erosion and deposition volumes in a large, gravel‐bed, braided river using synoptic remote sensing. Earth Surface Processes and Landforms, 28(3), 249-271. https://doi.org/10.1002/esp.483
+
+Lyons, M. B., Keith, D. A., Phinn, S. R., Mason, T. J., & Elith, J. (2018). A comparison of resampling methods for remote sensing classification and accuracy assessment. Remote Sensing of Environment, 208, 145-153. https://doi.org/10.1016/j.rse.2018.02.026
 
 Llano, X. (2022), SMByC-IDEAM. AcATaMa - QGIS plugin for Accuracy Assessment of Thematic Maps, version v23.4. https://github.com/SMByC/AcATaMa
 
