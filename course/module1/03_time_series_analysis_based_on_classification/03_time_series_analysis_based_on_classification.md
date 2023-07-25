@@ -165,6 +165,7 @@ Machine learning classification tools are most commonly used for classification 
     * Deep Learning: [PyTorch](https://pytorch.org/), [TensorFlow](https://www.tensorflow.org/) and the [Keras](https://keras.io/) API built on top of TensorFlow
     * [Pycaret](https://pycaret.gitbook.io/docs/) - A wrapper for scikit-learn and other ML packages aimed at simplification and code reduction for ML experiments (and also for [ML on time series](https://pycaret.gitbook.io/docs/#time-series))
     * [Pyspatialml](https://github.com/stevenpawley/pyspatialml) - ML classification and regression modelling for spatial raster data.
+    * [Mlxtend](https://rasbt.github.io/mlxtend/) - ML extensions and utilities compatible with (e.g.) scikit-learn.
     * [Optuna](https://optuna.org/) - Hyperparameter optimization for different frameworks (incl. scikit-learn, PyTorch, Keras, ...)
 * Machine learning packages for the R language
     * ["Official" overview](https://cran.r-project.org/web/views/MachineLearning.html)
