@@ -49,6 +49,8 @@ While the detection of change is an important step, in most cases also the natur
 
 Classic change detection techniques by pairwise comparison of images are to some extent possible with basic raster processing tools (raster calculator, reclassify, ...) available in most GIS and remote sensing software suites (e.g. QGIS). For more specific algorithms you may need plugins or implementations in a programming language. Code and links to traditional and deep learning algorithms for change detection in Python and other languages are collected, for instance, in the repositories by [Chen Hongruixuan (2023)](https://github.com/ChenHongruixuan/ChangeDetectionRepository), [Wenhwu (2023)](https://github.com/wenhwu/awesome-remote-sensing-change-detection), and [Min Zhang-Whu (2023)](https://github.com/MinZHANG-WHU/Change-Detection-Review).
 
+Learn more on theoretical backgrounds and practical implementations in the dedicated sections of the **E-TRAINEE Modules 2 and 3**, which focus on change detection and analysis in [optical satellite data](../../module2/05_vegetation_monitoring/05_vegetation_monitoring.md) and in [3D point clouds](../../module3/03_3d_change_analysis/03_3d_change_analysis.md), respectively.
+
 
 ### Analysis and decomposition of spectral trajectories
 
