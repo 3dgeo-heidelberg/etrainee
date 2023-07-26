@@ -72,7 +72,7 @@ It is recommended to go through the following tutorials and excercises (one per 
 * Theme 5
     * *Work in progress*
 * Theme 6
-    * Exercise: [Assessment of landcover classification accuracy](./06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.html#exercise-assessment-of-landcover-classification-accuracy), with a solution provided in [this Notebook](./06_reference_data_validation_accuracy_assessment/T6_S2_landcover_classification_accuracy_solution.ipynb).
+    * Exercise: [Assessment of landcover classification accuracy](./06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.md#exercise-assessment-of-landcover-classification-accuracy), with a solution provided in [this Notebook](./06_reference_data_validation_accuracy_assessment/T6_S2_landcover_classification_accuracy_solution.ipynb).
 
 ### Optional parts
 
@@ -85,7 +85,7 @@ In case you want to explore further topics and methods, there are more tutorials
 * Theme 2
     * Tutorial 2: [Google Earth Engine (GEE) in Python](./02_large_time_series_datasets_in_remote_sensing/T2_GEE_s2cloudless_v03_export_time_series.ipynb), showing how to use the GEE cloud computing environment and its Python API for accessing, cloud-masking and downloading a Sentinel-2 time series.
     * Tutorial 3: [Large point clouds in Python](./02_large_time_series_datasets_in_remote_sensing/PC_explore_v02.ipynb), providing a couple of hints for handling and exploring large point clouds efficiently in Python (so far not time-series specific).
-    * Excercise: [Search and load Landsat data to QGIS via a STAC API](./02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.md/#excercise)
+    * Excercise: [Search and load Landsat data to QGIS via a STAC API](./02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.md#excercise)
 * Theme 3
     * Tutorial 2 with excercise:
         * The [Snow cover time series in Python tutorial](./03_time_series_analysis_based_on_classification/T3_S2_snow_classification.ipynb), introduces a very basic procedure for (binary) snow cover mapping with a Sentinel-2 time series. The result is a time series of snow cover maps.
