@@ -156,6 +156,7 @@ Various tools have been developed to improve the efficiency of reference data co
 
 * [TimeSync](https://timesync.forestry.oregonstate.edu/) - A tool for human interpretation of Landsat time series. It is made to calibrate and validate a temporal segmentation of Landsat time series and a trajectory-based detection of land change [Cohen et al. (2010)](https://doi.org/10.1016/j.rse.2010.07.010).
 * [Computer Vision Annotation Tool (CVAT)](https://opencv.github.io/cvat/docs/) - A free, online, interactive video and image annotation tool for computer vision.
+* R tool for reference data collection presented in [Exercise 2 in Module 2](../../module2/02_temporal_information/02_temporal_information_exercise.md)
 * Standard GIS packages (and plugins) contain various tools for accuracy assessment of raster-based remote sensing classifications
     * Digitizing tools to create points or polygons as reference (and optionally rasterize them)
     * Tools for placing sample points randomly or on a regular grid
