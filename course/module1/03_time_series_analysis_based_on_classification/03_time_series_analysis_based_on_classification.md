@@ -58,7 +58,6 @@ Some external tutorials:
 
 Now let's have a look at how these key concepts for automated classification of (mono-temporal) remote sensing data can be transferred or extended to time series of images and point clouds.
 
-
 ## Classification of remote sensing time series
 
 ### Multitemporal classification
@@ -188,6 +187,47 @@ Machine learning classification tools are most commonly used for classification 
 * [tslearn](https://tslearn.readthedocs.io/en/stable/) - A Python package that provides machine learning tools for the analysis of time series. It includes, e.g., a clustering module that combines k-means clustering with Dynamic Time Warping as a distance metric.
 * [Cesium](https://cesium-ml.org/) - A package for ML time series analysis, including feature extraction, model building and prediction.
 * [tsai](https://timeseriesai.github.io/tsai/) - An open-source deep learning package built on top of Pytorch & fastai focused on state-of-the-art techniques for time series tasks like classification, regression, forecasting, imputation.
+
+
+## Self-evaluation quiz
+
+<form name="quiz" action="" method="post" onsubmit="evaluate_quiz(); return false">
+
+<!--Question 1-->
+<label for="q_01">
+Training data is essential for any remote sensing time series classification. True or false?
+</label><br>
+<input type="radio" name="q_01">True
+<input type="radio" name="q_01">False<br>
+<div hidden id="correct_q_01">False</div>
+<output id="output_q_01"></output><br><br>
+
+<!--Question 2-->
+<label for="q_02">
+What can be the result of classifying a remote sensing time series?
+</label><br>
+<input type="checkbox" name="q_02">A time series of classified maps.<br>
+<input type="checkbox" name="q_02">One map with a classification resulting from aggregate characteristics of the entire time series.<br>
+<input type="checkbox" name="q_02">Several maps describing multiple aspects of a phenomenon (such as landuse categories and landuse intensity levels).<br>
+<div hidden id="correct_q_02">A time series of classified maps.&One map with a classification resulting from aggregate characteristics of the entire time series.&Several maps describing multiple aspects of a phenomenon (such as landuse categories and landuse intensity levels).</div>
+<output id="output_q_02"></output><br><br>
+
+<!--Question 3-->
+<label for="q_03">
+3)	Which statements about classification based on time series features are correct?
+</label><br>
+<input type="checkbox" name="q_03">Spectral-temporal metrics used for classification should always be computed as aggregates over an entire season.<br>
+<input type="checkbox" name="q_03">If we calculate spectral-temporal metrics over relatively short time intervals, we probably get missing values, and these can be a problem for subsequent machine learning steps.<br>
+<input type="checkbox" name="q_03">For mapping crop types, a classifier trained accurately with spectral-temporal metrics from one season might perform poorly for other seasons if, e.g., the weather and/or agricultural management was different between years.<br>
+<div hidden id="correct_q_03">If we calculate spectral-temporal metrics over relatively short time intervals, we probably get missing values, and these can be a problem for subsequent machine learning steps.&For mapping crop types, a classifier trained accurately with spectral-temporal metrics from one season might perform poorly for other seasons if, e.g., the weather and/or agricultural management was different between years.</div>
+<output id="output_q_03"></output><br><br>
+
+
+<input type="submit" value="Submit" style="font-size:14pt"><br><br>
+
+<output id="output_overall">
+</output>
+</form>
 
 
 ## Excercise: Snow cover mapping - Interpretation and sensitivity analysis

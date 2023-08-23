@@ -553,6 +553,45 @@ See [this list](https://hub.openeo.org/) for known openEO providers (back-ends) 
 
 Accessing and handling large remote sensing time series data or selected parts of them can be a major obstacle for anyone starting to use that in his work. Hence, this theme has introduced the most important data sources and tools needed as a prerequisite for any more advanced analysis. For further reading on recent and anticipated future development and trends in the area of big remote sensing data see, e.g., [Sudmanns et al. 2022](https://doi.org/10.1080/20964471.2022.2099236), [Xu et al. 2022](https://doi.org/10.1080/17538947.2022.2115567) and [Backeberg et al. 2022](https://doi.org/10.1080/20964471.2022.2094953).
 
+## Self-evaluation quiz
+
+<form name="quiz" action="" method="post" onsubmit="evaluate_quiz(); return false">
+
+<!--Question 1-->
+<label for="q_01">
+Optical satellite data from the Landsat program: Which statement is correct?
+</label><br>
+<input type="checkbox" name="q_01">To map recent land cover changes in small-structured agricultural systems, Landsat-9 data is ideal, because it can provide vegetation indices at the highest spatial and temporal resolution.<br>
+<input type="checkbox" name="q_01">The long period of relatively continuous observation across large parts of the Earth is one of the biggest strengths of the Landsat archive.<br>
+<input type="checkbox" name="q_01">To ensure continuity, all Landsat satellites used exactly the same sensor.<br>
+<input type="checkbox" name="q_01">Level-1 Landsat data from Landsat Collection 1 is the best choice for any remote sensing time series analysis.<br>
+<div hidden id="correct_q_01">The long period of relatively continuous observation across large parts of the Earth is one of the biggest strengths of the Landsat archive.</div>
+<output id="output_q_01"></output><br><br>
+
+<!--Question 2-->
+<label for="q_02">
+Which of these statements about data cubes are correct?
+</label><br>
+<input type="checkbox" name="q_02">Data cubes always have three dimensions.<br>
+<input type="checkbox" name="q_02">Observations and derivatives of different variables and even from multiple different remote sensing systems can be managed in a well-structured form by a data cube.<br>
+<input type="checkbox" name="q_02">Data cubes can be deployed on a local machine but most commonly they are hosted on larger (cluster/cloud) infrastructure to serve more users.<br>
+<div hidden id="correct_q_02">Observations and derivatives of different variables and even from multiple different remote sensing systems can be managed in a well-structured form by a data cube.&Data cubes can be deployed on a local machine but most commonly they are hosted on larger (cluster/cloud) infrastructure to serve more users.</div>
+<output id="output_q_02"></output><br><br>
+
+<!--Question 3-->
+<label for="q_03">
+True or false: Clouds are not a problem for monitoring crop growth or snow cover with Sentinel-2 time series because very good cloud removal algorithms exist, and they can reveal the ground under cloud cover.
+</label><br>
+<input type="radio" name="q_03">True
+<input type="radio" name="q_03">False<br>
+<div hidden id="correct_q_03">False</div>
+<output id="output_q_03"></output><br><br>
+
+<input type="submit" value="Submit" style="font-size:14pt"><br><br>
+
+<output id="output_overall">
+</output>
+</form>
 
 ## Excercise
 

@@ -304,6 +304,55 @@ For a validation of **time series analyses** we face additional challenges that 
 * Repeat visits of a site for multi-temporal sampling are often difficult to organize practically. Often we need to balance a tradeoff between spatial and temporal coverage.
 * Permanently installed in-situ or close-range sensing systems collecting time series data autonomously at high spatial and temporal resolution can be useful. An example are webcams or soil temperature loggers used to validate satellite-based snow cover products<!--Example figures from Microclim project coming soon-->.
 
+## Self-evaluation quiz
+
+<form name="quiz" action="" method="post" onsubmit="evaluate_quiz(); return false">
+
+<!--Question 1-->
+<label for="q_01">
+Principles of validation and accuracy assessment – Which of the following statements is correct?
+</label><br>
+<input type="checkbox" name="q_01">Accuracy assessment of a remote sensing analysis is needed to judge if we can use the results as a basis for further interpretation and/or decision making.<br>
+<input type="checkbox" name="q_01">To ensure consistency we should use the same data for accuracy assessment that we used for training our model.<br>
+<div hidden id="correct_q_01">Accuracy assessment of a remote sensing analysis is needed to judge if we can use the results as a basis for further interpretation and/or decision making.</div>
+<output id="output_q_01"></output><br><br>
+
+<!--Question 2-->
+<label for="q_02">
+Which accuracy metrics are suited for classification?
+</label><br>
+<input type="checkbox" name="q_02">Root mean squared error<br>
+<input type="checkbox" name="q_02">User’s accuracy<br>
+<input type="checkbox" name="q_02">Producer’s accuracy<br>
+<input type="checkbox" name="q_02">Recall<br>
+<div hidden id="correct_q_02">User’s accuracy&Producer’s accuracy&Recall</div>
+<output id="output_q_02"></output><br><br>
+
+<!--Question 3-->
+<label for="q_03">
+Which accuracy metrics are suitable for regression?
+</label><br>
+<input type="checkbox" name="q_03">Mean absolute error<br>
+<input type="checkbox" name="q_03">F1 score<br>
+<input type="checkbox" name="q_03">R²<br>
+<div hidden id="correct_q_03">Mean absolute error&R²</div>
+<output id="output_q_03"></output><br><br>
+
+<!--Question 4-->
+<label for="q_04">
+True or false: Overall accuracy or the Kappa value are the best metric to look at, when we want to learn how to improve a method.
+</label><br>
+<input type="radio" name="q_04">True
+<input type="radio" name="q_04">False<br>
+<div hidden id="correct_q_04">False</div>
+<output id="output_q_04"></output><br><br>
+
+
+<input type="submit" value="Submit" style="font-size:14pt"><br><br>
+
+<output id="output_overall">
+</output>
+</form>
 
 ## Exercise: Assessment of landcover classification accuracy
 
