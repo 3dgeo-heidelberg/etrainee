@@ -559,7 +559,7 @@ Accessing and handling large remote sensing time series data or selected parts o
 
 <!--Question 1-->
 <label for="q_01">
-Optical satellite data from the Landsat program: Which statement is correct?
+Optical satellite data from the Landsat program: Which statements are correct?
 </label><br>
 <input type="checkbox" name="q_01">To map recent land cover changes in small-structured agricultural systems, Landsat-9 data is ideal, because it can provide vegetation indices at the highest spatial and temporal resolution.<br>
 <input type="checkbox" name="q_01">The long period of relatively continuous observation across large parts of the Earth is one of the biggest strengths of the Landsat archive.<br>
