@@ -49,6 +49,16 @@ function log_answers() {
 			case "range":
 				ans_dict[element.name] = element.value
 				break;
+			case "checkbox":
+				var element_name = element.name
+				var node_list = document.querySelectorAll("input[name="+element_name+"]:checked");
+				// gather all selected values into a string
+				var out_str = ""
+				for (var node of node_list) {
+					out_str = out_str + "&" + node.nextSibling.data
+				}
+				ans_dict[element.name] = out_str
+				break;
 			case "submit":
 				break;
 			case "output":
@@ -101,10 +111,63 @@ function check_answer(user, correct) {
 	return  user_norm == correct_norm
 }
 
+function check_answer_multiple_choice(user, correct) {
+	// checks if answers are correct
+	var correct_temp = structuredClone(correct)
+	var num_correct = 0
+	for (var user_ans of user) {
+		if (correct_temp.includes(user_ans)) {
+			var drop_idx = correct_temp.indexOf(user_ans)
+			correct_temp.splice(drop_idx, 1)
+			num_correct = num_correct + 1
+		}
+	}
+	// is answer correct?
+	if (num_correct == correct.length && num_correct == user.length-1) {
+		return "correct"
+	// is answer wrong?
+	} else if (num_correct == 0) {
+		return "wrong"
+	// otherwise it is partially correct
+	} else {
+		return "partially"
+	}
+}
+
+function format_correct_list(in_list) {
+	if (in_list.length > 1) {
+		var out_str = ' the correct answers are "' + in_list.join('" and "') + '"'
+	} else {
+		var out_str = ' the correct answer is "' + in_list + '"'
+	}
+	return out_str
+}
+
+function eval_multiple_choice(ans, out_element, ans_count, correct_list) {
+	var correct_str =  format_correct_list(correct_list)
+	switch(ans) {
+		case "correct":
+			ans_count["correct"] = ans_count["correct"] + 1
+			out_element.value = "Correct"
+			out_element["style"] = "background-color: #7DCEA0; padding: 3pt 15pt;"
+			break;
+		case "partially":
+			ans_count["partially"] = ans_count["partially"] + 1
+			out_element.value = "Your answer was partially correct," + correct_str
+			out_element["style"] = "background-color: #F7DC6F; padding: 3pt 15pt;"
+			break;
+		case "wrong":
+			ans_count["wrong"] = ans_count["wrong"] + 1
+			out_element.value = "Sorry," + correct_str
+			out_element["style"] = "background-color: #F1948A; padding: 3pt 15pt;"
+			break;
+	}
+}
+
 function display_messages(answers, answers_correct, answer_elements, q_types) {
 	// displays messages
 	// go through individual answers
-	var ans_count = {correct:0, wrong:0}
+	var ans_count = {correct:0, wrong:0, partially:0}
 	
 	for (var [key, value] of Object.entries(answers)) {
 		// get correct answer
@@ -122,6 +185,15 @@ function display_messages(answers, answers_correct, answer_elements, q_types) {
 		} else if (q_types[key] == 'text' || q_types[key] == 'textarea') {
 			out_element.value = 'Consider if your answer aligns with our: ' + value_correct
 			out_element["style"] = "background-color: #D7DBDD; padding: 3pt 15pt;"
+		// Was this a multiple choice question? - evaluate how corect it was
+		} else if (q_types[key] == 'checkbox') {
+			// convert answer strings to arrays
+			var value_parts = value.split("&");
+			var value_correct_parts = value_correct.split("&");
+			// Check how correct was the answer
+			var checked_multiple_choice = check_answer_multiple_choice(value_parts, value_correct_parts)
+			// display message based on correctness
+			eval_multiple_choice(checked_multiple_choice, out_element, ans_count, value_correct_parts)
 		// is the answer correct?
 		} else if (check_answer(value, value_correct)) {
 			ans_count["correct"] = ans_count["correct"] + 1
@@ -144,10 +216,10 @@ function display_overall(ans_dict) {
 	var overall_element = document.getElementById("output_overall")
 	overall_element["style"] = "background-color: #D7DBDD; padding: 3pt 15pt;"
 	// compute the number of answered questions
-	var answered_questions = ans_dict["correct"] + ans_dict["wrong"]
+	var answered_questions = ans_dict["correct"] + ans_dict["wrong"] + ans_dict["partially"]
 	
 	// Display different messages based on how many questions the user got wrong
-	if (ans_dict["wrong"] < 4) {
+	if (ans_dict["wrong"] + ans_dict["partially"] < 3) {
 		overall_element.value = "Congratulations, you had " + ans_dict["correct"] + " answers correct out of " + answered_questions + " answered questions."
 	} else {
 		overall_element.value = "You had " + ans_dict["correct"] + " answers correct out of " + answered_questions + " answered questions, please consider reviewing the relevant sections again."
