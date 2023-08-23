@@ -28,7 +28,8 @@ The case study will be presented on a data set from a floodplain forest in Czech
 
 ## Data
 
-A dataset was acquired in The Soutok floodplain forest district located between the rivers Morava and Dyje (48.68° N, 16.94° E) in 2019 (four field campaigns conducted in April, July, September and October; 204 samples in total) and 2020 (three field campaigns in May, July, October; 193 samples in total). During each field campaign, sunlit and shaded branches were trimmed with a tree climber from eighteen deciduous trees of six species: Austrian oak, English oak, Narrow-leaved ash, European hornbeam, White poplar and Small-leaved linden (*Figure 1*). Representative leaves of all types (small, big, green, colored, young, old) were measured using chlorophyll meter SPAD-502 and ASD FieldSpec4 Standard-Res spectroradiometer (sampling 350 – 2,500 nm spectral domain) coupled with an integrating sphere RTS-3ZC and then taken to the laboratory for spectrophotometric determination of chlorophyll content from dimethylformamide extracts (*Figure 2*). Let’s use data from 2019 for training purposes and data from 2020 for validation of the results.
+A dataset was acquired in The Soutok floodplain forest district located between the rivers Morava and Dyje (48.68° N, 16.94° E) in 2019 (four field campaigns conducted in April, July, September and October; 204 samples in total) and 2020 (three field campaigns in May, July, October; 193 samples in total). During each field campaign, sunlit and shaded branches were trimmed with a tree climber from eighteen deciduous trees of six species: Austrian oak, English oak, Narrow-leaved ash, European hornbeam, White poplar and Small-leaved linden (*Figure 1*). 
+Representative leaves of all types (small, big, green, colored, young, old) were measured using chlorophyll meter SPAD-502 and ASD FieldSpec4 Standard-Res spectroradiometer (sampling 350 – 2,500 nm spectral domain) coupled with an integrating sphere RTS-3ZC and then taken to the laboratory for spectrophotometric determination of chlorophyll content from dimethylformamide extracts (*Figure 2*). Let’s use data from 2019 for training purposes and data from 2020 for validation of the results.
 
 Input data file *FloodplainForest_input_data.xlsx* consists of two sheets: *2019_training* and *2020_validation*. Data are also available in text files separated by tabulator for work in R (*FloodplainForest_2019_training.txt* and *FloodplainForest_2020_validation.txt*). All the files have the same columns: 
 
@@ -47,15 +48,17 @@ Input data file *FloodplainForest_input_data.xlsx* consists of two sheets: *2019
 
 *Figure 1. Map of the study area showing the location of 18 sampled trees; aerial hyperspectral CASI data are used as the background.*
 
+
+
 <p align="center">
-<img src="media/floodplain_img2.PNG" title="Examples of sampled leaves." alt="Figure 2" width="500"/>
+<img src="media/floodplain_img2.PNG" title="Examples of sampled leaves." alt="Figure 2" width="400"/>
 </p>
 
 *Figure 2. Examples of sampled leaves in October 2020 (up), the field laboratory (down).*
 
 ## Chlorophyll meter vs. laboratory chlorophyll content
 
-Firstly, let’s explore a relation between both methods of chlorophyll content determination and seasonal changes of chlorophyll content. By building simple regressions (https://en.wikipedia.org/wiki/Simple_linear_regression, table editor: XY point graph / add trendline or R: lm(SPAD_Cab ~ Total_chloro_ug_cm2) for each month (April 2019, May 2020, July 2019, July 2020, September 2019, October 2019, October 2020) and each year (all measurements from  2019 and all measurements from  2020) we can see how both values are correlated and how the chlorophyll content and the correlation values change during the 2019 and 2020 seasons (*Figure 3*). At the very beginning of the season the variability in data is so small, that the correlation doesn’t work (April 2019, R² = 0.04). In May the correlation become stronger, which is consistent with some studies that have looked for the most appropriate term to distinguish among different deciduous tree species and found out that the end of May is ideal as the phenology of one species is synchronized well but inter-species differences are still visible ([Lisein et al., 2015; Grybas and Congalton, 2021](#references)). Our result (R² = 0.8) is influenced by two outliers but when they are removed, the correlation is still very good with R² = 0.73, not shown in *Figure 3*). In July the correlations are again weaker (July 2019 – R² = 0.50, July 2020 – R² = 0.70) as all the species are at their phenology peak. Similar trend can be seen also in September 2019 (R² = 0.72, not shown in *Figure 3*). When the leaves start to change their colors in the autumn, the variability in chlorophyll content in different species and leaves is bigger again and correlations work better (October 2019 – R² = 0.82, October 2020 – R² = 0.87), this is other term which is often used for distinguishing deciduous trees. Incorporating all the months give the best results (R² for 2019 = 0.86 and for 2020 = 0.87) but the trend is no more linear.  
+Firstly, let’s explore a relation between both methods of chlorophyll content determination and seasonal changes of chlorophyll content. By building simple regressions (https://en.wikipedia.org/wiki/Simple_linear_regression, table editor: XY point graph / add trendline or R: lm(SPAD_Cab ~ Total_chloro_ug_cm²) for each month (April 2019, May 2020, July 2019, July 2020, September 2019, October 2019, October 2020) and each year (all measurements from  2019 and all measurements from  2020) we can see how both values are correlated and how the chlorophyll content and the correlation values change during the 2019 and 2020 seasons (*Figure 3*). At the very beginning of the season the variability in data is so small, that the correlation doesn’t work (April 2019, R² = 0.04). In May the correlation become stronger, which is consistent with some studies that have looked for the most appropriate term to distinguish among different deciduous tree species and found out that the end of May is ideal as the phenology of one species is synchronized well but inter-species differences are still visible ([Lisein et al., 2015; Grybas and Congalton, 2021](#references)). Our result (R² = 0.8) is influenced by two outliers but when they are removed, the correlation is still very good with R² = 0.73, not shown in *Figure 3*). In July the correlations are again weaker (July 2019 – R² = 0.50, July 2020 – R² = 0.70) as all the species are at their phenology peak. Similar trend can be seen also in September 2019 (R² = 0.72, not shown in *Figure 3*). When the leaves start to change their colors in the autumn, the variability in chlorophyll content in different species and leaves is bigger again and correlations work better (October 2019 – R² = 0.82, October 2020 – R² = 0.87), this is other term which is often used for distinguishing deciduous trees. Incorporating all the months give the best results (R² for 2019 = 0.86 and for 2020 = 0.87) but the trend is no more linear.  
 
 
 <p align="center">
@@ -192,13 +195,13 @@ write(results_koef, "2019_SPAD_Cab_results_koef.txt")
 As the dataset for the whole season covers all the potential chlorophyll content values, the regression equations should work to estimate chlorophyll content based on the indices from different season. So, let’s compute the indices for 2020 validation dataset and based on the regression equations from 2019 estimate the SPAD values and laboratory chlorophyll content for the best performing indices, i. e. for SPAD value – N705 (R² = 0.8566, SPAD_value = -61.215 * N705 + 55.688) and for laboratory chlorophyll content – Vogelmann (R² = 0.809, Lab_Chlorophyll = 88.635 * Vogelmann - 84.965). The intercept can be found in script output text files ending with “_i” and slope values can be found in script output text files ending with “_koef”, example where it has the origins is in the *Figure 5*. Then let’s compare the real values and the predicted values by visualizing in graphs (*Figure 6*) and by computing root mean square error (RMSE), which measures the average difference between a statistical model’s predicted values and the actual values (*Formula 1*).
 
 <p align="center">
-<img src="media/floodplain_img5_1.PNG" title="Results of regression model." alt="Figure 5" width="400"/>
+<img src="media/floodplain_img5_1.PNG" title="Results of regression model." alt="Figure 5" width="600"/>
 </p>
 
 *Figure 5. Results of regression model for laboratory chlorophyll content and Vogelmann index with highlighted intercept and slope values*
 
 <p align="center">
-<img src="media/floodplain_img5.PNG" title="Results of regression model." alt="Figure 6" width="600"/>
+<img src="media/floodplain_img5.PNG" title="Results of regression model." alt="Figure 6" width="800"/>
 </p>
 
 *Figure 6. Actual vs. predicted values of laboratory chlorophyll content (left) and SPAD values (right) for 2020 dataset.*
