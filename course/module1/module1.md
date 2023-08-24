@@ -70,7 +70,7 @@ It is recommended to go through the following tutorials and excercises (one per 
 * Theme 4
     * Tutorial: [Forest disturbance assessment with Python and the GEE](./04_trajectory-based_analysis/T4_GEE_NDVI_time_series_points.ipynb), examining a Landsat 8 NDVI time series (spectral-temporal trajectory) to assess the timing of forest disturbance.
 * Theme 5
-    * Tutorial: [Sentinel-1/-2 surface water monitoring](./05_spatio_temporal_data_fusion/T5_water_surface_data_fusion.ipynb), where you learn how to combine Sentinel-1 SAR data and Sentinel-2 optical imagery for monitoring water reservoir extent in a relatively simple workflow.
+    * Tutorial: [Sentinel-1/-2 surface water monitoring](./05_spatio_temporal_data_fusion/T5_water_surface_data_fusion.ipynb), where you learn how to combine Sentinel-1 SAR data and Sentinel-2 optical imagery for monitoring the extent of a water reservoir in a relatively simple workflow.
 * Theme 6
     * Exercise: [Assessment of landcover classification accuracy](./06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.md#exercise-assessment-of-landcover-classification-accuracy), with a solution provided in [this Notebook](./06_reference_data_validation_accuracy_assessment/T6_S2_landcover_classification_accuracy_solution.ipynb).
 
