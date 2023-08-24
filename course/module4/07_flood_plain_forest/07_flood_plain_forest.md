@@ -192,13 +192,13 @@ write(results_koef, "2019_SPAD_Cab_results_koef.txt")
 
 *Figure 4. Coefficient of determination (R²) for linear regression between SPAD value (upper table) resp. laboratory chlorophyll content (lower table) and thirty vegetation indices based on datasets from April, July, September, October and the whole season of 2019. Red means the worst models, green the best.*
 
-As the dataset for the whole season covers all the potential chlorophyll content values, the regression equations should work to estimate chlorophyll content based on the indices from different season. So, let’s compute the indices for 2020 validation dataset and based on the regression equations from 2019 estimate the SPAD values and laboratory chlorophyll content for the best performing indices, i. e. for SPAD value – N705 (R² = 0.8566, SPAD_value = -61.215 * N705 + 55.688) and for laboratory chlorophyll content – Vogelmann (R² = 0.809, Lab_Chlorophyll = 88.635 * Vogelmann - 84.965). The intercept can be found in script output text files ending with “_i” and slope values can be found in script output text files ending with “_koef”, example where it has the origins is in the *Figure 5*. Then let’s compare the real values and the predicted values by visualizing in graphs (*Figure 6*) and by computing root mean square error (RMSE), which measures the average difference between a statistical model’s predicted values and the actual values (`Formula 1`).
+As the dataset for the whole season covers all the potential chlorophyll content values, the regression equations should work to estimate chlorophyll content based on the indices from different season. So, let’s compute the indices for 2020 validation dataset and based on the regression equations from 2019 estimate the SPAD values and laboratory chlorophyll content for the best performing indices, i. e. for SPAD value – N705 (R² = 0.8566, SPAD_value = -61.215 * N705 + 55.688) and for laboratory chlorophyll content – Vogelmann (R² = 0.809, Lab_Chlorophyll = 88.635 * Vogelmann - 84.965). The intercept can be found in script output text files ending with “_i” and slope values can be found in script output text files ending with “_koef”, example where it has the origins is in the *Figure 5*. Then let’s compare the real values and the predicted values by visualizing in graphs (*Figure 6*) and by computing root mean square error (RMSE), which measures the average difference between a statistical model’s predicted values and the actual values.
 
 <p align="center">
 <img src="media/floodplain_img5_1.PNG" title="Results of regression model." alt="Figure 5" width="600"/>
 </p>
 
-*Figure 5. Results of regression model for laboratory chlorophyll content and Vogelmann index with highlighted intercept and slope values*
+*Figure 5. Results of regression model for laboratory chlorophyll content and Vogelmann index with highlighted intercept and slope values.*
 
 <p align="center">
 <img src="media/floodplain_img5.PNG" title="Results of regression model." alt="Figure 6" width="800"/>
