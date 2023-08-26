@@ -14,7 +14,7 @@ The spectra were collected for homogenous material represented by green colored 
 
 - *Prerequisites*
     - Installed spreadsheet editor (MS Office Excel, LibreOffice Calc or other) or R      
-    - Downloaded data ([folder - LINK WILL BE ADDED]()); based on your preferred working environment, use either the file```Exercise_M4_T3_data.xlsx``` (excel spreadsheet) or ```Exercise_M4_T3_data_CP.txt``` and ```Exercise_M4_T3_data_IS.txt``` (text file)
+    - Downloaded data ([folder - LINK WILL BE ADDED]()); based on your preferred working environment, use either the file```Exercise_M4_T3_data.xlsx``` (excel spreadsheet) or ```Exercise_M4_T3_data_CP.txt``` and ```Exercise_M4_T3_data_IS.txt``` (text file)  
     The dataset consists of:
         + wavelength (column ```Wavelength```)
         + three spectra measured by contact probe (CP) at three different places of the sample (column ```paper_CP_XXXXX```, ```leaf_CP_XXXXX```)
@@ -37,4 +37,4 @@ Compare the reflectance spectra acquired by the integrating sphere with the comp
 Proceed to example solution [Comparison of spectra measured by integrating sphere and contact probe - report](solution/03_spectra_probe_sphere_solution.md)
 
 ### Back to theme 
-Proceed by returning to [In situ and laboratory spectroscopy of vegetation](03_relating_imagery_lab_vegetation/03_03_relating_imagery_lab_vegetation.md)
+Proceed by returning to [Principles of laboratory spectroscopy](03_02_principles_of_laboratory_spectroscopy)

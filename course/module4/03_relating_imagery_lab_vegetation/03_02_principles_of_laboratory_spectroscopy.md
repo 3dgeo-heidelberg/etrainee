@@ -340,6 +340,16 @@ You are going to collect a spectral library of leaf level reflectance (BRF) for 
 <output id="output_overall"></output>
 </form>
 
+## Exercise
+
+### Comparison of spectra measured by integrating sphere and contact probe
+
+The aim of this exercise is to visualize and compare reflectance spectra acquired by a contact probe (CP) and an integrating sphere (IS) attached to the spectroradiometer ASD FieldSpec 4 Hi-Res. 
+
+Please proceed to the exercise: [Comparison of spectra measured by integrating sphere and contact probe](03_spectra_probe_sphere_exercise.md).
+
+
+
 ## Next unit
 
 Proceed with [Relating imaging spectroscopy and in-situ or laboratory measurements of vegetation properties](../03_relating_imagery_lab_vegetation/03_03_relating_imagery_lab_vegetation.md)
