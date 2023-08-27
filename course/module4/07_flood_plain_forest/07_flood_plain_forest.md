@@ -51,7 +51,7 @@ Input data file `FloodplainForest_input_data.xlsx` consists of two sheets: `2019
 
 
 <p align="center">
-<img src="media/floodplain_img2.PNG" title="Examples of sampled leaves." alt="Figure 2" width="400"/>
+<img src="media/floodplain_img2.jpg" title="Examples of sampled leaves." alt="Figure 2" width="400"/>
 </p>
 
 *Figure 2. Examples of sampled leaves in October 2020 (up), the field laboratory (down).*
@@ -205,6 +205,15 @@ As the dataset for the whole season covers all the potential chlorophyll content
 </p>
 
 *Figure 6. Actual vs. predicted values of laboratory chlorophyll content (left) and SPAD values (right) for 2020 dataset.*
+
+<p align="center">
+<img src="media/floodplain_img6.jpg" title="RMSE." alt="Figure 7" width="200"/>
+</p>
+
+*Formula 1. RMSE.*
+
+
+RMSE for predicted laboratory chlorophyll content was 6.6 μg/cm2 (average of 2020 validation dataset was 31.9 μg/cm2 and standard deviation 15.2 μg/cm2), for predicted SPAD values 4.9 (average of 2020 validation dataset was 31.9 and standard deviation 11.3). It can be seen that computed regressions for both indices and parameters perform well even for other season. 
 
 ## Conclusions
 
