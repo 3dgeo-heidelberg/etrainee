@@ -37,4 +37,4 @@ Compare the reflectance spectra acquired by the integrating sphere with the comp
 Proceed to example solution [Comparison of spectra measured by integrating sphere and contact probe - report](solution/03_spectra_probe_sphere_solution.md)
 
 ### Back to theme 
-Proceed by returning to [Principles of laboratory spectroscopy](03_02_principles_of_laboratory_spectroscopy)
+Proceed by returning to [Principles of laboratory spectroscopy](03_02_principles_of_laboratory_spectroscopy.md)

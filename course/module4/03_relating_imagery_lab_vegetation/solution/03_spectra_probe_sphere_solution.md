@@ -78,4 +78,4 @@ Potůčková, M., Červená, L., Kupková, L., Lhotáková, Z., Lukeš, P., Hanu
 Comparison of Reflectance Measurements Acquired with a Contact Probe and an Integration Sphere: Implications for the Spectral Properties of Vegetation at a Leaf Level. Sensors, 16, 1801. [10.3390/s16111801](http://dx.doi.org/10.3390/s16111801)   
 
 ### Back to theme 
-Proceed by returning to [Principles of laboratory spectroscopy](03_02_principles_of_laboratory_spectroscopy)
+Proceed by returning to [Principles of laboratory spectroscopy](03_02_principles_of_laboratory_spectroscopy.md)
