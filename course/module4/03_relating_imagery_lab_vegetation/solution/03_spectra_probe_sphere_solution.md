@@ -39,7 +39,7 @@ so there are no obvious measurement errors, and the leaf shows no signs of senes
 Median spectra for both materials were calculated.
 
 <p align="center">
-<img src="media/05_examplespreadsheet.jpg" title="Median spectra for contact probe measurements" alt="Figure 3" width="500"/>
+<img src="media/05_examplespreadsheet.jpg" title="Median spectra for contact probe measurements" alt="Figure 3" width="800"/>
 </p>
 
 <div align="center">
@@ -65,7 +65,7 @@ especially Section 2.3 for spectra comparison methods and Section 3.1. for resul
 </div>
 
 <p align="center">
-<img src="media/04_greenpaperCP.png" title="Comparision of green paper spectra measured by contact probe and integrating sphere" alt="Figure 5" width="500"/>
+<img src="media/04_greenpaper.png" title="Comparision of green paper spectra measured by contact probe and integrating sphere" alt="Figure 5" width="500"/>
 </p>
 
 <div align="center">
