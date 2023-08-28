@@ -51,7 +51,7 @@ Input data file `FloodplainForest_input_data.xlsx` consists of two sheets: `2019
 
 
 <p align="center">
-<img src="media/floodplain_img2.jpg" title="Examples of sampled leaves." alt="Figure 2" width="400"/>
+<img src="media/floodplain_img2.jpg" title="Examples of sampled leaves." alt="Figure 2" width="600"/>
 </p>
 
 *Figure 2. Examples of sampled leaves in October 2020 (up), the field laboratory (down).*
@@ -86,7 +86,7 @@ MCARI=((X700-X670)-0.2*(X700-X550))*(X700/X670) 	# (Main et al. 2011; Daughtry e
 MCARI2=((X750-X705)-0.2*(X750-X550))*(X750/X705)	# (Main et al. 2011; Wu et al. 2008)
 TCARI=3*((X700-X670)-0.2*(X700-X550)*(X700/X670)) 	# (Main et al. 2011; Haboudane et al. 2002)
 OSAVI=(1+0.16)*(X800-X670)/(X800+X670+0.16)  	# (Main et al. 2011; Rondeaux et al 1996)
-OSAVI2=(1+0.16)*(X750-X705)/(X750+X705+0.16) 	#  (Main et al. 2011; Wu et al. 2008)
+OSAVI2=(1+0.16)*(X750-X705)/(X750+X705+0.16) 	# (Main et al. 2011; Wu et al. 2008)
 TCARIOSAVI=TCARI/OSAVI  				# (Main et al. 2011; Haboudane et al. 2002)
 MCARIOSAVI=MCARI/OSAVI   				# (Main et al. 2011; Daughtry et al. 2000)
 MCARI2OSAVI2=MCARI2/OSAVI2			# (Main et al. 2011; Wu et al. 2008)
@@ -190,50 +190,72 @@ write(results_koef, "2019_SPAD_Cab_results_koef.txt")
 <img src="media/floodplain_img4.PNG" title="Coefficient of determination (R²) for linear regression." alt="Figure 4" width="600"/>
 </p>
 
-*Figure 4. Coefficient of determination (R²) for linear regression between SPAD value (upper table) resp. laboratory chlorophyll content (lower table) and thirty vegetation indices based on datasets from April, July, September, October and the whole season of 2019. Red means the worst models, green the best.*
+*Figure 4. Coefficient of determination (R²) for linear regression between SPAD values (upper table) resp. laboratory chlorophyll content (lower table) and thirty vegetation indices based on datasets from April, July, September, October and the whole season of 2019. Red means the worst models, green the best.*
 
-As the dataset for the whole season covers all the potential chlorophyll content values, the regression equations should work to estimate chlorophyll content based on the indices from different season. So, let’s compute the indices for 2020 validation dataset and based on the regression equations from 2019 estimate the SPAD values and laboratory chlorophyll content for the best performing indices, i. e. for SPAD value – N705 (R² = 0.8566, SPAD_value = -61.215 * N705 + 55.688) and for laboratory chlorophyll content – Vogelmann (R² = 0.809, Lab_Chlorophyll = 88.635 * Vogelmann - 84.965). The intercept can be found in script output text files ending with “_i” and slope values can be found in script output text files ending with “_koef”, example where it has the origins is in the *Figure 5*. Then let’s compare the real values and the predicted values by visualizing in graphs (*Figure 6*) and by computing root mean square error (RMSE), which measures the average difference between a statistical model’s predicted values and the actual values.
+As the dataset for the entire season covers all the potential chlorophyll content values, the regression equations should work to estimate chlorophyll content based on the indices from different seasons. 
+So, let’s compute the indices for the 2020 validation dataset and based on the regression equations from 2019 estimate the SPAD values and laboratory chlorophyll content for the best performing indices, i. e. for SPAD value – N705 (R² = 0.8566, SPAD_value = -61.215 * N705 + 55.688) and for laboratory chlorophyll content – Vogelmann (R² = 0.809, Lab_Chlorophyll = 88.635 * Vogelmann - 84.965). 
+The intercept can be found in script output text files ending with “_i” and slope values can be found in script output text files ending with “_koef”, example where it has the origins is in the *Figure 5*. 
+Then let’s compare the real values and the predicted values by visualizing in graphs (*Figure 6*) and by computing root mean square error (RMSE), which measures the average difference between a statistical model’s predicted values and the actual values.
 
 <p align="center">
-<img src="media/floodplain_img5_1.PNG" title="Results of regression model." alt="Figure 5" width="600"/>
+<img src="media/floodplain_img5_1.PNG" title="Results of regression model." alt="Figure 5" width="400"/>
 </p>
 
 *Figure 5. Results of regression model for laboratory chlorophyll content and Vogelmann index with highlighted intercept and slope values.*
 
 <p align="center">
-<img src="media/floodplain_img5.PNG" title="Results of regression model." alt="Figure 6" width="800"/>
+<img src="media/floodplain_img5.PNG" title="Results of regression model." alt="Figure 6" width="600"/>
 </p>
 
-*Figure 6. Actual vs. predicted values of laboratory chlorophyll content (left) and SPAD values (right) for 2020 dataset.*
+*Figure 6. Actual vs. predicted values of laboratory chlorophyll content (left) and SPAD values (right), 2020 dataset.*
 
 <p align="center">
 <img src="media/floodplain_img6.jpg" title="RMSE." alt="Figure 7" width="200"/>
 </p>
 
-*Formula 1. RMSE.*
+<div align="center">
+
+<i>Formula 1. RMSE.</i>
+
+</div>
 
 
-RMSE for predicted laboratory chlorophyll content was 6.6 μg/cm2 (average of 2020 validation dataset was 31.9 μg/cm2 and standard deviation 15.2 μg/cm2), for predicted SPAD values 4.9 (average of 2020 validation dataset was 31.9 and standard deviation 11.3). It can be seen that computed regressions for both indices and parameters perform well even for other season. 
+
+RMSE for predicted laboratory chlorophyll content was 6.6 μg/cm² (average of 2020 validation dataset was 31.9 μg/cm² and standard deviation 15.2 μg/cm2), 
+for predicted SPAD values 4.9 μg/cm² (average of 2020 validation dataset was 31.9 and standard deviation 11.3). 
+It can be seen that computed regressions for both indices and parameters also perform well for other seasons. 
 
 ## Conclusions
 
-In the first part of this case study we explored the relation between two methods of chlorophyll content determination – destructive (total chlorophyll content extracted in laboratory) and non-destructive measured by portable transmittance-based chlorophyll meter SPAD-502. We found out that if there is enough variability in data the correlation between these two methods of chlorophyll content determination work well, so we can substitute the time-demanding and destructive method of chlorophyll content extraction in the laboratory by fast non-destructive measurements by SPAD-502 and use the prediction equations to get the total chlorophyll content in μg/cm². But these equations are not transferable for using in different ecosystems with potentially different chlorophyll content values. For each ecosystem new calibration has to be performed. 
-In the second part of this case study we explored the correlation of vegetation indices computed from spectra measured by the spectroradiometer coupled with integrating sphere with the chlorophyll content values. The best performing indices were Vogelmann for laboratory chlorophyll content and N705 for SPAD values. Equations built based on data from the whole season 2019 were also successfully applied on 2020 dataset (validated by RMSE). Slightly better performance was reached for predicting SPAD values from the indices, which can be caused by similar method of chlorophyll content estimation (both optical measurements). These results can confirm that reflectance measurements of leaves by the spectroradiometer are another good method for estimating the chlorophyll content in leaves.
-In both parts of this case study the attention was also paid to the seasonal changes. When we worked with the whole season dataset, all possible chlorophyll content values for the specific ecosystem were considered and the models were the strongest. However, it was a lot of field work to reach this. So, when needed to do similar study in floodplain forest, October could be recommended as a suitable month when the variability in leaves is big, so all models performed also very well.
+In the first part of the case study, we explored the relation between two methods of chlorophyll content determination – destructive (total chlorophyll content extracted in laboratory) and non-destructive (measured by the portable transmittance-based chlorophyll meter SPAD-502). 
+We found out that if there is enough variability in data, the correlation between these two methods of chlorophyll content determination works well. 
+The time-demanding and destructive method of chlorophyll content extraction in the laboratory can be substituted by fast non-destructive measurements, and prediction equationscan be used to obtain total chlorophyll content in μg/cm². 
+But these equations are not transferable to different ecosystems with potentially different chlorophyll content values. Each ecosystem requires new calibration. 
+
+In the second part of the case study, we explored the correlation of vegetation indices computed from spectra measured by the spectroradiometer coupled with the integrating sphere and the chlorophyll content values. 
+The best performing indices were Vogelmann for laboratory chlorophyll content and N705 for SPAD values. 
+Equations developed using data from the entire season of 2019 were successfully applied to the 2020 dataset (RMSE validation). 
+Slightly better performance was reached for predicting SPAD values from the indices, which can be caused by similar methods of chlorophyll content estimation (both optical measurements). 
+These findings confirm that spectroradiometer measurements of leaf reflectance are promising method for estimating chlorophyll content in leaves.
+
+Seasonal changes were also taken into account. 
+When working with the entire season's dataset, all possible chlorophyll content values for the specific ecosystem were considered, and the strongest models were produced.
+However, this required a significant amount of field work. 
+For a floodplain forest, October could be recommended as a suitable month to conduct a similar study. The variability in leaves is high, and the models perform accordingly. 
 
 ## References
 
-Croft, H., J.M. Chen, & Y. Zhang. 2014. „The Applicability of Empirical Vegetation Indices for Determining Leaf Chlorophyll Content over Different Leaf and Canopy Structures". Ecological Complexity 17 (březen): 119–30. https://doi.org/10.1016/j.ecocom.2013.11.005.
+Croft, H., J.M. Chen, & Y. Zhang. 2014. „The Applicability of Empirical Vegetation Indices for Determining Leaf Chlorophyll Content over Different Leaf and Canopy Structures". Ecological Complexity 17 (March): 119–30. [10.1016/j.ecocom.2013.11.005](https://doi.org/10.1016/j.ecocom.2013.11.005).
 
-Grybas, H., & Congalton, R. G. 2021. A comparison of multi-temporal rgb and multispectral uas imagery for tree species classification in heterogeneous new hampshire forests. Remote Sensing, 13(13). https://doi.org/10.3390/rs13132631 
+Grybas, H., & Congalton, R. G. 2021. A comparison of multi-temporal rgb and multispectral uas imagery for tree species classification in heterogeneous new hampshire forests. Remote Sensing, 13 (13). [10.3390/rs13132631](https://doi.org/10.3390/rs13132631). 
 
-Lisein, J., Michez, A., Claessens, H., & Lejeune, P. 2015. Discrimination of deciduous tree species from time series of unmanned aerial system imagery. PLoS ONE, 10(11). https://doi.org/10.1371/journal.pone.0141006 
+Lisein, J., Michez, A., Claessens, H., & Lejeune, P. 2015. Discrimination of deciduous tree species from time series of unmanned aerial system imagery. PLoS ONE, 10 (11). [10.1371/journal.pone.0141006](https://doi.org/10.1371/journal.pone.0141006). 
 
-Main, Russell, Moses Azong Cho, Renaud Mathieu, Martha M. O’Kennedy, Abel Ramoelo, & Susan Koch. 2011. „An Investigation into Robust Spectral Indices for Leaf Chlorophyll Estimation". ISPRS Journal of Photogrammetry and Remote Sensing 66 (6): 751–61. https://doi.org/10.1016/j.isprsjprs.2011.08.001.
+Main, Russell, Moses Azong Cho, Renaud Mathieu, Martha M. O’Kennedy, Abel Ramoelo, & Susan Koch. 2011. „An Investigation into Robust Spectral Indices for Leaf Chlorophyll Estimation". ISPRS Journal of Photogrammetry and Remote Sensing 66 (6): 751–61. [10.1016/j.isprsjprs.2011.08.001](https://doi.org/10.1016/j.isprsjprs.2011.08.001).
 
-Maire, G. le, C. François, & E. Dufrêne. 2004. „Towards Universal Broad Leaf Chlorophyll Indices Using PROSPECT Simulated Database and Hyperspectral Reflectance Measurements". Remote Sensing of Environment 89 (1): 1–28. https://doi.org/10.1016/j.rse.2003.09.004.
+Maire, G. le, C. François, & E. Dufrêne. 2004. „Towards Universal Broad Leaf Chlorophyll Indices Using PROSPECT Simulated Database and Hyperspectral Reflectance Measurements". Remote Sensing of Environment 89 (1): 1–28. [10.1016/j.rse.2003.09.004](https://doi.org/10.1016/j.rse.2003.09.004).
 
-Mišurec, Jan, Veronika Kopačková, Zuzana Lhotáková, Petya Campbell, & Jana Albrechtová. 2016. „Detection of Spatio-Temporal Changes of Norway Spruce Forest Stands in Ore Mountains Using Landsat Time Series and Airborne Hyperspectral Imagery". Remote Sensing 8 (2): 92. https://doi.org/10.3390/rs8020092.
+Mišurec, Jan, Veronika Kopačková, Zuzana Lhotáková, Petya Campbell, & Jana Albrechtová. 2016. „Detection of Spatio-Temporal Changes of Norway Spruce Forest Stands in Ore Mountains Using Landsat Time Series and Airborne Hyperspectral Imagery". Remote Sensing 8 (2): 92. [10.3390/rs8020092](https://doi.org/10.3390/rs8020092).
 
 
 
