@@ -15,9 +15,7 @@ Individual questions have this general structure:
 <input type="--question type--" name="q_--question number--"><br>
 
 <div id="correct_q_--question number--" hidden="">
-
 --The correct answer--
-
 </div>
 
 <output id="output_q_--question number--">
@@ -91,6 +89,14 @@ tr>
     
 <br><br>   
 ```
+
+5. **Multiple choice** type questions are created using `<input type="checkbox">` elements. The question structure is similar to **Radio**, except for the input type and the `<div>` with correct answers. As you can see, the correct answers are separated by **&**:
+```
+<div id="correct_q_--question number--" hidden="">
+--The 1st correct answer--&--The 2nd correct answer--&...
+</div>
+```
+
 At the end of a quiz include:
 ```
 <input type="submit" value="Submit" style="font-size:14pt"><br><br>
@@ -245,6 +251,17 @@ Which option corresponds to which?
 </table><br>
 <div hidden id="correct_q_07">C A E B D</div>
 <output id="output_q_07"></output><br><br>
+
+<!--Question 8-->
+<label for="q_08">
+What are some of the main characteristics of a time series?
+</label><br>
+<input type="checkbox" name="q_08">All values are measured without any errors.<br>
+<input type="checkbox" name="q_08">The time of observation is referenced by a time stamp.<br>
+<input type="checkbox" name="q_08">A time series is a set of observations recorded at the same time.<br>
+<input type="checkbox" name="q_08">The observed values are ordered clearly by time.<br>
+<div hidden id="correct_q_08">The time of observation is referenced by a time stamp.&The observed values are ordered clearly by time.</div>
+<output id="output_q_08"></output><br><br>
 
 <input type="submit" value="Submit" style="font-size:14pt"><br><br>
 
