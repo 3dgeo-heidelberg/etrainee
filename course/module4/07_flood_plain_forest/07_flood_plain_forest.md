@@ -9,27 +9,29 @@ estimatedTime:
 
 # Case study: seasonal dynamics of flood-plain forests
 
-The overall condition of a plant or an entire ecosystem is often assessed by its chlorophyll content. To be able to obtain or validate absolute values of chlorophyll content from remote sensing data, reliable ground truth data sets are needed. Non-destructive measurements using various portable chlorophyll meters are often used as the ground truth data in remote sensing studies. The objectives of this case study are as follows:
-
+The overall condition of a plant or an entire ecosystem is often assessed by its chlorophyll content. 
+To be able to obtain or validate absolute values of chlorophyll content from remote sensing data, reliable ground truth data sets are needed. 
+Non-destructive measurements, such as various portable chlorophyll meters, are often used as ground truth data in remote sensing studies. 
 
 
 ## Objectives
-
 The objectives of this case study are as follows:
 
-* To estimate the accuracy of chlorophyll content measured by portable transmittance-based chlorophyll meter SPAD-502 by comparison with a laboratory reference. 
+* To estimate the accuracy of chlorophyll content measured by the portable transmittance-based chlorophyll meter SPAD-502 by comparison with a laboratory reference. 
 
-* To calculate chlorophyll indices based on spectra measured by the spectroradiometer ASD FieldSpec4 Standard-Res coupled with integrating sphere and to build and validate empirical models between indices and chlorophyll content.
+* To compute  chlorophyll indices based on spectra measured by the spectroradiometer ASD FieldSpec4 Standard-Res coupled with an integrating sphere; to build and validate empirical models between indices and chlorophyll content.
 
-* To compare the performance of empirical models using data from the whole vegetation season and models built based on the data just from one term. 
+* To compare the performance of empirical models using data from the entire vegetation season and data from one term. 
 
-The case study will be presented on a data set from a floodplain forest in Czechia where all the measurements were conducted on the set of various deciduous trees during the vegetation periods of 2019 and 2020. 
+The case study will be presented on a dataset from a floodplain forest in Czechia where all the measurements were conducted on the set of various deciduous trees during the vegetation periods of 2019 and 2020. 
 
 
 ## Data
 
-A dataset was acquired in The Soutok floodplain forest district located between the rivers Morava and Dyje (48.68° N, 16.94° E) in 2019 (four field campaigns conducted in April, July, September and October; 204 samples in total) and 2020 (three field campaigns in May, July, October; 193 samples in total). During each field campaign, sunlit and shaded branches were trimmed with a tree climber from eighteen deciduous trees of six species: Austrian oak, English oak, Narrow-leaved ash, European hornbeam, White poplar and Small-leaved linden (*Figure 1*). 
-Representative leaves of all types (small, big, green, colored, young, old) were measured using chlorophyll meter SPAD-502 and ASD FieldSpec4 Standard-Res spectroradiometer (sampling 350 – 2,500 nm spectral domain) coupled with an integrating sphere RTS-3ZC and then taken to the laboratory for spectrophotometric determination of chlorophyll content from dimethylformamide extracts (*Figure 2*). Let’s use data from 2019 for training purposes and data from 2020 for validation of the results.
+The dataset was acquired in the Soutok floodplain forest district located between the rivers Morava and Dyje (48.68° N, 16.94° E) in 2019 (four field campaigns conducted in April, July, September, and October; 204 samples) and 2020 (three field campaigns in May, July, ans October; 193 samples). During each field campaign, sunlit and shaded branches were trimmed from eighteen deciduous trees of six species: Austrian oak, English oak, Narrow-leaved ash, European hornbeam, White poplar and Small-leaved linden (*Figure 1*). 
+Representative leaves of all types (small, large, green, colored, young, old) were measured using the chlorophyll meter SPAD-502 and the ASD FieldSpec4 Standard-Res spectroradiometer (350 – 2,500 nm sampling spectral domain) coupled with the integrating sphere RTS-3ZC.
+The leaves were then taken to the laboratory for spectrophotometric determination of chlorophyll content from dimethylformamide extracts (*Figure 2*). 
+Data from 2019 will be used for training purposes, and data from 2020 will serve as validation of the results.
 
 Input data file `FloodplainForest_input_data.xlsx` consists of two sheets: `2019_training` and `2020_validation`. Data is also available in the form of text files separated by a tabulator for work in R (`FloodplainForest_2019_training.txt` and `FloodplainForest_2020_validation.txt`). All the files have the same columns: 
 
@@ -58,15 +60,17 @@ Input data file `FloodplainForest_input_data.xlsx` consists of two sheets: `2019
 
 ## Chlorophyll meter vs. laboratory chlorophyll content
 
-Firstly, let’s explore a relation between both methods of chlorophyll content determination and seasonal changes of chlorophyll content. 
-By building simple [regressions](https://en.wikipedia.org/wiki/Simple_linear_regression), table editor: `XY point graph / add trendline` or R: lm(SPAD_Cab ~ Total_chloro_ug_cm²) for each month (April 2019, May 2020, July 2019, July 2020, September 2019, October 2019, October 2020) and each year (all measurements from  2019 and all measurements from  2020) we can see how both values are correlated and how the chlorophyll content and the correlation values change during the 2019 and 2020 seasons (*Figure 3*). 
-At the very beginning of the season the variability in data is so small, that the correlation doesn’t work (April 2019, R² = 0.04). 
-In May the correlation become stronger, which is consistent with some studies that have looked for the most appropriate term to distinguish among different deciduous tree species and found out that the end of May is ideal as the phenology of one species is synchronized well but inter-species differences are still visible ([Lisein et al., 2015; Grybas and Congalton, 2021](#references)). 
-Our result (R² = 0.8) is influenced by two outliers but when they are removed, the correlation is still very good with R² = 0.73, not shown in *Figure 3*). 
-In July the correlations are again weaker (July 2019 – R² = 0.50, July 2020 – R² = 0.70) as all the species are at their phenology peak. 
-Similar trend can be seen also in September 2019 (R² = 0.72, not shown in *Figure 3*). 
-When the leaves start to change their colors in the autumn, the variability in chlorophyll content in different species and leaves is bigger again and correlations work better (October 2019 – R² = 0.82, October 2020 – R² = 0.87), 
-this is other term which is often used for distinguishing deciduous trees. Incorporating all the months give the best results (R² for 2019 = 0.86 and for 2020 = 0.87) but the trend is no more linear.  
+To begin, consider the relationship between both methods of determining chlorophyll content and seasonal changes in chlorophyll content. 
+By building [simple regressions](https://en.wikipedia.org/wiki/Simple_linear_regression) (table editor: `XY point graph / add trendline` or R: `lm(SPAD_Cab ~ Total_chloro_ug_cm²)`) for each month 
+(April 2019, May 2020, July 2019, July 2020, September 2019, October 2019, October 2020) and year (2019, 2020), we can see how the two values are correlated and how the chlorophyll content and the correlation values change over the seasons (*Figure 3*). 
+At the start of the season, data variability is so low that the correlation fails (April 2019, R² = 0.04). 
+In May, the correlation becomes stronger, which is consistent with some studies that have looked for the most appropriate term to distinguish between different deciduous tree species. 
+[Lisein et al., 2015; Grybas and Congalton, 2021](#references) discovered that the end of May is ideal as on species' phenology is well synchronized but inter-species differences are still visible. 
+Our result (R² = 0.8) is influenced by two outliers, but when they are removed, the correlation remains very strong R² = 0.73 (not shown in *Figure 3*). 
+The correlations are weaker in July (July 2019 – R² = 0.50, July 2020 – R² = 0.70) as all the species are at their phenology peak. 
+A similar trend can be observed in September 2019 (R² = 0.72, not shown in *Figure 3*). 
+When the leaves begin to change color in the autumn, the variability in chlorophyll content in different species and leaves increases, and correlations improve (October 2019 – R² = 0.82, October 2020 – R² = 0.87). 
+Autumn is another term that is frequently used to distinguish deciduous trees. The best results are obtained by incorporating all of the months (R² for 2019 = 0.86 and for 2020 = 0.87), but the trend is no longer linear.  
 
 
 <p align="center">
@@ -250,7 +254,7 @@ It can be seen that computed regressions for both indices and parameters also pe
 
 In the first part of the case study, we explored the relation between two methods of chlorophyll content determination – destructive (total chlorophyll content extracted in laboratory) and non-destructive (measured by the portable transmittance-based chlorophyll meter SPAD-502). 
 We found out that if there is enough variability in data, the correlation between these two methods of chlorophyll content determination works well. 
-The time-demanding and destructive method of chlorophyll content extraction in the laboratory can be substituted by fast non-destructive measurements, and prediction equationscan be used to obtain total chlorophyll content in μg/cm². 
+The time-demanding and destructive method of chlorophyll content extraction in the laboratory can be substituted by fast non-destructive measurements, and prediction equations can be used to obtain total chlorophyll content in μg/cm². 
 But these equations are not transferable to different ecosystems with potentially different chlorophyll content values. Each ecosystem requires new calibration. 
 
 In the second part of the case study, we explored the correlation of vegetation indices computed from spectra measured by the spectroradiometer coupled with the integrating sphere and the chlorophyll content values. 
