@@ -212,7 +212,7 @@ write(results_koef, "2019_SPAD_Cab_results_koef.txt")
 ```
 
 <p align="center">
-<img src="media/floodplain_img4.PNG" title="Coefficient of determination (R²) for linear regression." alt="Figure 4" width="600"/>
+<img src="media/floodplain_img4.PNG" title="Coefficient of determination (R²) for linear regression." alt="Figure 4" width="400"/>
 </p>
 
 *Figure 4. Coefficient of determination (R²) for linear regression between SPAD values (upper table) resp. laboratory chlorophyll content (lower table) and thirty vegetation indices based on datasets from April, July, September, October and the whole season of 2019. Red means the worst models, green the best.*
