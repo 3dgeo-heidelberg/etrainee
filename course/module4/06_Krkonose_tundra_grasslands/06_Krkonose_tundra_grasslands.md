@@ -1,5 +1,5 @@
 ---
-title: "E-TRAINEE:  Case study Role of time series in the discrimination of selected grass species from RPAS hyperspectral imagery"
+title: "E-TRAINEE: Case study Role of time series in the discrimination of selected grass species from RPAS hyperspectral imagery"
 description: "This is the sixth theme within the Airborne Imaging Spectroscopy Time Series Analysis module."
 dateCreated: 2021-03-28
 authors:
@@ -11,13 +11,18 @@ estimatedTime:
 
 ## Introduction
 
-This case study presents data, methods and results elaborated in the Krkonoše Mts. National Park by our TILSPC team (www.tilspec.cu) at Charles University Prague, Dpt. of Applied Geoinformatics and Cartography within the project “Development of methods for monitoring of the Krkonoše Mts. tundra vegetation changes using multispectral, hyperspectral and LIDAR sensors from UAV” supported by OPŽP scheme. Important results of the project have been published in ([Kupková et al. (2023)](#references)).  As we proved in this study, time series (in this case multitemporal UAV intra-seasonal dataset) can improve vegetation classification accuracy in comparison with one-date image. Following our research, the classification accuracy of selected tundra grass species derived from mono- and multitemporal (within one season) hyperspectral RPAS imagery is compared in this case study based on the data (image hyperspectral and botanical field datasets) collected by our team in the Krkonoše Mts. in 2020. Also, the influence of the pre-processing step, comprising minimum noise fraction (MNF), on classification accuracy is also tested. The RF classification is carried out in R. Thus, this case study combines knowledge gained in previous Themes of this Module. 
+This case study presents data, methods, and results elaborated in the Krkonoše Mts. National Park by our [TILSPEC](tilspec.cz) team at Charles University Prague, 
+within the project “Development of methods for monitoring of the Krkonoše Mts. tundra vegetation changes using multispectral, hyperspectral and LIDAR sensors from UAV”. 
+Important results of the project have been published in [Kupková et al. (2023)](#references). 
+As we proved in this study, time series (in this case, a multitemporal UAV intra-seasonal dataset) can improve vegetation classification accuracy in comparison with one-date images. 
+Following our research, the classification accuracy of selected tundra grass species derived from mono- and multitemporal (within one season) hyperspectral RPAS imagery is compared based on reference botanical datasets collected in the Krkonoše Mts. in 2020. 
+Also tested is the influence of the pre-processing step, comprising the minimum noise fraction (MNF), on classification accuracy. The RF classification is carried out in R. 
 
 <p align="center">
 <img src="media/cskrnap_img1.PNG" title="Study area." alt="Figure 1" width="600"/>
 </p>
 
-*Figure 1. Picture of study area near to Luční bouda hut in the Krkonoše Mts. National Park – permanent research plot Bílá louka meadow (red).*
+*Figure 1. Image of study area near to Luční bouda hut in the Krkonoše Mts. National Park – permanent research plot Bílá louka meadow (red).*
 
 ## Objectives
 
@@ -40,16 +45,17 @@ This case study presents data, methods and results elaborated in the Krkonoše M
 ## Data
 
 We will use:
+
 * Hyperspectral image data acquired by Headwall Nano-Hyperspec® camera fastened on the DJI Matrice 600 Pro drone on 16th June and 11th August 2020 (Figure 2) with ground sampling distance 9 cm and spectral resolution 54 bands (resampled from 269 bands to reduce correlation in neighboring bands) – files:
-            `BL_202006.tif (data from June; 54 bands, for visualization in true colors use bands R-21/G-13/B-7)`
-            `BL_202008.tif (data from August; 54 bands, for visualization in true colors use bands R-21/G-13/B-7)`
+            `BL_202006.tif (data from June; 54 bands, for visualization in true colors use bands R-21/G-13/B-7)`  
+            `BL_202008.tif (data from August; 54 bands, for visualization in true colors use bands R-21/G-13/B-7)`  
             `BL_2020_0608MT.tif (multitemporal image – merged dataset from June and August, 108 bands)`
 
-* Image data transformed using MNF transformation (10 bands, ground sampling distance 9 cm) -file:
+* Image data transformed using MNF transformation (10 bands, ground sampling distance 9 cm) -file:  
             `BL_MNF_08_10 (10 output bands from MNF transformation)`
 
-* Field reference dataset (*Figure 3*) collected by botanists (in 2019 and 2020) divided between training data (polygons) and validation data (points). For the explanation how the reference dataset was collected and divided between training and validation data see [Kupková et al. (2023)](#references).
-            `File with training data: train_polygons.zip`
+* Field reference dataset (*Figure 3*) collected by botanists (in 2019 and 2020) divided between training data (polygons) and validation data (points). For the explanation how the reference dataset was collected and divided between training and validation data see [Kupková et al. (2023)](#references).  
+            `File with training data: train_polygons.zip`  
             `File with reference data: valid_points.zip`
 
 
