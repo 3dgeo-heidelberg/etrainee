@@ -11,7 +11,7 @@ estimatedTime:
 
 ## Introduction
 
-This case study presents data, methods, and results elaborated in the Krkonoše Mts. National Park by our [TILSPEC](www.tilspec.cz) team at Charles University Prague, 
+This case study presents data, methods, and results elaborated in the Krkonoše Mts. National Park by our [TILSPEC](https://www.tilspec.cz) team at Charles University Prague, 
 within the project “Development of methods for monitoring of the Krkonoše Mts. tundra vegetation changes using multispectral, hyperspectral and LIDAR sensors from UAV”. 
 Important results of the project have been published in [Kupková et al. (2023)](#references). 
 As we proved in this study, time series (in this case, a multitemporal UAV intra-seasonal dataset) can improve vegetation classification accuracy in comparison with one-date images. 
