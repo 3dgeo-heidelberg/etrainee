@@ -81,7 +81,7 @@ The classification scheme (*Figure 4*) includes four categories of dominant gras
 <img src="media/cskrnap_img4.PNG" title="Classified grassland species." alt="Figure 4" width="600"/>
 </p>
 
-*Figure 4. Classified grassland species.* TODO: REPLACE IMAGE
+*Figure 4. Classified grassland species.*
 
 ### Next unit
 Proceed with a case study on [seasonal dynamics of flood-plain forests](../07_flood_plain_forest/07_flood_plain_forest.md)
