@@ -603,11 +603,14 @@ The goal of this excercise is learn how to search and load Landsat data of selec
 2. Connect to a STAC API and search for Landsat scenes of a specific time period (e.g. July 2022) covering an area of your choice (e.g. your university's city). For the different Landsat sensors, how many scenes do you find?  
 (*Hint:* AWS/EarthSearch and Microsoft Planetary Computer make their STAC APIs available without authentication (as of 03/2023))
 3. Select a scene for further use, preferably one with little cloud cover. Load the footprint of the scene to your map canvas (along with a background map, e.g. Open Street Map).
-4. Download selected bands (e.g. red, green, blue bands) and display them in the map canvas (*Hint:* Set download folder under *Settings*).
-5. Create a composite Virtual Raster (VRT).
+4. Add selected bands (e.g. red, green, blue bands) as layers to the map canvas (*Hint:* To directly downolad the assets, set download folder under *Settings*).
+5. Create a composite Virtual Raster (VRT) out of the selected bands.
 6. Clip VRT to a relatively small area-of-interest (AOI) polygon.
-7. Mosaic clipped VRTs to a single VRT and save as GeoTiff (RGB composite for the AOI in the bands' native resolution).
+7. Save the clipped VRT as GeoTiff (RGB composite for the AOI in the bands' native resolution).
 
+<p align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7bkkgNWe2b8?si=nYydt8wG0tlXWMPn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
 
 ## References
 
