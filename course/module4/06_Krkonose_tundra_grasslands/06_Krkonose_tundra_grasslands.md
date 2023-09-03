@@ -83,6 +83,54 @@ The classification scheme (*Figure 4*) includes four categories of dominant gras
 
 *Figure 4. Classified grassland species.*
 
+## Methodology  
+### 1. Random forest classification in R
+For RF classification [Belgiu and Drăgut, 2016; Breiman, 2001; Gao et al., 2015](#References) in R software, we will use the ‘randomForest’ package [Liaw and Wiener, 2002](#References). 
+Random Forest represents one of the increasingly used machine learning methods. 
+This classifier creates a specified number of decision trees (Ntree parameter) from the training data to determine the class membership. 
+Each such tree is built for randomly selected training data, with decision rules formed by a random subset of features (feature variables) of a specified size (the Mtry parameter). 
+The resulting class of each pixel in the image is then determined by the voting result of each decision tree.
+
+This classifier has the advantage of reduced sensitivity to noise in the data as well as high accuracy when dealing with voluminous data [Belgiu, Drăguţ 2016](#References).
+
+In our study, we used various combinations of two input parameters to test the RF classifier: the number of trees (`ntree`) and the number of input variables (features) randomly sampled at each split (`mtry`).
+The best results were achieved for the `ntree` value of 1000.
+The tests performed on `mtry` values showed that the default `mtry` value was sufficient.
+
+Besides the spectral features (retrieved from the original/transformed bands), we will also use standard textural features (mean texture, variance, homogeneity, contrast, dissimilarity, entropy, second moment) [Haralick et al., 1973](#References) calculated by using the Gray-Level-Co-Occurrence Matrix (GLCM) in the ‘glcm’ R package [Zvoleff, 2020](#References) with a window size of 3 x 3 pixels and default parameter settings. 
+These variables were selected based on the values of the Importance score. 
+The Importance score (see an example in Appendix 1) can be generated as one of the outputs from RF classifications and shows the importance of feature variables. 
+Features with high values for this score are generally regarded as more important.
+
+TODO: ADD MISSING PART (scripting in R)
+
+### 2. Accuracy assessment
+TODO: ADD MISSING PART
+
+## Tasks  
+1. Use the provided R script to classify: 
+    - image from June 2020
+    - image from August 2020
+    - multitemporal composite from June and August 2020
+    - MNF transformed image.  
+2. Perform accuracy assessment of all classification outputs.  
+3. Prepare a report – present shortly used methodology, overall accuracies, and F1-scores of all classification outputs, comment and compare the results for:
+    - mono-temporal and multitemporal images.  
+4. Discuss the results. 
+5. Try to answer the questions from the introduction of the case study.  
+
+## Acknowledgement  
+
+We want to thank the project “Development of methods for monitoring of the Krkonoše Mts. tundra vegetation changes using multispectral, hyperspectral and LIDAR sensors from UAV” supported by the European fund of regional development and European fund for projects in environmental protection.
+
+## References
+
+
+Kupková, L., Červená,L., Potůčková, M., Lysák, J., Roubalová, M., Hrázský,Z., Březina, S., Epstein, H.E., Müllerová, J. 2023. Towards reliable monitoring of grass species in nature conservation: Evaluation of the potential of UAV and PlanetScope multi-temporal data in the Central European tundra, Remote Sensing of Environment, 294, 113645. ISSN 0034-4257. [10.1016/j.rse.2023.113645](https://doi.org/10.1016/j.rse.2023.113645). 
+
+### Exercise solution 
+TODO: ADD EXERCISE SOLUTION
+
 ### Next unit
 Proceed with a case study on [seasonal dynamics of flood-plain forests](../07_flood_plain_forest/07_flood_plain_forest.md)
 
