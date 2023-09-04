@@ -13,7 +13,7 @@ for (package in l_packages){
 }
 
 # Set working directory - insert path to your data
-setwd("data")
+setwd("c:/path/to/data")
 getwd()
 
 # =============================================================================
