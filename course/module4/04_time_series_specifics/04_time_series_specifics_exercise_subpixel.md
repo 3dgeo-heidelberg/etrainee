@@ -11,7 +11,7 @@ estimatedTime:
 
 The aim of this exercise is to explore the possibilities of subpixel classification, namely the different methods of endmember collection, regression-based spectral unmixing, and evaluation of the resulting species maps.
 
-- *Prerequisities*
+- *Prerequisites*
     - Installed EnMAP-Box plugin for QGIS ([manual](../../software/software_enmap_box.md))  
     By now you should have EnMAP-Box installed on your computer as a QGIS plugin and be familiar with the basic software operations. If not, please refer back to [Exploration of hyperspectral data using EnMAP-Box](../01_spectroscopy_principles/01_spectroscopy_principles_exercise.md).
     - Downloaded data ([folder - LINK WILL BE ADDED]())  
