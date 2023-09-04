@@ -102,7 +102,9 @@ These variables were selected based on the values of the Importance score.
 The Importance score (see an example in Appendix 1) can be generated as one of the outputs from RF classifications and shows the importance of feature variables. 
 Features with high values for this score are generally regarded as more important.
 
+Open the provided [code](06_Krkonose_tundra_grasslands.r) in R.  
 TODO: upload missing part (scripting in R)
+
 
 ### 2. Accuracy assessment
 TODO: upload missing part
@@ -133,7 +135,7 @@ Breiman, L. 2001. Random Forests. Machine Learning, 45, 5-32. [10.1023/A:1010933
 
 Haralick, R. M., Shanmugam, K., Dinstein, I. 1973. Textural Features for Image Classification. IEEE Transactions on Systems, Man, and Cybernetics, 3, 6, 610-621. [10.1109/TSMC.1973.4309314](https://doi.org/10.1109/tsmc.1973.4309314).
 
-Zvoleff, A. 2016. GLCM: calculate textures from grey-level co-occurrence matrices (GLCMs). [github.com/azvoleff/glcm](https://github.com/azvoleff/glcm)
+Zvoleff, A. 2016. GLCM: calculate textures from grey-level co-occurrence matrices (GLCMs). [github.com/azvoleff/glcm](https://github.com/azvoleff/glcm).
 
 
 ### Exercise solution 
