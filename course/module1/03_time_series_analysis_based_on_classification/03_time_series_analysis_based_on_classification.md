@@ -29,7 +29,7 @@ The objectives of this theme are to
 
 The general idea behind any data classification is that the data can be grouped into meaningful semantic categories (classes) based on characteristic patterns in the data. The goal of *image classification* (or *point cloud classification*) is to assign each spatial unit (pixel or point) a discrete category (or probabilities for several categories in case of fuzzy classifications). In the computer vision community, this task is also known as *semantic segmentation* or *semantic labelling*, in contrast to *image labelling* (e.g. *This image contains a dog.*) or *object detection* (resulting usually in bounding boxes around objects in an image, e.g. faces).
 
-The basis for any classification is formed by one or more variables (*features*) that allow to separate the target classes, ideally without ambiguity. In remote sensing a *feature set* used as input to a classification is typically composed of spectral or geometric features or a combination of both:
+The basis for any classification is formed by one or more variables (*features* or *predictors*) that allow to separate the target classes, ideally without ambiguity. In remote sensing, a *feature set* used as input to a classification is typically composed of spectral or geometric features or a combination of both:
 
 * Spectral features such as spectral band values, spectral indices, texture metrics derived by focal statistics of spectral values
 * Geometric features characterizing the shape or structure of a surface, such as morphometric variables derived from a digital terrain model (e.g. slope, curvature, ...) or the local distribution of points in a 3D point cloud (e.g. eigenvalue ratios, 3D/2D density ratio, ...)
@@ -40,13 +40,15 @@ The basis for any classification is formed by one or more variables (*features*)
 
 Remote sensing data (such as satellite images) can be classified through *visual interpretation* by a human operator, who is drawing object boundaries (such as lake outlines) or linear objects (such as a river network) over an analogue or digital view of the image based on his visual perception, his experience, and certain (more or less systematic) criteria. For such an interpretation, a few features can be visualized in a color image, most intuitively by combining the red, green and blue bands recorded by an imaging sensor but other features (e.g. spectral bands or terrain parameters) can be encoded as RGB color as well. The lines and polygons drawn (vector data) may be converted to raster data if needed. On the one hand, humans are very good in considering complex spatial contexts for object recognition and classification. On the other hand, drawbacks of such a manual classification are subjectivity, a lack of efficiency, repeatability and limitations regarding the systematic consideration of many different features.
 
-Alternatively, humans can instruct a computer to categorize spatial units *automatically* according to certain criteria. These criteria (conditions) can be defined directly via rules or indirectly (in a data-driven manner) by constructing a statistical classifier from the data (e.g. as in the figure above where each data point could be a pixel and the features x<sub>1</sub> and x<sub>2</sub> could be spectral bands). The latter option is often based on *[machine learning (ML)](https://en.wikipedia.org/wiki/Machine_learning)*. In unsupervised approaches, the user supplies only the features and chooses a value for certain hyperparameters (depending on the algorithm; e.g., the number of clusters *k* in [k-means](https://en.wikipedia.org/wiki/K-means_clustering) clustering). In a supervised classification, the user has to provide additionally the labels for a set of samples (*training data*) which can then be used by the algorithm to learn classification rules based on the features (a *classifier*). Once such a classifier has been trained, it can be applied to predict the labels for previously unseen samples based on the feature vector of each sample. Among a variety of ML algorithms, Random Forest (RF) and Support Vector Machines (SVM) are among the most popular ones of the last decade. For getting started with the machine learning vocabulary and concepts (along with a Python scikit-learn example) we recommend to read [this scikit-learn introduction to ML](https://scikit-learn.org/stable/tutorial/basic/tutorial.html#machine-learning-the-problem-setting). <!--References/literature recommendations coming soon-->
+Alternatively, humans can instruct a computer to categorize spatial units *automatically* according to certain criteria. These criteria (conditions) can be defined directly via rules or indirectly (in a data-driven manner) by constructing a statistical classifier from the data (e.g. as in the figure above where each data point could be a pixel and the features x<sub>1</sub> and x<sub>2</sub> could be spectral bands). The latter option is often based on *[machine learning (ML)](https://en.wikipedia.org/wiki/Machine_learning)*. In unsupervised approaches, the user supplies only the features and chooses a value for certain hyperparameters (depending on the algorithm; e.g., the number of clusters *k* in [k-means](https://en.wikipedia.org/wiki/K-means_clustering) clustering). In a supervised classification, the user has to provide additionally the labels for a set of samples (*training data*) which can then be used by the algorithm to learn classification rules based on the features (a *classifier*). Once such a classifier has been trained, it can be applied to predict the labels for previously unseen samples based on the feature vector of each sample. Among a variety of ML algorithms, Random Forest (RF; [Breiman 2001](https://doi.org/10.1023/A:1010933404324)) and Support Vector Machines (SVM; [Cortes and Vapnik](https://doi.org/10.1007/BF00994018)) are among the most popular ones of the last two decades ([Belgiu and Drăguţ 2016](https://doi.org/10.1016/j.isprsjprs.2016.01.011), [Mountrakis et al. 2011](https://doi.org/10.1016/j.isprsjprs.2010.11.001)). For getting started with the machine learning vocabulary and concepts (along with a Python scikit-learn example) we recommend to read [this scikit-learn introduction to ML](https://scikit-learn.org/stable/tutorial/basic/tutorial.html#machine-learning-the-problem-setting).
 
 Hence, we can distinguish three general approaches to (semi-)automatic classification:
 
 * Rule-based classification (e.g. NDSI thresholding to classify snow/no-snow)
 * Unsupervised classification (e.g. clustering NDSI and possibly brightness to classify snow/no-snow)
 * Supervised classification (usually with machine learning approaches, including deep learning)
+
+Often, input data comprising many features is sensed (e.g. by multitemporal or hyperspectral remote sensing) or a large number of features is extracted from the input data (such as spectral indices, time series metrics or morphometric variables, potentially at different scales), and some of the features are actually redundant or irrelevant for the classification. In such cases, feature selection (different techniques to select a subset of features) or some other form of dimensionality reduction (such as [principal component analysis (PCA)](https://en.wikipedia.org/wiki/Principal_component_analysis)) is often applied. The main motivation for this step is usually to avoid negative effects known as the [curse of dimensionality](https://en.wikipedia.org/wiki/Curse_of_dimensionality) and/or to reduce the time and computing power needed to train a classifier (and for feature extraction on the full dataset). Learn more about feature selection for multitemporal classification in [Module 2](../../module2/04_multitemporal_classification/04_multitemporal_classification.md#feature-selection-as-potential-to-optimise-multitemporal-classification).
 
 Some external tutorials:
 
@@ -55,7 +57,6 @@ Some external tutorials:
 * [Supervised classification with Sentinel-2 images](https://www.youtube.com/watch?v=N_yJDMgRfik) (in GEE, with one cloud-free image)
 
 Now let's have a look at how these key concepts for automated classification of (mono-temporal) remote sensing data can be transferred or extended to time series of images and point clouds.
-
 
 ## Classification of remote sensing time series
 
@@ -89,7 +90,7 @@ The examined workflow involves the following steps:
 
 *Percentage of area covered by snow based on monthly Sentinel-2 NDSI (left) and number of snow covered months per pixel based on the classification (right). Note that the aggregation methods and time periods for this may (in addition to the availability of cloud-free observations) have a substantial impact on the results.*
 
-To build a more sophisticated ML pipeline on a time series of images instead of a simple rule-based binary classification see also [this](https://pygis.io/docs/f_rs_ml_predict.html#spatial-prediction-with-time-series-stack-using-geowombat-sklearn)tutorial from the PyGIS course (v1.2.0; [Mann et al. 2022](https://github.com/mmann1123/pyGIS/releases/tag/v1.2.0)).
+To build a more sophisticated ML pipeline on a time series of images instead of a simple rule-based binary classification see also [this](https://pygis.io/docs/f_rs_ml_predict.html#spatial-prediction-with-time-series-stack-using-geowombat-sklearn) tutorial from the PyGIS course (v1.2.0; [Mann et al. 2022](https://github.com/mmann1123/pyGIS/releases/tag/v1.2.0)).
 
 
 ### Classification based on time series features
@@ -117,7 +118,7 @@ In addition to such statistical metrics for a defined time interval, ecologicall
 
 #### Tutorial: **Image time series classification in Python tutorial**
 
-[*This E-TRAINEE tutorial*](./T3_S2_landcover_classification.ipynb) on landcover classification shows how you can implement a machine learning workflow with time series metrics as features. For simplicity, we aggregate over the entire growing season (i.e. we do not calculate spectral-temporal metrics for shorter time periods such as months). However, we compute different metrics (mean, standard deviation, minimum and maximum) to capture the temporal variability of the NDVI in each pixel over the growing season.
+[This E-TRAINEE tutorial](./T3_S2_landcover_classification.ipynb) on landcover classification shows how you can implement a machine learning workflow with time series metrics as features. For simplicity, we aggregate over the entire growing season (i.e. we do not calculate spectral-temporal metrics for shorter time periods such as months). However, we compute different metrics (mean, standard deviation, minimum and maximum) to capture the temporal variability of the NDVI in each pixel over the growing season.
 
 
 <img src="media/S2_landcover.png" title="Sentinel-2 time series based landcover" width="600">
@@ -163,9 +164,11 @@ Machine learning classification tools are most commonly used for classification 
     * Deep Learning: [PyTorch](https://pytorch.org/), [TensorFlow](https://www.tensorflow.org/) and the [Keras](https://keras.io/) API built on top of TensorFlow
     * [Pycaret](https://pycaret.gitbook.io/docs/) - A wrapper for scikit-learn and other ML packages aimed at simplification and code reduction for ML experiments (and also for [ML on time series](https://pycaret.gitbook.io/docs/#time-series))
     * [Pyspatialml](https://github.com/stevenpawley/pyspatialml) - ML classification and regression modelling for spatial raster data.
+    * [Mlxtend](https://rasbt.github.io/mlxtend/) - ML extensions and utilities compatible with (e.g.) scikit-learn.
     * [Optuna](https://optuna.org/) - Hyperparameter optimization for different frameworks (incl. scikit-learn, PyTorch, Keras, ...)
 * Machine learning packages for the R language
-    * [overview](https://cran.r-project.org/web/views/MachineLearning.html)
+    * ["Official" overview](https://cran.r-project.org/web/views/MachineLearning.html)
+    * [Overview](../../module2/04_multitemporal_classification/04_multitemporal_classification.md#r-packages-including-machinestatistical-learning-algorithms) in E-TRAINEE Module 2
     * [mlr3](https://mlr3.mlr-org.com/) - A framework for ML regression and classification in the R language, and its extension [mlr3spatial](https://mlr3spatial.mlr-org.com/) that facilitates handling spatial objects (vector and raster data), see e.g. the [landcover classification tutorial](https://mlr-org.com/gallery/technical/2023-02-27-land-cover-classification/)
 
 
@@ -186,6 +189,47 @@ Machine learning classification tools are most commonly used for classification 
 * [tsai](https://timeseriesai.github.io/tsai/) - An open-source deep learning package built on top of Pytorch & fastai focused on state-of-the-art techniques for time series tasks like classification, regression, forecasting, imputation.
 
 
+## Self-evaluation quiz
+
+<form name="quiz" action="" method="post" onsubmit="evaluate_quiz(); return false">
+
+<!--Question 1-->
+<label for="q_01">
+Training data is essential for any remote sensing time series classification. True or false?
+</label><br>
+<input type="radio" name="q_01">True
+<input type="radio" name="q_01">False<br>
+<div hidden id="correct_q_01">False</div>
+<output id="output_q_01"></output><br><br>
+
+<!--Question 2-->
+<label for="q_02">
+What can be the result of classifying a remote sensing time series?
+</label><br>
+<input type="checkbox" name="q_02">A time series of classified maps.<br>
+<input type="checkbox" name="q_02">One map with a classification resulting from aggregate characteristics of the entire time series.<br>
+<input type="checkbox" name="q_02">Several maps describing multiple aspects of a phenomenon (such as landuse categories and landuse intensity levels).<br>
+<div hidden id="correct_q_02">A time series of classified maps.&One map with a classification resulting from aggregate characteristics of the entire time series.&Several maps describing multiple aspects of a phenomenon (such as landuse categories and landuse intensity levels).</div>
+<output id="output_q_02"></output><br><br>
+
+<!--Question 3-->
+<label for="q_03">
+3)	Which statements about classification based on time series features are correct?
+</label><br>
+<input type="checkbox" name="q_03">Spectral-temporal metrics used for classification should always be computed as aggregates over an entire season.<br>
+<input type="checkbox" name="q_03">If we calculate spectral-temporal metrics over relatively short time intervals, we probably get missing values, and these can be a problem for subsequent machine learning steps.<br>
+<input type="checkbox" name="q_03">For mapping crop types, a classifier trained accurately with spectral-temporal metrics from one season might perform poorly for other seasons if, e.g., the weather and/or agricultural management was different between years.<br>
+<div hidden id="correct_q_03">If we calculate spectral-temporal metrics over relatively short time intervals, we probably get missing values, and these can be a problem for subsequent machine learning steps.&For mapping crop types, a classifier trained accurately with spectral-temporal metrics from one season might perform poorly for other seasons if, e.g., the weather and/or agricultural management was different between years.</div>
+<output id="output_q_03"></output><br><br>
+
+
+<input type="submit" value="Submit" style="font-size:14pt"><br><br>
+
+<output id="output_overall">
+</output>
+</form>
+
+
 ## Excercise: Snow cover mapping - Interpretation and sensitivity analysis
 
 Work through the [E-TRAINEE tutorial on Sentinel-2 snow cover classification in Python](./T3_S2_snow_classification.ipynb). Based on this tutorial, try to interpret the spatial patterns of snow cover duration and investigate the sensitivity of such a rule-based classification regarding the classification threshold.
@@ -202,7 +246,13 @@ One possible solution for this excercise is suggested in [this notebook](./T3_S2
 
 ## References
 
+Belgiu, M., & Drăguţ, L. (2016). Random forest in remote sensing: A review of applications and future directions. ISPRS Journal of Photogrammetry and Remote Sensing, 114, 24-31. https://doi.org/10.1016/j.isprsjprs.2016.01.011
+
+Breiman, L. (2001). Random forests. Machine Learning, 45, 5-32. https://doi.org/10.1023/A:1010933404324
+
 Caparros-Santiago, J. A., Rodriguez-Galiano, V., & Dash, J. (2021). Land surface phenology as indicator of global terrestrial ecosystem dynamics: A systematic review. ISPRS Journal of Photogrammetry and Remote Sensing, 171, 330-347. https://doi.org/10.1016/j.isprsjprs.2020.11.019
+
+Cortes, C., & Vapnik, V. (1995). Support-vector networks. Machine Learning, 20, 273-297. https://doi.org/10.1007/BF00994018
 
 Crist, E. P. (1985). A TM tasseled cap equivalent transformation for reflectance factor data. Remote Sensing of Environment, 17(3), 301-306. https://doi.org/10.1016/0034-4257(85)90102-6
 
@@ -213,6 +263,8 @@ Griffiths, P., Nendel, C., & Hostert, P. (2019). Intra-annual reflectance compos
 Helman, D. (2018). Land surface phenology: What do we really ‘see’from space?. Science of the Total Environment, 618, 665-673. https://doi.org/10.1016/j.scitotenv.2017.07.237
 
 Kollert, A., Bremer, M., Löw, M., & Rutzinger, M. (2021). Exploring the potential of land surface phenology and seasonal cloud free composites of one year of Sentinel-2 imagery for tree species mapping in a mountainous region. International Journal of Applied Earth Observation and Geoinformation, 94, 102208. https://doi.org/10.1016/j.jag.2020.102208
+
+Mountrakis, G., Im, J., & Ogole, C. (2011). Support vector machines in remote sensing: A review. ISPRS Journal of Photogrammetry and Remote Sensing, 66(3), 247-259. https://doi.org/10.1016/j.isprsjprs.2010.11.001
 
 Pasquarella, V. J., Holden, C. E., & Woodcock, C. E. (2018). Improved mapping of forest type using spectral-temporal Landsat features. Remote Sensing of Environment, 210, 193-207. https://doi.org/10.1016/j.rse.2018.02.064
 
