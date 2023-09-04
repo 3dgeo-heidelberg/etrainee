@@ -16,11 +16,7 @@
         }
     ],
 
-    "license":
-        {
-            "name": "MIT License",
-            "url": "http://www.opensource.org/licenses/MIT"
-    },
+    "license": "mit-license"
 
     "title": "E-TRAINEE - E-learning course on Time Series Analysis in Remote Sensing for Understanding Human-Environment Interactions"
 }
