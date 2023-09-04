@@ -3,7 +3,7 @@ message: "If you use the course material, please cite it as below."
 authors:
   - family-names: E-TRAINEE Development Team
 title: "E-TRAINEE - E-learning course on Time Series Analysis in Remote Sensing for Understanding Human-Environment Interactions"
-license: ["MIT License","CC-BY-SA-4.0"]
+license: "MIT License"
 repository-code: "https://github.com/jakub-dvorak-geo/etrainee"
 url: "https://web.natur.cuni.cz/gis/etrainee"
 date-released: 2023-09-04
