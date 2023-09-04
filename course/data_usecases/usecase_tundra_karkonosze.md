@@ -1,17 +1,7 @@
----
-title: "Use case: Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)"
-description:
-dateCreated:
-authors: Adriana Marcinkowska-Ochtyra
-contributors: 
-estimatedTime:
-output: 
-  github_document:
-    pandoc_args: "--wrap=none"
----
-
 Use case: Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)
 ================
+
+# Use case: Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)
 
 Field data for this use case were collected as a part of the [HyMountEcos project](https://catalogue.ceda.ac.uk/uuid/998847cad2a54c71ab2a39c0d0735ae0), lead by researchers at University of Warsaw and Charles University in Prague, and part of Adriana Marcinkowska-Ochtyra PhD thesis.
 
@@ -40,6 +30,7 @@ In this course, we will use **multitemporal Sentinel-2 data** and **reference da
 
 The use case is featured in the following parts of the course:
 
+- [Exercise: Image processing workflow (Module 2, Theme 3)](../module2/03_image_processing/03_image_processing_exercise.md)
 - [Exercise: Multitemporal classification (Module 2, Theme 4)](../module2/04_multitemporal_classification/04_multitemporal_classification.md)
 - [Case study: Monitoring tundra grasslands (Karkonosze) (Module 2, Case study 1)](../module2/06_cs_tundra_grasslands/06_cs_tundra_grasslands.md)
 
