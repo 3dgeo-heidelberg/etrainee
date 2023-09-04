@@ -7,7 +7,7 @@ license: ["MIT License","CC-BY-SA-4.0"]
 repository-code: "https://github.com/3dgeo-heidelberg/etrainee"
 url: "https://web.natur.cuni.cz/gis/etrainee"
 doi: NA
-version: 0.1
+version: 0.2.0
 date-released: 2023-06-30
 references:
   - authors:
