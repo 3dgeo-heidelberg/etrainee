@@ -5,18 +5,12 @@
     
     "creators": [
         {
-            "orcid": "0000-0002-1825-0097",
-            "affiliation": "Feline reasearch institute",
-            "name": "Field, Gar"
-        },
-        {
-            "orcid": "0000-0002-1825-0097",
-            "affiliation": "Feline reasearch institute",
-            "name": "Cat, Felix"
+            "name": "Dvorak, Jakub",
+            "orcid": "0000-0001-7845-7738"
         }
     ],
 
-    "license": "mit-license",
+    "license": "cc-by-sa",
 
     "title": "E-TRAINEE - E-learning course on Time Series Analysis in Remote Sensing for Understanding Human-Environment Interactions"
 }
