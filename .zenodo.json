@@ -1,16 +1,12 @@
 {
-    "upload_type": "lesson",
-
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    
-    "creators": [
-        {
-            "name": "Dvorak, Jakub",
-            "orcid": "0000-0001-7845-7738"
-        }
-    ],
-
-    "license": "cc-by-sa",
-
-    "title": "E-TRAINEE - E-learning course on Time Series Analysis in Remote Sensing for Understanding Human-Environment Interactions"
+  "creators": [
+    {
+      "name": "E-TRAINEE Development Team"
+    }
+  ],
+  "description": "E-learning course on Time Series Analysis in Remote Sensing for Understanding Human-Environment Interactions (E-TRAINEE) was developed by research groups from four partner universities – Charles University, Heidelberg University, University of Innsbruck, and University of Warsaw.",
+  "license": {
+    "id": "CC-BY-SA-4.0"
+  },
+  "title": "E-TRAINEE - E-learning course on Time Series Analysis in Remote Sensing for Understanding Human-Environment Interactions"
 }
