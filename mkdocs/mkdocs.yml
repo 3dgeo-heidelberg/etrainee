@@ -1,5 +1,5 @@
 site_name: E-TRAINEE Course
-repo_url: https://3dtools.geog.uni-heidelberg.de/etrainee/etrainee
+repo_url: https://github.com/3dgeo-heidelberg/etrainee
 docs_dir: ../course
 site_dir: ../site
 
@@ -79,7 +79,7 @@ nav:
         - 'Exercise' : 'module3/04_3d_timeseries_analysis/exercise/m3_theme4_exercise1.md'
     - 'Machine learning-based 3D/4D point cloud analysis' :
         - 'Lesson' : 'module3/05_pointcloud_machine_learning/05_pointcloud_machine_learning.ipynb'
-        - 'Exercise' : 'module3/05_pointcloud_machine_learning/exercise/m3_theme5_exercise1.md'
+        #- 'Exercise' : 'module3/05_pointcloud_machine_learning/exercise/m3_theme5_exercise1.md'
     - 'Case studies' :
         - 'Multitemporal 3D change analysis at an active rock glacier' : 'module3/06_casestudy_rockglacier/06_casestudy_rockglacier.ipynb'
         - 'Time series-based change analysis of sandy beach dynamics' : 'module3/06_casestudy_sandybeach/06_casestudy_sandybeach.ipynb'
@@ -94,6 +94,7 @@ nav:
     - 'In situ and laboratory spectroscopy of vegetation':
         - 'Lesson – Optical properties of vegetation': 'module4/03_relating_imagery_lab_vegetation/03_01_optical_parameters_of_foliage.md'
         - 'Lesson – Laboratory spectroscopy': 'module4/03_relating_imagery_lab_vegetation/03_02_principles_of_laboratory_spectroscopy.md'
+        - 'Exercise': 'module4/03_relating_imagery_lab_vegetation/03_spectra_probe_sphere_exercise.md'
         - 'Lesson – Relating imaging and laboratory spectroscopy': 'module4/03_relating_imagery_lab_vegetation/03_03_relating_imagery_lab_vegetation.md'
     - 'Machine learning in imaging spectroscopy':
         - 'Lesson': 'module4/04_time_series_specifics/04_time_series_specifics.md'

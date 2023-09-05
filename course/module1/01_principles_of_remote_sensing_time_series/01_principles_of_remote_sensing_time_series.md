@@ -156,7 +156,7 @@ Terrestrial (i.e. ground-based) systems can be static (such as terrestrial laser
 
 Depending on the application, sensors record radiation in different parts of the electromagnetic spectrum (wavelegths) ranging from ultraviolet to radio frequencies. Sensors follow either a passive or an active measurement principle, based on measuring electromagnetic radiation that is emitted either from an external source or actively by the system itself, respectively.
 
-**Passive** measurement principles use radiation from an external source, which is (in earth observation) very often the Sun. Examples are passive microwave sensing and imaging in the visible and near-infrared (NIR) to thermal infrared (TIR) parts of the spectrum. Today most people carry an optical imaging sensor in their pocket (in the camera of their smartphone), which can producing colour images with three bands in the visible spectrum (sensing red, green and blue light). In this Module and in Module 2 you will learn how to use time series of multispectral satellite images, which include additional bands in the NIR to TIR spectrum. Even more (and narrower) bands are recorded by hyperspectral imaging, which is the focus of Module 4.
+**Passive** measurement principles use radiation from an external source, which is (in earth observation) very often the Sun. Examples are passive microwave sensing and imaging in the visible and near-infrared (NIR) to thermal infrared (TIR) parts of the spectrum. Today most people carry an optical imaging sensor in their pocket (in the camera of their smartphone), which can produce colour images with three bands in the visible spectrum (sensing red, green and blue light). In this Module and in Module 2 you will learn how to use time series of multispectral satellite images, which include additional bands in the NIR to TIR spectrum. Even more (and narrower) bands are recorded by hyperspectral imaging, which is the focus of Module 4.
 
 Systems with an **active** measurement principle record radiation emitted by themselves and then reflected by a surface/object. This includes synthetic aperture radar interferometry and laser scanning, also known as LiDAR (Light detection and ranging). In addition to the quantity of radiation also the time-structure of the emitted and detected radiation can be important, as this contains information about sensor-to-object distances (range measurement). In Module 3 you will learn how to work with time series of 3D point clouds acquired by laser scanning. 
 
@@ -233,6 +233,71 @@ Most data sets contain at least some missing values (gaps in certain spatial are
 A further pre-processing step potentially needed is some form of harmonization or normalization of data acquired under different conditions or with different sensors. This can prevent a systematic bias being interpreted as change.
 
 Moreover, it is generally a good idea to get to know the quality of your input data before you dive into more complex processing and interpretation. Thus, it is often worth analysing the completeness (proportion and distribution of missing values/gaps) and correctness (comparison with reference data or visual plausibility assessment) of observations.
+
+## Self-evaluation quiz
+
+<form name="quiz" action="" method="post" onsubmit="evaluate_quiz(); return false">
+
+<!--Question 1-->
+<label for="q_01">
+What are some of the main characteristics of a time series?
+</label><br>
+<input type="checkbox" name="q_01">All values are measured without any errors.<br>
+<input type="checkbox" name="q_01">The time of observation is referenced by a time stamp.<br>
+<input type="checkbox" name="q_01">A time series is a set of observations recorded at the same time.<br>
+<input type="checkbox" name="q_01">The observed values are ordered clearly by time.<br>
+<div hidden id="correct_q_01">The time of observation is referenced by a time stamp.&The observed values are ordered clearly by time.</div>
+<output id="output_q_01"></output><br><br>
+
+<!--Question 2-->
+<label for="q_02">
+How are patterns of persistence in a time series recognized?
+</label><br>
+<input type="checkbox" name="q_02">Temporally succeeding observations are more similar to each other than those observed longer apart.<br>
+<input type="checkbox" name="q_02">Temporally close observations show some negative correlation, while those observed longer apart are positively correlated.<br>
+<input type="checkbox" name="q_02">Temporally close observations tend to show some positive correlation, while those observed longer do not.<br>
+<div hidden id="correct_q_02">Temporally succeeding observations are more similar to each other than those observed longer apart.&Temporally close observations tend to show some positive correlation, while those observed longer do not.</div>
+<output id="output_q_02"></output><br><br>
+
+<!--Question 3-->
+<label for="q_03">
+Trends in a time series: Which statement is correct?
+</label><br>
+<input type="checkbox" name="q_03">A trend is always linear.<br>
+<input type="checkbox" name="q_03">A trend is always positive (i.e., values are increasing with time).<br>
+<input type="checkbox" name="q_03">A trend is always the same in one particular time series, regardless if we look at the entire time series or only a part of it.<br>
+<input type="checkbox" name="q_03">Trends can be computationally removed to reveal other components of a time series.<br>
+<div hidden id="correct_q_03">Trends can be computationally removed to reveal other components of a time series.</div>
+<output id="output_q_03"></output><br><br>
+
+<!--Question 4-->
+<label for="q_04">
+Which of these sensors use a passive measurement principle?
+</label><br>
+<input type="checkbox" name="q_04">Terrestrial laser scanner<br>
+<input type="checkbox" name="q_04">Hyperspectral camera onboard a drone<br>
+<input type="checkbox" name="q_04">Multi-spectral instrument onboard the Sentinel-2 satellites<br>
+<input type="checkbox" name="q_04">Synthetic aperture radar onboard the Sentinel-1 satellites<br>
+<div hidden id="correct_q_04">Hyperspectral camera onboard a drone&Multi-spectral instrument onboard the Sentinel-2 satellites</div>
+<output id="output_q_04"></output><br><br>
+
+<!--Question 5-->
+<label for="q_05">
+Extent, resolution, and scale of remote sensing time series: Which statement is correct?
+</label><br>
+<input type="checkbox" name="q_05">A high spatial resolution of imagery means each pixel corresponds to a large area on the ground.<br>
+<input type="checkbox" name="q_05">A high spatial resolution of imagery means each pixel corresponds to a small area on the ground.<br>
+<input type="checkbox" name="q_05">We should avoid recording time series with very high temporal resolution because this makes it difficult to detect long term changes and the resolution cannot be changed.<br>
+<input type="checkbox" name="q_05">To constrain the timing of rapid changes, a high temporal resolution is required.<br>
+<div hidden id="correct_q_05">A high spatial resolution of imagery means each pixel corresponds to a small area on the ground.&To constrain the timing of rapid changes, a high temporal resolution is required.</div>
+<output id="output_q_05"></output><br><br>
+
+
+<input type="submit" value="Submit" style="font-size:14pt"><br><br>
+
+<output id="output_overall">
+</output>
+</form>
 
 ## Hands-on remote sensing time series
 

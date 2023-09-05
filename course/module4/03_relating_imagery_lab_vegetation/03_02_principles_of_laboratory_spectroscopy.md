@@ -180,7 +180,7 @@ The light source assembly (*Figure 14A, B, C* ) provides a collimated beam which
 <img src="media/camera.PNG" title="The ASD RTS-3ZC integrating sphere components." alt="Figure 14" width="700"/>
 </p>
 
-*Figure 14 The ASD RTS-3ZC integrating sphere components. A) Components that can be mounted to the sample holders and ports of the IS: Collimated light source assembly, reference standard panels (99% reflectance), light trap. B) Collimated light source assembly – front view, facing the sphere ports. C) Light source assembly power settings – LOW power is suitable for measuring optical properties of vegetation. D) Light source assembly (red arrow) mounted to the port (A) for instrument optimization and reflectance measurements. E) The central position of the light beam in the reflectance port (C), viewed through a sheet of paper.*
+*Figure 14. The ASD RTS-3ZC integrating sphere components. A) Components that can be mounted to the sample holders and ports of the IS: Collimated light source assembly, reference standard panels (99% reflectance), light trap. B) Collimated light source assembly – front view, facing the sphere ports. C) Light source assembly power settings – LOW power is suitable for measuring optical properties of vegetation. D) Light source assembly (red arrow) mounted to the port (A) for instrument optimization and reflectance measurements. E) The central position of the light beam in the reflectance port (C), viewed through a sheet of paper.*
 
 
 ### Optimization
@@ -254,7 +254,7 @@ In particular, needle transmittance measurements are influenced by the additiona
 <img src="media/measuring.PNG" title="Measuring optical properties of coniferous needles using special metal carriers." alt="Figure 18" width="600"/>
 </p>
 
-*Figure 18: Measuring optical properties of coniferous needles using special metal carriers (with spectrally black coating). A) Norway spruce needles fixed in the carrier, prepared for scanning with double-lamp scanner for gap fraction assessment. B) Preparing the needle samples into the carriers; patient and skilled personnel is the necessity. C) Scan of the needles in the carrier used for gap fraction calculation by image analysis.*
+*Figure 18. Measuring optical properties of coniferous needles using special metal carriers (with spectrally black coating). A) Norway spruce needles fixed in the carrier, prepared for scanning with double-lamp scanner for gap fraction assessment. B) Preparing the needle samples into the carriers; patient and skilled personnel is the necessity. C) Scan of the needles in the carrier used for gap fraction calculation by image analysis.*
 
 ### Measuring specular reflectance – challenge no. 2
 Some proportion of the radiation is reflected from the leaf surface. The proportion of radiation, which is reflected under the equal angle as the one of incidence is called specular (mirror-like) reflection ([Vanderbilt et al., 1985](#references)) (for more details see the part [Optical parameters of foliage](../03_relating_imagery_lab_vegetation/03_01_optical_parameters_of_foliage.md) of this course). There were many efforts to measure leaf specular reflectance based on the assumption that it is polarized. It has been shown that the nature of the leaf surface (presence of waxes, hairs, etc.) determines the degree of linearly polarized reflectance ([Grant et al., 1993, 1987](#references)). Measuring the degree of light polarization ([Grant et al., 1993; Li et al., 2019; Maxwell et al., 2017; Vanderbilt and Grant, 1986](#references)) is one method to detect changes on the leaf surface ([Maxwell et al., 2017](#references)). When the leaf surface strongly polarizes radiation, it usually reflects white specular reflections ([Vanderbilt et al., 1985](#references)). A polarized light beam is usually used to separate the specular component of reflectance from the diffuse reflectance, which is summarized in a study ([Lao et al., 2006](#references)). 
@@ -271,7 +271,7 @@ Usually, the integrating sphere is designed for the purpose of measuring the dif
 <img src="media/hawkweed.PNG" title="The example of leaf total reflectance (DHRF, black curve) of the hawkweed (Hieracim nigrescens) decomposed to the specular (blue curve) and diffuse (red curve) components." alt="Figure 20" width="400"/>
 </p>
 
-*Figure 20: The example of leaf total reflectance (DHRF, black curve) of the hawkweed (Hieracim nigrescens) decomposed to the specular (blue curve) and diffuse (red curve) components. Left y-axis shows directional–hemispherical reflectance factor (DHRF) of total reflectance (black curve) and the diffuse component (reflectance with the specular component removed, i.e. measured with the light trap in port [E], red curve) and right y-axis corresponds to specular reflectance component. Grey and light red shadows display variance among the samples by standard deviation value. The greenhouse grown juvenile plant with a leaf detail are shown (Figure by ([Neuwirthová et al. 2021](#references)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))*
+*Figure 20. The example of leaf total reflectance (DHRF, black curve) of the hawkweed (Hieracim nigrescens) decomposed to the specular (blue curve) and diffuse (red curve) components. Left y-axis shows directional–hemispherical reflectance factor (DHRF) of total reflectance (black curve) and the diffuse component (reflectance with the specular component removed, i.e. measured with the light trap in port [E], red curve) and right y-axis corresponds to specular reflectance component. Grey and light red shadows display variance among the samples by standard deviation value. The greenhouse grown juvenile plant with a leaf detail are shown (Figure by ([Neuwirthová et al. 2021](#references)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))*
 
 
 ## ASCII export of the spectra measured by the CP and IS
@@ -339,6 +339,16 @@ You are going to collect a spectral library of leaf level reflectance (BRF) for 
 <input type="submit" value="Submit" style="font-size:14pt"><br><br>
 <output id="output_overall"></output>
 </form>
+
+## Exercise
+
+### Comparison of spectra measured by integrating sphere and contact probe
+
+The aim of this exercise is to visualize and compare reflectance spectra acquired by a contact probe (CP) and an integrating sphere (IS) attached to the spectroradiometer ASD FieldSpec 4 Hi-Res. 
+
+Please proceed to the exercise: [Comparison of spectra measured by integrating sphere and contact probe](03_spectra_probe_sphere_exercise.md).
+
+
 
 ## Next unit
 

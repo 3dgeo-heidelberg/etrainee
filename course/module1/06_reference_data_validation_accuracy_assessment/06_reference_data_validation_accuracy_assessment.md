@@ -52,6 +52,7 @@ Some key principles of validation and accuracy analysis are
         * Often an initial reference data set is split into a training data set and a validation (or 'test') data set. Then, the training data is used for building the model (*training*), while the validation data is excluded from this (put aside) and subsequently used for accuracy assessment.
         * Such a split can be random with a defined ratio (e.g., 70% of the data for training, 30% of the data for validation), or by spatial subsets of your study area (i.e. use one part of the area for training and the other one for validation).
         * Looking not only at the (in-sample) *training error* but also at the (out-of-sample) *test error* is important to evaluate how good the model generalizes, i.e. avoids *overfitting* (to the training data). In most cases we want a model that does not only fit well to the data it was trained on but also accurately predicts cases not seen during training.
+        * Using only one hold-out test set from a single (random) split is straightforward. However, the resulting accuracy estimate lacks robustness because, if the proceedure is repeated with different random splits, the variance of estimated accuracy is large. More robust estimates and confidence intervals (or variance) for classification accuracy can be obtained by resampling frameworks, typically using bootstrapping or cross-validation, into the classification and accuracy assessment (further reading in [Module 2](../../module2/04_multitemporal_classification/04_multitemporal_classification.md#results-validation-and-accuracy-assesment) and in [Lyons et al. 2018](https://doi.org/10.1016/j.rse.2018.02.026)).
         * Cross-validation (CV) - In the basic version, *k*-fold CV, the training set is split into *k* smaller sets of data (called *folds*), and for each fold a model is trained on the other (*k* - 1) folds and then validated on the current fold.
         * Cross validation can be used to assess the performance of a (final) model, but also for tuning hyperparameters of a machine learning model
         * If you have multi-temporal reference data, you can also make a temporal split (e.g. use one year for training, the other years for validation or set up a temporal cross-validation with years as folds).
@@ -73,11 +74,13 @@ Some key principles of validation and accuracy analysis are
     * Ensemble models can be constructed by combining multiple components (such as trees in a Random Forest, a model used in different variations (e.g. with different thresholds), or a set of models with different approaches).
     * Outputs of ensemble components are usually aggregated (i) into a 'majority vote', i.e. the most frequently predicted class per predicted unit (pixel, point, or segment), or (ii) by averaging the components' probabilistic predictions.
     * Additionally, the fraction of components predicting this class can be reported as relative probability of the class being the best prediction (Note that 'best' prediction and 'probability' must be seen in the context of model setups tested (algorithm, parameters, parameters' range, features, training data, defined classes).
-* An **error budget** of measurements can be constructed from known or estimated error components as an estimate for analysis uncertainty.
+* An **error budget** of measurements can be constructed from known or estimated error components as an estimate for analysis uncertainty. It is also important to consider how the error components of single epochs can propagate into multitemporal derivatives (e.g., in change analysis; see [Module 3](../../module3/03_3d_change_analysis/03_3d_change_analysis.md#uncertainty-in-change-analysis))
 * **Level-of-detection** and confidence intervals for topographic change
-    * Topographic change detection studies often propagate the uncertainty (error budget) of multitemporal input data (3D point clouds or raster digtal terrain models (DTMs)) and potentially other parameters (such as local surface roughness) into a global or spatially varying *level-of-detection (LOD)* at a defined confidence interval (e.g. [Lane et al. 2003](https://doi.org/10.1002/esp.483), [Wheaton et al. 2010](https://doi.org/10.1002/esp.1886), [Lague et al. 2013](https://doi.org/10.1016/j.isprsjprs.2013.04.009)). This LOD indicates the minimum magnitude of change that can be detected; smaller changes are then excluded from further analysis as they could also result from measurement errors.
+    * Topographic change detection studies often propagate the uncertainty (error budget) of multitemporal input data (3D point clouds or raster digital terrain models (DTMs)) and potentially other parameters (such as local surface roughness) into a global or spatially varying *level-of-detection (LOD)* at a defined confidence interval (e.g. [Lane et al. 2003](https://doi.org/10.1002/esp.483), [Wheaton et al. 2010](https://doi.org/10.1002/esp.1886), [Lague et al. 2013](https://doi.org/10.1016/j.isprsjprs.2013.04.009)). This LOD indicates the minimum magnitude of change that can be detected; smaller changes are then excluded from further analysis as they could also result from measurement errors.
     * For 3D point clouds from topographic laser scanning, different error sources can be considered to determine such an LOD (including registration errors, local surface roughness, and 3D positional errors per point as a function of the scanning geometry; see e.g. [Mayr et al. 2020](https://doi.org/10.5194/isprs-annals-V-2-2020-765-2020)).
     * For terrestrial laser scanning time series (4D point clouds) the temporal resolution can additionally be considered for investigating the LOD ([Kromer et al. 2017](https://doi.org/10.5194/esurf-5-293-2017), [Anders et al. 2019](https://doi.org/10.5194/isprs-annals-IV-2-W5-317-2019)). <!-- How? -->
+* Learn more about uncertainty in 3D change analysis and how it can be quantified in [Module 3](../../module3/03_3d_change_analysis/03_3d_change_analysis.md#uncertainty-in-change-analysis)
+* Learn more about uncertainty of satellite data products in [Module 2](../../module2/02_temporal_information/02_temporal_information.md#uncertainty-of-satellite-time-series-data-products)
 
 <center>
 <img src="media/RF_probability.png" title="Probability map of an RF landcover classification" width="64%">
@@ -89,7 +92,7 @@ Some key principles of validation and accuracy analysis are
 
 ## Freely available reference data sets
 
-When looking for reference data, you can search public archives hosted by governmental authorities. These increasingly open the access to regional and national geodata acquired covering a range of different topics. In addition, you might find reference data for your (satellite-based) analysis in collections and platforms of a range of (international) initiatives dedicated to this collection, harmonizing and provisioning of reference data. Examples are
+When looking for reference data, you can search public archives hosted by governmental authorities. These increasingly open the access to regional and national geodata acquired covering a range of different topics. In addition, you might find reference data for your (satellite-based) analysis in collections and platforms of a range of (international) initiatives dedicated to collecting, harmonizing and provisioning of reference data (see also [Module 2](../../module2/04_multitemporal_classification/04_multitemporal_classification.md#multitemporal-reference-dataset)). Examples are
 
 * The [Radiant MLHub](https://mlhub.earth/) by the Radiant Earth Foundation allows anyone to access, store, register, and share open training datasets and models for machine learning in Earth observation. The [datasets](https://mlhub.earth/datasets) cover applications ranging from crops, wildfire, flood, building footprints, and tropical storms to land cover, and they can be useful also for validation of your models (not only training) if you split the data appropriately.
 * [World Cereal](https://worldcereal-rdm.geo-wiki.org/) - The WorldCereal Reference Data Module (RDM) is a reference data store containing labelled data which can be used for crop and irrigation related model training and validation (with varying accessibility and licences of datasets).
@@ -98,7 +101,7 @@ When looking for reference data, you can search public archives hosted by govern
 <center>
 <img src="media/LUCAS_overview.png" title="Land Use/Cover Area frame Survey and harmonisation of datasets" width="700">
 
-<i>Schematic overview of the LUCAS initiative and harmonisation of Land Use/Cover Area frame Survey and harmonisation of datasets (figure by [d'Andrimont et al. 2020](https://doi.org/10.1038/s41597-020-00675-z)/ [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)).</i>
+<i>Schematic overview of the LUCAS initiative and harmonisation of datasets (figure by [d'Andrimont et al. 2020](https://doi.org/10.1038/s41597-020-00675-z)/ [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)).</i>
 </center>
 
 
@@ -153,6 +156,7 @@ Various tools have been developed to improve the efficiency of reference data co
 
 * [TimeSync](https://timesync.forestry.oregonstate.edu/) - A tool for human interpretation of Landsat time series. It is made to calibrate and validate a temporal segmentation of Landsat time series and a trajectory-based detection of land change [Cohen et al. (2010)](https://doi.org/10.1016/j.rse.2010.07.010).
 * [Computer Vision Annotation Tool (CVAT)](https://opencv.github.io/cvat/docs/) - A free, online, interactive video and image annotation tool for computer vision.
+* R tool for reference data collection presented in [Exercise 2 in Module 2](../../module2/02_temporal_information/02_temporal_information_exercise.md)
 * Standard GIS packages (and plugins) contain various tools for accuracy assessment of raster-based remote sensing classifications
     * Digitizing tools to create points or polygons as reference (and optionally rasterize them)
     * Tools for placing sample points randomly or on a regular grid
@@ -208,7 +212,7 @@ Depending on the type of data that you compare against reference data, different
 
 **The confusion matrix**
 
-A basic, yet quite useful way of presenting the output of a classification model (*predicted labels*) compared with values at validation samples (*reference labels*) is the *confusion matrix* (also known as *cross-tabulation matrix* or *error matrix*). This is a cross-tabulation of how many classification units (pixels, points or polygons) were predicted for a certain class vs. how any actually belong to this class (according to the reference data). The matrix allows us to see if a classifier confuses two classes (hence the name), i.e. mislabels one class as another.
+A basic, yet quite useful way of presenting the output of a classification model (*predicted labels*) compared with values at validation samples (*reference labels*) is the *confusion matrix* (also known as *cross-tabulation matrix* or *error matrix*). This is a cross-tabulation of how many classification units (pixels, points or polygons) were predicted for a certain class vs. how many actually belong to this class (according to the reference data). The matrix allows us to see if a classifier confuses two classes (hence the name), i.e. mislabels one class as another.
 
 The following figure illustrates this for a binary classification. The two classes ('positive' and 'negative') could be, for example, 'snow' and 'no snow'.
 
@@ -223,25 +227,33 @@ Here, we display the predicted values along the rows, the reference values along
 
 **Classification metrics**
 
-The confusion matrix itself is already very informative, especially if colourized as a heatmap (i.e. colorized by the (relative) number of samples in a matrix cell). Moreover, it forms the basis of many different accuracy metrics, e.g.:
+The confusion matrix itself is already very informative, especially if colourized as a heatmap (i.e. colorized by the (relative) number of samples in a matrix cell). Moreover, it forms the basis of different accuracy metrics , e.g.:
 
 * *Overall accuracy*: The fraction of correctly classified samples (TP + TN) out of all reference samples, a value ranging from 0 to 1 (or from 0% to 100%).
 
-* *Precision (User's accuracy / Correctness)*
+* *Precision* (a.k.a. *user's accuracy* or *correctness*)
 
-        Precision = TP / TP + FP
+        precision = TP / TP + FP
 
-* *Recall (Producers's accuracy / Completeness)*
+* *Recall* (a.k.a. *producers's accuracy* or *completeness* or *sensitivity*)
 
-        Recall = TP / TP + FN
+        recall = TP / TP + FN
 
-* *F1 score*, the harmonic mean of precision and recall (equal contributions of the two measures)
+* [*F1 score*](https://en.wikipedia.org/wiki/F-score), the harmonic mean of precision and recall (equal contributions of the two measures)
 
         F1 score = 2 * (precision * recall) / (precision + recall)
 
+    As the different types of mis-classification are not for all applications equally important, measures with different a weighting of precision and recall have been proposed (see e.g. [here](https://en.wikipedia.org/wiki/Precision_and_recall#F-measure)).
+
+* *Error of omission* and *error of commission*
+
+        error of omission = 1 - recall
+
+        error of commission = 1 - precision
+
 To understand the performance of a model, it is often a good idea to look at a few different metrics as well as the confusion matrix itself. The 'Kappa' metric, despite being widely used to assess remote sensing classifications, is critized as providing redundant or misleading information for practical decision making and is, therefore, no longer recommended ([Pontius and Millones 2011](https://doi.org/10.1080/01431161.2011.552923), [Foody 2020](https://doi.org/10.1016/j.rse.2019.111630)).
 
-Most metrics range from 0 to 1, with 1 being the best rating. We recommend to look up details on interpretation as well as advantages and drawbacks of the metrics or options to calculate with specific settings (especially in the multilabel case), e.g. in [Olson and Delen](https://doi.org/10.1007/978-3-540-76917-0), [Congalton and Green 2019](https://doi.org/10.1201/9780429052729), [Stehman et al. 2019](https://doi.org/10.1016/j.rse.2019.05.018), [Hand et al. 2012](https://doi.org/10.1111/j.1751-5823.2012.00183.x). Also the documentation of software packages often provides details on the implementation and advice on the use of available accuracy metrics, e.g. in Python [scikit-learn](https://scikit-learn.org/stable/modules/model_evaluation.html).
+Most metrics range from 0 to 1, with 1 being the best rating. We recommend to look up details on interpretation as well as advantages and drawbacks of the metrics or options to calculate with specific settings (especially in the multilabel case), e.g. in [Olson and Delen 2008](https://doi.org/10.1007/978-3-540-76917-0), [Congalton and Green 2019](https://doi.org/10.1201/9780429052729), [Stehman et al. 2019](https://doi.org/10.1016/j.rse.2019.05.018), [Hand et al. 2012](https://doi.org/10.1111/j.1751-5823.2012.00183.x). Also the documentation of software packages often provides details on the implementation and advice on the use of available accuracy metrics, e.g. in Python [scikit-learn](https://scikit-learn.org/stable/modules/model_evaluation.html).
 
 
 **Confusion matrix with more than two categories**
@@ -257,7 +269,6 @@ In such multiclass scenarios, accuracy metrics can be calculated for each class 
 
 <i>Left: Schematic confusion matrix for multiple classes (classes A, B, and C). Right: Confusion matrix for the landcover map produced in the classification tutorial of theme 3. Here, the confusion matrix is normalized over the predicted conditions, i.e. the displayed values indicate the fraction of predictions per class being correct or misclassified as a certain other class.</i>
 
-
 In the matrix above, *n<sub>ij</sub>* is the number of samples labelled as class *i* in the reference and predicted as class *j* by the model. *n<sub>i+</sub>* is the total number of samples actually being class *i*, *n<sub>+i</sub>* is the total number of samples predicted as class *i*, and *n* is the total number of samples. <!--Is this correct and understandable?-->
 
 How would you calculate precision and recall for class A? Write down the two formulas.
@@ -267,7 +278,7 @@ How would you calculate precision and recall for class A? Write down the two for
 
 For a comparison of continuous variables, such as a variable estimated through a regression vs. an observed (reference) variable, we need different measures than for categorical data. In addition to a visual inspection of (i) predicted values plotted against actual values (reference data) or (ii) residuals plotted against predicted values, these are a few metrics commonly used to assess the performance of regression:
 
-* **R<sup>2</sup> ('R-square')** - The 'coefficient of determination' R<sup>2</sup> provides a measure for the goodness of fit (model output vs. reference) and indicates the proportion of variance (of a target variable *y*) that is explained by the model based on the independent variables. Ideally, R<sup>2</sup> yields 1.0 (or 100%) but, unlike most other metrics, the R<sup>2</sup> can be negative for badly performing models.
+* **R<sup>2</sup>** - The 'coefficient of determination' R<sup>2</sup> provides a measure for the goodness of fit (model output vs. reference) and indicates the proportion of variance (of a target variable *y*) that is explained by the model based on the independent variables. Ideally, R<sup>2</sup> yields 1.0 (or 100%) but, unlike most other metrics, the R<sup>2</sup> can be negative for badly performing models.
 * **Mean error (ME)** - The average of the errors (or 'residuals' if computed on the training set), i.e. the differences between observed (reference) values and estimated values. An accurate prediction has a small ME. However, large positive and negative errors can balance each other out and lead to a small ME as well. A large ME points to systematic errors into one direction (bias).
 * **Mean squared error (MSE)** - The MSE is the average of the squared errors. Squaring the errors avoids that positive and negative ones cancel each other out. Squaring both the errors and their units, however, makes them difficult to interpret.
 * **Root mean squared error (RMSE)** - The RMSE is the square root of the MSE and, thus, has the same unit as the estimated quantity. As a result of squaring each error, both MSE and RMSE put more weight to large errors than to small ones and, therefore, are sensitive to outliers (more than, e.g., the MAE). If occasional large outliers in the prediction of a model are acceptable for an application or cannot be avoided, RMSE and MSE are the wrong metrics. If you want to penalize large errors strongly, RMSE may be suitable.
@@ -293,6 +304,55 @@ For a validation of **time series analyses** we face additional challenges that 
 * Repeat visits of a site for multi-temporal sampling are often difficult to organize practically. Often we need to balance a tradeoff between spatial and temporal coverage.
 * Permanently installed in-situ or close-range sensing systems collecting time series data autonomously at high spatial and temporal resolution can be useful. An example are webcams or soil temperature loggers used to validate satellite-based snow cover products<!--Example figures from Microclim project coming soon-->.
 
+## Self-evaluation quiz
+
+<form name="quiz" action="" method="post" onsubmit="evaluate_quiz(); return false">
+
+<!--Question 1-->
+<label for="q_01">
+Principles of validation and accuracy assessment – Which of the following statements is correct?
+</label><br>
+<input type="checkbox" name="q_01">Accuracy assessment of a remote sensing analysis is needed to judge if we can use the results as a basis for further interpretation and/or decision making.<br>
+<input type="checkbox" name="q_01">To ensure consistency we should use the same data for accuracy assessment that we used for training our model.<br>
+<div hidden id="correct_q_01">Accuracy assessment of a remote sensing analysis is needed to judge if we can use the results as a basis for further interpretation and/or decision making.</div>
+<output id="output_q_01"></output><br><br>
+
+<!--Question 2-->
+<label for="q_02">
+Which accuracy metrics are suited for classification?
+</label><br>
+<input type="checkbox" name="q_02">Root mean squared error<br>
+<input type="checkbox" name="q_02">User’s accuracy<br>
+<input type="checkbox" name="q_02">Producer’s accuracy<br>
+<input type="checkbox" name="q_02">Recall<br>
+<div hidden id="correct_q_02">User’s accuracy&Producer’s accuracy&Recall</div>
+<output id="output_q_02"></output><br><br>
+
+<!--Question 3-->
+<label for="q_03">
+Which accuracy metrics are suitable for regression?
+</label><br>
+<input type="checkbox" name="q_03">Mean absolute error<br>
+<input type="checkbox" name="q_03">F1 score<br>
+<input type="checkbox" name="q_03">R²<br>
+<div hidden id="correct_q_03">Mean absolute error&R²</div>
+<output id="output_q_03"></output><br><br>
+
+<!--Question 4-->
+<label for="q_04">
+True or false: Overall accuracy or the Kappa value are the best metric to look at, when we want to learn how to improve a method.
+</label><br>
+<input type="radio" name="q_04">True
+<input type="radio" name="q_04">False<br>
+<div hidden id="correct_q_04">False</div>
+<output id="output_q_04"></output><br><br>
+
+
+<input type="submit" value="Submit" style="font-size:14pt"><br><br>
+
+<output id="output_overall">
+</output>
+</form>
 
 ## Exercise: Assessment of landcover classification accuracy
 
@@ -358,6 +418,8 @@ Kullenberg, C., & Kasperowski, D. (2016). What is citizen science? – A sciento
 Lague, D., Brodu, N., & Leroux, J. (2013). Accurate 3D comparison of complex topography with terrestrial laser scanner: Application to the Rangitikei canyon (NZ). ISPRS Journal of Photogrammetry and Remote Sensing, 82, 10-26. https://doi.org/10.1016/j.isprsjprs.2013.04.009
 
 Lane, S.N., Westaway, R.M., Murray HD., (2003). Estimation of erosion and deposition volumes in a large, gravel‐bed, braided river using synoptic remote sensing. Earth Surface Processes and Landforms, 28(3), 249-271. https://doi.org/10.1002/esp.483
+
+Lyons, M. B., Keith, D. A., Phinn, S. R., Mason, T. J., & Elith, J. (2018). A comparison of resampling methods for remote sensing classification and accuracy assessment. Remote Sensing of Environment, 208, 145-153. https://doi.org/10.1016/j.rse.2018.02.026
 
 Llano, X. (2022), SMByC-IDEAM. AcATaMa - QGIS plugin for Accuracy Assessment of Thematic Maps, version v23.4. https://github.com/SMByC/AcATaMa
 
