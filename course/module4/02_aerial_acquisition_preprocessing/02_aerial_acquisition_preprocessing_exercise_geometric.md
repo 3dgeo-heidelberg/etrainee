@@ -13,7 +13,7 @@ The aim of this exercise is to perform geometric correction of hyperspectral ima
 The insufficient accuracy of IMU/GNSS measurements of low-cost equipment and height differences in terrain can cause shifts and deformations of overlapping strips. 
 Orthorectified RGB images collected during the same or different flights can be used for coregistration and orthorectification of the UAV hyperspectral images. 
 
-- *Prerequisities*
+- *Prerequisites*
     - Installed QGIS    
     - Downloaded data ([folder - LINK WILL BE ADDED]()) 
     The dataset consists of:

@@ -3,15 +3,12 @@ message: "If you use the course material, please cite it as below."
 authors:
   - family-names: E-TRAINEE Development Team
 title: "E-TRAINEE - E-learning course on Time Series Analysis in Remote Sensing for Understanding Human-Environment Interactions"
-version: 0.1
-date-released: 2023-06-30
 license: ["MIT License","CC-BY-SA-4.0"]
 repository-code: "https://github.com/3dgeo-heidelberg/etrainee"
 url: "https://web.natur.cuni.cz/gis/etrainee"
-identifiers:
-  - type: doi
-    value: NA
-	description: The versioned DOI for the version 1.0 of the Citation File Format.
+doi: NA
+version: 0.2.0
+date-released: 2023-06-30
 references:
   - authors:
       - family-names: Potůčková
@@ -51,4 +48,4 @@ references:
     type: article
     volume: NA
     year: 2023
-	doi: NA
+    doi: NA

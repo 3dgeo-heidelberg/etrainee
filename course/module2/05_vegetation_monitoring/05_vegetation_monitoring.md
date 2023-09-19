@@ -1,15 +1,3 @@
----
-title: "Vegetation change and disturbance detection"
-description: This is the fifth theme within the Satellite Multispectral Images Time Series Analysis module.
-dateCreated: '2021-04-06'
-authors: Adrian Ochtyra, Adriana Marcinkowska-Ochtyra
-contributors: 
-estimatedTime: "1.5 hours"
-output: 
-  github_document:
-    pandoc_args: "--wrap=none"
----
-
 Vegetation change and disturbance detection
 ================
 
@@ -466,10 +454,11 @@ the year of detection and error of temporal composition creation
 
 <br><br>
 
-<input type="submit" value="Submit" style="font-size:14pt"><br><br>
-
 <output id="output_overall">
 </output>
+
+<input type="submit" value="Submit" style="font-size:14pt"><br><br>
+
 </form>
 <script src="../../assets/javascripts/quiz_evaluation.js"></script>
 

@@ -12,7 +12,7 @@ estimatedTime:
 The aim of this exercise is to get acquainted with data in the EnMAP-Box environment, to understand the possibilities
 of visualization, the concept of hyperspectral data, and to compare spectral properties of selected vegetation classes.
 
-- *Prerequisities*
+- *Prerequisites*
     - Installed EnMAP-Box plugin for QGIS ([manual](../../software/software_enmap_box.md))  
     - Downloaded data ([folder - LINK WILL BE ADDED]())   
 - *Tasks*
