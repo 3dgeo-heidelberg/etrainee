@@ -14,7 +14,7 @@ of visualization, the concept of hyperspectral data, and to compare spectral pro
 
 - *Prerequisites*
     - Installed EnMAP-Box plugin for QGIS ([manual](../../software/software_enmap_box.md))  
-    - Downloaded data ([folder - LINK WILL BE ADDED]())   
+    - Downloaded data ([module4/theme1_exercise_hyperspectral_data]())   
 - *Tasks*
     - First encounter with data  
     - Comparison of spectral characteristics  

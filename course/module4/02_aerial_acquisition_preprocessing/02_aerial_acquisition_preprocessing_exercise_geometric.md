@@ -15,7 +15,7 @@ Orthorectified RGB images collected during the same or different flights can be 
 
 - *Prerequisites*
     - Installed QGIS    
-    - Downloaded data ([folder - LINK WILL BE ADDED]()) 
+    - Downloaded data ([module4/theme2_exercise_geometric_correction]())   
     The dataset consists of:
         + preprocessed hyperspectral image strips: 20190815_lineX_RGB_trf.tif (image file) and 20190815_lineX_RGB_trf.tfw (georeference file). 
         + check points: CP_GNSS.shp (shapefile) 
