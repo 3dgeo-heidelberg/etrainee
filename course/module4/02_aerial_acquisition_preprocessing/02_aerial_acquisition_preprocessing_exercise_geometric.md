@@ -41,7 +41,7 @@ Start with visualizing the deformed hyperspectral image strips `20190815_lineX_R
 
 Load the shapefile `CP_GNSS.shp` containing the positions of the check points. Twelve bright orange round discs were placed evenly throughout the area to signal their location (Figure 2). Have a look at the corresponding check points in the images
 <p align="center">
-<img src="media/exercise_geometric/check_point.jpg" title="Illustrational image of the check point; check point appearance in the hyperspectral imagery" alt="Figure 2" width="600"/>
+<img src="media/exercise_geometric/check_point_new.jpg" title="Illustrational image of the check point; check point appearance in the hyperspectral imagery" alt="Figure 2" width="400"/>
 </p>
 
 <div align="center">
@@ -66,7 +66,7 @@ To compute the absolute accuracy, determine the residuals on the check points, p
 Apart from the individual residual values obtained, compute commonly used statistics such as horizontal shift, standard deviation, and Root Mean Square Error (RMSE) for each strip (for both relative and absolute accuracy assessment).  
 
 <p align="center">
-<img src="media/exercise_geometric/math_equations.jpg" title="Math equations" alt="Equation 1" width="600"/>
+<img src="media/exercise_geometric/math_equations.jpg" title="Math equations" alt="Equation 1" width="400"/>
 </p>
 
 ```  
