@@ -104,9 +104,9 @@ nav:
     - 'Temporal vs. spatial and spectral resolution':
         - 'Lesson': 'module4/05_specific_resolution_contribution/05_specific_resolution_contribution.md'
     - 'Case studies':
-        - 'Monitoring tundra grasslands in the Krkonoše Mts.': 'module4/06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.md'
-        - 'Seasonal dynamics of flood-plain forest': 'module4/07_flood_plain_forest/07_flood_plain_forest.md'
-        - 'Evaluation of physiological status of Norway Spruce forest in the Ore Mts.': 'module4/08_OreMts_Spruce_status/08_OreMts_Spruce_status.md'
+        - 'Seasonal spectral separability of grass species (Krkonoše Mts.)': 'module4/08_spectral_separability_grass/08_spectral_separability_grass.md'
+        - 'Discrimination of grass species from time series of RPAS hyperspectral imagery': 'module4/06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.md'
+        - 'Seasonal dynamics of flood-plain forests': 'module4/07_flood_plain_forest/07_flood_plain_forest.md'
 - 'Software':
     - 'CloudCompare': 'software/software_cloudcompare.md'
     - 'EnMAP-Box': 'software/software_enmap_box.md'
