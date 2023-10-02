@@ -9,7 +9,7 @@ estimatedTime: 0.5 hrs
 
 # Airborne Imaging Spectroscopy Time Series Analysis 
 
-**MODULE 4 IS UNDER DEVELOPMENT. OFFICIAL COURSE WILL RELEASE IN 09/2023. THANK YOU FOR YOUR PATIENCE.**
+**MODULE 4 IS UNDER DEVELOPMENT. THANK YOU FOR YOUR PATIENCE.**
 
 Imaging spectroscopy enables detailed studies of land surface based on its optical properties
 acquired in many, usually a few hundred, narrow spectral bands. Resulting hyperspectral imagery

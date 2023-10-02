@@ -66,7 +66,7 @@ To compute the absolute accuracy, determine the residuals on the check points, p
 Apart from the individual residual values obtained, compute commonly used statistics such as horizontal shift, standard deviation, and Root Mean Square Error (RMSE) for each strip (for both relative and absolute accuracy assessment).  
 
 <p align="center">
-<img src="media/exercise_geometric/math_equations.jpg" title="Math equations" alt="Equation 1" width="400"/>
+<img src="media/exercise_geometric/math_equations.jpg" title="Math equations" alt="Equation 1" width="300"/>
 </p>
 
 ```  
