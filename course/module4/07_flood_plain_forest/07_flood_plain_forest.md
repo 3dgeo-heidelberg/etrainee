@@ -7,7 +7,7 @@ contributors:
 estimatedTime: 
 ---
 
-# Case study: seasonal dynamics of flood-plain forests
+# Case study: Seasonal dynamics of flood-plain forests
 
 The overall condition of a plant or an entire ecosystem is often assessed by its chlorophyll content. 
 To be able to obtain or validate absolute values of chlorophyll content from remote sensing data, reliable ground truth data sets are needed. 
@@ -285,5 +285,5 @@ Mišurec, Jan, Veronika Kopačková, Zuzana Lhotáková, Petya Campbell, & Jana 
 
 
 ### Next unit
-Proceed with a case study on [evaluating physiological status of a Norway Spruce forest in the Ore Mountains](../08_OreMts_Spruce_status/08_OreMts_Spruce_status.md)
+Proceed by returning to [module overview](../module4.md)
 

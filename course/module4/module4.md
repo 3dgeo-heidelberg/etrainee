@@ -38,9 +38,10 @@ The module is structured into the following themes:
 * [In situ and laboratory spectroscopy of vegetation](03_relating_imagery_lab_vegetation/03_03_relating_imagery_lab_vegetation.md)
 * [Machine learning in imaging spectroscopy](04_time_series_specifics/04_time_series_specifics.md)
 * [Temporal vs. spatial and spectral resolution](05_specific_resolution_contribution/05_specific_resolution_contribution.md)
-* [Case study: Monitoring tundra grasslands in the Krkonoše Mts.](06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.md)
-* [Case study: Seasonal dynamics of flood-plain forest](07_flood_plain_forest/07_flood_plain_forest.md)
-* [Case study: Evaluation of physiological status of Norway Spruce forest in the Ore Mts.](08_OreMts_Spruce_status/08_OreMts_Spruce_status.md)
+* [Case study: Seasonal spectral separability of selected grass species of the Krkonoše Mts. tundra ecosystem](08_spectral_separability_grass/08_spectral_separability_grass.md)
+* [Case study: Discrimination of selected grass species from time series of RPAS hyperspectral imagery](06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.md)
+* [Case study: Seasonal dynamics of flood-plain forests](07_flood_plain_forest/07_flood_plain_forest.md)
+
 
 ## Prerequisites to perform this module
 

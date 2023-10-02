@@ -1,5 +1,5 @@
 ---
-title: "E-TRAINEE: Case study Role of time series in the discrimination of selected grass species from RPAS hyperspectral imagery"
+title: "E-TRAINEE: Discrimination of selected grass species from time series of RPAS hyperspectral imagery"
 description: "This is the sixth theme within the Airborne Imaging Spectroscopy Time Series Analysis module."
 dateCreated: 2021-03-28
 authors:
@@ -7,7 +7,7 @@ contributors:
 estimatedTime: 
 ---
 
-# Case study: monitoring tundra grasslands in the Krkonoše Mountains
+# Case study: Discrimination of selected grass species from time series of RPAS hyperspectral imagery
 
 ## Introduction
 
