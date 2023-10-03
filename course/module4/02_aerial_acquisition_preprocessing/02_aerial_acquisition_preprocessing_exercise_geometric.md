@@ -134,7 +134,7 @@ QGIS Project (2023): QGIS Documentation. [docs.qgis.org/3.28/en/docs](https://do
 
 
 ### Exercise solution 
-Proceed to example solution [Geometric correction - report](solution/02_aerial_acquisition_preprocessing_exercise_geometric_solution.md)
+Example exercise solution will be added.
 
 ### Back to theme 
 Proceed by returning to [Aerial/RPAS hyperspectral data acquisition and pre-processing](02_aerial_acquisition_preprocessing.md)
