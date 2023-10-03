@@ -1,65 +1,77 @@
 cff-version: 1.2.0
-message: "If you use the course material, please cite it as below."
+
+title: >-
+  E-TRAINEE - E-learning course on Time Series Analysis in
+  Remote Sensing for Understanding Human-Environment
+  Interactions
+
+message: 'If you use this course material, please cite it as below.'
+
 authors:
-  - family-names: E-TRAINEE Development Team
-title: "E-TRAINEE - E-learning course on Time Series Analysis in Remote Sensing for Understanding Human-Environment Interactions"
-license: ["MIT License","CC-BY-SA-4.0"]
-repository-code: "https://github.com/3dgeo-heidelberg/etrainee"
-url: "https://web.natur.cuni.cz/gis/etrainee"
-doi: NA
-version: 0.1
-date-released: 2023-06-30
+  - name: E-TRAINEE Development Team
+
+repository-code: 'https://github.com/3dgeo-heidelberg/etrainee'
+
+url: 'https://3dgeo-heidelberg.github.io/etrainee'
+
+abstract: >-
+  E-learning course on Time Series Analysis in Remote
+  Sensing for Understanding Human-Environment Interactions
+  (E-TRAINEE) was developed by research groups from four
+  partner universities – Charles University, Heidelberg
+  University, University of Innsbruck, and University of Warsaw.
+
+license: CC-BY-SA-4.0
+
 references:
   - authors:
       - family-names: Potůčková
         given-names: M.
-		orcid: "https://orcid.org/0000-0002-8760-790X"
+        orcid: "https://orcid.org/0000-0002-8760-790X"
       - family-names: Albrechtová
         given-names: J.
-		orcid: "https://orcid.org/0000-0001-6912-1992"
+        orcid: "https://orcid.org/0000-0001-6912-1992"
       - family-names: Anders
         given-names: K.
-		orcid: "https://orcid.org/0000-0001-5698-7041"
+        orcid: "https://orcid.org/0000-0001-5698-7041"
       - family-names: Červená
         given-names: L.
-		orcid: "https://orcid.org/0000-0001-5246-1106"
+        orcid: "https://orcid.org/0000-0001-5246-1106"
       - family-names: Dvořák
         given-names: J.
-		orcid: "https://orcid.org/0000-0001-7845-7738"
+        orcid: "https://orcid.org/0000-0001-7845-7738"
       - family-names: Gryguc
         given-names: K.
-		orcid: "https://orcid.org/0000-0002-8107-6837"
+        orcid: "https://orcid.org/0000-0002-8107-6837"
       - family-names: Höfle
         given-names: B.
-		orcid: "https://orcid.org/0000-0001-5849-1461"
+        orcid: "https://orcid.org/0000-0001-5849-1461"
       - family-names: Lhotáková
         given-names: Z.
-		orcid: "https://orcid.org/0000-0003-3060-641X"
+        orcid: "https://orcid.org/0000-0003-3060-641X"
       - family-names: Marcinkowska-Ochtyra
-        given-names: A.	
-		orcid: "https://orcid.org/0000-0002-9080-3899"
+        given-names: A.
+        orcid: "https://orcid.org/0000-0002-9080-3899"
       - family-names: Mayr
         given-names: A.
-		orcid: "https://orcid.org/0000-0001-8305-4765"
+        orcid: "https://orcid.org/0000-0001-8305-4765"
       - family-names: Neuwirthová
         given-names: E.
-		orcid: "https://orcid.org/0000-0001-5613-847X"
+        orcid: "https://orcid.org/0000-0001-5613-847X"
       - family-names: Ochtyra
         given-names: A.
-		orcid: "https://orcid.org/0000-0003-4799-8093"
+        orcid: "https://orcid.org/0000-0003-4799-8093"
       - family-names: Rutzinger
         given-names: M.
-		orcid: "https://orcid.org/0000-0001-6628-4681"
+        orcid: "https://orcid.org/0000-0001-6628-4681"
       - family-names: Šedová
         given-names: A.	
       - family-names: Šrollerů
         given-names: A.	
       - family-names: Kupková
         given-names: L.
-		orcid: "https://orcid.org/0000-0002-0270-0516"		
+        orcid: "https://orcid.org/0000-0002-0270-0516"
     journal: "ISPRS Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences"
     title: "E-TRAINEE: Open e-learning course on time series analysis in remote sensing"
     type: article
-    volume: NA
     year: 2023
-    doi: NA
