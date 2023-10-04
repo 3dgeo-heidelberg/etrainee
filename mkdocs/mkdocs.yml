@@ -118,4 +118,4 @@ nav:
     - '4D point clouds of a sandy beach' : 'data_usecases/usecase_beach_kijkduin.md'
     - 'Vegetation disturbance detection in Polish-Slovak Tatra Mountains' : 'data_usecases/usecase_forests_tatras.md'
     - 'Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)' : 'data_usecases/usecase_tundra_karkonosze.md'
-    - 'Tundra vegetation monitoring in Krkonoše Mountains': 'data_usecases/usecase_grasses_krkonose.md'
+- 'About the project': 'https://web.natur.cuni.cz/gis/etrainee/'
