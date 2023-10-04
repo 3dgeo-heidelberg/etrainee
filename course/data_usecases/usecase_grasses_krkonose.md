@@ -36,16 +36,16 @@ All four studied grass species (Figures 1-3) belong to the *Poaceae* family. *Na
 *Figure 3. Studied grass species in August, visualized on the hyperspectral image acquired on August  11th, 2020.*
 
 ## Use case in the course
-The use case is featured in the following parts of the course:
+The use case is featured in the following parts of the course:  
 * [Exercise: Exploration of hyperspectral data using EnMAP-Box (Module 4, Theme 1)](../module4/01_spectroscopy_principles/01_spectroscopy_principles_exercise.md)  
 * [Exercise: Geometric correction (Module 4, Theme 2)](../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing_exercise_geometric.md)  
 * [Exercise: Subpixel classification (Module 4, Theme 4)](../module4/04_time_series_specifics/04_time_series_specifics_exercise_subpixel.md)  
-* [Exercise: Training a Support vector Machine (SVM) and a Random Forest (RF) for hyperspectral data classification (Module 4, Theme 4)](../module4/04_time_series_specifics/04_time_series_specifics_exercise_ml.ipynb)
-* [Exercise: Classification of hyperspectral data using CNNs (Module 4, Theme 4)](../module4/04_time_series_specifics/04_time_series_specifics_exercise_cnn.md)
-* [Case study: Seasonal spectral separability of selected grass species of the Krkonoše Mts. tundra ecosystem (Module 4, Theme 8)](../module4/08_spectral_separability_grass/08_spectral_separability_grass.md)
-* [Case study: Discrimination of selected grass species from time series of RPAS hyperspectral imagery (Module 4, Theme 6)](../module4/06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.md)
+* [Exercise: Training a Support vector Machine (SVM) and a Random Forest (RF) for hyperspectral data classification (Module 4, Theme 4)](../module4/04_time_series_specifics/04_time_series_specifics_exercise_ml.ipynb)  
+* [Exercise: Classification of hyperspectral data using CNNs (Module 4, Theme 4)](../module4/04_time_series_specifics/04_time_series_specifics_exercise_cnn.md)  
+* [Case study: Seasonal spectral separability of selected grass species of the Krkonoše Mts. tundra ecosystem (Module 4, Theme 8)](../module4/08_spectral_separability_grass/08_spectral_separability_grass.md)  
+* [Case study: Discrimination of selected grass species from time series of RPAS hyperspectral imagery (Module 4, Theme 6)](../module4/06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.md)  
 
-## References:
+## References
 Hejcman, M., Češková, M., Pavlů, V., (2010). Control of Molinia caerulea by cutting management on sub-alpine grassland. Flora - Morphol. Distrib. Funct. Ecol. Plants 205, 577–582. [10.1016/j.flora.2010.04.019](https://doi.org/10.1016/j.flora.2010.04.019). 
 
 Hejcman, M., Klaudisová, M., Hejcmanová, P., Pavlů, V., Jones, M., (2009). Expansion of Calamagrostis villosa in sub-alpine Nardus stricta grassland: Cessation of cutting management or high nitrogen deposition? Agric. Ecosyst. Environ. 129, 91–96. [10.1016/j.agee.2008.07.007](https://doi.org/10.1016/j.agee.2008.07.007).  
