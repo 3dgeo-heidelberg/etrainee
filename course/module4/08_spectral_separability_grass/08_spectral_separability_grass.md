@@ -10,7 +10,7 @@ estimatedTime:
 # Case study: Seasonal spectral separability of selected grass species of the Krkonoše Mts. tundra ecosystem
 
 This case study focuses on the separability of different grass species in Krkonoše Mts. 
-during the vegetation growing season. It is inspired by a study by Červená et al. (2020), 
+during the vegetation growing season. It is inspired by a study by [Červená et al. (2020)](#References), 
 where differences in optical properties of three grass species were investigated on three scale levels: 
 green leaf spectra measured by the spectroradiometer ASD FieldSpec4 Wide-Res coupled with a contact probe in laboratory conditions (leaf level), 
 canopy spectra measured by the same spectroradiometer using the fiber optic cable with a pistol grip in the field (canopy level), and hyperspectral image data acquired with the Nano-Hyperspec® fastened to the DJI Matrice 600 Pro drone (image level). 
@@ -19,7 +19,7 @@ canopy spectra measured by the same spectroradiometer using the fiber optic cabl
 
 The objectives of this case study are as follows:
 
-* Test the separability of four grass species during the 2020 vegetation season at the image level using statistical tests for each wavelength; 
+* test the separability of four grass species during the 2020 vegetation season at the image level using statistical tests for each wavelength,
 
 * separability analysis (Jeffries-Matusita distance) in R. 
 
@@ -31,10 +31,10 @@ Hyperspectral images acquired with the Headwall Nano-Hyperspec® fastened to the
 and ground sampling distance was reduced from 3 to 9 cm.
 For every of the four dominant grass species (*Nardus stricta* (`nard`) and competitive grasses *Calamagrostis villosa* (`cv`), *Molinia caerulea* (`mol`), and *Deschampsia cespitosa* (`desch`)) 450 random pixels were selected (*Figure 1*).
 Spectral curves for these pixels were extracted based on all three hyperspectral images. The results are in a table, where the first column is called `classname` and contains class values `desch`, `cv`, `mol`, and `nard`, and the rest are columns with reflectance for each band in each month (e.g., `b1_2006` is band 1 of image acquired in June 2020, etc.). 
-Data [module4/case_study_spectral_separability_grass]() is available in three text files, each for every month (`Rin_grasses_2020_month.txt`).
+Data [(module4/case_study_spectral_separability_grass)]() is available in three text files, each for every month (`Rin_grasses_2020_month.txt`).
 
 <p align="center">
-<img src="media/hyperspectral_data.jpg" title="Hyperspectral data acquired in June (upper left), July (upper right), and August (lower) 2020. In the August image, there are also 450 random pixels selected for each of the four studied species." alt="Figure 1" width="600"/>
+<img src="media/hyperspectral_data.jpg" title="Hyperspectral data acquired in June (upper left), July (upper right), and August (lower) 2020. In the August image, there are also 450 random pixels selected for each of the four studied species." alt="Figure 1" width="400"/>
 </p>
 
 *Figure 1. Hyperspectral data acquired in June (upper left), July (upper right), and August (lower) 2020. In the August image, there are also 450 random pixels selected for each of the four studied species.*
@@ -59,10 +59,10 @@ The most used formula in remote sensing is the one without the square root (*Fig
 This variant is also used in the ENVI software. It can take values in the range [0, 2], where values greater than 1.9 indicate good separability of the classes; in case of separability lower than 1, it is probably a good idea to combine classes. 
 However, originally the formula was defined with the square root (*Figure 3, variant 1*), so it means the values in the range [0, √2]. 
 This formula is used, for example, in package varSel in R (Dalponte et al., 2013). 
-As it is open source [code](https://rdrr.io/cran/varSel/src/R/JMdist.R), you can easily edit the function to the variant 2 used in ENVI and [Richards (2013)](#references); see also *Code 1*.
+As it is open source [code](https://rdrr.io/cran/varSel/src/R/JMdist.R), you can easily edit the function to the variant 2 used in ENVI and [Richards (2013)](#References); see also *Code 1*.
 
 <p align="center">
-<img src="media/formulas.jpg" title="Formulas for Mahalanobis, Bhattacharyya, and Jeffries-Matusita distances." alt="Figure 3" width="300"/>
+<img src="media/formulas.jpg" title="Formulas for Mahalanobis, Bhattacharyya, and Jeffries-Matusita distances." alt="Figure 3" width="400"/>
 </p>
 
 *Figure 3. Formulas for Mahalanobis, Bhattacharyya, and Jeffries-Matusita distances. are means and C are covariance matrices. [(Richards, 2013; Schowengerdt, 2007)](#References).*
@@ -97,7 +97,7 @@ JMdist2 <- function(g,X){
   return(list(classComb=ncomb,jmdist=jm))
 ```
 
-*Code 1. Definition of the function JMdist2 in R: JM distance calculated based on [Richards (2013)](#references) and how it is used in ENVI, code edited based on https://rdrr.io/cran/varSel/src/R/JMdist.R. Available as a file `JMdist2_function.R`.*
+*Code 1. Definition of the function JMdist2 in R: JM distance calculated based on [Richards (2013)](#References) and how it is used in ENVI, code edited based on https://rdrr.io/cran/varSel/src/R/JMdist.R. Available as a file `JMdist2_function.R`.*
 
 JM distance can be calculated for all available bands together, so you will get one separability number based on all used bands (like in the ENVI software). 
 But it can also be calculated for separate bands; in this case, it shows which bands are better for separating the classes. 
