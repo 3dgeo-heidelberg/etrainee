@@ -2,7 +2,7 @@
 title: "E-TRAINEE: Seasonal spectral separability of selected grass species of the Krkonoše Mts. tundra ecosystem"
 description: "This is the eighth theme within the Airborne Imaging Spectroscopy Time Series Analysis module."
 dateCreated: 2023-09-30
-authors:
+authors: Lucie Cervena, Marketa Potuckova
 contributors: 
 estimatedTime: 
 ---
@@ -61,23 +61,108 @@ However, originally the formula was defined with the square root (*Figure 3, var
 This formula is used, for example, in package varSel in R (Dalponte et al., 2013). 
 As it is open source [code](https://rdrr.io/cran/varSel/src/R/JMdist.R), you can easily edit the function to the variant 2 used in ENVI and [Richards (2013)](#references); see also *Code 1*.
 
+<p align="center">
+<img src="media/flood_plain_img1.PNG" title="Formulas for Mahalanobis, Bhattacharyya, and Jeffries-Matusita distances." alt="Figure 3" width="600"/>
+</p>
+
+*Figure 3. Formulas for Mahalanobis, Bhattacharyya, and Jeffries-Matusita distances. are means and C are covariance matrices. [(Richards, 2013; Schowengerdt, 2007)](#References).*
+```
+JMdist2 <- function(g,X){
+
+  X<-as.matrix(X)
+
+  nfeat <- ncol(X)
+  nclass <- length(unique(g))
+
+  mu <- by(X,g,colMeans)
+
+  Cov <- by(X,g,stats::cov)
+
+  ncomb <- t(utils::combn(unique(g),2))
+  Bhat <- c()
+  jm <- c()
+  for(j in 1:nrow(ncomb)){
+    mu.i <- mu[[ncomb[j,1]]]
+    cov.i <- Cov[[ncomb[j,1]]]
+    mu.j <- mu[[ncomb[j,2]]]
+    cov.j <- Cov[[ncomb[j,2]]]
+    if(nfeat==1){
+      Bhat[j]<-(1/8)*t(mu.i-mu.j) %*% (solve((cov.i+cov.j)/2)) %*% (mu.i-mu.j) + 0.5*log((((cov.i+cov.j)/2))/(sqrt((cov.i))*sqrt((cov.j))),base=exp(1))
+    }else{
+      Bhat[j]<-(1/8)*t(mu.i-mu.j) %*% (solve((cov.i+cov.j)/2)) %*% (mu.i-mu.j) + 0.5*log(det(((cov.i+cov.j)/2))/(sqrt(det(cov.i))*sqrt(det(cov.j))),base=exp(1))
+    }
+    jm[j] <- (2*(1-exp(-Bhat[j])))
+  }
+
+  return(list(classComb=ncomb,jmdist=jm))
+```
+
+*Code 1. Definition of the function JMdist2 in R: JM distance calculated based on [Richards (2013)](#references) and how it is used in ENVI, code edited based on https://rdrr.io/cran/varSel/src/R/JMdist.R. Available as a file `JMdist2_function.R`.*
+
+JM distance can be calculated for all available bands together, so you will get one separability number based on all used bands (like in the ENVI software). 
+But it can also be calculated for separate bands; in this case, it shows which bands are better for separating the classes. 
+With the function defined in Code 1, you can calculate both, but for separate bands, it is necessary to use the function in a loop (Code 2).
+
+```
+data=read.delim("Rin_grasses_2020_08.txt");
+
+fix(data)
+
+d=dim(data)
+d
+
+attach(data)
+
+# JM distance for all bands together
+JMdist2(classname, data[,2:55])
+
+# JM distance for separate bands (August example, rename the output text file for other months)
+results <- matrix() # definition of the empty matrix 
+JM_band1 <- JMdist2(classname, data[,2]) # calculation of JM distance for the first band
+JM_band1 # JM distance for the first band, you can copy the combination of classes here, it remains the same also in the loop
+results <- JM_band1$jmdist # save the JM distance for first band to the empty matrix (it gives the structure to the matrix)
+
+for (I in 3:55) # the loop for bands 2 - 54
+{
+	JM_band <- JMdist2(classname, data[,I])	# calculate JM distance for band I 
+	results <- rbind(results, JM_band$jmdist); # save result for the I band as a new row to the matrix "results"
+}
+
+write.table(results, "JM_distance2_bands_August.txt") # save the results for all the bands to the text file
+```
+
+*Code 2. Calculation of JM distance for all bands together and separate bands; example on August data. Available also as a file `Script_JM_distance.R`.*
+
+### ANOVA, Welch's t-test, Wilcoxon test
+Another way to evaluate differences among the classes is to run one of the commonly used statistical tests to find out if the two population means are the same (Welch’s t-test, in comparison to the well-known Student’s t-test, is designed for unequal population variances). That means it has to be done in a loop for every band and for every combination of two classes. For all classes, you can compute the Analysis of variance (ANOVA). It can indicate whether at least one species' reflectance in a given band significantly differs from all others. However, it is unclear whether there are significant differences between all of the classes or whether only one class differs from the others. According to the null hypothesis, the mean reflectance values for the two compared species are the same at a given wavelength. The null hypothesis is rejected when the p-value is less than a pre-specified significance level, which is usually set to 0.05. In a loop, you can save p-values for every band and then visualize the results and interpret them. Both of the above-mentioned methods assume the normality of input data. If the data does not have a normal distribution, an alternative to Welch's t-test is the Wilcoxon rank test. 
+The example script for both tests is in the attachment `Script_ttest_wilcox.txt`.
+
+## Results
+
 
 
 
 
 <p align="center">
-<img src="media/flood_plain_img1.PNG" title="Formulas for Mahalanobis, Bhattacharyya and Jeffries-Matusita distances." alt="Figure 3" width="600"/>
+<img src="media/flood_plain_img1.PNG" title="JM distance." alt="Figure 4" width="600"/>
 </p>
 
-*Figure 3. Formulas for Mahalanobis, Bhattacharyya and Jeffries-Matusita distances. are means and C are covariance matrices. [(Richards, 2013; Schowengerdt, 2007)](#References).*
+*Figure 4. JM distance calculated in R for all bands combined for all months and species combinations (greener = better separability).*
+
+<p align="center">
+<img src="media/flood_plain_img1.PNG" title="Separability report from the ENVI software." alt="Figure 5" width="600"/>
+</p>
+
+*Figure 5. Separability report from the ENVI software showing JM distance and transformed divergence for the August dataset.*
 
 
 
 
-### ANOVA, Welch's t-test, Wilcoxon test
+<p align="center">
+<img src="media/flood_plain_img1.PNG" title="verage spectra (reflectance * 10000), JM distance, and p-values of Welch’s t-test and Wilcoxon rank test.." alt="Figure 6" width="600"/>
+</p>
 
-
-## Results
+*Figure 6. Average spectra (reflectance * 10000), JM distance, and p-values of Welch’s t-test and Wilcoxon rank test for all months and species calculated for separate bands in R.*
 
 ## Conclusions
 In this case study, we proved that all four grass species are separable based on the given hyperspectral dataset in all compared months in a season (June, July, and August). 

@@ -26,7 +26,7 @@ Also tested is the influence of the pre-processing step, comprising the minimum 
 
 ## Objectives
 
-* To classify grass vegetation in the Krkonoše Mts. on a permanent research plot 100 x 100 m (Figure 1) using Random Forest classifier (script in R) from UAV hyperspectral data acquired by the Headwall NANO-Hyperspec pushbroom camera.
+* To classify grass vegetation in the Krkonoše Mts. on a permanent research plot 100 x 100 m (*Figure 1*) using Random Forest classifier (script in R) from UAV hyperspectral data acquired by the Headwall NANO-Hyperspec pushbroom camera.
   
 * To evaluate and quantify a potential improvement in classification accuracy of the multi-temporal time series compared to mono-temporal imagery.
   
@@ -46,7 +46,7 @@ Also tested is the influence of the pre-processing step, comprising the minimum 
 
 We will use ([module4/case_study_discrimination_grass_species]()):  
 
-* Hyperspectral image data acquired by the Headwall Nano-Hyperspec® camera fastened on the DJI Matrice 600 Pro drone on June 16 and August 11 2020 (Figure 2), with ground sampling distance of 9 cm and spectral resolution of 54 bands (resampled from 269 bands to reduce correlation in neighboring bands):  
+* Hyperspectral image data acquired by the Headwall Nano-Hyperspec® camera fastened on the DJI Matrice 600 Pro drone on June 16 and August 11 2020 (*Figure 2*), with ground sampling distance of 9 cm and spectral resolution of 54 bands (resampled from 269 bands to reduce correlation in neighboring bands):  
             `BL_202006.tif (data from June; 54 bands, for visualization in true colors use bands R-21/G-13/B-7)`  
             `BL_202008.tif (data from August; 54 bands, for visualization in true colors use bands R-21/G-13/B-7)`  
 
