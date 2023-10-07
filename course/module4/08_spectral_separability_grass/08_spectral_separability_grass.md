@@ -34,13 +34,13 @@ Spectral curves for these pixels were extracted based on all three hyperspectral
 Data [module4/case_study_spectral_separability_grass]() is available in three text files, each for every month (`Rin_grasses_2020_month.txt`).
 
 <p align="center">
-<img src="media/flood_plain_img1.PNG" title="Hyperspectral data acquired in June (upper left), July (upper right), and August (lower) 2020. In the August image, there are also 450 random pixels selected for each of the four studied species." alt="Figure 1" width="600"/>
+<img src="media/hyperspectral_data.jpg" title="Hyperspectral data acquired in June (upper left), July (upper right), and August (lower) 2020. In the August image, there are also 450 random pixels selected for each of the four studied species." alt="Figure 1" width="600"/>
 </p>
 
 *Figure 1. Hyperspectral data acquired in June (upper left), July (upper right), and August (lower) 2020. In the August image, there are also 450 random pixels selected for each of the four studied species.*
 
 <p align="center">
-<img src="media/flood_plain_img1.PNG" title="The first ten rows of the table containing exported reflectance for 450 randomly selected pixels for each species." alt="Figure 2" width="600"/>
+<img src="media/exported_reflectance.png" title="The first ten rows of the table containing exported reflectance for 450 randomly selected pixels for each species." alt="Figure 2" width="400"/>
 </p>
 
 *Figure 2. The first ten rows of the table containing exported reflectance for 450 randomly selected pixels for each species.*
@@ -62,7 +62,7 @@ This formula is used, for example, in package varSel in R (Dalponte et al., 2013
 As it is open source [code](https://rdrr.io/cran/varSel/src/R/JMdist.R), you can easily edit the function to the variant 2 used in ENVI and [Richards (2013)](#references); see also *Code 1*.
 
 <p align="center">
-<img src="media/flood_plain_img1.PNG" title="Formulas for Mahalanobis, Bhattacharyya, and Jeffries-Matusita distances." alt="Figure 3" width="600"/>
+<img src="media/formulas.jpg" title="Formulas for Mahalanobis, Bhattacharyya, and Jeffries-Matusita distances." alt="Figure 3" width="300"/>
 </p>
 
 *Figure 3. Formulas for Mahalanobis, Bhattacharyya, and Jeffries-Matusita distances. are means and C are covariance matrices. [(Richards, 2013; Schowengerdt, 2007)](#References).*
@@ -139,28 +139,34 @@ The example script for both tests is in the attachment `Script_ttest_wilcox.txt`
 
 ## Results
 
-
-
-
+First, let's examine the results of JM distance for all bands together (see *Figure 4*). 
+All of the grasses have good separability throughout the season. *Calamagrostis villosa* (`cv`) and *Molinia caerulea* (`mol`) are the most separable species in all months, 
+while *Nardus stricta* (`nard`) and *Molinia caerulea* (`mol`) are the least separable in June and July; 
+however, their separability is good in August. 
+*Deschampsia cespitosa* (`desch`) can be distinguished from *Nardus stricta* (`nard`) in June and July, but not in August. 
+Just for comparison, *Figure 5* shows ENVI results, for example, for August data; the results are identical.
 
 <p align="center">
-<img src="media/flood_plain_img1.PNG" title="JM distance." alt="Figure 4" width="600"/>
+<img src="media/JM_distance.jpg" title="JM distance." alt="Figure 4" width="400"/>
 </p>
 
 *Figure 4. JM distance calculated in R for all bands combined for all months and species combinations (greener = better separability).*
 
 <p align="center">
-<img src="media/flood_plain_img1.PNG" title="Separability report from the ENVI software." alt="Figure 5" width="600"/>
+<img src="media/ENVI_separability.jpg" title="Separability report from the ENVI software." alt="Figure 5" width="400"/>
 </p>
 
 *Figure 5. Separability report from the ENVI software showing JM distance and transformed divergence for the August dataset.*
 
+*Figure 6* shows the results calculated for separate bands (JM distance, T-test, and Wilcoxon test) and average reflectance spectra. 
+When only one band is used, JM distance values are generally lower (maximal values around 1.7) than when all bands are used (minimal value is 1.7). 
+JM distance reaches low values for all species combinations in all months in the red edge area (around 720 nm). 
+When we look at average spectra, there is a crossing of spectral curves. 
+Similarly, lower JM distances at shorter wavelengths (blue and green) in July can be explained by the similarity of all of the spectral curves. 
+On the contrary, the largest spectral curve differences between `desch` and `mol` in the red band in June and between `desch` and `cv` in the near infrared band in August result in the largest JM distances. 
+Both statistical tests are less sensitive than JM distance, but when one of the tests has a very high p-value (i.e., the null hypothesis of equal mean reflectance values for two compared species is rejected at significance level 0.05), JM distance is also very low.
 
-
-
-<p align="center">
-<img src="media/flood_plain_img1.PNG" title="verage spectra (reflectance * 10000), JM distance, and p-values of Welch’s t-test and Wilcoxon rank test.." alt="Figure 6" width="600"/>
-</p>
+[ ![](media/results_separate_band.jpg) ](media/results_separate_band.jpg)
 
 *Figure 6. Average spectra (reflectance * 10000), JM distance, and p-values of Welch’s t-test and Wilcoxon rank test for all months and species calculated for separate bands in R.*
 
@@ -182,6 +188,6 @@ Richards, J.A. (2013). Remote sensing digital image analysis: an introduction. F
 
 Schowengerdt, R.A. (2007). Remote sensing, models, and methods for image processing. 3rd ed. ed. Academic Press, Burlington, MA.
 
-### Back to the start  
+### Next unit
 Proceed with a case study on [discrimination of selected grass species from time series of RPAS hyperspectral imagery](../06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.md)
 

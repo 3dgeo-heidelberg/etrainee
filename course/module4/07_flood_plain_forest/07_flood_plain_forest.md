@@ -283,7 +283,6 @@ Maire, G. le, C. François, & E. Dufrêne. 2004. „Towards Universal Broad Leaf
 Mišurec, Jan, Veronika Kopačková, Zuzana Lhotáková, Petya Campbell, & Jana Albrechtová. 2016. „Detection of Spatio-Temporal Changes of Norway Spruce Forest Stands in Ore Mountains Using Landsat Time Series and Airborne Hyperspectral Imagery". Remote Sensing 8 (2): 92. [10.3390/rs8020092](https://doi.org/10.3390/rs8020092).
 
 
-
-### Next unit
+### Back to the start  
 Proceed by returning to [module overview](../module4.md)
 
