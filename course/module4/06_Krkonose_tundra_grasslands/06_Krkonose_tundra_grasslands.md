@@ -1,5 +1,5 @@
 ---
-title: "E-TRAINEE: Case study Role of time series in the discrimination of selected grass species from RPAS hyperspectral imagery"
+title: "E-TRAINEE: Discrimination of selected grass species from time series of RPAS hyperspectral imagery"
 description: "This is the sixth theme within the Airborne Imaging Spectroscopy Time Series Analysis module."
 dateCreated: 2021-03-28
 authors:
@@ -7,7 +7,7 @@ contributors:
 estimatedTime: 
 ---
 
-# Case study: monitoring tundra grasslands in the Krkonoše Mountains
+# Case study: Discrimination of selected grass species from time series of RPAS hyperspectral imagery
 
 ## Introduction
 
@@ -26,7 +26,7 @@ Also tested is the influence of the pre-processing step, comprising the minimum 
 
 ## Objectives
 
-* To classify grass vegetation in the Krkonoše Mts. on a permanent research plot 100 x 100 m (Figure 1) using Random Forest classifier (script in R) from UAV hyperspectral data acquired by the Headwall NANO-Hyperspec pushbroom camera.
+* To classify grass vegetation in the Krkonoše Mts. on a permanent research plot 100 x 100 m (*Figure 1*) using Random Forest classifier (script in R) from UAV hyperspectral data acquired by the Headwall NANO-Hyperspec pushbroom camera.
   
 * To evaluate and quantify a potential improvement in classification accuracy of the multi-temporal time series compared to mono-temporal imagery.
   
@@ -44,15 +44,11 @@ Also tested is the influence of the pre-processing step, comprising the minimum 
 
 ## Data
 
-We will use:
+We will use ([module4/case_study_discrimination_grass_species]()):  
 
-* Hyperspectral image data acquired by the Headwall Nano-Hyperspec® camera fastened on the DJI Matrice 600 Pro drone on June 16 and August 11 2020 (Figure 2), with ground sampling distance of 9 cm and spectral resolution of 54 bands (resampled from 269 bands to reduce correlation in neighboring bands):  
+* Hyperspectral image data acquired by the Headwall Nano-Hyperspec® camera fastened on the DJI Matrice 600 Pro drone on June 16 and August 11 2020 (*Figure 2*), with ground sampling distance of 9 cm and spectral resolution of 54 bands (resampled from 269 bands to reduce correlation in neighboring bands):  
             `BL_202006.tif (data from June; 54 bands, for visualization in true colors use bands R-21/G-13/B-7)`  
             `BL_202008.tif (data from August; 54 bands, for visualization in true colors use bands R-21/G-13/B-7)`  
-            `BL_2020_0608MT.tif (multitemporal image – merged dataset from June and August; 108 bands)`
-
-* Image data transformed using MNF transformation (10 bands, ground sampling distance 9 cm):  
-            `BL_MNF_08_10 (10 output bands from MNF transformation)`
 
 * Field reference dataset (*Figure 3*) collected by botanists (in 2019 and 2020) divided between training data (polygons) and validation data (points). For an explanation of how the reference dataset was collected and divided between training and validation data, see [Kupková et al. (2023)](#references):  
             `train_polygons.zip (training data)`  
@@ -102,15 +98,139 @@ These variables were selected based on the values of the Importance score.
 The Importance score (see an example in Appendix 1) can be generated as one of the outputs from RF classifications and shows the importance of feature variables. 
 Features with high values for this score are generally regarded as more important.
 
-Open the provided [code](06_Krkonose_tundra_grasslands.r) in R.  
-TODO: upload missing part (scripting in R)
+Use the provided code in R ([module4/case_study_discrimination_grass_species/06_Krkonose_tundra_grassland.R]()), which can be seen below, to classify the monotemporal hyperspectral datasets from June `BL_202006.tif` and August `BL_202008.tif` 2020, multitemporal composite, and MNF transformed image.  
+The script is self-explanatory, with comments and instructions following `#`. Don't forget to set the working directory and adapt the input data paths according to your data structure. 
+Be aware that the computation is time-consuming. Thus, example result classification rasters will also be provided. 
+```
+# =============================================================================
+# Import libraries
+# This loads required packages (and installs them if necessary)
+l_packages <- c("raster", "rgdal", "randomForest", "glcm", "spacetime")
+for (package in l_packages){
+  if(! package %in% installed.packages()){
+    install.packages(package, dependencies = TRUE)
+  }
+  library(package, character.only = T)
+}
 
+# Set working directory - insert path to your data
+setwd("c:/path/to/data")
+getwd()
+
+# =============================================================================
+# 1.
+# Monotemporal dataset - uncomment this part to perform classification on one of the monotemporal datasets
+# =============================================================================
+# Load input hyperspectral (HS) image
+img <- brick("BL_202006.tif")
+# Assign band names to image
+names(img) <-  paste0("B", c(1:54))
+
+# =============================================================================
+# 2.
+# Multitemporal composite - uncomment this part to composite the two datasets
+# =============================================================================
+#img_1 <- brick("BL_202006.tif")
+#img_2 <- brick("BL_202008.tif")
+#img   <- stack(img_1, img_2)
+# Assign band names to image
+#names(img) <-  paste0("B", c(1:108))
+
+# =============================================================================
+# 3.
+# MNF transformation - uncomment this part to perform MNF transformation
+# =============================================================================
+# Load original dataset
+#img_orig <- brick("BL_202008.tif")
+# Perform transformation
+#m = mnf(img_orig, mode="spatial")
+# Only select the first 10 bands
+#img <- brick(m$x[1:10])
+# Assign band names to image
+#names(img) <-  paste0("B", c(1:10))
+
+
+
+# =============================================================================
+# Load training data
+# =============================================================================
+# Load vector training data
+training <- readOGR(dsn=getwd(), layer="train_polygons") # dsn name of folder containing shp, with the name in layer
+View(training)
+
+# Vizualize of image and training data for control
+plot(img$B3)
+plot(training, bg="transparent", add=TRUE)
+
+# =============================================================================
+# Feature extraction
+# =============================================================================
+# Calculate GLCM textures from each spectral band
+# TAKES LONG TIME!!!
+out <- list()
+for(band in 1:dim(img)[3]) {
+  out[band] <- glcm::glcm(img[[band]], window = c(3, 3), na_opt = 'center', 
+                       statistics = c("mean", "variance", "homogeneity", "contrast",
+                                      "dissimilarity", "entropy", "second_moment"))
+  print(paste0('Finished computing textures for band #', band, '/', dim(img)[3]))
+}
+textures <- stack(out)
+
+# Stack image and textures
+predictors <- stack(img, textures)
+
+# Preparation of training data
+# Extract raster values from training polygons
+df_features <- extract(predictors, training, df=TRUE) # TAKES LONG TIME!!!
+
+# Remove rows with nodata values
+training <- na.omit(df_features)
+# Rename column ID to Classvalue
+names(training)[names(training) == 'ID'] <- 'Classvalue'
+
+# See number of features for each class
+table(training$Classvalue)
+
+# =============================================================================
+# Train + Apply a RF model
+# =============================================================================
+# TAKES LONG TIME!!
+model <- randomForest(as.factor(Classvalue) ~.,data=training,
+                      ntree=100, importance=TRUE, do.trace=50) ### original model had ntree=1000
+
+# Classify image using trained model
+predicted <- predict(predictors, model)
+
+# Vizualize classification
+plot(predicted, main = 'Classification Random Forest')
+
+# Print information about the trained model
+model
+
+# =============================================================================
+# Export results
+# =============================================================================
+# Export feature importance table
+feature_importance <- model$importance
+write.table(feature_importance, "BL_202006_RF_feature_importance.txt")
+
+# Save classification as a raster
+writeRaster(predicted, filename="BL_202006_RF_classified.tif",overwrite=TRUE)
+Sys.time()
+```
+
+The script outputs a classified raster `*tif`, the coordinate system/projection (S-JTSK/Krovak East North, EPSG: 5514) needs to be defined along with the color information and class names.
+This can be done in the QGIS software package or in R with the following code snippet:  
+```crs("image_filename") <- "+proj=krovak +ellps=bessel"```.  
+The feature importance output file `*txt`, column `MeanDecreaseAccuracy`, shows the importance of each band in the classification process.  
 
 ### 2. Accuracy assessment
-TODO: upload missing part
+Assessment should be elaborated in the GIS environment (QGIS). Use the provided validation points, `valid_points.zip`, 
+to compute the accuracy scores. Select the classified raster to be evaluated, and compare the classification output with class values at validation samples. 
+Compute the [confusion matrix](../../module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.md#accuracy-metrics) and derive the overall accuracy, precision, recall, and F1-score. 
 
 ## Tasks  
-1. Use the provided R script to classify: 
+1. Use the provided R script to classify:   
     - image from June 2020
     - image from August 2020
     - multitemporal composite from June and August 2020
@@ -139,7 +259,7 @@ Zvoleff, A. 2016. GLCM: calculate textures from grey-level co-occurrence matrice
 
 
 ### Exercise solution 
-TODO: add exercise solution
+Example exercise solution will be added.
 
 ### Next unit
 Proceed with a case study on [seasonal dynamics of flood-plain forests](../07_flood_plain_forest/07_flood_plain_forest.md)

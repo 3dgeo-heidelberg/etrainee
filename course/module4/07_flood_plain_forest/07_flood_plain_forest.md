@@ -7,7 +7,7 @@ contributors:
 estimatedTime: 
 ---
 
-# Case study: seasonal dynamics of flood-plain forests
+# Case study: Seasonal dynamics of flood-plain forests
 
 The overall condition of a plant or an entire ecosystem is often assessed by its chlorophyll content. 
 To be able to obtain or validate absolute values of chlorophyll content from remote sensing data, reliable ground truth data sets are needed. 
@@ -28,7 +28,7 @@ The case study will be presented on a dataset from a floodplain forest in Czechi
 
 ## Data
 
-The dataset was acquired in the Soutok floodplain forest district located between the rivers Morava and Dyje (48.68° N, 16.94° E) in 2019 (four field campaigns conducted in April, July, September, and October; 204 samples) and 2020 (three field campaigns in May, July, ans October; 193 samples). During each field campaign, sunlit and shaded branches were trimmed from eighteen deciduous trees of six species: Austrian oak, English oak, Narrow-leaved ash, European hornbeam, White poplar and Small-leaved linden (*Figure 1*). 
+The dataset ([module4/case_study_flood_plain_forests]()) was acquired in the Soutok floodplain forest district located between the rivers Morava and Dyje (48.68° N, 16.94° E) in 2019 (four field campaigns conducted in April, July, September, and October; 204 samples) and 2020 (three field campaigns in May, July, ans October; 193 samples). During each field campaign, sunlit and shaded branches were trimmed from eighteen deciduous trees of six species: Austrian oak, English oak, Narrow-leaved ash, European hornbeam, White poplar and Small-leaved linden (*Figure 1*). 
 Representative leaves of all types (small, large, green, colored, young, old) were measured using the chlorophyll meter SPAD-502 and the ASD FieldSpec4 Standard-Res spectroradiometer (350 – 2,500 nm sampling spectral domain) coupled with the integrating sphere RTS-3ZC.
 The leaves were then taken to the laboratory for spectrophotometric determination of chlorophyll content from dimethylformamide extracts (*Figure 2*). 
 Data from 2019 will be used for training purposes, and data from 2020 will serve as validation of the results.
@@ -283,7 +283,6 @@ Maire, G. le, C. François, & E. Dufrêne. 2004. „Towards Universal Broad Leaf
 Mišurec, Jan, Veronika Kopačková, Zuzana Lhotáková, Petya Campbell, & Jana Albrechtová. 2016. „Detection of Spatio-Temporal Changes of Norway Spruce Forest Stands in Ore Mountains Using Landsat Time Series and Airborne Hyperspectral Imagery". Remote Sensing 8 (2): 92. [10.3390/rs8020092](https://doi.org/10.3390/rs8020092).
 
 
-
-### Next unit
-Proceed with a case study on [evaluating physiological status of a Norway Spruce forest in the Ore Mountains](../08_OreMts_Spruce_status/08_OreMts_Spruce_status.md)
+### Back to the start  
+Proceed by returning to [module overview](../module4.md)
 
