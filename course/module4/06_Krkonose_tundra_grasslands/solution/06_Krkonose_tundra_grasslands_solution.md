@@ -19,7 +19,7 @@ estimatedTime:
 | August MNF | <img src="media/MNF_classification_raster.jpg" alt="Figure 4" title="August MNF" width="400"> |
 
 <p align="center">
-<img src="media/classification_legend.png" title="Classification legend" alt="Figure 5" width="300"/>
+<img src="media/classification_legend.png" title="Classification legend" alt="Figure 5" width="200"/>
 </p>
 
 <div align="center">
@@ -54,14 +54,15 @@ estimatedTime:
 | *smrk* | 92.00 | 97.87 | 94.84 |  | 72.00 | 100.00 | 83.72 |
 
 #### Q&A
-* Is it possible to classify individual grass species from a mono-temporal UAS dataset with very high spatial resolution (9 cm) and spectral resolution (54 bands) with an overall accuracy higher than 85%?
-    +
+
+* Is it possible to classify individual grass species from a mono-temporal UAS dataset with very high spatial resolution (9 cm) and spectral resolution (54 bands) with an overall accuracy higher than 85%?  
+    + 
 * What is the classification accuracy of the dominant and sparse growth species?  
-    +
-* Can we reach higher accuracy using time series of intra-seasonal data? How significant are the differences?
-    +
-* Optional: Can image data transformation that reduces noise and data dimensionality (MNF transformation) produce better results than the original hyperspectral dataset?
-    +
+    + 
+* Can we reach higher accuracy using time series of intra-seasonal data? How significant are the differences?  
+    + 
+* Optional: Can image data transformation that reduces noise and data dimensionality (MNF transformation) produce better results than the original hyperspectral dataset?  
+    + 
     
 ### Back to case study
 Proceed by returning to [Discrimination of selected grass species from time series of RPAS hyperspectral imagery](../06_Krkonose_tundra_grasslands.md)
