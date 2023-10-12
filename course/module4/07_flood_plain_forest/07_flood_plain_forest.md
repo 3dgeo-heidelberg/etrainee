@@ -86,7 +86,7 @@ Most of the indices can be found in the remotes sensing [Index DataBase](https:/
 e.g. comparison of indices for estimating chlorophyll content were made by [Main et al., 2011; Croft et al., 2014; le Maire et al., 2008](#references), vegetation changes were evaluated using indices by [Mišurec et al., 2016](#references). 
 It is usually a good idea to compute as many indices as feasible to discover the optimal correlation. In this case, we created a script in R to compute thirty indices based on spectroradiometer data 
 and to construct simple linear regressions between indices and laboratory chlorophyll content, respectively SPAD values (`Code 1`). 
-To begin, run the script for data from the entire season 2019 (shown in `Code 1`, `script_FloodplainForest_indices_regressions.R`) and then for data from individual months in 2019. 
+To begin, run the script for data from the entire season 2019 (shown in `Code 1`, <a href=script_FloodplainForest_indices_regressions.R download>download</a>) and then for data from individual months in 2019. 
 The results are shown in *Figure 4*. The majority of the models were statistically significant, with more non-significant models discovered only in April (with only 36 samples). 
 Based on the data from April, it can also be seen that the coefficients of determination are extremely low, particularly for regression of indices and laboratory chlorophyll content. 
 For SPAD values, slightly better results were achieved, which could be attributed to the method of measuring chlorophyll content by SPAD-502. 

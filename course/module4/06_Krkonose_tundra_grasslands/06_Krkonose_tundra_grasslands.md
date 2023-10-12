@@ -49,7 +49,8 @@ We will use ([module4/case_study_discrimination_grass_species]()):
 * Hyperspectral image data acquired by the Headwall Nano-Hyperspec® camera fastened on the DJI Matrice 600 Pro drone on June 16 and August 11 2020 (*Figure 2*), with ground sampling distance of 9 cm and spectral resolution of 54 bands (resampled from 269 bands to reduce correlation in neighboring bands):  
             `BL_202006.tif (data from June; 54 bands, for visualization in true colors use bands R-21/G-13/B-7)`  
             `BL_202008.tif (data from August; 54 bands, for visualization in true colors use bands R-21/G-13/B-7)`  
-
+            `MNF_08_10.tif (MNF tranformed image from August; first 10 bands)` 
+              
 * Field reference dataset (*Figure 3*) collected by botanists (in 2019 and 2020) divided between training data (polygons) and validation data (points). For an explanation of how the reference dataset was collected and divided between training and validation data, see [Kupková et al. (2023)](#references):  
             `train_polygons.zip (training data)`  
             `valid_points.zip (validation data)`
@@ -81,26 +82,26 @@ The classification scheme (*Figure 4*) includes four categories of dominant gras
 
 ## Methodology  
 ### 1. Random forest classification in R
-For RF classification [(Belgiu and Drăgut, 2016; Breiman, 2001)](#References) in R software, we will use the ‘randomForest’ package [(Liaw and Wiener, 2002)](#References). 
+For RF classification [(Belgiu and Drăgut, 2016; Breiman, 2001)](#references) in R software, we will use the ‘randomForest’ package [(Liaw and Wiener, 2002)](#references). 
 Random Forest represents one of the increasingly used machine learning methods. 
 This classifier creates a specified number of decision trees (Ntree parameter) from the training data to determine the class membership. 
 Each such tree is built for randomly selected training data, with decision rules formed by a random subset of features (feature variables) of a specified size (the Mtry parameter). 
 The resulting class of each pixel in the image is then determined by the voting result of each decision tree.
 
-This classifier has the advantage of reduced sensitivity to noise in the data as well as high accuracy when dealing with voluminous data [(Belgiu and Drăguţ, 2016)](#References).
+This classifier has the advantage of reduced sensitivity to noise in the data as well as high accuracy when dealing with voluminous data [(Belgiu and Drăguţ, 2016)](#references).
 
 In our study, we used various combinations of two input parameters to test the RF classifier: the number of trees (`ntree`) and the number of input variables (features) randomly sampled at each split (`mtry`).
 The best results were achieved for the `ntree` value of 1000.
 The tests performed on `mtry` values showed that the default `mtry` value was sufficient.
 
-Besides the spectral features (retrieved from the original/transformed bands), we will also use standard textural features (mean texture, variance, homogeneity, contrast, dissimilarity, entropy, second moment) [(Haralick et al., 1973)](#References) calculated by using the Gray-Level-Co-Occurrence Matrix (GLCM) in the ‘glcm’ R package [(Zvoleff, 2020)](#References) with a window size of 3 x 3 pixels and default parameter settings. 
+Besides the spectral features (retrieved from the original/transformed bands), we will also use standard textural features (mean texture, variance, homogeneity, contrast, dissimilarity, entropy, second moment) [(Haralick et al., 1973)](#references) calculated by using the Gray-Level-Co-Occurrence Matrix (GLCM) in the ‘glcm’ R package [(Zvoleff, 2020)](#references) with a window size of 3 x 3 pixels and default parameter settings. 
 These variables were selected based on the values of the Importance score. 
 The Importance score (see an example in Appendix 1) can be generated as one of the outputs from RF classifications and shows the importance of feature variables. 
 Features with high values for this score are generally regarded as more important.
 
-Use the provided code in R ([module4/case_study_discrimination_grass_species/06_Krkonose_tundra_grassland.R]()), which can be seen below, to classify the monotemporal hyperspectral datasets from June `BL_202006.tif` and August `BL_202008.tif` 2020, multitemporal composite, and MNF transformed image.  
+Use the provided <a href=06_Krkonose_tundra_grasslands.R download>code in R</a>, which can be seen below, to classify the monotemporal hyperspectral datasets from June `BL_202006.tif` and August `BL_202008.tif` 2020, multitemporal composite, and MNF transformed image.  
 The script is self-explanatory, with comments and instructions following `#`. Don't forget to set the working directory and adapt the input data paths according to your data structure. 
-Be aware that the computation is time-consuming. Thus, example result classification rasters will also be provided. 
+Be aware that the computation is time-consuming. Thus, example result classification rasters are also be provided with the data. 
 ```
 # =============================================================================
 # Import libraries
@@ -229,6 +230,16 @@ Assessment should be elaborated in the GIS environment (QGIS). Use the provided 
 to compute the accuracy scores. Select the classified raster to be evaluated, and compare the classification output with class values at validation samples. 
 Compute the [confusion matrix](../../module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.md#accuracy-metrics) and derive the overall accuracy, precision, recall, and F1-score. 
 
+| Class/Species | Number |
+| :---: | :---: |
+| afs | 1 |
+| cv | 2 |
+| cxbig | 3 |
+| desch | 4 |
+| mol | 5 |
+| nard | 6 |
+| smrk | 7 |
+
 ## Tasks  
 1. Use the provided R script to classify:   
     - image from June 2020
@@ -246,6 +257,7 @@ Compute the [confusion matrix](../../module1/06_reference_data_validation_accura
 We want to thank the project “Development of methods for monitoring of the Krkonoše Mts. tundra vegetation changes using multispectral, hyperspectral and LIDAR sensors from UAV” supported by the European fund of regional development and European fund for projects in environmental protection.
 
 ## References
+
 Kupková, L., Červená,L., Potůčková, M., Lysák, J., Roubalová, M., Hrázský, Z., Březina, S., Epstein, H.E., Müllerová, J. 2023. Towards reliable monitoring of grass species in nature conservation: Evaluation of the potential of UAV and PlanetScope multi-temporal data in the Central European tundra, Remote Sensing of Environment, 294, 113645. ISSN 0034-4257. [10.1016/j.rse.2023.113645](https://doi.org/10.1016/j.rse.2023.113645). 
 
 Belgiu, M. and Dragut, L. 2016. Random Forest in Remote Sensing: A Review of Applications and Future Directions. ISPRS Journal of Photogrammetry and Remote Sensing, 114, 24-31.
