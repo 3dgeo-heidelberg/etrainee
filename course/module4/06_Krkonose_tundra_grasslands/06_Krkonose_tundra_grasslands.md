@@ -98,7 +98,7 @@ These variables were selected based on the values of the Importance score.
 The Importance score (see an example in Appendix 1) can be generated as one of the outputs from RF classifications and shows the importance of feature variables. 
 Features with high values for this score are generally regarded as more important.
 
-Use the provided code in R ([module4/case_study_discrimination_grass_species/06_Krkonose_tundra_grassland.R]()), which can be seen below, to classify the monotemporal hyperspectral datasets from June `BL_202006.tif` and August `BL_202008.tif` 2020, multitemporal composite, and MNF transformed image.  
+Use the provided <a href=06_Krkonose_tundra_grasslands.R download>code in R</a>, which can be seen below, to classify the monotemporal hyperspectral datasets from June `BL_202006.tif` and August `BL_202008.tif` 2020, multitemporal composite, and MNF transformed image.  
 The script is self-explanatory, with comments and instructions following `#`. Don't forget to set the working directory and adapt the input data paths according to your data structure. 
 Be aware that the computation is time-consuming. Thus, example result classification rasters will also be provided. 
 ```
