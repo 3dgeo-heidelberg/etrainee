@@ -1,7 +1,17 @@
+---
+title: "Use case: Vegetation disturbance detection in Polish-Slovak Tatra Mountains"
+description:
+dateCreated:
+authors: Adriana Marcinkowska-Ochtyra
+contributors: 
+estimatedTime:
+output: 
+  github_document:
+    pandoc_args: "--wrap=none"
+---
+
 Use case: Vegetation disturbance detection in Polish-Slovak Tatra Mountains
 ================
-
-# Use case: Vegetation disturbance detection in Polish-Slovak Tatra Mountains
 
 This use case is part of the [AveReS project](http://geoinformatics.uw.edu.pl/averes/), lead by researchers at University of Warsaw and part of Adrian Ochtyra PhD thesis.
 

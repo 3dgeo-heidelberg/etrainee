@@ -1,3 +1,15 @@
+---
+title: "Principles of multispectral imaging - Exercise"
+description: "This is the exercise in the first theme within the Satellite Multispectral Images Time Series Analysis module."
+dateCreated: 2023-06-26
+authors: "Adrian Ochtyra, Adriana Marcinkowska-Ochtyra"
+contributors:
+estimatedTime: "1.5 hours"
+output: 
+  github_document:
+    pandoc_args: "--wrap=none"
+---
+
 Principles of multispectral imaging - Exercise
 ================
 
@@ -50,6 +62,14 @@ In the last part we will use GIS project prepared in part 2. A point vector laye
 By clicking on the **image below** you will be taken to the video on image interpretation on YouTube:
 
 [![Data collection video on YouTube](media_exercise/E-TRAINEE_Video_M2_part3.jpg)](https://www.youtube.com/watch?v=7dxdM7i1Z3E&list=PLyrFi-gvJfnt5qeGNkKxJGCWqWyYItOE6&index=4)
+
+<b><u>TASK</u></b>
+
+After completing the exercise you have knowledge of how different land cover classes and the effects of disturbances look with different data.
+
+To expand and consolidate your acquired skills, create a new point vector layer and try to independently indicate two new locations for each of the previously discussed examples. In the layer create the attributes with name of each imagery used in exercise and mark if given land cover class or disturbance effect is possible to recognize on given imagery. Of course remember about the relationship between the scale of phenomena/object and spatial resolution of data. Try to use various RGB composites which may be better for distinguishing classes for each other.
+
+Good luck !
 
 ## Data and software credits
 

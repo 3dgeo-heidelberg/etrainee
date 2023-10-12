@@ -710,6 +710,8 @@ Export.image.toDrive({
 <i>Export image to your Google Drive.</i>
 </center>
 
+[Here you can find the link to the whole code presented in Pipeline 1](https://code.earthengine.google.com/9685877055f3c8230d17eb8142be1661)
+
 ## Processing pipeline 2
 
 The goal of this processing pipeline is to generate yearly Landsat cloud-free composites for the period of 1984-2022, specifically for the Tatras area. Outputs of this processing pipeline will be used in the exercise in [Theme 5](../05_vegetation_monitoring/05_vegetation_monitoring_exercise.md) and in [Case Study 3](../08_cs_disturbance_detection/08_cs_disturbance_detection.md).
@@ -1087,6 +1089,27 @@ print(yearCompCol);
 <img src="media_exercise/pipeline2/composite_ic.jpg" title="Yearly composite image collection" alt="Yearly composite image collection" width="600"/>
 
 <i>Yearly composite image collection.</i>
+</center>
+
+Display the first (1984) image from the collection to see the results.
+
+``` javascript
+var ex = yearCompCol.first();
+
+var rgbVis = {
+  bands: ['Red', 'Green', 'Blue'],
+  min: 0,
+  max: 0.2
+};
+
+Map.addLayer(ex, rgbVis, "Example Cloud Free Composite");
+```
+
+<center>
+
+<img src="media_exercise/pipeline2/example_cf.jpg" title="Example of cloud free image" alt="Example of cloud free image" width="600"/>
+
+<i>Example of cloud free image.</i>
 </center>
 
 ### Tassed Cap bands and spectral indices
@@ -1630,6 +1653,8 @@ print(colIndices);
 
 <br>
 
+[Here you can find the link to the whole code presented in Pipeline 2](https://code.earthengine.google.com/090540597dffcc49341ad467611aeddd)
+
 ## Processing pipeline 3
 
 The purpose of this pipeline is to obtain a multitemporal Sentinel-2 classification dataset for the selected region of Karkonosze Mountains (above 1200 m) from vegetative period in 2018 and 2019. The results of this processing pipeline will be utilized in the [Case Study 1](../06_cs_tundra_grasslands/06_cs_tundra_grasslands.md).
@@ -1990,4 +2015,6 @@ Export the image to finalize this pipeline.
       scale: 10
     });
 
-### This is the end of this exercise. Proceed with other Themes and exercises. Good luck!
+[Here you can find the link to the whole code presented in Pipeline 3](https://code.earthengine.google.com/9e903fca4a626dde2ce300f86f50c6d7)
+
+### This is the end of this exercise. Proceed with other Themes and Exercises. Good luck!

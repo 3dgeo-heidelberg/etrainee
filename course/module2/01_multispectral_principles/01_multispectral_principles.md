@@ -1,3 +1,15 @@
+---
+title: "Principles of multispectral imaging"
+description: This is the first theme within the Satellite Multispectral Images Time Series Analysis module.
+dateCreated: '2021-04-06'
+authors: Adriana Marcinkowska-Ochtyra, Krzysztof Gryguc
+contributors: Adrian Ochtyra
+estimatedTime: "1.5 hours"
+output: 
+  github_document:
+    pandoc_args: "--wrap=none"
+---
+
 Principles of multispectral imaging
 ================
 

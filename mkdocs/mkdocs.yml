@@ -113,6 +113,7 @@ nav:
     - 'Python': 'software/software_python.md'
     - 'QGIS': 'software/software_qgis.md'
     - 'R': 'software/software_r_language.md'
+    - 'Google Earth Engine': 'software/software_gee.md'
 - 'Use Cases and Data':
     - 'Multitemporal 3D point clouds of an active rock glacier' : 'data_usecases/usecase_rockglacier_ahk.md'
     - '4D point clouds of a sandy beach' : 'data_usecases/usecase_beach_kijkduin.md'
