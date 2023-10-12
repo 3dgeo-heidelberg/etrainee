@@ -270,8 +270,8 @@ Haralick, R. M., Shanmugam, K., Dinstein, I. 1973. Textural Features for Image C
 Zvoleff, A. 2016. GLCM: calculate textures from grey-level co-occurrence matrices (GLCMs). [github.com/azvoleff/glcm](https://github.com/azvoleff/glcm).
 
 
-### Exercise solution 
-Example exercise solution will be added.
+### Case study results 
+Proceed to case study [example results](solution/06_Krkonose_tundra_grasslands_solution.md)
 
 ### Next unit
 Proceed with a case study on [seasonal dynamics of flood-plain forests](../07_flood_plain_forest/07_flood_plain_forest.md)
