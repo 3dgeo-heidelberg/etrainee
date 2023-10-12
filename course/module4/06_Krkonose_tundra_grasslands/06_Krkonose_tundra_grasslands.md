@@ -226,9 +226,7 @@ This can be done in the QGIS software package or in R with the following code sn
 The feature importance output file `*txt`, column `MeanDecreaseAccuracy`, shows the importance of each band in the classification process.  
 
 ### 2. Accuracy assessment
-Assessment should be elaborated in the GIS environment (QGIS). Use the provided validation points, `valid_points.zip`, 
-to compute the accuracy scores. Select the classified raster to be evaluated, and compare the classification output with class values at validation samples. 
-Compute the [confusion matrix](../../module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.md#accuracy-metrics) and derive the overall accuracy, precision, recall, and F1-score. 
+Assessment should be elaborated in the GIS environment (AcaTaMa plugin or Semi-Automatic Classification plugin for QGIS). Use the provided validation points, `valid_points.zip`, to compute the accuracy scores. Select the classified raster to be evaluated, and compare the classification output with class values at validation samples. Compute the [confusion matrix](../../module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.md#accuracy-metrics) and derive the overall accuracy, precision, recall, and F1-score. 
 
 | Class/Species | Number |
 | :---: | :---: |
@@ -270,8 +268,8 @@ Haralick, R. M., Shanmugam, K., Dinstein, I. 1973. Textural Features for Image C
 Zvoleff, A. 2016. GLCM: calculate textures from grey-level co-occurrence matrices (GLCMs). [github.com/azvoleff/glcm](https://github.com/azvoleff/glcm).
 
 
-### Exercise solution 
-Example exercise solution will be added.
+### Case study results 
+Proceed to case study [example results](solution/06_Krkonose_tundra_grasslands_solution.md)
 
 ### Next unit
 Proceed with a case study on [seasonal dynamics of flood-plain forests](../07_flood_plain_forest/07_flood_plain_forest.md)
