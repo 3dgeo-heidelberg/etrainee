@@ -231,6 +231,7 @@ to compute the accuracy scores. Select the classified raster to be evaluated, an
 Compute the [confusion matrix](../../module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.md#accuracy-metrics) and derive the overall accuracy, precision, recall, and F1-score. 
 
 | Class/Species | Number |
+| :---: | :---: |
 | afs | 1 |
 | cv | 2 |
 | cxbig | 3 |
