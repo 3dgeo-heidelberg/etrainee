@@ -65,7 +65,7 @@ As it is open source [code](https://rdrr.io/cran/varSel/src/R/JMdist.R), you can
 <img src="media/formulas.jpg" title="Formulas for Mahalanobis, Bhattacharyya, and Jeffries-Matusita distances." alt="Figure 3" width="400"/>
 </p>
 
-*Figure 3. Formulas for Mahalanobis, Bhattacharyya, and Jeffries-Matusita distances. are means and C are covariance matrices. [(Richards, 2013; Schowengerdt, 2007)](#references).*
+*Figure 3. Formulas for Mahalanobis, Bhattacharyya, and Jeffries-Matusita distances. μ are means and C are covariance matrices. [(Richards, 2013; Schowengerdt, 2007)](#references).*
 ```
 JMdist2 <- function(g,X){
 
