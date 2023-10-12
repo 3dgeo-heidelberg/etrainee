@@ -9,12 +9,12 @@ Using Conda, a Python environment containing all required packages (modules) can
 
 ### Required packages (modules)
 Different Python packages (modules) are required for in different modules/themes of this course. Find the list of required packages in the `.yml` files. You can download the yaml files for the respective modules here:  
-Module 1: <a href=../assets/python_envs/etrainee_m1.yml download>etrainee_m1.yml</a>.  
-Module 3: <a href=../assets/python_envs/etrainee_m3.yml download>etrainee_m3.yml</a>.  
-Module 4: <a href=../assets/python_envs/etrainee_m4.yml download>etrainee_m4.yml</a>.  
+Module 1: <a href=../assets/python_envs/etrainee_m1.yml download>etrainee_m1.yml</a>    
+Module 3: <a href=../assets/python_envs/etrainee_m3.yml download>etrainee_m3.yml</a>    
+Module 4: <a href=../assets/python_envs/etrainee_m4.yml download>etrainee_m4.yml</a>    
 
 ### Creating the etrainee Python environment with Conda
-A recommended practice to set up Python for this course, is to create a [Conda environment](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf) with all required modules (packages). If you are using Conda, you may use the following procedure to create an `etrainee` Python environment for each module:
+A recommended practice to set up Python for this course, is to create a [Conda environment](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf) with all required modules (packages). If you are using Conda, you may use the following procedure to create an `etrainee_mX` Python environment for each module:
 
 ```
 conda env create -f etrainee_m1.yml
