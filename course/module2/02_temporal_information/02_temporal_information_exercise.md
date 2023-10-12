@@ -1,3 +1,15 @@
+---
+title: "Temporal information in satellite data - Exercise"
+description: This is the exercise in the second theme within the Satellite Multispectral Images Time Series Analysis module.
+dateCreated: '2021-04-06'
+authors: Krzysztof Gryguc, Adrian Ochtyra
+contributors: Adriana Marcinkowska-Ochtyra
+estimatedTime: "1.5 hours"
+output: 
+  github_document:
+    pandoc_args: "--wrap=none"
+---
+
 Temporal information in satellite data - Exercise
 ================
 
@@ -16,7 +28,7 @@ For this exercise you will need the following software, data and tools:
 - Software
   - R and RStudio. You can access environment setup tutorial for the whole Module 2 here: [R environment setup tutorial](../../software/software_r_language.md). After following the setup guide you should have all the necessary packages installed.
 - Data
-  - Downloaded data provided in the [folder here](https://drive.google.com/drive/folders/1fw51ksXZv-uF7Xlq-hR8-_Mek9cg4tJX?usp=sharing).
+  - Downloaded data provided through [Zenodo](https://zenodo.org/record/8402925)
 
 Follow the suggested working environment setup in order for the provided relative paths to work properly.
 
@@ -988,3 +1000,821 @@ Landsat 5, 7 and 8 imagery courtesy of [the U.S. Geological Survey](https://www.
 - Pebesma, E., & Bivand, R. (2023). *Spatial Data Science: With Applications in R*. Chapman and Hall/CRC. <https://doi.org/10.1201/9780429459016>
 - Pebesma, E., 2018. *Simple Features for R: Standardized Support for Spatial Vector Data*. The R Journal 10 (1), 439-446, <https://doi.org/10.32614/RJ-2018-009>
 - Wickham H, François R, Henry L, Müller K, Vaughan D (2023). *dplyr: A Grammar of Data Manipulation*. R package version 1.1.2, <https://CRAN.R-project.org/package=dplyr>
+
+## Source code
+
+<details>
+<summary>
+You can find the entire code used in this exercise here
+</summary>
+
+``` r
+# raster processing
+library(terra)
+
+# vector and attributes handling
+library(sf)
+
+# tabular data manipulation
+library(dplyr)
+
+
+# Multiband raster containing 30 green bands from 1984-2016 period
+green <- rast("theme_2_exercise/data_exercise/T2_green_stack.tif") 
+
+# Multiband raster containing 30 red bands from 1984-2016 period
+red <- rast("theme_2_exercise/data_exercise/T2_red_stack.tif") 
+
+# Multiband raster containing 30 NIR bands from 1984-2016 period
+nir <- rast("theme_2_exercise/data_exercise/T2_nir_stack.tif") 
+
+
+e <- c(400000, 460000, 5410000, 5415000)
+plot(nir, 1:6, 
+     col = colorRampPalette(c("black", "white"))(255), 
+     range = c(0, 10000), 
+     mar = NA,
+     plg = list(ext = e, loc = "bottom"))
+
+
+# vector of dates assigned to subsequent raster layers in each band brick
+years <- as.Date(c("1984-07-31", "1985-08-03","1986-08-22", "1987-07-08", "1988-08-18", "1989-07-04", "1991-09-05", "1992-07-20", 
+                   "1993-08-16", "1994-08-28", "1995-07-21", "1996-08-24", "1997-09-12", "1999-08-09", "2000-08-20", "2001-08-15", "2002-06-15", 
+                   "2003-08-12", "2005-09-02", "2006-07-19", "2007-08-23", "2008-09-02", "2009-08-21", "2010-08-23", "2011-08-27", 
+                   "2012-08-28", "2013-09-08","2014-09-04", "2015-07-12", "2016-08-08")) 
+
+
+# set of 13 reference points with attribute table
+points <- st_read("theme_2_exercise/data_exercise/T2_tatra_mountains_change_points.shp") 
+
+
+# indicate the index (row) of point as read into the environment
+point_number <- 1 
+
+# retrieve coordinates from point
+point_cords <- st_coordinates(points)[point_number, ]
+
+# retrieve image column, where the point lies
+row <- colFromX(green, point_cords[1]) 
+
+# rerieve image row, where the point lies
+col <- rowFromY(green, point_cords[2]) 
+
+# set up size of the image chip
+window_size <- 39 
+
+# half of the window size
+half_widow_size <- floor(window_size / 2) 
+
+# image columns, which will we used for image chip visualisation
+col_cords <- (col - half_widow_size) : (col + half_widow_size) 
+
+# image rows, which will we used for image chip visualisation
+row_cords <- (row - half_widow_size) : (row + half_widow_size) 
+
+
+
+# set up output name of the file
+output_name <- "theme_2_exercise/results/point_1_chips_example.png" 
+
+# initialize device, plotting area 1920x1080 px, text size 16 points
+png(filename = output_name, 
+    width = 1920, 
+    height = 800, 
+    pointsize = 16) 
+
+# plotting area set up as a 3x10 matrix
+layout(matrix(seq(1,30),3, 10, byrow = TRUE), heights = c(1,1,1)) 
+
+
+
+# enable reading pixel values from multiband rasters
+readStart(green)
+readStart(red)
+readStart(nir)
+
+# loop 30 times - once for each raster layer in the brick
+for (j in seq(30)){ 
+  
+  
+  
+  # prepare image slice from the appropriate green raster using previously prepared rows/columns
+  o_b1 <- rast(matrix(readValues(green[[j]], 
+                                 col = row_cords[1], 
+                                 nrows = window_size, 
+                                 row = col_cords[1],
+                                 ncols = window_size),
+                      nrow = window_size, 
+                      ncol = window_size, 
+                      byrow = TRUE)) 
+  
+  # prepare image slice from the appropriate red raster using previously prepared rows/columns
+  o_b2 <- rast(matrix(readValues(red[[j]], 
+                                 col = row_cords[1], 
+                                 nrows = window_size, 
+                                 row = col_cords[1],
+                                 ncols = window_size),
+                      nrow = window_size, 
+                      ncol = window_size, 
+                      byrow = TRUE))
+  
+  # prepare image slice from the appropriate green raster using previously prepared rows/columns
+  o_b3 <- rast(matrix(readValues(nir[[j]], 
+                                 col = row_cords[1], 
+                                 nrows = window_size, 
+                                 row = col_cords[1],
+                                 ncols = window_size),
+                      nrow = window_size, 
+                      ncol = window_size, 
+                      byrow = TRUE))
+  
+  
+  
+  # trim histogram of green band for harmonized viewing of the whole set
+  b_min <- 10
+  b_max <- 1000
+  o_b1 <- (o_b1 - b_min) / (b_max - b_min) * 255 
+  
+  # trim histogram of red band for harmonized viewing of the whole set
+  b_min <- 10
+  b_max <- 1000
+  o_b2 <- (o_b2 - b_min) / (b_max - b_min) * 255 
+  
+  # trim histogram of NIR band for harmonized viewing of the whole set
+  b_min <- 10
+  b_max <- 4000
+  o_b3 <- (o_b3 - b_min) / (b_max - b_min) * 255 
+  
+  # convert any negative values to 0 for better viewing
+  o_b1[o_b1 < 0] <- 0 
+  o_b2[o_b2 < 0] <- 0 
+  o_b3[o_b3 < 0] <- 0
+  
+  # convert any values above 255 to 0
+  o_b1[o_b1 > 255] <- 255
+  o_b2[o_b2 > 255] <- 255 
+  o_b3[o_b3 > 255] <- 255
+  
+  # set up margins around each of 30 plotting blocks
+  par(mar = c(0,1,1,1)) 
+  
+  # plot RGB chip in the appropriate place in the layout 
+  plotRGB(c(o_b3, o_b2, o_b1), 
+          r = 1, g = 2, b = 3,
+          mar = 1) 
+  
+  # draw the location of reference point 
+  points(20, 19.4, pch = ".", col = c("white"))
+  symbols(x = 19.6, y = 19.4,  squares = 3, inches = F, add = T, fg = "yellow", lwd = 0.01)
+  
+  # show date of the image acquisition above the RGB chip
+  title(years[j], line = -2) 
+  
+}
+
+# close files - we read necessary values
+readStop(green)
+readStop(red)
+readStop(nir)
+
+# turn off the device - save .png image to working directory
+dev.off() 
+
+
+
+
+# set up output name of the file
+output_name = "theme_2_exercise/results/point_1_trajectory_example.png" 
+
+png(filename = output_name, width = 1920, height = 1080, pointsize = 16)
+
+# plotting area set up as a 4x1 matrix, 
+# which will present as 3 long spanning over the whole plotting area
+layout(matrix(seq(1, 4), 4, 1, byrow = TRUE), 
+       heights = c(0.25, 1.25, 1.25, 1.25)) 
+
+# the first element of the plot - title; we begin by setting margins of part of the plot 
+par(mar = c(0, 0, 0, 0)) 
+# new element in the plot, in this case title
+plot.new() 
+
+# title will contain point number and change agent retrieved from attribute table
+text(0.5, 0.5, 
+     paste0("Spectral trajectories. Point ", point_number, ". Change agent: ", points$chng_agnt[point_number], "."), 
+     cex = 1.4, 
+     font = 1) 
+
+# new margins to use for the rest of the plot
+par(mar = c(4, 4, 1, 3)) 
+
+# Add NDVI trajectory
+# in this fragment we retrieve spectral index values from attribute table of vector file
+ndvi_vals <- points[point_number, ] %>% 
+  # we use pipe operator to perform several actions; first we pick the desired point from the vector file
+  st_drop_geometry() %>% 
+  # then we extract just the attribute table and select only spectral index values
+  select(NDVI_1984:NDVI_2016) %>% 
+  # in the end we create a vector of values to plot 
+  unlist(., use.names = FALSE)
+
+
+# calculate minimum value - 5%
+min_val <- min(ndvi_vals, na.rm = TRUE) - 0.05 * abs(min(ndvi_vals, na.rm = TRUE))
+# calculate maximum value + 5%
+max_val <- max(ndvi_vals, na.rm = TRUE) + 0.05 * abs(max(ndvi_vals, na.rm = TRUE))
+dynamic_range <- c(min_val, max_val)
+# calculate where to plot ablines
+abline_seq <- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+
+# we initiate a point-line plot of index values
+plot(ndvi_vals, 
+     type = "b",
+     main = "NDVI trajectory",
+     lwd = 2, 
+     xlab = "", 
+     ylab = "NDVI",
+     ylim = dynamic_range, 
+     xaxt = "n", 
+     yaxt = "n") 
+
+# add y-axis labels on the right side of the plot by 0.1
+axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+
+# add y-axis labels on the left side of the plot
+axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+
+# add tics on x-axis
+axis(1, at = 1:30, labels = FALSE) 
+
+# Determine the range of y values
+y_range <- diff(dynamic_range)
+# Choose a percentage of the range (e.g., 5%) as a buffer
+buffer_percent <- 0.1
+# Calculate the position for the text labels
+text_y_position <- min_val - buffer_percent * y_range
+
+# text with tilted x-axis labels
+text(x = 1:30, 
+     y = text_y_position, 
+     labels = years, 
+     srt = 35, 
+     adj = 1, 
+     xpd = TRUE, 
+     cex = 1, 
+     font = 1) 
+
+# we can also add some lines in the plot to ease the reading
+sapply(abline_seq, function(h) abline(h = h, lty = 3))
+
+
+# now we repeat the above steps to plot the remaining two trajectories
+
+# Add NDMI trajectory
+ndmi_vals <- points[point_number, ] %>%
+  st_drop_geometry() %>%
+  select(NDMI_1984:NDMI_2016) %>%
+  unlist(., use.names = FALSE)
+
+
+min_val <- min(ndmi_vals, na.rm = TRUE) - 0.05 * abs(min(ndmi_vals, na.rm = TRUE))
+max_val <- max(ndmi_vals, na.rm = TRUE) + 0.05 * abs(max(ndmi_vals, na.rm = TRUE))
+dynamic_range <- c(min_val, max_val)
+abline_seq <- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+
+plot(ndmi_vals, 
+     type = "b",
+     main = "NDMI trajectory",
+     lwd = 2, 
+     xlab = "", 
+     ylab = "NDMI",
+     ylim = dynamic_range, 
+     xaxt = "n", 
+     yaxt = "n") 
+
+axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+axis(1, at = 1:30, labels = FALSE)
+
+y_range <- diff(dynamic_range)
+buffer_percent <- 0.1
+text_y_position <- min_val - buffer_percent * y_range
+
+text(x = 1:30, 
+     y = text_y_position, 
+     labels = years, 
+     srt = 35, 
+     adj = 1, 
+     xpd = TRUE, 
+     cex = 1, 
+     font = 1) 
+
+sapply(abline_seq, function(h) abline(h = h, lty = 3))
+
+
+# Add NBR trajectory
+nbr_vals <- points[point_number, ] %>%
+  st_drop_geometry() %>%
+  select(NBR_1984:NBR_2016) %>%
+  unlist(., use.names = FALSE)
+
+min_val <- min(nbr_vals, na.rm = TRUE) - 0.05 * abs(min(nbr_vals, na.rm = TRUE))
+max_val <- max(nbr_vals, na.rm = TRUE) + 0.05 * abs(max(nbr_vals, na.rm = TRUE))
+dynamic_range <- c(min_val, max_val)
+abline_seq <- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+
+plot(nbr_vals, 
+     type = "b",
+     main = "NBR trajectory",
+     lwd = 2, 
+     xlab = "", 
+     ylab = "NBR",
+     ylim = dynamic_range, 
+     xaxt = "n", 
+     yaxt = "n") 
+axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+axis(1, at = 1:30, labels = FALSE) 
+y_range <- diff(dynamic_range)
+buffer_percent <- 0.1
+text_y_position <- min_val - buffer_percent * y_range
+
+text(x = 1:30, 
+     y = text_y_position, 
+     labels = years, 
+     srt = 35, 
+     adj = 1, 
+     xpd = TRUE, 
+     cex = 1, 
+     font = 1) 
+
+
+sapply(abline_seq, function(h) abline(h = h, lty = 3))
+
+# turn off the device - save .png image to working directory
+dev.off() 
+
+
+
+# enable reading pixel values from multiband rasters
+readStart(green)
+readStart(red)
+readStart(nir)
+
+# set up window size for all elements which will come out of the loop
+window_size <- 39 
+
+# the loop will last till all of the first 9 points in the layer are used
+for (i in seq(1, 9)){ 
+  
+  
+  point_cords <- st_coordinates(points)[i, ] 
+  row <- colFromX(green, point_cords[1])
+  col <- rowFromY(green, point_cords[2])
+  
+  half_widow_size <- floor(window_size / 2)
+  col_cords <- (col - half_widow_size) : (col + half_widow_size)
+  row_cords <- (row - half_widow_size) : (row + half_widow_size)
+  
+  # name of the file will contain information about point 
+  # number and change agent
+  output_name <- paste0("theme_2_exercise/results/Point ", i, ". ", points$chng_agnt[i], ".png") 
+  
+  png(filename = output_name, width = 1920, height = 1500, pointsize = 16)
+  
+  layout(matrix(c(rep(1, 10), seq(2, 31), rep(32, 10), rep(33, 10), rep(34, 10)),
+                7, 10, byrow = TRUE), 
+         heights = c(0.25, 1, 1, 1, 2, 2, 2)) # plot area divided into more parts to fit all of the components
+  
+  par(mar = c(0, 0, 0, 0))
+  plot.new()
+  text(0.5, 0.5, paste0("CIR chips and spectral trajectories. Point ", i, ". Change agent: ", points$chng_agnt[i], "."), cex = 1.4, font = 1)
+  
+  par(mar = c(0,0,1,0))
+  for (j in seq(30)){
+    
+    
+    o_b1 <- rast(matrix(readValues(green[[j]], 
+                                   col = row_cords[1], 
+                                   nrows = window_size, 
+                                   row = col_cords[1],
+                                   ncols = window_size),
+                        nrow = window_size, 
+                        ncol = window_size, 
+                        byrow = TRUE))  
+    
+    
+    o_b2 <- rast(matrix(readValues(red[[j]], 
+                                   col = row_cords[1], 
+                                   nrows = window_size, 
+                                   row = col_cords[1],
+                                   ncols = window_size),
+                        nrow = window_size, 
+                        ncol = window_size, 
+                        byrow = TRUE))
+    
+    
+    o_b3 <- rast(matrix(readValues(nir[[j]], 
+                                   col = row_cords[1], 
+                                   nrows = window_size, 
+                                   row = col_cords[1],
+                                   ncols = window_size),
+                        nrow = window_size, 
+                        ncol = window_size, 
+                        byrow = TRUE))
+    
+    
+    b_min <- 10
+    b_max <- 1000
+    o_b1 <- (o_b1 - b_min) / (b_max - b_min) * 255 
+    
+    
+    b_min <- 10
+    b_max <- 1000
+    o_b2 <- (o_b2 - b_min) / (b_max - b_min) * 255 
+    
+    
+    b_min <- 10
+    b_max <- 4000
+    o_b3 <- (o_b3 - b_min) / (b_max - b_min) * 255 
+    
+    
+    o_b1[o_b1 < 0] <- 0 
+    o_b2[o_b2 < 0] <- 0 
+    o_b3[o_b3 < 0] <- 0
+    
+    o_b1[o_b1 > 255] <- 255
+    o_b2[o_b2 > 255] <- 255 
+    o_b3[o_b3 > 255] <- 255
+    
+    
+    par(mar = c(0,1,1,1)) 
+    
+    
+    plotRGB(c(o_b3, o_b2, o_b1), 
+            r = 1, g = 2, b = 3,
+            mar = 1) 
+    
+    
+    points(20, 19.4, pch = ".", col = c("white"))
+    symbols(x = 19.6, y = 19.4,  squares = 3.2, inches = F, add = T, fg = "yellow", lwd = 0.01)
+    
+    # show date of the image acquisition above the RGB chip
+    title(years[j], line = 0.2) 
+    
+  }
+  
+  
+  par(mar = c(4, 4, 1, 3))
+  
+  ndvi_vals <- points[i, ] %>% 
+    st_drop_geometry() %>% 
+    select(NDVI_1984:NDVI_2016) %>% 
+    unlist(., use.names = FALSE)
+  
+  # calculate minimum value - 5%
+  min_val <- min(ndvi_vals, na.rm = TRUE) - 0.05 * abs(min(ndvi_vals, na.rm = TRUE))
+  # calculate maximum value + 5%
+  max_val <- max(ndvi_vals, na.rm = TRUE) + 0.05 * abs(max(ndvi_vals, na.rm = TRUE))
+  dynamic_range <- c(min_val, max_val)
+  # calculate where to plot ablines
+  abline_seq <- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+  
+  plot(ndvi_vals, 
+       type = "b",
+       main = "NDVI trajectory",
+       lwd = 2, 
+       xlab = "", 
+       ylab = "NDVI",
+       ylim = dynamic_range, 
+       xaxt = "n", 
+       yaxt = "n") 
+  
+  axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(1, at = 1:30, labels = FALSE) 
+  
+  # Determine the range of y values
+  y_range <- diff(dynamic_range)
+  # Choose a percentage of the range (e.g., 5%) as a buffer
+  buffer_percent <- 0.1
+  # Calculate the position for the text labels
+  text_y_position <- min_val - buffer_percent * y_range
+  
+  text(x = 1:30, 
+       y = text_y_position, 
+       labels = years, 
+       srt = 35, 
+       adj = 1, 
+       xpd = TRUE, 
+       cex = 1, 
+       font = 1) 
+  
+  sapply(abline_seq, function(h) abline(h = h, lty = 3))
+  
+  
+  ndmi_vals <- points[i, ] %>%
+    st_drop_geometry() %>%
+    select(NDMI_1984:NDMI_2016) %>%
+    unlist(., use.names = FALSE)
+  
+  min_val <- min(ndmi_vals, na.rm = TRUE) - 0.05 * abs(min(ndmi_vals, na.rm = TRUE))
+  max_val <- max(ndmi_vals, na.rm = TRUE) + 0.05 * abs(max(ndmi_vals, na.rm = TRUE))
+  dynamic_range <- c(min_val, max_val)
+  
+  abline_seq <- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+  
+  plot(ndmi_vals, 
+       type = "b",
+       main = "NDMI trajectory",
+       lwd = 2, 
+       xlab = "", 
+       ylab = "NDMI",
+       ylim = dynamic_range, 
+       xaxt = "n", 
+       yaxt = "n") 
+  
+  axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(1, at = 1:30, labels = FALSE) 
+  y_range <- diff(dynamic_range)
+  buffer_percent <- 0.1
+  text_y_position <- min_val - buffer_percent * y_range
+  text(x = 1:30, y = text_y_position, 
+       labels = years, srt = 35, adj = 1, xpd = TRUE, cex = 1, font = 1) 
+  sapply(abline_seq, function(h) abline(h = h, lty = 3))
+  
+  nbr_vals <- points[i, ] %>%
+    st_drop_geometry() %>%
+    select(NBR_1984:NBR_2016) %>%
+    unlist(., use.names = FALSE)
+  
+  min_val <- min(nbr_vals, na.rm = TRUE) - 0.05 * abs(min(nbr_vals, na.rm = TRUE))
+  max_val <- max(nbr_vals, na.rm = TRUE) + 0.05 * abs(max(nbr_vals, na.rm = TRUE))
+  dynamic_range <- c(min_val, max_val)
+  abline_seq <- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+  
+  plot(nbr_vals, 
+       type = "b",
+       main = "NBR trajectory",
+       lwd = 2, 
+       xlab = "", 
+       ylab = "NBR",
+       ylim = dynamic_range, 
+       xaxt = "n", 
+       yaxt = "n") 
+  
+  axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(1, at = 1:30, labels = FALSE) 
+  y_range <- diff(dynamic_range)
+  buffer_percent <- 0.1
+  text_y_position <- min_val - buffer_percent * y_range
+  text(x = 1:30, y = text_y_position, 
+       labels = years, srt = 35, adj = 1, xpd = TRUE, cex = 1, font = 1) 
+  sapply(abline_seq, function(h) abline(h = h, lty = 3))
+  
+  dev.off() 
+  
+}
+
+# close files - we read necessary values
+readStop(green)
+readStop(red)
+readStop(nir)
+
+
+
+
+
+# enable reading pixel values from multiband rasters
+readStart(green)
+readStart(red)
+readStart(nir)
+
+# set up window size for all elements which will come out of the loop
+window_size <- 39 
+
+# the loop will last till all of the first 9 points in the layer are used
+for (i in seq(10, 13)){ 
+  
+  
+  point_cords <- st_coordinates(points)[i, ] 
+  row <- colFromX(green, point_cords[1])
+  col <- rowFromY(green, point_cords[2])
+  
+  half_widow_size <- floor(window_size / 2)
+  col_cords <- (col - half_widow_size) : (col + half_widow_size)
+  row_cords <- (row - half_widow_size) : (row + half_widow_size)
+  
+  # name of the file will contain information about point 
+  # number and change agent
+  output_name <- paste0("theme_2_exercise/results/Training point ", i, ".png") 
+  
+  png(filename = output_name, width = 1920, height = 1500, pointsize = 16)
+  
+  layout(matrix(c(rep(1, 10), seq(2, 31), rep(32, 10), rep(33, 10), rep(34, 10)),
+                7, 10, byrow = TRUE), 
+         heights = c(0.25, 1, 1, 1, 2, 2, 2)) # plot area divided into more parts to fit all of the components
+  
+  par(mar = c(0, 0, 0, 0))
+  plot.new()
+  text(0.5, 0.5, paste0("Training point ", i, "."), cex = 1.4, font = 1)
+  
+  par(mar = c(0,0,1,0))
+  for (j in seq(30)){
+    
+    
+    o_b1 <- rast(matrix(readValues(green[[j]], 
+                                   col = row_cords[1], 
+                                   nrows = window_size, 
+                                   row = col_cords[1],
+                                   ncols = window_size),
+                        nrow = window_size, 
+                        ncol = window_size, 
+                        byrow = TRUE))  
+    
+    
+    o_b2 <- rast(matrix(readValues(red[[j]], 
+                                   col = row_cords[1], 
+                                   nrows = window_size, 
+                                   row = col_cords[1],
+                                   ncols = window_size),
+                        nrow = window_size, 
+                        ncol = window_size, 
+                        byrow = TRUE))
+    
+    
+    o_b3 <- rast(matrix(readValues(nir[[j]], 
+                                   col = row_cords[1], 
+                                   nrows = window_size, 
+                                   row = col_cords[1],
+                                   ncols = window_size),
+                        nrow = window_size, 
+                        ncol = window_size, 
+                        byrow = TRUE))
+    
+    
+    b_min <- 10
+    b_max <- 1000
+    o_b1 <- (o_b1 - b_min) / (b_max - b_min) * 255 
+    
+    
+    b_min <- 10
+    b_max <- 1000
+    o_b2 <- (o_b2 - b_min) / (b_max - b_min) * 255 
+    
+    
+    b_min <- 10
+    b_max <- 4000
+    o_b3 <- (o_b3 - b_min) / (b_max - b_min) * 255 
+    
+    
+    o_b1[o_b1 < 0] <- 0 
+    o_b2[o_b2 < 0] <- 0 
+    o_b3[o_b3 < 0] <- 0
+    
+    o_b1[o_b1 > 255] <- 255
+    o_b2[o_b2 > 255] <- 255 
+    o_b3[o_b3 > 255] <- 255
+    
+    
+    par(mar = c(0,1,1,1)) 
+    
+    
+    plotRGB(c(o_b3, o_b2, o_b1), 
+            r = 1, g = 2, b = 3,
+            mar = 1) 
+    
+    
+    points(20, 19.4, pch = ".", col = c("white"))
+    symbols(x = 19.6, y = 19.4,  squares = 3.2, inches = F, add = T, fg = "yellow", lwd = 0.01)
+    
+    # show date of the image acquisition above the RGB chip
+    title(years[j], line = 0.2) 
+    
+  }
+  
+  
+  par(mar = c(4, 4, 1, 3))
+  
+  ndvi_vals <- points[i, ] %>% 
+    st_drop_geometry() %>% 
+    select(NDVI_1984:NDVI_2016) %>% 
+    unlist(., use.names = FALSE)
+  
+  # calculate minimum value - 5%
+  min_val <- min(ndvi_vals, na.rm = TRUE) - 0.05 * abs(min(ndvi_vals, na.rm = TRUE))
+  # calculate maximum value + 5%
+  max_val <- max(ndvi_vals, na.rm = TRUE) + 0.05 * abs(max(ndvi_vals, na.rm = TRUE))
+  dynamic_range <- c(min_val, max_val)
+  # calculate where to plot ablines
+  abline_seq <- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+  
+  plot(ndvi_vals, 
+       type = "b",
+       main = "NDVI trajectory",
+       lwd = 2, 
+       xlab = "", 
+       ylab = "NDVI",
+       ylim = dynamic_range, 
+       xaxt = "n", 
+       yaxt = "n") 
+  
+  axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(1, at = 1:30, labels = FALSE) 
+  
+  # Determine the range of y values
+  y_range <- diff(dynamic_range)
+  # Choose a percentage of the range (e.g., 5%) as a buffer
+  buffer_percent <- 0.1
+  # Calculate the position for the text labels
+  text_y_position <- min_val - buffer_percent * y_range
+  
+  text(x = 1:30, 
+       y = text_y_position, 
+       labels = years, 
+       srt = 35, 
+       adj = 1, 
+       xpd = TRUE, 
+       cex = 1, 
+       font = 1) 
+  
+  sapply(abline_seq, function(h) abline(h = h, lty = 3))
+  
+  
+  ndmi_vals <- points[i, ] %>%
+    st_drop_geometry() %>%
+    select(NDMI_1984:NDMI_2016) %>%
+    unlist(., use.names = FALSE)
+  
+  min_val <- min(ndmi_vals, na.rm = TRUE) - 0.05 * abs(min(ndmi_vals, na.rm = TRUE))
+  max_val <- max(ndmi_vals, na.rm = TRUE) + 0.05 * abs(max(ndmi_vals, na.rm = TRUE))
+  dynamic_range <- c(min_val, max_val)
+  
+  abline_seq <- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+  
+  plot(ndmi_vals, 
+       type = "b",
+       main = "NDMI trajectory",
+       lwd = 2, 
+       xlab = "", 
+       ylab = "NDMI",
+       ylim = dynamic_range, 
+       xaxt = "n", 
+       yaxt = "n") 
+  
+  axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(1, at = 1:30, labels = FALSE) 
+  y_range <- diff(dynamic_range)
+  buffer_percent <- 0.1
+  text_y_position <- min_val - buffer_percent * y_range
+  text(x = 1:30, y = text_y_position, 
+       labels = years, srt = 35, adj = 1, xpd = TRUE, cex = 1, font = 1) 
+  sapply(abline_seq, function(h) abline(h = h, lty = 3))
+  
+  nbr_vals <- points[i, ] %>%
+    st_drop_geometry() %>%
+    select(NBR_1984:NBR_2016) %>%
+    unlist(., use.names = FALSE)
+  
+  min_val <- min(nbr_vals, na.rm = TRUE) - 0.05 * abs(min(nbr_vals, na.rm = TRUE))
+  max_val <- max(nbr_vals, na.rm = TRUE) + 0.05 * abs(max(nbr_vals, na.rm = TRUE))
+  dynamic_range <- c(min_val, max_val)
+  abline_seq <- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+  
+  plot(nbr_vals, 
+       type = "b",
+       main = "NBR trajectory",
+       lwd = 2, 
+       xlab = "", 
+       ylab = "NBR",
+       ylim = dynamic_range, 
+       xaxt = "n", 
+       yaxt = "n") 
+  
+  axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1) 
+  axis(1, at = 1:30, labels = FALSE) 
+  y_range <- diff(dynamic_range)
+  buffer_percent <- 0.1
+  text_y_position <- min_val - buffer_percent * y_range
+  text(x = 1:30, y = text_y_position, 
+       labels = years, srt = 35, adj = 1, xpd = TRUE, cex = 1, font = 1) 
+  sapply(abline_seq, function(h) abline(h = h, lty = 3))
+  
+  dev.off() 
+  
+}
+
+# close files - we read necessary values
+readStop(green)
+readStop(red)
+readStop(nir)
+
+```
+
+</details>
+
+### This is the end of this exercise. Proceed with other Themes and Exercises. Good luck!

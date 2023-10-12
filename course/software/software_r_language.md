@@ -41,8 +41,8 @@ A recommended way to setup working environment in RStudio is to use [renv (short
 **Instructions**
 
 
-1. Launch RStudio
-2. Check out you R version. After you launch RStudio the first line in the console should read
+**Step 1.** Launch RStudio  
+**Step 2.** Check out you R version. After you launch RStudio the first line in the console should read
 
 ```
 R version 4.3.1 (2023-06-16 ucrt) -- "Beagle Scouts"
@@ -50,28 +50,31 @@ R version 4.3.1 (2023-06-16 ucrt) -- "Beagle Scouts"
 
 If you have different R versions installed make sure to change version to R 4.3.1 as shown below
 
-<center>
-<img src="../assets/r_envs/r_version.gif" title="R new project" alt="R new project" width="800"/>
 
+<center>
+<a href="../assets/r_envs/r_version.gif" target="_blank">
+    <img src="../assets/r_envs/r_version.gif" title="R new project" alt="R new project" width="800"/>
+</a>
 </center> 
 
 
-3. Create a New Project. Change the directory to your preferred location
+**Step 3.** Create a New Project. Change the directory to your preferred location
 
 <center>
-<img src="../assets/r_envs/r_newproj.gif" title="R new project" alt="R new project" width="800"/>
-
+<a href="../assets/r_envs/r_newproj.gif" target="_blank">
+    <img src="../assets/r_envs/r_newproj.gif" title="R new project" alt="R new project" width="800"/>
+</a>
 </center> 
 
 If you checked `Use renv with this project` - skip step 6.
 
-4. Install `renv` using `install.packages("renv")` command
-5. Load `renv` package executing `library(renv)` in the console
-6. Use `renv::init()` to initialize `renv` within a project created in step 1
-7. Replace the default `renv.lock` file inside the project folder with the downloaded one: <a href=../assets/r_envs/renv.lock download>download renv.lock</a>
-8. Use `renv::restore()` to install specific package versions recorded in the lockfile. When prompted type `y` in the console to install packages recorded in `renv.lock` file
+**Step 4.** Install `renv` using `install.packages("renv")` command  
+**Step 5.** Load `renv` package executing `library(renv)` in the console  
+**Step 6.** Use `renv::init()` to initialize `renv` within a project created in step 1. If you checked `Use renv with this project` - skip this step  
+**Step 7.** Replace the default `renv.lock` file inside the project folder with the downloaded one: <a href=../assets/r_envs/renv.lock download>download renv.lock</a>  
+**Step 8.** Use `renv::restore()` to install specific package versions recorded in the lockfile. When prompted type `y` in the console to install packages recorded in `renv.lock` file  
 
-By following these steps you ensure that you will work on the most up-to-date environment that the contents of Module 2 use.
+By following these steps you ensure that you will work on the most up-to-date environment that the contents of Module 2 use. To work in a project just open `.Rproj` file. This action will open RStudio with you environment setup.
 
 ***Note: To ensure compatibility and consistent results across exercises, please adhere to the following specified versions of R and packages. Running exercises on different versions may lead to unexpected results and potential inconsistencies and errors.***
 

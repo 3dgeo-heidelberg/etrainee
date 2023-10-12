@@ -1,3 +1,15 @@
+---
+title: "Multitemporal classification"
+description: This is the fourth theme within the Satellite Multispectral Images Time Series Analysis module.
+dateCreated: '2021-04-06'
+authors: Adriana Marcinkowska-Ochtyra
+contributors: Krzysztof Gryguc
+estimatedTime: "1.5 hours"
+output: 
+  github_document:
+    pandoc_args: "--wrap=none"
+---
+
 Multitemporal classification
 ================
 

@@ -1,7 +1,19 @@
+---
+title: "Vegetation change and disturbance detection"
+description: This is the fifth theme within the Satellite Multispectral Images Time Series Analysis module.
+dateCreated: '2021-04-06'
+authors: Adrian Ochtyra, Adriana Marcinkowska-Ochtyra
+contributors: 
+estimatedTime: "1.5 hours"
+output: 
+  github_document:
+    pandoc_args: "--wrap=none"
+---
+
 Vegetation change and disturbance detection
 ================
 
-In **[Theme 2](../02_temporal_information/02_temporal_information.md)**, we introduced various types of multitemporal data analysis. In this Module we put most emphasis on classification and **change detection**.Content of this Theme we’ll delve deeper into the latter. We will focus on different definitions of change types, explore various approaches and algorithms for detecting changes (such as disturbances or recovery) in vegetation, as well as on assessing the accuracy of the results.
+In **[Theme 2](../02_temporal_information/02_temporal_information.md)**, we introduced various types of multitemporal data analysis. In this Module we put most emphasis on classification and **change detection**. Content of this Theme we’ll delve deeper into the latter. We will focus on different definitions of change types, explore various approaches and algorithms for detecting changes (such as disturbances or recovery) in vegetation, as well as on assessing the accuracy of the results.
 
 In this theme, you will learn about:
 
@@ -252,9 +264,11 @@ As the results, the year of detection with number of changes, magnitude of spect
 
 VCT ([Huang et al., 2010](https://doi.org/10.1016/j.rse.2009.08.017)) normalizes each image into a forest likelihood measures described below, and uses the thresholding approach to detect disturbances.
 
-In the firs part, **forest *z*-score** is calculated as follows:
+In the first part, **forest *z*-score** is calculated as follows:
 
-$FZ_i$ = $\frac{b_i-\bar{b_i}}{SD_i}$
+$FZ_i$ = $\frac{bp_i-\bar{b_i}}{SD_i}$
+
+where $b_i$ and $SD_i$ are mean and standard deviation of the band $i$ spectral values of known forest pixels, and $bp_i$ is any pixel value in the image.
 
 Then, for multispectral satellite data, an **integrated forest *z*-score (IFZ)** value calculation is based on integration $IFZ$ over the spectral bands as:
 
@@ -556,4 +570,8 @@ Zeileis, A. (2005). A unified approach to structural change tests based on ML sc
 
 ## Next unit
 
-You have finished all of themes in this module. You can now proceed with case studies: \* [Monitoring tundra grasslands (Karkonosze)](../06_cs_tundra_grasslands/06_cs_tundra_grasslands.md) \* [Effects of pollution in Ore Mountains](../07_cs_forest_changes/07_cs_forest_changes.md) \* [Forest disturbance detection (Tatras)](../08_cs_disturbance_detection/08_cs_disturbance_detection.md)
+You have finished all of themes in this module. You can now proceed with case studies:
+
+- [Monitoring tundra grasslands (Karkonosze)](../06_cs_tundra_grasslands/06_cs_tundra_grasslands.md)
+- [Effects of pollution in Ore Mountains](../07_cs_forest_changes/07_cs_forest_changes.md)
+- [Forest disturbance detection (Tatras)](../08_cs_disturbance_detection/08_cs_disturbance_detection.md)
