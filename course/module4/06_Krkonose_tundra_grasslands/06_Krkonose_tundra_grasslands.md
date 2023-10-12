@@ -226,9 +226,7 @@ This can be done in the QGIS software package or in R with the following code sn
 The feature importance output file `*txt`, column `MeanDecreaseAccuracy`, shows the importance of each band in the classification process.  
 
 ### 2. Accuracy assessment
-Assessment should be elaborated in the GIS environment (QGIS). Use the provided validation points, `valid_points.zip`, 
-to compute the accuracy scores. Select the classified raster to be evaluated, and compare the classification output with class values at validation samples. 
-Compute the [confusion matrix](../../module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.md#accuracy-metrics) and derive the overall accuracy, precision, recall, and F1-score. 
+Assessment should be elaborated in the GIS environment (AcaTaMa plugin or Semi-Automatic Classification plugin for QGIS). Use the provided validation points, `valid_points.zip`, to compute the accuracy scores. Select the classified raster to be evaluated, and compare the classification output with class values at validation samples. Compute the [confusion matrix (../../module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.md#accuracy-metrics) and derive the overall accuracy, precision, recall, and F1-score. 
 
 | Class/Species | Number |
 | :---: | :---: |
