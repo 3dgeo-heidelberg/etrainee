@@ -97,7 +97,7 @@ JMdist2 <- function(g,X){
   return(list(classComb=ncomb,jmdist=jm))
 ```
 
-*Code 1. Definition of the function JMdist2 in R: JM distance calculated based on [Richards (2013)](#references) and how it is used in ENVI, code edited based on https://rdrr.io/cran/varSel/src/R/JMdist.R. Available as a file `JMdist2_function.R`.*
+*Code 1. Definition of the function JMdist2 in R: JM distance calculated based on [Richards (2013)](#references) and how it is used in ENVI, code edited based on https://rdrr.io/cran/varSel/src/R/JMdist.R. Available as a file* <a href=JMdist2_function.R download>JMdist2_function.R</a>.
 
 JM distance can be calculated for all available bands together, so you will get one separability number based on all used bands (like in the ENVI software). 
 But it can also be calculated for separate bands; in this case, it shows which bands are better for separating the classes. 
@@ -131,7 +131,7 @@ for (I in 3:55) # the loop for bands 2 - 54
 write.table(results, "JM_distance2_bands_August.txt") # save the results for all the bands to the text file
 ```
 
-*Code 2. Calculation of JM distance for all bands together and separate bands; example on August data. Available also as a file `Script_JM_distance.R`.*
+*Code 2. Calculation of JM distance for all bands together and separate bands; example on August data. Available also as a file* <a href=Script_JM_distance.R download>Script_JM_distance.R</a>.
 
 ### ANOVA, Welch's t-test, Wilcoxon test
 Another way to evaluate differences among the classes is to run one of the commonly used statistical tests to find out if the two population means are the same (Welch’s t-test, in comparison to the well-known Student’s t-test, is designed for unequal population variances). That means it has to be done in a loop for every band and for every combination of two classes. For all classes, you can compute the Analysis of variance (ANOVA). It can indicate whether at least one species' reflectance in a given band significantly differs from all others. However, it is unclear whether there are significant differences between all of the classes or whether only one class differs from the others. According to the null hypothesis, the mean reflectance values for the two compared species are the same at a given wavelength. The null hypothesis is rejected when the p-value is less than a pre-specified significance level, which is usually set to 0.05. In a loop, you can save p-values for every band and then visualize the results and interpret them. Both of the above-mentioned methods assume the normality of input data. If the data does not have a normal distribution, an alternative to Welch's t-test is the Wilcoxon rank test. 
