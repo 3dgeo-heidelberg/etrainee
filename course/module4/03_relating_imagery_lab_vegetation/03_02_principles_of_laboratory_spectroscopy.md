@@ -306,9 +306,9 @@ On the other hand, the reflectance (BRF) measured by the contact probe is much f
 
 <!--Question 1-->
 <label for="q_01">
-On a very short movie (18 s) two ways of spectra expression are shown. There are two groups of measured samples represented by spectral curves. Explain the format of the spectra (mind the units) and guess what type of samples they represent.
-<p align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/L8cJCMbwM3E?si=0sLTsAujxobBV42D" frameborder="0" allowfullscreen>
+In a very short movie (18 s) two ways of spectra expression are shown. There are two groups of measured samples represented by spectral curves. Explain the format of the spectra (mind the units) and guess what type of samples they represent.
+<p align="left">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4AZFObJZ7dA?si=Bz0XJGps6j644t1X" frameborder="0" allowfullscreen>
 </iframe></p>
 <textarea rows = "5" cols = "50" name = "q_01"></textarea><br>
 <div hidden id="correct_q_01">First the spectral data are expressed as relative reflectance (no units) indicated by the right Y axis. Mind the axis maximum slightly above the value 1.0; later the spectra are visualized as digital numbers (DN), arbitrary units related to the radiation intensity converted to electric signal. The group of samples with higher values in all wavelengths in both formats correspond to samples of highly reflective Spectralon panel, which correspond to the 100% reflectance (value 1.0). The second group of samples with lower values in DN and reflectance as well corresponds to some vegetation samples. The shape of the spectra expressed as reflectance shows characteristic features: low reflectance in blue and red, peak in green (resulting from chlorophyll absorption), sharp increase in the red edge, NIR plateau and distinctive water absorption bands in the SWIR.</div>
