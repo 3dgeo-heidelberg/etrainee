@@ -12,11 +12,14 @@ estimatedTime:
 
 ##### Data preparation, relative and absolute accuracy
 
-Image data was ...
+The provided hyperspectral image strips were loaded and viusalized in the QGIS environment along with positions of the checkpoints.
+The difference between the coordinates of the checkpoints in the image strips and in the shapefile was determined. 
+In addition, four identical points were found in strip (line) pair 2 and 3, 3 and 4, and the difference between their coordinates was analyzed.
+The horizontal shift, standard deviation, and Root Mean Square Error (RMSE) from both relative and absolute residuals was computed (see table below).
 
 <div align="center"><i>"Raw" image data</i></div>
 
-| "Raw" image data |           |                        |          |   |                      |           |                        |          |
+|  |           |                        |          |   |                      |           |                        |          |
 |:-----------------:|:---------:|:----------------------:|:--------:|:---:|:--------------------:|:---------:|:----------------------:|:--------:|
 | **Absolute accuracy** | shift [m] | standard deviation [m] | RMSE [m] |   | **Relative accuracy**    | shift [m] | standard deviation [m] | RMSE [m] |
 | strip (line) 2    | 0.35      | 0.04                   | 0.35     |   | strip (line) 2 and 3 | 2.01      | 0.32                   | 2.03     |
@@ -37,18 +40,21 @@ Georeferencing....
 </p>
 <div align="center"><i>Geometrically corrected hyperspectral image strips - spline transfromation</i></div>
 <br>
+
 The residuals on the GCPs were....
 
-| GCP residuals  |                               |   |                       |
+<div align="center"><i>GCP residuals</i></div>
+
+|   |                               |   |                       |
 |:--------------:|:-----------------------------:|:---:|:---------------------:|
-| **mean [m]**       | **1st polynomial transformation** |   | **spline transformation** |
+| **mean [m]**       | 1st polynomial transformation |   | spline transformation |
 | strip (line) 2 | 0.04                          |   | 0.00                  |
 | strip (line) 3 | 0.03                          |   | 0.00                  |
 | strip (line) 4 | 0.01                          |   | 0.00                  |
 
 ##### Accuracy assessment
 
-Accuracy...
+The relative and absolute accuracy of the orthorectified hyperspectral image strips was assessed using the same procedure as before. 
 
 <div align="center"><i>1st polynomial transformation</i></div>
 
@@ -80,5 +86,6 @@ Accuracy...
     + 
 * Comment on the used resampling method: what does “Nearest neighbour” ensure? Would using a different resampling type affect the image, and if yes, then how?  
     + 
+    
 ### Back to theme 
 Proceed by returning to [Aerial/RPAS hyperspectral data acquisition and pre-processing](../02_aerial_acquisition_preprocessing.md)
