@@ -12,10 +12,10 @@ estimatedTime:
 
 ##### Data preparation, relative and absolute accuracy
 
-The provided hyperspectral image strips were loaded and viusalized in the QGIS environment along with positions of the checkpoints.
-The difference between the coordinates of the checkpoints in the image strips and in the shapefile was determined. 
-In addition, four identical points were found in strip (line) pair 2 and 3, 3 and 4, and the difference between their coordinates was analyzed.
-The horizontal shift, standard deviation, and Root Mean Square Error (RMSE) from both relative and absolute residuals was computed (see table below).
+The provided hyperspectral image strips were loaded and visualized in the QGIS environment, along with the positions of the checkpoints.
+The difference between the XY coordinates of the checkpoints in the image strips and in the shapefile was determined. 
+In addition, four identical points were found in strip (line) pairs 2 and 3, 3 and 4, and the difference between their XY coordinates was analyzed.
+The horizontal shift, standard deviation, and Root Mean Square Error (RMSE) from both relative and absolute residuals were computed (see table below).
 
 <div align="center"><i>"Raw" image data</i></div>
 
@@ -29,7 +29,9 @@ The horizontal shift, standard deviation, and Root Mean Square Error (RMSE) from
 
 ##### Image registration
 
-Georeferencing....
+The orthorectified RGB image with a defined CRS (EPSG:5514) was loaded and used as a base for coregistration and orthorectification of the hyperspectral image strips. 
+In the "Georeferencer" app, at least five identical points were evenly collected throughout the area. The "Transformation type" Polynomial 1 (1st order polynomial) and Thin plate spline was tested. 
+As for the "Resampling method", Nearest neighbour was used. The procedure was repeated for each image strip (line). 
 
 <p align="center">
 <img src="media/affine_mosaic.jpg" title="Geometrically corrected hyperspectral image strips - affine transfromation" alt="Figure 1" width="600"/>
@@ -41,7 +43,7 @@ Georeferencing....
 <div align="center"><i>Geometrically corrected hyperspectral image strips - spline transfromation</i></div>
 <br>
 
-The residuals on the GCPs were....
+The residuals on the GCPs after the transformation were found in the generated PDF report, their mean was computed (see table below).
 
 <div align="center"><i>GCP residuals</i></div>
 
