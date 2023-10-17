@@ -19,7 +19,7 @@ series of remote sensing data. It consists of the following Modules:
 
 
 <center>
-<img src="assets/img/course_structure.jpg" alt="Course structure" width="100%">
+<img src="assets/img/course_structure.png" alt="Course structure" width="90%">
 </center>
 
 
