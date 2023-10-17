@@ -81,13 +81,22 @@ The relative and absolute accuracy of the orthorectified hyperspectral image str
 ##### Q&A 
 
 * Evaluate the absolute and relative accuracy after geometric correction. What is the maximum error? Is the resulting accuracy sufficient?  
-    + 
+    + using 1st polynomial transformation the  
+    + using spline transformation
+    + the maximum 
 * Compare the “raw” image strips with the geometrically corrected (orthorectified) image strips in terms of computed accuracy and visual inspection.  
-    + 
+    + in terms of absolute accuracy, 
+    + in terms of relative accuracy, 
+    + visually the shifts and deformations of the overlapping strips are significantly reduced
 * Are there any differences between the results of the spline and polynomial transformations?  
-    + 
+    + residuals on the GCPs after spline transformation are 0.00 m as local deformations are introduced to the image
+    + residuals on the GCPs after 1st polynomial transformation are up to 0.04 m 
+    + however, relative and absolute accuracy assessed on the check points reaches similar values
+    + visually the orthorectified hyperspectral image strips do not differ significantly  
 * Comment on the used resampling method: what does “Nearest neighbour” ensure? Would using a different resampling type affect the image, and if yes, then how?  
-    + 
+    + value of a cell/pixel in the output raster is assigned from the closest input cell/pixel
+    + original input pixel/cell values are retained
+    + different resampling methods such as bilinear interpolation or cubic convolution introduce new pixel/cell values
     
 ### Back to theme 
 Proceed by returning to [Aerial/RPAS hyperspectral data acquisition and pre-processing](../02_aerial_acquisition_preprocessing.md)
