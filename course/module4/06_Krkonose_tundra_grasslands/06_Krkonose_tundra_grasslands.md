@@ -49,7 +49,7 @@ We will use ([module4/case_study_discrimination_grass_species]()):
 * Hyperspectral image data acquired by the Headwall Nano-Hyperspec® camera fastened on the DJI Matrice 600 Pro drone on June 16 and August 11 2020 (*Figure 2*), with ground sampling distance of 9 cm and spectral resolution of 54 bands (resampled from 269 bands to reduce correlation in neighboring bands):  
             `BL_202006.tif (data from June; 54 bands, for visualization in true colors use bands R-21/G-13/B-7)`  
             `BL_202008.tif (data from August; 54 bands, for visualization in true colors use bands R-21/G-13/B-7)`  
-            `MNF_08_10.tif (MNF tranformed image from August; first 10 bands)` 
+            `MNF_08_10.tif (MNF transformed image from August; first 10 bands)` 
               
 * Field reference dataset (*Figure 3*) collected by botanists (in 2019 and 2020) divided between training data (polygons) and validation data (points). For an explanation of how the reference dataset was collected and divided between training and validation data, see [Kupková et al. (2023)](#references):  
             `train_polygons.zip (training data)`  

@@ -56,13 +56,15 @@ estimatedTime:
 #### Q&A
 
 * Is it possible to classify individual grass species from a mono-temporal UAS dataset with very high spatial resolution (9 cm) and spectral resolution (54 bands) with an overall accuracy higher than 85%?  
-    + 
+    + yes, both of the mono-temporal datasets (June and August) achieved an OA above 85%
+    + however, the precision and recall varied for different species
 * What is the classification accuracy of the dominant and sparse growth species?  
-    + 
+    + dominant grass species (cv, mol, nard, desch) reach excellent accuracy; sparse species not so much
+    + abundance/density/homogeneity of the species and its cover are essential for classification accuracy
 * Can we reach higher accuracy using time series of intra-seasonal data? How significant are the differences?  
-    + 
+    + accuracy increased with spatial resolution; multitemporal composite from June and August 2020 reached the highest OA of 92.6%
 * Optional: Can image data transformation that reduces noise and data dimensionality (MNF transformation) produce better results than the original hyperspectral dataset?  
-    + 
+    + yes, the MNF transformed image OA is 91.89%, which corresponds to a 3.96 % increase when compared to the classification of the original August dataset
     
 ### Back to case study
 Proceed by returning to [Discrimination of selected grass species from time series of RPAS hyperspectral imagery](../06_Krkonose_tundra_grasslands.md)
