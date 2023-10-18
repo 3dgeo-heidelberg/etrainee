@@ -44,7 +44,7 @@ Also tested is the influence of the pre-processing step, comprising the minimum 
 
 ## Data
 
-We will use ([module4/case_study_discrimination_grass_species]()):  
+We will use ([module4/case_study_discrimination_grass_species](https://doi.org/10.5281/zenodo.10003574)):  
 
 * Hyperspectral image data acquired by the Headwall Nano-Hyperspec® camera fastened on the DJI Matrice 600 Pro drone on June 16 and August 11 2020 (*Figure 2*), with ground sampling distance of 9 cm and spectral resolution of 54 bands (resampled from 269 bands to reduce correlation in neighboring bands):  
             `BL_202006.tif (data from June; 54 bands, for visualization in true colors use bands R-21/G-13/B-7)`  

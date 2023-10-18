@@ -31,7 +31,7 @@ Hyperspectral images acquired with the Headwall Nano-Hyperspec® fastened to the
 and ground sampling distance was reduced from 3 to 9 cm.
 For every of the four dominant grass species (*Nardus stricta* (`nard`) and competitive grasses *Calamagrostis villosa* (`cv`), *Molinia caerulea* (`mol`), and *Deschampsia cespitosa* (`desch`)) 450 random pixels were selected (*Figure 1*).
 Spectral curves for these pixels were extracted based on all three hyperspectral images. The results are in a table, where the first column is called `classname` and contains class values `desch`, `cv`, `mol`, and `nard`, and the rest are columns with reflectance for each band in each month (e.g., `b1_2006` is band 1 of image acquired in June 2020, etc.). 
-Data [(module4/case_study_spectral_separability_grass)]() is available in three text files, each for every month (`Rin_grasses_2020_month.txt`).
+Data [(module4/case_study_spectral_separability_grass)](https://doi.org/10.5281/zenodo.10003574) is available in three text files, each for every month (`Rin_grasses_2020_month.txt`).
 
 <p align="center">
 <img src="media/hyperspectral_data.jpg" title="Hyperspectral data acquired in June (upper left), July (upper right), and August (lower) 2020. In the August image, there are also 450 random pixels selected for each of the four studied species." alt="Figure 1" width="400"/>
