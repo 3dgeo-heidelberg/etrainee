@@ -21,7 +21,7 @@ The course is primarily developed for MSc students of geoinformatics and geograp
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10003575.svg)](https://doi.org/10.5281/zenodo.10003575) 
 
-[Datasets](https://doi.org/10.5281/zenodo.10003575) used in the exercises, case studies, and practical tutorials are hosted on Zenodo and can be downloaded separately for each Module.
+[Datasets](https://doi.org/10.5281/zenodo.10003574) used in the exercises, case studies, and practical tutorials are hosted on Zenodo and can be downloaded separately for each Module.
 
 ## Course website
 
