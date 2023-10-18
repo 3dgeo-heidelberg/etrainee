@@ -81,12 +81,13 @@ The relative and absolute accuracy of the orthorectified hyperspectral image str
 ##### Q&A 
 
 * Evaluate the absolute and relative accuracy after geometric correction. What is the maximum error? Is the resulting accuracy sufficient?  
-    + using 1st polynomial transformation the  
-    + using spline transformation
+    + using 1st polynomial transformation the shift values reach 0.04-0.08 m with a maximum standard deviation of 0.05 m; shift between the individual strips pairs is 0.12-0.13 m
+    + using spline transformation the shift values reach 0.05-0.09 m with a maximum standard deviation of 0.05 m; shift between the individual strips pairs is 0.12-0.13 m
     + the maximum RMSE on check points is 0.11 m for strip (line) 2 after spline transformation 
+    + resulting accuracy is sufficient for most applications
 * Compare the “raw” image strips with the geometrically corrected (orthorectified) image strips in terms of computed accuracy and visual inspection.  
-    + in terms of absolute accuracy, 
-    + in terms of relative accuracy, the shift (RMSE) values decreased from meter accuracy to sub 0.15 m
+    + in terms of absolute accuracy, the shift values decreased from 0.35-1.28 m to sub 0.1 m
+    + in terms of relative accuracy, the shift values decreased from meter to sub 0.15 m 
     + visually the shifts and deformations of the overlapping strips are significantly reduced
 * Are there any differences between the results of the spline and polynomial transformations?  
     + residuals on the GCPs after spline transformation are 0.00 m as local deformations are introduced to the image
