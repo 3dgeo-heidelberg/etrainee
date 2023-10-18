@@ -9,24 +9,24 @@ estimatedTime:
 
 # Aerial/RPAS hyperspectral data acquisition and pre-processing
 
-**UNDER CONSTRUCTION. COMING SOON.**
+**UNDER CONSTRUCTION**
+
+Acquisition of airborne hyperspectral images requires careful flight planning supported by field campaigns. 
+The following preprocessing of data comprises necessary radiometric and geometric correction. In addition, spectra transformations and filtering can be carried out to reduce data volume and suppress the noise present in the data.
 
 ## Objectives
 
 In this theme, you will learn about:
 
-* RPAS/airplane data acquisition – flight plan, scene illumination, exposure, advantages/disadvantages of RPAS/airplane platforms
-* geometric correction/orthorectification of images acquired with airborne push-broom sensors
-* radiometric calibrations including BRDF, filtering of a spectral curve, continuum removal, MNF, and PCA
-* validation of geometric and radiometric corrections
-* in situ and laboratory measurements with a field spectroradiometer
-* differences between field spectroradiometer and airborne spectral measurements
+* flight planning and in-situ measurements for radiometric and geometric correction of images,
+* methods of radiometric correction of HS images,
+* geometric correction, including orthorectification,
+* selected spectra transformations (e.g., minimum noise fraction, continuum removal, spectral indices) and spectra smoothening and denoising.
 
-After finishing this theme you will be able to:
+In the practical exercise, you will carry out geometric corrections of images acquired with a Nano-Hyperspec® camera mounted on the DJI Matrice 600 Pro drone platform.
 
-* Visualise spectral information
-* Compare spectra
-
+After finishing this theme, you will be aware of flight parameter settings and in-situ measurements to be considered for a successful hyperspectral flight mission. 
+You will understand the principles of radiometric and geometric corrections, and you will know methods for removing noise from the data and lowering the data volume.
 
 ## Methods
 
@@ -43,6 +43,10 @@ After finishing this theme you will be able to:
 The aim of this exercise is to perform geometric correction of hyperspectral image data acquired by an UAV pushbroom scanner.  
 
 Please proceed to the exercise: [Geometric correction](02_aerial_acquisition_preprocessing_exercise_geometric.md).
+
+## Tutorial: Spectra smoothening and denoising 
+
+Please proceed to the tutorial: [Spectra smoothening and denoising](filtering_spectral_curve.ipynb).
 
 ### Radiometric calibration
 
