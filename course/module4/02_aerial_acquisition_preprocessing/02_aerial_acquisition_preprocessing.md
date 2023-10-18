@@ -48,18 +48,6 @@ Please proceed to the exercise: [Geometric correction](02_aerial_acquisition_pre
 
 Please proceed to the tutorial: [Spectra smoothening and denoising](filtering_spectral_curve.ipynb).
 
-### Radiometric calibration
-
-Comparison of data with different level of radiometric calibration ([QGIS](../../software/software_qgis.md) + [EnMAP Box](../../software/software_enmap_box.md)),
-
-Please proceed to the exercise: [LINK WILL BE ADDED]().
-
-### Spectral transformation
-
-Performing spectral transformations (PCA, MNF, continuum removal) in [R](../../software/software_r_language.md).
-
-Please proceed to the exercise: [LINK WILL BE ADDED]().
-
 ### Next unit
 Proceed with [In situ and laboratory spectroscopy of vegetation](../03_relating_imagery_lab_vegetation/03_01_optical_parameters_of_foliage.md)
 
