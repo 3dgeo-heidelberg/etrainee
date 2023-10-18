@@ -35,18 +35,6 @@ names(img) <-  paste0("B", c(1:54))
 # Assign band names to image
 #names(img) <-  paste0("B", c(1:108))
 
-# =============================================================================
-# 3.
-# MNF transformation - uncomment this part to perform MNF transformation
-# =============================================================================
-# Load original dataset
-#img_orig <- brick("BL_202008.tif")
-# Perform transformation
-#m = mnf(img_orig, mode="spatial")
-# Only select the first 10 bands
-#img <- brick(m$x[1:10])
-# Assign band names to image
-#names(img) <-  paste0("B", c(1:10))
 
 
 
