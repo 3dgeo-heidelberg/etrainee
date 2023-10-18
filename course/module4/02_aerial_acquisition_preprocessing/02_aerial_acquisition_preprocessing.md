@@ -40,7 +40,7 @@ You will understand the principles of radiometric and geometric corrections, and
 
 ### Geometric correction
 
-The aim of this exercise is to perform geometric correction of hyperspectral image data acquired by an UAV pushbroom scanner.  
+The aim of this exercise is to perform geometric correction of hyperspectral image data acquired with an UAV pushbroom scanner.  
 
 Please proceed to the exercise: [Geometric correction](02_aerial_acquisition_preprocessing_exercise_geometric.md).
 
