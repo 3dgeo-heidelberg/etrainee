@@ -44,7 +44,7 @@ The aim of this exercise is to perform geometric correction of hyperspectral ima
 
 Please proceed to the exercise: [Geometric correction](02_aerial_acquisition_preprocessing_exercise_geometric.md).
 
-## Tutorial: Spectra smoothening and denoising 
+### Spectra smoothening and denoising 
 
 Please proceed to the tutorial: [Spectra smoothening and denoising](filtering_spectral_curve.ipynb).
 
