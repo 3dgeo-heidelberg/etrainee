@@ -67,7 +67,7 @@ The relative and absolute accuracy of the orthorectified hyperspectral image str
 | strip (line) 3    | 0.06      | 0.03                   | 0.07     |   | strip (line) 3 and 4 | 0.12      | 0.08                   | 0.14     |
 | strip (line) 4    | 0.04      | 0.02                   | 0.04     |
 
-<div align="center"><i>Affine transformation</i></div>
+<div align="center"><i>Spline transformation</i></div>
 
 |                   |           |                        |          |   |                      |           |                        |          |
 |:-----------------:|:---------:|:----------------------:|:--------:|:---:|:--------------------:|:---------:|:----------------------:|:--------:|
@@ -83,10 +83,10 @@ The relative and absolute accuracy of the orthorectified hyperspectral image str
 * Evaluate the absolute and relative accuracy after geometric correction. What is the maximum error? Is the resulting accuracy sufficient?  
     + using 1st polynomial transformation the  
     + using spline transformation
-    + the maximum 
+    + the maximum RMSE on check points is 0.11 m for strip (line) 2 after spline transformation 
 * Compare the “raw” image strips with the geometrically corrected (orthorectified) image strips in terms of computed accuracy and visual inspection.  
     + in terms of absolute accuracy, 
-    + in terms of relative accuracy, 
+    + in terms of relative accuracy, the shift (RMSE) values decreased from meter accuracy to sub 0.15 m
     + visually the shifts and deformations of the overlapping strips are significantly reduced
 * Are there any differences between the results of the spline and polynomial transformations?  
     + residuals on the GCPs after spline transformation are 0.00 m as local deformations are introduced to the image
@@ -94,7 +94,7 @@ The relative and absolute accuracy of the orthorectified hyperspectral image str
     + however, relative and absolute accuracy assessed on the check points reaches similar values
     + visually the orthorectified hyperspectral image strips do not differ significantly  
 * Comment on the used resampling method: what does “Nearest neighbour” ensure? Would using a different resampling type affect the image, and if yes, then how?  
-    + value of a cell/pixel in the output raster is assigned from the closest input cell/pixel
+    + value to a cell/pixel in the output raster is assigned from the closest input cell/pixel
     + original input pixel/cell values are retained
     + different resampling methods such as bilinear interpolation or cubic convolution introduce new pixel/cell values
     
