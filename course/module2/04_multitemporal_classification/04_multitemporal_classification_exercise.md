@@ -28,7 +28,7 @@ For this exercise you will need the following software, data and tools:
 - Software
   - R and RStudio. You can access environment setup tutorial for the whole Module 2 here: [R environment setup tutorial](../../software/software_r_language.md). After following the setup guide you should have all the necessary packages installed.
 - Data
-  - Downloaded data provided in the [folder here](https://drive.google.com/drive/folders/1bQaeyBwvViIyE7MzRDGxSFjx3VLYzsSK).
+  - Downloaded data provided through [Zenodo](https://zenodo.org/record/8402925). If you went through [Module 2 Theme 3 exercise Pipeline 1](../03_image_processing/03_image_processing_exercise.md#processing-pipeline-1) you can download image the data from your Google Drive.
 
 Follow the suggested working environment setup in order for the provided relative paths to work properly.
 
@@ -571,3 +571,106 @@ Sentinel-2 imagery [European Space Agency - ESA](https://scihub.copernicus.eu/)/
 - Hijmans R (2023). *terra: Spatial Data Analysis*. R package version 1.7-39, <https://CRAN.R-project.org/package=terra>
 - Kuhn, M. (2008). *Building Predictive Models in R Using the caret Package*. Journal of Statistical Software, 28(5), 1–26. <https://doi.org/10.18637/jss.v028.i05> <https://CRAN.R-project.org/package=caret>
 - Wickham H, François R, Henry L, Müller K, Vaughan D (2023). *dplyr: A Grammar of Data Manipulation*. R package version 1.1.2, <https://CRAN.R-project.org/package=dplyr>
+
+## Source code
+
+<details>
+<summary>
+You can find the entire code used in this exercise here
+</summary>
+
+``` r
+# raster and vector I/O and processing
+library(terra)
+
+# tabular data manipulation
+library(dplyr) 
+
+# training/test layers preparation
+library(caret) 
+
+# RF model preparation
+library(randomForest) 
+
+# object representing reference vector data
+reference_data <- vect("theme_4_exercise/data_exercise/T4_reference_data.shp")
+
+# object representing multiband raster with all the available bands
+image_data <- rast("theme_4_exercise/data_exercise/T4_image_data.tif")
+
+
+image_data
+reference_data
+
+pixel_reference <- extract(image_data, reference_data, exact = TRUE) 
+
+
+nrow(pixel_reference)
+colnames(pixel_reference)
+
+pixel_reference <- filter(pixel_reference, fraction > 0.5)
+
+nrow(pixel_reference)
+colnames(pixel_reference)
+
+reference_class <- as.data.frame(reference_data)
+
+pixel_reference <- merge(pixel_reference, reference_class, 
+                         by = "ID", 
+                         all = TRUE)
+
+pixel_reference <- select(pixel_reference, -fraction) %>%
+  relocate(ID, class)
+
+colnames(pixel_reference)
+
+
+set.seed(14)
+
+train_index <- createDataPartition(reference_data$class, p = 0.5, list = FALSE)
+
+train_data <- pixel_reference[ pixel_reference$ID %in% train_index, ]
+val_data <- pixel_reference[ !(pixel_reference$ID %in% train_index), ]
+
+
+table(train_data$class)
+table(val_data$class)
+
+set.seed(141)
+
+tune <- tuneRF(train_data[, 3:length(train_data)], 
+               as.factor(train_data$class),
+               ntreeTry = 500,
+               improve = 0.001,
+               stepFactor = 1.2)
+
+tune
+
+
+model_rf <- randomForest(train_data[ , 3:length(train_data)], as.factor(train_data$class), 
+                         ntree = 500,
+                         mtry = 9, 
+                         importance = TRUE,
+                         do.trace = 50)
+
+
+model_rf
+
+
+
+predicted_rf <- predict(model_rf, val_data[ , 3:length(val_data)])
+
+confusion_matrix_predicted_rf <- confusionMatrix(predicted_rf, as.factor(val_data$class), mode = "everything")
+confusion_matrix_predicted_rf
+
+varImpPlot(model_rf, type = 1, n.var = 30)
+
+
+terra::predict(image_data, model_rf, 
+               filename = "theme_4_exercise/results/predicted_image_all_bands.tif", 
+               datatype = "INT1U", 
+               na.rm = TRUE, 
+               overwrite = TRUE)
+```
+
+</details>

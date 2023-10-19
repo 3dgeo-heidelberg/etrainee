@@ -1,5 +1,7 @@
 # Welcome to the E-TRAINEE course repository!
 
+[![DOI](https://zenodo.org/badge/643862021.svg)](https://zenodo.org/badge/latestdoi/643862021)
+
 This repository hosts the **E-TRAINEE course on Time Series Analysis in Remote Sensing for Understanding Human-Environment Interactions**, which is an open e-learning course containing four main modules. The first one provides a general overview of methods for remote sensing (RS) time series analysis, and the other three focus on specific processing steps connected to different types of data:
 
 * Module 1: Methods of Time Series Analysis in RS

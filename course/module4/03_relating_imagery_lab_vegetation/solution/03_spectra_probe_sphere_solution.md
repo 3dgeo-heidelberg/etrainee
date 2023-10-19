@@ -38,9 +38,7 @@ so there are no obvious measurement errors, and the leaf shows no signs of senes
 
 Median spectra for both materials were calculated.
 
-<p align="center">
-<img src="media/05_examplespreadsheet.jpg" title="Median spectra for contact probe measurements" alt="Figure 3" width="800"/>
-</p>
+[ ![](media/05_examplespreadsheets.jpg) ](media/05_examplespreadsheets.jpg)
 
 <div align="center">
 

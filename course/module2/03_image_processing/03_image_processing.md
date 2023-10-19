@@ -1,3 +1,15 @@
+---
+title: "Image processing"
+description: This is the third theme within the Satellite Multispectral Images Time Series Analysis module.
+dateCreated: '2023-01-01'
+authors: Adriana Marcinkowska-Ochtyra, Adrian Ochtyra
+contributors: Krzysztof Gryguc
+estimatedTime: "1.5 hours"
+output: 
+  github_document:
+    pandoc_args: "--wrap=none"
+---
+
 Image processing
 ================
 
@@ -240,7 +252,7 @@ Sen2Cor / Sentinel-2 Toolbox functionalities
 Each observation from the Level-1C, is processed by the European Space Agency (ESA) through the Sen2Cor algorithm. The Level-2A operational processor generates, from algorithms of scene classification and atmospheric correction, BOA reflectance products.
 </dd>
 <dd>
-<b>SOURCES</b>: <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm">Level-2A Algorithm Overview</a>, <a href="http://step.esa.int/main/snap-supported-plugins/sen2cor/">Sen2Cor processor</a>, <a href="https://sentinel.esa.int/web/sentinel/toolboxes/sentinel-2">The Sentinel-2 Toolbox</a>, <a href="https://doi.org/10.3390/rs9060584">Paper with detailed processing description [(Gascon et al., 2017)](https://doi.org/10.3390/rs9060584)</a>
+<b>SOURCES</b>: <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm">Level-2A Algorithm Overview</a>, <a href="http://step.esa.int/main/snap-supported-plugins/sen2cor/">Sen2Cor processor</a>, <a href="https://sentinel.esa.int/web/sentinel/toolboxes/sentinel-2">The Sentinel-2 Toolbox</a>, <a href="https://doi.org/10.3390/rs9060584">Paper with detailed processing description (Gascon et al., 2017)</a>
 </dd>
 </dl>
 </li>
@@ -277,7 +289,7 @@ API with native data types, objects and methods
 Built-in tools for cloud-based imagery processing, including filtering, reducing, loops/function mapping over image collections.
 </dd>
 <dd>
-<b>SOURCES</b>: <a href="https://developers.google.com/earth-engine/guides/getstarted">GEE Get started article</a>, <a href="https://developers.google.com/earth-engine/apidocs">API Reference</a>, <a href="https://doi.org/10.1016/j.rse.2017.06.031">[Gorelick et al., 2017](https://doi.org/10.1016/j.rse.2017.06.031) paper</a>
+<b>SOURCES</b>: <a href="https://developers.google.com/earth-engine/guides/getstarted">GEE Get started article</a>, <a href="https://developers.google.com/earth-engine/apidocs">API Reference</a>, <a href="https://doi.org/10.1016/j.rse.2017.06.031">Gorelick et al., 2017 paper</a>
 </dd>
 </li>
 <li>
@@ -297,7 +309,8 @@ Data cubes processing to prepare analysis ready data.
 </li>
 <li>
 <h4>
-<a href="https://artmotoolbox.com/plugins-standalone/91-plugins-standalone/34-datimes.html">Decomposition and Analysis of Time Series Software (DATimeS)</a>\</4\>
+<a href="https://artmotoolbox.com/plugins-standalone/91-plugins-standalone/34-datimes.html">Decomposition and Analysis of Time Series Software (DATimeS)</a>
+</h4>
 <dl>
 <dt>
 MATLAB-based stand-alone image processing GUI toolbox.
@@ -306,7 +319,7 @@ MATLAB-based stand-alone image processing GUI toolbox.
 Focuses on generating spatially continuous (gap-filled) maps.
 </dd>
 <dd>
-<b>SOURCES</b>: <a href="https://drive.google.com/file/d/1jGpClOzuFff20Y0ojuAGOf9PyHuB33AL/view">Tutorial video</a>, <a href="https://drive.google.com/file/d/10ajcWb5S2jweojFIflH0B7jfMaYDunHm/view">Promotional video</a>, <a href="https://doi.org/10.1016/j.envsoft.2020.104666">[Belda et al., 2020](https://doi.org/10.1016/j.envsoft.2020.104666) paper</a>
+<b>SOURCES</b>: <a href="https://drive.google.com/file/d/1jGpClOzuFff20Y0ojuAGOf9PyHuB33AL/view">Tutorial video</a>, <a href="https://drive.google.com/file/d/10ajcWb5S2jweojFIflH0B7jfMaYDunHm/view">Promotional video</a>, <a href="https://doi.org/10.1016/j.envsoft.2020.104666">Belda et al., 2020 paper</a>
 </dd>
 </li>
 <li>
@@ -321,7 +334,7 @@ Python-based Sentinel-2 data processor.
 Aims to produce harmonised/fused surface reflectance imagery with higher periodicity by integrating additional compatible optical mission sensors.
 </dd>
 <dd>
-<b>SOURCES</b>: <a href="https://github.com/senbox-org/sen2like/blob/master/sen2like/docs/source/S2-SEN2LIKE-UM-V1.6.pdf">User manual</a>, <a href="https://github.com/senbox-org/sen2like/tree/master/sen2like">Reference</a>, <a href="https://doi.org/10.1109/IGARSS.2019.8899213">[Saunier et al., 2019](https://doi.org/10.1109/igarss.2019.8899213) paper</a>, <a href="https://doi.org/10.3390/rs14163855">[Saunier et al., 2022](https://doi.org/10.3390/rs14163855) paper</a>
+<b>SOURCES</b>: <a href="https://github.com/senbox-org/sen2like/blob/master/sen2like/docs/source/S2-SEN2LIKE-UM-V1.6.pdf">User manual</a>, <a href="https://github.com/senbox-org/sen2like/tree/master/sen2like">Reference</a>, <a href="https://doi.org/10.1109/IGARSS.2019.8899213">Saunier et al., 2019 paper</a>, <a href="https://doi.org/10.3390/rs14163855">Saunier et al., 2022 paper</a>
 </dd>
 </li>
 </ul>

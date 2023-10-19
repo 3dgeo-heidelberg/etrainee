@@ -57,7 +57,41 @@ For this module, you will need the software listed below. If you did not install
 
 ## Use Cases and Data
 
+### Use Cases
+
 In the research-oriented case studies, this module uses **[Monitoring mountain vegetation in Karkonosze/Krkonoše Mountains (Poland/Czechia)](../data_usecases/usecase_tundra_karkonosze.md)** and **[Vegetation disturbance detection in Polish-Slovak Tatra Mountains](../data_usecases/usecase_forests_tatras.md)**.
+
+### Data
+
+Data for the exercises provided through [Zenodo](https://zenodo.org/record/8402925). Some input imagery is produced throughout the course. The Zenodo package is structured in a way enabling relative paths in R scripts.
+
+    module2/
+    ├───case_study_1
+    │   │   README.txt
+    │   ├───data_exercise/
+    │   └───results/
+    ├───case_study_3
+    │   │   README.txt
+    │   ├───data_exercise/
+    │   └───results/
+    ├───theme_1_exercise
+    │   │   README.txt
+    │   ├───data_exercise/
+    │   └───results/
+    ├───theme_2_exercise
+    │   │   README.txt
+    │   ├───data_exercise/
+    │   └───results/
+    ├───theme_4_exercise
+    │   │   README.txt
+    │   ├───data_exercise/
+    │   └───results/
+    └───theme_5_exercise
+        │   README.txt
+        ├───data_exercise/
+        └───results/
+
+Each folder in the main catalog contains short description of the data inside in `README.txt` file. Input data is provided in `data_exercise` folders and empty `results` folders are provided to store the outputs. After downloading the package you should follow the **[R language tutorial](../software/software_r_language.md)** to create an environment and start R project in main `module2` catalog.
 
 ## Start the module
 

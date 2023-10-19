@@ -1,3 +1,15 @@
+---
+title: "Temporal information in satellite data"
+description: This is the second theme within the Satellite Multispectral Images Time Series Analysis module.
+dateCreated: '2021-04-06'
+authors: Adriana Marcinkowska-Ochtyra, Krzysztof Gryguc
+contributors: Adrian Ochtyra
+estimatedTime: "1.5 hours"
+output: 
+  github_document:
+    pandoc_args: "--wrap=none"
+---
+
 Temporal information in satellite data
 ================
 
@@ -88,7 +100,7 @@ Based on these categories, satellite data can be characterized as either **long*
 
 Another way to divide this data is into **online** and **offline** categories ([Zhu, 2017](https://doi.org/10.1016/j.isprsjprs.2017.06.013)). The online approach assumes that time series data are arriving at a specific rate, facilitating analyses in near real-time or on an ongoing basis. In contrast, the offline approach operates under the assumption that the time series data already exist.
 
-For managing large collections of satellite images modeled as multidimensional structures to facilitate time series analysis, the concept of an **Earth Observation (EO) Data Cube** has been established ([Voidrot and Percivall, 2020](https://doi.org/10.1088/1755-1315/509/1/012058)). The primary features of an EO Data Cube include georeferenced spatial support, temporal continuity, and the absence of gaps in the spatiotemporal extent. The processing steps related to the EO Data Cube concept are explored further in **[Theme 3](../03_image_processing/03_image_processing.md).**
+For managing large collections of satellite images modeled as multidimensional structures to facilitate time series analysis, the concept of an **Earth Observation (EO) Data Cube** has been established ([Voidrot and Percivall, 2020](https://doi.org/10.1088/1755-1315/509/1/012058)). The primary features of an EO Data Cube include georeferenced spatial support, temporal continuity, and the absence of gaps in the spatiotemporal extent. The processing steps related to the EO Data Cube concept are explored further in **[Theme 3](../03_image_processing/03_image_processing.md)**. You can read more about this in **[Theme 2 of Module 1](../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.md#data-cubes)**.
 
 <center>
 
