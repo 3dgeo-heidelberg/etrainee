@@ -28,7 +28,9 @@ For many applications related to the study of human-environment interactions it 
 
 Time series of remote sensing data essentially provide for every spatial unit (e.g. pixel) a series of observations, with each observation containing the value of a variable at a specific point in time. The fluctuation of these values with time can be seen as a *trajectory* in variable space (feature space). This may become clearer when we plot the observations for one spatial unit as points, connect them with lines and add a resampling or smoothing operation to the time series (to remove noise or high frequency parts of the signal).
 
-<img src="media/trajectory_example.png" title="A spectral trajectory" width="600">
+<p align="center">
+	<img src="media/trajectory_example.png" title="A spectral trajectory" width="600">
+</p>
 
 *Example of a spectral trajectory. The detectability of changes is depending on how the original time series is acquired and processed (e.g. resampled or smoothed). The yearly maxima of a vegetation index indicate a change in the year 2019, whereas this is not well visible if observations are available only every four years, i.e. the temporal resolution of observations and aggregated time series is important.*
 
@@ -54,21 +56,23 @@ Learn more on theoretical backgrounds and practical implementations in the dedic
 
 ### Analysis and decomposition of spectral trajectories
 
-As time series of remote sensing data are expanding the possibilities for land change analysis, [Woodcock et al. (2020)](https://doi.org/10.1016/j.rse.2019.111558) have postulated a paradigm shift away from bi-temporal change detection towards more continuous monitoring of change. This methodological trend enhances the detection of subtle changes, the precise recognition of their timing, and the characterization of the nature of change (e.g. gradual vs. abrupt). Especially the imagery from Landsat and Sentinel-2 permit users to conduct analyses at spatial and temporal scales appropriate for many ecological topics [Kennedy et al. 2014](https://doi.org/10.1890/130066).
+As time series of remote sensing data are expanding the possibilities for land change analysis, [Woodcock et al. (2020)](https://doi.org/10.1016/j.rse.2019.111558) have postulated a paradigm shift away from bi-temporal change detection towards more continuous monitoring of change. This methodological trend enhances the detection of subtle changes, the precise recognition of their timing, and the characterization of the nature of change (e.g. gradual vs. abrupt). Especially the imagery from Landsat and Sentinel-2 permit users to conduct analyses at spatial and temporal scales appropriate for many ecological topics ([Kennedy et al. 2014](https://doi.org/10.1890/130066)).
 
 
 **Monitoring ecosystem disturbance and recovery**
 
 Among the many applications of such analyses, one of the most prominent ones is studying ecosystem disturbance and recovery, especially of forests (e.g., [Kennedy et al. 2007](https://doi.org/10.1016/j.rse.2007.03.010), [White et al. 2017](https://doi.org/10.1016/j.rse.2017.03.035), [Zhu et al 2020](https://doi.org/10.1016/j.rse.2019.03.009)). 
-To identify and categorize vegetation cover disturbance by open-pit mining and assess the status of subsequent vegetation recovery, [Yang et al. 2018](https://doi.org/10.1016/j.scitotenv.2018.06.341) classified different types of Landsat NDVI trajectories. In this context, the *LandTrendr* software ([Kennedy et al. 2010](https://doi.org/10.1016/j.rse.2010.07.008)) was developed for segmenting spectral-temporal time series. It is capable of capturing and describing the characteristic trajectories of different forest states, with shorter disturbance events and longer-term processes of recovery in forested ecosystems (see also [Module 2](https://3dgeo-heidelberg.github.io/etrainee/module2/05_vegetation_monitoring/05_vegetation_monitoring.html#the-landsat-based-detection-of-trends-in-disturbance-and-recovery-landtrendr)). The LandTrendr algorithm has also been ported from its original IDL implementation to the Google Earth Engine platform ([Kennedy et al. 2018](https://doi.org/10.3390/rs10050691)), for details see the documentation at the [LT-GEE website](https://emapr.github.io/LT-GEE/index.html).
+To identify and categorize vegetation cover disturbance by open-pit mining and assess the status of subsequent vegetation recovery, [Yang et al. (2018)](https://doi.org/10.1016/j.scitotenv.2018.06.341) classified different types of Landsat NDVI trajectories. In this context, the *LandTrendr* software ([Kennedy et al. 2010](https://doi.org/10.1016/j.rse.2010.07.008)) was developed for segmenting spectral-temporal time series. It is capable of capturing and describing the characteristic trajectories of different forest states, with shorter disturbance events and longer-term processes of recovery in forested ecosystems (see also [Module 2](https://3dgeo-heidelberg.github.io/etrainee/module2/05_vegetation_monitoring/05_vegetation_monitoring.html#the-landsat-based-detection-of-trends-in-disturbance-and-recovery-landtrendr)). The LandTrendr algorithm has also been ported from its original IDL implementation to the Google Earth Engine platform ([Kennedy et al. 2018](https://doi.org/10.3390/rs10050691)), for details see the documentation at the [LT-GEE website](https://emapr.github.io/LT-GEE/index.html).
 
-<img src="media/Wulder_et_al_2019.jpg" title="Spectral trajectories for different forest states" width="600">
+<p align="center">
+	<img src="media/Wulder_et_al_2019.jpg" title="Spectral trajectories for different forest states" width="600">
+</p>
 
 *Spectral trajectories for different forest states (left) and an illustration of different change metrics (such as magnitude (m<sub>1</sub>, m<sub>2</sub>) and persistence (p<sub>1</sub>, p<sub>2</sub>); right; figure by [Wulder et al. 2019](https://doi.org/10.1016/j.rse.2019.02.015)/ [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)).*
 
 Another widely used option for landcover change detection is the search for breakpoints in remote sensing trajectories, e.g. with the [Breaks For Additive Season and Trend (BFAST)](https://bfast.readthedocs.io/en/latest/index.html) algorithm ([Verbesselt et al. 2010](https://doi.org/10.1016/j.rse.2009.08.014)). BFAST is an unsupervised time series change detection algorithm specialised in detecting multiple breakpoints within a multi-year time series. It involves an iterative process with multiple steps for decomposing a time series into trend, seasonal and error components, and for detecting breakpoints in each of the components. Variants developed on this basis include the faster and more flexible BFASTlite ([Masiliūnas et al. 2021](https://doi.org/10.3390/rs13163308)), BFASTmonitor (for near-real time detection of a single break; [Verbesselt et al. 2012](https://doi.org/10.1016/j.rse.2012.02.022)), and a Google Earth Engine implementation of BFASTmonitor ([Hamunyela et al. 2020](https://doi.org/10.3390/rs12182953)).
 
-A comprehensive overview of algorithms for change detection and characterization in satellite image time series is provided in [Module 2](https://3dgeo-heidelberg.github.io/etrainee/module2/05_vegetation_monitoring/05_vegetation_monitoring.html#algorithms). A single change detection method often turns out to be not reliable enough and, depending on the situation (e.g. change type, data availability, etc.), different algorithms will be most suitable. This motivates the development of multi-algorithm ensembles to increase change detection accuracy. [Xu et al. (2022)](https://doi.org/10.1016/j.rse.2022.112905) took an ensemble approach for land cover change detection and combined different BFAST outputs in a Random Forest classification. [Bullock et al. 2020](https://doi.org/10.1016/j.rse.2019.04.018) found that using a combination of break detection algorithms based on fundamentally different approaches can considerably improve the robustness of land change monitoring. In their study, they applied two tests to detect breaks and another test to identify falsely identified breaks.
+A comprehensive overview of algorithms for change detection and characterization in satellite image time series is provided in [Module 2](https://3dgeo-heidelberg.github.io/etrainee/module2/05_vegetation_monitoring/05_vegetation_monitoring.html#algorithms). A single change detection method often turns out to be not reliable enough and, depending on the situation (e.g. change type, data availability, etc.), different algorithms will be most suitable. This motivates the development of multi-algorithm ensembles to increase change detection accuracy. [Xu et al. (2022)](https://doi.org/10.1016/j.rse.2022.112905) took an ensemble approach for land cover change detection and combined different BFAST outputs in a Random Forest classification. [Bullock et al. (2020)](https://doi.org/10.1016/j.rse.2019.04.018) found that using a combination of break detection algorithms based on fundamentally different approaches can considerably improve the robustness of land change monitoring. In their study, they applied two tests to detect breaks and another test to identify falsely identified breaks.
 
 
 **Seasonality parameters/phenology**
@@ -77,7 +81,9 @@ Another application where satellite image time series are invaluable, is the stu
 
 The *TIMESAT* software ([Eklundh & Jönsson 2016](https://doi.org/10.1007/978-3-319-47037-5_9), [Eklundh 2023](https://web.nateko.lu.se/timesat/timesat.asp)) was developed to derive a number of seasonality parameters from satellite image time series. A smoothing method (either asymmetric Gaussian fits, double-logistic fits, or Savitzky-Golay filtering) is applied to the time series of each pixel. A range of parameters can then be extracted from the smoothed trajectories for each season. TIMESAT is typically employed for phenological studies, and the upcoming release (version 4) is also used for the [Copernicus HR-VPP](https://land.copernicus.eu/pan-european/biophysical-parameters/high-resolution-vegetation-phenology-and-productivity) (high-resolution vegetation phenology and productivity) product suite.
 
-<img src="media/TIMESAT_parameters.png" title="TIMESAT seasonality parameters" width="400">
+<p align="center">
+	<img src="media/TIMESAT_parameters.png" title="TIMESAT seasonality parameters" width="400">
+</p>
 
 *Some of the seasonality parameters generated in TIMESAT: (a) beginning of season, (b) end of season, (c) length of season, (d) base value, (e) time of middle of season, (f) maximum value, (g) amplitude, (h) small integrated value, (h+i) large integrated value. (figure by [Eklundh 2023](https://web.nateko.lu.se/timesat/timesat.asp)/ [CC BY-NC-ND 2.5 SE](http://creativecommons.org/licenses/by-nc-nd/2.5/se/)).*
 
@@ -101,14 +107,16 @@ Similarly, [Radwan et al. (2021)](https://doi.org/10.1038/s41598-021-92256-2) pr
 
 *Areal development of different landcover types per continent between 1992 and 2018, relative to the initial area. Error bars for the 95% confidence interval are provided for the continent showing greatest change in each plot (figure by [Radwan et al. 2021](https://doi.org/10.1038/s41598-021-92256-2)/ [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/))*
 
-<img src="media/Radwan_et_al_2021_LC_transitions_global.png" title="Global LC transitions between 1992 and 2018" width="400">
+<p align="center">
+	<img src="media/Radwan_et_al_2021_LC_transitions_global.png" title="Global LC transitions between 1992 and 2018" width="400">
+</p>
 
 *Global LC transitions (from-to change) between 1992 and 2018, expressed in percentage terms relative to the total global LC area that changed over this period (figure by [Radwan et al. 2021](https://doi.org/10.1038/s41598-021-92256-2)/ [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)).*
 
 
 **Coastal change**
 
-[Murray et al. (2019)](https://doi.org/10.1038/s41586-018-0805-8) used satellite image time series analysis to map and study the global extent of and change in tidal flats over the course of 33 years (1984–2016). This analysis was later expanded until 2019 by [Murray et al. 2022](https://doi.org/10.1038/s41597-022-01635-5). The dataset can be explored in [this](https://www.intertidal.app/home) Google Earth Engine app. [Luijendijk et al. (2018)](https://doi.org/10.1038/s41598-018-24630-6) used data from the Landsat archive to study directions and rates of shoreline change at sandy beaches of the World.
+[Murray et al. (2019)](https://doi.org/10.1038/s41586-018-0805-8) used satellite image time series analysis to map and study the global extent of and change in tidal flats over the course of 33 years (1984–2016). This analysis was later expanded until 2019 by [Murray et al. (2022)](https://doi.org/10.1038/s41597-022-01635-5). The dataset can be explored in [this](https://www.intertidal.app/home) Google Earth Engine app. [Luijendijk et al. (2018)](https://doi.org/10.1038/s41598-018-24630-6) used data from the Landsat archive to study directions and rates of shoreline change at sandy beaches of the World.
 
 <img src="media/Luijendijk_et_al_2018_world_beach_dynamics.png" title="Global hotspots of beach erosion and accretion" width="900">
 
@@ -127,11 +135,15 @@ In [this Jupyter Notebook](./T4_GEE_NDVI_time_series_points.ipynb) we compare La
 
 *Avalanche zone north of Innsbruck (Austria) with forest damaged in January 2019 (images by A. Mayr, 23 June 2019/ [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)).*
 
-<img src="media/L8_NDVI_forest_points.png" title="Landsat 8 NDVI time series of two forest sites" width="500">
+<p align="center">
+	<img src="media/L8_NDVI_forest_points.png" title="Landsat 8 NDVI time series of two forest sites" width="500">
+</p>
 
 *Landsat 8 NDVI time series of a disturbed (blue) and an undisturbed (orange) forest site.*
 
-<img src="media/L8_NDVI_forest_lines.png" title="Monthly, three monthly and annual maximum Landsat 8 NDVI time series" width="500">
+<p align="center">
+	<img src="media/L8_NDVI_forest_lines.png" title="Monthly, three monthly and annual maximum Landsat 8 NDVI time series" width="500">
+</p>
 
 *Monthly (top), three monthly (center) and annual (bottom) maximum Landsat 8 NDVI time series of a disturbed (blue) and an undisturbed (orange) forest site.*
 
