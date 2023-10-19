@@ -35,7 +35,7 @@ The following freely accessible resources provide introduction to statistics and
 
 Probability and statistics - [online E-Book](http://wiki.stat.ucla.edu/socr/index.php/EBook#Format)
 
-Online Statistics Education: A Multimedia Course of Study (http://onlinestatbook.com/). Project Leader: David M. Lane, Rice University. [web version](https://onlinestatbook.com/2/index.html)
+Online Statistics Education: A Multimedia Course of Study (http://onlinestatbook.com/). Project Leader: David M. Lane, Rice University.
 
 
 ## Geoinformation Systems (GIS)
