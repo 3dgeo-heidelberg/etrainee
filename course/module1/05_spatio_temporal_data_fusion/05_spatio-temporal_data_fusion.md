@@ -66,6 +66,12 @@ In a *feature-level* (mid-level) data fusion, the observations are not directly 
 
 In a *decision-level* (high-level) data fusion, each dataset from a specific system is first used to produce a 'decision' (higher-level information, such as a classification or a modelled target quantity). In the actual fusion step, these decisions are then merged into spatially or temporally more complete product or they are aggregated (summarized) into an ensemble output (e.g. as the median value or the mode of multiple model outputs). Such higher-level fusion approaches are typically applied for datasets from more diverse sensors.
 
+<p align="center">
+    <img src="media/fusion_levels.png" title="Data fusion levels" width="700">
+</p>
+
+*Data fusion levels (modified from [Schmitt and Zhu 2016](https://doi.org/10.1109/MGRS.2016.2561021)).*
+
 ### Fusion approaches for remote sensing time series
 
 With remote sensing time series (RSTS) data we have (at least) two general options for the fusion step (regardless of the fusion level):
