@@ -122,6 +122,44 @@ Similarly, [Radwan et al. (2021)](https://doi.org/10.1038/s41598-021-92256-2) pr
 
 *Global hotspots of beach erosion and accretion. The red (green) circles indicate erosion (accretion) for the four shoreline change rate categories (depicted in the legend). The bar plots to the right and at the bottom present the relative occurrence of eroding (accreting) sandy shorelines per degree latitude and longitude, respectively. The numbers presented in the main plot represent the average change rate for all sandy shorelines per continent (figure by [Luijendijk et al. (2018)](https://doi.org/10.1038/s41598-018-24630-6)/ [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)).*
 
+## Self-evaluation quiz
+
+<form name="quiz" action="" method="post" onsubmit="evaluate_quiz(); return false">
+
+<!--Question 1-->
+<label for="q_01">
+1) Correct or false: A trajectory-based analysis of remote sensing time series (RSTS) …
+</label><br>
+<input type="checkbox" name="q_01">… looks at the spatial variation at each moment by computing a variable’s differences between neighbouring spatial units (e.g., pixels).<br>
+<input type="checkbox" name="q_01">… analyses how a variable fluctuates in a spatial unit with time.<br>
+<div hidden id="correct_q_01">… analyses how a variable fluctuates in a spatial unit with time.</div>
+<output id="output_q_01"></output><br>
+
+<!--Question 2-->
+<label for="q_02">
+2) Correct or false: For an analysis of spectral-temporal trajectories in RSTS, it is usually best to …
+</label><br>
+<input type="checkbox" name="q_02">… use the original data with high temporal resolution to ensure maximum accuracy.<br>
+<input type="checkbox" name="q_02">… resample, aggregate, or smooth the time series to identify changes at the desired temporal scale and ignore higher-frequency fluctuations.<br>
+<input type="checkbox" name="q_02">… strive for a good trade-off between high temporal resolution and filtering of undesired parts of the signal.<br>
+<div hidden id="correct_q_02">… resample, aggregate, or smooth the time series to identify changes at the desired temporal scale and ignore higher-frequency fluctuations.&… strive for a good trade-off between high temporal resolution and filtering of undesired parts of the signal.</div>
+<output id="output_q_02"></output><br>
+
+<!--Question 3-->
+<label for="q_03">
+3) What are main differences between classic change detection with bi-temporal data and change analysis in remote sensing time series (RSTS)?
+</label><br>
+<input type="checkbox" name="q_03">RSTS enhance the possibilities for a detection of subtle changes, for a precise recognition of their timing, and for the characterization of the nature of change (e.g., gradual vs. abrupt).<br>
+<input type="checkbox" name="q_03">Bi-temporal change detection can deal with heterogeneous input data and needs no preprocessing (such as harmonization) of this data.<br>
+<input type="checkbox" name="q_03">Change detection and analysis with RSTS requires more specialized algorithms and software.<br>
+<div hidden id="correct_q_03">RSTS enhance the possibilities for a detection of subtle changes, for a precise recognition of their timing, and for the characterization of the nature of change (e.g., gradual vs. abrupt).&Change detection and analysis with RSTS requires more specialized algorithms and software.</div>
+<output id="output_q_03"></output><br>
+
+<input type="submit" value="Submit" style="font-size:14pt"><br>
+
+<output id="output_overall">
+</output>
+</form>
 
 ## Tutorial: Forest disturbance assessment in Python and GEE
 
