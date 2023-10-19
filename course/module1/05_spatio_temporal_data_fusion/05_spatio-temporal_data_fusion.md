@@ -40,13 +40,13 @@ In many cases analysis of RSTS from a single source just does not contain enough
 
 Therefore, we can try to perform a **spatio-temporal fusion of data from different systems** (sensors and platforms) that are resolving different phenomena or aspects of them (spatially, spectrally, and temporally). As a broad definition for data fusion we may use the one proposed by [Steinberg et al. (1999)](https://doi.org/10.1117/12.341367):
 
-    "Data fusion is the process of combining data to refine state estimates and predictions."
+*"Data fusion is the process of combining data to refine state estimates and predictions."*
 
 Following [Schmitt and Zhu 2016](https://doi.org/10.1109/MGRS.2016.2561021), such a data fusion has typically one of the following two goals:
 
-    "To estimate the state of a target or object from multiple sensors, if it is not possible to carry out the estimate from one sensor or data type alone"
+*"To estimate the state of a target or object from multiple sensors, if it is not possible to carry out the estimate from one sensor or data type alone"*
     
-    "Improve the estimate of this target state by the exploitation of redundant and complementary information"
+*"Improve the estimate of this target state by the exploitation of redundant and complementary information"*
 
 That means, the general concept of data fusion is to jointly exploit the information contained in two or more datasets from different acquisition systems in order to produce a result that could not be obtained (at this spatial, temporal or semantic quality) from a single data source. While these aspects are applicable to any data fusion task, fusing RSTS is somewhat special: We must make sure that the datasets are in a common resolution and reference frame in space and time. This will often require a matching and co-registration step and a resampling ([Schmitt and Zhu 2016](https://doi.org/10.1109/MGRS.2016.2561021)), which is often a challenge on its own. At least in the geospatial domain, *data integration* is often used synonymously with *data fusion*.
 
@@ -56,9 +56,9 @@ That means, the general concept of data fusion is to jointly exploit the informa
 
 In the following, we will look at how this process of spatio-temporal data fusion can look like and which data is typically combined. The topic is quite large, but we try to give a concise overview of popular combinations and typical or innovative approaches to fuse spatio-temporal data. First of all, multi-modal data can be fused at different levels (see e.g. [Schmitt and Zhu 2016](https://doi.org/10.1109/MGRS.2016.2561021) or [Hu et al. 2021](https://doi.org/10.1016/j.ophoto.2021.100002)), and fusion approaches are often characterized as *low-, mid- or high-level fusion* or categorized into these three categories:
 
-1) *Observation-level fusion* (a.k.a. *signal-level fusion*)
-2) *Feature-level fusion*
-3) *Decision-level fusion*
+1. *Observation-level fusion* (a.k.a. *signal-level fusion*)
+2. *Feature-level fusion*
+3. *Decision-level fusion*
 
 What does this mean? An *observation-level* (low-level) data fusion is typically performed for remote sensing time series from relatively similar systems (e.g., optical satellite sensors, such as Landsat 7/8/9, Sentinel-2, MODIS, …). A key requirement here is often, that an assimilation is done for the datasets (e.g., rescaling or normalization, a resampling, a spatial transformation to a common reference system and an accurate co-registration, ...; after their "normal" pre-processing (e.g., atmospheric correction etc.)). Then, the actual fusion is only a relatively simple combination of the values from multiple datasets (such as spectral reflectance in corresponding bands). The fused data can then be used for further analysis.
 
@@ -70,9 +70,10 @@ In a *decision-level* (high-level) data fusion, each dataset from a specific sys
 
 With remote sensing time series (RSTS) data we have (at least) two general options for the fusion step (regardless of the fusion level):
 
-1) We can either maintain individual data values (observations, features or decisons) from multiple systems and merge them into a denser time series (hopefully with less gaps in space and time), or
-2) We aggregate values from multiple systems:  
-    * i.e., we may use observations (such as spectral band reflectance) or derived higher-level features (such as vegetation indices or morphometric/geometric features from raster DEMs or 3D point clouds (e.g., slope gradient, roughness or height above ground)) as input for a classifier; at decision-level we may take an ensemble from multiple decisions (e.g. majority vote from multiple classifiers or median value from multiple regression models)
+1. We can either maintain individual data values (observations, features or decisons) from multiple systems and merge them into a denser time series (hopefully with less gaps in space and time), or
+2. We aggregate values from multiple systems:  
+    * We may use observations (such as spectral band reflectance) or derived higher-level features (such as vegetation indices or morphometric/geometric features from raster DEMs or 3D point clouds (e.g., slope gradient, roughness or height above ground)) as input for a classifier.
+    * At decision-level we may take an ensemble from multiple decisions (e.g. majority vote from multiple classifiers or median value from multiple regression models).
 
 The ideal data fusion level depends on the analysis task and the characteristics of the datasets (also relative to each other).
 
@@ -211,7 +212,9 @@ Karagiannopoulou, A., Tsertou, A., Tsimiklis, G., & Amditis, A. (2022). Data fus
 
 Li, J., Hong, D., Gao, L., Yao, J., Zheng, K., Zhang, B., & Chanussot, J. (2022). Deep learning in multimodal remote sensing data fusion: A comprehensive review. International Journal of Applied Earth Observation and Geoinformation, 112, 102926. https://doi.org/10.1016/j.jag.2022.102926
 
-<img src="media/karagiannopoulou_data_fusion_eo_citizen_science.png" title="Data Fusion in Earth Observation and Citicen Science" width="600">
+<p align="center">
+    <img src="media/karagiannopoulou_data_fusion_eo_citizen_science.png" title="Data Fusion in Earth Observation and Citicen Science" width="600">
+</p>
 
 *Data Fusion in Earth Observation and Citicen Science (figure by [Karagiannopoulou et al. 2022](https://doi.org/10.3390/rs14051263) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).*
 
