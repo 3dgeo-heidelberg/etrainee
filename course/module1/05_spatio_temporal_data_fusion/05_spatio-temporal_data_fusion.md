@@ -141,6 +141,47 @@ It was found that, depending on the subsequent analysis (e.g., extraction of mor
 
 In addition to the fusion approaches outlined above, there are plenty of studies where remote sensing time series are fused with other geospatial data (not remotely sensed or higher-level information from interpreted remote sensing data). Such datasets can be raster or vector data, including digital elevation models, climatological or meteorological data (e.g. [Stumpf et al. 2018](https://doi.org/10.1016/j.agee.2018.02.012) or [Blickensdörfer et al. 2022](https://doi.org/10.1016/j.rse.2021.112831)), or cadastral data and building footprints (e.g. [Uhl and Leyk 2020](https://doi.org/10.1016/j.rse.2019.05.016)). Such auxilliary datasets can be very helpful in combination with remote sensing time series, also if they are not multi-temporal.
 
+## Self-evaluation quiz
+
+<form name="quiz" action="" method="post" onsubmit="evaluate_quiz(); return false">
+
+<!--Question 1-->
+<label for="q_01">
+1) The purpose of data fusion is typically ...
+</label><br>
+<input type="checkbox" name="q_01">to reduce the data volume by condensing the information content.<br>
+<input type="checkbox" name="q_01">to highlight differences in the results obtained with different platforms, sensors, and analysis methods.<br>
+<input type="checkbox" name="q_01">to combine data from different sources and thereby reveal information that would not be clearly visible in single-source data.<br>
+<div hidden id="correct_q_01">to combine data from different sources and thereby reveal information that would not be clearly visible in single-source data.</div>
+<output id="output_q_01"></output><br>
+
+<!--Question 2-->
+<label for="q_02">
+2) Data fusion can be performed at different levels, namely ...
+</label><br>
+<input type="checkbox" name="q_02">observation level<br>
+<input type="checkbox" name="q_02">signal level<br>
+<input type="checkbox" name="q_02">feature level<br>
+<input type="checkbox" name="q_02">decision level<br>
+<div hidden id="correct_q_02">observation level&signal level&feature level&decision level</div>
+<output id="output_q_02"></output><br>
+
+<!--Question 3-->
+<label for="q_03">
+3) A fusion of remote sensing time series ...
+</label><br>
+<input type="checkbox" name="q_03">may be used to improve the spatial and temporal resolution of an analysis.<br>
+<input type="checkbox" name="q_03">is sometimes needed for long-term monitoring tasks where the observation period must be extended beyond the operating time of a single system.<br>
+<input type="checkbox" name="q_03">is a typical strategy for streamlining the preprocessing steps.<br>
+<div hidden id="correct_q_03">may be used to improve the spatial and temporal resolution of an analysis.&is sometimes needed for long-term monitoring tasks where the observation period must be extended beyond the operating time of a single system</div>
+<output id="output_q_03"></output><br>
+
+<input type="submit" value="Submit" style="font-size:14pt"><br>
+
+<output id="output_overall">
+</output>
+</form>
+
 ## Tutorial: Sentinel-1/-2 surface water monitoring
 
 If you are finished with the theoretical part of this theme, you are ready to try a data fusion approach to monitoring the extent of a water surface.
@@ -195,12 +236,6 @@ Another interesting excercise is provided in [this tutorial](https://worldbank.g
 * Nighttime lights (monthly composites) data from the Visible Infrared Imaging Radiometer Suite (VIIRS) Day-Night Band (DNB)
 * Sentinel-2 daytime visible band images (monthly composites)
 * Global Human Settlement Layer for training data
-
-<!--
-## Self-evaluation quiz
-
-*Coming soon ...*
--->
 
 ## Further reading
 
