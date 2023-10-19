@@ -66,21 +66,18 @@ Online Statistics Education: A Multimedia Course of Study (http://onlinestatbook
 **Links to tutorials and resources where you can obtain the required skills or knowledge in Remote Sensing:**
 
 <img src="media/logo_esa.png" alt="Logo" title="Logo - ESA" width="100" style="margin: 30px 20px 0px 0px;">
-
 **ESA**
 
 Land in Focus – Basics of Remote Sensing - [online](https://eo-college.org/courses/landinfocus/) (registration required)
 
 
 <img src="media/logo_government_of_canada.png" alt="Logo" title="Logo - Government of Canada" width="100" style="margin: 30px 20px 0px 0px;">
-
 **Canada Centre for Mapping and Earth Observation**
 
 Remote Sensing Tutorials - [online](http://www.nrcan.gc.ca/earth-sciences/geomatics/satellite-imagery-air-photos/satellite-imagery-products/educational-resources/9309) and [PDF](https://www.nrcan.gc.ca/sites/www.nrcan.gc.ca/files/earthsciences/pdf/resource/tutor/fundam/pdf/fundamentals_e.pdf) version (access without registration)
 
 
 <img src="media/logo_university_of_twente.png" alt="Logo" title="Logo - University of Twente" width="100" style="margin: 30px 20px 0px 0px;">
-
 **University of Twente**
 
 Principles of Remote Sensing - [online textbook](http://www.itc.nl/library/papers_2009/general/PrinciplesRemoteSensing.pdf)
