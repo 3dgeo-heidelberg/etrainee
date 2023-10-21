@@ -237,9 +237,9 @@ What are the two ways to measure the chlorophyll content in leaves described in 
 <output id="output_overall"></output>
 </form>
 
-## Exercise 
+## Tutorial
 
-Developing a regression model for derivation of selected vegetation parameters from image data using in-situ or laboratory measurements in [R](../../software/software_r_language.md).
+[Relating imaging spectroscopy and in-situ spectroscopy](03_spectra_image_insitu_tutorial.md) 
 
 
 ### Next unit
