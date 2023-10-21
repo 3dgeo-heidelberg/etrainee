@@ -92,10 +92,8 @@ nav:
         - 'Lesson': 'module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.md'
         - 'Exercise': 'module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing_exercise_geometric.md'
     - 'In situ and laboratory spectroscopy of vegetation':
-        - 'Lesson – Optical properties of vegetation': 'module4/03_relating_imagery_lab_vegetation/03_01_optical_parameters_of_foliage.md'
-        - 'Lesson – Laboratory spectroscopy': 'module4/03_relating_imagery_lab_vegetation/03_02_principles_of_laboratory_spectroscopy.md'
+        - 'Lesson': 'module4/03_relating_imagery_lab_vegetation/03_navig.md'
         - 'Exercise': 'module4/03_relating_imagery_lab_vegetation/03_spectra_probe_sphere_exercise.md'
-        - 'Lesson – Relating imaging and laboratory spectroscopy': 'module4/03_relating_imagery_lab_vegetation/03_03_relating_imagery_lab_vegetation.md'
     - 'Machine learning in imaging spectroscopy':
         - 'Lesson': 'module4/04_time_series_specifics/04_time_series_specifics.md'
         - 'Exercise – Subpixel': 'module4/04_time_series_specifics/04_time_series_specifics_exercise_subpixel.md'
