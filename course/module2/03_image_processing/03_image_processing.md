@@ -1,7 +1,7 @@
 ---
 title: "Image processing"
 description: This is the third theme within the Satellite Multispectral Images Time Series Analysis module.
-dateCreated: '2023-01-01'
+dateCreated: 2023-08-31
 authors: Adriana Marcinkowska-Ochtyra, Adrian Ochtyra
 contributors: Krzysztof Gryguc
 estimatedTime: "1.5 hours"
@@ -22,7 +22,7 @@ In this theme you will learn about:
 - **[unwanted areas detection and masking](#unwanted-areas-detection-and-masking)**
 - **[missing information reconstruction](#missing-information-reconstruction)**
 - **[data fusion](#data-fusion)**
-- **[data harmonization / normalization](#data-harmonization-normalization)**
+- **[data harmonization / normalization](#data-harmonization--normalization)**
 - **[tools and algorithms used with satellite multispectral image/time series processing](#overview-of-tools-and-algorithms-used-with-satellite-multispectral-imagetime-series-processing)**
 
 This theme will conclude with:
@@ -68,7 +68,7 @@ If we are processing images for rugged terrain we also need to perform **topogra
 
 <img src="media/fig2_topo_corr.jpg" title="Sentinel-2 data L1C product before and after topographic correction (Karkonosze Mountains area, RGB composite from 10.10.2021)." alt="Sentinel-2 data" width="600"/>
 
-<i>Sentinel-2 data L1C product, before and after topographic correction (Karkonosze Mountains area, RGB composite from 10.10.2021. Figure by course authors, source of image: [European Space Agency - ESA](https://scihub.copernicus.eu/)/ [Terms of use](https://scihub.copernicus.eu/twiki/do/view/SciHubWebPortal/TermsConditions)).</i>
+<i>Sentinel-2 data L1C product, before and after topographic correction (Karkonosze Mountains area, RGB composite from 10.10.2021. Figure by course authors, source of image: [European Space Agency - ESA](https://dataspace.copernicus.eu/)/ [Terms of use](https://dataspace.copernicus.eu/terms-and-conditions)).</i>
 </center>
 
 Another key factor which should be considered during satellite image processing is impact of direction of incident irradiance and sensor viewing angle. Both of these are expressed by azimuth and zenith angles and described by **Bidirectional Reflectance Distribution Function (BRDF)**.
@@ -124,7 +124,7 @@ Coverage of some areas with satellite data can be reduced by sensor’s errors, 
 <i>Examples of missing information in satellite data: (a) partial cover, (b) random TM registration error, (c) permanent ETM+ SLC-off error, (d) clouds with shadows, (e) topographic shadows (figure by course authors, sources of images: (a), (b): Landsat 5 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits)), (c): Landsat 7 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits), (d), (e): Landsat 8 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits)).</i>
 </center>
 
-One of the solution of this uncompleted satellite data problem in multitemporal analysis is integration of data from different terms of data acquisition into **gap-free compositions**. There are many established approaches to perform this and majority of them follow ‘the best available pixel’ strategy ([Zhu, 2017](https://doi.org/10.1016/j.isprsjprs.2017.06.013)). One is the highest NDVI value presented below.
+One of the solution of this uncompleted satellite data problem in multitemporal analysis is integration of data from different terms of data acquisition into **gap-free compositions**. Purely statistical approaches use mean, median or medoid (value closest to median from the actual observations) values of unmasked pixels to fill the missing pixel with numerical value. There are many other established approaches to perform this and majority of them follow ‘the best available pixel’ strategy ([Zhu, 2017](https://doi.org/10.1016/j.isprsjprs.2017.06.013)). One is the highest NDVI value presented below.
 
 <center>
 
@@ -133,7 +133,7 @@ One of the solution of this uncompleted satellite data problem in multitemporal 
 <i>Concept of creating time composites from three different dates images based on the highest NDVI value (figure by course authors).</i>
 </center>
 
-As you can see, the selection of pixels for composition consists of the highest possible value of NDVI, which can be helpful especially in vegetation analysis. It can also be a median value of another index or single band ([Potapov et al., 2011](https://doi.org/10.1016/j.rse.2010.10.001) found the median NIR band value better than NDVI on Landsat time series) or combination of index value with Brightness Temperature (as pixel’s temperature is a good indicator for cloud; [Roy et al., 2010](https://doi.org/10.1016/j.rse.2009.08.011)). There are also other parameters to apply for the composition, e.g. acquisition **Day of the Year** (DOY) or **distance to the clouds** ([Griffiths et al., 2013](https://doi.org/10.1109/jstars.2012.2228167)). The comparison of 10 different compositing algorithms can be found in [Qiu et al., 2023](https://doi.org/10.1016/j.rse.2022.113375). The results of this work demonstrated that no single algorithm outperformed all others, but that performance depended on compositing intervals and cloud cover.
+As you can see, the selection of pixels for composition consists of the highest possible value of NDVI, which can be helpful especially in vegetation analysis. It can also be a median value of another index or single band ([Potapov et al., 2011](https://doi.org/10.1016/j.rse.2010.10.001) found the median NIR band value better than NDVI on Landsat time series) or combination of index value with Brightness Temperature (as pixel’s temperature is a good indicator for cloud; [Roy et al., 2010](https://doi.org/10.1016/j.rse.2009.08.011)). There are also other possible conditions to apply for the composition, e.g. temporal distance to target **Day of the Year** (DOY) acquisition or **distance to the clouds** ([Griffiths et al., 2013](https://doi.org/10.1109/jstars.2012.2228167)). The comparison of 10 different compositing algorithms can be found in [Qiu et al., 2023](https://doi.org/10.1016/j.rse.2022.113375). The results of this work demonstrated that no single algorithm outperformed all others, but that performance depended on compositing intervals and cloud cover.
 
 Another strategy to provide gap-free composites is generating synthetic images by model predictions (e.g. regression on all available 2001-2004 Landsat data provided by [Zhu et al., 2015](https://doi.org/10.1016/j.rse.2015.02.009)) which can mitigate the effect of seasonality visible in the best available pixel composites. When comparing these both strategies for further change detection, synthetic images can produce more omission errors like not noticing subtle, gradual changes in a time series, while composites can lead to more commission errors, detecting change when there are still some clouds, cloud shadow or missing values.
 
@@ -177,7 +177,7 @@ In this module we focus only on optical data for whom the main ‘Achilles’ he
 
 ## Data harmonization / normalization
 
-As mentioned above it is possible to use data from several different sensors to build a time series of images. The advantage of such an approach is getting denser time series with more clear observations/pixels. But due to the differences in spectral, spatial and radiometric domains images from different sensors should be harmonized to avoid errors in analysis. Great example of potential harmonization data is a collection named **[Harmonized Landsat Sentinel-2 (HLS)](https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/harmonized-landsat-sentinel-2-hls-overview/)** providing consistent, 30-meters surface reflectance data from Landsat 8 and 9 OLI and Sentinel-2 MSI from Sentinel-2 A and B satellites collected every 2-3 days (see more details in [Theme 2 of Module 1](../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.md). For the same continued constellation of satellites with different sensors in the multitemporal analysis, it is necessary to assess whether the differences are significant and for what purpose of the analysis the data are to be used. You may find that your data collection already provides consistency (e.g. [Collection 2 of Landsat images](https://www.usgs.gov/landsat-missions/landsat-collection-2)).
+As mentioned above it is possible to use data from several different sensors to build a time series of images. The advantage of such an approach is getting denser time series with more clear observations/pixels. But due to the differences in spectral, spatial and radiometric domains images from different sensors should be harmonized to avoid errors in analysis. Great example of potential harmonization data is a collection named **[Harmonized Landsat Sentinel-2 (HLS)](https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/harmonized-landsat-sentinel-2-hls-overview/)** providing consistent, 30-meters surface reflectance data from Landsat 8 and 9 OLI and Sentinel-2 MSI from Sentinel-2 A and B satellites collected every 2-3 days (see more details in **[Theme 2 of Module 1](../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.md)**. For the same continued constellation of satellites with different sensors in the multitemporal analysis, it is necessary to assess whether the differences are significant and for what purpose of the analysis the data are to be used. You may find that your data collection already provides consistency (e.g. [Collection 2 of Landsat images](https://www.usgs.gov/landsat-missions/landsat-collection-2)).
 
 In multitemporal analysis the absolute radiometric correction is more challenging than image-based methods (scene-to-scene normalization) which are more common. Normalization methods can be divided into direct application of **linear regression** or those using **pseudo-invariant features** (PIFs) which means targets whose spectral reflectance have not changed over time ([Schott et al., 1988](https://doi.org/10.1016/0034-4257(88)90116-2)). Examples of such targets are dark and bright places such as bare rocks or car park surfaces made from concrete or asphalt. They can be selected manually or automatically.
 
@@ -192,7 +192,7 @@ Radiometric normalization is necessary for e.g. PlanetScope data due to the dif
 
 ## Overview of tools and algorithms used with satellite multispectral image/time series processing
 
-Most of the processing steps applied to the multitemporal imagery data are identical with those used in single image preparation workflow. Some - like composites or harmonization - are specific for datasets with temporal dimension. Different types of tools are present in many resources like closed software, open platforms or extensions, libraries and packages expanding the base capabilities of programming languages, software or platforms. Here is a sample of different tools and algorithms commonly used in processing of multispectral imagery. This selection contains only applications used during **data preparation**. Data analysis is a whole other collection, parts of which can be found in contents of [Theme 4](../04_multitemporal_classification/04_multitemporal_classification.md) and [Theme 5](../05_vegetation_monitoring/05_vegetation_monitoring.md). Strictly code-based tools are extensions of Google Earth Engine JavaScript and R. More examples of Python based algorithms can be found in [Theme 2 of Module 1](../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.md).
+Most of the processing steps applied to the multitemporal imagery data are identical with those used in single image preparation workflow. Some - like composites or harmonization - are specific for datasets with temporal dimension. Different types of tools are present in many resources like closed software, open platforms or extensions, libraries and packages expanding the base capabilities of programming languages, software or platforms. Here is a sample of different tools and algorithms commonly used in processing of multispectral imagery. This selection contains only applications used during **data preparation**. Data analysis is a whole other collection, parts of which can be found in contents of **[Theme 4](../04_multitemporal_classification/04_multitemporal_classification.md)** and **[Theme 5](../05_vegetation_monitoring/05_vegetation_monitoring.md)**. Strictly code-based tools are extensions of Google Earth Engine JavaScript and R. More examples of Python based algorithms can be found in **[Theme 2 of Module 1](../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.md)**+.
 
 ### Satellite/sensor processors
 
@@ -240,10 +240,10 @@ Used to produce top-of-atmosphere reflectance from Operational Land Imagers Leve
 Instrument Data Processing (IDP)
 </dt>
 <dd>
-The processing from Level-0 up to Level-1C is performed by IDP functionality of the Payload Data Ground Segment (PDGS). Level-0 and Level-1A products are PDGS internal products not made available to users.
+The processing from Level-0 up to Level-1C is performed by IDP functionality of the Copernicus Ground Segment. Level-0 and Level-1A products are Copernicus Ground Segment internal products not made available to users.
 </dd>
 <dd>
-<b>SOURCES</b>: <a href="https://sentinels.copernicus.eu/web/sentinel/missions/sentinel-2/ground-segment/core-ground-segment/pdgs">IDP description</a>, <a href="https://sentinel.esa.int/documents/247904/685211/sentinel-2_user_handbook">Sentinel-2 User Handbook</a>, <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-0-processing">Level-0 Processing Overview</a>, <a href="https://sentinels.copernicus.eu/whttps://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-1a-processing">Level-1A Processing Overview</a>, <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-1b/algorithm">Level-1B Algorithm Overview</a>, <a href=https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-1c/algorithm">Level-1C Algorithm</a>
+<b>SOURCES</b>: <a href="https://sentinels.copernicus.eu/web/sentinel/missions/sentinel-2/ground-segment/core-ground-segment/systematic-processing-and-reprocessing-services">Copernicus Ground Segment description</a>, <a href="https://sentinel.esa.int/documents/247904/685211/sentinel-2_user_handbook">Sentinel-2 User Handbook</a>, <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-0-algorithms-products">Level-0 Processing Overview</a>, <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-1a-algorithms-products">Level-1A Processing Overview</a>, <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-1b/algorithm-overview">Level-1B Algorithm Overview</a>, <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-1c/algorithm-overview">Level-1C Algorithm Overview</a>
 </dd>
 <dt>
 Sen2Cor / Sentinel-2 Toolbox functionalities
@@ -252,7 +252,7 @@ Sen2Cor / Sentinel-2 Toolbox functionalities
 Each observation from the Level-1C, is processed by the European Space Agency (ESA) through the Sen2Cor algorithm. The Level-2A operational processor generates, from algorithms of scene classification and atmospheric correction, BOA reflectance products.
 </dd>
 <dd>
-<b>SOURCES</b>: <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm">Level-2A Algorithm Overview</a>, <a href="http://step.esa.int/main/snap-supported-plugins/sen2cor/">Sen2Cor processor</a>, <a href="https://sentinel.esa.int/web/sentinel/toolboxes/sentinel-2">The Sentinel-2 Toolbox</a>, <a href="https://doi.org/10.3390/rs9060584">Paper with detailed processing description (Gascon et al., 2017)</a>
+<b>SOURCES</b>: <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm-overview">Level-2A Algorithm Overview</a>, <a href="http://step.esa.int/main/snap-supported-plugins/sen2cor/">Sen2Cor processor</a>, <a href="https://sentinel.esa.int/web/sentinel/toolboxes/sentinel-2">The Sentinel-2 Toolbox</a>, <a href="https://doi.org/10.3390/rs9060584">Paper with detailed processing description (Gascon et al., 2017)</a>
 </dd>
 </dl>
 </li>
@@ -334,7 +334,7 @@ Python-based Sentinel-2 data processor.
 Aims to produce harmonised/fused surface reflectance imagery with higher periodicity by integrating additional compatible optical mission sensors.
 </dd>
 <dd>
-<b>SOURCES</b>: <a href="https://github.com/senbox-org/sen2like/blob/master/sen2like/docs/source/S2-SEN2LIKE-UM-V1.6.pdf">User manual</a>, <a href="https://github.com/senbox-org/sen2like/tree/master/sen2like">Reference</a>, <a href="https://doi.org/10.1109/IGARSS.2019.8899213">Saunier et al., 2019 paper</a>, <a href="https://doi.org/10.3390/rs14163855">Saunier et al., 2022 paper</a>
+<b>SOURCES</b>: <a href="https://github.com/senbox-org/sen2like/blob/master/howto.md">User manual</a>, <a href="https://github.com/senbox-org/sen2like/tree/master/sen2like">Reference</a>, <a href="https://doi.org/10.1109/IGARSS.2019.8899213">Saunier et al., 2019 paper</a>, <a href="https://doi.org/10.3390/rs14163855">Saunier et al., 2022 paper</a>
 </dd>
 </li>
 </ul>
@@ -349,7 +349,7 @@ Aims to produce harmonised/fused surface reflectance imagery with higher periodi
 Primary applications: atmospheric corrections, derivatives calculation.
 </dd>
 <dt>
-<a href="https://search.r-project.org/CRAN/refmans/gdalcubes/html/00Index.html">gdalcubes: Earth Observation Data Cubes from Satellite Image Collections</a>
+<a href="https://cran.r-project.org/web/packages/gdalcubes/index.html">gdalcubes: Earth Observation Data Cubes from Satellite Image Collections</a>
 </dt>
 <dd>
 Filtering, reducing, aggregating and applying arithmetic expressions on data cubes.
@@ -379,7 +379,7 @@ Basic MODIS download and processing functionalities.
 Creation of time series of rasters derived from MODIS Land Products data.
 </dd>
 <dt>
-<a href="https://github.com/r-spatial/rgee">rgee: Google Earth Engine for R</a>
+<a href="https://cran.r-project.org/web/packages/rgee/index.html">rgee: Google Earth Engine for R</a>
 </dt>
 <dd>
 Binding package for calling Google Earth Engine API from within R
@@ -451,7 +451,7 @@ After going through the theory in this theme you should now be ready to take on 
 
 <form name="quiz" action method="post" onsubmit="evaluate_quiz(); return false">
 <!--Question 1-->
-<label for="q_01"> What causes user-independent gaps in time series data planned for use in land cover mapping? </label><br> <input type="radio" name="q_01">cloudiness, sensor registration errors, seasonal accumulation of snow cover<br> <input type="radio" name="q_01">sensor registration errors, image spatial cropping, cloud shadows<br> <input type="radio" name="q_01">cloud cover, incomplete set of spectral bands, seasonal accumulation of snow cover<br> <input type="radio" name="q_01">cloud shadows, incomplete set of spectral bands, sensor registration errors<br>
+<label for="q_01"> <b>Question 1.</b> What causes user-independent gaps in time series data planned for use in land cover mapping? </label><br> <input type="radio" name="q_01">cloudiness, sensor registration errors, seasonal accumulation of snow cover<br> <input type="radio" name="q_01">sensor registration errors, image spatial cropping, cloud shadows<br> <input type="radio" name="q_01">cloud cover, incomplete set of spectral bands, seasonal accumulation of snow cover<br> <input type="radio" name="q_01">cloud shadows, incomplete set of spectral bands, sensor registration errors<br>
 
 <div id="correct_q_01" hidden="">
 
@@ -465,7 +465,7 @@ cloudiness, sensor registration errors, seasonal accumulation of snow cover
 <br><br>
 
 <!--Question 2-->
-<label for="q_02"> Which fusion of data would be most useful in monitoring crops on individual plots? </label><br> <input type="radio" name="q_02">MODIS+Sentinel-2<br> <input type="radio" name="q_02">MODIS+Landsat<br> <input type="radio" name="q_02">Sentinel-2+Landsat<br> <input type="radio" name="q_02">Sentinel-2+PlanetScope<br>
+<label for="q_02"> <b>Question 2.</b> Which fusion of data would be most useful in monitoring crops on individual plots? </label><br> <input type="radio" name="q_02">MODIS+Sentinel-2<br> <input type="radio" name="q_02">MODIS+Landsat<br> <input type="radio" name="q_02">Sentinel-2+Landsat<br> <input type="radio" name="q_02">Sentinel-2+PlanetScope<br>
 
 <div id="correct_q_02" hidden="">
 
@@ -479,7 +479,7 @@ Sentinel-2+PlanetScope
 <br><br>
 
 <!--Question 3-->
-<label for="q_03"> Which parameters are not used for compositing gap-free images? </label><br> <input type="radio" name="q_03">brightness temperature, distance to the clouds, median NDVI value<br> <input type="radio" name="q_03">mean NDVI value, acquisition Day of the Year, brightness temperature<br> <input type="radio" name="q_03">added subsequent NIR band values, distance to the clouds, acquisition Day of the Year<br> <input type="radio" name="q_03">distance to the clouds, median NIR band value, acquisition Day of the Year<br>
+<label for="q_03"> <b>Question 3.</b> Which parameters are not used for compositing gap-free images? </label><br> <input type="radio" name="q_03">brightness temperature, distance to the clouds, median NDVI value<br> <input type="radio" name="q_03">mean NDVI value, acquisition Day of the Year, brightness temperature<br> <input type="radio" name="q_03">added subsequent NIR band values, distance to the clouds, acquisition Day of the Year<br> <input type="radio" name="q_03">distance to the clouds, median NIR band value, acquisition Day of the Year<br>
 
 <div id="correct_q_03" hidden="">
 
@@ -493,7 +493,7 @@ added subsequent NIR band values, distance to the clouds, acquisition Day of the
 <br><br>
 
 <!--Question 4-->
-<label for="q_04"> Having in mind correctness and computational optimization, choose correct order of processing: </label><br> <input type="radio" name="q_04">radiometric correction, derivatives calculation, gap filling<br> <input type="radio" name="q_04">radiometric correction, gap filling, metadata filtering<br> <input type="radio" name="q_04">composite building, cloud masking, derivatives calculation<br> <input type="radio" name="q_04">metadata filtering, cloud masking, composite building<br>
+<label for="q_04"> <b>Question 4.</b> Having in mind correctness and computational optimization, choose correct order of processing: </label><br> <input type="radio" name="q_04">radiometric correction, derivatives calculation, gap filling<br> <input type="radio" name="q_04">radiometric correction, gap filling, metadata filtering<br> <input type="radio" name="q_04">composite building, cloud masking, derivatives calculation<br> <input type="radio" name="q_04">metadata filtering, cloud masking, composite building<br>
 
 <div id="correct_q_04" hidden="">
 
@@ -507,7 +507,7 @@ metadata filtering, cloud masking, composite building
 <br><br>
 
 <!--Question 5-->
-<label for="q_05"> Which of the following processing steps would be redundant if you chose Sentinel-2 Level-2A (surface reflectance) products for phenological analysis in the Alps? </label><br> <input type="radio" name="q_05">topographic correction<br> <input type="radio" name="q_05">smoothing<br> <input type="radio" name="q_05">clouds masking<br> <input type="radio" name="q_05">spatial filtering<br>
+<label for="q_05"> <b>Question 5.</b> Which of the following processing steps would be redundant if you chose Sentinel-2 Level-2A (surface reflectance) products for phenological analysis in the Alps? </label><br> <input type="radio" name="q_05">topographic correction<br> <input type="radio" name="q_05">smoothing<br> <input type="radio" name="q_05">clouds masking<br> <input type="radio" name="q_05">spatial filtering<br>
 
 <div id="correct_q_05" hidden="">
 
@@ -521,7 +521,7 @@ topographic correction
 <br><br>
 
 <!--Question 6-->
-<label for="q_06"> Which raw data (from the same sensor) processing steps are always necessary for mountain terrain change analysis? </label><br> <input type="radio" name="q_06">atmospheric correction, topographic correction, spectral smoothing<br> <input type="radio" name="q_06">geometric correction, atmospheric correction, topographic correction<br> <input type="radio" name="q_06">geometric correction, normalization, harmonization<br> <input type="radio" name="q_06">atmospheric correction, geometric correction, temporal composites creation<br>
+<label for="q_06"> <b>Question 6.</b> Which raw data (from the same sensor) processing steps are always necessary for mountain terrain change analysis? </label><br> <input type="radio" name="q_06">atmospheric correction, topographic correction, spectral smoothing<br> <input type="radio" name="q_06">geometric correction, atmospheric correction, topographic correction<br> <input type="radio" name="q_06">geometric correction, normalization, harmonization<br> <input type="radio" name="q_06">atmospheric correction, geometric correction, temporal composites creation<br>
 
 <div id="correct_q_06" hidden="">
 
@@ -535,7 +535,7 @@ geometric correction, atmospheric correction, topographic correction
 <br><br>
 
 <!--Question 7-->
-<label for="q_07"> The value of percentage cover of clouds in images metadata allow to: </label><br> <input type="radio" name="q_07">filter clouds with the least value<br> <input type="radio" name="q_07">filter images with the least value<br> <input type="radio" name="q_07">mask images based on this value<br> <input type="radio" name="q_07">classify clouds based on the highest value<br>
+<label for="q_07"> <b>Question 7.</b> The value of percentage cover of clouds in images metadata allow to: </label><br> <input type="radio" name="q_07">filter clouds with the least value<br> <input type="radio" name="q_07">filter images with the least value<br> <input type="radio" name="q_07">mask images based on this value<br> <input type="radio" name="q_07">classify clouds based on the highest value<br>
 
 <div id="correct_q_07" hidden="">
 
@@ -564,71 +564,73 @@ filter images with the least value
 
 ### Key references (recommended reading, looking up background details)
 
-Lillesand, T., Kiefer, R. W., & Chipman, J. (2015). Remote sensing and image interpretation. John Wiley & Sons. [SOURCE](https://www.wiley.com/en-us/Remote+Sensing+and+Image+Interpretation,+7th+Edition-p-9781118343289)
+Lillesand, T., Kiefer, R. W., & Chipman, J. (2015). *Remote sensing and image interpretation*. John Wiley & Sons. [SOURCE](https://www.wiley.com/en-us/Remote+Sensing+and+Image+Interpretation,+7th+Edition-p-9781118343289)
 
-Qiu, S., Zhu, Z., Olofsson, P., Woodcock, C. E., & Jin, S. (2023). Evaluation of Landsat image compositing algorithms. Remote Sensing of Environment, 285, 113375. <https://doi.org/10.1016/j.rse.2022.113375>
+Qiu, S., Zhu, Z., Olofsson, P., Woodcock, C. E., & Jin, S. (2023). *Evaluation of Landsat image compositing algorithms*. Remote Sensing of Environment, 285, 113375. <https://doi.org/10.1016/j.rse.2022.113375>
 
-Shen, H., Li, X., Cheng, Q., Zeng, C., Yang, G., Li, H., & Zhang, L. (2015). Missing information reconstruction of remote sensing data: A technical review. IEEE Geoscience and Remote Sensing Magazine, 3(3), 61-85. <https://doi.org/10.1109/mgrs.2015.2441912>
+Shen, H., Li, X., Cheng, Q., Zeng, C., Yang, G., Li, H., & Zhang, L. (2015). *Missing information reconstruction of remote sensing data: A technical review*. IEEE Geoscience and Remote Sensing Magazine, 3(3), 61-85. <https://doi.org/10.1109/mgrs.2015.2441912>
 
-Zhu, Z. (2017). Change detection using landsat time series: A review of frequencies, preprocessing, algorithms, and applications. ISPRS Journal of Photogrammetry and Remote Sensing, 130, 370-384 <https://doi.org/10.1016/j.isprsjprs.2017.06.013>
+Zhu, Z. (2017). *Change detection using landsat time series: A review of frequencies, preprocessing, algorithms, and applications*. ISPRS Journal of Photogrammetry and Remote Sensing, 130, 370-384 <https://doi.org/10.1016/j.isprsjprs.2017.06.013>
 
 ### Additional references cited in this theme
 
-Belda, S., Pipia, L., Morcillo-Pallarés, P., Rivera-Caicedo, J. P., Amin, E., De Grave, C., & Verrelst, J. (2020). DATimeS: A machine learning time series GUI toolbox for gap-filling and vegetation phenology trends detection. Environmental Modelling & Software, 127, 104666. <https://doi.org/10.1016/j.envsoft.2020.104666>
+Belda, S., Pipia, L., Morcillo-Pallarés, P., Rivera-Caicedo, J. P., Amin, E., De Grave, C., & Verrelst, J. (2020). *DATimeS: A machine learning time series GUI toolbox for gap-filling and vegetation phenology trends detection*. Environmental Modelling & Software, 127, 104666. <https://doi.org/10.1016/j.envsoft.2020.104666>
 
-Foga, S., Scaramuzza, P. L., Guo, S., Zhu, Z., Dilley Jr, R. D., Beckmann, T., Dwyer, J. L., Hughes, J. H., Laue, B. (2017). Cloud detection algorithm comparison and validation for operational Landsat data products. Remote sensing of environment, 194, 379-390. <https://doi.org/10.1016/j.rse.2017.03.026>
+Foga, S., Scaramuzza, P. L., Guo, S., Zhu, Z., Dilley Jr, R. D., Beckmann, T., Dwyer, J. L., Hughes, J. H., Laue, B. (2017). *Cloud detection algorithm comparison and validation for operational Landsat data products*. Remote sensing of Environment, 194, 379-390. <https://doi.org/10.1016/j.rse.2017.03.026>
 
-Frantz, D. (2019). FORCE—Landsat + Sentinel-2 Analysis Ready Data and Beyond. Remote Sensing, 11(9), 1124. <https://doi.org/10.3390/rs11091124>
+Frantz, D. (2019). *FORCE—Landsat + Sentinel-2 Analysis Ready Data and Beyond*. Remote Sensing, 11(9), 1124. <https://doi.org/10.3390/rs11091124>
 
-Gao, F., Masek, J., Schwaller, M., & Hall, F. (2006). On the blending of the Landsat and MODIS surface reflectance: Predicting daily Landsat surface reflectance. IEEE Transactions on Geoscience and Remote sensing, 44(8), 2207-2218. <https://doi.org/10.1109/tgrs.2006.872081>
+Gao, F., Masek, J., Schwaller, M., & Hall, F. (2006). *On the blending of the Landsat and MODIS surface reflectance: Predicting daily Landsat surface reflectance*. IEEE Transactions on Geoscience and Remote sensing, 44(8), 2207-2218. <https://doi.org/10.1109/tgrs.2006.872081>
 
-Gascon, F., Bouzinac, C., Thépaut, O., Jung, M., Francesconi, B., Louis, J., Lonjou, V., Lafrance, B., Massera, S., Gaudel-Vacaresse, A., Languille, F., Alhammoud, B., Viallefont, F., Pflug, B., Bieniarz, J., Clerc, S., Pessiot, L., Trémas, T., Cadau, E., … Fernandez, V. (2017). Copernicus Sentinel-2A Calibration and Products Validation Status. Remote Sensing, 9(6), 584. <https://doi.org/10.3390/rs9060584>
+Gascon, F., Bouzinac, C., Thépaut, O., Jung, M., Francesconi, B., Louis, J., Lonjou, V., Lafrance, B., Massera, S., Gaudel-Vacaresse, A., Languille, F., Alhammoud, B., Viallefont, F., Pflug, B., Bieniarz, J., Clerc, S., Pessiot, L., Trémas, T., Cadau, E., … Fernandez, V. (2017). *Copernicus Sentinel-2A Calibration and Products Validation Status*. Remote Sensing, 9(6), 584. <https://doi.org/10.3390/rs9060584>
 
-Griffiths, P., van der Linden, S., Kuemmerle, T., & Hostert, P. (2013). A pixel-based Landsat compositing algorithm for large area land cover mapping. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 6(5), 2088-2101. <https://doi.org/10.1109/jstars.2012.2228167>
+Griffiths, P., van der Linden, S., Kuemmerle, T., & Hostert, P. (2013). *A pixel-based Landsat compositing algorithm for large area land cover mapping*. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 6(5), 2088-2101. <https://doi.org/10.1109/jstars.2012.2228167>
 
-Gorelick, N., Hancher, M., Dixon, M., Ilyushchenko, S., Thau, D., & Moore, R. (2017). Google Earth Engine: Planetary-scale geospatial analysis for everyone. Remote Sensing of Environment, 202, 18–27. <https://doi.org/10.1016/j.rse.2017.06.031>
+Gorelick, N., Hancher, M., Dixon, M., Ilyushchenko, S., Thau, D., & Moore, R. (2017). *Google Earth Engine: Planetary-scale geospatial analysis for everyone*. Remote Sensing of Environment, 202, 18–27. <https://doi.org/10.1016/j.rse.2017.06.031>
 
-Jensen, J. R. (2000). Remote sensing of the environment: An earth resource perspective Prentice Hall. Upper Saddle River (NJ), USA. [SOURCE](https://www.pearson.com/en-us/subject-catalog/p/remote-sensing-of-the-environment-an-earth-resource-perspective/P200000006978/9780131889507)
+Jensen, J. R. (2000). *Remote sensing of the environment: An earth resource perspective Prentice Hall*. Upper Saddle River (NJ), USA. [SOURCE](https://www.pearson.com/en-us/subject-catalog/p/remote-sensing-of-the-environment-an-earth-resource-perspective/P200000006978/9780131889507)
 
-Julien, Y., & Sobrino, J. A. (2019). Optimizing and comparing gap-filling techniques using simulated NDVI time series from remotely sensed global data. International Journal of Applied Earth Observation and Geoinformation, 76, 93-111. <https://doi.org/10.1016/j.jag.2018.11.008>
+Julien, Y., & Sobrino, J. A. (2019). *Optimizing and comparing gap-filling techniques using simulated NDVI time series from remotely sensed global data*. International Journal of Applied Earth Observation and Geoinformation, 76, 93-111. <https://doi.org/10.1016/j.jag.2018.11.008>
 
-Latte, N., & Lejeune, P. (2020). PlanetScope Radiometric Normalization and Sentinel-2 Super-Resolution (2.5 m): A Straightforward Spectral-Spatial Fusion of Multi-Satellite Multi-Sensor Images Using Residual Convolutional Neural Networks. Remote Sensing, 12(15), 2366. <https://doi.org/10.3390/rs12152366>
+Latte, N., & Lejeune, P. (2020).\* PlanetScope Radiometric Normalization and Sentinel-2 Super-Resolution (2.5 m): A Straightforward Spectral-Spatial Fusion of Multi-Satellite Multi-Sensor Images Using Residual Convolutional Neural Networks\*. Remote Sensing, 12(15), 2366. <https://doi.org/10.3390/rs12152366>
 
-Potapov, P., Turubanova, S., & Hansen, M. C. (2011). Regional-scale boreal forest cover and change mapping using Landsat data composites for European Russia. Remote Sensing of Environment, 115(2), 548-561. <https://doi.org/10.1016/j.rse.2010.10.001>
+Potapov, P., Turubanova, S., & Hansen, M. C. (2011). *Regional-scale boreal forest cover and change mapping using Landsat data composites for European Russia*. Remote Sensing of Environment, 115(2), 548-561. <https://doi.org/10.1016/j.rse.2010.10.001>
 
-Qiu, S., Zhu, Z., & He, B. (2019). Fmask 4.0: Improved cloud and cloud shadow detection in Landsats 4–8 and Sentinel-2 imagery. Remote Sensing of Environment, 231, 111205. <https://doi.org/10.1016/j.rse.2019.05.024>
+Qiu, S., Zhu, Z., & He, B. (2019). *Fmask 4.0: Improved cloud and cloud shadow detection in Landsats 4–8 and Sentinel-2 imagery*. Remote Sensing of Environment, 231, 111205. <https://doi.org/10.1016/j.rse.2019.05.024>
 
-Richter, R., Kellenberger, T., & Kaufmann, H. (2009). Comparison of topographic correction methods. Remote Sensing, 1(3), 184-196. <https://doi.org/10.3390/rs1030184>
+Richter, R., Kellenberger, T., & Kaufmann, H. (2009). *Comparison of topographic correction methods*. Remote Sensing, 1(3), 184-196. <https://doi.org/10.3390/rs1030184>
 
-Roerink, G. J., Menenti, M., & Verhoef, W. (2000). Reconstructing cloudfree NDVI composites using Fourier analysis of time series. International Journal of Remote Sensing, 21(9), 1911-1917. <https://doi.org/10.1080/014311600209814>
+Roerink, G. J., Menenti, M., & Verhoef, W. (2000). *Reconstructing cloudfree NDVI composites using Fourier analysis of time series*. International Journal of Remote Sensing, 21(9), 1911-1917. <https://doi.org/10.1080/014311600209814>
 
-Roy, D. P., Ju, J., Kline, K., Scaramuzza, P. L., Kovalskyy, V., Hansen, M., Loveland, T. R., Vermote, E., & Zhang, C. (2010). Web-enabled Landsat Data (WELD): Landsat ETM+ composited mosaics of the conterminous United States. Remote Sensing of Environment, 114(1), 35-49. <https://doi.org/10.1016/j.rse.2009.08.011>
+Roy, D. P., Ju, J., Kline, K., Scaramuzza, P. L., Kovalskyy, V., Hansen, M., Loveland, T. R., Vermote, E., & Zhang, C. (2010). *Web-enabled Landsat Data (WELD): Landsat ETM+ composited mosaics of the conterminous United States*. Remote Sensing of Environment, 114(1), 35-49. <https://doi.org/10.1016/j.rse.2009.08.011>
 
-Saunier, S., Louis, J., Debaecker, V., Beaton, T., Cadau, E. G., Boccia, V., & Gascon, F. (2019). Sen2like, A Tool To Generate Sentinel-2 Harmonised Surface Reflectance Products - First Results with Landsat-8. IGARSS 2019 - 2019 IEEE International Geoscience and Remote Sensing Symposium. <https://doi.org/10.1109/igarss.2019.8899213>
+Saunier, S., Louis, J., Debaecker, V., Beaton, T., Cadau, E. G., Boccia, V., & Gascon, F. (2019). *Sen2like, A Tool To Generate Sentinel-2 Harmonised Surface Reflectance Products - First Results with Landsat-8*. IGARSS 2019 - 2019 IEEE International Geoscience and Remote Sensing Symposium. <https://doi.org/10.1109/igarss.2019.8899213>
 
-Saunier, S., Pflug, B., Lobos, I. M., Franch, B., Louis, J., De Los Reyes, R., Debaecker, V., Cadau, E. G., Boccia, V., Gascon, F., & Kocaman, S. (2022). Sen2Like: Paving the Way towards Harmonization and Fusion of Optical Data. Remote Sensing, 14(16), 3855. <https://doi.org/10.3390/rs14163855>
+Saunier, S., Pflug, B., Lobos, I. M., Franch, B., Louis, J., De Los Reyes, R., Debaecker, V., Cadau, E. G., Boccia, V., Gascon, F., & Kocaman, S. (2022). *Sen2Like: Paving the Way towards Harmonization and Fusion of Optical Data*. Remote Sensing, 14(16), 3855. <https://doi.org/10.3390/rs14163855>
 
-Schill, S. R., Jensen, J. R., Raber, G. T., & Porter, D. E. (2004). Temporal modeling of bidirectional reflection distribution function (BRDF) in coastal vegetation. GIScience & Remote Sensing, 41(2), 116-135. <https://doi.org/10.2747/1548-1603.41.2.116>
+Schill, S. R., Jensen, J. R., Raber, G. T., & Porter, D. E. (2004). *Temporal modeling of bidirectional reflection distribution function (BRDF) in coastal vegetation*. GIScience & Remote Sensing, 41(2), 116-135. <https://doi.org/10.2747/1548-1603.41.2.116>
 
-Schmidt, G., Jenkerson, C. B., Masek, J., Vermote, E., & Gao, F. (2013). Landsat ecosystem disturbance adaptive processing system (LEDAPS) algorithm description. Open-File Report. <https://doi.org/10.3133/ofr20131057>
+Schmidt, G., Jenkerson, C. B., Masek, J., Vermote, E., & Gao, F. (2013). *Landsat ecosystem disturbance adaptive processing system (LEDAPS) algorithm description*. Open-File Report. <https://doi.org/10.3133/ofr20131057>
 
-Schott, J. R., Salvaggio, C., & Volchok, W. J. (1988). Radiometric scene normalization using pseudoinvariant features. Remote sensing of Environment, 26(1), 1-16. <https://doi.org/10.1016/0034-4257(88)90116-2>
+Schott, J. R., Salvaggio, C., & Volchok, W. J. (1988). *Radiometric scene normalization using pseudoinvariant features*. Remote Sensing of Environment, 26(1), 1-16. <https://doi.org/10.1016/0034-4257(88)90116-2>
 
-Skakun, S., Wevers, J., Brockmann, C., Doxani, G., Aleksandrov, M., Batič, M., Frantz, D., Gascon, F., Gómez-Chova, L., Hagolle, O., López-Puigdollers, D., Louis, J., Lubej, M., Mateo-García, G., Osman, J., Peressutti, D., Pflug, B., Puc, J., Richter, R., … Žust, L. (2022). Cloud Mask Intercomparison eXercise (CMIX): An evaluation of cloud masking algorithms for Landsat 8 and Sentinel-2. Remote Sensing of Environment, 274, 112990. <https://doi.org/10.1016/j.rse.2022.112990>
+Skakun, S., Wevers, J., Brockmann, C., Doxani, G., Aleksandrov, M., Batič, M., Frantz, D., Gascon, F., Gómez-Chova, L., Hagolle, O., López-Puigdollers, D., Louis, J., Lubej, M., Mateo-García, G., Osman, J., Peressutti, D., Pflug, B., Puc, J., Richter, R., … Žust, L. (2022). Cloud Mask Intercomparison eXercise (CMIX): *An evaluation of cloud masking algorithms for Landsat 8 and Sentinel-2*. Remote Sensing of Environment, 274, 112990. <https://doi.org/10.1016/j.rse.2022.112990>
 
-Song, C., Huang, B., & You, S. (2012). Comparison of three time-series NDVI reconstruction methods based on TIMESAT. 2012 IEEE International Geoscience and Remote Sensing Symposium. <https://doi.org/10.1109/igarss.2012.6351057>
+Song, C., Huang, B., & You, S. (2012). C*omparison of three time-series NDVI reconstruction methods based on TIMESAT*. 2012 IEEE International Geoscience and Remote Sensing Symposium. <https://doi.org/10.1109/igarss.2012.6351057>
 
-Tarrio, K., Tang, X., Masek, J. G., Claverie, M., Ju, J., Qiu, S., Zhu, Z., & Woodcock, C. E. (2020). Comparison of cloud detection algorithms for Sentinel-2 imagery. Science of Remote Sensing, 2, 100010. <https://doi.org/10.1016/j.srs.2020.100010>
+Tarrio, K., Tang, X., Masek, J. G., Claverie, M., Ju, J., Qiu, S., Zhu, Z., & Woodcock, C. E. (2020). *Comparison of cloud detection algorithms for Sentinel-2 imagery*. Science of Remote Sensing, 2, 100010. [https://doi.org/10.1016/j.srs.2020.100010](https://doi.org/10.1109/igarss.2012.6351057)
 
-Vermote, E., Roger, J. C., Franch, B., & Skakun, S. (2018, July). LaSRC (Land Surface Reflectance Code): Overview, application and validation using MODIS, VIIRS, LANDSAT and Sentinel 2 data’s. In IGARSS 2018-2018 IEEE International Geoscience and Remote Sensing Symposium (pp. 8173-8176). IEEE. <https://doi.org/10.1109/igarss.2018.8517622>
+Vermote, E., Roger, J. C., Franch, B., & Skakun, S. (2018, July). *LaSRC (Land Surface Reflectance Code): Overview, application and validation using MODIS, VIIRS, LANDSAT and Sentinel 2 data’s*. In IGARSS 2018-2018 IEEE International Geoscience and Remote Sensing Symposium (pp. 8173-8176). IEEE. <https://doi.org/10.1109/igarss.2018.8517622>
 
-Zhu, X., Chen, J., Gao, F., Chen, X., & Masek, J. G. (2010). An enhanced spatial and temporal adaptive reflectance fusion model for complex heterogeneous regions. Remote Sensing of Environment, 114(11), 2610–2623. <https://doi.org/10.1016/j.rse.2010.05.032>
+Zhu, X., Chen, J., Gao, F., Chen, X., & Masek, J. G. (2010). *An enhanced spatial and temporal adaptive reflectance fusion model for complex heterogeneous regions*. Remote Sensing of Environment, 114(11), 2610–2623. <https://doi.org/10.1016/j.rse.2010.05.032>
 
-Zhu, Z., Woodcock, C. E., Holden, C., & Yang, Z. (2015). Generating synthetic Landsat images based on all available Landsat data: Predicting Landsat surface reflectance at any given time. Remote Sensing of Environment, 162, 67-83. <https://doi.org/10.1016/j.rse.2015.02.009>
+Zhu, Z., Woodcock, C. E., Holden, C., & Yang, Z. (2015). G*enerating synthetic Landsat images based on all available Landsat data: Predicting Landsat surface reflectance at any given time*. Remote Sensing of Environment, 162, 67-83. <https://doi.org/10.1016/j.rse.2015.02.009>
 
-Zhu, Z., & Woodcock, C. E. (2012). Object-based cloud and cloud shadow detection in Landsat imagery.Remote Sensing of Environment, 118 (15), 83-94. <https://doi.org/10.1016/j.rse.2011.10.028>
+Zhu, Z., & Woodcock, C. E. (2012). *Object-based cloud and cloud shadow detection in Landsat imagery*. Remote Sensing of Environment, 118 (15), 83-94. <https://doi.org/10.1016/j.rse.2011.10.028>
 
-Zhu, Z., & Woodcock, C. E. (2014). Automated cloud, cloud shadow, and snow detection in multitemporal Landsat data: An algorithm designed specifically for monitoring land cover change. Remote Sensing of Environment, 152, 217-234. <https://doi.org/10.1016/j.rse.2014.06.012>
+Zhu, Z., & Woodcock, C. E. (2014). A*utomated cloud, cloud shadow, and snow detection in multitemporal Landsat data: An algorithm designed specifically for monitoring land cover change*. Remote Sensing of Environment, 152, 217-234. <https://doi.org/10.1016/j.rse.2014.06.012>
+
+*Data Fusion - combine satellite datasets to unlock new possibilities!* by Maxim Lamare. [Sentinel Hub Blog](https://medium.com/sentinel-hub). Access: 31.08.2023. <https://medium.com/sentinel-hub/data-fusion-combine-satellite-datasets-to-unlock-new-possibilities-26356c481169>
 
 ## Next unit
 

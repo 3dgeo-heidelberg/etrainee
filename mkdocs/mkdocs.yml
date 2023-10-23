@@ -50,19 +50,19 @@ nav:
     - 'Temporal information in satellite data' :
         - 'Lesson' : 'module2/02_temporal_information/02_temporal_information.md'
         - 'Exercise' : 'module2/02_temporal_information/02_temporal_information_exercise.md'
-    - 'Image processing workflow' :
+    - 'Image processing' :
         - 'Lesson' : 'module2/03_image_processing/03_image_processing.md'
         - 'Exercise' : 'module2/03_image_processing/03_image_processing_exercise.md'
-    - 'Multitemporal classification of vegetation types' :
+    - 'Multitemporal classification' :
         - 'Lesson' : 'module2/04_multitemporal_classification/04_multitemporal_classification.md'
         - 'Exercise' : 'module2/04_multitemporal_classification/04_multitemporal_classification_exercise.md'
-    - 'Vegetation monitoring and disturbance detection' :
+    - 'Vegetation change and disturbance detection' :
         - 'Lesson' : 'module2/05_vegetation_monitoring/05_vegetation_monitoring.md'
         - 'Exercise' : 'module2/05_vegetation_monitoring/05_vegetation_monitoring_exercise.md'
     - 'Case studies' :
-        - 'Case study: Monitoring tundra grasslands (Karkonosze)': 'module2/06_cs_tundra_grasslands/06_cs_tundra_grasslands.md'
+        - 'Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains)': 'module2/06_cs_tundra_grasslands/06_cs_tundra_grasslands.md'
         - 'Case study: Effects of pollution in Ore Mountains': 'module2/07_cs_forest_changes/07_cs_forest_changes.md'
-        - 'Case study: Forest disturbance detection (Tatras)': 'module2/08_cs_disturbance_detection/08_cs_disturbance_detection.md'
+        - 'Case study: Forest disturbance detection (Tatra Mountains)': 'module2/08_cs_disturbance_detection/08_cs_disturbance_detection.md'
 - 'Module 3':
     - 'Overview': 'module3/module3.md'
     - 'Principles of 3D/4D geographic point clouds' :
