@@ -10,16 +10,16 @@ output:
 E-TRAINEE Module 2: Satellite Multispectral Images Time Series Analysis
 ================
 
-This Module aims to equip you with an in-depth understanding of satellite multispectral imaging, a potent tool that affords a unique perspective for observing and analyzing Earth’s surface. Through the capture of images across various wavelengths, satellite multispectral imaging allows for the identification and quantification of a broad spectrum of physical and biological phenomena.
+This Module aims to equip you with an in-depth understanding of **satellite multispectral imaging**, a potent tool that affords a unique perspective for observing and analyzing Earth’s surface. Through the capture of images across various wavelengths, satellite multispectral imaging allows for the identification and quantification of a broad spectrum of physical and biological phenomena.
 
-Module 2 provides a diverse array of pre-processing and specific analysis methods, all thanks to the many opportunities afforded by multitemporal analysis of regularly captured, freely available satellite data. These methods pave the way for a plethora of applications in environmental studies. The selection of data and methods hinges on the study’s scale — whether local, regional, or global — and the required time interval to accurately capture phenomena of interest, such as the effects of hurricanes, climate change, or the peak of the growing season, in either inter-annual or intra-annual data. Thus, in this module, you will:
+Module 2 provides a diverse array of **pre-processing** and specific **analysis methods**, all thanks to the many opportunities afforded by multitemporal analysis of regularly captured, freely available satellite data. These methods pave the way for a plethora of applications in environmental studies. The selection of data and methods hinges on the study’s scale — whether local, regional, or global — and the required time interval to accurately capture phenomena of interest, such as the effects of hurricanes, climate change, or the peak of the growing season, in either inter-annual or intra-annual data. Thus, in this module, you will:
 
-- learn the basics of multispectral imaging
-- read about major sources and characteristics of Earth observation data
-- explore how temporal information in satellite data can be used in different analyses on various scales
-- learn the necessary steps to prepare your images for analysis, including different corrections and maskings, as well as time series specific methods such as data harmonization, normalization, compositing, and gap filling
-- learn about various approaches to the classification problems including machine learning algorithms and feature selection
-- learn different approaches to detecting changes and disturbances in vegetation using change detection algorithms and methods
+- grasp the fundamentals of multispectral imaging
+- discover major sources and unique characteristics of Earth observation data
+- understand how temporal aspect of satellite data can be used in different analyses on various scales
+- learn the essential steps to prepare your images for analysis, including different corrections and maskings, as well as time series specific methods such as data harmonization, normalization, compositing, and gap filling
+- dive into various approaches to the classification problems including machine learning algorithms and feature selection
+- explore different approaches to detecting changes and disturbances in vegetation using change detection algorithms and methods
 - apply the theoretical knowledge in the practical exercises to produce your own reference and image datasets and use them in classification and change detection problems
 - conduct case study analyses with multispectral time series in different use cases
 
@@ -29,12 +29,12 @@ This module is structured into the following themes:
 
 - **[Principles of multispectral imaging](01_multispectral_principles/01_multispectral_principles.md)**  
 - **[Temporal information in satellite data](02_temporal_information/02_temporal_information.md)**  
-- **[Image processing workflow](03_image_processing/03_image_processing.md)**  
+- **[Image processing](03_image_processing/03_image_processing.md)**  
 - **[Multitemporal classification](04_multitemporal_classification/04_multitemporal_classification.md)**  
 - **[Vegetation change and disturbance detection](05_vegetation_monitoring/05_vegetation_monitoring.md)**  
-- **Case study: [Monitoring tundra grasslands (Karkonosze)](06_cs_tundra_grasslands/06_cs_tundra_grasslands.md)**
-- **Case study: [Effects of pollution (Ore Mountains)](07_cs_forest_changes/07_cs_forest_changes.md)**
-- **Case study: [Forest disturbance detection (Tatras)](08_cs_disturbance_detection/08_cs_disturbance_detection.md)**
+- **Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains)\](06_cs_tundra_grasslands/06_cs_tundra_grasslands.md)**
+- **Case study: Effects of pollution in Ore Mountains\](07_cs_forest_changes/07_cs_forest_changes.md)**
+- **Case study: Forest disturbance detection (Tatra Mountains)\](08_cs_disturbance_detection/08_cs_disturbance_detection.md)**
 
 ## Prerequisites to perform this module
 
@@ -43,7 +43,7 @@ The following skills and background knowledge are required for this module.
 - Basics of statistics
 - Basics of geoinformation systems and handling raster/vector data
 - Principles of remote sensing
-- Basic programming skills (R and Earth Engine JavaScript will be used here)
+- Basic programming skills (R and Google Earth Engine JavaScript will be used here)
 
 Follow **[this link](../module0/module0.md)** for an overview of the listed prerequisites and recommendations on external material for preparation.
 
@@ -53,17 +53,17 @@ For this module, you will need the software listed below. If you did not install
 
 - **[QGIS](../software/software_qgis.md)** for visualization of time series satellite imagery and results of classification and change detection
 - **[R language](../software/software_r_language.md)** for time series satellite imagery processing and analysis
-- **[Google Earth Engine](https://earthengine.google.com/)** access (create an account **[here](https://earthengine.google.com/signup/)**)
+- **[Google Earth Engine](../software/software_gee.md)** access (create an account **[here](https://earthengine.google.com/signup/)**)
 
 ## Use Cases and Data
 
 ### Use Cases
 
-In the research-oriented case studies, this module uses **[Monitoring mountain vegetation in Karkonosze/Krkonoše Mountains (Poland/Czechia)](../data_usecases/usecase_tundra_karkonosze.md)** and **[Vegetation disturbance detection in Polish-Slovak Tatra Mountains](../data_usecases/usecase_forests_tatras.md)**.
+Research-oriented case studies in this module are introduced in **[Monitoring mountain vegetation in Karkonosze/Krkonoše Mountains (Poland/Czechia)](../data_usecases/usecase_tundra_karkonosze.md)** and **[Vegetation disturbance detection in Polish-Slovak Tatra Mountains](../data_usecases/usecase_forests_tatras.md)** use case documents. Familiarize yourself with them to have a better understanding of the analyses performed in Case Studies.
 
 ### Data
 
-Data for the exercises provided through [Zenodo](https://zenodo.org/record/8402925). Some input imagery is produced throughout the course. The Zenodo package is structured in a way enabling relative paths in R scripts.
+Data for the exercises is provided through [Zenodo](https://zenodo.org/record/8402925). Some input imagery is produced throughout the course. The Zenodo package is structured in a way enabling relative paths in R scripts.
 
     module2/
     ├───case_study_1
@@ -91,7 +91,7 @@ Data for the exercises provided through [Zenodo](https://zenodo.org/record/84029
         ├───data_exercise/
         └───results/
 
-Each folder in the main catalog contains short description of the data inside in `README.txt` file. Input data is provided in `data_exercise` folders and empty `results` folders are provided to store the outputs. After downloading the package you should follow the **[R language tutorial](../software/software_r_language.md)** to create an environment and start R project in main `module2` catalog.
+Each folder in the main catalog contains short description of the data inside in `README.txt` file. Input data is provided in `data_exercise` folders. Empty (except Theme 1) `results` folders are provided to store the outputs. After downloading the package you should follow the **[R language tutorial](../software/software_r_language.md)** to create an environment and start R project in main `module2` catalog.
 
 ## Start the module
 

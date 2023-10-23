@@ -1,9 +1,8 @@
 ---
 title: "Temporal information in satellite data - Exercise"
 description: This is the exercise in the second theme within the Satellite Multispectral Images Time Series Analysis module.
-dateCreated: '2021-04-06'
-authors: Krzysztof Gryguc, Adrian Ochtyra
-contributors: Adriana Marcinkowska-Ochtyra
+dateCreated: 2023-08-31
+authors: Krzysztof Gryguc, Adrian Ochtyra, Edwin Raczko
 estimatedTime: "1.5 hours"
 output: 
   github_document:
@@ -25,10 +24,8 @@ The main objective of this exercise is not only to illustrate various examples o
 
 For this exercise you will need the following software, data and tools:
 
-- Software
-  - R and RStudio. You can access environment setup tutorial for the whole Module 2 here: [R environment setup tutorial](../../software/software_r_language.md). After following the setup guide you should have all the necessary packages installed.
-- Data
-  - Downloaded data provided through [Zenodo](https://zenodo.org/record/8402925)
+- **Software** - R and RStudio. You can access environment setup tutorial for the whole Module 2 here: [R environment setup tutorial](../../software/software_r_language.md). After following the setup guide you should have all the necessary packages installed.
+- **Data** - downloaded data provided through [Zenodo](https://zenodo.org/record/8402925)
 
 Follow the suggested working environment setup in order for the provided relative paths to work properly.
 
@@ -68,22 +65,22 @@ library(dplyr)
 
 ### Reading data
 
-With the libraries in place, we can now load the necessary data. We’ll begin with three raster bricks corresponding to the green, red, and NIR bands respectively.
+With the libraries in place, we can now load the necessary data. We’ll begin with three multiband rasters corresponding to the green, red, and NIR bands respectively.
 
 ``` r
-# Multiband raster containing 30 green bands from 1984-2016 period
+# multiband raster containing 30 green bands from 1984-2016 period
 green <- rast("theme_2_exercise/data_exercise/T2_green_stack.tif") 
 
-# Multiband raster containing 30 red bands from 1984-2016 period
+# multiband raster containing 30 red bands from 1984-2016 period
 red <- rast("theme_2_exercise/data_exercise/T2_red_stack.tif") 
 
-# Multiband raster containing 30 NIR bands from 1984-2016 period
+# multiband raster containing 30 NIR bands from 1984-2016 period
 nir <- rast("theme_2_exercise/data_exercise/T2_nir_stack.tif") 
 ```
 
-The bands in the raster bricks are chronologically ordered, with the first raster being the earliest acquired image from 1984 and the last from 2016. Note the missing years.
+The bands in the raster bricks are chronologically ordered, with the first layer being the earliest acquired image from 1984 and the last from 2016. Note the missing years.
 
-You can visualize the first few bands of one of the bricks to get a sense of the overall data extent and band values.
+You can visualize the first couple of bands of one of rasters to get a sense of the overall data extent and band values.
 
 ``` r
 e <- c(400000, 460000, 5410000, 5415000)
@@ -105,22 +102,29 @@ We can now create a vector of dates corresponding to each image. Remember that s
 
 ``` r
 # vector of dates assigned to subsequent raster layers in each band brick
-years <- as.Date(c("1984-07-31", "1985-08-03","1986-08-22", "1987-07-08", "1988-08-18", "1989-07-04", "1991-09-05", "1992-07-20", 
-"1993-08-16", "1994-08-28", "1995-07-21", "1996-08-24", "1997-09-12", "1999-08-09", "2000-08-20", "2001-08-15", "2002-06-15", 
-"2003-08-12", "2005-09-02", "2006-07-19", "2007-08-23", "2008-09-02", "2009-08-21", "2010-08-23", "2011-08-27", 
-"2012-08-28", "2013-09-08","2014-09-04", "2015-07-12", "2016-08-08")) 
+years <- as.Date(c("1984-07-31", "1985-08-03","1986-08-22", "1987-07-08", 
+                   "1988-08-18", "1989-07-04", "1991-09-05", "1992-07-20", 
+                   "1993-08-16", "1994-08-28", "1995-07-21", "1996-08-24", 
+                   "1997-09-12", "1999-08-09", "2000-08-20", "2001-08-15", 
+                   "2002-06-15", "2003-08-12", "2005-09-02", "2006-07-19", 
+                   "2007-08-23", "2008-09-02", "2009-08-21", "2010-08-23", 
+                   "2011-08-27", "2012-08-28", "2013-09-08","2014-09-04", 
+                   "2015-07-12", "2016-08-08")) 
 ```
 
 Finally, let’s load the reference point data into our workspace. Using the `st_read` function from the `sf` package, we can easily import and manipulate the data contained in the attribute table of the vector file.
 
 ``` r
 # set of 13 reference points with attribute table
-points <- st_read("theme_2_exercise/data_exercise/T2_tatra_mountains_change_points.shp") 
+points <- st_read(
+  "theme_2_exercise/data_exercise/T2_tatra_mountains_change_points.shp") 
 ```
 
 The reference layer consists of 13 points. Nine of them have attributes regarding the year of change detection and change agent, while all of them have 90 spectral indices values (30 each for NDVI, NDMI, and NBR). The remaining four points, which have missing attribute values, will be used later in this exercise for self-training. For now, we’ll work with only the first nine points.
 
-#### Visualising imagery chips and spectral trajectories
+## Visualising imagery chips and spectral trajectories
+
+### Imagery chips
 
 Having loaded the required data, we can now prepare our plotting environment. The aim is to generate *image chips* — parts of the images surrounding reference points. As an example, we’ll use point number 1 for now, but we’ll later create a loop to process each point.
 
@@ -179,7 +183,8 @@ readStart(nir)
 # loop 30 times - once for each raster layer in the brick
 for (j in seq(30)){ 
   
-  # prepare image slice from the appropriate green raster using previously prepared rows/columns
+  # prepare image slice from the appropriate green raster
+  # using previously prepared rows/columns
   o_b1 <- rast(matrix(readValues(green[[j]], 
                                        col = row_cords[1], 
                                        nrows = window_size, 
@@ -189,7 +194,8 @@ for (j in seq(30)){
                         ncol = window_size, 
                         byrow = TRUE))  
   
-  # prepare image slice from the appropriate red raster using previously prepared rows/columns
+  # prepare image slice from the appropriate red raster
+  # using previously prepared rows/columns
   o_b2 <- rast(matrix(readValues(red[[j]], 
                                        col = row_cords[1], 
                                        nrows = window_size, 
@@ -199,7 +205,8 @@ for (j in seq(30)){
                         ncol = window_size, 
                         byrow = TRUE))
   
-  # prepare image slice from the appropriate green raster using previously prepared rows/columns
+  # prepare image slice from the appropriate green raster
+  # using previously prepared rows/columns
   o_b3 <- rast(matrix(readValues(nir[[j]], 
                                        col = row_cords[1], 
                                        nrows = window_size, 
@@ -244,7 +251,13 @@ for (j in seq(30)){
   
   # draw the location of reference point 
   points(20, 19.4, pch = ".", col = c("white"))
-  symbols(x = 19.6, y = 19.4,  squares = 3, inches = F, add = T, fg = "yellow", lwd = 0.01)
+  symbols(x = 19.6, 
+          y = 19.4, 
+          squares = 3, 
+          inches = F, 
+          add = T, 
+          fg = "yellow", 
+          lwd = 0.01)
   
   # show date of the image acquisition above the RGB chip
   title(years[j], line = -2) 
@@ -268,7 +281,9 @@ This is the result after executing the preceding code.
 
 You’ll observe that we successfully visualized the entire image time series in one comprehensive layout, facilitating an easier visual comparison between the images.
 
-Next, we’ll represent values for three distinct spectral indices. To accomplish this, we’ll adjust our plotting environment differently from our previous visualization. Additionally, the data preparation phase involves extracting a series of 30 values for each spectral index from the attribute table.
+### Spectral trajectories
+
+Next, we’ll present values for three distinct spectral indices. To accomplish this, we’ll adjust our plotting environment. Additionally, the data preparation phase involves extracting a series of 30 values for each spectral index from the attribute table.
 
 ``` r
 # set up output name of the file
@@ -281,14 +296,19 @@ png(filename = output_name, width = 1920, height = 1080, pointsize = 16)
 layout(matrix(seq(1, 4), 4, 1, byrow = TRUE), 
        heights = c(0.25, 1.25, 1.25, 1.25)) 
 
-# the first element of the plot - title; we begin by setting margins of part of the plot 
+# the first element of the plot - title; 
+# we begin by setting margins of part of the plot 
 par(mar = c(0, 0, 0, 0)) 
 # new element in the plot, in this case title
 plot.new() 
 
-# title will contain point number and change agent retrieved from attribute table
+# title will contain point number 
+# and change agent retrieved from attribute table
 text(0.5, 0.5, 
-     paste0("Spectral trajectories. Point ", point_number, ". Change agent: ", points$chng_agnt[point_number], "."), 
+     paste0("Spectral trajectories. Point ", 
+            point_number, 
+            ". Change agent: ", 
+            points$chng_agnt[point_number], "."), 
      cex = 1.4, 
      font = 1) 
 
@@ -296,11 +316,14 @@ text(0.5, 0.5,
 par(mar = c(4, 4, 1, 3)) 
 
 # Add NDVI trajectory
-# in this fragment we retrieve spectral index values from attribute table of vector file
+# in this fragment we retrieve spectral index
+# values from attribute table of vector file
 ndvi_vals <- points[point_number, ] %>% 
-  # we use pipe operator to perform several actions; first we pick the desired point from the vector file
+  # we use pipe operator to perform several actions;
+  # first we pick the desired point from the vector file
   st_drop_geometry() %>% 
-  # then we extract just the attribute table and select only spectral index values
+  # then we extract just the attribute table 
+  # and select only spectral index values
   select(NDVI_1984:NDVI_2016) %>% 
   # in the end we create a vector of values to plot 
   unlist(., use.names = FALSE)
@@ -312,7 +335,8 @@ min_val <- min(ndvi_vals, na.rm = TRUE) - 0.05 * abs(min(ndvi_vals, na.rm = TRUE
 max_val <- max(ndvi_vals, na.rm = TRUE) + 0.05 * abs(max(ndvi_vals, na.rm = TRUE))
 dynamic_range <- c(min_val, max_val)
 # calculate where to plot ablines
-abline_seq <- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+abline_seq <- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, 
+                  by = 0.1)
 
 # we initiate a point-line plot of index values
 plot(ndvi_vals, 
@@ -367,7 +391,8 @@ ndmi_vals <- points[point_number, ] %>%
 min_val <- min(ndmi_vals, na.rm = TRUE) - 0.05 * abs(min(ndmi_vals, na.rm = TRUE))
 max_val <- max(ndmi_vals, na.rm = TRUE) + 0.05 * abs(max(ndmi_vals, na.rm = TRUE))
 dynamic_range <- c(min_val, max_val)
-abline_seq <- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+abline_seq <- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, 
+                  by = 0.1)
 
 plot(ndmi_vals, 
      type = "b",
@@ -408,7 +433,8 @@ nbr_vals <- points[point_number, ] %>%
 min_val <- min(nbr_vals, na.rm = TRUE) - 0.05 * abs(min(nbr_vals, na.rm = TRUE))
 max_val <- max(nbr_vals, na.rm = TRUE) + 0.05 * abs(max(nbr_vals, na.rm = TRUE))
 dynamic_range <- c(min_val, max_val)
-abline_seq <- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+abline_seq <- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2,
+                  by = 0.1)
 
 plot(nbr_vals, 
      type = "b",
@@ -450,6 +476,8 @@ The result of the above chunk of code should look like this.
 
 </center>
 
+### Merge chips with trajectories
+
 To streamline the process, we’ll encapsulate the aforementioned functions within a loop. This loop will enable the repetitive execution of all the steps for every distinct point, eventually combining the two output images—both chips and trajectories—into a singular cohesive image. While much of the code remains consistent, there will be several modifications to ensure the loop’s smooth operation. These changes in the code will be clearly annotated within the code chunk for clarity.
 
 ``` r
@@ -475,17 +503,25 @@ for (i in seq(1, 9)){
   
   # name of the file will contain information about point 
   # number and change agent
-  output_name <- paste0("theme_2_exercise/results/Point ", i, ". ", points$chng_agnt[i], ".png") 
+  output_name <- paste0("theme_2_exercise/results/Point ", 
+                        i, 
+                        ". ", 
+                        points$chng_agnt[i], ".png") 
   
   png(filename = output_name, width = 1920, height = 1500, pointsize = 16)
   
+  # plot area divided into more parts to fit all of the components
   layout(matrix(c(rep(1, 10), seq(2, 31), rep(32, 10), rep(33, 10), rep(34, 10)),
                 7, 10, byrow = TRUE), 
-         heights = c(0.25, 1, 1, 1, 2, 2, 2)) # plot area divided into more parts to fit all of the components
+         heights = c(0.25, 1, 1, 1, 2, 2, 2)) 
   
   par(mar = c(0, 0, 0, 0))
   plot.new()
-  text(0.5, 0.5, paste0("CIR chips and spectral trajectories. Point ", i, ". Change agent: ", points$chng_agnt[i], "."), cex = 1.4, font = 1)
+  text(0.5, 0.5, paste0("CIR chips and spectral trajectories. Point ", 
+                        i, 
+                        ". Change agent: ", 
+                        points$chng_agnt[i], "."), 
+       cex = 1.4, font = 1)
   
   par(mar = c(0,0,1,0))
   for (j in seq(30)){
@@ -554,7 +590,12 @@ for (i in seq(1, 9)){
     
     
     points(20, 19.4, pch = ".", col = c("white"))
-    symbols(x = 19.6, y = 19.4,  squares = 3.2, inches = F, add = T, fg = "yellow", lwd = 0.01)
+    symbols(x = 19.6, y = 19.4, 
+            squares = 3.2, 
+            inches = F, 
+            add = T, 
+            fg = "yellow", 
+            lwd = 0.01)
     
     # show date of the image acquisition above the RGB chip
     title(years[j], line = 0.2) 
@@ -575,7 +616,8 @@ for (i in seq(1, 9)){
   max_val <- max(ndvi_vals, na.rm = TRUE) + 0.05 * abs(max(ndvi_vals, na.rm = TRUE))
   dynamic_range <- c(min_val, max_val)
   # calculate where to plot ablines
-  abline_seq <- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+  abline_seq <- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, 
+                    by = 0.1)
   
   plot(ndvi_vals, 
        type = "b",
@@ -619,7 +661,8 @@ for (i in seq(1, 9)){
   max_val <- max(ndmi_vals, na.rm = TRUE) + 0.05 * abs(max(ndmi_vals, na.rm = TRUE))
   dynamic_range <- c(min_val, max_val)
   
-  abline_seq <- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+  abline_seq <- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2,
+                    by = 0.1)
   
   plot(ndmi_vals, 
        type = "b",
@@ -649,7 +692,8 @@ for (i in seq(1, 9)){
   min_val <- min(nbr_vals, na.rm = TRUE) - 0.05 * abs(min(nbr_vals, na.rm = TRUE))
   max_val <- max(nbr_vals, na.rm = TRUE) + 0.05 * abs(max(nbr_vals, na.rm = TRUE))
   dynamic_range <- c(min_val, max_val)
-  abline_seq <- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+  abline_seq <- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2,
+                    by = 0.1)
   
   plot(nbr_vals, 
        type = "b",
@@ -689,9 +733,11 @@ The first resulting image should be looking like the example below.
 
 </center>
 
+### Assesment
+
 Take a moment to thoroughly analyze the resultant nine images. Your primary focus should be on discerning the changes apparent within the chips. Attempt to identify the year of the change through visual interpretation, and cross-reference your findings with the date provided in the attribute table and the image’s title. Additionally, endeavor to associate a change agent with the spectral index that most prominently highlights the change moment. This exercise will prove invaluable for the concluding segment, wherein you’ll be tasked with discerning the date of the change and correlating the change agent autonomously.
 
-### Self training
+## Self training
 
 Having absorbed the insights from the previous segment, let’s now apply this knowledge to a new data set. This data set, however, lacks attributes that specify the year of change and the associated change agent. Your mission? Accurately identify these attributes.
 
@@ -739,9 +785,10 @@ for (i in seq(10, 13)){
   
   png(filename = output_name, width = 1920, height = 1500, pointsize = 16)
   
+  # plot area divided into more parts to fit all of the components
   layout(matrix(c(rep(1, 10), seq(2, 31), rep(32, 10), rep(33, 10), rep(34, 10)),
                 7, 10, byrow = TRUE), 
-         heights = c(0.25, 1, 1, 1, 2, 2, 2)) # plot area divided into more parts to fit all of the components
+         heights = c(0.25, 1, 1, 1, 2, 2, 2)) 
   
   par(mar = c(0, 0, 0, 0))
   plot.new()
@@ -976,13 +1023,13 @@ A2: Construction of a ski slope.
 
 <b><u>TRAINING TASK</u></b>
 
-Try to answer similar questions regarding rest of the points in the exercise layer. When you are ready check the correct answers here.
+Try to answer similar questions regarding rest of the points in the self training layer. When you are ready check the correct answers here.
 
 <details>
 <summary>
 Answers
 </summary>
-Point 10: landslide<br> Point 11: bark beetle outbreak<br> Point 12: windthrow<br> Point 13: construction
+Point 10: landslide<br> Point 11: bark beetle outbreak<br> Point 12: windthrow<br>
 </details>
 
 ------------------------------------------------------------------------
