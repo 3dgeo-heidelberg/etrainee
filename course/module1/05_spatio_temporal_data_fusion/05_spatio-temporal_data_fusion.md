@@ -178,7 +178,7 @@ In addition to the fusion approaches outlined above, there are plenty of studies
 <input type="checkbox" name="q_03">may be used to improve the spatial and temporal resolution of an analysis.<br>
 <input type="checkbox" name="q_03">is sometimes needed for long-term monitoring tasks where the observation period must be extended beyond the operating time of a single system.<br>
 <input type="checkbox" name="q_03">is a typical strategy for streamlining the preprocessing steps.<br>
-<div hidden id="correct_q_03">may be used to improve the spatial and temporal resolution of an analysis.&is sometimes needed for long-term monitoring tasks where the observation period must be extended beyond the operating time of a single system</div>
+<div hidden id="correct_q_03">may be used to improve the spatial and temporal resolution of an analysis.&is sometimes needed for long-term monitoring tasks where the observation period must be extended beyond the operating time of a single system.</div>
 <output id="output_q_03"></output><br>
 
 <input type="submit" value="Submit" style="font-size:14pt"><br>
