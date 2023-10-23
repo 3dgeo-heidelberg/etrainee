@@ -50,9 +50,7 @@ Following [Schmitt and Zhu 2016](https://doi.org/10.1109/MGRS.2016.2561021), suc
 
 That means, the general concept of data fusion is to jointly exploit the information contained in two or more datasets from different acquisition systems in order to produce a result that could not be obtained (at this spatial, temporal or semantic quality) from a single data source. While these aspects are applicable to any data fusion task, fusing RSTS is somewhat special: We must make sure that the datasets are in a common resolution and reference frame in space and time. This will often require a matching and co-registration step and a resampling ([Schmitt and Zhu 2016](https://doi.org/10.1109/MGRS.2016.2561021)), which is often a challenge on its own. At least in the geospatial domain, *data integration* is often used synonymously with *data fusion*.
 
-### Approaches and methods for a fusion of remote sensing time series
-
-**Data fusion at different levels**
+### Data fusion at different levels
 
 In the following, we will look at how this process of spatio-temporal data fusion can look like and which data is typically combined. The topic is quite large, but we try to give a concise overview of popular combinations and typical or innovative approaches to fuse spatio-temporal data. First of all, multi-modal data can be fused at different levels (see e.g. [Schmitt and Zhu 2016](https://doi.org/10.1109/MGRS.2016.2561021) or [Hu et al. 2021](https://doi.org/10.1016/j.ophoto.2021.100002)), and fusion approaches are often characterized as *low-, mid- or high-level fusion* or categorized into these three categories:
 
@@ -77,7 +75,8 @@ In a *decision-level* (high-level) data fusion, each dataset from a specific sys
 With remote sensing time series (RSTS) data we have (at least) two general options for the fusion step (regardless of the fusion level):
 
 1. We can either maintain individual data values (observations, features or decisons) from multiple systems and merge them into a denser time series (hopefully with less gaps in space and time), or
-2. We aggregate values from multiple systems:  
+2. We aggregate values from multiple systems:
+
     * We may use observations (such as spectral band reflectance) or derived higher-level features (such as vegetation indices or morphometric/geometric features from raster DEMs or 3D point clouds (e.g., slope gradient, roughness or height above ground)) as input for a classifier.
     * At decision-level we may take an ensemble from multiple decisions (e.g. majority vote from multiple classifiers or median value from multiple regression models).
 
