@@ -15,7 +15,7 @@ In the first themes (mainly themes 1 and 2) you have learned about the character
 
 **Objectives**
 
-The objectives of **theoretical part** of this theme are to
+The objectives of the **theoretical part** of this theme are to
 
 * Understand why spatio-temporal data fusion is needed for analysing human-environment interactions
 * Learn about important theoretical concepts of data fusion and different approaches
@@ -65,7 +65,7 @@ In a *feature-level* (mid-level) data fusion, the observations are not directly 
 In a *decision-level* (high-level) data fusion, each dataset from a specific system is first used to produce a 'decision' (higher-level information, such as a classification or a modelled target quantity). In the actual fusion step, these decisions are then merged into spatially or temporally more complete product or they are aggregated (summarized) into an ensemble output (e.g. as the median value or the mode of multiple model outputs). Such higher-level fusion approaches are typically applied for datasets from more diverse sensors.
 
 <p align="center">
-    <img src="media/fusion_levels.png" title="Data fusion levels" width="700">
+    <img src="media/fusion_levels.jpg" title="Data fusion levels" width="700">
 </p>
 
 *Data fusion levels (modified from [Schmitt and Zhu 2016](https://doi.org/10.1109/MGRS.2016.2561021)).*
