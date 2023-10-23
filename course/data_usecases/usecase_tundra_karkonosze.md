@@ -30,16 +30,17 @@ The area is located in Polish and Czech Karkonosze/Krkonoše Mountains within th
 <i>Subalpine and alpine vegetation in Karkonosze/Krkonoše Mts. (figure by [Wakulińska and Marcinkowska-Ochtyra 2020](https://doi.org/10.3390/rs12172696), modified/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
 </center>
 
-In this course, we will use **multitemporal Sentinel-2 data** and **reference data** in the following lists:
+In this course, we will use **multitemporal Sentinel-2 data** and **reference data** in the following configurations:
 
-- Sentinel-2 data from four terms of data acquisition (31 May, 7 and 27 August, 18 September 2018) and field data collected in 2013-2014 (updated to 2018 based on high-resolution data interpretation) for classification of **vegetation types**, with focus on **grasslands**,
+- Sentinel-2 data from six terms of data acquisition (19, 24 and 27 June, 19 and 24 July, 20 October 2022) as reference data for **land cover** classification from CORINE Land Cover 2018 database.
 
-- Sentinel-2 data from six terms of data acquisition (19, 24 and 27 June, 19 and 24 July, 20 October 2023) as reference data for **land cover** classification from CORINE Land Cover 2018 database.
+- Sentinel-2 data from seven terms of data acquisition - 14 May, 31 May, 7 August, 27 August, 18 September (five dates from 2018), 25 June and 30 June (two dates from 2019) - and field data collected in 2013-2014 (updated to 2018-2019 based on high-resolution data interpretation) for classification of **vegetation types**, with focus on **grasslands**,
 
 ## Use case in the course
 
 The use case is featured in the following parts of the course:
 
+- [Exercise: Image processing workflow (Module 2, Theme 3)](../module2/03_image_processing/03_image_processing_exercise.md)
 - [Exercise: Multitemporal classification (Module 2, Theme 4)](../module2/04_multitemporal_classification/04_multitemporal_classification.md)
 - [Case study: Monitoring tundra grasslands (Karkonosze) (Module 2, Case study 1)](../module2/06_cs_tundra_grasslands/06_cs_tundra_grasslands.md)
 

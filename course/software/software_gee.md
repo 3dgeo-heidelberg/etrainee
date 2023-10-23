@@ -10,12 +10,26 @@ Create the personal cloud project to access Code Editor.
 
 ## Getting started 
 
-To quickly get started read this introduction to GEE: [https://developers.google.com/earth-engine/guides/getstarted](https://developers.google.com/earth-engine/guides/getstarted). 
+We recommend the following introductory material to familiarize yourself with GEE.
+
+Mandatory tutorials (in this order):
+
+1. [Get Started with Earth Engine](https://developers.google.com/earth-engine/guides/getstarted)
+2. [Introduction to JavaScript for Earth Engine](https://developers.google.com/earth-engine/tutorials/tutorial_js_01)
+3. [Earth Engine Code Editor](https://developers.google.com/earth-engine/guides/playground)
+
+Take also **Feature Tour** to get to know Code Editor environment.
+
+Additional materials:
+https://developers.google.com/earth-engine/apidocs
+https://developers.google.com/earth-engine/tutorials/tutorial_js_02
+https://developers.google.com/earth-engine/tutorials/tutorial_js_03
+
+https://gis.stackexchange.com/questions/tagged/google-earth-engine
+https://groups.google.com/g/google-earth-engine-developers
+
   
-If you are new to GEE consider going through [this presentation](https://docs.google.com/presentation/d/1hT9q6kWigM1MM3p7IEcvNQlpPvkedW-lgCCrIqbNeis/edit#slide=id.p) and [this tutorial](https://docs.google.com/document/d/1ZxRKMie8dfTvBmUNOO0TFMkd7ELGWf3WjX0JvESZdOE/edit).
+Consider going through [this presentation](https://docs.google.com/presentation/d/1hT9q6kWigM1MM3p7IEcvNQlpPvkedW-lgCCrIqbNeis/edit#slide=id.p) and [this tutorial](https://docs.google.com/document/d/1ZxRKMie8dfTvBmUNOO0TFMkd7ELGWf3WjX0JvESZdOE/edit).
 
 More resources and tutorials:  
-
-* [API reference](https://developers.google.com/earth-engine/apidocs)
-* [GEE Community Tutorials](https://developers.google.com/earth-engine/tutorials)
 * [END-TO-END GOOGLE EARTH ENGINE](https://spatialthoughts.com/courses/google-earth-engine/) by [Ujaval Gandhi](https://spatialthoughts.com/about/)

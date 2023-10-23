@@ -13,7 +13,7 @@ output:
 Principles of multispectral imaging
 ================
 
-Before we move on to time series analysis we will generally introduce the topic of **multispectral satellite data properties and methods of analysis**. We acknowledge that multispectral imagery can also be acquired with aerial and UAV platforms. However, since this module covers satellite data level of acquisition we will focus only on this type of data. We will present the potential of these satellite images in environmental applications.
+Before we move on to time series analysis we will generally introduce the topic of **multispectral satellite data properties**. We acknowledge that multispectral imagery can also be acquired with aerial and UAV platforms. However, since this module covers satellite data level of acquisition we will focus only on this type of data. We will present the potential of these satellite images in environmental applications.
 
 In this theme, you will learn about:
 
@@ -34,20 +34,17 @@ To consolidate your knowledge and test it in more practical environment complete
 
 After finishing this theme you will:
 
-- gain knowledge on the different types of resolution: spatial, spectral, radiometric, and temporal in the context of satellite data
-- understand how to visually interpret satellite images based on attributes like tone/brightness, color, size, form, texture, spatial patterns, shadows, and phenology
-- comprehend the concept of multispectral data, including the principles of spatial and spectral resolution and the signal-to-noise (S/N) ratio
-- learn about the use of specific spectral ranges to observe and analyze different phenomena, like coastal zone observations
-- understand how to create RGB image compositions and false color images from multispectral data
-- discover how to calculate and use spectral indices like NDVI, NDMI, NPCI, SIPI, and NBR for analyzing different objects and phenomena.
-- get introduced to data transformation techniques like Tasseled Cap (TC) and Principal Component Analysis (PCA) for dealing with multispectral data
+- gain knowledge on the spatial and spectral resolution in the context of satellite data
+- understand how to visually interpret satellite images based on more or less complex features (e.g. tone/brightness, size, texture, shadows, phenology)
+- learn about the use of specific spectral ranges and RGB compositions to observe and analyze different phenomena
+- understand how to calculate, differentiate and use selected spectral indices and data transformation techniques like Tasseled Cap (TC) and Principal Component Analysis (PCA) for dealing with multispectral data
 - gain familiarity with various satellite multispectral sensors and their specific applications in remote sensing research
-- understand the advantages and limitations of satellite multispectral imaging for diverse fields of study
-- learn about the increasing availability and variety of satellite data archives and their relevance for various applications
+- discover the advantages and limitations of satellite multispectral imaging for diverse fields of study
+- know the increasing availability and variety of satellite data archives and their relevance for various applications
 
 ## Visual interpretation of satellite data concept
 
-Image data can be analyzed based on their **resolutions**. In the context of satellite data, we consider four types of resolution: spatial, spectral, radiometric, and fixed temporal. We will discuss the last in more detail in **[Theme 2](../02_temporal_information/02_temporal_information.md)**, while the others will be covered in this module.
+Image data can be analyzed based on their **resolutions**. In the context of satellite data, we consider four types of resolution: spatial, spectral, radiometric, and fixed temporal. We will discuss the last in more detail in [**Theme 2**](../02_temporal_information/02_temporal_information.md), while the others will be covered in this module.
 
 Starting with the visual interpretation of satellite images it can be grouped in a hierarchical way, in relation to the degree of complexity ([European Commission, 1994](https://op.europa.eu/en/publication-detail/-/publication/6a5a57d8-d7af-4947-9074-609e792ffaad), [Chuvieco, 2020](https://doi.org/10.1201/9780429506482)). At the most basic level, **tone/brightness** and **color** are the most intuitive factors for visual interpretation. Following these, spatial characteristics such as the **size**, **form (shape)**, and **texture (spatial heterogeneity)** of identified objects are considered. More complex factors include **spatial patterns** or **shadows**, which are connected with the **height** of objects. Finally, **phenology** is considered the most challenging to capture visually, since it is influenced by seasonal and interannual variations in climate. This requires a deep understanding of the biological and ecological processes at play, as well as the ability to interpret subtle changes in color and texture that may indicate changes in vegetation health.
 
@@ -66,15 +63,15 @@ Optical remote sensing is based on specific parts of the electromagnetic spectru
 
 Satellite multispectral data gathering process is based on three interrelated fundamental parameters: **spatial** and **spectral** resolution and **signal-to-noise (S/N) ratio**. The power level of energy in each pixel is divided into the spectral bands. The finer the spatial and spectral resolution, the less power is left to overcome the system sensor noise. This is where the S/N ratio comes into play. The primary objective of remote sensing is to maximize the S/N ratio, ensuring that the recorded signal significantly surpasses the noise, thereby enhancing the quality of the data collected.
 
-The prerequisite for further quantitative analysis on satellite data in the optical domain is the calibration to spectral radiance, followed by the calculation of reflectance (we describe this in **[Theme 3](../03_image_processing/03_image_processing.md)**). But qualitatively, we can visually analyze images as described above based on tone/brightness or color.
+The prerequisite for further quantitative analysis on satellite data in the optical domain is the calibration to spectral radiance, followed by the calculation of reflectance (we describe this in **[**Theme 3**](../03_image_processing/03_image_processing.md)**). But qualitatively, we can visually analyze images as described above based on tone/brightness or color.
 
 ## Use of different ranges
 
-Various materials have unique reflection and absorption properties of electromagnetic radiation at different wavelengths. Those different characteristics make it possible to use particular spectral ranges for their analysis and targeting specific phenomena, For instance **band 1** (0.43-0.45 micrometers) from Landsat 8 OLI is particularly useful for **coastal zone** observations due to the way water absorbs and reflects light in this range.
+Various materials have unique reflection and absorption properties of electromagnetic radiation at different wavelengths. Those different characteristics make it possible to use particular spectral ranges for their analysis and targeting specific phenomena. For instance **band 1** (0.43-0.45 micrometers) from Landsat 8 OLI is particularly useful for **coastal zone** observations due to the way water absorbs and reflects light in this range.
 
 This dependence on the use of specific bands for specific analyzes results from the **number of gray levels** associated with **radiometric** resolution of the data and **brightness** of particular pixels. The greater the variation in the brightness of pixels representing different objects - the more useful the band for analysis. However, the human eye is more sensitive to color variations than brightness variations, which is why **color (multiband) compositions** are often used in the visual interpretation of satellite images.
 
-Plotting three selected spectral bands together allows for the creation of an **RGB image composition**. While our eyes are most accustomed to compositions based on red, green, and blue bands, the availability of near and shortwave infrared bands allows us to create false color images. Such compositions allow for better discrimination of e.g. deciduous/coniferous forests, healthy/damaged vegetation and so on.
+Plotting three selected spectral bands together allows for the creation of an **RGB image composition**. While our eyes are most accustomed to compositions based on red, green, and blue bands (part (a) of Figure below), the availability of near and shortwave infrared bands allows us to create false color images (part (b)). Such compositions allow for better discrimination of e.g. deciduous/coniferous forests, healthy/damaged vegetation and so on.
 
 <center>
 
@@ -89,18 +86,18 @@ In multispectral data, the number of bands and their width are crucial factors. 
 
 <img src="media/curves.png" title="Differences between Landsat sensors vs hyperspectral data" alt="Multi- vs hyperspectral data" width="600"/>
 
-<i>Differences between multispectral vs hyperspectral data (each color of line at the top of the figure corresponds to a specific Landsat sensor band, and the width is approximately proportional to the range of wavelengths that it covers. Figure by course authors).</i>
+<i>Differences between multispectral vs hyperspectral data, plant spectral characteristics example (each color of line at the top of the figure corresponds to a specific Landsat sensor band, and the width is approximately proportional to the range of wavelengths that it covers. Figure by course authors).</i>
 </center>
 
 Many spectral bands offer numerous possibilities for analysis (e.g. assessment of leaf pigments or cellular structures of plant as you can see above), however they can also be correlated, leading to redundancy in gathered information. Therefore, remote sensing offers the possibility to choose the bands that interest us the most. These selected bands can both be used to calculate **spectral indices** and subjected to **transformations**.
 
 ## Spectral indices
 
-As you know different spectral bands allow for creating their combinations called **spectral indices**. Let’s recall what spectral indices are: a mathematical measures that compare the spectral reflection in more than one spectral band.
+Different spectral bands allow for creating their combinations called **spectral indices**. Let’s recall what spectral indices are: a mathematical measures that compare the spectral reflection in more than one spectral band.
 
-For multispectral data analysis both broadband and narrowband indices can be calculated, depending on the sensor used (e.g. [Henrich et al., 2009](https://www.researchgate.net/publication/259802556_Development_of_an_online_indices_database_Motivation_concept_and_implementation) proposed 249 indices possible to calculate on only Sentinel-2 data! And many others).
+For multispectral data analysis both broadband and narrowband indices can be calculated, depending on the sensor used (e.g. [Henrich et al., 2009](https://www.researchgate.net/publication/259802556_Development_of_an_online_indices_database_Motivation_concept_and_implementation) listed 249 indices possible to calculate on only Sentinel-2 data! And many others).
 
-Spectral indices can be dedicated to various objects and their characteristics. Due to the great dynamics of the changes taking place, most indices are related to **vegetation**. There are also indices developed for studying topics such as **snow cover**, **built-up areas**, **rocks and minerals**, and **fire/burnt areas**.
+Spectral indices can be dedicated to various objects and their characteristics. Due to the great dynamics of the changes taking place, most indices are related to **vegetation**. There are also indices developed for studying topics such as **snow cover**, **built-up areas**, **rocks and minerals**, and **fire/burnt areas**. You can find the examples of those in [Index Database](https://www.indexdatabase.de/) or [Awesome Spectral Indices](https://awesome-ee-spectral-indices.readthedocs.io/en/latest/index.html#).
 
 <center>
 
@@ -111,7 +108,33 @@ Spectral indices can be dedicated to various objects and their characteristics. 
 
 Vegetation is one of the most *visually dynamic* land cover classes during the year and over many years, hence it is one of the most frequently studied objects using spectral indices. Its physiognomy and morphology is expressed in specific values of the reflectance. That, for instance, allows the user to assess whether the plant is healthy, stressed or dead.
 
-**Normalized Difference Vegetation Index** (NDVI, [Rouse et al., 1973](https://ntrs.nasa.gov/api/citations/19730017588/downloads/19730017588.pdf)) is one of the most common vegetation indices, which provides a measure of the general condition of vegetation and biomass. It is also often used in multitemporal analysis, as you will see throughout our course. However, there are also other indices related to e.g. water content in plants (**Normalized Difference Moisture Index** (NDMI, [Hardisky et al., 1983](https://www.asprs.org/wp-content/uploads/pers/1983journal/jan/1983_jan_77-83.pdf))), chlorophyll content (**Normalized Pigment Chlorophyll Index** (NPCI, [Peñuelas et al., 1993](https://doi.org/10.1080/01431169308954010)), light use efficiency (e.g. **Structural Independent Pigment Index (SIPI**, [Peñuelas et al., 1994](https://www.researchgate.net/profile/Josep-Penuelas/publication/235645504_Photosyn1995/links/02bfe512443728f376000000/Photosyn1995.pdf)). **Normalized Burn Ratio** (NBR, [Roy et al., 2006](https://doi.org/10.1109/LGRS.2005.858485)) is also frequently used for mapping burned areas. Interestingly, this index and NDMI both make use of NIR and SWIR bands, however the SWIR band in NBR has longer wavelength than in case of NDMI.
+**Normalized Difference Vegetation Index** (NDVI, [Rouse et al., 1973](https://ntrs.nasa.gov/api/citations/19730017588/downloads/19730017588.pdf)) is one of the most common vegetation indices, which provides a measure of the general condition of vegetation and biomass. It is also often used in multitemporal analysis, as you will see throughout our course. However, there are also other indices related to:
+
+- water content in plants, e.g. **Normalized Difference Moisture Index** (NDMI, [Hardisky et al., 1983](https://www.asprs.org/wp-content/uploads/pers/1983journal/jan/1983_jan_77-83.pdf)),
+- chlorophyll content, e.g. **Normalized Pigment Chlorophyll Index** (NPCI, [Peñuelas et al., 1993](https://doi.org/10.1080/01431169308954010)),
+- light use efficiency, e.g. **Structural Independent Pigment Index** (SIPI, [Peñuelas et al., 1994](https://www.researchgate.net/profile/Josep-Penuelas/publication/235645504_Photosyn1995/links/02bfe512443728f376000000/Photosyn1995.pdf)). etc.
+
+**Normalized Burn Ratio** (NBR, [Roy et al., 2006](https://doi.org/10.1109/LGRS.2005.858485)) is also frequently used for mapping burned areas.
+
+As you will see in the next chapter discussing the characteristics of various satellite sensors, they differ in, among others, spectral ranges. The formulas for calculating spectral indices on them are the same, but the correct band must be inserted into the formula. The **Table** below presents the formulas for the above-mentioned indices defined using bands from several selected sensors.
+
+<div>
+
+<b>Table 1. Selected vegetation indices formulas.</b>
+
+</div>
+
+| index | general formula   | Landsat 5-7 | Landsat 8-9 | Sentinel-2    | PlanetScope PSB.SD | PlanetScope PS2.SD |
+|-------|-------------------|-------------|-------------|---------------|--------------------|--------------------|
+| NDVI  | NIR-RED/NIR+RED   | B4-B3/B4+B3 | B5-B4/B5+B4 | B8-B4/B8+B4   | B8-B6/B8+B6        | B4-B3/B4+B3        |
+| NDMI  | NIR-SWIR/NIR+SWIR | B4-B5/B4+B5 | B5-B6/B5+B6 | B8-B11/B8+B11 | \-                 | \-                 |
+| NPCI  | RED-BLUE/RED+BLUE | B3-B1/B3+B1 | B4-B2/B4+B2 | B4-B2/B4+B2   | B6-B2/B6+B2        | B3-B1/B3+B1        |
+| SIPI  | NIR-BLUE/NIR-RED  | B4-B1/B4-B3 | B5-B2/B5-B4 | B8-B2/B8-B4   | B8-B2/B8-B6        | B4-B1/B4-B3        |
+| NBR   | NIR-SWIR/NIR+SWIR | B4-B7/B4+B7 | B5-B7/B5+B7 | B8-B12/B8+B12 | \-                 | \-                 |
+
+*NOTE that some of them cannot be calculated on some data due to the lack of bands from specific ranges (e.g. lack of SWIR bands in PlanetScope data).*
+
+Interestingly, both NDMI and NBR make use of NIR and SWIR bands and general formula is exactly the same, however the SWIR band in NBR has longer wavelength than in case of NDMI, as you can see below.
 
 <center>
 
@@ -120,13 +143,23 @@ Vegetation is one of the most *visually dynamic* land cover classes during the y
 <i>Difference between the formulas in NDMI and NBR indices (figure by course authors).</i>
 </center>
 
+Spectral indices can be presented on a map to analyze their values on various forms of land cover, but they can also be used as variables:
+
+- increasing the accuracy of classification
+
+or
+
+- indicating a change in time.
+
+We will show you examples of their use in the exercises of Themes [4](../04_multitemporal_classification/04_multitemporal_classification_exercise.md) and [5](../05_vegetation_monitoring/05_vegetation_monitoring_exercise.md), respectively.
+
 More about vegetation indices calculated on e.g. multispectral Sentinel-2 data and their applications you can find [in this EO4GEO course](http://www.eo4geo.eu/training/sentinel-2-data-and-vegetation-indices/).
 
 ## Transformations
 
 Apart from spectral indices, multispectral data bands can be used to transform to new informative, **uncorrelated** bands. This can be particularly useful when dealing with time series data or when trying to reduce redundancy in the data.
 
-One of the most well-known transformations is **Tasselled Cap** (TC) producing thematic bands, from which three most commonly used are **Greenness** (TCG), **Brightness** (TCB) and **Wetness** (TCW). This transformation was introduced for Landsat MSS data crops analysis and its name is because of the shape of phenological trajectories in red-NIR feature space ([Kauth and Thomas, 1976]((http://docs.lib.purdue.edu/lars_symp?utm_source=docs.lib.purdue.edu%2Flars_symp%2F159&utm_medium=PDF&utm_campaign=PDFCoverPages))). TC transformation has since been adapted for newer Landsat sensors and other platforms such as Sentinel-2. The applications have broadened as well. For instance, in forest disturbance detection researchers often use Wetness band, which uses the contrast between shortwave and near infrared, which is a good characteristic of disturbed and regenerating vegetation ([Cohen et al., 2010](https://doi.org/10.1016/j.rse.2010.07.008), we refer to this in [Theme 5](../05_vegetation_monitoring/05_vegetation_monitoring.md)).
+One of the most well-known transformations is **Tasselled Cap** (TC) producing thematic bands, from which three most commonly used are **Greenness** (TCG), **Brightness** (TCB) and **Wetness** (TCW). This transformation was introduced for Landsat MSS data crops analysis and its name is because of the shape of phenological trajectories in red-NIR feature space ([Kauth and Thomas, 1976]((http://docs.lib.purdue.edu/lars_symp?utm_source=docs.lib.purdue.edu%2Flars_symp%2F159&utm_medium=PDF&utm_campaign=PDFCoverPages))). TC transformation has since been adapted for newer Landsat sensors and other platforms such as Sentinel-2. The applications have broadened as well. For instance, in forest disturbance detection researchers often use Wetness band, which uses the contrast between shortwave and near infrared, which is a good characteristic of disturbed and regenerating vegetation ([Cohen et al., 2010](https://doi.org/10.1016/j.rse.2010.07.008), we refer to this in [**Theme 5**](../05_vegetation_monitoring/05_vegetation_monitoring.md)).
 
 Another transformation is **Principal Component Analysis** (PCA, [Hotelling, 1933](https://doi.org/10.1037/h0071325)) which is used for dimensionality reduction or noise removal by maximising the amount of information from original spectral bands by transforming them into a new set of bands, called principal components. They are uncorrelated with each other and ordered by the amount of variance they explain in the original data. The resulting band do not contain spectral information, but instead provide a different, statistically most informative quality data.
 
@@ -141,11 +174,11 @@ Another transformation is **Principal Component Analysis** (PCA, [Hotelling, 193
 
 Over the past decades the development in remote sensing instruments have been carried out. An extensive database of satellites is provided by [Union of Concerned Scientists (UCS)](https://www.ucsusa.org/resources/satellite-database), where they listed a total number of 6718 operational satellites in orbit around Earth (updated Jan 1, 2023). From over 600 are oriented on Earth Observation and more specifically on multispectral, optical and infrared imaging as well as Earth science. They are also divided into the user’s classes like government, military, commercial and civil.
 
-**Table 1** presents the characteristics of selected satellite multispectral sensors most often used in scientific remote sensing research. Temporal information concerning most of them is described in [**Theme 2 of this Module**](../02_temporal_information/02_temporal_information.md#temporal-resolution-of-selected-sensors). See also [**Module 1 Theme 2**](../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.md#major-earth-observation-missions-data-archives-and-access) for different satellites characteristics.
+**Table 2** presents the characteristics of selected satellite multispectral sensors most often used in scientific remote sensing research. Temporal information concerning most of them is described in [**Theme 2 of this Module**](../02_temporal_information/02_temporal_information.md#temporal-resolution-of-selected-sensors). See also [**Module 1 Theme 2**](../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.md#major-earth-observation-missions-data-archives-and-access) for different satellites characteristics.
 
 <div>
 
-<b>Table 1. Selected satellite sensor characteristics.</b>
+<b>Table 2. Selected satellite sensor characteristics.</b>
 
 </div>
 
@@ -197,11 +230,11 @@ The wide range of Earth observation missions by various government agencies and 
 
 Data available in archives can be divided by several characteristics. Archives offering free access are most often projects of agencies (that own the satellites), universities, and enthusiast communities. Commercially available data are owned by companies that operate private satellites and repositories of data from them. Some of the preprocessed Analysis Ready Data may also sometimes be available for a fee. Commercial parties often offer a free sample of data or a trial plan to get you acquainted with the service. All services may offer tools for **searching, browsing, downloading, processing and analysing data**. Some offer multiple functionalities simultaneously. Depending on the user’s needs and level of sophistication, they can be operated using a graphical interface or, in some cases, also using a programming console and API. Large fragmentation and multiplicity of possibilities, apart from many advantages of such a solution, also make it necessary to spend time on selection of appropriate sources, which may require creating multiple accounts in different services and the necessity of learning how to use them.
 
-The **Table 2** below consists of multiple different purposes and content platforms available in English containing optical satellite imagery. We chose to present archives not related to just one area or missions, albeit those services can be useful for a specific purpose. Short list of such platforms can be found below.
+The **Table 3** below consists of multiple different purposes and content platforms available in English containing optical satellite imagery. We chose to present archives not related to just one area or missions, albeit those services can be useful for a specific purpose. Short list of such platforms can be found below.
 
 <div>
 
-<b>Table 2. Selected satellite data platforms.</b>
+<b>Table 3. Selected satellite data platforms.</b>
 
 </div>
 
@@ -299,7 +332,7 @@ height of the water table
 <br><br>
 
 <!--Question 6-->
-<label for="q_06"> <b>Question 6.</b> Which data feature best identifies a damaged plant: </label><br> <input type="radio" name="q_06">narrow spectral bands in the SWIR range<br> <input type="radio" name="q_06">use of VIS and NIR bands<br> <input type="radio" name="q_06">high spatial resolution of the panchromatic image<br> <input type="radio" name="q_06">texture presenting the surroundings of the plant<br>
+<label for="q_06"> <b>Question 6.</b> Which multispectral data feature best identifies a damaged plant: </label><br> <input type="radio" name="q_06">narrow spectral bands in the SWIR range<br> <input type="radio" name="q_06">use of VIS and NIR bands<br> <input type="radio" name="q_06">high spatial resolution of the panchromatic image<br> <input type="radio" name="q_06">texture presenting the surroundings of the plant<br>
 
 <div id="correct_q_06" hidden="">
 

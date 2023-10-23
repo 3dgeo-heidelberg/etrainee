@@ -15,17 +15,21 @@ Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše)
 
 In this case study we will focus on classifying non-forest tundra vegetation in higher parts of Karkonosze/Krkonoše Mountains, laying on the Polish-Czech border. The process will consist of extracting reference data based on field inventory from multitemporal Sentinel-2 imagery and classifying it with the Support Vector Machine algorithm. Additional analysis will consist of feature importance assessment performed for grasslands class as the main object of this case study.
 
+This exercise we’ll be conducted with R and RStudio. If you haven’t already done this, refer to this tutorial regarding the environment setup: [R environment setup tutorial](../../software/software_r_language.md).
+
 ## Study area and data
 
 Before you continue, get familiar with the use case: **[Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)](../../data_usecases/usecase_tundra_karkonosze.md)**.
 
 … and read the paper accompanying the use case and case study:
 
-Wakulińska, M., & Marcinkowska-Ochtyra, A. (2020). Multi-temporal sentinel-2 data in classification of mountain vegetation. Remote Sensing, 12(17), 2696.https://doi.org/10.3390/rs12172696
+Wakulińska, M., & Marcinkowska-Ochtyra, A. (2020). *Multi-temporal sentinel-2 data in classification of mountain vegetation*. Remote Sensing, 12(17), 2696.<https://doi.org/10.3390/rs12172696>
 
-In the case study Sentinel‐2 satellite images with no/minimal cloud coverage from 4 terms of 2018 will be used. The dates were chosen to take into account the variability of alpine and subalpine grasslands during one growing season. The limitation was the high occurrence of clouds during the chosen period. The data with 2A processing level were selected.
+In the case study Sentinel‐2 satellite images with no/minimal cloud coverage from 7 terms of 2018and 2019 will be used. The dates were chosen to take into account the variability of alpine and subalpine grasslands during one growing season. The limitation was the high occurrence of clouds during the chosen period. The data with 2A processing level were selected.
 
 The reference data came mainly from the field, as these are not simple land cover classes but more complex ones, botanical information was required. The designated classes included: grasslands (**G**; of special importance), deciduous shrubs vegetation (**DSV**), bogs and fens (**BF**), subalpine tall-forbs (**STF**), rocks and scree vegetation (**RSV**), heathlands (**H**), subalpine dwarf pine scrubs (**SDPS**) and forests (**F**).
+
+Download exercise data provided through [Zenodo](https://zenodo.org/record/8402925).
 
 ## Getting started
 
@@ -33,30 +37,29 @@ The reference data came mainly from the field, as these are not simple land cove
 
 To start with, we want to load necessary libraries and data and set up some initial variables, which we will use further down the line.
 
-Firstly, load required libraries into the environment: rgdal, raster, caret, and kernlab. Functions included in these packages will be used further in this case study.
+Firstly, load required libraries into the environment: `terra`, `sf`, `dplyr`, `caret`, `kernlab` and `ggsci`. Functions included in these packages will be used further in this case study.
 
 ``` r
-library(rgdal) # spatial data processing
-library(raster) # raster processing
+library(terra) # raster I/o and processing
+library(sf) # vector I/O and processing
+library(dplyr) # tabular data manipulation
 library(caret) # model tuning and training
 library(kernlab) # applying model
 library(ggsci) # visualization colour palettes
 ```
 
-Now we can start with loading up the required data. We shall start with the raster data. The imagery used in this case study are Sentinel-2 images collected in 2018 within the growing season (exact dates are 31 May, 7 August, 27 August and 18 September; June and July images were unfortunately covered by clouds). In case of raster data there are two ways you can approach this case study: use the attached preprocessed data or go to ***–THIS TUTORIAL–*** to download raw data and preprocess it to the desired state yourself. In any case load the data to the variable *image_data*.
+Now we can start with loading up the required data. We shall start with the raster data. The imagery used in this case study are Sentinel-2 images collected in 2018 and 2019 within the growing season (exact dates are 14 May, 31 May, 7 August, 27 August, 18 September (2018), 25 June and 30 June (2019)). Data preparation pipeline for this case study was presented in the [pipeline 3 in Theme 3 exercise](../03_image_processing/03_image_processing_exercise.md)
 
-Note: we have already combined the set of all four scenes into one to select data from it for each of the 3 scenarios (the order of the bands of the multitemporal set is ranked from May to September). Of course, when you classify individual scenes, you do not have to do it, but you can classify separate, pre-prepared images.
+*Note: we have combined the set of all seven scenes into one to select data from it for each of the 3 scenarios. The bands are ordered chronologically, from May 2018 to June 2019.*
 
 ``` r
-image_data <- brick("CS1_image_data.bsq") # load .bsq image of stacked 40 bands (10 bands per 4 acquisition dates)
+image_data <- rast("case_study_1/data_exercise/CS1_image_data.tif") # load .tif image of stacked 70 bands (10 bands per 7 acquisition dates)
 ```
 
-#### TO BE COMPLETED (to be decided: description of data preprocessing steps: masking clouds, shadows and water here, or in the tutorial)
-
-Now add the vector reference data to our workspace. It consists of field collected polygons with appropriate classes (including grasslands, which are the most interesting from this case study point of view) assigned, which will be used to classify multitemporal Sentinel-2 images from 2018. Load .shp file to the *reference_data* variable.
+Now add the vector reference data to our workspace. It consists of field collected polygons with appropriate classes assigned (including *grasslands*, which are the most interesting from this case study point of view) , which will be used to classify multitemporal Sentinel-2 images from 2018 and 2019. Load .shp file to the *reference_data* variable.
 
 ``` r
-reference_data <- readOGR("CS1_reference_data.shp", "CS1_reference_data") # load reference .shp dataset containing reference polygons with class names and acronyms
+reference_data <- st_read("case_study_1/data_exercise/CS1_reference_data.shp") # load reference .shp dataset containing reference polygons with class names and acronyms
 ```
 
 ### Reference values extraction
@@ -69,44 +72,46 @@ extract_pixel_values <- function(image, vector_reference, class_field_name){
   counter <- 1 # number of polygon used to extract
   print("Number of polygons done:") # information about progress printed in the console
   
-  number_of_polygons <- nrow(vector_reference@data) # number of polygons in the reference dataset
+  number_of_polygons <- nrow(vector_reference) # number of polygons in the reference dataset
   extracted_values <- data.frame() # empty data frame to store the results of extraction
   
-  class_column_index <- which(names(vector_reference@data) == class_field_name) # which columns stores the class names
+  class_column_index <- which(names(vector_reference) == class_field_name) # which columns stores the class names
   
-  for (polygon_index in seq(number_of_polygons)) { # loop to go over the entire reference dataset
-    selected_polygon <- vector_reference@polygons[polygon_index] 
-    class_name <- vector_reference@data[polygon_index, class_column_index]
-    selected_polygon_sp <- SpatialPolygons(selected_polygon) # transform selected polygon to SpatialPolygon class
-    polygon_pixel_values <- extract(image, selected_polygon_sp, df = TRUE) # extract pixel values from selected polygon
+  for (polygon_index in seq(number_of_polygons)) {
+    
+    selected_polygon <- vector_reference[polygon_index, ]
+    class_name <- selected_polygon$class
+    polygon_pixel_values <- extract(image, selected_polygon, df = TRUE) # extract pixel values from selected polygon
     polygon_pixel_values <- cbind(polygon_pixel_values[ ,2: ncol(polygon_pixel_values)], class_name, polygon_index) # add class name and polygon index to extracted values
     extracted_values <- rbind(extracted_values, polygon_pixel_values) # add the extracted values with additional information to the results data frame
     
     print(paste0(counter, "/", number_of_polygons)) # information about progress printed in the console
     counter <- counter + 1 # go to the next polygon
+    
   }
   return(extracted_values) # function results - data frame with extracted values
 }
 ```
 
-Now we shall use the above function to extract the values with the data from the reference dataset we loaded earlier.
+Now we shall use the above function to extract the values with the data from the reference dataset we loaded earlier. This process should take about 3 minutes. You can observe the progress in the console.
 
 ``` r
 pixel_reference <- extract_pixel_values(image_data, reference_data, "class") # use the above function to extract pixel values from the reference dataset, set class_field_name as "class" (the name of the field containing desired information in the .shp loaded to reference_data variable)
 ```
 
-We need to fix the column names in order to use them later.
+In order for the classifier to work properly we only want to retain observations with no NA values.
 
 ``` r
-fixed_names <- unlist(strsplit(names(pixel_reference)[1:40], "\\..")) 
-names(pixel_reference)[1:40] <- fixed_names[seq(1, length(fixed_names), by = 4)] # rename pixel_reference, field names to band numbers and dates of acquisition
-
-# --- OPTIONAL STEP ---
-saveRDS(pixel_reference, file = "pixel_reference.RDS") # save pixel reference
-# in case you want to load it use base R function readRDS to load the data into *pixel reference* variable
+pixel_reference <- na.omit(pixel_reference)
 ```
 
-We now have all the data we need to proceed. We will start with classifying single scenes, then multitemporal classification and end with best features selected. Each classification will be performed using the Support Vector Machine algorithm and radial as the kernel function, which was preceded by tuning its parameters (see below). The scheme of the procedure in the entire case study is presented in the figure below.
+Save the extracted and filtered values to .RDS file.
+
+``` r
+saveRDS(pixel_reference, file = "case_study_1/results/pixel_reference.RDS") # save pixel reference
+```
+
+We now have all the data we need to proceed. We will start with classifying single scenes, then multitemporal classification and end with best features selection classification. Each classification will be performed using the Support Vector Machine algorithm with radial kernel function. Each time we’ll preceed the classifcation with parameters tuning. The scheme of the procedure in the entire case study is presented in the figure below.
 
 <center>
 
@@ -117,10 +122,11 @@ We now have all the data we need to proceed. We will start with classifying sing
 
 ### Classification scenario 1: single scene
 
-We will start the single scene classification process with extracting only Sentinel-2 bands values from the single scene. In case of the earliest acquired image (31 May) these will be the first 10 columns of the *pixel_reference* data frame, as well two last columns including class names and polygon indices.
+We will start the single scene classification process with extracting only Sentinel-2 bands values from the single scene. In case of the earliest acquired image (14 May 2018) these will be the first 10 columns of the *pixel_reference* data frame, as well two last columns including class names and polygon indices.
 
 ``` r
-pixel_reference_31May <- pixel_reference[c(1:10, 41, 42)] # select first ten columns with pixel values from image A plus class names and indices
+pixel_reference_14May <- pixel_reference %>%
+  select(`2018-05-14_B2`:`2018-05-14_B12`, class_name, polygon_index) # select columns with pixel values from the first term of acquisition plus class names and indices
 ```
 
 In order to make our work reproducible we shall set a common seed number.
@@ -132,21 +138,21 @@ set.seed(1410)
 We can now assess how many **pixel samples** for every class we acquired during values extraction.
 
 ``` r
-table(pixel_reference_31May$class_name) # show in the console the amount of pixel samples for every class
+table(pixel_reference_14May$class_name) # show in the console the amount of pixel samples for every class
 ```
 
 In comparison we can see how many **polygons** for each class.
 
 ``` r
-table(reference_data@data$class) # show in the console the amount of polygons for every class
+table(reference_data$class) # show in the console the amount of polygons for every class
 ```
 
 In this part we will divide our reference dataset into training and validation parts. We will divide the whole set into 2 parts of equal number of polygons in each of 2 parts. Notice that the number of pixels may be different in both sets due to differences in polygon sizes.
 
 ``` r
-train_index <- createDataPartition(reference_data@data$class, p = 0.5, list = FALSE) # randomly pick half of observations based on class field
-training_data <- pixel_reference_31May[pixel_reference_31May$polygon_index %in% train_index, ] # select training pixel observations using polygon indexes
-validation_data <- pixel_reference_31May[!(pixel_reference_31May$polygon_index %in% train_index), ] # select validation pixel observations using polygon indexes
+train_index <- createDataPartition(reference_data$class, p = 0.5, list = FALSE) # randomly pick half of observations based on class field
+training_data <- pixel_reference_14May[pixel_reference_14May$polygon_index %in% train_index, ] # select training pixel observations using polygon indexes
+validation_data <- pixel_reference_14May[!(pixel_reference_14May$polygon_index %in% train_index), ] # select validation pixel observations using polygon indexes
 
 table(training_data$class_name) # show in the console the amount of pixel samples in training data
 table(validation_data$class_name) # show in the console the amount of pixel samples in validation data
@@ -171,7 +177,7 @@ plot(varImp(model)) # plot predictors apparent importance
 
 </center>
 
-<img src="media/varimp_all.png" title="Variable importance." alt="Variable importance" width="1080"/>
+<img src="media/varimp_all.png" title="Variable importance." alt="Variable importance" width="600"/>
 
 <i>Variable importance.</i>
 </center>
@@ -181,15 +187,14 @@ We will now assess the accuracy of the model by applying it to the validation da
 ``` r
 predictions <- predict(model, validation_data[, 1:10]) # use the chosen model to predict classes in the validation dataset
 confusion_matrix <- confusionMatrix(predictions, as.factor(validation_data$class_name), mode = "everything") # show confusion matrix based on validation results
-print(confusion_matrix$overall) # show accuracy metrics in the console
-saveRDS(confusion_matrix, file = "31May_confusion_matrix.RDS") # save confusion matrix
+print(round(confusion_matrix$overall, 3)) # show accuracy metrics in the console
+saveRDS(confusion_matrix, file = "case_study_1/results/14May_confusion_matrix.RDS") # save confusion matrix
 ```
 
-In this part of the exercise we will use the model to classify the image. In order to do that we no need to extract the bands from the multitemporal data brick, which were acquired on 31 May.
+In this part of the exercise we will use the model to classify the image. In order to do that we no need to extract the bands from the multitemporal data brick, which were acquired on 14 May.
 
 ``` r
-bands_31May <- subset(image_data, c(1:10))
-names(bands_31May) <- names(training_data)[1:10]
+bands_14May <- subset(image_data, c(1:10))
 ```
 
 And now we can apply the model to the appropriate 10 bands. This will classify the image into the classes provided earlier with the reference dataset.
@@ -197,18 +202,20 @@ And now we can apply the model to the appropriate 10 bands. This will classify t
 We will first classify only the spatial subset of the whole image to use it in results comparison.
 
 ``` r
-bands_31May_crop <- crop(bands_31May, extent(bands_31May, 500, 800, 1450, 1750)) # crop the whole image to the interesting polygon
+aoi <- vect("case_study_1/data_exercise/aoi.shp")
 
-try(raster:predict(bands_31May_crop, model, filename = "31May_sample_classification_result.tif", progress = "text", format = "GTiff"), silent = TRUE)
+bands_14May_crop <- crop(bands_14May, ext(aoi)) # crop the whole image to the interesting polygon
+
+try(terra::predict(bands_14May_crop, model, filename = "case_study_1/results/14May_sample_classification_result.tif", progress = "text", format = "GTiff", na.rm = TRUE), silent = TRUE)
 ```
 
-You have successfully classified 1 of the 4 images contained in the case study data repository. Your task is now to go over necessary steps to classify the remaining 3 images. In order to speed things up we will provide a looped function of the steps above to automatically produce the results for 3 remaining dates.
+You have successfully classified 1 of the 7 images contained in the case study data repository. Your task is now to go over necessary steps to classify the remaining 3 images. In order to speed things up we will provide a looped function of the steps above to automatically produce the results for 6 remaining dates.
 
 First prepare two variables to be used inside the loop. The first one indicates bands of different sets (which are numbers of fields in the *pixel_reference* variable). The second one will be used to name the results.
 
 ``` r
-scene_list <- list(c(11:20), c(21:30), c(31:40))
-scene_scenario_name <- c("7Aug", "27Aug", "18Sep")
+scene_list <- list(c(11:20), c(21:30), c(31:40), c(41:50), c(51:60), c(61:70))
+scene_scenario_name <- c("31May", "7Aug", "27Aug", "18Sep", "25Jun", "30Jun")
 ```
 
 The steps presented earlier are repeated with small adjustments to be able to work inside the loop.
@@ -221,14 +228,11 @@ for (i in seq(length(scene_scenario_name))) {
   
   print(scenario_name)
   
-  scenario_pixel_reference <- pixel_reference[c(scene_index, 41,42)]
+  scenario_pixel_reference <- pixel_reference[c(scene_index, 71, 72)]
   
   set.seed(1410)
   
-  table(pixel_reference$class_name)
-  
-  table(reference_data@data$class)
-  train_index <- createDataPartition(reference_data@data$class, p = 0.5, list = FALSE)
+  train_index <- createDataPartition(reference_data$class, p = 0.5, list = FALSE)
   
   training_data <- scenario_pixel_reference[scenario_pixel_reference$polygon_index %in% train_index, ]
   validation_data <- scenario_pixel_reference[!(scenario_pixel_reference$polygon_index %in% train_index), ]
@@ -236,25 +240,23 @@ for (i in seq(length(scene_scenario_name))) {
   control <- trainControl(method = "cv", number = 10)
   
   tune_parameters <- data.frame(C = c(10, 100, 100), sigma = c(0.1, 0.5, 0.95))
-
+  
   model <- train(training_data[, 1:10], training_data$class_name, method = "svmRadial", trControl = control,
                  tuneGrid = tune_parameters)  
   
   predictions <- predict(model, validation_data[, 1:10])
   confusion_matrix <- confusionMatrix(predictions, as.factor(validation_data$class_name), mode = "everything")
-
-  print(confusion_matrix$overall)
   
-  saveRDS(confusion_matrix, file = paste(scenario_name, "confusion_matrix.RDS", sep = "_"))
+  print(round(confusion_matrix$overall, 3)) 
+  
+  saveRDS(confusion_matrix, file = paste0("case_study_1/results/", scenario_name, "_confusion_matrix.RDS"))
   
   scenario_bands <- subset(image_data, c(scene_index))
-  names(scenario_bands) <- names(training_data)[scene_index]
   
-  scenario_bands_crop <- crop(scenario_bands, extent(scenario_bands, 500, 800, 1450, 1750))
-
-  try(raster:predict(scenario_bands_crop, model, filename = paste(scenario_name, "sample_classification_result.tiff", sep = "_"), progress = "text", format = "GTiff"), silent = TRUE)
-
-
+  scenario_bands_crop <- crop(scenario_bands, ext(aoi))
+  
+  try(terra::predict(scenario_bands_crop, model, filename = paste0("case_study_1/results/", scenario_name, "_sample_classification_result.tiff"), progress = "text", format = "GTiff", na.rm = TRUE))
+  
 }
 ```
 
@@ -263,10 +265,13 @@ After the loop has completed you should be able to see 4 resulting images and co
 First, let’s load all the saved confusion matrices.
 
 ``` r
-cm_31May <- readRDS("31May_confusion_matrix.RDS")
-cm_7Aug <- readRDS("7Aug_confusion_matrix.RDS")
-cm_27Aug <- readRDS("27Aug_confusion_matrix.RDS")
-cm_18Sep <- readRDS("18Sep_confusion_matrix.RDS")
+cm_14May <- readRDS("case_study_1/results/14May_confusion_matrix.RDS")
+cm_31May <- readRDS("case_study_1/results/31May_confusion_matrix.RDS")
+cm_7Aug <- readRDS("case_study_1/results/7Aug_confusion_matrix.RDS")
+cm_27Aug <- readRDS("case_study_1/results/27Aug_confusion_matrix.RDS")
+cm_18Sep <- readRDS("case_study_1/results/18Sep_confusion_matrix.RDS")
+cm_25Jun <- readRDS("case_study_1/results/25Jun_confusion_matrix.RDS")
+cm_30Jun <- readRDS("case_study_1/results/30Jun_confusion_matrix.RDS")
 ```
 
 We will set the labels for easier plotting. You can relate acronyms to the full class names by looking at the reference dataset attributes table.
@@ -278,29 +283,36 @@ labels <- c("BF", "DSV", "F", "G", "H", "NV", "RSV", "SDPS", "STF")
 From the confusion matrices variables we want to pull F1 metric to compare the results to one another. In order to do this we shall access one of the numbers stored inside the variable (we chose F1 because it combines producer and user accuracies, making the comparison more general, of course you can select and compare other available measures in the confusion matrix).
 
 ``` r
+f1_14May <- cm_14May$byClass[, 7]
 f1_31May <- cm_31May$byClass[, 7]
 f1_7Aug <- cm_7Aug$byClass[, 7]
 f1_27Aug <- cm_27Aug$byClass[, 7]
 f1_18Sep <- cm_18Sep$byClass[, 7]
+f1_25Jun <- cm_25Jun$byClass[, 7]
+f1_30Jun <- cm_30Jun$byClass[, 7]
 ```
 
 With that we are able to plot the results. We will show them in 2 ways: by points and bars.
 
 ``` r
-colour_palette <- pal_d3("category10", alpha = 0.7)(6) # set colour palette for alle the remaining plots
-# point plot
-png(filename = "comp_points.png", width = 1920, height = 1080, res = 200, pointsize = 9)
+colour_palette <- pal_d3("category10", alpha = 0.7)(9) # set colour palette for all the remaining plots
 
-plot(f1_31May, xaxt = "n", xlab = "Class", ylab = "F1",
+
+png(filename = "case_study_1/results/comp_points.png", width = 1920, height = 1080, res = 200, pointsize = 9)
+
+plot(f1_14May, xaxt = "n", xlab = "Class", ylab = "F1",
      ylim = c(0,1), pch = 1, col = colour_palette[1], lwd = 2, las = 2,
      main = "Comparison of F1 scores for different terms of data acquisition.")
 abline(h = c(0,0.2,0.4,0.6,0.8,1), lty = 3)
-points(f1_7Aug, pch = 6, col = colour_palette[2], lwd = 2)
-points(f1_27Aug, pch = 2, col = colour_palette[3], lwd = 2)
-points(f1_18Sep, pch = 5, col = colour_palette[4], lwd = 2)
+points(f1_31May, pch = 2, col = colour_palette[2], lwd = 2)
+points(f1_7Aug, pch = 3, col = colour_palette[3], lwd = 2)
+points(f1_27Aug, pch = 4, col = colour_palette[4], lwd = 2)
+points(f1_18Sep, pch = 5, col = colour_palette[5], lwd = 2)
+points(f1_25Jun, pch = 7, col = colour_palette[6], lwd = 2)
+points(f1_30Jun, pch = 8, col = colour_palette[7], lwd = 2)
 axis(1, at = 1:9, labels = labels)
-legend("bottom", legend = c("31May", "7Aug", "27Aug", "18Sep"),
-       col = colour_palette[1:4], pch = c(1, 6, 2, 5), cex = 1.1,
+legend("bottom", legend = c("14May", "31May", "7Aug", "27Aug", "18Sep", "25Jun", "30Jun"),
+       col = colour_palette[1:7], pch = c(1, 2, 3, 4, 5, 6, 7), cex = 1.1,
        title = "Terms of data acquisition")
 dev.off()
 ```
@@ -314,19 +326,20 @@ dev.off()
 
 ``` r
 # barplot
-f1_matrix <- matrix(data = c(f1_31May, f1_7Aug, f1_27Aug, f1_18Sep),
-                    ncol = 9, nrow = 4, byrow = TRUE)
+f1_matrix <- matrix(data = c(f1_14May, f1_31May, f1_7Aug, f1_27Aug, f1_18Sep, f1_25Jun, f1_30Jun),  ncol = 9, nrow = 7, byrow = TRUE)
 
-png(filename = "comp_barplot.png", width = 1920, height = 1080, res = 200, pointsize = 9)
+png(filename = "case_study_1/results/comp_barplot.png", width = 1920, height = 1080, res = 200, pointsize = 9)
 
+par(mar=c(5, 4, 4, 8), xpd = TRUE)
 barplot(f1_matrix, beside = TRUE, xaxt = "n", xlab = "Class", ylab = "F1",
-        ylim = c(0, 1), las = 2, col = colour_palette[1:4],
+        ylim = c(0, 1), las = 2, col = colour_palette[1:7],
         main = "Comparison of F1 scores for different terms of data acquisition.")
-
+legend("topright", legend = c("14May", "31May", "7Aug", "27Aug", "18Sep", "25Jun", "30Jun"),
+       fill = colour_palette[1:7],  title = "Terms of\ndata acquisition", inset=c(-0.1, 0))
+par(xpd=FALSE)
 abline(h = c(0, 0.2, 0.4, 0.6, 0.8, 1), lty = 3)
-axis(1, at=c(3, 8, 13, 18, 23, 28, 33, 38, 43), labels = labels)
-legend("topleft", legend = c("31May", "7Aug", "27Aug", "18Sep"),
-       fill = colour_palette[1:4],  title = "Terms of data acquisition")
+axis(1, at=c(4.5, 12.5, 20.5, 28.5, 36.5, 44.5, 52.5, 60.5, 68.5), labels = labels)
+
 dev.off()
 ```
 
@@ -341,7 +354,7 @@ TASK: Assess the results using F1 values shown on the plots. Focus on the grassl
 
 ### Classification scenario 2: multitemporal set
 
-After we classified each individual term we now want to classify the multitemporal set. The steps will be very similar to what we have done previously with single term classification. The main difference will be that we now want to use all 40 bands in model building and classification.
+After we classified each individual term we now want to classify the multitemporal set. The steps will be very similar to what we have done previously with single term classification. The main difference will be that we now want to use all 70 bands in model building and classification.
 
 TASK: Perform classification scenario consisting of all the available bands. Try to recreate the steps learned in the single term classification. Save the results: confusion matrix as *All_terms_confusion_matrix.RDS* and image as *All_terms_sample_classification_result.tif*. In case of any problems you can look below at the solution.
 
@@ -352,7 +365,7 @@ Solution with code.
 
 ``` r
 set.seed(1410)
-train_index <- createDataPartition(reference_data@data$class, p = 0.5, list = FALSE) # randomly pick half of observations based on class field
+train_index <- createDataPartition(reference_data$class, p = 0.5, list = FALSE) # randomly pick half of observations based on class field
 
 training_data <- pixel_reference[pixel_reference$polygon_index %in% train_index, ] # select training pixel observations using polygon indexes
 validation_data <- pixel_reference[!(pixel_reference$polygon_index %in% train_index), ] # select validation pixel observations using polygon indexes
@@ -361,16 +374,17 @@ control <- trainControl(method = "cv", number = 10) # set 10-fold cross validati
 
 tune_parameters <- data.frame(C = c(10, 100, 100), sigma = c(0.1, 0.5, 0.95)) # test these parameters to find the best combination
 
-model <- train(training_data[, 1:40], training_data$class_name, method = "svmRadial", trControl = control, tuneGrid = tune_parameters) # train the model using SVM with radial kernel using selected parameters
+model <- train(training_data[, 1:70], training_data$class_name, method = "svmRadial", trControl = control, tuneGrid = tune_parameters) # train the model using SVM with radial kernel using selected parameters
 
-predictions <- predict(model, validation_data[, 1:40]) # use the chosen model to predict classes in the validation dataset
+predictions <- predict(model, validation_data[, 1:70]) # use the chosen model to predict classes in the validation dataset
 confusion_matrix <- confusionMatrix(predictions, as.factor(validation_data$class_name), mode = "everything") # show confusion matrix based on validation results
-print(confusion_matrix$overall) # show confusion metrics in the console
-saveRDS(confusion_matrix, file = "All_terms_confusion_matrix.RDS") # save confusion matrix
+print(round(confusion_matrix$overall, 3)) # show confusion metrics in the console
+saveRDS(confusion_matrix, file = "case_study_1/results/All_terms_confusion_matrix.RDS") # save confusion matrix
 
-image_data_crop <- crop(image_data, extent(image_data, 500, 800, 1450, 1750))
 
-try(raster:predict(image_data_crop, model, filename = "All_terms_sample_classification_result.tif", progress = "text", format = "GTiff"), silent = TRUE)
+image_data_crop <- crop(image_data, ext(aoi)) # crop the whole image to the interesting polygon
+
+try(terra::predict(image_data_crop, model, filename = "case_study_1/results/All_terms_sample_classification_results.tif", progress = "text", format = "GTiff", na.rm = TRUE), silent = TRUE)
 ```
 
 </details>
@@ -378,23 +392,26 @@ try(raster:predict(image_data_crop, model, filename = "All_terms_sample_classifi
 Now also compare the results of the multitemporal classification to the single term classification. Add one more result from the confusion matrix to the plots we produced earlier. We will only present the barplot version (but point plots are a valid presentation option as well).
 
 ``` r
-cm_all_terms <- readRDS("All_terms_confusion_matrix.RDS")
+cm_all_terms <- readRDS("case_study_1/results/All_terms_confusion_matrix.RDS")
 f1_all_terms <- cm_all_terms$byClass[, 7]
 
+
 # barplot
-f1_matrix <- matrix(data = c(f1_31May, f1_7Aug, f1_27Aug, f1_18Sep, f1_all_terms),
-                    ncol = 9, nrow = 5, byrow = TRUE)
+f1_matrix <- matrix(data = c(f1_14May, f1_31May, f1_7Aug, f1_27Aug, f1_18Sep, f1_25Jun, f1_30Jun, f1_all_terms),  ncol = 9, nrow = 8, byrow = TRUE)
 
-png(filename = "comp2_barplot.png", width = 1920, height = 1080, res = 200, pointsize = 9)
+png(filename = "case_study_1/results/comp2_barplot.png", width = 1920, height = 1080, res = 200, pointsize = 9)
 
+par(mar=c(5, 4, 4, 8), xpd = TRUE)
 barplot(f1_matrix, beside = TRUE, xaxt = "n", xlab = "Class", ylab = "F1",
-        ylim = c(0, 1), las = 2, col = colour_palette[1:5],
+        ylim = c(0, 1), las = 2, col = colour_palette[1:8],
         main = "Comparison of F1 scores for different classification input datasets.")
 
+legend("topright", legend = c("14May", "31May", "7Aug", "27Aug", "18Sep", "25Jun", "30Jun", "All_terms"),
+       fill = colour_palette[1:8],  title = "Classification input datasets", bty = "n", xjust = 1 , inset=c(-0.1, 0))
+par(xpd = FALSE)
 abline(h = c(0, 0.2, 0.4, 0.6, 0.8, 1), lty = 3)
-axis(1, at = c(3.5, 9.5, 15.5, 21.5, 27.5, 33.5, 39.5, 45.5, 51.5), labels = labels)
-legend(35, 1, legend = c("31May", "7Aug", "27Aug", "18Sep", "All_terms"),
-       fill = colour_palette[1:5],  title = "Classification input datasets", bty = "n", xjust = 1)
+axis(1, at = c(5, 14, 23, 32, 41, 50, 59, 68, 77), labels = labels)
+
 dev.off()
 ```
 
@@ -422,7 +439,7 @@ Most of the classification scenarios will be similar to what we previously showe
 
 ``` r
 set.seed(1410)
-train_index <- createDataPartition(reference_data@data$class, p = 0.5, list = FALSE) # randomly pick half of observations based on class field
+train_index <- createDataPartition(reference_data$class, p = 0.5, list = FALSE) # randomly pick half of observations based on class field
 
 training_data <- pixel_reference[pixel_reference$polygon_index %in% train_index, ] # select training pixel observations using polygon indexes
 validation_data <- pixel_reference[!(pixel_reference$polygon_index %in% train_index), ] # select validation pixel observations using polygon indexes
@@ -431,17 +448,17 @@ control <- trainControl(method = "cv", number = 10) # set 10-fold cross validati
 
 tune_parameters <- data.frame(C = c(10, 100, 100), sigma = c(0.1, 0.5, 0.95)) # test these parameters to find the best combination
 
-model <- train(training_data[, 1:40], training_data$class_name, method = "svmRadial", trControl = control, tuneGrid = tune_parameters) # train the model using SVM with radial kernel
+model <- train(training_data[, 1:70], training_data$class_name, method = "svmRadial", trControl = control, tuneGrid = tune_parameters) # train the model using SVM with radial kernel
 ```
 
-Now we can see the variable importance values for all the classes.
+Now we can see the variable importance values for all the classes. We’ll plot the first 15 features
 
 ``` r
 feature_selection <- varImp(model) # show predictor apparent importance
-plot(feature_selection) # plot predictor apparent importance
+plot(feature_selection, top = 15) # plot predictor apparent importance
 ```
 
-Plotting this many variables for a few classes causes the plot to be almost unreadable. We can fortunately pull the necessary values from the model. This information will now be used to sort the variable importance in descending order using previously mentioned ROC scores for the grasslands class. Predictor names with the highest apparent importance for grasslands classification can be then identified and chosen for the final classification model. In our case we will choose 10 best performing predictors.
+Plotting many variables for a few classes causes the plot to be almost unreadable. We can fortunately pull the necessary values from the model. This information will now be used to sort the variable importance in descending order using previously mentioned ROC scores for the grasslands class. Predictor names with the highest apparent importance for grasslands classification can be then identified and chosen for the final classification model. In our case we will choose 10 best performing predictors.
 
 ``` r
 ROC_scores_grasslands <- feature_selection$importance$grasslands # values of apparent importance for grasslands class
@@ -451,6 +468,41 @@ ROC_scores_grasslands <- sort(ROC_scores_grasslands, decreasing = TRUE) # arrang
 
 The values could be plotted in many readable ways. For this case study we supply the horizontal barplot, with colours of the bars corresponding to the dates of data acquisition.
 
+<details>
+<summary>
+Code to prepare this barplot.
+</summary>
+
+``` r
+colours <- c(colour_palette[6], colour_palette[6], colour_palette[3], colour_palette[2], colour_palette[3], colour_palette[7], colour_palette[2], colour_palette[4], colour_palette[7], colour_palette[4], colour_palette[2], colour_palette[3], colour_palette[6], colour_palette[7], colour_palette[4], colour_palette[5], colour_palette[5], colour_palette[1], colour_palette[1], colour_palette[1], colour_palette[6], colour_palette[5], colour_palette[7], colour_palette[2], colour_palette[6], colour_palette[6], colour_palette[3], colour_palette[2], colour_palette[2], colour_palette[7], colour_palette[1], colour_palette[6], colour_palette[7], colour_palette[2], colour_palette[6])
+
+rev_colours <- rev(colours)
+
+ROC_scores_grasslands_increasing <- sort(ROC_scores_grasslands[1:35])
+
+png(filename = "case_study_1/results/grasslands_importance.png", width = 1920, height = 1080, res = 200, pointsize = 9)
+
+
+barplot(ROC_scores_grasslands_increasing, 
+        names = names(ROC_scores_grasslands_increasing), 
+        horiz = TRUE, 
+        main = "Grasslands class feature importance",
+        xlab = "Importance", 
+        las = 1,
+        border = NA,
+        cex.names = 0.5,
+        xlim = c(60, 100),
+        xpd = FALSE,
+        col = rev_colours
+)
+
+legend("bottomright", legend = c("14May", "31May", "7Aug", "27Aug", "18Sep", "25Jun", "30Jun"),
+       fill = colour_palette[1:7],  title = "Terms of data acquisition")
+
+dev.off()
+```
+
+</details>
 </center>
 
 <img src="media/grasslands_importance.png" title="Grasslands importance." alt="Grasslands importance" width="1080"/>
@@ -462,7 +514,7 @@ Based on the plot and the values we can assess which predictors would work best 
 
 ``` r
 first_10 <- names(ROC_scores_grasslands)[1:10] # pull 10 best performing predictors names
-best_10_predictors <- pixel_reference[, c(which(names(pixel_reference) %in% first_10), 41, 42)] # get first most informative predictors
+best_10_predictors <- pixel_reference[, c(which(names(pixel_reference) %in% first_10), 71, 72)] # get first most informative predictors
 ```
 
 TASK: Use *best_10_predictors* to perform classification. Divide the dataset into training and validation data, train and apply model, and save confusion matrix as *FS_confusion_matrix.RDS* and image as *FS_sample_classification_result.tif* (FS meaning *Feature Selection*).
@@ -474,7 +526,7 @@ Solution with code.
 
 ``` r
 set.seed(1410)
-train_index <- createDataPartition(reference_data@data$class, p = 0.5, list = FALSE) # randomly pick half of observations based on class field
+train_index <- createDataPartition(reference_data$class, p = 0.5, list = FALSE) # randomly pick half of observations based on class field
 
 training_data <- best_10_predictors[best_10_predictors$polygon_index %in% train_index, ] # select training pixel observations using polygon indexes
 validation_data <- best_10_predictors[!(best_10_predictors$polygon_index %in% train_index), ] # select validation pixel observations using polygon indexes
@@ -487,12 +539,16 @@ model <- train(training_data[, 1:10], training_data$class_name, method = "svmRad
 
 predictions <- predict(model, validation_data[, 1:10]) # use the chosen model to predict classes in the validation dataset
 confusion_matrix <- confusionMatrix(predictions, as.factor(validation_data$class_name), mode = "everything") # show confusion matrix based on validation results
-print(confusion_matrix$overall) # show confusion metrics in the console
-saveRDS(confusion_matrix, file = "FS_confusion_matrix.RDS") # save confusion matrix
+print(round(confusion_matrix$overall, 3)) # show confusion metrics in the console
+saveRDS(confusion_matrix, file = "case_study_1/results/FS_confusion_matrix.RDS") # save confusion matrix
 
-image_data_crop <- crop(image_data, extent(image_data, 500, 800, 1450, 1750))
 
-try(raster:predict(image_data_crop, model, filename = "FS_terms_sample_classification_result.tif", progress = "text", format = "GTiff"), silent = TRUE)
+
+scenario_bands <- subset(image_data, first_10)
+
+image_data_crop <- crop(scenario_bands, ext(aoi)) # crop the whole image to the interesting polygon
+
+try(terra::predict(image_data_crop, model, filename = "case_study_1/results/FS_terms_sample_classification_result.tif", progress = "text", format = "GTiff", na.rm = TRUE), silent = TRUE)
 ```
 
 </details>
@@ -500,22 +556,22 @@ try(raster:predict(image_data_crop, model, filename = "FS_terms_sample_classific
 Finally we can compare all the results in one plot.
 
 ``` r
-cm_fs <- readRDS("FS_confusion_matrix.RDS")
+cm_fs <- readRDS("case_study_1/results/FS_confusion_matrix.RDS")
 f1_fs <- cm_fs$byClass[, 7]
 
-f1_matrix <- matrix(data = c(f1_31May, f1_7Aug, f1_27Aug, f1_18Sep, f1_all_terms, f1_fs),
-                    ncol = 9, nrow = 6, byrow = TRUE)
+f1_matrix <- matrix(data = c(f1_14May, f1_31May, f1_7Aug, f1_27Aug, f1_18Sep, f1_25Jun, f1_30Jun, f1_all_terms, f1_fs), ncol = 9, nrow = 9, byrow = TRUE)
 
-png(filename = "comp3_barplot.png", width = 1920, height = 1080, res = 200, pointsize = 9)
-
+png(filename = "case_study_1/results/comp3_barplot.png", width = 1920, height = 1080, res = 200, pointsize = 9)
+par(mar=c(5, 4, 4, 9), xpd = TRUE)
 barplot(f1_matrix, beside = TRUE, xaxt = "n", xlab = "Class", ylab = "F1",
-        ylim = c(0, 1), las = 2, col = colour_palette[1:6],
+        ylim = c(0, 1), las = 2, col = colour_palette[1:9],
         main = "Comparison of F1 scores for different classification input datasets.")
-
+legend("topright", legend = c("14May", "31May", "7Aug", "27Aug", "18Sep", "25Jun", "30Jun", "All_terms", "FS"),
+       fill = colour_palette[1:9],  title = "Classification input datasets", bty = "n", xjust = 1, inset = c(-0.1, 0))
+par(xpd = FALSE)
 abline(h = c(0, 0.2, 0.4, 0.6, 0.8, 1), lty = 3)
-axis(1, at = c(4, 11, 18, 25, 32, 39, 46, 53, 60), labels = labels)
-legend(38, 1, legend = c("31May", "7Aug", "27Aug", "18Sep", "All_terms", "FS"),
-       fill = colour_palette[1:6],  title = "Classification input datasets", bty = "n", xjust = 1)
+axis(1, at = c(5.5, 15.5, 25.5, 35.5, 45.5, 55.5, 65.5, 75.5, 85.5), labels = labels)
+
 dev.off()
 ```
 
@@ -523,7 +579,16 @@ dev.off()
 
 <img src="media/comp3_barplot.png" title="F1 accuracy for different classification input datasets." alt="F1 inputs" width="1080"/>
 
-<i>F1 accuracy for different classification input datasets./i\>
+<i>F1 accuracy for different classification input datasets.</i>
+</center>
+
+Display the resulting image in QGIS. Use the attached **symbology.clr** file to assign class names and colors.
+
+<center>
+
+<img src="media/classification_result.jpg" title="Predicted image" alt="Predicted image" width="1000"/>
+
+<i>Predicted image.</i>
 </center>
 
 ## Discussion

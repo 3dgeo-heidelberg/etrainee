@@ -32,7 +32,7 @@ In this theme, you will learn about:
 
 
 ### Next unit
-Proceed with a case study on [monitoring tundra grasslands in the Krkonoše Mountains](../06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.md)
+Proceed with a case study on [seasonal spectral separability of selected grass species of the Krkonoše Mts. tundra ecosystem](../08_spectral_separability_grass/08_spectral_separability_grass.md)
 
 
 ## References

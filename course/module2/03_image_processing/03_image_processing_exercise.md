@@ -15,11 +15,17 @@ Image processing - Exercise
 
 ## Exercise - Image Processing Pipelines
 
-In this exercise you will go through examples of processing pipelines. The term **pipeline** in this case means a **series of processing steps**, which lead to preparation on analysis ready data. Each pipeline is used to prepare data for different purposes and applications you will complete in further themes and case studies.
+In this exercise we will explore various examples of processing pipelines. The term **pipeline** in this case means a **series of processing steps**, which lead to preparation of analysis ready data. Each pipeline is used to prepare data for diverse purposes and applications that will be presented and demonstrated in practice in further themes and case studies.
+
+The main objective of this exercise is to show several different processing steps, which are necessary in multitemporal data preparation. Bear in mind, the methods demonstrated here merely represent a fraction of all the available techniques. Based on the provided examples, you should be able to comprehend the principles behind each step and apply different methods to your own specific requirements and datasets.
+
+## Getting started
+
+All of the practical (coding) parts of this exercise will be conducted in the Google Earth Engine platform using JavaScript based Code Editor. If you are not familiar with this tool, we strongly recommend you review introductory tutorials, which are available and linked in [GEE software introduction in this Course](../../software/software_gee.md.). Throughout this exercise, we’ll utilize a blend of built-in functions, custom functions and functions from external resources to complete various tasks. We will supply necessary links and explanations in the relevant sections. For general reference documentation see [GEE API reference website](https://developers.google.com/earth-engine/apidocs).
 
 ## Processing pipeline 1
 
-This processing pipeline aims to yield a multitemporal Sentinel-2 classification dataset for the Karkonosze area from 2022. The results of this processing pipeline will be utilized in the exercise in [Theme 4](../04_multitemporal_classification/04_multitemporal_classification.md).
+The purpose of this pipeline is to obtain a multitemporal Sentinel-2 classification dataset for the Karkonosze area from 2022. The results of this processing pipeline will be utilized in the exercise in [Theme 4](../04_multitemporal_classification/04_multitemporal_classification.md).
 
 <center>
 
@@ -28,9 +34,9 @@ This processing pipeline aims to yield a multitemporal Sentinel-2 classification
 <i>Processing pipeline.</i>
 </center>
 
-### Area of interest
+### Area of Interest
 
-We will start with defining the area of interest. This area contains Polish and Czech sides of Karkonosze National Parks and urban and rural areas on the Polish side, south of the city of Jelenia Góra. This will be the classification area.
+We’ll commence by defining our Area of Interest (`AOI`). This encompasses the Polish and Czech sectors of the Karkonosze National Parks, as well as the urban and rural regions situated south of the city of Jelenia Góra on the Polish side. This will form our classification area.
 
 ``` javascript
 // Define AOI
@@ -45,74 +51,86 @@ Map.addLayer(AOI, {'color': 'darksalmon'}, 'Karkonosze');
 
 <img src="media_exercise/pipeline1/aoi.jpg" title="Karkonosze area of interest" alt="Area of interest" width="600"/>
 
-<i>Karkonosze area of interest.</i>
+<i>Karkonosze Area of Interest (AOI).</i>
 </center>
 
 ### Imagery
 
-For our purpose we will only use images, for which the cloud cover over the AOI is less than 5%. In order to filter the collection with that criteria we will use [*s2cloudless*](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_CLOUD_PROBABILITY) collection. To discard extremely poor quality data (with cloud cover over 90%), we’ll pre-filter the `S2_SR` collection based on the `CLOUDY_PIXEL_PERCENTAGE` metadata. Then the data from both collections will be joined by date of acquisition.
+For the purpose of this exercise we will use **Sentinel-2 Surface Reflectance (L2A)** data. Our objective is to utilize images from 2022 (June to October) that are either cloud-free or have cloud cover of less than 5% over our `AOI`. In order to do that we want to mask clouds and cloud shadows to calculate the fraction of masked pixels inside the Area of Interest.
 
-The multitemporal imagery dataset will consist of images captured by Sentinel-2 satellites, collected between June and October of 2022.
+To start with let’s subset the whole `S2_SR_HARMONIZED` collection to the images that contain `AOI`, were acquired between desired dates, and have `CLOUDY_PIXEL_PERCENTAGE` metadata value less than 90%. We want to discard unnecessary and low quality images to reduce computing time in further steps.
 
 ``` javascript
 // Define date ranges for filtering image collection
 var startDate = '2022-06-01';
 var endDate = '2022-10-31';
-```
 
-<b><u>TASK</u></b>
-
-Declare the `getS2SrCldCol(AOI, startDate, endDate)` function performing the following tasks:
-
-- filter both `S2_SR` and `S2_CLOUD_PROBABILITY` by area of interest region and date ranges
-- additionally filter `S2_SR` by `'CLOUDY_PIXEL_PERCENTAGE'` metadata
-- join both filtered collections
-
-<details>
-<summary>
-<b>Click here to see the solution.</b><br> Try to solve the task yourself and use the solution if you get stuck or to check if you are on the right way to the solution.
-</summary>
-
-``` javascript
 // Define pre-filter percentage
 var cloudFilter = 90;
 
-// Function to joint S2_SR and s2cloudless images
-function getS2SrCldCol(AOI, startDate, endDate) {
+// Import and filter Sentinel-2 Level 2A images
+var s2SrCol = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')
+    .filterBounds(AOI)
+    .filterDate(startDate, endDate)
+    .filter(ee.Filter.lte('CLOUDY_PIXEL_PERCENTAGE', cloudFilter));
+```
 
-    // Import and filter Sentinel-2 Level 2A images
-    var s2SrCol = ee.ImageCollection('COPERNICUS/S2_SR')
-        .filterBounds(AOI)
-        .filterDate(startDate, endDate)
-        .filter(ee.Filter.lte('CLOUDY_PIXEL_PERCENTAGE', cloudFilter));
+To observe the results of this filtering, insert the following line into your script and rerun the code:
 
-    // Import and filter s2cloudless
-    var s2CloudlessCol = ee.ImageCollection('COPERNICUS/S2_CLOUD_PROBABILITY')
-        .filterBounds(AOI)
-        .filterDate(startDate, endDate);
+> print(s2SrCol);
 
-    // Join the filtered s2cloudless collection to the SR collection by the 'system:index' property
-    return ee.ImageCollection(ee.Join.saveFirst('s2cloudless').apply({
-        'primary': s2SrCol,
-        'secondary': s2CloudlessCol,
-        'condition': ee.Filter.equals({
-            'leftField': 'system:index',
-            'rightField': 'system:index'
-        })
-    }));
-}
-    
+Upon executing the script, you should see an `ImageCollection` with 42 elements in the console tab. Each image is itemized in the `features` list with its respective `bands` and `properties`. Inspect the `s2SrCol` object to familiarize yourself with how such objects are structured within the GEE framework.
 
-// Run function and assign the result to s2_sr_cld_col_eval variable
-var s2SrCloudlessCol = getS2SrCldCol(AOI, startDate, endDate);
+<center>
+
+<img src="media_exercise/pipeline1/s2sr.jpg" title="Prefiltered collection" alt="Prefiltered collection" width="750"/>
+
+<i>Filtering result.</i>
+</center>
+
+------------------------------------------------------------------------
+
+*Note: you can print any variable to see the result of each step in the console. We recommend to do that after each step to see what each step does to the data we use.*
+
+------------------------------------------------------------------------
+
+To further process the images we will utilize another image collection available in Google Earth Engine - [*s2cloudless*](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_CLOUD_PROBABILITY). We will use the images from that collection to identify the presence of clouds and cloud shadows appear on the Surface Reflectance (SR) images. Armed with this information, we will proceed with masking these elements from each image.
+
+------------------------------------------------------------------------
+
+*Note: the part using `s2cloudless` collection is adapted from Python based [Sentinel-2 Cloud Masking with s2cloudless tutorial](https://developers.google.com/earth-engine/tutorials/community/sentinel-2-s2cloudless)*
+
+------------------------------------------------------------------------
+
+To proceed we want to filter the imagery from `s2cloudless` collection with the same criteria as before, with the exception of the `cloudFilter`.
+
+``` javascript
+// Import and filter s2cloudless
+var s2CloudlessCol = ee.ImageCollection('COPERNICUS/S2_CLOUD_PROBABILITY')
+    .filterBounds(AOI)
+    .filterDate(startDate, endDate);
+```
+
+Now we want to join those two collections of images. Matching images can be identified by the `system:index` (e.g., *system:index: 20220602T100559_20220602T101148_T33UWS*) attribute contained in the image `properties`.
+
+``` javascript
+// Join the filtered s2cloudless collection to the SR collection by the 'system:index' property
+var s2SrCloudlessCol =
+// ee.Join.saveFirst means that new element will be added 
+// to the primary image as a property
+ee.ImageCollection(ee.Join.saveFirst('s2cloudless').apply({
+    'primary': s2SrCol,
+    'secondary': s2CloudlessCol,
+    'condition': ee.Filter.equals({
+        'leftField': 'system:index',
+        'rightField': 'system:index'
+    })
+}));
+
 print(s2SrCloudlessCol);
 ```
 
-</details>
-
-<br>
-
-The result of applying the function with our parameters should yield the collection containing **42** images. You can find the attached *s2cloudless* `probability` band in properties.
+The resulting joined `ImageCollection` should should consist of **42** images. You can find the attached *s2cloudless* `probability` band in the `properties`.
 
 <center>
 
@@ -123,75 +141,104 @@ The result of applying the function with our parameters should yield the collect
 
 ### Cloud and shadow masking
 
-In the following segment, we’ll conduct cloud masking and cloud shadow masking, based on the s2cloudless probability imagery. The resulting masks should offer improved robustness and accuracy compared to standard cloud masking using `S2_SR` cloud bands. The proposed variables have been fine-tuned through empirical tests, delivering satisfactory results. However, they can be modified as per user preference.
+In the following section, we’ll conduct cloud masking and cloud shadow masking, based on the `s2cloudless` `probability` images. The resulting masks should offer improved robustness and accuracy compared to standard cloud masking using `S2_SR_HARMONIZED` cloud bands and `SCL` classes. The specified values of variables below have been fine-tuned through empirical tests, delivering satisfactory results. However, they can be modified as per user preference.
 
 ``` javascript
 // Cloud/shadow masking variables
-var CLD_PRB_THRESH = 30;
-var NIR_DRK_THRESH = 0.25;
-var CLD_PRJ_DIST = 7;
+
+//Cloud probability (%); based on `probability` image; values greater than are considered cloud
+var CLD_PRB_THRESH = 20;
+
+//Near-infrared reflectance (B8 band); values below that threshold are considered potential cloud shadow
+var NIR_DRK_THRESH = 0.2;
+
+// Maximum distance (km) to search for cloud shadows from cloud edges
+var CLD_PRJ_DIST = 1;
+
+// Distance (m) to dilate the edge of cloud-identified objects
 var BUFFER = 50;
 ```
 
-Now we can define functions for the actual masking. These functions are derived from [this tutorial](https://developers.google.com/earth-engine/tutorials/community/sentinel-2-s2cloudless). First function `addCloudBands` produces cloud mask based on provided `probability` layer and `CLD_PRB_TRESH` variable. Second function `addShadowBands` produces cloud shadows using NIR band values and direction of cloud shadows. Finally, `addCldShdwMask` adds calculated masks to the image bands.
+Now we can define functions for the actual masking. These functions are derived from [this tutorial](https://developers.google.com/earth-engine/tutorials/community/sentinel-2-s2cloudless).
+
+The first function `addCloudBands` produces a cloud mask based on the provided `probability` layer and `CLD_PRB_TRESH` variable. The second function `addShadowBands` produces cloud shadows using `NIR (B8)` band values and the direction of cloud shadows bases on the image `MEAN_SOLAR_AZIMUTH_ANGLE` property. Finally, `addCldShdwMask` adds calculated masks to the image bands.
+
+To apply each function to each image in `s2SrCloudlessCol` collection we will use the `.map()` function, which is a more efficient implementation of a regular `for` loop.
 
 ``` javascript
-
-
 // CLOUD COMPONENTS
-// Function to add the s2cloudless probability layer and derived cloud mask as bands to an S2_SR image input.
+// Function to add the s2cloudless probability layer and derived cloud mask as bands to an S2_SR_HARMONIZED image input.
 function addCloudBands(img){
+
   // Get s2cloudless image, subset the probability band.
     var cldPrb = ee.Image(img.get('s2cloudless')).select('probability');
+    
     // Condition s2cloudless by the probability threshold value.
+    // Creates new raster with cloud pixels
     var isCloud = cldPrb.gt(CLD_PRB_THRESH).rename('clouds');
+    
     // Add the cloud probability layer and cloud mask as image bands.
     return img.addBands(ee.Image([cldPrb, isCloud]));
 }
 
 // SHADOW COMPONENTS
 function addShadowBands(img){
+
   // Identify water pixels from the SCL band.
     var notWater = img.select('SCL').neq(6);
+    
     // Identify dark NIR pixels that are not water (potential cloud shadow pixels).
     var SR_BAND_SCALE = 1e4;
-    var darkPixels = img.select('B8').lt(NIR_DRK_THRESH*SR_BAND_SCALE).multiply(notWater).rename('dark_pixels');
+    var darkPixels = img.select('B8')
+    .lt(NIR_DRK_THRESH*SR_BAND_SCALE)
+    .multiply(notWater)
+    .rename('dark_pixels');
+    
     // Determine the direction to project cloud shadow from clouds (assumes UTM projection).
     var shadowAzimuth = ee.Number(90).subtract(ee.Number(img.get('MEAN_SOLAR_AZIMUTH_ANGLE')));
-    // Identify the intersection of dark pixels with cloud shadow projection.
+    
+    // Create a cloud projection based on calculated parameters
     var cldProj = (img.select('clouds').directionalDistanceTransform(shadowAzimuth, CLD_PRJ_DIST*10)
         .reproject({'crs': img.select(0).projection(), 'scale': 100})
         .select('distance')
         .mask()
         .rename('cloud_transform'));
+        
+    // Identify the intersection of dark pixels with cloud shadow projection.    
     var shadows = cldProj.multiply(darkPixels).rename('shadows');
+    
     // Add dark pixels, cloud projection, and identified shadows as image bands.
     return img.addBands(ee.Image([darkPixels, cldProj, shadows]));
 }
 
 // Add combined cloud and shadow mask to image bands.
 function addCldShdwMask(img){
+
   // Add cloud component bands.
     var imgCloud = addCloudBands(img);
+    
      // Add cloud shadow component bands.
     var imgCloudShadow = addShadowBands(imgCloud);
+    
     // Combine cloud and shadow mask, set cloud and shadow as value 1, else 0.
     var isCldShdw = imgCloudShadow.select('clouds').add(imgCloudShadow.select('shadows')).gt(0);
+    
     // Remove small cloud-shadow patches and dilate remaining pixels by BUFFER input.
     // 20 m scale is for speed, and assumes clouds don't require 10 m precision.
-    var isCldShdw2 = (isCldShdw.focal_min(2).focal_max(BUFFER*2/20)
+    var isCldShdw2 = (isCldShdw.focalMin(2).focalMax(BUFFER*2/20)
         .reproject({'crs': img.select([0]).projection(), 'scale': 20})
         .rename('cloudmask'));
+        
     // Add the final cloud-shadow mask to the image.
     return imgCloudShadow.addBands(isCldShdw2);
 }
 ```
 
-Now we can apply the functions to our previously pre-filtered and joined collection.
+Now we can apply the functions to previously pre-filtered and merged collection `s2SrCloudlessCol`.
 
 <b><u>TASK</u></b>
 
-Apply the `addCldShdwMask` function to `s2SrCloudlessCol` collection.
+Apply the `addCldShdwMask` function to `s2SrCloudlessCol` collection using `.map()` function. Assign the result to `s2ColAddMask` variable and print the result to console.
 
 <details>
 <summary>
@@ -208,7 +255,7 @@ print(s2ColAddMask);
 
 <br>
 
-Each image in the collection should now have additional 6 bands.
+Each image in the collection should now have additional six bands (`probability`, `clouds`, `dark_pixels`, `cloud_transform`, `shadows`, `cloudmask`).
 
 <center>
 
@@ -217,16 +264,21 @@ Each image in the collection should now have additional 6 bands.
 <i>Mask bands.</i>
 </center>
 
-Now we can write a function to apply calculated masks to each image in the collection. When the masking is complete we will also subset each resulted images to only 10 m and 20 m Sentinel-2 bands.
+With the cloud and shadow masks computed, our next step is to apply them to each image within the collection When masking is complete we will also subset each resulted image to include only 10 m and 20 m Sentinel-2 bands. We can exclude bands like `SCL` and others, because we will no longer use them in our processing steps. Bands with spatial resolution of 60 m are also not valuable for the classification task, which this dataset is being prepared for.
 
 ``` javascript
 // Function to apply masks to spectral bands.
 function applyCldShdwMask(img) {
+  // Make a copy of input original image to preserve properties
   var orig = img;
+  
   // Subset the cloudmask band and invert it so clouds/shadow are 0, else 1.
   var notCldShdw = img.select('cloudmask').not();
-  // Subset reflectance bands and update their masks, return the result.
+  
+  // Subset reflectance bands and update their masks, return the result as 0-1 SR bands.
   img =  img.select(['B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B8A', 'B11', 'B12']).updateMask(notCldShdw).divide(10000);
+  
+  // Copy the original image properties
   return img.copyProperties(orig, orig.propertyNames());
 }
 
@@ -235,100 +287,99 @@ var s2ColMasked = s2ColAddMask.map(applyCldShdwMask);
 print(s2ColMasked);
 ```
 
-Each resulting image in the collection should now have 10 selected spectral bands.
+Each image in the resulting collection should now have **10** selected spectral bands.
 
 <center>
 
-<img src="media_exercise/pipeline1/sr_masked_bands.png" title="Masked S-2 bands" alt="Mask bands" width="500"/>
+<img src="media_exercise/pipeline1/sr_masked_bands.jpg" title="Masked S-2 bands" alt="Mask bands" width="500"/>
 
 <i>Masked S-2 10 m and 20 m bands.</i>
 </center>
 
-We can inspect results of the masking process on the example image. In order to to that we will extract the first image from both pre- and post-masking collections and display them along with the mask bands.
+We can inspect the results of the masking process on the example image. In order to do that we will select the first image from both pre- and post-masking collections and display them along with selected mask bands.
 
 ``` javascript
-
-// Extract first image from pre-masking and post-masking collections to show the results on map
+/// Extract first image from pre-masking and post-masking collections to show the results on map
 var exampleImage = s2ColAddMask.first();
 var maskedExampleImage = s2ColMasked.first();
 
 // Subset layers and prepare them for display
 var clouds = exampleImage.select('clouds').selfMask();
 var shadows = exampleImage.select('shadows').selfMask();
-var darkPixels = exampleImage.select('dark_pixels').selfMask();
-var probability = exampleImage.select('probability');
 var cloudMask = exampleImage.select('cloudmask').selfMask();
-var cloudTransform = exampleImage.select('cloud_transform');
-
 
 // ADD LAYERS TO THE MAP.
 
 // Add original image layer
-Map.addLayer(exampleImage, {bands: ['B4', 'B3', 'B2'], min: 1000, max: 3000}, 'Image');
+Map.addLayer(exampleImage, {bands: ['B4', 'B3', 'B2'], min: 200, max: 1300}, 'Image');
 //Add clouds layer
 Map.addLayer(clouds, {palette: '74fffc'}, 'CLOUDS');
 //Add cloud shadows layer
 Map.addLayer(shadows, {palette: '0a0cff'}, 'SHADOWS');
-//Add dark pixels layer
-Map.addLayer(darkPixels, {palette: 'ffc227'}, 'DARK_PIXELS');
-//Add cloud probability layer 
-Map.addLayer(probability, {min: 0, max: 100}, 'PROBABILITY (cloud)');
 //Add cloud mask layer
-Map.addLayer(cloudMask, {palette: 'ff550c'}, 'CLOUD MASK');
-//Add cloud transform layer
-Map.addLayer(cloudTransform, {'min': 0, 'max': 1, 'palette': ['white', 'black']}, 'CLOUD TRANSFORM');
+Map.addLayer(cloudMask, {palette: 'ff550c'}, 'CLOUD/SHADOWS MASK');
 //Add masked image layer
-Map.addLayer(maskedExampleImage, {bands: ['B4', 'B3', 'B2'], min: 0.1, max: 0.3}, 'Masked Image');
+Map.addLayer(maskedExampleImage, {bands: ['B4', 'B3', 'B2'], min: 0.02, max: 0.13}, 'Masked Image');
 ```
 
 Toggle different layers to see the extent of different masks and the final product.
 
 <center>
 
-<img src="media_exercise/pipeline1/masking_results.png" title="Masking results" alt="Masking results" width="600"/>
+<img src="media_exercise/pipeline1/masking_results.gif" title="Masking results" alt="Masking results" width="1000"/>
 
 <i>Masking results.</i>
 </center>
 
+------------------------------------------------------------------------
+
+[Additional task: open this link, which leads to the results of cloud masking using default parameters acquired from Sentinel-2 Cloud Masking with s2cloudless tutorial. Compare different mask layers and try to assess which parameters affect the final image the most.](https://code.earthengine.google.com/d10218e7dfb31d2876b68c6f2eb8b78b?hideCode=true)\*\*
+
+------------------------------------------------------------------------
+
 ### Cloud coverage over area of interest
 
-Having now an Image Collection with 42 masked images, our goal is to further filter those images that are clear over our area of interest. To accomplish this, we’ll employ the applied mask to determine the percentage of cloud cover over the research area.
+After obtaining an `ImageCollection` with **42** masked images, we aim to further filter those images that are clear over our area of interest. To accomplish this, we’ll employ the applied mask to determine the percentage of cloud cover over the research area.
 
 Below, we present a function that calculates the cloud cover percentage. We will then apply this function to the masked collection.
 
 ``` javascript
-
 // Define the function to return the percentage of masked pixels in an image region as a property. 
 function calculateMaskedPercent(image) {
-   var maskedPixelCount = image.select('B2').reduceRegion({
+  // Select one of the bands and count unmasked pixels within research area
+   var unmaskedPixelCount = image.select('B2').reduceRegion({
     reducer: ee.Reducer.count(),
     geometry: AOI,
     scale: 10,
-    maxPixels: 1e9
+    maxPixels: 1e10
   }).get('B2');
 
-  // This is the point where we're not sure how to avoid unmask
+  // Select one of the bands and count all pixels within research area
   var totalPixelCount  = image.select('B2').unmask().reduceRegion({
     reducer: ee.Reducer.count(),
     geometry: AOI,
     scale: 10,
-    maxPixels: 1e9
+    maxPixels: 1e10
   }).get('B2');
  
+ // Calculate cloud cover percentage over AOI
   var cloudCoverAoi = ee.Number(1)
-      .subtract(ee.Number(maskedPixelCount).divide(totalPixelCount))
+      .subtract(ee.Number(unmaskedPixelCount).divide(totalPixelCount))
       .multiply(100)
       .round();
+      
+  // Return the original image with new cloud_cover_aoi property
   return image.set('cloud_cover_aoi', cloudCoverAoi);
 }
 
+// Apply the function to the collection
 var s2ColCloudCoverAoi =  s2ColMasked.map(calculateMaskedPercent);
 print(s2ColCloudCoverAoi);
 ```
 
 <center>
 
-<img src="media_exercise/pipeline1/cloud_cover_aoi.png" title="Cloud/shadow cover AOI property" alt="Cloud/shadow cover AOI property" width="400"/>
+<img src="media_exercise/pipeline1/cloud_cover_aoi.jpg" title="Cloud/shadow cover AOI property" alt="Cloud/shadow cover AOI property" width="400"/>
 
 <i>Cloud/shadow cover AOI property.</i>
 </center>
@@ -337,7 +388,7 @@ We are now able to filter image collection based on the recently added property 
 
 <b><u>TASK</u></b>
 
-Filter `s2ColCloudCoverAoi)` collection by `'cloud_cover_aoi'` metadata (less than 5%).
+Filter `s2ColCloudCoverAoi` collection by `cloud_cover_aoi` property. Exclude all images with value greater than 5%.
 
 <details>
 <summary>
@@ -345,7 +396,7 @@ Filter `s2ColCloudCoverAoi)` collection by `'cloud_cover_aoi'` metadata (less th
 </summary>
 
 ``` javascript
-// Filter collection to only o
+// Filter collection to only images with `cloud_cover_aoi` less than or equal 5%
 var s2FilteredCol = s2ColCloudCoverAoi.filter(ee.Filter.lte('cloud_cover_aoi', 5));
 print(s2FilteredCol);
 ```
@@ -354,7 +405,7 @@ print(s2FilteredCol);
 
 <br>
 
-Resulting collection consists of 6 images from June (x3), July (x2) and October (x1).
+The resulting collection consists of six images from June (x3), July (x2) and October (x1).
 
 <center>
 
@@ -365,7 +416,7 @@ Resulting collection consists of 6 images from June (x3), July (x2) and October 
 
 ### NDVI calculation
 
-The next step will be NDVI calculation. For the classifcation purposes in [Theme 4](../04_multitemporal_classification/04_multitemporal_classification.md) we want to test the performance of the most popular index in differentiation of land cover classes.
+The next step will be NDVI calculation. For the classification purposes in [Theme 4](../04_multitemporal_classification/04_multitemporal_classification.md), we want to test the performance of the this most widely used index in differentiating land cover classes.
 
 In the function below we will utilize our knowledge on how to calculate this index and `normalizedDifference` method from Google Earth Engine.
 
@@ -376,8 +427,7 @@ function addNDVI(img) {
   return img.addBands(ndvi);
 }
 
-
-var s2FilteredColNdvi = s2FilteredCol.map(addNdvi);
+var s2FilteredColNdvi = s2FilteredCol.map(addNDVI);
 print(s2FilteredColNdvi);
 ```
 
@@ -394,16 +444,28 @@ Each image should now have additional `NDVI` band.
 
 The next part of this exercise entails transforming band names and exporting the entire collection as a single image, with spectral bands and NDVI tagged with the date of the source image. To execute this, we will require some additional functions.
 
+First, we’ll add year, month and day to each band name. In example, `B2` from the first image will be renamed to `2022-06-19_B2`.
+
 ``` javascript
 // Add dates to bands names
-function renameBandsYear (img) {
+function renameBands(image) {
   
-  var timeStamp = ee.Date(img.get('system:time_start')).format().slice(0,10);
-  timeStamp = timeStamp.cat("_");
-  return img.rename(img.bandNames().map(function(bandName){ 
-    var bn = ee.String(bandName); 
-    return timeStamp.cat(bn);})
-    );
+  // Get the date of the image
+  var date = ee.Date(image.get('system:time_start'));
+  var dateString = date.format('YYYY-MM-dd');
+
+  // Get the list of band names in the image
+  var bandNames = image.bandNames();
+
+  // Map over the band names and rename them
+  var renamedBands = bandNames.map(function(bandName){
+    return dateString.cat('_').cat(bandName);
+  });
+
+  // Use .select() to rename the original band names
+  var renamedImage = image.select(bandNames, renamedBands);
+
+  return renamedImage;
 }
 
 // Add dates to bands names
@@ -418,19 +480,37 @@ print(s2FilteredColNdviRenamed);
 <i>Band names with dates.</i>
 </center>
 
-``` javascript
-// Make a list out of all the band names in the collection. 
-// Preserve modified names after ImageCollection flattening.
-var properBandNames = s2FilteredColNdviRenamed.iterate(function(img, first) {
-  img = ee.Image(img);
-  first = ee.List(first);
-  var imgBandNames = img.bandNames();
-  return first.add(imgBandNames);
-}, ee.List([]));
+Now we’ll save all the new names to a variable. We’ll need that variable in the following step to recover changed band names after using `toBands()` function.
 
-properBandNames = ee.List(properBandNames);
-properBandNames = properBandNames.flatten();
-print(properBandNames);
+``` javascript
+// Function to get all band names from the entire collection
+function getAllBandNames(collection) {
+  // Convert the ImageCollection into a list
+  var bandNamesList = collection
+    .toList(collection.size())
+  
+  // Map over each image in the list to get its band names
+    .map(function(image) {
+      // Convert each element in the list (image) into an ee.Image object
+      var imageObject = ee.Image(image);
+      
+      // Get the band names of the current image using ee.Image.bandNames()
+      return imageObject.bandNames();
+    })
+    
+  // Flatten the list to obtain a single list containing all band names
+    .flatten();
+  
+  // Return the list of all band names
+  return bandNamesList;
+}
+```
+
+Apply the function to `s2FilteredColNdviRenamed`.
+
+``` javascript
+var bandNames = getAllBandNames(s2FilteredColNdviRenamed);
+print(bandNames);
 ```
 
 <center>
@@ -440,38 +520,36 @@ print(properBandNames);
 <i>Names list.</i>
 </center>
 
+The last step is to convert the `s2FilteredColNdviRenamed` `ImageCollection` to a single multi-band image. `toBands()` function add image ID prefix to each band, so we’ll replace those band names with the ones stored in `bandNames` variable.
+
 ``` javascript
-
-
 // Convert the collection to a single multi-band image
-var s2ExportReady = s2FilteredColNdviRenamed.toBands();
+var s2ImageMultiband = s2FilteredColNdviRenamed.toBands();
 
-// Replace temporary names with previously prepare date-marked names.
-s2ExportReady = s2ExportReady.select(
-  s2ExportReady.bandNames(), properBandNames
-);
+// Replace temporary names with previously prepared date-marked names.
+s2ImageMultiband = s2ImageMultiband.select(
+  s2ImageMultiband.bandNames(), bandNames);
 
-s2ExportReady = s2ExportReady.toFloat();
-print(s2ExportReady);
+print(s2ImageMultiband);
 ```
 
 <center>
 
-<img src="media_exercise/pipeline1/export_ready.jpg" title="Image ready to be exported" alt="Image ready to be exported" width="500"/>
+<img src="media_exercise/pipeline1/single_image.jpg" title="Single multi-band image" alt="Single multi-band image" width="350"/>
 
-<i>Image ready to be exported.</i>
+<i>Single multi-band image.</i>
 </center>
 
 ### Gap filling
 
-Next, we’ll prepare and apply a function to fill any remaining gaps and prepare the data for export. Gaps may still appear following composite creation due to insufficient data within images from each year. We’ll employ a filling algorithm to address these gaps. This algorithm operates as follows:
+Next, we’ll prepare and apply a function to fill any remaining gaps and prepare the data for export. Some parts of the images may contain masked areas (less than 5% of AOI). We’ll employ a filling algorithm to address these gaps. This algorithm operates as follows:
 
 <ul>
 <li>
-replace missing values with the nearest preceding value (i.e., substitute 1985’s missing values with 1984’s values)
+replace missing values with the nearest preceding value (i.e., substitute July’s missing values with June’s values)
 </li>
 <li>
-if the preceeding values are all NA: substitute missing values with the nearest subsequent value
+if the preceding values are all NA: substitute missing values with the nearest subsequent value
 </li>
 <li>
 for the first image, if data is missing, it uses the nearest subsequent value
@@ -482,64 +560,141 @@ if the entire series lacks a valid value, leave it as ‘NA’
 </ul>
 
 ``` javascript
-
 function fillGaps (img) {
+  // Get the image projection
   var proj = img.projection();
+  
+  // Get the band names of the image
   var bandNames = img.bandNames();
+  
+  // Make an Image object out of every element from a list of individual bands
   var colList = bandNames.map(function(n) { return img.select([n]) });
 
+  // Define the mosaic function to fill gaps for each band
   var mosaicFunction = function(band) {
+    // Get the index of the current band
     var bandIndex = colList.indexOf(band);
+    
+    // Get the index of the next band
     var bandIndexPlus1 = bandIndex.add(1);
+    
+    // Create two lists of bands before and after the current band
     var colLtIndex = colList.slice(0, bandIndex, 1);
     var colGtIndex = colList.slice(bandIndexPlus1).reverse();
+    
+    // Create a list containing the current band
     var colEqIndex = ee.List([]).add(colList.get(bandIndex));
     
+    // Concatenate the lists to create a new list of bands arranged as follows:
+    // [bands after current band, bands before current band, current band]
     var all = colGtIndex.cat(colLtIndex).cat(colEqIndex).flatten();
+    
+    // Convert the list of bands to an ImageCollection
     var cc = ee.ImageCollection.fromImages(all);
+    
+    // Map over the ImageCollection to rename bands to 'band'
     var ccBandnames = cc.map(function(img) {return img.select(['.*'], ['band'])});
+    
+    // Mosaic the ImageCollection to fill gaps for the current band
+    // The pixel in the final mosaic is the latest valid (non-masked pixel)
+    // That's why we put them in this order in `all` variable
     var mosaicked = ccBandnames.mosaic();
     
     return mosaicked;
   };
 
+  // Map the mosaic function over the list of bands to fill gaps for each band
   var mosaicked = colList.map(mosaicFunction);
+  
+  // Create an ImageCollection from the mosaic result
   var tempCol = ee.ImageCollection.fromImages(mosaicked);
+  
+  //  Convert the ImageCollection to a single image using toBands()
   tempCol = tempCol.toBands();
-  var fixedBandNamesImg = tempCol.select(tempCol.bandNames(), bandNames);
+  
+  // Select the bands with original band names from the newly created image
+  fixedBandNamesImg = tempCol.select(tempCol.bandNames(), bandNames);
+  
+  // Reproject the image to its original projection
   var filledGapsImg = fixedBandNamesImg.reproject(proj);
   
+  // Return the image with gaps filled for all bands
   return filledGapsImg;
 }
 
-var b2Filled = fillGaps(s2ExportReady.select('.*B2'));
-var b3Filled = fillGaps(s2ExportReady.select('.*B3'));
-var b4Filled = fillGaps(s2ExportReady.select('.*B4'));
-var b5Filled = fillGaps(s2ExportReady.select('.*B5'));
-var b6Filled = fillGaps(s2ExportReady.select('.*B6'));
-var b7Filled = fillGaps(s2ExportReady.select('.*B7'));
-var b8Filled = fillGaps(s2ExportReady.select('.*B8'));
-var b8aFilled = fillGaps(s2ExportReady.select('.*B8A'));
-var b11Filled = fillGaps(s2ExportReady.select('.*B11'));
-var b12Filled = fillGaps(s2ExportReady.select('.*B12'));
-var ndviFilled = fillGaps(s2ExportReady.select('.*NDVI'));
+
+var b2Filled = fillGaps(s2ImageMultiband.select('.*B2'));
+var b3Filled = fillGaps(s2ImageMultiband.select('.*B3'));
+var b4Filled = fillGaps(s2ImageMultiband.select('.*B4'));
+var b5Filled = fillGaps(s2ImageMultiband.select('.*B5'));
+var b6Filled = fillGaps(s2ImageMultiband.select('.*B6'));
+var b7Filled = fillGaps(s2ImageMultiband.select('.*B7'));
+var b8Filled = fillGaps(s2ImageMultiband.select('.*B8'));
+var b8aFilled = fillGaps(s2ImageMultiband.select('.*B8A'));
+var b11Filled = fillGaps(s2ImageMultiband.select('.*B11'));
+var b12Filled = fillGaps(s2ImageMultiband.select('.*B12'));
+var ndviFilled = fillGaps(s2ImageMultiband.select('.*NDVI'));
 ```
+
+The final step before exporting is arranging all the filled bands in the proper order once more. This operation consists of two steps. First we’ll create a single multi-band image from the filled images consisting of specific bands (`b2Filled`, `ndviFilled` etc.).
+
+``` javascript
+var s2ImageMultibandFilled = ee.Image.cat(b2Filled, b3Filled, b4Filled, b5Filled, 
+ b6Filled, b7Filled, b8Filled, b8aFilled, b11Filled, b12Filled, ndviFilled);
+
+print(s2ImageMultibandFilled);
+```
+
+<center>
+
+<img src="media_exercise/pipeline1/filled.jpg" title="Filled multi-band image" alt="Filled multi-band image" width="500"/>
+
+<i>Filled multi-band image.</i>
+</center>
+
+And finally, we’ll rearrange the bands back to the same order as in `s2ImageMultiband`.
+
+``` javascript
+var properNames = s2ImageMultiband.bandNames();
+
+function sortBands(image, properNames) {
+  // Get the band names of the proper image.
+  var properBandNames = properNames;
+  
+  // Get the band names of the wrong image.
+  var wrongBandNames = image.bandNames();
+  
+  // Create a list of sorted band indices.
+  var sortedBandIndices = properBandNames.map(
+    function(bandName) { return wrongBandNames.indexOf(bandName) });
+    
+  // Create a new image with the bands sorted in the specified order.
+  var sortedBands = image.select(sortedBandIndices);
+  return sortedBands;
+}
+
+
+var s2ExportReady = sortBands(s2ImageMultibandFilled, bandNames);
+
+print(s2ExportReady);
+```
+
+<center>
+
+<img src="media_exercise/pipeline1/export_ready.jpg" title="Image ready to be exported" alt="Image ready to be exported" width="500"/>
+
+<i>Image ready to be exported.</i>
+</center>
 
 ### Exporting data
 
-All that’s left now is to export previously prepared data. In order to do that we want to merge all the bands from all the terms of acquisition, so in the later analysis we can operate on a single file, from which we are able to extract desired bands.
+All that’s left now is to export previously prepared data. We’ll rename it to `T4_image_data`, so we recognize it later, when we’ll need to use it in [Theme 4 exercise](../04_multitemporal_classification/04_multitemporal_classification.md). Change the folder to the appropriate one in your Google Drive (by default it’ll create a new one if it doesn’t find existing folder with a matching name).
 
 ``` javascript
 
-var s2ExportReady = ee.Image.cat(b2Filled, b3Filled, b4Filled, b5Filled, 
- b6Filled, b7Filled, b8Filled, b8aFilled, b11Filled, b12Filled, ndviFilled);
-
-print(s2ExportReady);
-
-
 Export.image.toDrive({
   image: s2ExportReady,
-  description: 'S2_2022_classification_ready',
+  description: 'T4_image_data',
   // Change the folder to one in your Google Drive
   folder: 'ETR_GEE',
   region: AOI,
@@ -555,9 +710,11 @@ Export.image.toDrive({
 <i>Export image to your Google Drive.</i>
 </center>
 
+[Here you can find the link to the whole code presented in Pipeline 1](https://code.earthengine.google.com/9685877055f3c8230d17eb8142be1661)
+
 ## Processing pipeline 2
 
-The goal of this processing pipeline is to generate yearly Landsat cloud-free composites for the period of 1984-2022, specifically for the Tatry area. Outputs of this processing pipeline will be used in the exercise in [Theme 5](../05_vegetation_monitoring/05_vegetation_monitoring_exercise.md) and in [Case Study 3](../08_cs_disturbance_detection/08_cs_disturbance_detection.md).
+The goal of this processing pipeline is to generate yearly Landsat cloud-free composites for the period of 1984-2022, specifically for the Tatras area. Outputs of this processing pipeline will be used in the exercise in [Theme 5](../05_vegetation_monitoring/05_vegetation_monitoring_exercise.md) and in [Case Study 3](../08_cs_disturbance_detection/08_cs_disturbance_detection.md).
 
 <center>
 
@@ -572,21 +729,12 @@ We will begin by loading the necessary external packages. In this instance, we w
 
 <b><u>TASK</u></b>
 
-Attach `spectral` package (as demonstrated in Pipeline 1 and in the GitHub README).
-
-<details>
-<summary>
-<b>Click here to see the solution.</b><br> Try to solve the task yourself and use the solution if you get stuck or to check if you are on the right way to the solution.
-</summary>
+Attach `spectral` package as seen in the [GitHub README](https://github.com/awesome-spectral-indices/spectral).
 
 ``` javascript
 // Load external spectral package
 var spectral = require("users/dmlmont/spectral:spectral");
 ```
-
-</details>
-
-<br>
 
 This package will be used later to calculate spectral indices for each composite. Now, let’s define the area of interest.
 
@@ -594,15 +742,15 @@ This package will be used later to calculate spectral indices for each composite
 
 ``` javascript
 // Define Area of Interest (AOI)
-var AOI = ee.FeatureCollection("projects/etrainee-module2/assets/aoi_tatry");
+var AOI = ee.FeatureCollection("projects/etrainee-module2/assets/aoi_tatras");
 ```
 
-Our area of interest includes both the Polish and Slovakian sides of the Tatry National Parks. In our forthcoming exercises that focus on change detection, this region will be our primary area of interest.
+Our area of interest includes both the Polish and Slovakian sides of the Tatra National Parks. In our forthcoming exercises that focus on change detection, this region will be our primary area of interest.
 
 ``` javascript
 // Pan to and display area of interest
 Map.centerObject(AOI, 10);
-Map.addLayer(AOI, {'color': 'darksalmon'}, 'Tatry');
+Map.addLayer(AOI, {'color': 'darksalmon'}, 'Tatras');
 ```
 
 <center>
@@ -631,7 +779,7 @@ Next steps in the processing pipeline will filter and process each image in all 
 
 ### Filtering and processing data collections
 
-In the next steps of the processing pipeline, we will filter and process each image from all collections to prepare a homogeneous dataset. Naturally, we do not require the entire collection of Landsat images from each satellite/sensor. To filter each collection, we will apply a spatial filter (by our area of interest), a temporal filter (to retain only imagery captured between May 1st and September 30th), and a metadata filter (images from [WRS-2](https://landsat.gsfc.nasa.gov/about/the-worldwide-reference-system/) row 26 that contain the area of interest in whole or in part).
+Naturally, we do not require the entire collection of Landsat images from each satellite/sensor for the analysis specific for our AOI. To filter each collection, we will apply a spatial filter, a temporal filter (to retain only imagery captured between May 1st and September 30th), and a metadata filter (images from [WRS-2](https://landsat.gsfc.nasa.gov/about/the-worldwide-reference-system/) row 26 that contain the area of interest in whole or in part).
 
 <b><u>TASK</u></b>
 
@@ -690,13 +838,28 @@ var renameBandsLandsat89 = function(img) {
 
 <br>
 
-To develop cloud-free composites, a method must be chosen that selects a clear pixel, captured within a specified timeframe, for inclusion in the final composite. We’ll use proximity to a target day-of-year (doy, DOY) as the deciding criterion in this scenario.
+To check how the function works add the two following lines to the code and Run it again. It compares the image before and after using the `renameBandsLandsat457` function.
+
+``` javascript
+print(collections.lt5.first());
+print(renameBandsLandsat457(collections.lt5.first()));
+```
+
+The result in the console should look like this:
+
+<center>
+
+<img src="media_exercise/pipeline2/rename_select.jpg" title="Selected and renamed Landsat 5 bands" alt="Selected and renamed Landsat 5 bands" width="600"/>
+
+</center>
+
+To develop cloud-free composites, a method must be chosen that selects a clear pixel, captured within a specified timeframe, for inclusion in the final composite. We’ll use proximity to a **target day-of-year (doy, DOY)** as the deciding criterion in this scenario.
 
 We’ll introduce a new property that reflects the absolute difference between the DOY when the image was captured and the target DOY, which is the 213th day of the year (or 212 in JavaScript, as it starts counting from 0), corresponding to August 1st. This property is important for enabling us to apply mosaicking to collections sorted based on this property. Clear pixels captured closer to the target DOY will supersede those taken further away from August 1st.
 
 ``` javascript
 // Define function to add absolute difference between target
-// day of year (214, August 1st) and image acquisition doy.
+// day of year (213, August 1st) and image acquisition doy.
 var addDoyAbsProperty = function(img) {
   var doy = ee.Date(img.get('system:time_start')).getRelative('day', 'year');
   var doyAbs = ee.Number(212).subtract(doy).abs();
@@ -704,7 +867,7 @@ var addDoyAbsProperty = function(img) {
 };
 ```
 
-The next step is to define a function to mask clouds and cloud shadows. The ‘QA_PIXEL’ band, present in all Level 2 Landsat images, will be used for this purpose. Based on the values in this raster, clouded and shadowed pixels can be identified and masked. For improved masking performance, we’ll run a morphological filter through the masked image to extend the masked parts around the edges. This enhancement will result in more potentially viable pixels being masked, but will also help eliminate more cloud edges, which are often not classified as clouds in the ‘QA_PIXEL’ band.
+The next step is to define a function to mask clouds and cloud shadows. The `QA_PIXEL` band, present in all Level 2 Landsat images, will be used for this purpose. Based on the values in this raster, clouded and shadowed pixels can be identified and masked. For improved masking performance, we’ll run a morphological filter through the masked image to extend the masked parts around the edges. This enhancement will result in more potentially viable pixels being masked, but will also help eliminate more cloud edges, which are often not classified as clouds in the ‘QA_PIXEL’ band.
 
 ``` javascript
 // Define function to mask clouds and clouds shadows with additional pixels masked around these areas.
@@ -812,7 +975,7 @@ With all the filtering and processing functions defined, we can now apply them t
 
 <b><u>TASK</u></b>
 
-Filter each Landsat collection and apply appropriate wrapper functions. Then merge all the collections into `tatryCol` variable.
+Filter each Landsat collection and apply appropriate wrapper functions. Then merge all the collections into `tatrasCol` variable.
 
 <details>
 <summary>
@@ -828,13 +991,13 @@ var lt8Col = collections.lt8.filter(collectionFilter).map(prepLandsat89);
 var lt9Col = collections.lt9.filter(collectionFilter).map(prepLandsat89);
 
 // Merge all collections into one.
-var tatryCol = lt4Col
+var tatrasCol = lt4Col
   .merge(lt5Col)
   .merge(lt7Col)
   .merge(lt8Col)
   .merge(lt9Col);
 
-print(tatryCol);
+print(tatrasCol);
 ```
 
 </details>
@@ -848,7 +1011,11 @@ print(tatryCol);
 <i>Merged collection.</i>
 </center>
 
-A function to create composite images can now be prepared. The next step involves filtering the entire collection to extract images captured within a single year. These images will then be sorted by their ‘doy_abs’ value (in descending order) and subsequently mosaicked.
+### Yearly cloud-free composite creation
+
+After we’ve filter and processed initial `ImageCollections` we can now proceed with a function to create composite images. It is based on the `mosaic` function, which in a nutshell stacks bands on one another, so as the pixel values from the layer ‘on top’ are visible in the mosaicked image (except the NA pixels, which are filled by the layers below the top one).
+
+First, we want the images closest to the target DOY to be ‘on top’, so we need to sort them before mosaicking.
 
 ``` javascript
 // Function to create mosaic based on day-of-year. 
@@ -859,7 +1026,9 @@ var compositeDoy = function(col) {
 };
 ```
 
-Now we can prepare list to iterate through each year between 1984-2022 collection.
+The actual function needs to involve filtering the entire collection to extract images captured within a single year. These images will then be sorted by their `doy_abs` value (in descending order) and subsequently mosaicked (`compositeDoy` function).
+
+To iterate through each year between 1984-2022 collection we shall prepare a list containing a sequence.
 
 ``` javascript
 var startYear = 1984;
@@ -867,12 +1036,18 @@ var endYear = 2022;
 var yearList = ee.List.sequence(startYear, endYear);
 ```
 
-For each year, we’ll extract the corresponding images, create a composite, reproject the image, and add two properties. The resulting list will contain 39 images, each with six bands.
+For each year, we’ll extract the appropriate images, create a composite, reproject the image, and add two properties. The resulting list will contain 39 images, each with six bands.
 
 ``` javascript
 var yearCompList = yearList.map(function(year) {
-  var yearCol = tatryCol.filter(ee.Filter.calendarRange(year, year, 'year'));
+
+  // Get only the images that are collected during one year
+  var yearCol = tatrasCol.filter(ee.Filter.calendarRange(year, year, 'year'));
+  
+  // Create a composite using previously defined function
   var yearComp = compositeDoy(yearCol);
+  
+  // Return a reprojected image with two additional properties
   yearComp = yearComp.reproject({crs: 'EPSG:32634', scale: 30}); 
   return yearComp.set({
     'year': ee.Number(year).int(),
@@ -890,7 +1065,7 @@ print(yearCompList);
 <i>Yearly composite images list.</i>
 </center>
 
-Finally, transform List of Images into ImageCollection.
+Finally, transform a `List` of `Images` into `ImageCollection`.
 
 <b><u>TASK</u></b>
 
@@ -916,11 +1091,30 @@ print(yearCompCol);
 <i>Yearly composite image collection.</i>
 </center>
 
+Display the first (1984) image from the collection to see the results.
+
+``` javascript
+var ex = yearCompCol.first();
+
+var rgbVis = {
+  bands: ['Red', 'Green', 'Blue'],
+  min: 0,
+  max: 0.2
+};
+
+Map.addLayer(ex, rgbVis, "Example Cloud Free Composite");
+```
+
+<center>
+
+<img src="media_exercise/pipeline2/example_cf.jpg" title="Example of cloud free image" alt="Example of cloud free image" width="600"/>
+
+<i>Example of cloud free image.</i>
+</center>
+
 ### Tassed Cap bands and spectral indices
 
-With our yearly composites prepared, we can now calculate and add Tasseled Cap bands and spectral indices. We’ll calculate Tasseled Cap components using code and coefficients adapted from the [LandTrendr GEE implementation](https://emapr.github.io/LT-GEE/). The external package [*spectral*](https://github.com/awesome-spectral-indices/spectral) will be utilized for spectral indices. This package simplifies the process of defining necessary bands and calculating any index in the database using the ‘computeIndex’ function.
-
-Now that we have our yearly composites ready, we can calculate and add Tasseled Cap bands and spectral indices. Tasseled Cap components will be calculated using code and coefficients adapted from [LandTrendr GEE implementation](https://emapr.github.io/LT-GEE/). For spectral indices we will use external package [*spectral*](https://github.com/awesome-spectral-indices/spectral). The package makes it effortless to define necessary bands and use them to calculate any index in the database using ‘computeIndex’ function. For the purpose of the exercise in [Theme 5](../05_vegetation_monitoring/05_vegetation_monitoring_exercise.md) and [Case Study](../08_cs_disturbance_detection/08_cs_disturbance_detection.md) we will calculate the following 8 bands:
+With our yearly composites prepared, we can now calculate and add Tasseled Cap bands and spectral indices. We’ll calculate Tasseled Cap components using code and coefficients adapted from the [LandTrendr GEE implementation](https://emapr.github.io/LT-GEE/). The external package [*spectral*](https://github.com/awesome-spectral-indices/spectral) will be utilized for spectral indices. This package simplifies the process of defining necessary bands and calculating any index in the database using the `computeIndex` function.For the purpose of the exercise in [Theme 5](../05_vegetation_monitoring/05_vegetation_monitoring_exercise.md) and [Case Study](../08_cs_disturbance_detection/08_cs_disturbance_detection.md) we will calculate the following 8 bands:
 
 <ul>
 <li>
@@ -1038,13 +1232,13 @@ print(colIndices);
 The next chunk of code will execute the following tasks:
 <ul>
 <li>
-flatten the entire ImageCollection into one image containing every band from that colIndices
+flatten the entire `ImageCollection` into one image containing every band from that `colIndices`
 </li>
 <li>
 retrieve the band names following the flattening
 </li>
 <li>
-generate a list of band names with the prefix removed (ID of image from colIndices) from each band.
+generate a list of band names with the prefix removed (ID of image from `colIndices`) from each band.
 </li>
 <li>
 replace modified band names with the correct band names, which include the year of acquisition and spectral band/index
@@ -1099,32 +1293,65 @@ if the entire series lacks a valid value, leave it as ‘NA’
 // Function to fill gaps
 // It substitutes missing values with the nearest preceding value. 
 // For the first image, if data is missing, it uses the nearest subsequent value.
-function fillGaps(img) {
-  
+function fillGaps (img) {
+  // Get the image projection
   var proj = img.projection();
-  var bandNames = img.bandNames();
-  var bandList = bandNames.map(function(n) { return img.select([ee.String(n)]) });
   
+  // Get the band names of the image
+  var bandNames = img.bandNames();
+  
+  // Make an Image object out of every element from a list of individual bands
+  var colList = bandNames.map(function(n) { return img.select([n]) });
+
+  // Define the mosaic function to fill gaps for each band
   var mosaicFunction = function(band) {
+    // Get the index of the current band
+    var bandIndex = colList.indexOf(band);
     
-    var bandIndex = bandList.indexOf(band);
+    // Get the index of the next band
     var bandIndexPlus1 = bandIndex.add(1);
-    var bandLtIndex = bandList.slice(0, bandIndex, 1);
-    var bandGtIndex = bandList.slice(bandIndexPlus1).reverse();
-    var bandEqIndex = ee.List([]).add(bandList.get(bandIndex));
-   
-    var bandsReordered = bandGtIndex.cat(bandLtIndex).cat(bandEqIndex).flatten();
-    var col = ee.ImageCollection.fromImages(bandsReordered);
-    var colBandnames = col.map(function(img) {return img.select(['.*'], ['band'])});
-    var mosaicked = colBandnames.mosaic();
+    
+    // Create two lists of bands before and after the current band
+    var colLtIndex = colList.slice(0, bandIndex, 1);
+    var colGtIndex = colList.slice(bandIndexPlus1).reverse();
+    
+    // Create a list containing the current band
+    var colEqIndex = ee.List([]).add(colList.get(bandIndex));
+    
+    // Concatenate the lists to create a new list of bands arranged as follows:
+    // [bands after current band, bands before current band, current band]
+    var all = colGtIndex.cat(colLtIndex).cat(colEqIndex).flatten();
+    
+    // Convert the list of bands to an ImageCollection
+    var cc = ee.ImageCollection.fromImages(all);
+    
+    // Map over the ImageCollection to rename bands to 'band'
+    var ccBandnames = cc.map(function(img) {return img.select(['.*'], ['band'])});
+    
+    // Mosaic the ImageCollection to fill gaps for the current band
+    // The pixel in the final mosaic is the latest valid (non-masked pixel)
+    // That's why we put them in this order in `all` variable
+    var mosaicked = ccBandnames.mosaic();
+    
     return mosaicked;
   };
 
-  var mosaicked = bandList.map(mosaicFunction);
+  // Map the mosaic function over the list of bands to fill gaps for each band
+  var mosaicked = colList.map(mosaicFunction);
+  
+  // Create an ImageCollection from the mosaic result
   var tempCol = ee.ImageCollection.fromImages(mosaicked);
+  
+  //  Convert the ImageCollection to a single image using toBands()
   tempCol = tempCol.toBands();
+  
+  // Select the bands with original band names from the newly created image
   var fixedBandNamesImg = tempCol.select(tempCol.bandNames(), bandNames);
+  
+  // Reproject the image to its original projection
   var filledGapsImg = fixedBandNamesImg.reproject(proj);
+  
+  // Return the image with gaps filled for all bands
   return filledGapsImg;
 }
 ```
@@ -1138,12 +1365,10 @@ var fillAndConvert = function(bandName, oneImg) {
   img = img.set({'save': ee.String(bandName)});
   img = img.float();
   return fillGaps(img);
-}
+};
 ```
 
-### Export image stacks
-
-From the single image containing 546 bands (39 years \* 14 bands), we can now extract stacks of spectral bands/indices, prepare them for export, and export them.
+From `oneImage` we can filter each band subsequently and apply the filling algorithm with preparing the data for export.
 
 ``` javascript
 var blue = fillAndConvert('Blue', oneImage);
@@ -1162,16 +1387,61 @@ var ndmi = fillAndConvert('NDMI', oneImage);
 var ndwi = fillAndConvert('NDWI', oneImage);
 ```
 
-The function below can be used to export any of the stacks to your Google Drive folder. Remember to adjust the parameters for each stack you wish to export.
+Each image should contain 39 bands.
+
+``` javascript
+print(blue);
+```
+
+<center>
+
+<img src="media_exercise/pipeline2/blue.jpg" title="Blue bands" alt="Blue bands" width="400"/>
+
+<i>Blue bands.</i>
+</center>
+
+### Export image stacks
+
+We’ll show two ways to export the data, so that it can be then used in different exercises further in this Module.
+
+#### Google Assets (Theme 5 exercise)
+
+The function below can be used to export any of the stacks to your Google Assets folder. Remember to adjust the parameters for each stack you wish to export. Change the `assetID` for your path i.e. `projects/ee-yourname/assets/` and add the name of the image at the end.
+
+``` javascript
+Export.image.toAsset({
+  // Name of the stack
+  image: ndvi,
+  // Location and name of the asset
+  assetId:'projects/etrainee-module2/assets/ndvi',
+  // Save/task name
+  description: 'NDVI',
+  // Clip export to AOI region, use Landsat 30 m scale; no need to change these parameters
+  region: AOI,
+  scale: 30,
+  maxPixels: 1e13
+});
+```
+
+<center>
+
+<img src="media_exercise/pipeline2/exportassets1.jpg" title="Image export" alt="Image export" width="400"/> <img src="media_exercise/pipeline2/exportassets2.jpg" title="Image export" alt="Image export" width="400"/>
+
+<i>Export image to your Google Assets.</i>
+</center>
+
+<b><u>TASK</u></b> Export the other bands and indices to Assets.
+
+#### Google Drive (Case Study 3)
+
+The function below can be used to export any of the stacks to your Google Drive folder. Remember to adjust the parameters for each stack you wish to export. You can then download the images to your hard drive.
 
 ``` javascript
 Export.image.toDrive({
-
   // Name of the stack
   image: ndvi,
   // Save name
   description: 'NDVI',
-  
   // Change the folder to one in your Google Drive
   folder: 'ETR_GEE',
   // Clip export to AOI region, use Landsat 30 m scale; no need to change these parameters
@@ -1188,9 +1458,11 @@ Export.image.toDrive({
 <i>Export image to your Google Drive.</i>
 </center>
 
+<b><u>TASK</u></b> Export the other bands and indices to Drive.
+
 ### Appendix
 
-There are other options for creating a yearly composite. If you want to test different methods you can modfiy the code provided above. Here we present 3 alternative methods.
+There are other options for creating a yearly composite. If you want to test different methods you can modify the code provided above. Here we present 3 alternative methods.
 
 <b><u>Median composite</u></b>
 
@@ -1381,4 +1653,368 @@ print(colIndices);
 
 <br>
 
-### This is the end of this exercise. Proceed with other Themes and exercises. Good luck!
+[Here you can find the link to the whole code presented in Pipeline 2](https://code.earthengine.google.com/090540597dffcc49341ad467611aeddd)
+
+## Processing pipeline 3
+
+The purpose of this pipeline is to obtain a multitemporal Sentinel-2 classification dataset for the selected region of Karkonosze Mountains (above 1200 m) from vegetative period in 2018 and 2019. The results of this processing pipeline will be utilized in the [Case Study 1](../06_cs_tundra_grasslands/06_cs_tundra_grasslands.md).
+
+<center>
+
+<img src="media_exercise/pipeline3/pipeline.png" title="Processing pipeline" alt="Processing pipeline" width="600"/>
+
+<i>Processing pipeline.</i>
+</center>
+
+### Area of Interest
+
+Area of Interest (`AOI`) encompasses the part of Karkonosze Mountains above 1200 m. More on that area in the [data usecase description here](../../data_usecases/usecase_tundra_karkonosze.md).
+
+``` javascript
+// Define AOI
+var AOI = ee.FeatureCollection("projects/ee-kgryguc/assets/cs1_1200m");
+
+// Pan to and display area of interest
+Map.centerObject(AOI, 11);
+Map.addLayer(AOI, {'color': 'darksalmon'}, 'Karkonosze (above 1200m)');
+```
+
+<center>
+
+<img src="media_exercise/pipeline3/aoi.jpg" title="Karkonosze area of interest" alt="Area of interest" width="600"/>
+
+<i>Area of Interest (AOI).</i>
+</center>
+
+### Imagery
+
+Similarly to the Pipeline 1 we will use **Sentinel-2 Surface Reflectance (L2A)** data. In this pipeline we want ot use images from 2018 and 2019 (from 10th May to 20th September) that are either cloud-free or have cloud cover of less than 5% over our `AOI`. In order to do that we want to mask clouds and cloud shadows to calculate the fraction of masked pixels inside the Area of Interest.
+
+The first part will be similar to that in Pipeline 1. This time to filter the imagery to contain only images between desired dates from both years we’ll use slightly different filters.
+
+``` javascript
+// Define pre-filter percentage
+var cloudFilter = 90;
+
+// Filter for images between 15th May and 15th September 2018
+var filter2018 = ee.Filter.date('2018-05-10', '2018-09-20');
+
+// Filter for images between 15th May and 15th September 2019
+var filter2019 = ee.Filter.date('2019-05-10', '2019-09-20');
+
+// Combine the two filters
+var combinedFilter = ee.Filter.or(filter2018, filter2019);
+
+
+// Import and filter Sentinel-2 Level 2A images
+var s2SrCol = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')
+    .filterBounds(AOI)
+    .filter(ee.Filter.lte('CLOUDY_PIXEL_PERCENTAGE', cloudFilter))
+    .filter(combinedFilter);
+```
+
+To observe the results of this filtering, insert the following line into your script and rerun the code:
+
+> print(s2SrCol);
+
+You should see an `ImageCollection` with 90 elements in the console tab.
+
+Then we’ll utilize `s2cloudless` data again.
+
+``` javascript
+// Import and filter s2cloudless
+var s2CloudlessCol = ee.ImageCollection('COPERNICUS/S2_CLOUD_PROBABILITY')
+    .filterBounds(AOI)
+    .filter(combinedFilter);
+    
+// Join the filtered s2cloudless collection to the SR collection by the 'system:index' property
+var s2SrCloudlessCol =
+// ee.Join.saveFirst means that new element will be added 
+// to the primary image as a property
+ee.ImageCollection(ee.Join.saveFirst('s2cloudless').apply({
+    'primary': s2SrCol,
+    'secondary': s2CloudlessCol,
+    'condition': ee.Filter.equals({
+        'leftField': 'system:index',
+        'rightField': 'system:index'
+    })
+}));
+```
+
+### Cloud and shadow masking / cloud coverage over area of interest
+
+This part is the same as in Pipeline 1 and was discussed there in more detail. Refer to that part if you need help/
+
+``` javascript
+
+// Cloud/shadow masking variables
+
+//Cloud probability (%); based on `probability` image; values greater than are considered cloud
+var CLD_PRB_THRESH = 20;
+
+//Near-infrared reflectance (B8 band); values below that threshold are considered potential cloud shadow
+var NIR_DRK_THRESH = 0.2;
+
+// Maximum distance (km) to search for cloud shadows from cloud edges
+var CLD_PRJ_DIST = 1;
+
+// Distance (m) to dilate the edge of cloud-identified objects
+var BUFFER = 50;
+
+// CLOUD COMPONENTS
+// Function to add the s2cloudless probability layer and derived cloud mask as bands to an S2_SR_HARMONIZED image input.
+function addCloudBands(img){
+
+  // Get s2cloudless image, subset the probability band.
+    var cldPrb = ee.Image(img.get('s2cloudless')).select('probability');
+    
+    // Condition s2cloudless by the probability threshold value.
+    // Creates new raster with cloud pixels
+    var isCloud = cldPrb.gt(CLD_PRB_THRESH).rename('clouds');
+    
+    // Add the cloud probability layer and cloud mask as image bands.
+    return img.addBands(ee.Image([cldPrb, isCloud]));
+}
+
+// SHADOW COMPONENTS
+function addShadowBands(img){
+
+  // Identify water pixels from the SCL band.
+    var notWater = img.select('SCL').neq(6);
+    
+    // Identify dark NIR pixels that are not water (potential cloud shadow pixels).
+    var SR_BAND_SCALE = 1e4;
+    var darkPixels = img.select('B8')
+    .lt(NIR_DRK_THRESH*SR_BAND_SCALE)
+    .multiply(notWater)
+    .rename('dark_pixels');
+    
+    // Determine the direction to project cloud shadow from clouds (assumes UTM projection).
+    var shadowAzimuth = ee.Number(90).subtract(ee.Number(img.get('MEAN_SOLAR_AZIMUTH_ANGLE')));
+    
+    // Create a cloud projection based on calculated parameters
+    var cldProj = (img.select('clouds').directionalDistanceTransform(shadowAzimuth, CLD_PRJ_DIST*10)
+        .reproject({'crs': img.select(0).projection(), 'scale': 100})
+        .select('distance')
+        .mask()
+        .rename('cloud_transform'));
+        
+    // Identify the intersection of dark pixels with cloud shadow projection.    
+    var shadows = cldProj.multiply(darkPixels).rename('shadows');
+    
+    // Add dark pixels, cloud projection, and identified shadows as image bands.
+    return img.addBands(ee.Image([darkPixels, cldProj, shadows]));
+}
+
+// Add combined cloud and shadow mask to image bands.
+function addCldShdwMask(img){
+
+  // Add cloud component bands.
+    var imgCloud = addCloudBands(img);
+    
+     // Add cloud shadow component bands.
+    var imgCloudShadow = addShadowBands(imgCloud);
+    
+    // Combine cloud and shadow mask, set cloud and shadow as value 1, else 0.
+    var isCldShdw = imgCloudShadow.select('clouds').add(imgCloudShadow.select('shadows')).gt(0);
+    
+    // Remove small cloud-shadow patches and dilate remaining pixels by BUFFER input.
+    // 20 m scale is for speed, and assumes clouds don't require 10 m precision.
+    var isCldShdw2 = (isCldShdw.focalMin(2).focalMax(BUFFER*2/20)
+        .reproject({'crs': img.select([0]).projection(), 'scale': 20})
+        .rename('cloudmask'));
+        
+    // Add the final cloud-shadow mask to the image.
+    return imgCloudShadow.addBands(isCldShdw2);
+}
+
+// Add calculated cloud and shadow mask bands to each image in the collection.
+var s2ColAddMask = s2SrCloudlessCol.map(addCldShdwMask);
+
+
+// Function to apply masks to spectral bands.
+function applyCldShdwMask(img) {
+  // Make a copy of input original image to preserve properties
+  var orig = img;
+  
+  // Subset the cloudmask band and invert it so clouds/shadow are 0, else 1.
+  var notCldShdw = img.select('cloudmask').not();
+  
+  // Subset reflectance bands and update their masks, return the result as 0-1 SR bands.
+  img =  img.select(['B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B8A', 'B11', 'B12'])
+  .updateMask(notCldShdw)
+  .divide(10000);
+  
+  // Copy the original image properties
+  return img.copyProperties(orig, orig.propertyNames());
+}
+
+// Apply masking function to the collection.
+var s2ColMasked = s2ColAddMask.map(applyCldShdwMask);
+
+
+// Define the function to return the percentage of masked pixels in an image region as a property. 
+function calculateMaskedPercent(image) {
+  // Select one of the bands and count unmasked pixels within research area
+  var unmaskedPixelCount = image.select('B2').reduceRegion({
+    reducer: ee.Reducer.count(),
+    geometry: AOI,
+    scale: 10,
+    maxPixels: 1e13
+  }).get('B2');
+
+  // Select one of the bands and count all pixels within research area
+  var totalPixelCount  = image.select('B2').unmask().reduceRegion({
+    reducer: ee.Reducer.count(),
+    geometry: AOI,
+    scale: 10,
+    maxPixels: 1e13
+  }).get('B2');
+ 
+// Calculate cloud cover percentage over AOI
+  var cloudCoverAoi = ee.Number(1)
+      .subtract(ee.Number(unmaskedPixelCount)
+      .divide(totalPixelCount))
+      .multiply(100)
+      .round();
+      
+  // Return the original image with new cloud_cover_aoi property
+  return image.set('cloud_cover_aoi', cloudCoverAoi);
+}
+
+// Apply the function to the collection
+var s2ColCloudCoverAoi =  s2ColMasked.map(calculateMaskedPercent);
+
+// Filter collection to only images with `cloud_cover_aoi` less than or equal 5%
+var s2FilteredCol = s2ColCloudCoverAoi.filter(ee.Filter.lte('cloud_cover_aoi', 5));
+```
+
+### Image clip and masking/topographic shadow masking
+
+In the end we want to end up with AOI clipped to the exact extent of the shapefile. We’ll clip the image now to speed up the remaining processes and shrink the size of the exported image.
+
+``` javascript
+// Clip the image to contain only pixels from AOI
+s2FilteredCol = s2FilteredCol.map(function(image){return image.clip(AOI)});
+```
+
+New part in this Pipeline is masking water and topographic shadows. We’ll use simple NIR band thresholding, which may not be a perfect solution, but for this purpose should work fine. The thresholds for each term were set by empirical tests.
+
+``` javascript
+// Mask water and topographic shadows
+var maskBelowNIRThreshold = function(image) {
+  // Get image date in yyyy-mm-dd format
+  var date = image.date().format('yyyy-MM-dd');
+  
+  // Select NIR band
+  var nir = image.select('B8');
+  
+  // Empirically derived threshold for each term of acquisition
+  var thresholds = {
+    '2018-05-14': 0.11,
+    '2018-05-31': 0.16,
+    '2018-08-07': 0.11,
+    '2018-08-27': 0.11,
+    '2018-09-18': 0.10,
+    '2019-06-25': 0.16,
+    '2019-06-30': 0.16
+    };
+
+  // From the thresholds make a ee.Dictionary
+  var thresholdDict = ee.Dictionary(thresholds);
+  
+  // Choose the matching threshold
+  var threshold = thresholdDict.get(date, null);
+  
+  // If no threshold is found for that date, return the original image
+  // If there's a threshold prepare a mask, with NIR values below threshold being masked
+  var mask = ee.Algorithms.If(ee.Algorithms.IsEqual(threshold, null), 
+                              1, 
+                              nir.gte(ee.Number(threshold)));
+  // Return masked image
+  return image.updateMask(mask);
+};
+
+
+// Map the function over the collection
+var maskedCollection = s2FilteredCol.map(maskBelowNIRThreshold);
+```
+
+### Band renaming and export
+
+The final part is also the same as in Pipeline 1.
+
+``` javascript
+
+function renameBands(image) {
+  
+  // Get the date of the image
+  var date = ee.Date(image.get('system:time_start'));
+  var dateString = date.format('YYYY-MM-dd');
+
+  // Get the list of band names in the image
+  var bandNames = image.bandNames();
+
+  // Map over the band names and rename them
+  var renamedBands = bandNames.map(function(bandName){
+    return dateString.cat('_').cat(bandName);
+  });
+
+  // Use .select() to rename the original band names
+  var renamedImage = image.select(bandNames, renamedBands);
+
+  return renamedImage;
+}
+
+var s2FilteredColRenamed = maskedCollection.map(renameBands);
+
+
+// Function to get all band names from the entire collection
+function getAllBandNames(collection) {
+  // Convert the ImageCollection into a list
+  var bandNamesList = collection
+    .toList(collection.size())
+  
+  // Map over each image in the list to get its band names
+    .map(function(image) {
+      // Convert each element in the list (image) into an ee.Image object
+      var imageObject = ee.Image(image);
+      
+      // Get the band names of the current image using ee.Image.bandNames()
+      return imageObject.bandNames();
+    })
+    
+  // Flatten the list to obtain a single list containing all band names
+    .flatten();
+  
+  // Return the list of all band names
+  return bandNamesList;
+}
+
+// Get all unique band names from the entire renamed ImageCollection
+var bandNames = getAllBandNames(s2FilteredColRenamed);
+
+
+// Convert the collection to a single multi-band image
+var s2ImageMultiband = s2FilteredColRenamed.toBands();
+
+// Replace temporary names with previously prepared date-marked names.
+s2ImageMultiband = s2ImageMultiband.select(
+  s2ImageMultiband.bandNames(), bandNames);
+```
+
+Export the image to finalize this pipeline.
+
+    Export.image.toDrive({
+      image: s2ImageMultiband,
+      description: 'CS1_image_data',
+      // Change the folder to one in your Google Drive
+      folder: 'ETR_GEE',
+      region: AOI,
+      maxPixels: 1e13,
+      scale: 10
+    });
+
+[Here you can find the link to the whole code presented in Pipeline 3](https://code.earthengine.google.com/9e903fca4a626dde2ce300f86f50c6d7)
+
+### This is the end of this exercise. Proceed with other Themes and Exercises. Good luck!

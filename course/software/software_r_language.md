@@ -23,19 +23,58 @@ After installing R, RStudio can be downloaded and installed from:
 
 [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/)
 
+We recommend installing everything with default settings.
+
+
 ### Module 2 environment
-Contents of Module 2 of this course uses R version 4.3.0 "Already Tomorrow", which you can download from this website: [https://cran.r-project.org/bin/windows/base/old/4.3.0](https://cran.r-project.org/bin/windows/base/old/4.3.0).
 
-A recommended way to setup working environment in RStudio is to use [renv package](https://github.com/rstudio/renv):  
+***Note: If you encounter any errors during each of installation steps you may need to temporarly disable your firewall or anti-virus software.***
 
-1. Create a New Project
-2. Install `renv` using `install.packages("renv")` command
-3. Use `renv::init()` to initialize `renv` within a project created in step 1
-4. Replace the default `renv.lock` file inside the project folder with the downloaded one: <a href=../assets/r_envs/renv.lock download>download renv.lock</a>
-5. Use `renv::restore()` to install the specific package versions recorded in the lockfile
+Contents of Module 2 of this course uses R version 4.3.1 "Beagle Scouts". Choose files appropriate for your operating system here [https://cran.r-project.org/](https://cran.r-project.org/). For Windows version use this link to download installer: [https://cran.r-project.org/bin/windows/base/R-4.3.1-win.exe](https://cran.r-project.org/bin/windows/base/R-4.3.1-win.exe).
 
-By following these steps you ensure that you will work on the most up-to-date environment that the contents of Module 2 use.
 
+If you use R on Windows some packages may need RTools software. Download and install version 4.3 of RTools from this website: [https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html](https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html)
+
+
+A recommended way to setup working environment in RStudio is to use [renv (short for reproducible environment) package](https://github.com/rstudio/renv). Project created using these instructions will contain appropriate versions of packages used to develop and run scripts in Module 2.
+
+**Instructions**
+
+
+**Step 1.** Launch RStudio  
+**Step 2.** Check out you R version. After you launch RStudio the first line in the console should read
+
+```
+R version 4.3.1 (2023-06-16 ucrt) -- "Beagle Scouts"
+```
+
+If you have different R versions installed make sure to change version to R 4.3.1 as shown below
+
+
+<center>
+<a href="../assets/r_envs/r_version.gif" target="_blank">
+    <img src="../assets/r_envs/r_version.gif" title="R new project" alt="R new project" width="800"/>
+</a>
+</center> 
+
+
+**Step 3.** Create a New Project. Change the directory to your preferred location
+
+<center>
+<a href="../assets/r_envs/r_newproj.gif" target="_blank">
+    <img src="../assets/r_envs/r_newproj.gif" title="R new project" alt="R new project" width="800"/>
+</a>
+</center> 
+
+If you checked `Use renv with this project` - skip step 6.
+
+**Step 4.** Install `renv` using `install.packages("renv")` command  
+**Step 5.** Load `renv` package executing `library(renv)` in the console  
+**Step 6.** Use `renv::init()` to initialize `renv` within a project created in step 1. If you checked `Use renv with this project` - skip this step  
+**Step 7.** Replace the default `renv.lock` file inside the project folder with the downloaded one: <a href=../assets/r_envs/renv.lock download>download renv.lock</a>  
+**Step 8.** Use `renv::restore()` to install specific package versions recorded in the lockfile. When prompted type `y` in the console to install packages recorded in `renv.lock` file  
+
+By following these steps you ensure that you will work on the most up-to-date environment that the contents of Module 2 use. To work in a project just open `.Rproj` file. This action will open RStudio with you environment setup.
 
 ***Note: To ensure compatibility and consistent results across exercises, please adhere to the following specified versions of R and packages. Running exercises on different versions may lead to unexpected results and potential inconsistencies and errors.***
 

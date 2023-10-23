@@ -31,13 +31,10 @@ To consolidate your knowledge and test it in more practical environment complete
 
 After completing this theme, you will:
 
-- understand the potential of multitemporal datasets for improving mapping performance
+- understand the potential of satellite multitemporal datasets for improving mapping performance
 - be familiar with the challenges of collecting reference data for multitemporal classification
-- know the availability of publicly available multitemporal land cover datasets
-- be aware of alternative data sources for reference data collection, such as citizen science projects
-- understand the importance of performing simple change detection to exclude possible changes between analyzed dates
-- be familiar with machine learning algorithms commonly used for multitemporal classification, such as Random Forest, Support Vector Machines, and Artificial Neural Networks
-- know about modifications of algorithms that consider spatio-temporal dependencies for improved classification
+- know the availability of publicly available multitemporal land cover datasets and alternative data sources for reference data collection, such as citizen science projects
+- be familiar with machine learning algorithms commonly used for multitemporal classification, and be introduced to modifications of algorithms that consider spatio-temporal dependencies for improved classification
 - understand the role of feature selection in optimizing multitemporal classification by reducing dimensionality
 - be aware of R packages that include machine/statistical learning algorithms for classification
 - understand the strategies for validation and accuracy assessment of multitemporal classification results, including methods like k-fold cross-validation and bootstrapping
@@ -46,13 +43,13 @@ After completing this theme, you will:
 
 Reference data for the classification of satellite images can be collected in the field or sourced from developed (reliable!) products. Below, we will discuss a few issues related to the data itself and the temporal aspect.
 
-**Reference data sampling** for time series data classification in general is a challenging task. deally, the reference data should come from field campaigns performed near the satellite data acquisition dates.
+**Reference data sampling** for time series data classification in general is a challenging task. Ideally, the reference data should come from field campaigns performed near the satellite data acquisition dates.
 
 <center>
 
-<img src="media/clas_ref_data.png" title="GPS measurements of alpine grasslands in Karkonosze Mts. in different terms of data acquiisition and corresponding satellite data" alt="clas_ref_data" width="800"/>
+<img src="media/clas_ref_data.png" title="GPS measurements of alpine grasslands" alt="clas_ref_data" width="800"/>
 
-<i>The concept of synchronized field measurements with the dates of acquiring satellite data (alpine grasslands in Karkonosze Mts., figure by course authors).</i>
+<i>The concept of synchronized GPS field measurements with the dates of acquiring satellite data (alpine grasslands in Karkonosze Mts., figure by course authors).</i>
 </center>
 
 However, this scenario is rather impossible to fulfill when dealing with time series composed of regularly and frequently collected images (such as Sentinel-2 every 5 days), especially in terrains like mountains.
@@ -85,7 +82,7 @@ At the top of the table there are multitemporal databases based of 10 m Sentinel
 
 In general, you should not take the boundaries of all classes from such products literally. They are supposed to be reference materials that will help you determine the classes of the legend and make it easier for you to interpret the objects. Which parts of such a set you consider reliable is up to you.
 
-A unique way to have data from the field for local scale analysis, without being able to collect it on our own, is to use samples collected within **citizen science** projects. In these projects, geolocated and labeled field observations are acquired by volunteers, e.g. with their smartphones. There are also some tutorials how to interpret the objects of interest making the dataset as much reliable as possible. We refer you to read about some projects and platforms **[Theme 6 of Module 1](../../module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.md)**. Example publication where citizen science collected data were used for classification was elaborated by [Houskeeper et al., 2022](https://doi.org/10.1371/journal.pone.0257933).
+A unique way to have data from the field for local scale analysis, without being able to collect it on our own, is to use samples collected within **citizen science** projects. In these projects, geolocated and labeled field observations are acquired by volunteers, e.g. with their smartphones. There are also some tutorials how to interpret the objects of interest making the dataset as much reliable as possible. We refer you to read about some projects and platforms in **[Theme 6 of Module 1](../../module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.md)**. Example publication where citizen science collected data were used for classification was elaborated by [Houskeeper et al., 2022](https://doi.org/10.1371/journal.pone.0257933).
 
 <center>
 
@@ -98,13 +95,13 @@ Regardless of whether we use field data or existing maps/databases, it is useful
 
 ## Machine learning algorithms
 
-When classifying multitemporal data, a large number of predictor variables can be involved. Therefore, it’s important to select the optimal algorithm in terms of computational cost, accuracy, and so on. Literature on multitemporal classification often confirms the suitability of supervised learning. The most frequently used machine learning algorithms are **Random Forest** (RF, [Breiman, 2001](https://doi.org/10.1023/A:1010933404324)), **Support Vector Machines** (SVMs, [Vapnik, 1999](https://doi.org/10.1109/72.788640)) and **Artificial Neural Networks** (ANNs) including deep learning algorithms, such as **Convolutional Neural Networks** (CNNs, [LeCun, 1998](https://doi.org/10.1109/5.726791)). Below are the examples of their use in mapping of e.g.:
+When classifying multitemporal data, a large number of predictor variables can be involved. Therefore, it’s important to select the optimal algorithm in terms of computational cost, accuracy, and so on. Literature on multitemporal classification often confirms the suitability of supervised learning. The most frequently used machine learning algorithms are **Random Forest** (RF, [Breiman, 2001](https://doi.org/10.1023/A:1010933404324)), **Support Vector Machines** (SVMs, [Vapnik, 1999](https://doi.org/10.1109/72.788640)) and **Artificial Neural Networks** (ANNs) including deep learning algorithms, such as **Convolutional Neural Networks** (CNNs, [LeCun, 1998](https://doi.org/10.1109/5.726791)). Below are the examples of their use with satellite data in mapping of e.g.:
 
 - grasslands ([Rapinel et al., 2019](https://doi.org/10.1016/j.rse.2019.01.018), [Tarantino et al., 2021](https://doi.org/10.3390/rs13020277), [Marcinkowska-Ochtyra et al., 2023](https://doi.org/10.3390/rs15051388)),
 - tree species ([Immitzer et al., 2019](https://doi.org/10.3390/rs11222599), [Hościło and Lewandowska, 2019](https://doi.org/10.3390/rs11080929)),
 - mountain vegetation, including forests ([Kollert et al., 2021](https://doi.org/10.1016/j.jag.2020.102208)), non-forests ([Wakulińska and Marcinkowska-Ochtyra et al., 2020](https://doi.org/10.3390/rs12172696)) and both ([Kluczek et al., 2022](https://doi.org/10.3390/rs14051209)),
 - crops ([Gadiraju et al., 2020](https://doi.org/10.1145/3394486.3403375), [Ashourloo et al., 2022](https://doi.org/10.1016/j.rse.2022.113206)),
-- coastal areas ([Marzialetti et al., 2019](https://doi.org/10.3390/rs11121506), [Munizaga et al., 2022](https://doi.org/10.3390/su14095700)).
+- coastal areas ([Marzialetti et al., 2019](https://doi.org/10.3390/rs11121506), [Munizaga et al., 2022](https://doi.org/10.3390/su14095700)), etc.
 
 Recently, increasing amounts of multitemporal satellite data has led to modifications of some known algorithms. These modifications take into account **spatio-temporal dependencies** into classification, particularly for deep learning, e.g. **Temporal Convolutional Network** (TCN, [Bai et al., 2018](https://doi.org/10.48550/arXiv.1803.01271)), **Temporal Convolutional Neural Networks** (TempCNNs, [Pelletier et al., 2019](https://doi.org/10.3390/rs11050523)), **A DUal view Point deep Learning architecture for time series classificatiOn** (DuPLO, [Interdonato et al., 2019](https://doi.org/10.1016/j.isprsjprs.2019.01.011)).
 
@@ -123,7 +120,7 @@ Another approach is presented in **Time-Weighted Dynamic Time Warping** algorith
 
 ### R packages including Machine/Statistical Learning algorithms
 
-Since different Modules and Themes of this course use different classification tools, we will focus on the R packages available for this purpose. Most of the packages mentioned below are used to train, tune, develop and apply the statistical classification models. Application to the numerical and categorical data results in accuracy metrics and confusion matrices. Models can also be applied to produce classification images with e.g. `predict` function from the `raster` package or grid CSV files.
+Since different modules and themes of this course use different classification tools, we will focus on the R packages available for this purpose. Most of the packages mentioned below are used to train, tune, develop and apply the statistical classification models. Application to the numerical and categorical data results in accuracy metrics and confusion matrices. Models can also be applied to produce classification images with e.g. `predict` function from the `raster` package or grid CSV files.
 
 The following table focuses on the tools, which enable obtaining and analyzing both accuracy metrics and classification image.
 

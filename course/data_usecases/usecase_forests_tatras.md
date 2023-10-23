@@ -2,7 +2,7 @@
 title: "Use case: Vegetation disturbance detection in Polish-Slovak Tatra Mountains"
 description:
 dateCreated:
-authors: Adrian Ochtyra
+authors: Adriana Marcinkowska-Ochtyra
 contributors: 
 estimatedTime:
 output: 
@@ -30,8 +30,7 @@ Strong winds and bark beetle (Ips typographus \[L.\]) outbreaks are the primary 
 <img src="media/usecase_tatras.png" title="Tatra Mountains." alt="Tatra Mountains usecase" width="600"/>
 
 <i>Tatra Mountains (red squares in the thumbnail on the left indicate Landsat scenes location, figure by course authors, Landsat 8 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits)) and the effects of: (A) bark beetle outbreak (photo by A. Ochtyra) and (B) bora wind (photo by [Falťan et al., 2020](https://doi.org/10.3390/f11121259)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
-
-<center>
+</center>
 
 ## Use case in the course
 
@@ -39,6 +38,7 @@ The use case is featured in the following parts of the course:
 
 - [Exercise: Principles of multispectral imaging (Module 2, Theme 1)](../module2/01_multispectral_principles/01_multispectral_principles_exercise.md)
 - [Exercise: Temporal information in satellite data (Module 2, Theme 2)](../module2/02_temporal_information/02_temporal_information_exercise.md)
+- [Exercise: Image processing workflow (Module 2, Theme 3)](../module2/03_image_processing/03_image_processing_exercise.md)
 - [Exercise: Vegetation change and disturbance detection (Module 2, Theme 5)](../module2/05_vegetation_monitoring/05_vegetation_monitoring_exercise.md)
 - [Case study: Forest disturbance detection (Tatras) (Module 2, Case study 3)](../module2/08_cs_disturbance_detection/08_cs_disturbance_detection.md)
 

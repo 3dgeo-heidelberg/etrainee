@@ -94,6 +94,7 @@ nav:
     - 'In situ and laboratory spectroscopy of vegetation':
         - 'Lesson – Optical properties of vegetation': 'module4/03_relating_imagery_lab_vegetation/03_01_optical_parameters_of_foliage.md'
         - 'Lesson – Laboratory spectroscopy': 'module4/03_relating_imagery_lab_vegetation/03_02_principles_of_laboratory_spectroscopy.md'
+        - 'Exercise': 'module4/03_relating_imagery_lab_vegetation/03_spectra_probe_sphere_exercise.md'
         - 'Lesson – Relating imaging and laboratory spectroscopy': 'module4/03_relating_imagery_lab_vegetation/03_03_relating_imagery_lab_vegetation.md'
     - 'Machine learning in imaging spectroscopy':
         - 'Lesson': 'module4/04_time_series_specifics/04_time_series_specifics.md'
@@ -103,18 +104,20 @@ nav:
     - 'Temporal vs. spatial and spectral resolution':
         - 'Lesson': 'module4/05_specific_resolution_contribution/05_specific_resolution_contribution.md'
     - 'Case studies':
-        - 'Monitoring tundra grasslands in the Krkonoše Mts.': 'module4/06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.md'
-        - 'Seasonal dynamics of flood-plain forest': 'module4/07_flood_plain_forest/07_flood_plain_forest.md'
-        - 'Evaluation of physiological status of Norway Spruce forest in the Ore Mts.': 'module4/08_OreMts_Spruce_status/08_OreMts_Spruce_status.md'
+        - 'Seasonal spectral separability of grass species (Krkonoše Mts.)': 'module4/08_spectral_separability_grass/08_spectral_separability_grass.md'
+        - 'Discrimination of grass species from time series of RPAS hyperspectral imagery': 'module4/06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.md'
+        - 'Seasonal dynamics of flood-plain forests': 'module4/07_flood_plain_forest/07_flood_plain_forest.md'
 - 'Software':
     - 'CloudCompare': 'software/software_cloudcompare.md'
     - 'EnMAP-Box': 'software/software_enmap_box.md'
     - 'Python': 'software/software_python.md'
     - 'QGIS': 'software/software_qgis.md'
     - 'R': 'software/software_r_language.md'
+    - 'Google Earth Engine': 'software/software_gee.md'
 - 'Use Cases and Data':
     - 'Multitemporal 3D point clouds of an active rock glacier' : 'data_usecases/usecase_rockglacier_ahk.md'
     - '4D point clouds of a sandy beach' : 'data_usecases/usecase_beach_kijkduin.md'
     - 'Vegetation disturbance detection in Polish-Slovak Tatra Mountains' : 'data_usecases/usecase_forests_tatras.md'
     - 'Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)' : 'data_usecases/usecase_tundra_karkonosze.md'
-    
+    - 'Tundra vegetation monitoring in Krkonoše Mountains': 'data_usecases/usecase_grasses_krkonose.md'
+- 'About the project': 'https://web.natur.cuni.cz/gis/etrainee/'

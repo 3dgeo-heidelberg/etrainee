@@ -76,7 +76,7 @@ Using topographic 3D point clouds, we are typically looking for changes in the g
 
 [//]: <> (Natural hazard monitoring could be explicitly introduced as an example above, important case of topographic monitoring in the context of human-environment interaction)
 
-To further familiarize yourself with approaches and applications of 3D change analysis, look into the review article by [Qin et al., 2016](#references). For a first interactive experience of topographic change analysis from point cloud data, check out this [on-demand tool by OpenTopography](https://portal.opentopography.org/differencing?opentopoID=OTLAS.012013.26913.2), coming with an informative [tutorial video](https://youtu.be/BlDx66AQ3G0) ([Scott et al., 2021](#references)). It will perform simple vertical differencing of the elevation, and nicely visualize topographic change, in this example, due to dune migration:
+To further familiarize yourself with approaches and applications of 3D change analysis, look into the review article by [Qin et al. (2016)](#references). For a first interactive experience of topographic change analysis from point cloud data, check out this [on-demand tool by OpenTopography](https://portal.opentopography.org/differencing?opentopoID=OTLAS.012013.26913.2), coming with an informative [tutorial video](https://youtu.be/BlDx66AQ3G0) ([Scott et al., 2021](#references)). It will perform simple vertical differencing of the elevation, and nicely visualize topographic change, in this example, due to dune migration:
 
 
 <center>
@@ -129,17 +129,17 @@ An alternative strategy for generating point clouds is **virtual laser scanning 
 * **Method development**: In 3D/4D point cloud analysis, we are often developing methods to extract certain features describing our objects or surface processes of interest. Real point cloud data to calibrate algorithms and validate results are costly to acquire and not error free. Here, VLS can be used to generate data with perfectly know reference values, e.g., if synthetic changes are applied to a virtual scene in case of 4D applications.
 * **Generation of training data for machine learning algorithms**: Recently, several methods for deep learning on point clouds have been presented. However, such methods require immense amounts of training data to achieve acceptable performance. We present how VLS can be used to generate training data in machine learning classifiers, and how different sensor settings influence the classification results.
 
-A pioneer study using **4D VLS point cloud** for change detection is presented by [Winiwarter et al., 2022a](#references). In this study, VLS point clouds of different ALS acquisition settings are generated to evaluate at which flight altitude a specific target change can be detected using an available analysis method. This consideration has high practical relevance, since it supports decision making of stakeholders, for example, in the context of natural hazard management. 
+A pioneer study using **4D VLS point cloud** for change detection is presented by [Winiwarter et al. (2022a)](#references). In this study, VLS point clouds of different ALS acquisition settings are generated to evaluate at which flight altitude a specific target change can be detected using an available analysis method. This consideration has high practical relevance, since it supports decision making of stakeholders, for example, in the context of natural hazard management. 
 
  VLS data can be acquired using the scientific open source software HELIOS++ ([Winiwarter et al., 2022b](#references)). HELIOS++ is implemented in C++ for optimized runtimes, and provides bindings in Python to allow integration into scripting environments (e.g., GIS plugins, Jupyter Notebooks). A variety of model types to represent 3D scenes are supported: terrain models, voxel models, and mesh models. As platforms, four options are currently supported: airplane, multicopter, ground vehicle and static tripod. In the figure below, a schematic diverging laser beam and its corresponding waveform (magenta) is shown being emitted from the airplane and interacting with a mesh model tree and the rasterized ground surface.
 
 <center>
 <img src="media/m3_theme1_helios++.png" alt="helios++" title="Virtual laser scanning with HELIOS++" width="600">
 
-<i>Schematic concept of virtual laser scanning with HELIOS++, showcasing platforms (tripod, car, UAV, airplane) and 3D object models (mesh, point cloud, voxels, raster) composing a scene. Figure by [Winiwarter et al. 2022b](https://doi.org/10.1016/j.rse.2021.112772) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).</i>
+<i>Schematic concept of virtual laser scanning with HELIOS++, showcasing platforms (tripod, car, UAV, airplane) and 3D object models (mesh, point cloud, voxels, raster) composing a scene. Figure by [Winiwarter et al. (2022b)](https://doi.org/10.1016/j.rse.2021.112772) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).</i>
 </center>
 
-In this module, you will learn to create VLS point clouds with HELIOS++ for your own analyses ([exercise in Theme 2](../02_pointcloud_programming_python/exercise/m3_theme2_exercise1.ipynb)). For alternative implementations of LiDAR simulation and their specific purposes and differences, see the detailed literature review in [Winiwarter et al., 2022b](#references)
+In this module, you will learn to create VLS point clouds with HELIOS++ for your own analyses ([exercise in Theme 2](../02_pointcloud_programming_python/exercise/m3_theme2_exercise1.ipynb)). For alternative implementations of LiDAR simulation and their specific purposes and differences, see the detailed literature review in [Winiwarter et al. (2022b)](#references)
 
 ### Point Cloud Data Model
 
@@ -154,7 +154,7 @@ A point cloud is an unorganized set of **points in three-dimensional cartesian s
 <center>
 <img src="media/m3_theme1_pointcloud_model_list.png" alt="pointcloud_model_table" title="Point cloud model in ascii table" width="400">
 
-<i>Visual and tabular representation of a 3D point cloud with three coordinates (XYZ) and attributes classification (ID), LiDAR backscatter (Intensity), and true color (RGB). Figure by K. Anders, modified after [Ghamisi et al. 2019](https://doi.org/10.1109/MGRS.2018.2890023).</i>
+<i>Visual and tabular representation of a 3D point cloud with three coordinates (XYZ) and attributes classification (ID), LiDAR backscatter (Intensity), and true color (RGB). Figure by K. Anders, modified after [Ghamisi et al. (2019)](https://doi.org/10.1109/MGRS.2018.2890023).</i>
 </center>
 
 Typical **attributes** for LiDAR point clouds (i.e. acquired via laser scanning) are the LiDAR intensity and information on multiple returns. LiDAR measurements do not include color information, but RGB information can be added from images that are taken in addition to scanning ([Ghamisi et al., 2019](#references)). This step belongs to the concept of [data fusion](#multisource-and-multitemporal-data-fusion). Point clouds which are acquired with photogrammetric techniques directly contain RGB as attribute from the original photographs, which are used for 3D reconstruction through dense image matching ([Westoby et al., 2012](#references)).
@@ -162,7 +162,7 @@ Typical **attributes** for LiDAR point clouds (i.e. acquired via laser scanning)
 <center>
 <img src="media/m3_theme1_pointcloud_model_fusion.png" alt="Fusion" title="Fusion of photographic data with a LiDAR point cloud" width="800">
 
-<i>Fusion of photographic data with a LiDAR point cloud by assigning color values as RGB attributes to the point cloud. Figure by K. Anders, modified after [Ghamisi et al. 2019](https://doi.org/10.1109/MGRS.2018.2890023).</i>
+<i>Fusion of photographic data with a LiDAR point cloud by assigning color values as RGB attributes to the point cloud. Figure by K. Anders, modified after [Ghamisi et al. (2019)](https://doi.org/10.1109/MGRS.2018.2890023).</i>
 </center>
 
 
@@ -183,7 +183,7 @@ The geometry of full 3D objects, such as trees, cannot be represented in rasters
 <i>Representation of terrain, surface and object structure in 3D point clouds. Figure by course authors.</i>
 </center>
 
-In this module, you will learn about change analysis methods using the full 3D data provided by point clouds, as well as raster-based methods when deriving rasterized terrain models from point cloud data (especially in [Themes 2](../02_pointcloud_programming_python/02_pointcloud_programming_python.ipynb) and [3](../03_3d_change_analysis/03_3d_change_analysis.ipynb)). If you would like to get deeper into concepts of terrain interpolation from 3D point clouds, take a look at [Pfeifer & Mandlburger, 2008](#references).
+In this module, you will learn about change analysis methods using the full 3D data provided by point clouds, as well as raster-based methods when deriving rasterized terrain models from point cloud data (especially in [Themes 2](../02_pointcloud_programming_python/02_pointcloud_programming_python.ipynb) and [3](../03_3d_change_analysis/03_3d_change_analysis.ipynb)). If you would like to get deeper into concepts of terrain interpolation from 3D point clouds, take a look at [Pfeifer & Mandlburger (2008)](#references).
 
 ### Multisource and Multitemporal Data Fusion 
 
@@ -229,7 +229,7 @@ We generally need to consider two aspects when deciding on the definition of the
 1. **Neighborhoods may be empty** when using a fixed distance, if there is no other point in the point cloud at the specified distance around a search point.
 2. **Neighborhoods may not be unique** when using a fixed number of neighbors, for example if a group of 3D points is spatially isolated so that each of the points shares the same neighborhood including each other (i.e., same set of kNN).
 
- For some applications, it may be helpful to combine a fixed distance neighborhood with a fixed number of kNN to overcome drawbacks of each. Accordingly, one may avoid empty neighborhoods by setting a large distance radius, but restricting the number of neighbors to the k nearest points. Depending on the purpose of the operation, there are even more advanced methods for neighborhood selection, such as quadrant- or octant-based kNN. If you would like to learn more about this, you may look into [Pfeifer et al., 2014](#references).
+ For some applications, it may be helpful to combine a fixed distance neighborhood with a fixed number of kNN to overcome drawbacks of each. Accordingly, one may avoid empty neighborhoods by setting a large distance radius, but restricting the number of neighbors to the k nearest points. Depending on the purpose of the operation, there are even more advanced methods for neighborhood selection, such as quadrant- or octant-based kNN. If you would like to learn more about this, you may look into [Pfeifer et al. (2014)](#references).
 
 **So what can the neighborhood of a point tell us?**
 A basic attribute to be derived from the spatial neighborhood is the **point density** within a point cloud. The 3D point density, for example, can be derived as the number of points (kNN) within the radius of a local sphere:
@@ -249,7 +249,7 @@ We will have a look at these in the remainder of this theme. But first, since we
 The temporal neighborhood regards measurements of a variable at the same spatial location prior or successively to a certain point in time. For time series, the neighborhood is typically defined as a temporal window of a certain timespan.
 For 3D/4D point clouds, most times a combination of spatial and temporal neighborhoods is used. In the same way that spatial neighbors are searched among the 3D points within one point cloud, they may be searched in another, separate point cloud. **You may note:** looking for spatially close points in the temporal neighborhood (i.e., another point cloud epoch), yields information on how properties of these neighboring points change over time, e.g. through attribute differences or height differences. Being aware of possible neighborhood operations in multitemporal point clouds, gives you already one point cloud-based approach of change analysis (with more to come in [Theme 3 of this module](../03_3d_change_analysis/03_3d_change_analysis.ipynb)).
 
-The spatial-temporal neighborhood is used in an approach for 4D point cloud processing by [Kromer et al., 2015](#references) to filter noise from the data. The concept uses the redundancy of frequent and spatially dense measurements in 4D point clouds and averages each point to the median of points which are neighboring in space and time:
+The spatial-temporal neighborhood is used in an approach for 4D point cloud processing by [Kromer et al. (2015)](#references) to filter noise from the data. The concept uses the redundancy of frequent and spatially dense measurements in 4D point clouds and averages each point to the median of points which are neighboring in space and time:
 
 <center>
 <img src="media/m3_theme1_kromer_etal_2015_edt.png" alt="spatiotemporal neighborhood" title="combination of spherical spatial neighborhoods and temporal window neighborhood" width="800">
@@ -359,7 +359,7 @@ In practice, 4D data is often made accessible by appending the observed variable
 <center>
 <img src="media/m3_theme1_pointcloud_time_attributes.png" alt="point cloud time attributes" title="Point cloud model with attributes over time" width="400">
 
-<i>Point cloud model with XYZ coordinates and attributes of a variable A for each point in time t of T epochs in the point cloud time series. Figure by K. Anders, modified after [Ghamisi et al. 2019](https://doi.org/10.1109/MGRS.2018.2890023).</i>
+<i>Point cloud model with XYZ coordinates and attributes of a variable A for each point in time t of T epochs in the point cloud time series. Figure by K. Anders, modified after [Ghamisi et al. (2019)](https://doi.org/10.1109/MGRS.2018.2890023).</i>
 </center>
 
 ### Metadata and Supplementary Datasets

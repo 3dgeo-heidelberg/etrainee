@@ -18,7 +18,7 @@ Preprocessing of the images is a crucial step in remote sensing data analysis. A
 In this theme you will learn about:
 
 - **[goals of automating processes](#goals-of-automating-processes)**
-- **[radiometric and geometric correction](#radiometric-and-geometric-correction) **
+- **[radiometric and geometric correction](#radiometric-and-geometric-correction)**
 - **[unwanted areas detection and masking](#unwanted-areas-detection-and-masking)**
 - **[missing information reconstruction](#missing-information-reconstruction)**
 - **[data fusion](#data-fusion)**
@@ -42,7 +42,7 @@ After finishing this theme you will:
 - understand the need for appropriate correction for quantitative and multitemporal analysis of satellite data
 - understand the significance of cloud masking in optical data processing and the various methods used for detecting and masking clouds
 - gain insights into missing information reconstruction techniques, such as gap filling and data fusion, to ensure complete and reliable time series analysis
-- learn about data fusion methods
+- be introduced to data fusion
 - familiarize yourself with various widely used tools, algorithms and packages
 
 ## Goals of automating processes
@@ -93,7 +93,7 @@ Automatic process of unwanted areas such as clouds, shadows and seasonal snow ma
 <i>Low stratus clouds framing iceberg A-56 drifted in the South Atlantic Ocean ([VIIRS NASA figure by J. Schmaltz, LANCE/EOSDIS Rapid Response](https://www.earthdata.nasa.gov/learn/find-data/near-real-time/rapid-response)/ [Terms of use](https://www.earthdata.nasa.gov/learn/use-data/data-use-policy), source: [NASA Earth Observatory](https://earthobservatory.nasa.gov/images/88136/clouds-frame-iceberg-a-56)/ [Terms of use](https://earthobservatory.nasa.gov/image-use-policy)).</i>
 </center>
 
-Using the information about the percentage coverage with clouds we can filter metadata or mask the images (we will show you both approaches in the **[Exercise](03_image_processing_exercise.md)**). The first one means that we can automatically choose the date that has the least cloud coverage within our specific area of interest and time range. The second one is oriented on excluding the areas covered by clouds by equalizing pixel values into binary flags (clouds occurrence and no-occurence). In this process the assumption is that clouds differ from the underlying Earth surface in terms of spectral characteristics and they are brighter and colder than these other areas. Commonly used approaches is the selection of cloud **probability threshold** for defining cloud/non-cloud masks. One of the most popular algorithms is [Fmask](https://github.com/GERSL/Fmask) ([Zhu, Woodcock, 2012](https://doi.org/10.1016/j.rse.2011.10.028)) which uses all spectral bands, NDVI and Normalized Difference Snow Index (NDSI), initially developed for Landsat TM and ETM+; with further improvements for next Landsat sensors or Sentinel-2 with additional Cirrus bands and the application to cloud shadow and snow detection ([Qiu et al., 2019](https://doi.org/10.1016/j.rse.2019.05.024)). **Machine and deep learning** are also the approaches to the unwanted areas detection, e.g. [s2cloudless](https://github.com/sentinel-hub/sentinel2-cloud-detector) algorithm uses gradient boosting classification method trained on global coverage training dataset. It can be used both for single-date and multitemporal data processing, however, there are also special algorithms dedicated to the latter. In general, in multitemporal data use, clouds can be considered ‘anomalies’ contrary to clear pixels in time series. Here we can find e.g. [multiTemporal mask (Tmask)](https://github.com/GERSL/Tmask) that firstly fits a time series model of each single pixel using remaining clear pixels from Fmask product, and then compares model estimates with time series observations to detect pixels of clouds and shadows omitted in Fmask ([Zhu, Woodcock, 2014](https://doi.org/10.1016/j.rse.2014.06.012)). Of course, there are still many other algorithms, dedicated to specific sensors as well as more universal, and the choice of the best one for our needs must fit the specificity of our area and data (you can see the comparative works, in e.g. [Foga et al., 2017](https://doi.org/10.1016/j.rse.2017.03.026), [Tarrio et al., 2020](https://doi.org/10.1016/j.srs.2020.100010), and [Skakun et al., 2022](https://doi.org/10.1016/j.rse.2022.112990)).
+Using the information about the percentage coverage with clouds we can **filter** metadata or **mask** the images (we will show you both approaches in the **[Exercise](03_image_processing_exercise.md)**). The first one means that we can automatically choose the date that has the least cloud coverage within our specific area of interest and time range. The second one is oriented on excluding the areas covered by clouds by equalizing pixel values into binary flags (clouds occurrence and no-occurence). In this process the assumption is that clouds differ from the underlying Earth surface in terms of spectral characteristics and they are brighter and colder than these other areas. Commonly used approaches is the selection of cloud **probability threshold** for defining cloud/non-cloud masks. One of the most popular algorithms is [Fmask](https://github.com/GERSL/Fmask) ([Zhu, Woodcock, 2012](https://doi.org/10.1016/j.rse.2011.10.028)) which uses all spectral bands, NDVI and Normalized Difference Snow Index (NDSI), initially developed for Landsat TM and ETM+; with further improvements for next Landsat sensors or Sentinel-2 with additional Cirrus bands and the application to cloud shadow and snow detection ([Qiu et al., 2019](https://doi.org/10.1016/j.rse.2019.05.024)). **Machine and deep learning** are also the approaches to the unwanted areas detection, e.g. [s2cloudless](https://github.com/sentinel-hub/sentinel2-cloud-detector) algorithm uses gradient boosting classification method trained on global coverage training dataset. It can be used both for single-date and multitemporal data processing, however, there are also special algorithms dedicated to the latter. In general, in multitemporal data use, clouds can be considered ‘anomalies’ contrary to clear pixels in time series. Here we can find e.g. [multiTemporal mask (Tmask)](https://github.com/GERSL/Tmask) that firstly fits a time series model of each single pixel using remaining clear pixels from Fmask product, and then compares model estimates with time series observations to detect pixels of clouds and shadows omitted in Fmask ([Zhu, Woodcock, 2014](https://doi.org/10.1016/j.rse.2014.06.012)). Of course, there are still many other algorithms, dedicated to specific sensors as well as more universal, and the choice of the best one for our needs must fit the specificity of our area and data (you can see the comparative works, in e.g. [Foga et al., 2017](https://doi.org/10.1016/j.rse.2017.03.026), [Tarrio et al., 2020](https://doi.org/10.1016/j.srs.2020.100010), and [Skakun et al., 2022](https://doi.org/10.1016/j.rse.2022.112990)).
 
 <center>
 
@@ -164,7 +164,7 @@ In most cases they are dealing with NDVI (you can read the examples in: [Roerink
 
 The above examples showed how to handle data completion based on data from the same sensor, taking advantage of their own resolutions (especially temporal). However, if the information from them is of a poor quality, the reconstruction effect will not be satisfied. In such a case, **multisource** data can bring additional valuable information from another sensor.
 
-For example, freely available MODIS data provides daily global observations allowing to rapidly track changes and maximizing the chance to obtain cloud-free data, however spatial resolution (250-1000 m) is a limit in fine-scale environmental applications, for which Landsat would be better in terms of spatial resolution (30 m), but it’s revisit time is longer (16 days). Hence, MODIS and Landsat data are often combined to increase spatiotemporal potential. Image fusion methods to predict Landsat-like synthetic images from dense MODIS time series data were developed, e.g. **Spatial and Temporal Adaptive Reflectance Fusion Model** (STARFM, [Gao et al., 2006](https://doi.org/10.1109/tgrs.2006.872081)) or its enhanced version more useful in heterogeneous landscapes due to the use of observed reflectance trend between two points in time and spectral unmixing (**ESTARFM**, [Zhu et al., 2010](https://doi.org/10.1016/j.rse.2010.05.032)). For more detailed multitemporal analysis, Sentinel-2 and PlanetScope data fusion can be performed, combining the spatial, temporal and spectral advantages of both sensors. You can see the example of developing super-resolution (2.5 m) Sentinel-2 data based on PlanetScope pixel size in the work of [Latte, Lejeune (2020)](https://doi.org/10.3390/rs12152366). Here PlanetScope data were also normalized radiometrically (we refer to this below).
+For example, freely available MODIS data provides daily global observations allowing to rapidly track changes and maximizing the chance to obtain cloud-free data. However, its spatial resolution (250-1000 m) is a limit in fine-scale environmental applications, for which Landsat would be better in terms of spatial resolution (30 m), but it’s revisit time is longer (16 days). Hence, MODIS and Landsat data are often combined to increase spatiotemporal potential. Image fusion methods to predict Landsat-like synthetic images from dense MODIS time series data were developed, e.g. **Spatial and Temporal Adaptive Reflectance Fusion Model** (STARFM, [Gao et al., 2006](https://doi.org/10.1109/tgrs.2006.872081)) or its enhanced version more useful in heterogeneous landscapes due to the use of observed reflectance trend between two points in time and spectral unmixing (**ESTARFM**, [Zhu et al., 2010](https://doi.org/10.1016/j.rse.2010.05.032)). For more detailed multitemporal analysis, Sentinel-2 and PlanetScope data fusion can be performed, combining the spatial, temporal and spectral advantages of both sensors. You can see the example of developing super-resolution (2.5 m) Sentinel-2 data based on PlanetScope pixel size in the work of [Latte, Lejeune (2020)](https://doi.org/10.3390/rs12152366). Here PlanetScope data were also normalized radiometrically (we refer to this below).
 
 <center>
 
@@ -173,7 +173,7 @@ For example, freely available MODIS data provides daily global observations allo
 <i>Sentinel-2 and PlanetScope spectral resolution and wavelength range (figure by [Latte, Lejeune, 2020](https://doi.org/10.3390/rs12152366)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
 </center>
 
-In this Module we focus only on optical data for whom the main ‘Achilles’ heel’ is cloud coverage. If you want to work in an area regularly covered with clouds or where you study rapid changes and there is no room for gaps or creating compositions, you may consider fusion of optical with **Synthetic Aperture Radar** (SAR) data where this inconvenience might be mitigated (several examples can be found [here](https://medium.com/sentinel-hub/data-fusion-combine-satellite-datasets-to-unlock-new-possibilities-26356c481169)).
+In this module we focus only on optical data for whom the main ‘Achilles’ heel’ is cloud coverage. If you want to work in an area regularly covered with clouds or where you study rapid changes and there is no room for gaps or creating compositions, you may consider fusion of optical with **Synthetic Aperture Radar** (SAR) data where this inconvenience might be mitigated (several examples can be found [here](https://medium.com/sentinel-hub/data-fusion-combine-satellite-datasets-to-unlock-new-possibilities-26356c481169)).
 
 ## Data harmonization / normalization
 
@@ -192,7 +192,7 @@ Radiometric normalization is necessary for e.g. PlanetScope data due to the dif
 
 ## Overview of tools and algorithms used with satellite multispectral image/time series processing
 
-Most of the processing steps applied to the multi-temporal imagery data are identical with those used in single image preparation workflow. Some - like composites or harmonization - are specific for datasets with temporal dimension. Different types of tools are present in many resources like closed software, open platforms or extensions, libraries and packages expanding the base capabilities of programming languages, software or platforms. Here is a sample of different tools and algorithms commonly used in processing of multispectral imagery. This selection contains only applications used during **data preparation**. Data analysis is a whole other collection, parts of which can be found in contents of [Theme 4](../04_multitemporal_classification/04_multitemporal_classification.md) and [Theme 5](../05_vegetation_monitoring/05_vegetation_monitoring.md). Strictly code-based tools are extensions of Google Earth Engine JavaScript and R. More examples of Python based algorithms can be found in [Theme 2 of Module 1](../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.md).
+Most of the processing steps applied to the multitemporal imagery data are identical with those used in single image preparation workflow. Some - like composites or harmonization - are specific for datasets with temporal dimension. Different types of tools are present in many resources like closed software, open platforms or extensions, libraries and packages expanding the base capabilities of programming languages, software or platforms. Here is a sample of different tools and algorithms commonly used in processing of multispectral imagery. This selection contains only applications used during **data preparation**. Data analysis is a whole other collection, parts of which can be found in contents of [Theme 4](../04_multitemporal_classification/04_multitemporal_classification.md) and [Theme 5](../05_vegetation_monitoring/05_vegetation_monitoring.md). Strictly code-based tools are extensions of Google Earth Engine JavaScript and R. More examples of Python based algorithms can be found in [Theme 2 of Module 1](../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.md).
 
 ### Satellite/sensor processors
 
@@ -252,7 +252,7 @@ Sen2Cor / Sentinel-2 Toolbox functionalities
 Each observation from the Level-1C, is processed by the European Space Agency (ESA) through the Sen2Cor algorithm. The Level-2A operational processor generates, from algorithms of scene classification and atmospheric correction, BOA reflectance products.
 </dd>
 <dd>
-<b>SOURCES</b>: <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm">Level-2A Algorithm Overview</a>, <a href="http://step.esa.int/main/snap-supported-plugins/sen2cor/">Sen2Cor processor</a>, <a href="https://sentinel.esa.int/web/sentinel/toolboxes/sentinel-2">The Sentinel-2 Toolbox</a>, <a href="https://doi.org/10.3390/rs9060584">Paper with detailed processing description [(Gascon et al., 2017)](https://doi.org/10.3390/rs9060584)</a>
+<b>SOURCES</b>: <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm">Level-2A Algorithm Overview</a>, <a href="http://step.esa.int/main/snap-supported-plugins/sen2cor/">Sen2Cor processor</a>, <a href="https://sentinel.esa.int/web/sentinel/toolboxes/sentinel-2">The Sentinel-2 Toolbox</a>, <a href="https://doi.org/10.3390/rs9060584">Paper with detailed processing description (Gascon et al., 2017)</a>
 </dd>
 </dl>
 </li>
@@ -289,7 +289,7 @@ API with native data types, objects and methods
 Built-in tools for cloud-based imagery processing, including filtering, reducing, loops/function mapping over image collections.
 </dd>
 <dd>
-<b>SOURCES</b>: <a href="https://developers.google.com/earth-engine/guides/getstarted">GEE Get started article</a>, <a href="https://developers.google.com/earth-engine/apidocs">API Reference</a>, <a href="https://doi.org/10.1016/j.rse.2017.06.031">[Gorelick et al., 2017](https://doi.org/10.1016/j.rse.2017.06.031) paper</a>
+<b>SOURCES</b>: <a href="https://developers.google.com/earth-engine/guides/getstarted">GEE Get started article</a>, <a href="https://developers.google.com/earth-engine/apidocs">API Reference</a>, <a href="https://doi.org/10.1016/j.rse.2017.06.031">Gorelick et al., 2017 paper</a>
 </dd>
 </li>
 <li>
@@ -309,7 +309,8 @@ Data cubes processing to prepare analysis ready data.
 </li>
 <li>
 <h4>
-<a href="https://artmotoolbox.com/plugins-standalone/91-plugins-standalone/34-datimes.html">Decomposition and Analysis of Time Series Software (DATimeS)</a>\</4\>
+<a href="https://artmotoolbox.com/plugins-standalone/91-plugins-standalone/34-datimes.html">Decomposition and Analysis of Time Series Software (DATimeS)</a>
+</h4>
 <dl>
 <dt>
 MATLAB-based stand-alone image processing GUI toolbox.
@@ -318,7 +319,7 @@ MATLAB-based stand-alone image processing GUI toolbox.
 Focuses on generating spatially continuous (gap-filled) maps.
 </dd>
 <dd>
-<b>SOURCES</b>: <a href="https://drive.google.com/file/d/1jGpClOzuFff20Y0ojuAGOf9PyHuB33AL/view">Tutorial video</a>, <a href="https://drive.google.com/file/d/10ajcWb5S2jweojFIflH0B7jfMaYDunHm/view">Promotional video</a>, <a href="https://doi.org/10.1016/j.envsoft.2020.104666">[Belda et al., 2020](https://doi.org/10.1016/j.envsoft.2020.104666) paper</a>
+<b>SOURCES</b>: <a href="https://drive.google.com/file/d/1jGpClOzuFff20Y0ojuAGOf9PyHuB33AL/view">Tutorial video</a>, <a href="https://drive.google.com/file/d/10ajcWb5S2jweojFIflH0B7jfMaYDunHm/view">Promotional video</a>, <a href="https://doi.org/10.1016/j.envsoft.2020.104666">Belda et al., 2020 paper</a>
 </dd>
 </li>
 <li>
@@ -333,7 +334,7 @@ Python-based Sentinel-2 data processor.
 Aims to produce harmonised/fused surface reflectance imagery with higher periodicity by integrating additional compatible optical mission sensors.
 </dd>
 <dd>
-<b>SOURCES</b>: <a href="https://github.com/senbox-org/sen2like/blob/master/sen2like/docs/source/S2-SEN2LIKE-UM-V1.6.pdf">User manual</a>, <a href="https://github.com/senbox-org/sen2like/tree/master/sen2like">Reference</a>, <a href="https://doi.org/10.1109/IGARSS.2019.8899213">[Saunier et al., 2019](https://doi.org/10.1109/igarss.2019.8899213) paper</a>, <a href="https://doi.org/10.3390/rs14163855">[Saunier et al., 2022](https://doi.org/10.3390/rs14163855) paper</a>
+<b>SOURCES</b>: <a href="https://github.com/senbox-org/sen2like/blob/master/sen2like/docs/source/S2-SEN2LIKE-UM-V1.6.pdf">User manual</a>, <a href="https://github.com/senbox-org/sen2like/tree/master/sen2like">Reference</a>, <a href="https://doi.org/10.1109/IGARSS.2019.8899213">Saunier et al., 2019 paper</a>, <a href="https://doi.org/10.3390/rs14163855">Saunier et al., 2022 paper</a>
 </dd>
 </li>
 </ul>
@@ -450,7 +451,7 @@ After going through the theory in this theme you should now be ready to take on 
 
 <form name="quiz" action method="post" onsubmit="evaluate_quiz(); return false">
 <!--Question 1-->
-<label for="q_01"> What causes user-independent gaps in time series data? </label><br> <input type="radio" name="q_01">cloudiness, sensor registration errors, seasonal accumulation of snow cover<br> <input type="radio" name="q_01">sensor registration errors, image spatial cropping, cloud shadows<br> <input type="radio" name="q_01">cloud cover, incomplete set of spectral bands, seasonal accumulation of snow cover<br> <input type="radio" name="q_01">cloud shadows, incomplete set of spectral bands, sensor registration errors<br>
+<label for="q_01"> What causes user-independent gaps in time series data planned for use in land cover mapping? </label><br> <input type="radio" name="q_01">cloudiness, sensor registration errors, seasonal accumulation of snow cover<br> <input type="radio" name="q_01">sensor registration errors, image spatial cropping, cloud shadows<br> <input type="radio" name="q_01">cloud cover, incomplete set of spectral bands, seasonal accumulation of snow cover<br> <input type="radio" name="q_01">cloud shadows, incomplete set of spectral bands, sensor registration errors<br>
 
 <div id="correct_q_01" hidden="">
 
