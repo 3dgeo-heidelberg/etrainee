@@ -67,13 +67,13 @@ Spatial resolution is the main parameter influencing classification detail (the 
 
 *Figure 4: The same area (Bílá louka meadow – the Krkonoše Mts. captured in the images with different spatial resolutions. Source: [Kupková et al. (2021)](#references).*
 
-To be able to determine the best scale of elaboration, studies that tested different spatial resolutions within the same area and used classification legends with different numbers of categories are important. When we compared data with different spatial resolutions classified for the same area in the Krkonoše Mts, 8 categories (six grass species and two other vegetation categories) were distinguishable from UAV HS and MS data (see Figure 5 – results for UAV data) with the pixel size 3 cm/pixel. While the legend had to be generalized for satellite and aerial data with bigger pixels. It was not possible to distinguish some less abundant grass categories and individual trees/shrubs in their pixels.
+To be able to determine the best scale of elaboration, studies that tested different spatial resolutions within the same area and used classification legends with different numbers of categories are important. When we compared data with different spatial resolutions classified for the same area in the Krkonoše Mts, 8 categories (six grass species and two other vegetation categories) were distinguishable from UAV HS and MS data (see *Figure 5* – results for UAV data) with the pixel size 3 cm/pixel. While the legend had to be generalized for satellite and aerial data with bigger pixels. It was not possible to distinguish some less abundant grass categories and individual trees/shrubs in their pixels.
 
 <p align="center">
 <img src="media/img8.png" title="Data and classification results." alt="Data and classification results." width="700"/>
 </p>
 
-*Figure 5. Data and classification results (research plot Zahrádka; [Kupková et al. (2021)](#references)).*
+*Figure 5: Data and classification results (research plot Zahrádka; [Kupková et al. (2021)](#references)).*
 
 The other aspect is classification accuracy in case of different number of classified categories. *Figure 6* compares obtained classification accuracies in case of legends with 8, 5 and 3 categories. When pixel size reached centimeters (HS UAV data), and also meters (PlanetScope data), it was possible to classify dominant *Calamagrostis villosa* and *Nardus stricta* species with reasonably high accuracies. 
 
@@ -81,7 +81,7 @@ The other aspect is classification accuracy in case of different number of class
 <img src="media/img9.png" title="Best achieved results of PA (left) and UA (right) in % for selected grass categories." alt="Best achieved results of PA (left) and UA (right) in % for selected grass categories." width="600"/>
 </p>
 
-*Figure 6. Best achieved results of PA (left) and UA (right) in % for selected grass categories.  AV – Avenella flexuosa; CV – Calamagrostis villosa; NS – Nardus stricta; PS 3C – PlanetScope data, legend with 3 categories; APEX 3C – APEX data, legend with 3 categories; OF 5C – UAV RGB orthophoto, legend with 5 categories; HS 5C – UAV HS data, legend with 5 categories; OF 8C – UAV RGB orthophoto, legend with 8 categories; HS 8C – UAV HS data, legend with 8 categories). Source: [Kupková et al. (2021)](#references).*
+*Figure 6: Best achieved results of PA (left) and UA (right) in % for selected grass categories.  AV – Avenella flexuosa; CV – Calamagrostis villosa; NS – Nardus stricta; PS 3C – PlanetScope data, legend with 3 categories; APEX 3C – APEX data, legend with 3 categories; OF 5C – UAV RGB orthophoto, legend with 5 categories; HS 5C – UAV HS data, legend with 5 categories; OF 8C – UAV RGB orthophoto, legend with 8 categories; HS 8C – UAV HS data, legend with 8 categories). Source: [Kupková et al. (2021)](#references).*
 
 Moreover, the number of classified categories did not play a significant role in final accuracy (see the accuracy of *Calamagrostis villosa* and *Nardus stricta* for HS UAV data or ortophoto using legend with 5 and 8 categories). Meanwhile, for species with low coverage (*Avenella fleuxosa*), even data with extremely high spatial (and spectral) resolution need not provide sufficient accuracy (UA around 50% for HS UAV data with 9 cm pixel). And it seems that higher number of categories leads in this case to a lower classification accuracy (compare UAs and PAs of *Avenella fleuxosa* for orthophoto and HS UAV data using legend with 5 and 8 categories). Smaller pixel size does not always bring better accuracy, the species coverage/abundance and a number of classified categories also play a role. 
 
