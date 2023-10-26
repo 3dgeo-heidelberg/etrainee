@@ -111,6 +111,7 @@ nav:
     - 'R': 'software/software_r_language.md'
     - 'Google Earth Engine': 'software/software_gee.md'
 - 'Use Cases and Data':
+    - 'Download data': 'https://doi.org/10.5281/zenodo.10003574'
     - 'Multitemporal 3D point clouds of an active rock glacier' : 'data_usecases/usecase_rockglacier_ahk.md'
     - '4D point clouds of a sandy beach' : 'data_usecases/usecase_beach_kijkduin.md'
     - 'Vegetation disturbance detection in Polish-Slovak Tatra Mountains' : 'data_usecases/usecase_forests_tatras.md'
