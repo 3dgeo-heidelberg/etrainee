@@ -187,6 +187,45 @@ It is necessary to take in account that the real canopy-scale reflectance is aff
 
 *Figure 11. Averaged reflectance curves measured by a contact probe for a single leaf, a leaf stack and a difference (∆R5L–1L) between the reflectance measured on a leaf stack (5L) and a single leaf (1L) of Populus tremula (left) and Salix caprea (right). The mean reflectance (%) during the six months. n = 10 trees. (Figure modified from [Neuwirthová et al. 2017](#references)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))*
 
+## Self-evaluation quiz
+
+<form name="quiz" action="" method="post" onsubmit="evaluate_quiz(); return false">
+
+<!--Question 1-->
+<label for="q_01">
+Which leaf compounds affect mostly its optical properties in the visible part of the spectrum?
+</label><br>
+<input type="radio" name="q_01">Water, cellulose, and lignin<br>
+<input type="radio" name="q_01">Chlorophylls, proteins, and cellular structure<br>
+<input type="radio" name="q_01">Chlorophylls, carotenoids, and anthocyanins<br>
+<input type="radio" name="q_01">Water, chlorophylls, carotenoids<br>
+<div hidden id="correct_q_01">Chlorophylls, carotenoids, and anthocyanins</div>
+<output id="output_q_01"></output><br><br>
+
+<!--Question 2-->
+<label for="q_02">
+The figure shows leaf level reflectance spectra of narrow-leaved ash (common European broadleaf deciduous species) in three different dates within one growing season. Leaves were collected in the floodplain forest, Lanžhot, Czech Republic. Explore the spectral curves, focus on the highlighted regions, and select the correct figure legend. Justify your decision by relating the reflectance in the highlighted regions with leaf biophysical properties and phenology.
+<img src="media/quiz_01_q2.png">
+</label><br>
+<input type="checkbox" name="q_02">Data cubes always have three dimensions.<br>
+<input type="checkbox" name="q_02">Observations and derivatives of different variables and even from multiple different remote sensing systems can be managed in a well-structured form by a data cube.<br>
+<input type="checkbox" name="q_02">Data cubes can be deployed on a local machine but most commonly they are hosted on larger (cluster/cloud) infrastructure to serve more users.<br>
+<div hidden id="correct_q_02">Observations and derivatives of different variables and even from multiple different remote sensing systems can be managed in a well-structured form by a data cube.&Data cubes can be deployed on a local machine but most commonly they are hosted on larger (cluster/cloud) infrastructure to serve more users.</div>
+<output id="output_q_02"></output><br><br>
+
+<!--Question 3-->
+<label for="q_03">
+Which of these statements about data cubes are correct?
+</label><br>
+<input type="checkbox" name="q_03">Data cubes always have three dimensions.<br>
+<input type="checkbox" name="q_03">Observations and derivatives of different variables and even from multiple different remote sensing systems can be managed in a well-structured form by a data cube.<br>
+<input type="checkbox" name="q_03">Data cubes can be deployed on a local machine but most commonly they are hosted on larger (cluster/cloud) infrastructure to serve more users.<br>
+<div hidden id="correct_q_03">Observations and derivatives of different variables and even from multiple different remote sensing systems can be managed in a well-structured form by a data cube.&Data cubes can be deployed on a local machine but most commonly they are hosted on larger (cluster/cloud) infrastructure to serve more users.</div>
+<output id="output_q_03"></output><br><br>
+
+<input type="submit" value="Submit" style="font-size:14pt"><br><br>
+<output id="output_overall"></output>
+</form>
 
 ## Next unit
 Proceed with [Principles of laboratory spectroscopy](../03_relating_imagery_lab_vegetation/03_02_principles_of_laboratory_spectroscopy.md)
