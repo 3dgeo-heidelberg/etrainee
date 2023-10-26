@@ -98,9 +98,7 @@ nav:
         - 'Lesson – Relating imaging and laboratory spectroscopy': 'module4/03_relating_imagery_lab_vegetation/03_03_relating_imagery_lab_vegetation.md'
     - 'Machine learning in imaging spectroscopy':
         - 'Lesson': 'module4/04_time_series_specifics/04_time_series_specifics.md'
-        - 'Exercise – Subpixel': 'module4/04_time_series_specifics/04_time_series_specifics_exercise_subpixel.md'
-        - 'Exercise – Machine Learning': 'module4/04_time_series_specifics/04_time_series_specifics_exercise_ml.md'
-        - 'Exercise – Deep Learning': 'module4/04_time_series_specifics/04_time_series_specifics_exercise_cnn.md'
+        - 'Exercise': 'module4/04_time_series_specifics/04_time_series_specifics_exercise.md'
     - 'Temporal vs. spatial and spectral resolution':
         - 'Lesson': 'module4/05_specific_resolution_contribution/05_specific_resolution_contribution.md'
     - 'Case studies':
