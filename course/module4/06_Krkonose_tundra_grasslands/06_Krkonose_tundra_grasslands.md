@@ -26,7 +26,7 @@ Also tested is the influence of the pre-processing step, comprising the minimum 
 
 ## Objectives
 
-* To classify grass vegetation in the Krkonoše Mts. on a permanent research plot 100 x 100 m (*Figure 1*) using Random Forest classifier (script in R) from UAV hyperspectral data acquired by the Headwall NANO-Hyperspec pushbroom camera.
+* To classify grass vegetation in the Krkonoše Mts. on a permanent research plot 100 x 100 m (*Figure 1*) using Random Forest classifier (script in R) from UAV hyperspectral data acquired with the Headwall NANO-Hyperspec pushbroom camera.
   
 * To evaluate and quantify a potential improvement in classification accuracy of the multi-temporal time series compared to mono-temporal imagery.
   
@@ -44,12 +44,12 @@ Also tested is the influence of the pre-processing step, comprising the minimum 
 
 ## Data
 
-We will use ([module4/case_study_discrimination_grass_species]()):  
+We will use ([module4/case_study_discrimination_grass_species](https://doi.org/10.5281/zenodo.10003574)):  
 
-* Hyperspectral image data acquired by the Headwall Nano-Hyperspec® camera fastened on the DJI Matrice 600 Pro drone on June 16 and August 11 2020 (*Figure 2*), with ground sampling distance of 9 cm and spectral resolution of 54 bands (resampled from 269 bands to reduce correlation in neighboring bands):  
+* Hyperspectral image data acquired with the Headwall Nano-Hyperspec® camera fastened on the DJI Matrice 600 Pro drone on June 16 and August 11 2020 (*Figure 2*), with ground sampling distance of 9 cm and spectral resolution of 54 bands (resampled from 269 bands to reduce correlation in neighboring bands):  
             `BL_202006.tif (data from June; 54 bands, for visualization in true colors use bands R-21/G-13/B-7)`  
             `BL_202008.tif (data from August; 54 bands, for visualization in true colors use bands R-21/G-13/B-7)`  
-            `MNF_08_10.tif (MNF tranformed image from August; first 10 bands)` 
+            `MNF_08_10.tif (MNF transformed image from August; first 10 bands)` 
               
 * Field reference dataset (*Figure 3*) collected by botanists (in 2019 and 2020) divided between training data (polygons) and validation data (points). For an explanation of how the reference dataset was collected and divided between training and validation data, see [Kupková et al. (2023)](#references):  
             `train_polygons.zip (training data)`  
@@ -136,19 +136,6 @@ names(img) <-  paste0("B", c(1:54))
 #img   <- stack(img_1, img_2)
 # Assign band names to image
 #names(img) <-  paste0("B", c(1:108))
-
-# =============================================================================
-# 3.
-# MNF transformation - uncomment this part to perform MNF transformation
-# =============================================================================
-# Load original dataset
-#img_orig <- brick("BL_202008.tif")
-# Perform transformation
-#m = mnf(img_orig, mode="spatial")
-# Only select the first 10 bands
-#img <- brick(m$x[1:10])
-# Assign band names to image
-#names(img) <-  paste0("B", c(1:10))
 
 
 
