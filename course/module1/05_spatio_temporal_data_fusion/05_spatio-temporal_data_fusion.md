@@ -15,7 +15,7 @@ In the first themes (mainly themes 1 and 2) you have learned about the character
 
 **Objectives**
 
-The objectives of **theoretical part** of this theme are to
+The objectives of the **theoretical part** of this theme are to
 
 * Understand why spatio-temporal data fusion is needed for analysing human-environment interactions
 * Learn about important theoretical concepts of data fusion and different approaches
@@ -40,25 +40,23 @@ In many cases analysis of RSTS from a single source just does not contain enough
 
 Therefore, we can try to perform a **spatio-temporal fusion of data from different systems** (sensors and platforms) that are resolving different phenomena or aspects of them (spatially, spectrally, and temporally). As a broad definition for data fusion we may use the one proposed by [Steinberg et al. (1999)](https://doi.org/10.1117/12.341367):
 
-    "Data fusion is the process of combining data to refine state estimates and predictions."
+*"Data fusion is the process of combining data to refine state estimates and predictions."*
 
 Following [Schmitt and Zhu 2016](https://doi.org/10.1109/MGRS.2016.2561021), such a data fusion has typically one of the following two goals:
 
-    "To estimate the state of a target or object from multiple sensors, if it is not possible to carry out the estimate from one sensor or data type alone"
+*"To estimate the state of a target or object from multiple sensors, if it is not possible to carry out the estimate from one sensor or data type alone"*
     
-    "Improve the estimate of this target state by the exploitation of redundant and complementary information"
+*"Improve the estimate of this target state by the exploitation of redundant and complementary information"*
 
 That means, the general concept of data fusion is to jointly exploit the information contained in two or more datasets from different acquisition systems in order to produce a result that could not be obtained (at this spatial, temporal or semantic quality) from a single data source. While these aspects are applicable to any data fusion task, fusing RSTS is somewhat special: We must make sure that the datasets are in a common resolution and reference frame in space and time. This will often require a matching and co-registration step and a resampling ([Schmitt and Zhu 2016](https://doi.org/10.1109/MGRS.2016.2561021)), which is often a challenge on its own. At least in the geospatial domain, *data integration* is often used synonymously with *data fusion*.
 
-### Approaches and methods for a fusion of remote sensing time series
-
-**Data fusion at different levels**
+### Data fusion at different levels
 
 In the following, we will look at how this process of spatio-temporal data fusion can look like and which data is typically combined. The topic is quite large, but we try to give a concise overview of popular combinations and typical or innovative approaches to fuse spatio-temporal data. First of all, multi-modal data can be fused at different levels (see e.g. [Schmitt and Zhu 2016](https://doi.org/10.1109/MGRS.2016.2561021) or [Hu et al. 2021](https://doi.org/10.1016/j.ophoto.2021.100002)), and fusion approaches are often characterized as *low-, mid- or high-level fusion* or categorized into these three categories:
 
-1) *Observation-level fusion* (a.k.a. *signal-level fusion*)
-2) *Feature-level fusion*
-3) *Decision-level fusion*
+1. *Observation-level fusion* (a.k.a. *signal-level fusion*)
+2. *Feature-level fusion*
+3. *Decision-level fusion*
 
 What does this mean? An *observation-level* (low-level) data fusion is typically performed for remote sensing time series from relatively similar systems (e.g., optical satellite sensors, such as Landsat 7/8/9, Sentinel-2, MODIS, …). A key requirement here is often, that an assimilation is done for the datasets (e.g., rescaling or normalization, a resampling, a spatial transformation to a common reference system and an accurate co-registration, ...; after their "normal" pre-processing (e.g., atmospheric correction etc.)). Then, the actual fusion is only a relatively simple combination of the values from multiple datasets (such as spectral reflectance in corresponding bands). The fused data can then be used for further analysis.
 
@@ -66,13 +64,21 @@ In a *feature-level* (mid-level) data fusion, the observations are not directly 
 
 In a *decision-level* (high-level) data fusion, each dataset from a specific system is first used to produce a 'decision' (higher-level information, such as a classification or a modelled target quantity). In the actual fusion step, these decisions are then merged into spatially or temporally more complete product or they are aggregated (summarized) into an ensemble output (e.g. as the median value or the mode of multiple model outputs). Such higher-level fusion approaches are typically applied for datasets from more diverse sensors.
 
+<p align="center">
+    <img src="media/fusion_levels.jpg" title="Data fusion levels" width="700">
+</p>
+
+*Data fusion levels (modified from [Schmitt and Zhu 2016](https://doi.org/10.1109/MGRS.2016.2561021)).*
+
 ### Fusion approaches for remote sensing time series
 
 With remote sensing time series (RSTS) data we have (at least) two general options for the fusion step (regardless of the fusion level):
 
-1) We can either maintain individual data values (observations, features or decisons) from multiple systems and merge them into a denser time series (hopefully with less gaps in space and time), or
-2) We aggregate values from multiple systems:  
-    * i.e., we may use observations (such as spectral band reflectance) or derived higher-level features (such as vegetation indices or morphometric/geometric features from raster DEMs or 3D point clouds (e.g., slope gradient, roughness or height above ground)) as input for a classifier; at decision-level we may take an ensemble from multiple decisions (e.g. majority vote from multiple classifiers or median value from multiple regression models)
+1. We can either maintain individual data values (observations, features or decisons) from multiple systems and merge them into a denser time series (hopefully with less gaps in space and time), or
+2. We aggregate values from multiple systems:
+
+    * We may use observations (such as spectral band reflectance) or derived higher-level features (such as vegetation indices or morphometric/geometric features from raster DEMs or 3D point clouds (e.g., slope gradient, roughness or height above ground)) as input for a classifier.
+    * At decision-level we may take an ensemble from multiple decisions (e.g. majority vote from multiple classifiers or median value from multiple regression models).
 
 The ideal data fusion level depends on the analysis task and the characteristics of the datasets (also relative to each other).
 
@@ -140,6 +146,47 @@ It was found that, depending on the subsequent analysis (e.g., extraction of mor
 
 In addition to the fusion approaches outlined above, there are plenty of studies where remote sensing time series are fused with other geospatial data (not remotely sensed or higher-level information from interpreted remote sensing data). Such datasets can be raster or vector data, including digital elevation models, climatological or meteorological data (e.g. [Stumpf et al. 2018](https://doi.org/10.1016/j.agee.2018.02.012) or [Blickensdörfer et al. 2022](https://doi.org/10.1016/j.rse.2021.112831)), or cadastral data and building footprints (e.g. [Uhl and Leyk 2020](https://doi.org/10.1016/j.rse.2019.05.016)). Such auxilliary datasets can be very helpful in combination with remote sensing time series, also if they are not multi-temporal.
 
+## Self-evaluation quiz
+
+<form name="quiz" action="" method="post" onsubmit="evaluate_quiz(); return false">
+
+<!--Question 1-->
+<label for="q_01">
+1) The purpose of data fusion is typically ...
+</label><br>
+<input type="checkbox" name="q_01">to reduce the data volume by condensing the information content.<br>
+<input type="checkbox" name="q_01">to highlight differences in the results obtained with different platforms, sensors, and analysis methods.<br>
+<input type="checkbox" name="q_01">to combine data from different sources and thereby reveal information that would not be clearly visible in single-source data.<br>
+<div hidden id="correct_q_01">to combine data from different sources and thereby reveal information that would not be clearly visible in single-source data.</div>
+<output id="output_q_01"></output><br>
+
+<!--Question 2-->
+<label for="q_02">
+2) Data fusion can be performed at different levels, namely ...
+</label><br>
+<input type="checkbox" name="q_02">observation level<br>
+<input type="checkbox" name="q_02">signal level<br>
+<input type="checkbox" name="q_02">feature level<br>
+<input type="checkbox" name="q_02">decision level<br>
+<div hidden id="correct_q_02">observation level&signal level&feature level&decision level</div>
+<output id="output_q_02"></output><br>
+
+<!--Question 3-->
+<label for="q_03">
+3) A fusion of remote sensing time series ...
+</label><br>
+<input type="checkbox" name="q_03">may be used to improve the spatial and temporal resolution of an analysis.<br>
+<input type="checkbox" name="q_03">is sometimes needed for long-term monitoring tasks where the observation period must be extended beyond the operating time of a single system.<br>
+<input type="checkbox" name="q_03">is a typical strategy for streamlining the preprocessing steps.<br>
+<div hidden id="correct_q_03">may be used to improve the spatial and temporal resolution of an analysis.&is sometimes needed for long-term monitoring tasks where the observation period must be extended beyond the operating time of a single system.</div>
+<output id="output_q_03"></output><br>
+
+<input type="submit" value="Submit" style="font-size:14pt"><br>
+
+<output id="output_overall">
+</output>
+</form>
+
 ## Tutorial: Sentinel-1/-2 surface water monitoring
 
 If you are finished with the theoretical part of this theme, you are ready to try a data fusion approach to monitoring the extent of a water surface.
@@ -195,12 +242,6 @@ Another interesting excercise is provided in [this tutorial](https://worldbank.g
 * Sentinel-2 daytime visible band images (monthly composites)
 * Global Human Settlement Layer for training data
 
-<!--
-## Self-evaluation quiz
-
-*Coming soon ...*
--->
-
 ## Further reading
 
 To learn more about recent developments and trends in spatio-temporal data fusion the following articles are recommended:
@@ -211,7 +252,9 @@ Karagiannopoulou, A., Tsertou, A., Tsimiklis, G., & Amditis, A. (2022). Data fus
 
 Li, J., Hong, D., Gao, L., Yao, J., Zheng, K., Zhang, B., & Chanussot, J. (2022). Deep learning in multimodal remote sensing data fusion: A comprehensive review. International Journal of Applied Earth Observation and Geoinformation, 112, 102926. https://doi.org/10.1016/j.jag.2022.102926
 
-<img src="media/karagiannopoulou_data_fusion_eo_citizen_science.png" title="Data Fusion in Earth Observation and Citicen Science" width="600">
+<p align="center">
+    <img src="media/karagiannopoulou_data_fusion_eo_citizen_science.png" title="Data Fusion in Earth Observation and Citicen Science" width="600">
+</p>
 
 *Data Fusion in Earth Observation and Citicen Science (figure by [Karagiannopoulou et al. 2022](https://doi.org/10.3390/rs14051263) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).*
 

@@ -1,3 +1,15 @@
+---
+title: "Multitemporal classification"
+description: This is the fourth theme within the Satellite Multispectral Images Time Series Analysis module.
+dateCreated: 2023-08-31
+authors: Adriana Marcinkowska-Ochtyra
+contributors: Krzysztof Gryguc
+estimatedTime: "1.5 hours"
+output: 
+  github_document:
+    pandoc_args: "--wrap=none"
+---
+
 Multitemporal classification
 ================
 
@@ -58,12 +70,11 @@ If we are unable to collect reference data in the field, we can use various **pu
 | global        | Esri Land Cover                                                  | 2017-2022                    | 10 m       | Sentinel-2                                          | 9                      | <https://livingatlas.arcgis.com/landcoverexplorer>                                                                    |
 | global        | Dynamic World                                                    | 2015-present                 | 10 m       | Sentinel-2                                          | 9                      | <https://dynamicworld.app/>                                                                                           |
 | global        | TimeSpec4LULC                                                    | 2002-2021                    | 500 km     | MODIS                                               | 29                     | <https://zenodo.org/record/5020024#.Y9mruz3MKUk>                                                                      |
-| global        | GLASS-GLC—Global Land Surface Satellite-Global Land Cover        | 1982-2015                    | 5 km       | AVHRR                                               | 8                      | <http://data.ess.tsinghua.edu.cn/>                                                                                    |
 | global        | CGLS-LC100—Copernicus Global Land Service Dynamic Land Cover Map | 2015-2019                    | 100 m      | PROBA-V, Sentinel-2, MODIS                          | 24                     | <https://land.copernicus.eu/global/products/lc>                                                                       |
 | european      | CLC—CORINE Land Cover                                            | 1990, 2000, 2006, 2012, 2018 | 100 m      | Landsat, SPOT; ITS P6, RapidEye, LISS III, Sentinel | 44                     | <https://land.copernicus.eu/pan-european/corine-land-cover>                                                           |
 | european      | Annual Land Cover Product                                        | 2000-2019                    | 30 m       | Landsat, VIIRS/SUOMI NPP                            | 33                     | <https://medium.com/swlh/europe-from-above-space-time-machine-learning-reveals-our-changing-environment-1b05cb7be520> |
 | Africa        | West Africa Land Use Land Cover                                  | 1975, 2000, 2013             | 2 km       | Landsat                                             | 30                     | <https://eros.usgs.gov/westafrica/>                                                                                   |
-| South America | LBA-ECO LC-08—Land Cover Map of South America                    | 1987, 1991                   | 1 km       | AVHRR                                               | 42                     | <https://daac.ornl.gov/LBA/guides/LC08_EOS_Maps.html#references>                                                      |
+| South America | LBA-ECO LC-08—Land Cover Map of South America                    | 1987, 1991                   | 1 km       | AVHRR                                               | 42                     | <https://daac.ornl.gov/LBA/guides/LC08_EOS_Maps.html>                                                                 |
 | North America | NALCMS—North American Land Change Monitoring System              | 2005, 2010, 2015             | 30, 250 m  | Landsat, MODIS                                      | 19                     | <http://www.cec.org/north-american-land-change-monitoring-system/>                                                    |
 
 At the top of the table there are multitemporal databases based of 10 m Sentinel-2 data updated annually: **World Cover** and **Esri Land Cover**, as well as in almost real time: **Dynamic World** (see interesting comparison of these three in [Venter et al., 2022](https://doi.org/10.3390/rs14164101)). Unlike the CORINE database developed as a result of images visual interpretation, these are the results of automatic classifications using machine/deep learning, and possible errors and lower accuracy in unverified areas should be taken into account. It’s also important to note that based on maps, we know there are transition zones between classes.
@@ -138,7 +149,7 @@ Packages that combine different utilities like pre-processing, tuning, multi-met
 - [CORElearn](https://CRAN.R-project.org/package=CORElearn)
 - [DALEX](https://CRAN.R-project.org/package=DALEX)
 - [h2o](https://CRAN.R-project.org/package=h2o)
-- [mltools](ttps://CRAN.R-project.org/package=mltools)
+- [mltools](https://CRAN.R-project.org/package=mltools)
 - [mlr3](https://CRAN.R-project.org/package=mlr3)
 - [rminer](https://CRAN.R-project.org/package=rminer)
 - [sits](https://CRAN.R-project.org/package=sits)
@@ -234,11 +245,10 @@ When using such methods we have the information about the distribution of the ob
 
 <img src="media/habitats_acc.png" title="Habitats CNNs" alt="Habitats CNNs" width="540"/>
 
-</center>
-Boxplots presenting F1 accuracies obtained 100 times with CNNs for Natura 2000 habitats classification on Sentinel-2 time series data (6210 code - semi-natural dry grasslands and scrubland facies on calcareous substrates, 6410 code - Molinia meadows on calcareous, peaty, or clay silt-laden soils, 6510 code - lowland hay meadows, figure by [Marcinkowska-Ochtyra et al., 2023](https://doi.org/10.3390/rs15051388)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<i>Boxplots presenting F1 accuracies obtained 100 times with CNNs for Natura 2000 habitats classification on Sentinel-2 time series data (6210 code - semi-natural dry grasslands and scrubland facies on calcareous substrates, 6410 code - Molinia meadows on calcareous, peaty, or clay silt-laden soils, 6510 code - lowland hay meadows, figure by [Marcinkowska-Ochtyra et al., 2023](https://doi.org/10.3390/rs15051388)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
 </center>
 
-As you can see above, commonly used measures in accuracy assessment are ([Congalton, 1991](https://doi.org/10.1016/0034-4257(91)90048-B), [Van Rijsbergen 1977](https://doi.org/10.1108/eb026637)):
+As you can see above, commonly used measures in accuracy assessment are ([Congalton, 1991](https://doi.org/10.1016/0034-4257(91)90048-B), [Van Rijsbergen, 1977](https://doi.org/10.1108/eb026637)):
 
 - **Overall accuracy (OA)** calculated for whole classified image result,
 - **Producer (PA)** and **User (UA)** accuracies and **F1 measure** being harmonic mean of these both, calculated for individual classes.
@@ -370,75 +380,75 @@ To select only the most informative bands, to increase the accuracy of classific
 
 ### Key references (recommended reading, looking up background details)
 
-Gómez, C., White, J. C., & Wulder, M. A. (2016). Optical remotely sensed time series data for land cover classification: A review. ISPRS Journal of Photogrammetry and Remote Sensing, 116, 55-72. <https://doi.org/10.1016/j.isprsjprs.2016.03.008>
+Gómez, C., White, J. C., & Wulder, M. A. (2016). *Optical remotely sensed time series data for land cover classification: A review*. ISPRS Journal of Photogrammetry and Remote Sensing, 116, 55-72. <https://doi.org/10.1016/j.isprsjprs.2016.03.008>
 
 ### Additional references cited in this theme
 
-Ashourloo, D., Nematollahi, H., Huete, A., Aghighi, H., Azadbakht, M., Shahrabi, H. S., & Goodarzdashti, S. (2022). A new phenology-based method for mapping wheat and barley using time-series of Sentinel-2 images. Remote Sensing of Environment, 280, 113206. <https://doi.org/10.1016/j.rse.2022.113206>
+Ashourloo, D., Nematollahi, H., Huete, A., Aghighi, H., Azadbakht, M., Shahrabi, H. S., & Goodarzdashti, S. (2022). *A new phenology-based method for mapping wheat and barley using time-series of Sentinel-2 images*. Remote Sensing of Environment, 280, 113206. <https://doi.org/10.1016/j.rse.2022.113206>
 
-Bai, S., Kolter, J. Z., & Koltun, V. (2018). An empirical evaluation of generic convolutional and recurrent networks for sequence modeling. arXiv preprint arXiv:1803.01271. <https://doi.org/10.48550/arXiv.1803.01271>
+Bai, S., Kolter, J. Z., & Koltun, V. (2018). *An empirical evaluation of generic convolutional and recurrent networks for sequence modeling*. arXiv preprint arXiv:1803.01271. <https://doi.org/10.48550/arXiv.1803.01271>
 
-Breiman, L. (2001). Random forests. Machine learning, 45, 5-32. <https://doi.org/10.1023/A:1010933404324>
+Breiman, L. (2001). *Random forests*. Machine learning, 45, 5-32. <https://doi.org/10.1023/A:1010933404324>
 
-Congalton, R. G. (1991). A review of assessing the accuracy of classifications of remotely sensed data. Remote sensing of environment, 37(1), 35-46. <https://doi.org/10.1016/0034-4257(91)90048-B>
+Congalton, R. G. (1991). *A review of assessing the accuracy of classifications of remotely sensed data*. Remote Sensing of Environment, 37(1), 35-46. <https://doi.org/10.1016/0034-4257(91)90048-B>
 
-Efron, B., & Tibshirani, R. (1997). Improvements on cross-validation: the 632+ bootstrap method. Journal of the American Statistical Association, 92(438), 548-560. <https://doi.org/10.1080/01621459.1997.10474007>
+Efron, B., & Tibshirani, R. (1997). *Improvements on cross-validation: the 632+ bootstrap method*. Journal of the American Statistical Association, 92(438), 548-560. <https://doi.org/10.1080/01621459.1997.10474007>
 
-Gadiraju, K. K., Ramachandra, B., Chen, Z., & Vatsavai, R. R. (2020, August). Multimodal deep learning based crop classification using multispectral and multitemporal satellite imagery. In Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining (pp. 3234-3242). <https://doi.org/10.1145/3394486.3403375>
+Gadiraju, K. K., Ramachandra, B., Chen, Z., & Vatsavai, R. R. (2020, August). *Multimodal deep learning based crop classification using multispectral and multitemporal satellite imagery*. In Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining (pp. 3234-3242). <https://doi.org/10.1145/3394486.3403375>
 
-García-Álvarez, D., Camacho Olmedo, M. T., Paegelow, M., & Mas, J. F. (2022). Land Use Cover Datasets and Validation Tools: Validation Practices with QGIS, Springer International Publishing. <https://doi.org/10.1007/978-3-030-90998-7>
+García-Álvarez, D., Camacho Olmedo, M. T., Paegelow, M., & Mas, J. F. (2022). *Land Use Cover Datasets and Validation Tools: Validation Practices with QGIS*, Springer International Publishing. <https://doi.org/10.1007/978-3-030-90998-7>
 
-Georganos, S., Grippa, T., Vanhuysse, S., Lennert, M., Shimoni, M., Kalogirou, S., & Wolff, E. (2018). Less is more: Optimizing classification performance through feature selection in a very-high-resolution remote sensing object-based urban application. GIScience & remote sensing, 55(2), 221-242. <https://doi.org/10.1080/15481603.2017.1408892>
+Georganos, S., Grippa, T., Vanhuysse, S., Lennert, M., Shimoni, M., Kalogirou, S., & Wolff, E. (2018). *Less is more: Optimizing classification performance through feature selection in a very-high-resolution remote sensing object-based urban application*. GIScience & remote sensing, 55(2), 221-242. <https://doi.org/10.1080/15481603.2017.1408892>
 
-Hościło, A., & Lewandowska, A. (2019). Mapping forest type and tree species on a regional scale using multi-temporal Sentinel-2 data. Remote Sensing, 11(8), 929. <https://doi.org/10.3390/rs11080929>
+Hościło, A., & Lewandowska, A. (2019). *Mapping forest type and tree species on a regional scale using multi-temporal Sentinel-2 data*. Remote Sensing, 11(8), 929. <https://doi.org/10.3390/rs11080929>
 
-Houskeeper, H. F., Rosenthal, I. S., Cavanaugh, K. C., Pawlak, C., Trouille, L., Byrnes, J. E., … & Cavanaugh, K. C. (2022). Automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas). Plos one, 17(1), e0257933. <https://doi.org/10.1371/journal.pone.0257933>
+Houskeeper, H. F., Rosenthal, I. S., Cavanaugh, K. C., Pawlak, C., Trouille, L., Byrnes, J. E., … & Cavanaugh, K. C. (2022). *Automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas)*. Plos One, 17(1), e0257933. <https://doi.org/10.1371/journal.pone.0257933>
 
-Immitzer, M., Neuwirth, M., Böck, S., Brenner, H., Vuolo, F., & Atzberger, C. (2019). Optimal input features for tree species classification in Central Europe based on multi-temporal Sentinel-2 data. Remote Sensing, 11(22), 2599. <https://doi.org/10.3390/rs11222599>
+Immitzer, M., Neuwirth, M., Böck, S., Brenner, H., Vuolo, F., & Atzberger, C. (2019). O*ptimal input features for tree species classification in Central Europe based on multi-temporal Sentinel-2 data*. Remote Sensing, 11(22), 2599. <https://doi.org/10.3390/rs11222599>
 
-Interdonato, R., Ienco, D., Gaetano, R., & Ose, K. (2019). DuPLO: A DUal view Point deep Learning architecture for time series classificatiOn. ISPRS journal of photogrammetry and remote sensing, 149, 91-104. <https://doi.org/10.1016/j.isprsjprs.2019.01.011>
+Interdonato, R., Ienco, D., Gaetano, R., & Ose, K. (2019). DuPLO: A DUal view Point deep Learning architecture for time series classificatiOn. ISPRS Journal of Photogrammetry and Remote Sensing, 149, 91-104. <https://doi.org/10.1016/j.isprsjprs.2019.01.011>
 
-Kluczek, M., Zagajewski, B., & Kycko, M. (2022). Airborne HySpex hyperspectral versus multitemporal Sentinel-2 images for mountain plant communities mapping. Remote Sensing, 14(5), 1209. <https://doi.org/10.3390/rs14051209>
+Kluczek, M., Zagajewski, B., & Kycko, M. (2022). *Airborne HySpex hyperspectral versus multitemporal Sentinel-2 images for mountain plant communities mapping*. Remote Sensing, 14(5), 1209. <https://doi.org/10.3390/rs14051209>
 
-Kohavi, R. (1995, August). A study of cross-validation and bootstrap for accuracy estimation and model selection. In Ijcai (Vol. 14, No. 2, pp. 1137-1145).
+Kohavi, R. (1995, August). *A study of cross-validation and bootstrap for accuracy estimation and model selection*. In Ijcai (Vol. 14, No. 2, pp. 1137-1145).
 
-Kollert, A., Bremer, M., Löw, M., & Rutzinger, M. (2021). Exploring the potential of land surface phenology and seasonal cloud free composites of one year of Sentinel-2 imagery for tree species mapping in a mountainous region. International Journal of Applied Earth Observation and Geoinformation, 94, 102208. <https://doi.org/10.1016/j.jag.2020.102208>
+Kollert, A., Bremer, M., Löw, M., & Rutzinger, M. (2021). *Exploring the potential of land surface phenology and seasonal cloud free composites of one year of Sentinel-2 imagery for tree species mapping in a mountainous region*. International Journal of Applied Earth Observation and Geoinformation, 94, 102208. <https://doi.org/10.1016/j.jag.2020.102208>
 
-Li, J., Tang, J., & Liu, H. (2017, August). Reconstruction-based Unsupervised Feature Selection: An Embedded Approach. In IJCAI (pp. 2159-2165). <https://doi.org/10.24963/ijcai.2017/300>
+Li, J., Tang, J., & Liu, H. (2017, August). *Reconstruction-based Unsupervised Feature Selection: An Embedded Approach*. In IJCAI (pp. 2159-2165). <https://doi.org/10.24963/ijcai.2017/300>
 
-LeCun, Y., Bottou, L., Bengio, Y., & Haffner, P. (1998). Gradient-based learning applied to document recognition. Proceedings of the IEEE, 86(11), 2278-2324. <https://doi.org/10.1109/5.726791>
+LeCun, Y., Bottou, L., Bengio, Y., & Haffner, P. (1998). *Gradient-based learning applied to document recognition*. Proceedings of the IEEE, 86(11), 2278-2324. <https://doi.org/10.1109/5.726791>
 
-Lyons, M. B., Keith, D. A., Phinn, S. R., Mason, T. J., & Elith, J. (2018). A comparison of resampling methods for remote sensing classification and accuracy assessment. Remote Sensing of Environment, 208, 145-153. <https://doi.org/10.1016/j.rse.2018.02.026>
+Lyons, M. B., Keith, D. A., Phinn, S. R., Mason, T. J., & Elith, J. (2018). *A comparison of resampling methods for remote sensing classification and accuracy assessment*. Remote Sensing of Environment, 208, 145-153. <https://doi.org/10.1016/j.rse.2018.02.026>
 
-Maus, V., Câmara, G., Appel, M., & Pebesma, E. (2019). dtwsat: Time-weighted dynamic time warping for satellite image time series analysis in r. Journal of Statistical Software, 88, 1-31. <https://doi.org/10.18637/jss.v088.i05>
+Maus, V., Câmara, G., Appel, M., & Pebesma, E. (2019). d*twsat: Time-weighted dynamic time warping for satellite image time series analysis in R*. Journal of Statistical Software, 88, 1-31. <https://doi.org/10.18637/jss.v088.i05>
 
-Marcinkowska-Ochtyra, A., Ochtyra, A., Raczko, E., & Kopeć, D. (2023). Natura 2000 Grassland Habitats Mapping Based on Spectro-Temporal Dimension of Sentinel-2 Images with Machine Learning. Remote Sensing, 15(5), 1388. <https://doi.org/10.3390/rs15051388>
+Marcinkowska-Ochtyra, A., Ochtyra, A., Raczko, E., & Kopeć, D. (2023). *Natura 2000 Grassland Habitats Mapping Based on Spectro-Temporal Dimension of Sentinel-2 Images with Machine Learning*. Remote Sensing, 15(5), 1388. <https://doi.org/10.3390/rs15051388>
 
-Marzialetti, F., Giulio, S., Malavasi, M., Sperandii, M. G., Acosta, A. T. R., & Carranza, M. L. (2019). Capturing coastal dune natural vegetation types using a phenology-based mapping approach: The potential of Sentinel-2. Remote Sensing, 11(12), 1506. <https://doi.org/10.3390/rs11121506>
+Marzialetti, F., Giulio, S., Malavasi, M., Sperandii, M. G., Acosta, A. T. R., & Carranza, M. L. (2019). *Capturing coastal dune natural vegetation types using a phenology-based mapping approach: The potential of Sentinel-2*. Remote Sensing, 11(12), 1506. <https://doi.org/10.3390/rs11121506>
 
-Munizaga, J., García, M., Ureta, F., Novoa, V., Rojas, O., & Rojas, C. (2022). Mapping Coastal Wetlands Using Satellite Imagery and Machine Learning in a Highly Urbanized Landscape. Sustainability, 14(9), 5700. <https://doi.org/10.3390/su14095700>
+Munizaga, J., García, M., Ureta, F., Novoa, V., Rojas, O., & Rojas, C. (2022). *Mapping Coastal Wetlands Using Satellite Imagery and Machine Learning in a Highly Urbanized Landscape*. Sustainability, 14(9), 5700. <https://doi.org/10.3390/su14095700>
 
-Phinzi, K., Abriha, D., & Szabó, S. (2021). Classification efficacy using k-fold cross-validation and bootstrapping resampling techniques on the example of mapping complex gully systems. Remote Sensing, 13(15), 2980. <https://doi.org/10.3390/rs13152980>
+Phinzi, K., Abriha, D., & Szabó, S. (2021). *Classification efficacy using k-fold cross-validation and bootstrapping resampling techniques on the example of mapping complex gully systems*. Remote Sensing, 13(15), 2980. <https://doi.org/10.3390/rs13152980>
 
-Pelletier, C., Webb, G. I., & Petitjean, F. (2019). Temporal convolutional neural network for the classification of satellite image time series. Remote Sensing, 11(5), 523. <https://doi.org/10.3390/rs11050523>
+Pelletier, C., Webb, G. I., & Petitjean, F. (2019). *Temporal convolutional neural network for the classification of satellite image time series*. Remote Sensing, 11(5), 523. [https://doi.org/10.3390/rs11050523](https://doi.org/10.3390/rs13152980)
 
-Rapinel, S., Mony, C., Lecoq, L., Clement, B., Thomas, A., & Hubert-Moy, L. (2019). Evaluation of Sentinel-2 time-series for mapping floodplain grassland plant communities. Remote sensing of environment, 223, 115-129. <https://doi.org/10.1016/j.rse.2019.01.018>
+Rapinel, S., Mony, C., Lecoq, L., Clement, B., Thomas, A., & Hubert-Moy, L. (2019). *Evaluation of Sentinel-2 time-series for mapping floodplain grassland plant communities*. Remote Sensing of Environment, 223, 115-129. <https://doi.org/10.1016/j.rse.2019.01.018>
 
-Simoes, R., Camara, G., Queiroz, G., Souza, F., Andrade, P. R., Santos, L., … & Ferreira, K. (2021). Satellite image time series analysis for big earth observation data. Remote Sensing, 13(13), 2428. <https://doi.org/10.3390/rs13132428>
+Simoes, R., Camara, G., Queiroz, G., Souza, F., Andrade, P. R., Santos, L., … & Ferreira, K. (2021). *Satellite image time series analysis for big earth observation data*. Remote Sensing, 13(13), 2428. <https://doi.org/10.3390/rs13132428>
 
-Tarantino, C., Forte, L., Blonda, P., Vicario, S., Tomaselli, V., Beierkuhnlein, C., & Adamo, M. (2021). Intra-annual sentinel-2 time-series supporting grassland habitat discrimination. Remote Sensing, 13(2), 277. <https://doi.org/10.3390/rs13020277>
+Tarantino, C., Forte, L., Blonda, P., Vicario, S., Tomaselli, V., Beierkuhnlein, C., & Adamo, M. (2021). *Intra-annual sentinel-2 time-series supporting grassland habitat discrimination*. Remote Sensing, 13(2), 277. <https://doi.org/10.3390/rs13020277>
 
-Van Rijsbergen, C. J. (1977). A theoretical basis for the use of co‐occurrence data in information retrieval. Journal of documentation. <https://doi.org/10.1108/eb026637>
+Van Rijsbergen, C. J. (1977). *A theoretical basis for the use of co‐occurrence data in information retrieva*l. Journal of documentation. <https://doi.org/10.1108/eb026637>
 
-Vapnik, V. N. (1999). An overview of statistical learning theory. IEEE transactions on neural networks, 10(5), 988-999. <https://doi.org/10.1109/72.788640>
+Vapnik, V. N. (1999). *An overview of statistical learning theory*. IEEE Transactions on Neural Networks, 10(5), 988-999. <https://doi.org/10.1109/72.788640>
 
-Venter, Z. S., Barton, D. N., Chakraborty, T., Simensen, T., & Singh, G. (2022). Global 10 m Land Use Land Cover Datasets: A Comparison of Dynamic World, World Cover and Esri Land Cover. Remote Sensing, 14(16), 4101. <https://doi.org/10.3390/rs14164101>
+Venter, Z. S., Barton, D. N., Chakraborty, T., Simensen, T., & Singh, G. (2022). *Global 10 m Land Use Land Cover Datasets: A Comparison of Dynamic World, World Cover and Esri Land Cover*. Remote Sensing, 14(16), 4101. <https://doi.org/10.3390/rs14164101>
 
-Wakulińska, M., & Marcinkowska-Ochtyra, A. (2020). Multi-temporal sentinel-2 data in classification of mountain vegetation. Remote Sensing, 12(17), 2696. <https://doi.org/10.3390/rs12172696>
+Wakulińska, M., & Marcinkowska-Ochtyra, A. (2020). *Multi-temporal sentinel-2 data in classification of mountain vegetation*. Remote Sensing, 12(17), 2696. <https://doi.org/10.3390/rs12172696>
 
-Watkins, B., & Van Niekerk, A. (2019). A comparison of object-based image analysis approaches for field boundary delineation using multi-temporal Sentinel-2 imagery. Computers and Electronics in Agriculture, 158, 294-302. <https://doi.org/10.1016/j.compag.2019.02.009>
+Watkins, B., & Van Niekerk, A. (2019). *A comparison of object-based image analysis approaches for field boundary delineation using multi-temporal Sentinel-2 imagery*. Computers and Electronics in Agriculture, 158, 294-302. <https://doi.org/10.1016/j.compag.2019.02.009>
 
-Zhu, Z., & Woodcock, C. E. (2014). Continuous change detection and classification of land cover using all available Landsat data. Remote sensing of Environment, 144, 152-171. <https://doi.org/10.1016/j.rse.2014.01.011>
+Zhu, Z., & Woodcock, C. E. (2014). *Continuous change detection and classification of land cover using all available Landsat data*. Remote sensing of Environment, 144, 152-171. <https://doi.org/10.1016/j.rse.2014.01.011>
 
 ## Next unit
 

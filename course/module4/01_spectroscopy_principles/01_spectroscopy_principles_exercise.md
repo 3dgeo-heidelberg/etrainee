@@ -14,14 +14,14 @@ of visualization, the concept of hyperspectral data, and to compare spectral pro
 
 - *Prerequisites*
     - Installed EnMAP-Box plugin for QGIS ([manual](../../software/software_enmap_box.md))  
-    - Downloaded data ([folder - LINK WILL BE ADDED]())   
+    - Downloaded data ([module4/theme1_exercise_hyperspectral_data](https://doi.org/10.5281/zenodo.10003574))   
 - *Tasks*
     - First encounter with data  
     - Comparison of spectral characteristics  
     - Exploration of changes in spectral characteristics in time  
 
 ## 1. First encounter with data
-Details about the origin of the data, equipment used for acquisition, and scanned areas can be found [here - WILL BE ADDED]().
+Details about the origin of the data, equipment used for acquisition, and scanned areas can be found [here](../../data_usecases/usecase_grasses_krkonose.md).
 
 Multiple regions of interest (ROIs) have been selected from the exemplary area - Luční hora mountain (LH).
 In this exercise you will be working with four types of land cover:
@@ -41,7 +41,7 @@ In this exercise you will be working with four types of land cover:
 <i>Map of the area with numbered ROIs</i>
 </center>
 
-Names of files in the ([data folder - LINK WILL BE ADDED]()) mostly follow a pattern:
+Names of files in the data folder mostly follow a pattern:
 `area_class_subclass_number_year_month`,
 e.g. `LH_wetland_2_2020_08` shows the image cutout of the second wetland ROI of Luční hora mountain captured
 in August 2020. The subclass tag is only used in the case of grasses and shrubs.

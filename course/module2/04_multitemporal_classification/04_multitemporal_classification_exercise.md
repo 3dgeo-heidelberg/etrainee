@@ -1,9 +1,9 @@
 ---
 title: "Multitemporal classification - Exercise"
-description: "This is the exercise in the fourth theme within the Satellite Multispectral Images Time Series Analysis module."
-dateCreated: 2023-04-11
-authors: "Krzysztof Gryguc, Adrian Ochtyra"
-contributors: "Adriana Marcinkowska-Ochtyra"
+description: This is the exercise in the fourth theme within the Satellite Multispectral Images Time Series Analysis module.
+dateCreated: 2023-08-31
+authors: Krzysztof Gryguc, Adrian Ochtyra, Edwin Raczko
+contributors: Adriana Marcinkowska-Ochtyra
 estimatedTime: "1.5 hours"
 output: 
   github_document:
@@ -15,7 +15,7 @@ Multitemporal classification - Exercise
 
 ## Exercise - Multitemporal classification of land cover in Karkonosze Mountains region
 
-In this exercise, you will gain practical experience with the topic of **multitemporal classification**, which is presented in [Theme 4 theoretical part](04_multitemporal_classification.md). You will employ a multitemporal Sentinel-2 dataset to carry out a Random Forest classification. Upon completing the necessary steps, you’ll have the ability to compare results obtained from different sets of input data, as well as evaluate the accuracy attained for various classes.
+In this exercise, you will gain practical experience with the topic of **multitemporal classification**, which is presented in *[Theme 4 theoretical part](04_multitemporal_classification.md)*. You will employ a multitemporal Sentinel-2 dataset to carry out a Random Forest classification. Upon completing the necessary steps, you’ll have the ability to compare results obtained from different sets of input data, as well as evaluate the accuracy attained for various classes.
 
 The primary aim of this exercise is to demonstrate one of the many approaches you can employ in performing multitemporal satellite image classification. Based on the techniques learned here, you’ll be equipped to apply these methods to a range of input data types, algorithms, and accuracy assessment procedures.
 
@@ -25,10 +25,8 @@ The primary aim of this exercise is to demonstrate one of the many approaches yo
 
 For this exercise you will need the following software, data and tools:
 
-- Software
-  - R and RStudio. You can access environment setup tutorial for the whole Module 2 here: [R environment setup tutorial](../../software/software_r_language.md). After following the setup guide you should have all the necessary packages installed.
-- Data
-  - Downloaded data provided in the [folder here](https://drive.google.com/drive/folders/1bQaeyBwvViIyE7MzRDGxSFjx3VLYzsSK).
+- **Software** - R and RStudio. You can access environment setup tutorial for the whole Module 2 here: [R environment setup tutorial](../../software/software_r_language.md). After following the setup guide you should have all the necessary packages installed.
+- **Data** - downloaded data provided through [Zenodo](https://zenodo.org/record/8402925). If you went through **[Module 2 Theme 3 exercise Pipeline 1](../03_image_processing/03_image_processing_exercise.md#processing-pipeline-1)** you can download image the data from your Google Drive.
 
 Follow the suggested working environment setup in order for the provided relative paths to work properly.
 
@@ -36,13 +34,15 @@ Follow the suggested working environment setup in order for the provided relativ
 
 #### Imagery data
 
-The imagery provided for this exercise consists of Sentinel-2 satellite imagery. The process of data preparation is described in the [Module 2 Theme 3 exercise Pipeline 1](../03_image_processing/03_image_processing_exercise.md#processing-pipeline-1).
+The imagery provided for this exercise consists of Sentinel-2 satellite imagery. The process of data preparation is described in the **[Module 2 Theme 3 exercise Pipeline 1](../03_image_processing/03_image_processing_exercise.md#processing-pipeline-1)**.
 
 #### Reference data
 
-`UNDER CONSTRUCTION. COMING SOON`
+The process of reference data preparation is describe in this document. Click here to open in in a new tab.
 
-## Exercise environment preparation
+<a href="media_exercise/T4_Reference_data_preparation.pdf" target="_blank"><b>Reference data preparation tutorial</b></a>
+
+### Loading libraries and reading data
 
 Initiate a new R script in RStudio within your working directory (new file icon is in top left corner) and name it, for instance, `theme_4_exercise_script.R`.
 
@@ -63,8 +63,6 @@ library(caret)
 # RF model preparation
 library(randomForest) 
 ```
-
-## Input data
 
 At this point, we can import the necessary data into the RStudio environment. We require a reference vector layer and multiband image data. These can be found in the dedicated folder for Theme 4.
 
@@ -91,7 +89,7 @@ reference_data
     extent      : 534440, 559030, 5619440, 5636310  (xmin, xmax, ymin, ymax)
     coord. ref. : WGS 84 / UTM zone 33N (EPSG:32633) 
     source      : T4_image_data.tif 
-    names       : 2022-~19_B2, 2022-~19_B3, 2022-~19_B4, 2022-~19_B5, 2022-~19_B6, 2022-~19_B7, ...
+    names       : 2022-~19_B2, 2022-~19_B3, 2022-~19_B4, 2022-~19_B5, 2022-~19_B6, ...
 
     class       : SpatVector 
     geometry    : polygons 
@@ -161,7 +159,7 @@ colnames(pixel_reference)
 
 ------------------------------------------------------------------------
 
-If everything proceeded as expected, there should be 4066 rows in the resulting data frame. Earlier, we noted that, given each reference polygon is 30x30 m in size, we would anticipate a total of 4050 pixel values. A higher number suggests some polygons are misaligned, intersecting parts of additional polygons. To rectify this, we aim to filter out those pixels with minimal coverage by applying a data frame filter to rows with a coverage fraction of less than 0.5.
+If everything proceeded as expected, there should be 4066 rows in the resulting data frame. Earlier, we noted that, given each reference polygon is 30x30 meters in size, we would anticipate a total of 4050 pixel values. A higher number suggests some polygons are misaligned, intersecting parts of additional polygons. To rectify this, we aim to filter out those pixels with minimal coverage by applying a data frame filter to rows with a coverage fraction of less than 0.5.
 
 <center>
 
@@ -221,19 +219,29 @@ pixel_reference <- select(pixel_reference, -fraction) %>%
 colnames(pixel_reference)
 ```
 
-    [1] "ID"              "class"           "2022-06-19_B2"   "2022-06-19_B3"   "2022-06-19_B4"   "2022-06-19_B5"   "2022-06-19_B6"   "2022-06-19_B7"   "2022-06-19_B8"  
-    [10] "2022-06-19_B8A"  "2022-06-19_B11"  "2022-06-19_B12"  "2022-06-19_NDVI" "2022-06-24_B2"   "2022-06-24_B3"   "2022-06-24_B4"   "2022-06-24_B5"   "2022-06-24_B6"  
-    [19] "2022-06-24_B7"   "2022-06-24_B8"   "2022-06-24_B8A"  "2022-06-24_B11"  "2022-06-24_B12"  "2022-06-24_NDVI" "2022-06-27_B2"   "2022-06-27_B3"   "2022-06-27_B4"  
-    [28] "2022-06-27_B5"   "2022-06-27_B6"   "2022-06-27_B7"   "2022-06-27_B8"   "2022-06-27_B8A"  "2022-06-27_B11"  "2022-06-27_B12"  "2022-06-27_NDVI" "2022-07-19_B2"  
-    [37] "2022-07-19_B3"   "2022-07-19_B4"   "2022-07-19_B5"   "2022-07-19_B6"   "2022-07-19_B7"   "2022-07-19_B8"   "2022-07-19_B8A"  "2022-07-19_B11"  "2022-07-19_B12" 
-    [46] "2022-07-19_NDVI" "2022-07-24_B2"   "2022-07-24_B3"   "2022-07-24_B4"   "2022-07-24_B5"   "2022-07-24_B6"   "2022-07-24_B7"   "2022-07-24_B8"   "2022-07-24_B8A" 
-    [55] "2022-07-24_B11"  "2022-07-24_B12"  "2022-07-24_NDVI" "2022-10-20_B2"   "2022-10-20_B3"   "2022-10-20_B4"   "2022-10-20_B5"   "2022-10-20_B6"   "2022-10-20_B7"  
-    [64] "2022-10-20_B8"   "2022-10-20_B8A"  "2022-10-20_B11"  "2022-10-20_B12"  "2022-10-20_NDVI"
+     [1] "ID"              "class"           "2022-06-19_B2"   "2022-06-19_B3"  
+     [5] "2022-06-19_B4"   "2022-06-19_B5"   "2022-06-19_B6"   "2022-06-19_B7"  
+     [9] "2022-06-19_B8"   "2022-06-19_B8A"  "2022-06-19_B11"  "2022-06-19_B12" 
+    [13] "2022-06-19_NDVI" "2022-06-24_B2"   "2022-06-24_B3"   "2022-06-24_B4"  
+    [17] "2022-06-24_B5"   "2022-06-24_B6"   "2022-06-24_B7"   "2022-06-24_B8"  
+    [21] "2022-06-24_B8A"  "2022-06-24_B11"  "2022-06-24_B12"  "2022-06-24_NDVI"
+    [25] "2022-06-27_B2"   "2022-06-27_B3"   "2022-06-27_B4"   "2022-06-27_B5"  
+    [29] "2022-06-27_B6"   "2022-06-27_B7"   "2022-06-27_B8"   "2022-06-27_B8A" 
+    [33] "2022-06-27_B11"  "2022-06-27_B12"  "2022-06-27_NDVI" "2022-07-19_B2"  
+    [37] "2022-07-19_B3"   "2022-07-19_B4"   "2022-07-19_B5"   "2022-07-19_B6"  
+    [41] "2022-07-19_B7"   "2022-07-19_B8"   "2022-07-19_B8A"  "2022-07-19_B11" 
+    [45] "2022-07-19_B12"  "2022-07-19_NDVI" "2022-07-24_B2"   "2022-07-24_B3"  
+    [49] "2022-07-24_B4"   "2022-07-24_B5"   "2022-07-24_B6"   "2022-07-24_B7"  
+    [53] "2022-07-24_B8"   "2022-07-24_B8A"  "2022-07-24_B11"  "2022-07-24_B12" 
+    [57] "2022-07-24_NDVI" "2022-10-20_B2"   "2022-10-20_B3"   "2022-10-20_B4"  
+    [61] "2022-10-20_B5"   "2022-10-20_B6"   "2022-10-20_B7"   "2022-10-20_B8"  
+    [65] "2022-10-20_B8A"  "2022-10-20_B11"  "2022-10-20_B12"  "2022-10-20_NDVI"
 
-Save the extracted data frame to the external file in case you need to reload it, so you don’t have to wait for the extraction process to complete. By saving to *.RDS* file you can then read that file into custom variable name.
+Save the extracted data frame to the external file in case you need to reload it, so you don’t have to wait for the extraction process to complete. By saving to `.RDS` file you can then read that file into custom variable name.
 
 ``` r
-saveRDS(pixel_reference, file = "theme_4_exercise/data_exercise/pixel_reference.RDS")
+saveRDS(pixel_reference, 
+        file = "theme_4_exercise/data_exercise/pixel_reference.RDS")
 
 # in case you need to load it use the command below
 # pixel_reference <- readRDS("theme_4_exercise/data_exercise/pixel_reference.RDS")
@@ -252,19 +260,22 @@ table(reference_data$class)
 
     > table(pixel_reference$class)
 
-    broad-leaved forest       built-up area   coniferous forest              fields             meadows  natural grasslands               rocks 
-                    450                 450                 450                 450                 450                 450                 450 
-                  scrub               water 
-                    450                 450 
+    broad-leaved forest       built-up area   coniferous forest 
+                    450                 450                 450 
+                 fields             meadows  natural grasslands 
+                    450                 450                 450 
+                  rocks               scrub               water 
+                    450                 450                 450 
 
 
     > table(reference_data$class)
 
-    broad-leaved forest       built-up area   coniferous forest              fields             meadows  natural grasslands               rocks 
-                     50                  50                  50                  50                  50                  50                  50 
-                  scrub               water 
-                     50                  50 
-    > 
+    broad-leaved forest       built-up area   coniferous forest 
+                     50                  50                  50 
+                 fields             meadows  natural grasslands 
+                     50                  50                  50 
+                  rocks               scrub               water 
+                     50                  50                  50 
 
 To ensure reproducibility of partitioning we will set seed.
 
@@ -290,19 +301,22 @@ table(train_data$class)
 table(val_data$class)
 ```
 
-    > table(trainData$class)
+    > table(train_data$class)
 
-    broad-leaved forest       built-up area   coniferous forest              fields             meadows  natural grasslands               rocks 
-                    225                 225                 225                 225                 225                 225                 225 
-                  scrub               water 
-                    225                 225 
-                    
-    > table(valData$class)
+    broad-leaved forest       built-up area   coniferous forest 
+                    225                 225                 225 
+                 fields             meadows  natural grasslands 
+                    225                 225                 225 
+                  rocks               scrub               water 
+                    225                 225                 225 
+    > table(val_data$class)
 
-    broad-leaved forest       built-up area   coniferous forest              fields             meadows  natural grasslands               rocks 
-                    225                 225                 225                 225                 225                 225                 225 
-                  scrub               water 
-                    225                 225 
+    broad-leaved forest       built-up area   coniferous forest 
+                    225                 225                 225 
+                 fields             meadows  natural grasslands 
+                    225                 225                 225 
+                  rocks               scrub               water 
+                    225                 225                 225 
 
 ### Parameters tuning
 
@@ -358,7 +372,8 @@ The next step after tuning the parameters is training the classification model. 
 - `do.trace` - useful for keeping track of the modelling progress.
 
 ``` r
-model_rf <- randomForest(train_data[ , 3:length(train_data)], as.factor(train_data$class), 
+model_rf <- randomForest(train_data[ , 3:length(train_data)],
+                         as.factor(train_data$class), 
                          ntree = 500,
                          mtry = 9, 
                          importance = TRUE,
@@ -376,46 +391,93 @@ If we access the variable `model_rf` (by running this variable in console) we wi
     > model_rf
 
     Call:
-     randomForest(x = train_data[, 3:length(train_data)], y = as.factor(train_data$class),      ntree = 500, mtry = 9, importance = TRUE, do.trace = 50) 
+     randomForest(x = train_data[, 3:length(train_data)], 
+     y = as.factor(train_data$class), 
+     ntree = 500, 
+     mtry = 9, 
+     importance = TRUE, 
+     do.trace = 50) 
+     
+     
                    Type of random forest: classification
-                         Number of trees: 500
-    No. of variables tried at each split: 9
+                   Number of trees: 500
+                   No. of variables tried at each split: 9
 
             OOB estimate of  error rate: 0.4%
+            
+
+Confusion matrix
+
     Confusion matrix:
-                        broad-leaved forest built-up area coniferous forest fields meadows natural grasslands rocks scrub water class.error
-    broad-leaved forest                 225             0                 0      0       0                  0     0     0     0 0.000000000
-    built-up area                         0           223                 0      0       0                  0     2     0     0 0.008888889
-    coniferous forest                     0             0               225      0       0                  0     0     0     0 0.000000000
-    fields                                0             0                 0    224       1                  0     0     0     0 0.004444444
-    meadows                               0             0                 0      0     225                  0     0     0     0 0.000000000
-    natural grasslands                    0             0                 0      0       0                225     0     0     0 0.000000000
-    rocks                                 0             5                 0      0       0                  0   220     0     0 0.022222222
-    scrub                                 0             0                 0      0       0                  0     0   225     0 0.000000000
-    water                                 0             0                 0      0       0                  0     0     0   225 0.000000000
+                        broad-leaved forest built-up area coniferous forest
+    broad-leaved forest                 225             0                 0
+    built-up area                         0           223                 0
+    coniferous forest                     0             0               225
+    fields                                0             0                 0
+    meadows                               0             0                 0
+    natural grasslands                    0             0                 0
+    rocks                                 0             5                 0
+    scrub                                 0             0                 0
+    water                                 0             0                 0
+
+                        fields meadows natural grasslands rocks scrub water
+    broad-leaved forest      0       0                  0     0     0     0
+    built-up area            0       0                  0     2     0     0
+    coniferous forest        0       0                  0     0     0     0
+    fields                 224       1                  0     0     0     0
+    meadows                  0     225                  0     0     0     0
+    natural grasslands       0       0                225     0     0     0
+    rocks                    0       0                  0   220     0     0
+    scrub                    0       0                  0     0   225     0
+    water                    0       0                  0     0     0   225
+
+                        class.error
+    broad-leaved forest 0.000000000
+    built-up area       0.008888889
+    coniferous forest   0.000000000
+    fields              0.004444444
+    meadows             0.000000000
+    natural grasslands  0.000000000
+    rocks               0.022222222
+    scrub               0.000000000
+    water               0.000000000
 
 Our primary objective is to evaluate the performance of the model using the reference data. To obtain an accurate measure of the model’s effectiveness, it’s crucial to test it against data it hasn’t seen during the training process. This subset of the data is known as the validation set. To achieve this, we’ll make use of the `val_data` we prepared earlier. After prediction, we’ll contrast the model’s predicted classes against the true classes in the validation dataset.
 
 ``` r
 predicted_rf <- predict(model_rf, val_data[ , 3:length(val_data)])
 
-confusion_matrix_predicted_rf <- confusionMatrix(predicted_rf, as.factor(val_data$class), mode = "everything")
+confusion_matrix_predicted_rf <- confusionMatrix(predicted_rf, 
+                                                 as.factor(val_data$class), 
+                                                 mode = "everything")
 confusion_matrix_predicted_rf
 ```
 
     Confusion Matrix and Statistics
 
                          Reference
-    Prediction            broad-leaved forest built-up area coniferous forest fields meadows natural grasslands rocks scrub water
-      broad-leaved forest                 217             0                 9      0       0                  0     0     0     0
-      built-up area                         0           200                 0      2       0                  0    25     4     0
-      coniferous forest                     3             0               209      0       0                  0     0     9     0
-      fields                                0             5                 0    194      50                  0     0     0     0
-      meadows                               0             3                 0     29     166                 19     0     2     0
-      natural grasslands                    0             0                 0      0       9                206     0     0     0
-      rocks                                 0            10                 0      0       0                  0   200     5     0
-      scrub                                 5             1                 7      0       0                  0     0   205     0
-      water                                 0             6                 0      0       0                  0     0     0   225
+    Prediction            broad-leaved forest built-up area coniferous forest
+      broad-leaved forest                 217             0                 9
+      built-up area                         0           200                 0
+      coniferous forest                     3             0               209
+      fields                                0             5                 0
+      meadows                               0             3                 0
+      natural grasslands                    0             0                 0
+      rocks                                 0            10                 0
+      scrub                                 5             1                 7
+      water                                 0             6                 0
+      
+                         Reference
+    Prediction            fields meadows natural grasslands rocks scrub water
+      broad-leaved forest      0       0                  0     0     0     0
+      built-up area            2       0                  0    25     4     0
+      coniferous forest        0       0                  0     0     9     0
+      fields                 194      50                  0     0     0     0
+      meadows                 29     166                 19     0     2     0
+      natural grasslands       0       9                206     0     0     0
+      rocks                    0       0                  0   200     5     0
+      scrub                    0       0                  0     0   205     0
+      water                    0       0                  0     0     0   225
 
     Overall Statistics
                                               
@@ -430,30 +492,57 @@ confusion_matrix_predicted_rf
 
     Statistics by Class:
 
-                         Class: broad-leaved forest Class: built-up area Class: coniferous forest Class: fields Class: meadows
-    Sensitivity                              0.9644              0.88889                   0.9289        0.8622        0.73778
-    Specificity                              0.9950              0.98278                   0.9933        0.9694        0.97056
-    Pos Pred Value                           0.9602              0.86580                   0.9457        0.7791        0.75799
-    Neg Pred Value                           0.9956              0.98606                   0.9911        0.9825        0.96733
-    Precision                                0.9602              0.86580                   0.9457        0.7791        0.75799
-    Recall                                   0.9644              0.88889                   0.9289        0.8622        0.73778
-    F1                                       0.9623              0.87719                   0.9372        0.8186        0.74775
-    Prevalence                               0.1111              0.11111                   0.1111        0.1111        0.11111
-    Detection Rate                           0.1072              0.09877                   0.1032        0.0958        0.08198
-    Detection Prevalence                     0.1116              0.11407                   0.1091        0.1230        0.10815
-    Balanced Accuracy                        0.9797              0.93583                   0.9611        0.9158        0.85417
-                         Class: natural grasslands Class: rocks Class: scrub Class: water
-    Sensitivity                             0.9156      0.88889       0.9111       1.0000
-    Specificity                             0.9950      0.99167       0.9928       0.9967
-    Pos Pred Value                          0.9581      0.93023       0.9404       0.9740
-    Neg Pred Value                          0.9895      0.98619       0.9889       1.0000
-    Precision                               0.9581      0.93023       0.9404       0.9740
-    Recall                                  0.9156      0.88889       0.9111       1.0000
-    F1                                      0.9364      0.90909       0.9255       0.9868
-    Prevalence                              0.1111      0.11111       0.1111       0.1111
-    Detection Rate                          0.1017      0.09877       0.1012       0.1111
-    Detection Prevalence                    0.1062      0.10617       0.1077       0.1141
-    Balanced Accuracy                       0.9553      0.94028       0.9519       0.9983
+                         Class: broad-leaved forest Class: built-up area
+    Sensitivity                              0.9644              0.88889
+    Specificity                              0.9950              0.98278
+    Pos Pred Value                           0.9602              0.86580
+    Neg Pred Value                           0.9956              0.98606
+    Precision                                0.9602              0.86580
+    Recall                                   0.9644              0.88889
+    F1                                       0.9623              0.87719
+    Prevalence                               0.1111              0.11111
+    Detection Rate                           0.1072              0.09877
+    Detection Prevalence                     0.1116              0.11407
+    Balanced Accuracy                        0.9797              0.93583
+
+                         Class: coniferous forest Class: fields Class: meadows
+    Sensitivity                            0.9289        0.8622        0.73778
+    Specificity                            0.9933        0.9694        0.97056
+    Pos Pred Value                         0.9457        0.7791        0.75799
+    Neg Pred Value                         0.9911        0.9825        0.96733
+    Precision                              0.9457        0.7791        0.75799
+    Recall                                 0.9289        0.8622        0.73778
+    F1                                     0.9372        0.8186        0.74775
+    Prevalence                             0.1111        0.1111        0.11111
+    Detection Rate                         0.1032        0.0958        0.08198
+    Detection Prevalence                   0.1091        0.1230        0.10815
+    Balanced Accuracy                      0.9611        0.9158        0.85417
+
+                         Class: natural grasslands Class: rocks Class: scrub
+    Sensitivity                             0.9156      0.88889       0.9111
+    Specificity                             0.9950      0.99167       0.9928
+    Pos Pred Value                          0.9581      0.93023       0.9404
+    Neg Pred Value                          0.9895      0.98619       0.9889
+    Precision                               0.9581      0.93023       0.9404
+    Recall                                  0.9156      0.88889       0.9111
+    F1                                      0.9364      0.90909       0.9255
+    Prevalence                              0.1111      0.11111       0.1111
+    Detection Rate                          0.1017      0.09877       0.1012
+    Detection Prevalence                    0.1062      0.10617       0.1077
+    Balanced Accuracy                       0.9553      0.94028       0.9519
+
+                         Class: water
+    Sensitivity                1.0000
+    Specificity                0.9967
+    Pos Pred Value             0.9740
+    Neg Pred Value             1.0000
+    Precision                  0.9740
+    Recall                     1.0000
+    F1                         0.9868
+    Prevalence                 0.1111
+    Detection Rate             0.1111
+    Detection Prevalence       0.1141
+    Balanced Accuracy          0.9983
 
 <b><u>TASK</u></b>
 
@@ -469,7 +558,7 @@ varImpPlot(model_rf, type = 1, n.var = 30)
 
 <center>
 
-<img src="media_exercise/var_imp_plot.png" title="variable importance" alt="variable importance" width="400"/>
+<img src="media_exercise/var_imp_plot.png" title="variable importance" alt="variable importance" width="600"/>
 
 <i>Variable importance plot.</i>
 </center>
@@ -562,7 +651,7 @@ If you want to further explore the vast topic of classification consider reading
 
 ### Data
 
-Sentinel-2 imagery [European Space Agency - ESA](https://scihub.copernicus.eu/)/ [Terms of use](https://scihub.copernicus.eu/twiki/do/view/SciHubWebPortal/TermsConditions) processed in and downloaded from [Google Earth Engine by Gorelick et al., 2017](https://doi.org/10.1016/j.rse.2017.06.031)
+Sentinel-2 imagery [European Space Agency - ESA](https://dataspace.copernicus.eu/)/ [Terms of use](https://dataspace.copernicus.eu/terms-and-conditions) processed in and downloaded from [Google Earth Engine by Gorelick et al., 2017](https://doi.org/10.1016/j.rse.2017.06.031)
 
 ### Software
 
@@ -571,3 +660,108 @@ Sentinel-2 imagery [European Space Agency - ESA](https://scihub.copernicus.eu/)/
 - Hijmans R (2023). *terra: Spatial Data Analysis*. R package version 1.7-39, <https://CRAN.R-project.org/package=terra>
 - Kuhn, M. (2008). *Building Predictive Models in R Using the caret Package*. Journal of Statistical Software, 28(5), 1–26. <https://doi.org/10.18637/jss.v028.i05> <https://CRAN.R-project.org/package=caret>
 - Wickham H, François R, Henry L, Müller K, Vaughan D (2023). *dplyr: A Grammar of Data Manipulation*. R package version 1.1.2, <https://CRAN.R-project.org/package=dplyr>
+
+## Source code
+
+<details>
+<summary>
+You can find the entire code used in this exercise here
+</summary>
+
+``` r
+# raster and vector I/O and processing
+library(terra)
+
+# tabular data manipulation
+library(dplyr) 
+
+# training/test layers preparation
+library(caret) 
+
+# RF model preparation
+library(randomForest) 
+
+# object representing reference vector data
+reference_data <- vect("theme_4_exercise/data_exercise/T4_reference_data.shp")
+
+# object representing multiband raster with all the available bands
+image_data <- rast("theme_4_exercise/data_exercise/T4_image_data.tif")
+
+
+image_data
+reference_data
+
+pixel_reference <- extract(image_data, reference_data, exact = TRUE) 
+
+
+nrow(pixel_reference)
+colnames(pixel_reference)
+
+pixel_reference <- filter(pixel_reference, fraction > 0.5)
+
+nrow(pixel_reference)
+colnames(pixel_reference)
+
+reference_class <- as.data.frame(reference_data)
+
+pixel_reference <- merge(pixel_reference, reference_class, 
+                         by = "ID", 
+                         all = TRUE)
+
+pixel_reference <- select(pixel_reference, -fraction) %>%
+  relocate(ID, class)
+
+colnames(pixel_reference)
+
+
+set.seed(14)
+
+train_index <- createDataPartition(reference_data$class, p = 0.5, list = FALSE)
+
+train_data <- pixel_reference[ pixel_reference$ID %in% train_index, ]
+val_data <- pixel_reference[ !(pixel_reference$ID %in% train_index), ]
+
+
+table(train_data$class)
+table(val_data$class)
+
+set.seed(141)
+
+tune <- tuneRF(train_data[, 3:length(train_data)], 
+               as.factor(train_data$class),
+               ntreeTry = 500,
+               improve = 0.001,
+               stepFactor = 1.2)
+
+tune
+
+
+model_rf <- randomForest(train_data[ , 3:length(train_data)], as.factor(train_data$class), 
+                         ntree = 500,
+                         mtry = 9, 
+                         importance = TRUE,
+                         do.trace = 50)
+
+
+model_rf
+
+
+
+predicted_rf <- predict(model_rf, val_data[ , 3:length(val_data)])
+
+confusion_matrix_predicted_rf <- confusionMatrix(predicted_rf, as.factor(val_data$class), mode = "everything")
+confusion_matrix_predicted_rf
+
+varImpPlot(model_rf, type = 1, n.var = 30)
+
+
+terra::predict(image_data, model_rf, 
+               filename = "theme_4_exercise/results/predicted_image_all_bands.tif", 
+               datatype = "INT1U", 
+               na.rm = TRUE, 
+               overwrite = TRUE)
+```
+
+</details>
+
+### This is the end of this exercise. Proceed with other Themes and Exercises. Good luck!

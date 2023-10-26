@@ -1,3 +1,15 @@
+---
+title: "Temporal information in satellite data"
+description: This is the second theme within the Satellite Multispectral Images Time Series Analysis module.
+dateCreated: 2023-08-31
+authors: Adriana Marcinkowska-Ochtyra, Krzysztof Gryguc
+contributors: Adrian Ochtyra
+estimatedTime: "1.5 hours"
+output: 
+  github_document:
+    pandoc_args: "--wrap=none"
+---
+
 Temporal information in satellite data
 ================
 
@@ -8,7 +20,7 @@ In this theme you will learn about:
 - **[why satellite time series data are important](#the-need-of-satellite-time-series-data)**
 - **[satellite sensors with high or low temporal resolution](#temporal-resolution-of-selected-sensors)**  
 - **[temporal categories of time series data](#temporal-categories-of-time-series-data)**
-- **[time series components and temporal dimension in environmental analysis](#time-series-components-and-temporal-dimension-in-environmental-analysis)**
+- **[time series components and temporal dimension in environmental analysis](#time-series-components-and-temporal-dimensions-in-environmental-analysis)**
 - **[types of multitemporal analysis](#types-of-temporal-analysis)**  
 - **[time series variables](#time-series-variables)**
 - **[key aspects of satellite time series data analysis](#aspects-of-satellite-time-series-data-analysis)**  
@@ -42,7 +54,7 @@ There are numerous reasons why satellite data, acquired on a continuous basis, i
 
 <img src="media/exp_real.png" title="Expectations vs reality when searching satellite data" alt="Expectations vs reality" width="700"/>
 
-<i>Expectations vs reality when searching satellite data (figure by course authors, sources of images from the upper left to the lower right: Sentinel-2 [European Space Agency - ESA](https://scihub.copernicus.eu/)/ [Terms of use](https://scihub.copernicus.eu/twiki/do/view/SciHubWebPortal/TermsConditions), [Image © 2022 Planet Labs PBC](https://www.planet.com)/[CC BY-NC 2.0](https://creativecommons.org/licenses/by-nc/2.0/), Landsat 5 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits)), Landsat 7 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits), Landsat 8 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits), Landsat 4 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits)).</i>
+<i>Expectations vs reality when searching satellite data (figure by course authors, sources of images from the upper left to the lower right: Sentinel-2 [European Space Agency - ESA](https://dataspace.copernicus.eu/)/ [Terms of use](https://dataspace.copernicus.eu/terms-and-conditions), [Image © 2022 Planet Labs PBC](https://www.planet.com)/[CC BY-NC 2.0](https://creativecommons.org/licenses/by-nc/2.0/), Landsat 5 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits)), Landsat 7 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits), Landsat 8 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits), Landsat 4 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits)).</i>
 </center>
 
 Another significant advantage of satellite data is that it captures the **temporal variation** of objects and landscapes. Objects may appear or disappear, or look entirely different across various seasons or years. This ability can help us detect such phenomena without the need for on-site exploration. For instance, how else but through satellite imagery could we identify a newly formed tiny island in a distant ocean? Or observe the decrease in the number of cars on the streets and parking lots after the 2020 lockdown announcement due to COVID-19? Satellite data provides a powerful tool for monitoring changes on Earth’s surface over time.
@@ -58,7 +70,7 @@ These and many other examples underscore the undeniable benefits of satellite da
 
 ## Temporal resolution of selected sensors
 
-The temporal resolution of satellite data from different sensors depends on the type of orbit on which the satellite is placed. **Geostationary** satellite systems continuously acquire images of the same part of the globe, so multiple data acquisitions can occur even on the same day or even within a few minutes. Examples of such systems are meteorological satellites such as Meteosat and NOAA. Another class of satellites includes systems orbiting in **polar** orbits, like Landsat or SPOT missions. In their case, time resolution is defined as the time the satellite revisits the same part of a given area. Typically, it takes between one day and half a month for a satellite in polar orbit to make another acquisition. This time can be reduced by placing several satellites with twin sensor parameters in the same polar orbit, like in case of Sentinel-2.
+The temporal resolution of satellite data from different sensors depends on the type of orbit on which the satellite is placed. **Geostationary** satellite systems continuously acquire images of the same part of the globe, so multiple data acquisitions can occur even on the same day or even within a few minutes. Examples of such systems are meteorological satellites such as Meteosat and NOAA. Another class of satellites includes systems orbiting in **polar** / **Sun-synchronous** orbits, like Landsat or SPOT missions. In their case, time resolution is defined as the time the satellite revisits the same part of a given area. Typically, it takes between one day and half a month for a satellite in polar orbit to make another acquisition. This time can be reduced by placing several satellites with twin sensor parameters, like in case of Sentinel-2A and 2B occupying the same orbit separated by 180 degrees.
 
 Overview of temporal resolution of selected satellite sensors is presented below.
 
@@ -83,12 +95,12 @@ Based on these categories, satellite data can be characterized as either **long*
 
 <img src="media/timeseries.png" title="Long and dense time series data examples." alt="Long and dense time series data examples" width="600"/>
 
-<i>Long and dense time series data examples (figure by course authors, source of Sentinel-2 image: [European Space Agency - ESA](https://scihub.copernicus.eu/)/ [Terms of use](https://scihub.copernicus.eu/twiki/do/view/SciHubWebPortal/TermsConditions)).</i>
+<i>Long and dense time series data examples (figure by course authors, source of Sentinel-2 image: [European Space Agency - ESA](https://dataspace.copernicus.eu/)/ [Terms of use](https://dataspace.copernicus.eu/terms-and-conditions)).</i>
 </center>
 
 Another way to divide this data is into **online** and **offline** categories ([Zhu, 2017](https://doi.org/10.1016/j.isprsjprs.2017.06.013)). The online approach assumes that time series data are arriving at a specific rate, facilitating analyses in near real-time or on an ongoing basis. In contrast, the offline approach operates under the assumption that the time series data already exist.
 
-For managing large collections of satellite images modeled as multidimensional structures to facilitate time series analysis, the concept of an **Earth Observation (EO) Data Cube** has been established ([Voidrot and Percivall, 2020](https://doi.org/10.1088/1755-1315/509/1/012058)). The primary features of an EO Data Cube include georeferenced spatial support, temporal continuity, and the absence of gaps in the spatiotemporal extent. The processing steps related to the EO Data Cube concept are explored further in **[Theme 3](../03_image_processing/03_image_processing.md).**
+For managing large collections of satellite images modeled as multidimensional structures to facilitate time series analysis, the concept of an **Earth Observation (EO) Data Cube** has been established ([Voidrot and Percivall, 2020](https://doi.org/10.1088/1755-1315/509/1/012058)). The primary features of an EO Data Cube include georeferenced spatial support, temporal continuity, and the absence of gaps in the spatiotemporal extent. The processing steps related to the EO Data Cube concept are explored further in **[Theme 3](../03_image_processing/03_image_processing.md)**. You can read more about this in **[Theme 2 of Module 1](../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.md#data-cubes)**.
 
 <center>
 
@@ -172,20 +184,20 @@ We have thus far examined various categories of data and explored the diverse va
 
 - **frequencies** - directly tied to temporal resolution of satellite data. For instance, the revisit time over the same area for Landsat 5-8 is 16 days, which allows for the acquisition of 22-23 images per year. For Sentinel-2, which collects data with a 5-day frequency, we can obtain up to 73 images per year.
 - **preprocessing** - this encompasses several tasks including radiometric correction, cloud/shadow detection, compositing/fusion, metrics calculation, etc. (for more details, refer to **[Theme 3](../03_image_processing/03_image_processing.md)**).
-- **applications** - wide array of potential applications for time series in environmental analyses. The examples of applied multitemporal classification can be found in **[Theme 4 exercise](../04_multitemporal_classification/04_multitemporal_classification_exercise.md)** and **[Case Study 1](../06_cs_tundra_grasslands/06_cs_tundra_grasslands.md)**. Change detection applications can be found in **[Theme 5 exercise](../05_vegetation_monitoring/05_vegetation_monitoring_exercise.md)** and **Case studies [2](../07_cs_forest_changes/07_cs_forest_changes.md)** and **[3](../08_cs_disturbance_detection/08_cs_disturbance_detection.md)**).
+- **applications** - wide array of potential applications for time series in environmental analyses. The examples of applied multitemporal classification can be found in **[Theme 4 exercise](../04_multitemporal_classification/04_multitemporal_classification_exercise.md)** and **[Case Study 1](../06_cs_tundra_grasslands/06_cs_tundra_grasslands.md)**. Change detection applications can be found in **[Theme 5 exercise](../05_vegetation_monitoring/05_vegetation_monitoring_exercise.md)** and **[Case study 3](../08_cs_disturbance_detection/08_cs_disturbance_detection.md)**.
 - **methods** - the algorithms used for multitemporal classification or change detection (see the **[section below in this Theme](#tools-and-algorithms)**).
 
 In each step, careful planning and execution are crucial to derive meaningful and accurate results from the satellite data time series. Furthermore, while we have specific steps outlined, remember that these may vary based on the specific objectives of your analysis. Therefore, always consider the project’s specific requirements when planning and conducting your analysis.
 
 ## Tools and algorithms
 
-The temporal resolution and repeatability of satellite data acquisition enable the creation of specialized tools and algorithms for specific multitemporal analyses. Prior to using a particular algorithm, it’s essential to **characterize the quality of data** and **pinpoint the moment and agent of change** on the multitemporal dataset within the research area. In **[Theme 1 of Module 1](../../module1/01_principles_of_remote_sensing_time_series/T1_QGIS_GEE_TS_Explorer.md)**, the *GEE Time Series Explorer plugin* is presented, which allows you to explore satellite data time series. [Cohen et al., 2010](https://doi.org/10.1016/j.rse.2010.07.010) introduced [TimeSync](https://timesync.forestry.oregonstate.edu/), a Landsat time series visualization tool useful for collecting data and deriving plot-based estimates of change. You’ll learn about a similar solution in the [Exercise at the end of this theme](02_temporal_information_exercise.md), which will be highly valuable for validating results obtained from any time series analysis.
+The temporal resolution and repeatability of satellite data acquisition enable the creation of specialized tools and algorithms for specific multitemporal analyses. Prior to using a particular algorithm, it’s essential to **characterize the quality of data** and **pinpoint the moment and agent of change** on the multitemporal dataset within the research area. In **[Theme 1 of Module 1](../../module1/01_principles_of_remote_sensing_time_series/T1_QGIS_GEE_TS_Explorer.md)**, the *GEE Time Series Explorer plugin* is presented, which allows you to explore satellite data time series. [Cohen et al., 2010](https://doi.org/10.1016/j.rse.2010.07.010) introduced [TimeSync](https://timesync.forestry.oregonstate.edu/), a Landsat time series visualization tool useful for collecting data and deriving plot-based estimates of change. You’ll learn about a similar solution in the **[Exercise at the end of this theme](02_temporal_information_exercise.md)**, which will be highly valuable for validating results obtained from any time series analysis.
 
 In the context of multitemporal classification of satellite data, the algorithms can be independent of whether one, two, or hundreds of images are used. These can be common unsupervised clustering (such as **k-means** ([Hartigan and Wong, 1979](https://doi.org/10.2307/2346830)) and semi-, or supervised algorithms, for example **Artificial Neural Networks** (ANNs, [Krogh, 2008](https://doi.org/10.1038/nbt1386)) or **Support Vector Machines** (SVMs, [Vapnik, 1999](https://doi.org/10.1109/72.788640)).
 
-Recently, there has been an observable rise of application of functional data in time series statistical analysis, which leads to a shift in the approach to time series modeling. This has resulted in methodologies such as **functional k-means** ([Martino et al., 2019](https://doi.org/10.1007/s10260-018-00446-6)) or **functional Random Forest** ([Fu et al., 2021](https://doi.org/10.1038/s41598-021-02265-4)). There are also other specific tools for incorporating temporal information into classifiers, such as **Time-Weighted Dynamic Time Warping** (TWDTW) based on logistic time weight ([Maus et al., 2019](https://doi.org/10.18637/jss.v088.i05)) or **Satellite Image Time Series** (SITS) based on deep learning techniques ([Simoes et al., 2021](https://doi.org/10.3390/rs13132428)). We refer to these methods in [Theme 4](../04_multitemporal_classification/04_multitemporal_classification.md).
+Recently, there has been an observable rise of application of functional data in time series statistical analysis, which leads to a shift in the approach to time series modeling. This has resulted in methodologies such as **functional k-means** ([Martino et al., 2019](https://doi.org/10.1007/s10260-018-00446-6)) or **functional Random Forest** ([Fu et al., 2021](https://doi.org/10.1038/s41598-021-02265-4)). There are also other specific tools for incorporating temporal information into classifiers, such as **Time-Weighted Dynamic Time Warping** (TWDTW) based on logistic time weight ([Maus et al., 2019](https://doi.org/10.18637/jss.v088.i05)) or **Satellite Image Time Series** (SITS) based on deep learning techniques ([Simoes et al., 2021](https://doi.org/10.3390/rs13132428)). We refer to these methods in **[Theme 4](../04_multitemporal_classification/04_multitemporal_classification.md)**.
 
-For change detection in satellite data time series, numerous specific algorithms and tools have also been proposed by various authors. They’re based on different approaches, which we describe in [Theme 5](../05_vegetation_monitoring/05_vegetation_monitoring.md). Apart from the ability to detect specific types of changes, there are also algorithms dedicated to **particular issues**, such as forest disturbance detection, and **specific data** like Landsat (for example, [LandTrendr](https://doi.org/10.1016/j.rse.2010.07.008)).
+For change detection in satellite data time series, numerous specific algorithms and tools have also been proposed by various authors. They’re based on different approaches, which we describe in **[Theme 5](../05_vegetation_monitoring/05_vegetation_monitoring.md)**. Apart from the ability to detect specific types of changes, there are also algorithms dedicated to **particular issues**, such as forest disturbance detection, and **specific data** like Landsat (for example, [LandTrendr](https://doi.org/10.1016/j.rse.2010.07.008)).
 
 ## Uncertainty of satellite time series data products
 
@@ -370,51 +382,51 @@ spatial distribution of errors
 
 ### Key references (recommended reading, looking up background details)
 
-Kuenzer, C., Dech, S., & Wagner, W. (2015). Remote sensing time series. Remote Sensing and Digital Image Processing, 22, 225-245. <https://link.springer.com/book/10.1007/978-3-319-15967-6>
+Kuenzer, C., Dech, S., & Wagner, W. (2015). *Remote sensing time series*. Remote Sensing and Digital Image Processing, 22, 225-245. [source](https://link.springer.com/book/10.1007/978-3-319-15967-6)
 
-Zhu, Z. (2017). Change detection using landsat time series: A review of frequencies, preprocessing, algorithms, and applications. ISPRS Journal of Photogrammetry and Remote Sensing, 130, 370-384. <https://doi.org/10.1016/j.isprsjprs.2017.06.013>
+Zhu, Z. (2017). *Change detection using landsat time series: A review of frequencies, preprocessing, algorithms, and applications*. ISPRS Journal of Photogrammetry and Remote Sensing, 130, 370-384. <https://doi.org/10.1016/j.isprsjprs.2017.06.013>
 
 ### Additional references cited in this theme
 
-Cai, S., & Liu, D. (2015). Detecting change dates from dense satellite time series using a sub-annual change detection algorithm. Remote Sensing, 7(7), 8705-8727. <https://doi.org/10.3390/rs70708705>
+Cai, S., & Liu, D. (2015). *Detecting change dates from dense satellite time series using a sub-annual change detection algorithm*. Remote Sensing, 7(7), 8705-8727. <https://doi.org/10.3390/rs70708705>
 
-Chuvieco, E. (2020). Fundamentals of satellite remote sensing: An environmental approach. CRC press. <https://doi.org/10.1201/9780429506482>
+Chuvieco, E. (2020). F*undamentals of satellite remote sensing: An environmental approach*. CRC Press. <https://doi.org/10.1201/9780429506482>
 
-Cohen, W. B., Yang, Z., & Kennedy, R. (2010). Detecting trends in forest disturbance and recovery using yearly Landsat time series: 2. TimeSync—Tools for calibration and validation. Remote Sensing of Environment, 114(12), 2911-2924. <https://doi.org/10.1016/j.rse.2010.07.010>
+Cohen, W. B., Yang, Z., & Kennedy, R. (2010). *Detecting trends in forest disturbance and recovery using yearly Landsat time series: 2. TimeSync—Tools for calibration and validation*. Remote Sensing of Environment, 114(12), 2911-2924. <https://doi.org/10.1016/j.rse.2010.07.010>
 
-Fu, G., Dai, X., & Liang, Y. (2021). Functional random forests for curve response. Scientific Reports, 11(1), 24159. <https://doi.org/10.1038/s41598-021-02265-4>
+Fu, G., Dai, X., & Liang, Y. (2021). *Functional random forests for curve response*. Scientific Reports, 11(1), 24159. <https://doi.org/10.1038/s41598-021-02265-4>
 
-Gómez, C., White, J. C., & Wulder, M. A. (2016). Optical remotely sensed time series data for land cover classification: A review. ISPRS Journal of Photogrammetry and Remote Sensing, 116, 55-72. <https://doi.org/10.1016/j.isprsjprs.2016.03.008>
+Gómez, C., White, J. C., & Wulder, M. A. (2016). *Optical remotely sensed time series data for land cover classification: A review*. ISPRS Journal of Photogrammetry and Remote Sensing, 116, 55-72. <https://doi.org/10.1016/j.isprsjprs.2016.03.008>
 
-Hartigan, J. A., & Wong, M. A. (1979). Algorithm AS 136: A k-means clustering algorithm. Journal of the royal statistical society. series c (applied statistics), 28(1), 100-108. <https://doi.org/10.2307/2346830>
+Hartigan, J. A., & Wong, M. A. (1979). *Algorithm AS 136: A k-means clustering algorithm*. Journal of the Royal Statistical Society. series c (applied statistics), 28(1), 100-108. <https://doi.org/10.2307/2346830>
 
-Koukoulas, S. (2010). Change detection under uncertainty: Modeling the spatial variation of errors. International Archives of the Photogrammetry, Remote Sensing and Spatial Information Science, Volume XXXVIII, Part 8, Kyoto Japan [SOURCE](http://www.tric.u-tokai.ac.jp/ISPRScom8/TC8/TC8_CD/headline/TS-11/W08L23_20100308050524.pdf)
+Koukoulas, S. (2010). *Change detection under uncertainty: Modeling the spatial variation of errors*. International Archives of the Photogrammetry, Remote Sensing and Spatial Information Science, Volume XXXVIII, Part 8, Kyoto Japan [SOURCE](http://www.tric.u-tokai.ac.jp/ISPRScom8/TC8/TC8_CD/headline/TS-11/W08L23_20100308050524.pdf)
 
-Krogh, A. (2008). What are artificial neural networks?. Nature biotechnology, 26(2), 195-197. <https://doi.org/10.1038/nbt1386>
+Krogh, A. (2008). *What are artificial neural networks?*. Nature Biotechnology, 26(2), 195-197. <https://doi.org/10.1038/nbt1386>
 
-Martino, A., Ghiglietti, A., Ieva, F., & Paganoni, A. M. (2019). A k-means procedure based on a Mahalanobis type distance for clustering multivariate functional data. Statistical Methods & Applications, 28(2), 301-322. <https://doi.org/10.1007/s10260-018-00446-6>
+Martino, A., Ghiglietti, A., Ieva, F., & Paganoni, A. M. (2019). *A k-means procedure based on a Mahalanobis type distance for clustering multivariate functional data*. Statistical Methods & Applications, 28(2), 301-322. <https://doi.org/10.1007/s10260-018-00446-6>
 
-Maus, V., Câmara, G., Appel, M., & Pebesma, E. (2019). dtwsat: Time-weighted dynamic time warping for satellite image time series analysis in r. Journal of Statistical Software, 88, 1-31. <https://doi.org/10.18637/jss.v088.i05>
+Maus, V., Câmara, G., Appel, M., & Pebesma, E. (2019). dtwsat: *Time-weighted dynamic time warping for satellite image time series analysis in R*. Journal of Statistical Software, 88, 1-31. <https://doi.org/10.18637/jss.v088.i05>
 
-Ochtyra, A., Marcinkowska-Ochtyra, A., & Raczko, E. (2020). Threshold-and trend-based vegetation change monitoring algorithm based on the inter-annual multi-temporal normalized difference moisture index series: A case study of the Tatra Mountains. Remote Sensing of Environment, 249, 112026. <https://doi.org/10.1016/j.rse.2020.112026>
+Ochtyra, A., Marcinkowska-Ochtyra, A., & Raczko, E. (2020). *Threshold-and trend-based vegetation change monitoring algorithm based on the inter-annual multi-temporal normalized difference moisture index series: A case study of the Tatra Mountains*. Remote Sensing of Environment, 249, 112026. <https://doi.org/10.1016/j.rse.2020.112026>
 
-Olofsson, P., Foody, G. M., Stehman, S. V., & Woodcock, C. E. (2013). Making better use of accuracy data in land change studies: Estimating accuracy and area and quantifying uncertainty using stratified estimation. Remote Sensing of Environment, 129, 122-131. <https://doi.org/10.1016/j.rse.2012.10.031>
+Olofsson, P., Foody, G. M., Stehman, S. V., & Woodcock, C. E. (2013). *Making better use of accuracy data in land change studies: Estimating accuracy and area and quantifying uncertainty using stratified estimation*. Remote Sensing of Environment, 129, 122-131. <https://doi.org/10.1016/j.rse.2012.10.031>
 
-Povey, A. C., & Grainger, R. G. (2015). Known and unknown unknowns: uncertainty estimation in satellite remote sensing. Atmospheric Measurement Techniques, 8(11), 4699-4718. <https://doi.org/10.5194/amt-8-4699-2015>
+Povey, A. C., & Grainger, R. G. (2015). *Known and unknown unknowns: uncertainty estimation in satellite remote sensing*. Atmospheric Measurement Techniques, 8(11), 4699-4718. <https://doi.org/10.5194/amt-8-4699-2015>
 
-Simoes, R., Camara, G., Queiroz, G., Souza, F., Andrade, P. R., Santos, L., … & Ferreira, K. (2021). Satellite image time series analysis for big earth observation data. Remote Sensing, 13(13), 2428. <https://doi.org/10.3390/rs13132428>
+Simoes, R., Camara, G., Queiroz, G., Souza, F., Andrade, P. R., Santos, L., … & Ferreira, K. (2021). *Satellite image time series analysis for big earth observation data*. Remote Sensing, 13(13), 2428. <https://doi.org/10.3390/rs13132428>
 
-Song, C., & Woodcock, C. E. (2003). Monitoring forest succession with multitemporal Landsat images: Factors of uncertainty. IEEE Transactions on Geoscience and Remote Sensing, 41(11), 2557-2567. <https://doi.org/10.1109/tgrs.2003.818367>
+Song, C., & Woodcock, C. E. (2003). *Monitoring forest succession with multitemporal Landsat images: Factors of uncertainty*. IEEE Transactions on Geoscience and Remote Sensing, 41(11), 2557-2567. <https://doi.org/10.1109/tgrs.2003.818367>
 
-Tarantino, C., Forte, L., Blonda, P., Vicario, S., Tomaselli, V., Beierkuhnlein, C., & Adamo, M. (2021). Intra-annual sentinel-2 time-series supporting grassland habitat discrimination. Remote Sensing, 13(2), 277. <https://doi.org/10.3390/rs13020277>
+Tarantino, C., Forte, L., Blonda, P., Vicario, S., Tomaselli, V., Beierkuhnlein, C., & Adamo, M. (2021). *Intra-annual sentinel-2 time-series supporting grassland habitat discrimination*. Remote Sensing, 13(2), 277. <https://doi.org/10.3390/rs13020277>
 
-Vapnik, V. N. (1999). An overview of statistical learning theory. IEEE transactions on neural networks, 10(5), 988-999. <https://doi.org/10.1109/72.788640>
+Vapnik, V. N. (1999). *An overview of statistical learning theory*. IEEE transactions on neural networks, 10(5), 988-999. <https://doi.org/10.1109/72.788640>
 
-Verbesselt, J., Hyndman, R., Newnham, G., & Culvenor, D. (2010). Detecting trend and seasonal changes in satellite image time series. Remote sensing of Environment, 114(1), 106-115. <https://doi.org/10.1016/j.rse.2009.08.014>
+Verbesselt, J., Hyndman, R., Newnham, G., & Culvenor, D. (2010). *Detecting trend and seasonal changes in satellite image time series*. Remote sensing of Environment, 114(1), 106-115. <https://doi.org/10.1016/j.rse.2009.08.014>
 
-Wulder, M. A., Masek, J. G., Cohen, W. B., Loveland, T. R., & Woodcock, C. E. (2012). Opening the archive: How free data has enabled the science and monitoring promise of Landsat. Remote Sensing of Environment, 122, 2-10. <https://doi.org/10.1016/j.rse.2012.01.010>
+Wulder, M. A., Masek, J. G., Cohen, W. B., Loveland, T. R., & Woodcock, C. E. (2012). *Opening the archive: How free data has enabled the science and monitoring promise of Landsat*. Remote Sensing of Environment, 122, 2-10. <https://doi.org/10.1016/j.rse.2012.01.010>
 
-Voidrot, M. F., & Percivall, G. (2020, June). OGC Geospatial Coverages Data Cube Community Practice. In IOP Conference Series: Earth and Environmental Science (Vol. 509, No. 1, p. 012058). IOP Publishing. <https://doi.org/10.1088/1755-1315/509/1/012058>
+Voidrot, M. F., & Percivall, G. (2020, June). *OGC Geospatial Coverages Data Cube Community Practice*. In IOP Conference Series: Earth and Environmental Science (Vol. 509, No. 1, p. 012058). IOP Publishing. <https://doi.org/10.1088/1755-1315/509/1/012058>
 
 ## Next unit
 

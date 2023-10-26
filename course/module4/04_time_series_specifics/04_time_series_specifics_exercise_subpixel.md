@@ -14,9 +14,9 @@ The aim of this exercise is to explore the possibilities of subpixel classificat
 - *Prerequisites*
     - Installed EnMAP-Box plugin for QGIS ([manual](../../software/software_enmap_box.md))  
     By now you should have EnMAP-Box installed on your computer as a QGIS plugin and be familiar with the basic software operations. If not, please refer back to [Exploration of hyperspectral data using EnMAP-Box](../01_spectroscopy_principles/01_spectroscopy_principles_exercise.md).
-    - Downloaded data ([folder - LINK WILL BE ADDED]())  
+    - Downloaded data ([module4/theme4_exercise_subpixel_classification](https://doi.org/10.5281/zenodo.10003574))    
     The dataset consists of:
-        + preprocessed (geometrically and radiometrically corrected) hyperspectral images: BL_hyperspectral_image.dat (data file) and BL_hyperspectral_image.hdr (header file). More information about the acquisition of the data can be found [here - WILL BE ADDED](LINK).
+        + preprocessed (geometrically and radiometrically corrected) hyperspectral images: BL_hyperspectral_image.dat (data file) and BL_hyperspectral_image.hdr (header file). More information about the acquisition of the data can be found [here](../../data_usecases/usecase_grasses_krkonose.md).
         + training polygons for all classes (species): BL_training_polygons.shp (shapefile)
         + pixel purity index image: BL_ppi_image.dat (data file) and BL_ppi_image.hdr (header file):
         + spectral library with semi-automatically pre-extracted endmembers: BL_spectral_library.gpkg (GeoPackage).
