@@ -17,6 +17,12 @@ Each module consists of several themes with a theoretical part, a self-evaluatio
 
 The course is primarily developed for MSc students of geoinformatics and geography who specialize in remote sensing for monitoring Earth surface dynamics and changes. It may also be of interest and use to MSc and PhD students in fields related to environmental studies, ecology, geology, and other potential users dealing with remote sensing applications, such as practitioners of national environmental and conservation agencies.
 
+## Datasets
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10003575.svg)](https://doi.org/10.5281/zenodo.10003575) 
+
+[Datasets](https://doi.org/10.5281/zenodo.10003574) used in the exercises, case studies, and practical tutorials are hosted on Zenodo and can be downloaded separately for each Module.
+
 ## Course website
 
 The course site is hosted on GitHub Pages and can be accessed at [https://3dgeo-heidelberg.github.io/etrainee/](https://3dgeo-heidelberg.github.io/etrainee/). It is automatically built from the source files in this repository (contained in `/course`).

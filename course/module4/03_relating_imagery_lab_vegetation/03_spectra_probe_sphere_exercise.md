@@ -14,7 +14,7 @@ The spectra were collected for homogenous material represented by green colored 
 
 - *Prerequisites*
     - Installed spreadsheet editor (MS Office Excel, LibreOffice Calc or other) or R      
-    - Downloaded data ([module4/theme3_exercise_spectra_comparision]()); based on your preferred working environment, use either the file```Exercise_M4_T3_data.xlsx``` (excel spreadsheet) or ```Exercise_M4_T3_data_CP.txt``` and ```Exercise_M4_T3_data_IS.txt``` (text file)  
+    - Downloaded data ([module4/theme3_exercise_spectra_comparision](https://doi.org/10.5281/zenodo.10003574)); based on your preferred working environment, use either the file```Exercise_M4_T3_data.xlsx``` (excel spreadsheet) or ```Exercise_M4_T3_data_CP.txt``` and ```Exercise_M4_T3_data_IS.txt``` (text file)  
     The dataset consists of:
         + wavelength (column ```Wavelength```)
         + three spectra measured by contact probe (CP) at three different places of the sample (column ```paper_CP_XXXXX```, ```leaf_CP_XXXXX```)

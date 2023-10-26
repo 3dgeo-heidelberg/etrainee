@@ -92,15 +92,11 @@ nav:
         - 'Lesson': 'module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.md'
         - 'Exercise': 'module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing_exercise_geometric.md'
     - 'In situ and laboratory spectroscopy of vegetation':
-        - 'Lesson – Optical properties of vegetation': 'module4/03_relating_imagery_lab_vegetation/03_01_optical_parameters_of_foliage.md'
-        - 'Lesson – Laboratory spectroscopy': 'module4/03_relating_imagery_lab_vegetation/03_02_principles_of_laboratory_spectroscopy.md'
+        - 'Lesson': 'module4/03_relating_imagery_lab_vegetation/03_navig.md'
         - 'Exercise': 'module4/03_relating_imagery_lab_vegetation/03_spectra_probe_sphere_exercise.md'
-        - 'Lesson – Relating imaging and laboratory spectroscopy': 'module4/03_relating_imagery_lab_vegetation/03_03_relating_imagery_lab_vegetation.md'
     - 'Machine learning in imaging spectroscopy':
         - 'Lesson': 'module4/04_time_series_specifics/04_time_series_specifics.md'
-        - 'Exercise – Subpixel': 'module4/04_time_series_specifics/04_time_series_specifics_exercise_subpixel.md'
-        - 'Exercise – Machine Learning': 'module4/04_time_series_specifics/04_time_series_specifics_exercise_ml.ipynb'
-        - 'Exercise – Deep Learning': 'module4/04_time_series_specifics/04_time_series_specifics_exercise_cnn.md'
+        - 'Exercise': 'module4/04_time_series_specifics/04_time_series_specifics_exercise.md'
     - 'Temporal vs. spatial and spectral resolution':
         - 'Lesson': 'module4/05_specific_resolution_contribution/05_specific_resolution_contribution.md'
     - 'Case studies':
@@ -121,3 +117,4 @@ nav:
     - 'Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)' : 'data_usecases/usecase_tundra_karkonosze.md'
     - 'Tundra vegetation monitoring in Krkonoše Mountains': 'data_usecases/usecase_grasses_krkonose.md'
 - 'About the project': 'https://web.natur.cuni.cz/gis/etrainee/'
+- 'Feedback form': 'https://forms.gle/Cz1yxJv2DDNz83j68'

@@ -15,9 +15,9 @@ Orthorectified RGB images collected during the same or different flights can be 
 
 - *Prerequisites*
     - Installed QGIS    
-    - Downloaded data ([module4/theme2_exercise_geometric_correction]())   
+    - Downloaded data ([module4/theme2_exercise_geometric_correction](https://doi.org/10.5281/zenodo.10003574))   
     The dataset consists of:
-        + preprocessed hyperspectral image strips: 20190815_lineX_RGB_trf.tif (image file) and 20190815_lineX_RGB_trf.tfw (georeference file). 
+        + preprocessed hyperspectral image strips with and without a CRS: 20190815_lineX_RGB_trf.tif (image file) and 20190815_lineX_RGB_trf.tfw (georeference file). 
         + check points: CP_GNSS.shp (shapefile) 
         + orthorectified RGB image: 20190814_Ortho_RGB.jpg (image file) and 20190814_Ortho_RGB.jgw (georeference file).  
          
@@ -52,7 +52,7 @@ Load the shapefile `CP_GNSS.shp` containing the positions of the check points. T
 
 Evaluate the relative and absolute accuracy of the hyperspectral image strips. All the necessary tools can be found in the georeferencing app in QGIS “Layer -> Georeferencer”. If you are not familiar with the working environment or need help, have a look at the [documentation](https://docs.qgis.org/3.4/en/docs/user_manual/plugins/core_plugins/plugins_georeferencer.html).  
 
-To compute the absolute accuracy, determine the residuals on the check points, preferably in map units (m). Load the unreferenced hyperspectral image strips in the app, find the checkpoints in the hyperspectral image, and compare their coordinates to the ones defined in the provided shapefile. Each check point is located in at least one image strip. For absolute accuracy, determine the geometrical distortions between overlaying image strips. Find a minimum of four identical points (distinct edge/corner of grass stand, visible hollow or mound, check point) for each strip pair and compute the difference between their coordinates in the first and second image of the pair. Use the columns **Source XY** and **Destination XY** to compute all the differences. Do not use the **Residual** values in the GCP table from the "Georeferencer" app, as they refer to residuals after the transformation!  
+To compute the absolute accuracy, determine the residuals on the check points, preferably in map units (m). Load the hyperspectral image strips for quality assessment in the app, find the checkpoints in the hyperspectral image, and compare their coordinates to the ones defined in the provided shapefile. Each check point is located in at least one image strip. For relative accuracy, determine the geometrical distortions between overlaying image strips. Find a minimum of four identical points (distinct edge/corner of grass stand, visible hollow or mound, check point) for each strip pair and compute the difference between their coordinates in the first and second image of the pair. Use the columns **Source XY** and **Destination XY** to compute all the differences. Do not use the **Residual** values in the GCP table from the "Georeferencer" app, as they refer to residuals after the transformation!  
 <p align="center">
 <img src="media/exercise_geometric/residuals.jpg" title="Example of generated GCP table with source and destination coordinates" alt="Figure 3" width="1602"/>
 </p>
@@ -75,7 +75,7 @@ Evaluate residuals on the check points (absolute accuracy).
 ```
 
 ## 2. Image registration
-Open the orthorectified RGB image `20190814_Ortho_RGB.jpg` covering the whole extent of the hyperspectral image strips. In the georeferencing app in QGIS “Layer -> Georeferencer” load the first image strip. Collect identical points evenly throughout the area, the minimum required number of points is dependent on the selected transformation. Examples of usable identical points can be found in the figure below. Do not use the check points for the image registration, as the accuracy assessment needs to be unbiased. 
+Open the orthorectified RGB image `20190814_Ortho_RGB.jpg` covering the whole extent of the hyperspectral image strips. In the georeferencing app in QGIS “Layer -> Georeferencer” load the first image strip without a CRS (coordinate reference system). Collect identical points evenly throughout the area, the minimum required number of points is dependent on the selected transformation. Examples of usable identical points can be found in the figure below. Do not use the check points for the image registration, as the accuracy assessment needs to be unbiased. 
 <p align="center">
 <img src="media/exercise_geometric/identical_points.jpg" title="Examples of identical points in the RGB image (top) and hyperspectral image (bottom)" alt="Figure 4" width="600"/>
 </p>
@@ -134,7 +134,7 @@ QGIS Project (2023): QGIS Documentation. [docs.qgis.org/3.28/en/docs](https://do
 
 
 ### Exercise solution 
-Example exercise solution will be added.
+Proceed to example solution [Geometric correction - report](solution/02_aerial_acquisition_preprocessing_exercise_geometric_solution.md)
 
 ### Back to theme 
 Proceed by returning to [Aerial/RPAS hyperspectral data acquisition and pre-processing](02_aerial_acquisition_preprocessing.md)

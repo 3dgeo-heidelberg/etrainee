@@ -7,10 +7,28 @@ contributors:
 estimatedTime:
 ---
 
-# Classification of hyperspectral data using CNNs
+# Deep Learning (CNN) classification
 
-The aim of this exercise is to get acquainted with 1D, 2D and 3D Convolutional Neural Networks (CNNs), in order to understand how different network structures extract spectral, spatial and spectro-spatial information and how that influences the resulting classification.
+The aim of this exercise is to get acquainted with Convolutional Neural Networks (CNNs) for classification of hyperspectral imagery. Experiment with 1D, 2D and 3D CNNs in order to understand how different network structures extract spectral, spatial and spectro-spatial information and how that influences the resulting classification.
 
+- *Prerequisities* (These notebooks can be run either online using Google Colab or on your local machine)
+	- A Google account for accessing Google Colab. If running the exercise in Google Colab, please copy the notebooks for indiviudual network architectures to your own Google Drive and follow the exercise, you don't need to download the dataset.
+	
+	or
+	- A Python environment with the necessary libraries ([manual](../../software/software_python.md)). Download the individual notebooks and follow the exercise.
+
+    - Downloaded data ([module4/theme4_exercise_dl_classification]())
+    The dataset consists of:
+        + Hyperspectral RPAS imagery of Luční Hora, Czechia (50.728N, 15.682E) acquired in August of 2020 and resampled to 54 spectral bands with ground sampling distance of 9 cm.
+        + two rasters with reference data (one for training, the other for testing): BL_training_polygons.shp (shapefile)
+        + Pretrained models and corresponding classified rasters: _/sample_results/*_
+         
+- *Tasks*
+    - Preprocess imagery for Machine Learning
+    - Classify the hyperspectral image using SVM or RF
+	- Observe how hyperparameter values alter classification results
+	- Evaluate your results and compare to our pretrained classifiers
+    - *Optional:* Classify a urban scene
 **Tasks:**
 
    - Reading and understanding the code
