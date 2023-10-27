@@ -191,7 +191,7 @@ In case of a lower quality of the GNSS/INS equipment, GCPs are used to improve t
 If the accuracy of the GNSS/INS is low, remaining distortions after direct georeferencing and orthorectification in images collected with a line scanner can be in the level of decimetres or meters (Hruska et al., 2012). Thus, overlapping images do not also fit, as shown in the Figure 12. 
 
 <p align="center">
-<img src="media/Fig12_Geom_cor_Nano.png" title="Geom_cor_nano" alt="Figure 4" width="600"/>
+<img src="media/Fig12_Geom_cor_Nano.jpg" title="Geom_cor_nano" alt="Figure 4" width="600"/>
 </p>
 
 *Figure 12. Geometric correction of an image acquired with a Nano-Hyperspec® line camera mounted on the DJI Matrice 600 Pro. The two overlapping image strips after directs georeferencing and orthorectification (top) and after their rectification into RGB orthoimages acquired with a frame camera Sony A7 ILCE-7 from the same platform (bottom). The correction includes a transformation from the WGS84 (EPSG 4326) coordinate system to the national coordinate system S-JTSK (EPSG 5514). Figure by course authors.*
