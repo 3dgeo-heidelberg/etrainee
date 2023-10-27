@@ -58,14 +58,18 @@ Please cite E-TRAINEE when using it in your teaching or training, and reference 
 
 E-TRAINEE Development Team. E-TRAINEE - E-learning course on Time Series Analysis in Remote Sensing for Understanding Human-Environment Interactions [Computer software]. https://github.com/3dgeo-heidelberg/etrainee
 
+The course has also been showcased in these publications:
+
+
+
 ## License
 Except when explicitly stated otherwise, the course is licensed under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license, associated code is licensed under the [MIT](https://choosealicense.com/licenses/mit/) license.
 
-## Team members
+## Team members (version A)
 The development team has been led by Dr. Markéta Potůčková and it consists of experts from 4 universities:
 
 ### [Charles University, Faculty of Science](https://www.natur.cuni.cz/eng?set_language=en)
-| [Dept. of Applied Geoinformatics and Cartography](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie)  |   |   |
+| [Dept. of Applied Geoinformatics and Cartography](https://www.natur.cuni.cz/geography/department-of-applied-geoinformatics-and-cartography?set_language=en)  |   |   |
 |:---|:---:|:---:|
 | Dr. Markéta Potůčková  | [web](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie/mpot)  | [ORCID](https://orcid.org/0000-0002-8760-790X)  |
 | Dr. Lucie Kupková      | [web](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie/lkupkova)  | [ORCID](https://orcid.org/0000-0002-0270-0516)  |
@@ -105,11 +109,9 @@ The development team has been led by Dr. Markéta Potůčková and it consists o
 The development team has been led by Dr. Markéta Potůčková and it consists of experts from 4 universities:
 
 <details>
-<summary>
-Charles University, Faculty of Science
-</summary>
+<summary>Charles University, Faculty of Science</summary>
 
-| [Dept. of Applied Geoinformatics and Cartography](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie)  |   |   |
+| [Dept. of Applied Geoinformatics and Cartography](https://www.natur.cuni.cz/geography/department-of-applied-geoinformatics-and-cartography?set_language=en)  |   |   |
 |:---|:---:|:---:|
 | Dr. Markéta Potůčková  | [web](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie/mpot)  | [ORCID](https://orcid.org/0000-0002-8760-790X)  |
 | Dr. Lucie Kupková      | [web](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie/lkupkova)  | [ORCID](https://orcid.org/0000-0002-0270-0516)  |
@@ -123,38 +125,29 @@ Charles University, Faculty of Science
 | Dr. Zuzana Lhotáková   |   | [ORCID](https://orcid.org/0000-0003-3060-641X)  |
 | Dr. Lena Hunt          |   | [ORCID](https://orcid.org/0000-0002-7605-1379)  |
 | Dr. Eva Neuwirthová    |   | [ORCID](https://orcid.org/0000-0001-5613-847X)  |
-
 </details>
 
 <details>
-<summary>
-Heidelberg University, Institute of Geography
-</summary>
+<summary>Heidelberg University, Institute of Geography</summary>
 
 | [3D Geospatial Data Processing Group](https://www.geog.uni-heidelberg.de/3dgeo/index_en.html)  |   |   |
 |---|:---:|:---:|
 | Prof. Bernhard Höfle   | [web](https://www.geog.uni-heidelberg.de/gis/hoefle.html)  | [ORCID](https://orcid.org/0000-0001-5849-1461)  |
 | Dr. Katharina Anders   | [web](https://www.geog.uni-heidelberg.de/gis/anders.html)  | [ORCID](https://orcid.org/0000-0001-5698-7041)  |
 | Sina Antonia Zumstein  |   |   |
-
 </details>
 
 <details>
-<summary>
-University of Innsbruck, Institute for Geography
-</summary>
+<summary>University of Innsbruck, Institute for Geography</summary>
 
 | [Remote Sensing & Topographic LiDAR Research Group](https://www.uibk.ac.at/geographie/lidar)  |   |   |
 |---|:---:|:---:|
 | Dr. Martin Rutzinger   | [web](https://www.uibk.ac.at/geographie/personal/rutzinger)  | [ORCID](https://orcid.org/0000-0001-6628-4681)  |
 | Dr. Andreas Mayr       | [web](https://www.uibk.ac.at/geographie/personal/mayr)  | [ORCID](https://orcid.org/0000-0001-8305-4765)  |
-
 </details>
 
 <details>
-<summary>
-University of Warsaw, Faculty of Geography and Regional Studies
-</summary>
+<summary>University of Warsaw, Faculty of Geography and Regional Studies</summary>
 
 | [Dept. of Geoinformatics, Cartography and Remote Sensing](http://geoinformatics.uw.edu.pl/)  |   |   |
 |---|:---:|:---:|
