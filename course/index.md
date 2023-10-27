@@ -41,8 +41,9 @@ studies, ecology, geology, and other potential users dealing with remote sensing
 such as practitioners of national environmental and conservation agencies.
 
 
+[Project partners](https://web.natur.cuni.cz/gis/etrainee/partners.html)
 
-[Project news](http://web.natur.cuni.cz/gis/etrainee/news.html)
+[Project news](https://web.natur.cuni.cz/gis/etrainee/news.html)
 
 <center>
 <img src="assets/img/uni_logos.png" alt="University logo" title="University logo" width="700" style="margin: 40px 0px 50px 0px;">

@@ -11,15 +11,13 @@ This repository hosts the **E-TRAINEE course on Time Series Analysis in Remote S
 
 Each module consists of several themes with a theoretical part, a self-evaluation quiz, as well as practical tutorials and exercises. Moreover, modules 2-4 include two or three case studies with a deeper look into selected research problems. In addition, there is Module 0 summarising the course prerequisites in terms of knowledge in RS, statistics, and programming necessary to follow the course; links to available learning materials are provided there.
 
-**Disclaimer:** This is a pre-release of the course. The course is still under development and revision within the ongoing research project [E-TRAINEE](https://web.natur.cuni.cz/gis/etrainee/). This means that not all contents are completely finished and you may encounter possible improvements or required corrections.
-
 ## Intended audience
 
 The course is primarily developed for MSc students of geoinformatics and geography who specialize in remote sensing for monitoring Earth surface dynamics and changes. It may also be of interest and use to MSc and PhD students in fields related to environmental studies, ecology, geology, and other potential users dealing with remote sensing applications, such as practitioners of national environmental and conservation agencies.
 
 ## Datasets
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10003575.svg)](https://doi.org/10.5281/zenodo.10003575) 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10003574.svg)](https://doi.org/10.5281/zenodo.10003574) 
 
 [Datasets](https://doi.org/10.5281/zenodo.10003574) used in the exercises, case studies, and practical tutorials are hosted on Zenodo and can be downloaded separately for each Module.
 
@@ -50,11 +48,68 @@ The full course website is then generated in a directory called `site`.
 
 ## Acknowledgements
 
-This course was developed in the frame of the strategic partnership project [E-TRAINEE](https://web.natur.cuni.cz/gis/etrainee/index.html) funded by the [Erasmus+ Programme](https://www.erasmusplus.de/) of the European Union (ID 2020-1-CZ01-KA203-078308).
+This course was developed in the frame of the strategic partnership project [E-TRAINEE](https://web.natur.cuni.cz/gis/etrainee/index.html) funded by the [Erasmus+ Programme](https://www.erasmusplus.de/) of the European Union (ID [2020-1-CZ01-KA203-078308](https://erasmus-plus.ec.europa.eu/projects/search/details/2020-1-CZ01-KA203-078308)).
 Acquisition of data for this course was supported by the mini grant "Towards sustainable development of natural environments based on continuous remote sensing monitoring" funded by the [4EU+ European University Alliance](https://4eualliance.eu/).
 
 ## Citation
 Please cite E-TRAINEE when using it in your teaching or training, and reference the appropriate release version. All releases of E-TRAINEE are listed on Zenodo where you will find the citation information including DOI.
 
+E-TRAINEE Development Team. {year} ETRAINEE - E-learning course on Time Series Analysis in Remote Sensing for Understanding Human-Environment Interactions. https://doi.org/10.5281/zenodo.8402924
+
+The development team has also presented the course here:
+
+Potůčková, Albrechtová, Anders, Červená, Dvořák, Gryguc, Höfle, Hunt, Lhotáková, Marcinkowska-Ochtyra, Mayr, Neuwirthová, Ochtyra, Rutzinger, Šedová, Šrollerů, Kupková (2023): E-TRAINEE: Open E-Learning Course on Time Series Analysis in Remote Sensing , Int. Arch. Photogramm. Remote Sens. Spatial Inf. Sci. (in print)
+
 ## License
 Except when explicitly stated otherwise, the course is licensed under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license, associated code is licensed under the [MIT](https://choosealicense.com/licenses/mit/) license.
+
+## Development team members
+The development team has been led by Dr. Markéta Potůčková and it consists of experts from 4 universities:
+
+<details>
+<summary>Charles University, Faculty of Science</summary>
+
+| [Dept. of Applied Geoinformatics and Cartography](https://www.natur.cuni.cz/geography/department-of-applied-geoinformatics-and-cartography?set_language=en)  |   |   |
+|:---|:---:|:---:|
+| Dr. Markéta Potůčková  | [web](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie/mpot)  | [ORCID](https://orcid.org/0000-0002-8760-790X)  |
+| Dr. Lucie Kupková      | [web](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie/lkupkova)  | [ORCID](https://orcid.org/0000-0002-0270-0516)  |
+| Dr. Lucie Červená      | [web](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie/cervl7an)  | [ORCID](https://orcid.org/0000-0001-5246-1106)  |
+| Alex Šrollerů          |   |   |
+| Jakub Dvořák           |   | [ORCID](https://orcid.org/0000-0001-7845-7738)  |
+| Adéla Šedová           |   |   |
+|   |   |   |
+| [**Dept. of Experimental Plant Biology**](https://www.natur.cuni.cz/biology/plant-biology)  |   |   |
+| Prof. Jana Albrechtová | [web](http://kfrserver.natur.cuni.cz/lide/albrecht)  | [ORCID](https://orcid.org/0000-0001-6912-1992) |
+| Dr. Zuzana Lhotáková   |   | [ORCID](https://orcid.org/0000-0003-3060-641X)  |
+| Dr. Lena Hunt          |   | [ORCID](https://orcid.org/0000-0002-7605-1379)  |
+| Dr. Eva Neuwirthová    |   | [ORCID](https://orcid.org/0000-0001-5613-847X)  |
+</details>
+
+<details>
+<summary>Heidelberg University, Institute of Geography</summary>
+
+| [3D Geospatial Data Processing Group](https://www.geog.uni-heidelberg.de/3dgeo/index_en.html)  |   |   |
+|---|:---:|:---:|
+| Prof. Bernhard Höfle   | [web](https://www.geog.uni-heidelberg.de/gis/hoefle.html)  | [ORCID](https://orcid.org/0000-0001-5849-1461)  |
+| Dr. Katharina Anders   | [web](https://www.geog.uni-heidelberg.de/gis/anders.html)  | [ORCID](https://orcid.org/0000-0001-5698-7041)  |
+| Sina Antonia Zumstein  |   |   |
+</details>
+
+<details>
+<summary>University of Innsbruck, Institute for Geography</summary>
+
+| [Remote Sensing & Topographic LiDAR Research Group](https://www.uibk.ac.at/geographie/lidar)  |   |   |
+|---|:---:|:---:|
+| Dr. Martin Rutzinger   | [web](https://www.uibk.ac.at/geographie/personal/rutzinger)  | [ORCID](https://orcid.org/0000-0001-6628-4681)  |
+| Dr. Andreas Mayr       | [web](https://www.uibk.ac.at/geographie/personal/mayr)  | [ORCID](https://orcid.org/0000-0001-8305-4765)  |
+</details>
+
+<details>
+<summary>University of Warsaw, Faculty of Geography and Regional Studies</summary>
+
+| [Dept. of Geoinformatics, Cartography and Remote Sensing](http://geoinformatics.uw.edu.pl/)  |   |   |
+|---|:---:|:---:|
+| Dr. Adriana Marcinkowska-Ochtyra | [web](http://geoinformatics.uw.edu.pl/adriana-marcinkowska-ochtyra)  | [ORCID](https://orcid.org/0000-0002-9080-3899)  |
+| Dr. Adrian Ochtyra               | [web](http://geoinformatics.uw.edu.pl/adrian-ochtyra)  | [ORCID](https://orcid.org/0000-0003-4799-8093)  |
+| Krzysztof Gryguc                 |   | [ORCID](https://orcid.org/0000-0002-8107-6837)  |
+</details>
