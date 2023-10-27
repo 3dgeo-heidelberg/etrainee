@@ -28,10 +28,13 @@ preferred-citation:
   authors:
   - name: E-TRAINEE Development Team
   doi: "10.5281/zenodo.8402924"
+  url: 'https://3dgeo-heidelberg.github.io/etrainee'
+  repository-code: 'https://github.com/3dgeo-heidelberg/etrainee'
   title: >-
     E-TRAINEE - E-learning course on Time Series Analysis in
     Remote Sensing for Understanding Human-Environment
     Interactions
+  license: CC-BY-SA-4.0
 
 references:
   - authors:
