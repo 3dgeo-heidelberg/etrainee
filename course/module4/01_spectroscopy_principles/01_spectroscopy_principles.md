@@ -9,7 +9,6 @@ estimatedTime:
 
 # Principles of imaging and laboratory spectroscopy
 
-**UNDER CONSTRUCTION. COMING SOON.**
 
 ## Prerequisites
 

@@ -7,7 +7,7 @@ contributors:
 estimatedTime: 
 ---
 
-# Aerial/RPAS hyperspectral data acquisition and pre-processing
+# Airborne hyperspectral data acquisition and pre-processing
 
 **UNDER CONSTRUCTION**
 
