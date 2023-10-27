@@ -26,17 +26,23 @@ You can see from Figure 1 that spectra are similar but not the same:
 
 To quantify the differences, the paired t-tests were computed for all the wavelengths and the p-values were saved using script 1. The results can be seen in Figure 2. 
 
-`data=read.delim("Calamagrostis_drone_spectroradiometer_269bands.txt")
+```
+data=read.delim("Calamagrostis_drone_spectroradiometer_269bands.txt")
 fix(data)
 dim(data)
+
 results <- vector()
+
 for (I in 5:273)
 {
 	model<-t.test(data[data$origin=="drone",I],data[data$origin=="spectroradiometer",I],paired=TRUE)
 	out<-capture.output(model);
 	results <- append(results,grep ("p-value", out, value = TRUE) );
 }
-write(results, "ttest_ Calamagrostis.txt") `
+
+write(results, "ttest_ Calamagrostis.txt") 
+
+```
 
 *Script 1: Paired T-test calculation in R*
 
@@ -50,7 +56,7 @@ The null hypothesis of paired t-test says that the reflectance means of both ins
 In the next step we try to answer the second question if the vegetation indices calculated from both datasets are also comparable. We had selected four indices suitable for chlorophyll content estimations: two of them are normalized difference indices (NDVI, NDVI2), one is simple ratio (Carter4) and the last one (TCARI) is more complicated formula with some constants. For formulas and references see *Table 1*.
 
 <p align="center">
-<img src="media/tut_table.PNG" title="P-values of t-test comparing the reflectances from image data and spectroradiometer." alt="Figure 3" width="600"/>
+<img src="media/tut_table1.PNG" title="Formulas for selected vegetation indices." alt="Figure 3" width="600"/>
 </p>
 
 *Table 1: Formulas for selected vegetation indices*
@@ -65,7 +71,7 @@ For all four indices the null hypothesis was not rejected based on the p-values.
 
 
 <p align="center">
-<img src="media/VI.jpg" title="P-values of t-test comparing the reflectances from image data and spectroradiometer." alt="Figure 4" width="600"/>
+<img src="media/VI.jpg" title="Correlations of selected indices calculated from image data and spectroradiometer data." alt="Figure 4" width="600"/>
 </p>
 
 *Figure 3: Correlations of selected indices calculated from image data and spectroradiometer data.*
