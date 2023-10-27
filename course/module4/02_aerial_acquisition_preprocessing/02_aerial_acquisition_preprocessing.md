@@ -52,7 +52,7 @@ Other important parameters are exposure time and frame rate (FPS), i.e., the num
 *Table 2. Example of calculating selected parameters for image acquisition with a Nano-Hyperspec® line sensor*
 
 <p align="center">
-<img src="media/table_2.png" title="Table2" alt="Figure 2" width="600"/>
+<img src="media/table_2.PNG" title="Table2" alt="Figure 2" width="600"/>
 </p>
 
 To cover the whole area of interest with no gaps, the neighbouring strips are flown with a side overlap q of at least 20%-30% of swath S. In the case of frame cameras, a forward overlap p must be also considered (Figure 2). If a photogrammetric processing is included, i.e., image orientation based on aerotriangulation and bundle adjustment (Kraus, 2007), and utilising image matching (Remondino et al., 2014) for derivation of a digital surface model (DSM), overlap values of p = 60% – 80% and q = 30% - 80% are applied. Smaller values hold for aerial acquisitions with a more stable flight control while larger overlaps are used for RPAS missions.
@@ -93,7 +93,7 @@ The ground control points (GCPs) are used for indirect or integrated sensor orie
 To improve the atmospheric correction of the collected data, in-situ spectra of calibration tarps and over selected materials are collected with portable spectroradiometers in the field (Figure 5). Moreover, the solar irradiation can be measured with sunphotometers. How to use these measurements is explained in the section Radiometric correction.
 
 <p align="center">
-<img src="media/Fig5_VLBetc.png" title="Field campaigns" alt="Figure 4" width="600"/>
+<img src="media/Fig5_VLBetc.jpg" title="Field campaigns" alt="Figure 4" width="600"/>
 </p>
 
 *Figure 5. Field campaigns supporting the HS image acquisition - signalised ground control points (left), tarp for radiometric calibration (upper right), measurement of reflectance of selected materials with a portable spectroradiometer for atmospheric correction. Photos by course authors.*
@@ -191,7 +191,7 @@ In case of a lower quality of the GNSS/INS equipment, GCPs are used to improve t
 If the accuracy of the GNSS/INS is low, remaining distortions after direct georeferencing and orthorectification in images collected with a line scanner can be in the level of decimetres or meters (Hruska et al., 2012). Thus, overlapping images do not also fit, as shown in the Figure 12. 
 
 <p align="center">
-<img src="media/Fig10_Geom_cor_nano.png" title="Geom_cor_nano" alt="Figure 4" width="600"/>
+<img src="media/Fig12_Geom_cor_Nano.png" title="Geom_cor_nano" alt="Figure 4" width="600"/>
 </p>
 
 *Figure 12. Geometric correction of an image acquired with a Nano-Hyperspec® line camera mounted on the DJI Matrice 600 Pro. The two overlapping image strips after directs georeferencing and orthorectification (top) and after their rectification into RGB orthoimages acquired with a frame camera Sony A7 ILCE-7 from the same platform (bottom). The correction includes a transformation from the WGS84 (EPSG 4326) coordinate system to the national coordinate system S-JTSK (EPSG 5514). Figure by course authors.*
