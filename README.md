@@ -68,12 +68,35 @@ The development team has been led by Dr. Markéta Potůčková and it consists o
 |---|:---:|:---:|
 | *Dept. of Applied Geoinformatics and Cartography*  | [web](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie)  |   |
 | Dr. Markéta Potůčková  | [web](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie/mpot)  | [ORCID](https://orcid.org/0000-0002-8760-790X)  |
+| Dr. Lucie Kupková      | [web](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie/lkupkova)  | [ORCID](https://orcid.org/0000-0002-0270-0516)  |
+| Dr. Lucie Červená      | [web](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie/cervl7an)  | [ORCID](https://orcid.org/0000-0001-5246-1106)  |
+| Alex Šrollerů          |   |   |
+| Jakub Dvořák           |   | [ORCID](https://orcid.org/0000-0001-7845-7738)  |
+| Adéla Šedová           |   |   |
 |   |   |   |
 | *Dept. of Experimental Plant Biology*  | [web](https://www.natur.cuni.cz/biology/plant-biology)  |   |
 | Prof. Jana Albrechtová | [web](http://kfrserver.natur.cuni.cz/lide/albrecht)  | [ORCID](https://orcid.org/0000-0001-6912-1992) |
 | Dr. Zuzana Lhotáková   |   | [ORCID](https://orcid.org/0000-0003-3060-641X)  |
 | Dr. Lena Hunt          |   | [ORCID](https://orcid.org/0000-0002-7605-1379)  |
 | Dr. Eva Neuwirthová    |   | [ORCID](https://orcid.org/0000-0001-5613-847X)  |
+
+
+| [*Charles University, Faculty of Science*](https://www.natur.cuni.cz/eng?set_language=en)  |   |   |
+|---|:---:|:---:|
+| [*Dept. of Applied Geoinformatics and Cartography*](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie)  |   |   |
+| Dr. Markéta Potůčková  | [web](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie/mpot)  | [ORCID](https://orcid.org/0000-0002-8760-790X)  |
+| Dr. Lucie Kupková      | [web](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie/lkupkova)  | [ORCID](https://orcid.org/0000-0002-0270-0516)  |
+| Dr. Lucie Červená      | [web](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie/cervl7an)  | [ORCID](https://orcid.org/0000-0001-5246-1106)  |
+| Alex Šrollerů          |   |   |
+| Jakub Dvořák           |   | [ORCID](https://orcid.org/0000-0001-7845-7738)  |
+| Adéla Šedová           |   |   |
+|   |   |   |
+| [*Dept. of Experimental Plant Biology*](https://www.natur.cuni.cz/biology/plant-biology)  |   |   |
+| Prof. Jana Albrechtová | [web](http://kfrserver.natur.cuni.cz/lide/albrecht)  | [ORCID](https://orcid.org/0000-0001-6912-1992) |
+| Dr. Zuzana Lhotáková   |   | [ORCID](https://orcid.org/0000-0003-3060-641X)  |
+| Dr. Lena Hunt          |   | [ORCID](https://orcid.org/0000-0002-7605-1379)  |
+| Dr. Eva Neuwirthová    |   | [ORCID](https://orcid.org/0000-0001-5613-847X)  |
+
 
 **Charles University, Faculty of Science**
 
