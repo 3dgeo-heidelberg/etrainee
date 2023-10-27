@@ -66,7 +66,7 @@ The development team has been led by Dr. Markéta Potůčková and it consists o
 
 | [*Charles University, Faculty of Science*](https://www.natur.cuni.cz/eng?set_language=en)  |   |   |
 |---|:---:|:---:|
-| *Dept. of Applied Geoinformatics and Cartography*  | [web](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie)  |   |
+| *Dept. of Applied Geoinformatics and Cartography*  | [web](https://www.natur.cuni.cz/geography/department-of-applied-geoinformatics-and-cartography?set_language=en)  |   |
 | Dr. Markéta Potůčková  | [web](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie/mpot)  | [ORCID](https://orcid.org/0000-0002-8760-790X)  |
 | Dr. Lucie Kupková      | [web](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie/lkupkova)  | [ORCID](https://orcid.org/0000-0002-0270-0516)  |
 | Dr. Lucie Červená      | [web](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie/cervl7an)  | [ORCID](https://orcid.org/0000-0001-5246-1106)  |
@@ -81,7 +81,7 @@ The development team has been led by Dr. Markéta Potůčková and it consists o
 | Dr. Eva Neuwirthová    |   | [ORCID](https://orcid.org/0000-0001-5613-847X)  |
 
 
-| [*Charles University, Faculty of Science*](https://www.natur.cuni.cz/eng?set_language=en)  |   |   |
+| [Charles University, Faculty of Science](https://www.natur.cuni.cz/eng?set_language=en)  |   |   |
 |---|:---:|:---:|
 | [*Dept. of Applied Geoinformatics and Cartography*](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie)  |   |   |
 | Dr. Markéta Potůčková  | [web](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie/mpot)  | [ORCID](https://orcid.org/0000-0002-8760-790X)  |
@@ -97,6 +97,25 @@ The development team has been led by Dr. Markéta Potůčková and it consists o
 | Dr. Lena Hunt          |   | [ORCID](https://orcid.org/0000-0002-7605-1379)  |
 | Dr. Eva Neuwirthová    |   | [ORCID](https://orcid.org/0000-0001-5613-847X)  |
 
+| [Heidelberg University, Institute of Geography](https://www.geog.uni-heidelberg.de/index_en.html)  |   |   |
+|---|:---:|:---:|
+| [*3D Geospatial Data Processing Group*](https://www.geog.uni-heidelberg.de/3dgeo/index_en.html)  |   |   |
+| Prof. Bernhard Höfle   | [web](https://www.geog.uni-heidelberg.de/gis/hoefle.html)  | [ORCID](https://orcid.org/0000-0001-5849-1461)  |
+| Dr. Katharina Anders   | [web](https://www.geog.uni-heidelberg.de/gis/anders.html)  | [ORCID](https://orcid.org/0000-0001-5698-7041)  |
+| Sina Antonia Zumstein  |   |   |
+
+| [University of Innsbruck, Institute for Geography](https://www.uibk.ac.at/geographie/)  |   |   |
+|---|:---:|:---:|
+| [*Remote Sensing & Topographic LiDAR Research Group*](https://www.uibk.ac.at/geographie/lidar)  |   |   |
+| Dr. Martin Rutzinger   | [web](https://www.uibk.ac.at/geographie/personal/rutzinger)  | [ORCID](https://orcid.org/0000-0001-6628-4681)  |
+| Dr. Andreas Mayr       | [web](https://www.uibk.ac.at/geographie/personal/mayr)  | [ORCID](https://orcid.org/0000-0001-8305-4765)  |
+
+| [University of Warsaw, Faculty of Geography and Regional Studies](http://wgsr.uw.edu.pl/wgsr/index.php/en/home-page-2)  |   |   |
+|---|:---:|:---:|
+| [*Department of Geoinformatics, Cartography and Remote Sensing*](http://geoinformatics.uw.edu.pl/)  |   |   |
+| Dr. Adriana Marcinkowska-Ochtyra | [web](http://geoinformatics.uw.edu.pl/adriana-marcinkowska-ochtyra)  | [ORCID](https://orcid.org/0000-0002-9080-3899)  |
+| Dr. Adrian Ochtyra               | [web](http://geoinformatics.uw.edu.pl/adrian-ochtyra)  | [ORCID](https://orcid.org/0000-0003-4799-8093)  |
+| Krzysztof Gryguc                 |   | [ORCID](https://orcid.org/0000-0002-8107-6837)  |
 
 **Charles University, Faculty of Science**
 
