@@ -65,7 +65,7 @@ The course has also been showcased in these publications:
 ## License
 Except when explicitly stated otherwise, the course is licensed under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license, associated code is licensed under the [MIT](https://choosealicense.com/licenses/mit/) license.
 
-## Team members (version A)
+## Development team members (version A)
 The development team has been led by Dr. Markéta Potůčková and it consists of experts from 4 universities:
 
 ### [Charles University, Faculty of Science](https://www.natur.cuni.cz/eng?set_language=en)
@@ -105,7 +105,7 @@ The development team has been led by Dr. Markéta Potůčková and it consists o
 | Krzysztof Gryguc                 |   | [ORCID](https://orcid.org/0000-0002-8107-6837)  |
 
 
-## Team members (version B)
+## Development team members (version B)
 The development team has been led by Dr. Markéta Potůčková and it consists of experts from 4 universities:
 
 <details>
