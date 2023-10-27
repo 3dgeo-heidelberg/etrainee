@@ -89,14 +89,12 @@ The development team has been led by Dr. Markéta Potůčková and it consists o
 * Dr. Lena Hunt
 * Dr. Eva Neuwirthová
 
-<div style="width: 30%">
 | [*Dept. of Experimental Plant Biology*](https://www.natur.cuni.cz/biology/plant-biology)  |   |   |
 |---|:---:|:---:|
 | Prof. Jana Albrechtová | [web](http://kfrserver.natur.cuni.cz/lide/albrecht)  | [ORCID](https://orcid.org/0000-0001-6912-1992) |
 | Dr. Zuzana Lhotáková   |   | [ORCID](https://orcid.org/0000-0003-3060-641X)  |
 | Dr. Lena Hunt          |   | [ORCID](https://orcid.org/0000-0002-7605-1379)  |
 | Dr. Eva Neuwirthová    |   | [ORCID](https://orcid.org/0000-0001-5613-847X)  |
-</div>
 
 **[Heidelberg University, Institute of Geography](https://www.geog.uni-heidelberg.de/index_en.html)**
 
