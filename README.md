@@ -56,5 +56,55 @@ Acquisition of data for this course was supported by the mini grant "Towards sus
 ## Citation
 Please cite E-TRAINEE when using it in your teaching or training, and reference the appropriate release version. All releases of E-TRAINEE are listed on Zenodo where you will find the citation information including DOI.
 
+E-TRAINEE Development Team. E-TRAINEE - E-learning course on Time Series Analysis in Remote Sensing for Understanding Human-Environment Interactions [Computer software]. https://github.com/3dgeo-heidelberg/etrainee
+
 ## License
 Except when explicitly stated otherwise, the course is licensed under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license, associated code is licensed under the [MIT](https://choosealicense.com/licenses/mit/) license.
+
+## Team members
+The development team has been led by Dr. Markéta Potůčková and it consists of experts from 4 universities:
+
+**Charles University, Faculty of Science**
+
+*Dept. of Applied Geoinformatics and Cartography*
+
+* Dr. Markéta Potůčková
+* Dr. Lucie Kupková
+* Dr. Lucie Červená
+* Alex Šrollerů, Jakub Dvořák, Adéla Šedová
+
+*Dept. of Experimental Plant Biology*
+
+|   |   |   |   |   |
+|---|:---:|:---:|---|---|
+| Prof. Jana Albrechtová | [web](http://kfrserver.natur.cuni.cz/lide/albrecht)  | [ORCID](https://orcid.org/0000-0001-6912-1992) |   |   |
+| Dr. Zuzana Lhotáková   |   | [ORCID](https://orcid.org/0000-0003-3060-641X)  |   |   |
+| Dr. Lena Hunt          |   | [ORCID](https://orcid.org/0000-0002-7605-1379)  |   |   |
+| Dr. Eva Neuwirthová    |   | [ORCID](https://orcid.org/0000-0001-5613-847X)  |   |   |
+
+*Dept. of Experimental Plant Biology*
+
+* Prof. Jana Albrechtová
+* Dr. Zuzana Lhotáková
+* Dr. Lena Hunt
+* Dr. Eva Neuwirthová
+
+**[Heidelberg University, Institute of Geography](https://www.geog.uni-heidelberg.de/index_en.html)**
+
+*[3D Geospatial Data Processing Group](https://www.geog.uni-heidelberg.de/3dgeo/index_en.html)*
+
+* [Prof. Bernhard Höfle](https://www.geog.uni-heidelberg.de/gis/hoefle.html)
+
+<table>
+  <tr>
+	<th>**[Heidelberg University, Institute of Geography](https://www.geog.uni-heidelberg.de/index_en.html)**</th>
+  </tr>
+  <tr>
+	<th>*[3D Geospatial Data Processing Group](https://www.geog.uni-heidelberg.de/3dgeo/index_en.html)*</th>
+  </tr>
+  <tr>
+	<th>Prof. Bernhard Höfle</th>
+	<th>[web](https://www.geog.uni-heidelberg.de/gis/hoefle.html)</th>
+	<th>[ORCID](https://orcid.org/0000-0001-5849-1461)</th>
+  </tr>
+</table>
