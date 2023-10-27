@@ -64,6 +64,17 @@ Except when explicitly stated otherwise, the course is licensed under the [CC BY
 ## Team members
 The development team has been led by Dr. Markéta Potůčková and it consists of experts from 4 universities:
 
+| [*Charles University, Faculty of Science*](https://www.natur.cuni.cz/eng?set_language=en)  |   |   |
+|---|:---:|:---:|
+| *Dept. of Applied Geoinformatics and Cartography*  | [web](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie)  |   |
+| Dr. Markéta Potůčková  | [web](https://www.natur.cuni.cz/geografie/geoinformatika-kartografie/mpot)  | [ORCID](https://orcid.org/0000-0002-8760-790X)  |
+|   |   |   |
+| *Dept. of Experimental Plant Biology*  | [web](https://www.natur.cuni.cz/biology/plant-biology)  |   |
+| Prof. Jana Albrechtová | [web](http://kfrserver.natur.cuni.cz/lide/albrecht)  | [ORCID](https://orcid.org/0000-0001-6912-1992) |
+| Dr. Zuzana Lhotáková   |   | [ORCID](https://orcid.org/0000-0003-3060-641X)  |
+| Dr. Lena Hunt          |   | [ORCID](https://orcid.org/0000-0002-7605-1379)  |
+| Dr. Eva Neuwirthová    |   | [ORCID](https://orcid.org/0000-0001-5613-847X)  |
+
 **Charles University, Faculty of Science**
 
 *Dept. of Applied Geoinformatics and Cartography*
@@ -88,6 +99,7 @@ The development team has been led by Dr. Markéta Potůčková and it consists o
 * Dr. Zuzana Lhotáková
 * Dr. Lena Hunt
 * Dr. Eva Neuwirthová
+
 
 | [*Dept. of Experimental Plant Biology*](https://www.natur.cuni.cz/biology/plant-biology)  |   |   |
 |---|:---:|:---:|
