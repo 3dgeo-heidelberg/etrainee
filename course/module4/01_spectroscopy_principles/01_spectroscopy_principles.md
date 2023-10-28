@@ -44,7 +44,7 @@ Please proceed to the exercise: [Exploration of hyperspectral data using EnMAP-B
 
 ### Next unit
 
-Proceed with [Aerial/RPAS hyperspectral data acquisition and pre-processing](../02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.md)
+Proceed with [Airborne hyperspectral data acquisition and pre-processing](../02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.md)
 
 
 ## References
