@@ -111,11 +111,12 @@ nav:
     - 'R': 'software/software_r_language.md'
     - 'Google Earth Engine': 'software/software_gee.md'
 - 'Use Cases and Data':
-    - 'Download data': 'https://doi.org/10.5281/zenodo.10003574'
+    - 'Data download': 'https://doi.org/10.5281/zenodo.10003574'
     - 'Multitemporal 3D point clouds of an active rock glacier' : 'data_usecases/usecase_rockglacier_ahk.md'
     - '4D point clouds of a sandy beach' : 'data_usecases/usecase_beach_kijkduin.md'
     - 'Vegetation disturbance detection in Polish-Slovak Tatra Mountains' : 'data_usecases/usecase_forests_tatras.md'
     - 'Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)' : 'data_usecases/usecase_tundra_karkonosze.md'
     - 'Tundra vegetation monitoring in Krkonoše Mountains': 'data_usecases/usecase_grasses_krkonose.md'
+    - 'Forest disturbances in Ore Mountains (Czechia)': 'data_usecases/usecase_ore_mts_disturbance.md'
 - 'About the project': 'https://web.natur.cuni.cz/gis/etrainee/'
 - 'Feedback form': 'https://forms.gle/Cz1yxJv2DDNz83j68'
