@@ -9,8 +9,6 @@ estimatedTime: 0.5 hrs
 
 # Airborne Imaging Spectroscopy Time Series Analysis 
 
-**MODULE 4 IS UNDER DEVELOPMENT. THANK YOU FOR YOUR PATIENCE.**
-
 Imaging spectroscopy enables detailed studies of land surface based on its optical properties
 acquired in many, usually a few hundred, narrow spectral bands. Resulting hyperspectral imagery
 collected over a selected area and time span can be used, e.g., for studying the responses of vegetation to
@@ -34,7 +32,7 @@ measurements from airborne or satellite sensors. In this module, you will learn 
 The module is structured into the following themes:
 
 * [Principles of imaging and laboratory spectroscopy](01_spectroscopy_principles/01_spectroscopy_principles.md)
-* [Aerial/RPAS hyperspectral data acquisition and pre-processing](02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.md)
+* [Airborne hyperspectral data acquisition and pre-processing](02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.md)
 * [In situ and laboratory spectroscopy of vegetation](03_relating_imagery_lab_vegetation/03_03_relating_imagery_lab_vegetation.md)
 * [Machine learning in imaging spectroscopy](04_time_series_specifics/04_time_series_specifics.md)
 * [Temporal vs. spatial and spectral resolution](05_specific_resolution_contribution/05_specific_resolution_contribution.md)
@@ -64,7 +62,7 @@ For this module, you will need the software listed below. Follow the links to th
 
 ### Use Cases and Data
 
-In the research-oriented case studies, this module uses [LINK WILL BE ADDED]().
+In the research-oriented case studies, this module uses the sataset [Tundra vegetation monitoring in Krkonoše Mountains](../data_usecases/usecase_grasses_krkonose.md).
 
 
 ### Start the module
