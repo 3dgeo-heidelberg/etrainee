@@ -15,7 +15,7 @@ def _create_colorlist_classnames(arr=None, ds_name='pavia_centre'):
 		class_names = ('No Data', 'Water', 'Trees', 'Meadows', 'Self-Blocking Bricks',
 			'Bare Soil', 'Asphalt', 'Bitumen', 'Tiles', 'Shadows')
 
-	elif ds_name == 'krkonose':
+	elif ds_name == 'lucni_hora':
 		color_list = ('white', 'red', 'green', 'yellow', 'orange', 'purple',
             'blue', 'cyan', 'black', 'grey')
 		class_names = ('No Data', 'Metlička Křivolaká',
@@ -23,9 +23,16 @@ def _create_colorlist_classnames(arr=None, ds_name='pavia_centre'):
             'brusnice borůvková', 'metlice trsnatá',
             'borovice kleč', 'smilka tuhá', 'kamenná moře bez vegetace',
             'vřes obecný', 'kameny, půda, mechy a vegetace')
+
+	elif ds_name == 'bila_louka':
+		color_list = ('white', 'red', 'green', 'yellow',
+                      'orange', 'purple', 'blue', 'grey')
+		class_names = ('No Data', 'afs', 'cv', 'cxbig',
+                       'desch', 'mol', 'nard', 'smrk')
+
 	else:
 		print('Incorrect dataset name for creating a plot. Cannot create a colormap and a list of class names.')
-		print('Valid dataset names are "krkonose" or "pavia_centre".')
+		print('Valid dataset names are "lucni_hora", "bila_louka" or "pavia_centre".')
 
 	if type(arr) is np.ndarray:
 		arr_min, arr_max = np.min(arr), np.max(arr)
