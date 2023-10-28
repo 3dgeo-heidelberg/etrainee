@@ -13,7 +13,7 @@ output:
 Case study: Effects of air pollution – forest disturbance in the Ore Mountains (Czechia)
 ================
 
-The aim of this case study is to present a methodology for analysing forest changes based on 40-year time series of Landsat imagery using two spectral indices – Integrated Forest Score (IFZ, [Huang et al., 2010](https://doi.org/10.1016/j.rse.2009.08.017)) and Disturbance Index (DI, [Healey et al., 2005](https://doi.org/10.1016/j.rse.2005.05.009), [Griffiths et al., 2014](https://doi.org/10.1016/j.rse.2013.04.022)). The methodology is implemented as an online Google Earth Engine (GEE) application. The area of interest (AOI) was set to the Ore Mountains (Czechia). Both indices were also explained in the [Theme 5](https://3dgeo-heidelberg.github.io/etrainee/module2/08_cs_disturbance_detection/08_cs_disturbance_detection.html) of this Module.
+The aim of this case study is to present a methodology for analysing forest changes based on the 40-year time series of Landsat imagery using two spectral indices – Integrated Forest Score (IFZ, [Huang et al., 2010](https://doi.org/10.1016/j.rse.2009.08.017)) and Disturbance Index (DI, [Healey et al., 2005](https://doi.org/10.1016/j.rse.2005.05.009), [Griffiths et al., 2014](https://doi.org/10.1016/j.rse.2013.04.022)). The methodology is implemented as an online Google Earth Engine (GEE) application. The area of interest (AOI) was set to the Ore Mountains (Czechia). Both indices were also explained in the [Theme 5](https://3dgeo-heidelberg.github.io/etrainee/module2/08_cs_disturbance_detection/08_cs_disturbance_detection.html) of this Module.
 
 The case study is currently available as a pdf document.
 
