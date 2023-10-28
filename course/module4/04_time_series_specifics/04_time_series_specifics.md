@@ -28,7 +28,7 @@ After finishing this theme, you will understand the principles of HS data classi
 
 ## Exercise
 
-A set of classification algoritms is provided. While the algorithms based on reference spectra (linear unmixing, SAm, SID) are suitable for single date datasets and multitemporal analysis must be carried out on the classification results, the multitemporal datasets can be an input to present methods based on training samples (RF, SVM, CNN).
+A set of classification algoritms is provided. While the algorithms based on reference spectra (linear unmixing, SAM, SID) are suitable for single date datasets and multitemporal analysis must be carried out on the classification results, the multitemporal datasets can be an input to present methods based on training samples (RF, SVM, CNN).
 
 Proceed to the exercise: [Machine learning classification](04_time_series_specifics_exercise.md).
 
