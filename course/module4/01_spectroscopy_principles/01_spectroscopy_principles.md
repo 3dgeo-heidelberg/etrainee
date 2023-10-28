@@ -9,53 +9,24 @@ estimatedTime:
 
 # Principles of imaging and laboratory spectroscopy
 
-
-## Prerequisites
-
+Imaging and laboratory spectroscopy is a dynamic discipline that allows monitoring the properties of the Earth's surface (and the surfaces of other bodies in the Solar System) in high detail. It has a wide range of applications e.g., in geology and paedology (e.g., rock and soil composition), plant biology and ecology (e.g., physiological status and stress of vegetation), hydrology, or waste management.
 
 ## Objectives
 
+In this theme, you will learn about 
+* fundamentals of imaging and laboratory spectroscopy,
+* hyperspectral (HS) cameras and spectroradiometers,
+* interpretation of a hyperspectral data cube,
+* spectral libraries,
+* examples of imaging and laboratory spectroscopy applications in environmental monitoring.
 
-## Spectroscopy fundamentals
+The theme ends with a **[self-evaluation quiz](#self-evaluation-quiz)**, an **[exercise](#exercise)**, and a list of **[references](#references)**.
 
-Spectroscopy is the study of the interaction between matter and electromagnetic radiation
-as a function of the wavelength or frequency of the radiation… analysis of measured
-reflected, transmitted or absorbed light as a function of wavelength.
+In the practical exercise you will explore spectra of selected land cover classes collected with an RPAS hyperspectral camera in the EnMapBox software.
 
+After finishing this theme, you will be able to assess advantages and drawbacks of using hyperspectral imaging in comparison to multispectral observations and how field and laboratory spectroscopy supports the aerial/RPAS campaigns.
 
-
-### Spectral signature
-
-Spectral signature is the variation of reflectance or emittance of a material with respect
-to wavelengths (i.e., reflectance/emittance as a function of wavelength).
-
-
-
-
-## Hyperspectral imaging
-
-Hyperspectral imaging, like other spectral imaging, collects and processes information
-from across the electromagnetic spectrum. While the human eye sees colors of visible light,
-hyperspectral imaging divides the spectrum intu many bands with fine wavelength resolution
-and cover a wide range of wavelengths. Hyperspectral imaging also measures continuous
-spectral bands, as opposed to multiband imaging which measures spaced spectral bands.
-
-### Hyperspectral cube
-
-
-### Difference between multispectral and hyperspectral data
-
-
-## Hyperspectral data acquisition
-
-
-### Image spectroscopy systems
-
-
-### Laboratory spectroscopy systems
-
-
-## Spectral libraries
+The content of the lesson is curently available as a pdf file.
 
 
 ## Self-evaluation quiz
