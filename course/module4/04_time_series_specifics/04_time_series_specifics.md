@@ -9,54 +9,28 @@ estimatedTime:
 
 # Machine learning in imaging spectroscopy
 
-**UNDER CONSTRUCTION. COMING SOON.**
-
+Image classification is one of basic processing steps in remote sensing aiming at the retrieval of thematic information (e.g., land cover types, vegetation species) from imagery. General introduction to image classification was given in Module 1 - [Time series analysis based on classification](../module1/03_time_series_analysis_based_on_classification/03_time_series_analysis_based_on_classification.md) and Module 2 - [Multitemporal classification](../module2/04_multitemporal_classification/04_multitemporal_classification.md). In this theme these concepts will be extended to a linear unmixing model basically allowing for a single-date classification with subpixel accuracy, spectral angle mapper (SAM), spectral feature fitting (SFF), and a convolutional neural network (CNN) model to classify mono- or multitemporal hyperspectral (HS) imagery.  
 
 ## Objectives
 
-In this theme, you will learn about:
+The objective of this theme is to learn about:
+*	examples of classification methods suitable for HS imagery, namely linear spectral unmixing, SAM, and SID,
+*	definition of spectral endmembers,
+*	examples of CNN using different features for classification of HS imagery,
+*	using the classification methods in multitemporal approach,
+*	training and validation data distribution and accuracy assessment.
 
-* spectral endmembers
-* spectral mixtures, pixel purity indices
-* classification methods suitable for hyperspectral imagery (SAM, SVM, SFF, spectral unmixing, CNN, etc.)
-* monotemporal vs. multitemporal classification – multitemporal composite (multiseasonal, interannual)
-* different number/combinations of seasonal images
-* training data and its use for multitemporal classification (number and spatial distribution of training data, combination of training data from different dates/years)
-* methods of classification results validation
-* definition of change, change vs. error
+The theme ends with a self-evaluation quiz, a set of exercises, and a list of references.
 
-After finishing this theme you will be able to:
+In the practical exercise you will use linear spectral unmixing, CNN, and optionally also earlier learned random forest and support vector machine classifiers on an example of HS data collected at the Bílá louka and Luční hora plots of the Krkonoše Mountains National Park study site from an RPAS platform.
 
-* Classify multitemporal data using different machine learning methods in R or Python.
-
-
-## Methods
-
-
-
-## Examples
-
-
+After finishing this theme, you will understand the principles of HS data classification and you will be able implement them in Python, R, or EnMapBox.
 
 ## Exercise
 
-### Subpixel classification
+A set of classification algoritms is provided. While the algorithms based on reference spectra (linear unmixing, SAm, SID) are suitable for single date datasets and multitemporal analysis must be carried out on the classification results, the multitemporal datasets can be an input to present methods based on training samples (RF, SVM, CNN).
 
-The aim of this exercise is to explore the possibilities of subpixel classification, namely the different methods of endmember collection, regression-based spectral unmixing, and evaluation of the resulting species maps.
-
-Please proceed to the exercise: [Subpixel classification](04_time_series_specifics_exercise_subpixel.md).
-
-### Machine Learning classification
-
-The aim of this exercise is to classify a hyperspectral image using two machine learning classifiers, Support Vector Machine (SVM) and Random Forest (RF). Then you will comapre the classifiers and observe how changing hyperparameter values alters the result.
-
-Please proceed to the exercise: [Machine Learning classification](04_time_series_specifics_exercise_ml.ipynb).
-
-### Convolutional Neural Network (CNN) classification
-
-The aim of this exercise is to get acquainted with 1D, 2D and 3D Convolutional Neural Networks, in order to understand how different network structures extract spectral, spatial and spectro-spatial information and how that influences the resulting classification.
-
-Please proceed to the exercise: [CNN classification](04_time_series_specifics_exercise_cnn.md).
+Proceed to the exercise: [Machine learning classification](04_time_series_specifics_exercise.md).
 
 
 ### Next unit
