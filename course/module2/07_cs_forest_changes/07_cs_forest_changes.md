@@ -29,7 +29,7 @@ The application is implemented in GEE and can be accessed from [this link](https
 <i>The GEE application Forest disturbance in Ore Mountains. Figure by course authors.</i>
 </center>
 
-The methodology consists of several steps depicted in the chart below and commented in the following text. The developed [GEE script](https://code.earthengine.google.com/92bbb771481349ff14402f01374963c5) can be used for other areas with similar land cover and forest composition. The respective parts of the script that need to be altered for another AOI are marked in the following text.
+The methodology consists of several steps depicted in the chart below and commented in the following text. The developed [GEE script](https://code.earthengine.google.com/a50c21c9513e7202f22a025b82d8adff) can be used for other areas with similar land cover and forest composition. The respective parts of the script that need to be altered for another AOI are marked in the following text.
 
 <center>
 <img src="media/img2.png" title="General workflow applied in the GEE application Forest disturbance in Ore Mountains." alt="General workflow applied in the GEE application Forest disturbance in Ore Mountains." width="600"/>
