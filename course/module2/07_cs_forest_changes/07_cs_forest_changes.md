@@ -18,7 +18,7 @@ The aim of this case study is to present a methodology for analysing forest chan
 ## Study site and data
 First, get familiar with the use case [Forest disturbances in Ore Mountains](../../data_usecases/usecase_ore_mts_disturbance.md) and read the paper accompanying the use case and case study:
 
-*Kupková, L., Potůčková, M., Lhotáková, Z., Albrechtová, J. (2018). Forest cover and disturbance changes, and their driving forces: A case study in the Ore Mountains, Czechia, heavily affected by anthropogenic acidic pollution in the second half of the 20th century. Environmental Research Letters, 13(9), 095008. [https://iopscience.iop.org/article/10.1088/1748-9326/aadd2c]()*
+*Kupková, L., Potůčková, M., Lhotáková, Z., Albrechtová, J. (2018). Forest cover and disturbance changes, and their driving forces: A case study in the Ore Mountains, Czechia, heavily affected by anthropogenic acidic pollution in the second half of the 20th century. Environmental Research Letters, 13(9), 095008. [https://iopscience.iop.org/article/10.1088/1748-9326/aadd2c](https://iopscience.iop.org/article/10.1088/1748-9326/aadd2cs)*
 
 ## Implementation workflow
 
@@ -26,6 +26,7 @@ The application is implemented in GEE and can be accessed from [this link](https
 
 <center>
 <img src="media/img1.png" title="The GEE application Forest disturbance in Ore Mountains." alt="The GEE application Forest disturbance in Ore Mountains." width="600"/>
+
 <i>The GEE application Forest disturbance in Ore Mountains. Figure by course authors.</i>
 </center>
 
@@ -33,6 +34,7 @@ The methodology consists of several steps depicted in the chart below and commen
 
 <center>
 <img src="media/img2.png" title="General workflow applied in the GEE application Forest disturbance in Ore Mountains." alt="General workflow applied in the GEE application Forest disturbance in Ore Mountains." width="600"/>
+
 <i>General workflow applied in the GEE application [Forest disturbance in Ore Mountains](https://dvorakjakub.users.earthengine.app/view/etrainee-oremts-dev). Figure by course authors.</i>
 </center>
 
@@ -70,6 +72,7 @@ The Landsat Collection 2 images contain a [Surface Reflectance Cloud Quality Ass
 
 <center>
 <img src="media/img3.png" title="Landsat Collection 2 Pixel Quality Assessment Bit Index." alt="Landsat Collection 2 Pixel Quality Assessment Bit Index." width="600"/>
+
 <i>Landsat Collection 2 Pixel Quality Assessment Bit Index. Source:  [U.S. Geological Survey](https://www.usgs.gov/media/images/landsat-collection-2-pixel-quality-assessment-bit-index) / [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits)</i>
 </center>
 
@@ -193,18 +196,20 @@ The application provides tools for displaying IFZ and DI in a selected year over
 
 There is a possibility to display a chart of IFZ and Di values over the whole time span (1984 – 2023) for preselected points or points defined by a user in a map. The preselected points correspond to areas with a stable forest and areas with forest disturbances. The charts can be enlarged and saved in svg or png formats and IFZ and DI values can be exported as csv files and processed further in R, Python, Excel or similar software tools.
 
-Following Kupková et al., 2018, based on analysis of the IFZ time series areas of stable forest, areas of deforestation, afforestation, and combination of both can be defined. The stable forest is defined for pixels with IFZ < T~IFZ~. Huang et al. (2010) set the T~IFZ~ = 3. In our AOI, stands of mainly mature conifers using this threshold. Based on IFZ values from 1990, 2000, and 2006 under the forest mask derived from corresponding Corine Land Cover (CLC) databases using deciduous (code 311), coniferous (312), mixed (313) and transitional (324) forest areas, setting a higher threshold T~IFZ~ = 5 is justifiable to discriminate all forest classes. In Kupková et al., 2018 even a higher value T~IFZ~ = 8 by adding a standard deviation σ~IFZ~ = 3. The T~IFZ~ values shall be checked and adjusted according to the forest characteristics at the AOI.
+Following Kupková et al., 2018, based on analysis of the IFZ time series areas of stable forest, areas of deforestation, afforestation, and combination of both can be defined. The stable forest is defined for pixels with IFZ < T<sub>IFZ</sub>. Huang et al. (2010) set the T<sub>IFZ</sub> = 3. In our AOI, stands of mainly mature conifers using this threshold. Based on IFZ values from 1990, 2000, and 2006 under the forest mask derived from corresponding Corine Land Cover (CLC) databases using deciduous (code 311), coniferous (312), mixed (313) and transitional (324) forest areas, setting a higher threshold T<sub>IFZ</sub> = 5 is justifiable to discriminate all forest classes. In Kupková et al., 2018 even a higher value T<sub>IFZ</sub> = 8 by adding a standard deviation σ<sub>IFZ</sub> = 3. The T<sub>IFZ</sub> values shall be checked and adjusted according to the forest characteristics at the AOI.
 
 <center>
-<img src="media/img4.png" title="Area of stable forest with IFZ < 3." alt="Area of stable forest with IFZ < 3." width="600"/>
-<img src="media/img5.png" title="Deforestation followed by afforestation." alt="Deforestation followed by afforestation." width="600"/>
-<i>Application of IFZ for evaluation of forest change. The upper charts show area of a stable forest with IFZ<3 in the whole time span; notice an outlier value in the year 1985. The lower chart depicts forest changes from stable forest between 1984 and 1995 with IFZ<3, through its disturbance between 1996 to 2012 with IFZ > 3, to forest recovery starting from 2013. The change is considered if IFZ goes over the threshold (in this case TIFZ = 3) for a period longer than 3 years to avoid variations in surface reflectance time series due to imperfections in atmospheric correction. Figure by course authors.</i>
+<img src="media/img4.png" title="Area of stable forest" alt="Area of stable forest" width="600"/>
+<img src="media/img5.png" title="Deforestation followed by afforestation" alt="Deforestation followed by afforestation" width="600"/>
+
+<i>Application of IFZ for evaluation of forest change. The upper charts show area of a stable forest with IFZ < 3 in the whole time span; notice an outlier value in the year 1985. The lower chart depicts forest changes from stable forest between 1984 and 1995 with IFZ<3, through its disturbance between 1996 to 2012 with IFZ > 3, to forest recovery starting from 2013. The change is considered if IFZ goes over the threshold (in this case TIFZ = 3) for a period longer than 3 years to avoid variations in surface reflectance time series due to imperfections in atmospheric correction. Figure by course authors.</i>
 </center>
 
 The DI reacts on the fact that that recently cleared or declining forest exhibits high brightness and low greenness and wetness values in relation to undisturbed or recovering forest. A linear trend (TDI) can be calculated from the DI time series to discriminate areas where minimal change happened (TDI close to 0), where the forest condition improved in general (TDI < 0), and where it got worse (TDI > 0). 
 
 <center>
 <img src="media/img6.png" title="Example of area of a minimal change (stable forest) and improved forest condition (afforestation)." alt="Example of area of a minimal change (stable forest) and improved forest condition (afforestation)." width="600"/>
+
 <i>Example of area of a minimal change (stable forest) and improved forest condition (afforestation). Figure by course authors.</i>
 </center>
 
@@ -212,14 +217,21 @@ The DI reacts on the fact that that recently cleared or declining forest exhibit
 The forest changes can be evaluated based on the present methodology. The developed GEE script includes creating a time series of Landsat cloud free image composites using the shortest time distance to the selected DOY. Calculation of IFZ and DI adjusted for the area of the Ore Mountains is included. For use in other areas, the values of mean and standard deviation tasselled cap components and surface reflectance in the infrared bands, respectively, over forest areas shall be checked and possibly altered. Also, adjustment of parameters for the tasselled cap transformation to respect the surface reflectance and various sensors shall be considered. Despite to some simplifications, the method proved to have valuable results for assessment of forest condition and its development in time as showed in the study Kupková et al., 2018. In the mentioned study, all calculations were done in the desktop solutions, Landsat images were downloaded from the USGS archive. Thus, only one image with the lowest cloud cover was used per each year. Due to cloud cover, some years were excluded in the study. The provided cloud solution overcomes this problem, it is much more flexible and prepares datasets for further automated processing (image layers with IFZ and DI, csv files for selected pixels). The derived dates of forest changes can be correlated with other datasets on air pollution, windstorms, clearcuts, new planting etc. to develop scenarios for sustainable forest management and future forest development. 
 
 ## References
-Crist, E. P., Cicone, R. C. (1984). A physically-based transformation of Thematic Mapper data---The TM Tasseled Cap. IEEE Transactions on Geoscience and Remote sensing, (3), 256-263.Tasseled Cap.” IEEE Transactions on Geoscience and Remote Sensing GE-22: 256-263. [https://ieeexplore.ieee.org/document/4157507]()
-Crist, E. P.,  Kauth, R. J. (1986). The tasseled cap de-mystified. Photogrammetric engineering and remote sensing, 52. [https://www.asprs.org/wp-content/uploads/pers/1986journal/jan/1986_jan_81-86.pdf]()
-Griffiths, P., Kuemmerle, T., Baumann, M., Radeloff, V. C., Abrudan, I. V., Lieskovsky, J., … Hostert, P. (2014). Forest disturbances, forest recovery, and changes in forest types across the Carpathian ecoregion from 1985 to 2010 based on Landsat image composites. Remote Sensing of Environment, 151, 72-88. [https://doi.org/10.1016/j.rse.2013.04.022]()
-Healey, S. P., Cohen, W. B., Zhiqiang, Y., Krankina, O. N. (2005). Comparison of Tasseled Cap-based Landsat data structures for use in forest disturbance detection. Remote sensing of environment, 97(3), 301-310. [https://doi.org/10.1016/j.rse.2005.05.009]()
-Huang, C., Goward, S. N., Masek, J. G., Thomas, N., Zhu, Z., Vogelmann, J. E. (2010). An automated approach for reconstructing recent forest disturbance history using dense Landsat time series stacks. Remote Sensing of Environment, 114(1), 183-198. [https://doi.org/10.1016/j.rse.2009.08.017]()
+Crist, E. P., Cicone, R. C. (1984). A physically-based transformation of Thematic Mapper data---The TM Tasseled Cap. IEEE Transactions on Geoscience and Remote sensing, (3), 256-263.Tasseled Cap.” IEEE Transactions on Geoscience and Remote Sensing GE-22: 256-263. [https://ieeexplore.ieee.org/document/4157507](https://ieeexplore.ieee.org/document/4157507)
+
+Crist, E. P.,  Kauth, R. J. (1986). The tasseled cap de-mystified. Photogrammetric engineering and remote sensing, 52. [https://www.asprs.org/wp-content/uploads/pers/1986journal/jan/1986_jan_81-86.pdf](https://www.asprs.org/wp-content/uploads/pers/1986journal/jan/1986_jan_81-86.pdf)
+
+Griffiths, P., Kuemmerle, T., Baumann, M., Radeloff, V. C., Abrudan, I. V., Lieskovsky, J., … Hostert, P. (2014). Forest disturbances, forest recovery, and changes in forest types across the Carpathian ecoregion from 1985 to 2010 based on Landsat image composites. Remote Sensing of Environment, 151, 72-88. [https://doi.org/10.1016/j.rse.2013.04.022](https://doi.org/10.1016/j.rse.2013.04.022)
+
+Healey, S. P., Cohen, W. B., Zhiqiang, Y., Krankina, O. N. (2005). Comparison of Tasseled Cap-based Landsat data structures for use in forest disturbance detection. Remote sensing of environment, 97(3), 301-310. [https://doi.org/10.1016/j.rse.2005.05.009](https://doi.org/10.1016/j.rse.2005.05.009)
+
+Huang, C., Goward, S. N., Masek, J. G., Thomas, N., Zhu, Z., Vogelmann, J. E. (2010). An automated approach for reconstructing recent forest disturbance history using dense Landsat time series stacks. Remote Sensing of Environment, 114(1), 183-198. [https://doi.org/10.1016/j.rse.2009.08.017](https://doi.org/10.1016/j.rse.2009.08.017)
+
 Kauth, R. J., & Thomas, G. S. (1976). The Tasseled Cap—A Graphic Description of the Spectral-Temporal Development of Agricultural Crops as Seen by Landsat. LARS: Proceedings of the Symposium on Machine Processing of Remotely Sensed Data, West Lafayette, IN: Purdue University, pp. West Lafayette, IN: Purdue University: 4B-41-4B-51.
-Kupková, L., Potůčková, M., Lhotáková, Z., Albrechtová, J. (2018). Forest cover and disturbance changes, and their driving forces: A case study in the Ore Mountains, Czechia, heavily affected by anthropogenic acidic pollution in the second half of the 20th century. Environmental Research Letters, 13(9), 095008. [https://iopscience.iop.org/article/10.1088/1748-9326/aadd2c]()
-Zhai, Y., Roy, D. P., Martins, V. S., Zhang, H. K., Yan, L., Li, Z. (2022). Conterminous United States Landsat-8 top of atmosphere and surface reflectance tasseled cap transformation coefficients. Remote Sensing of Environment, 274, 112992. [https://doi.org/10.1016/j.rse.2022.112992]()
+
+Kupková, L., Potůčková, M., Lhotáková, Z., Albrechtová, J. (2018). Forest cover and disturbance changes, and their driving forces: A case study in the Ore Mountains, Czechia, heavily affected by anthropogenic acidic pollution in the second half of the 20th century. Environmental Research Letters, 13(9), 095008. [https://iopscience.iop.org/article/10.1088/1748-9326/aadd2c](https://iopscience.iop.org/article/10.1088/1748-9326/aadd2c)
+
+Zhai, Y., Roy, D. P., Martins, V. S., Zhang, H. K., Yan, L., Li, Z. (2022). Conterminous United States Landsat-8 top of atmosphere and surface reflectance tasseled cap transformation coefficients. Remote Sensing of Environment, 274, 112992. [https://doi.org/10.1016/j.rse.2022.112992](https://doi.org/10.1016/j.rse.2022.112992)
 
 
 ### Other case studies
