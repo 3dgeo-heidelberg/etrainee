@@ -35,8 +35,54 @@ After finishing this theme, you will understand the principles of HS data classi
 
 A set of classification algoritms is provided. While the algorithms based on reference spectra (linear unmixing, SAM, SID) are suitable for single date datasets and multitemporal analysis must be carried out on the classification results, the multitemporal datasets can be an input to present methods based on training samples (RF, SVM, CNN).
 
-Proceed to the exercise: [Machine learning classification](04_time_series_specifics_exercise.md).
+Proceed to the exercise: [Hyperspectral data classification](04_time_series_specifics_exercise.md).
 
+## Self-evaluation quiz
+
+<!--Question 1-->
+<label for="q_01">
+Spectra unmixing
+</label><br>
+<input type="radio" name="q_01">reveals information on spectral composition inside the pixel.<br>
+<input type="radio" name="q_01">provides information on spatial distribution of materials within the pixel.<br>
+<div hidden id="correct_q_01">reveals information on spectral composition inside the pixel.</div>
+<output id="output_q_01"></output><br><br>
+
+<!--Question 2-->
+<label for="q_02">
+The abbreviation SAM in image spectra classification stands for
+</label><br>
+<input type="radio" name="q_02">Spatial Airborne Mapper<br>
+<input type="radio" name="q_02">Spectral Angle Mapper<br>
+<input type="radio" name="q_02">Spectral Average Mapper<br>
+<div hidden id="correct_q_02">Spectral Angle Mapper</div>
+<output id="output_q_02"></output><br><br>
+
+<!--Question 3-->
+<label for="q_03">
+The similarity measure between the reference and measured spectra in the SID classificator is based on
+</label><br>
+<input type="radio" name="q_03">correlation<br>
+<input type="radio" name="q_03">Euclidian distance<br>
+<input type="radio" name="q_03">entropy<br>
+<div hidden id="correct_q_03">entropy</div>
+<output id="output_q_03"></output><br><br>
+
+<!--Question 4-->
+<label for="q_04">
+The purpose of the kernel function used with the SVM classifier is to
+</label><br>
+<input type="radio" name="q_04">increase the data dimension to improve separability between classes.<br>
+<input type="radio" name="q_04">reduce the number of outliers in the training dataset.<br>
+<input type="radio" name="q_04">produce new training data.<br>
+<div hidden id="correct_q_04">increase the data dimension to improve separability between classes.</div>
+<output id="output_q_04"></output><br><br>
+
+<input type="submit" value="Submit" style="font-size:14pt"><br><br>
+
+<output id="output_overall">
+</output>
+</form>
 
 ### Next unit
 Proceed with [Temporal vs. spatial and spectral resolution](../05_specific_resolution_contribution/05_specific_resolution_contribution.md)
