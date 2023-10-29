@@ -14,9 +14,13 @@ Acquisition of airborne hyperspectral (HS) images requires a careful flight plan
 ## Objectives
 
 In this theme, you will learn about 
+
 * flight planning and in-situ measurements for radiometric and geometric correction of images,
+
 * methods of radiometric correction of HS images,
+
 * geometric correction,
+
 * selected spectra transformations (e.g., minimum noise fraction, continuum removal, spectral indices), and spectra smoothening and denoising.
 
 The theme includes an exercise, a self-evaluation quiz, and a list of references.

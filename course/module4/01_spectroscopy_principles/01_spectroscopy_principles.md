@@ -13,11 +13,16 @@ Imaging and laboratory spectroscopy is a dynamic discipline that allows monitori
 
 ## Objectives
 
-In this theme, you will learn about 
+In this theme, you will learn about
+
 * fundamentals of imaging and laboratory spectroscopy,
+
 * hyperspectral (HS) cameras and spectroradiometers,
+
 * interpretation of a hyperspectral data cube,
+
 * spectral libraries,
+
 * examples of imaging and laboratory spectroscopy applications in environmental monitoring.
 
 The theme ends with a **[self-evaluation quiz](#self-evaluation-quiz)**, an **[exercise](#exercise)**, and a list of **[references](#references)**.
