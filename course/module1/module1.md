@@ -92,5 +92,12 @@ In case you want to explore further topics and methods, there are more tutorials
         * Excercise: Based on the tutorial, try to interpret the spatial patterns of snow cover duration and investigate the sensitivity of the rule-based classification regarding the classification threshold. For a suggested solution to this excercise see the Notebook [Snow cover time series: Interpretation and sensitivity analysis](./03_time_series_analysis_based_on_classification/T3_S2_snow_classification__excercise.ipynb).
 
 
+### Data credits
+
+Landsat imagery courtesy of the [U.S. Geological Survey](https://www.usgs.gov/) / [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits)
+
+Copernicus Sentinel data courtesy of the [European Space Agency - ESA](https://www.esa.int/) / [Terms of use](https://scihub.copernicus.eu/twiki/do/view/SciHubWebPortal/TermsConditions)
+
+
 ### Start the module
 ... by proceeding to the first theme on [Principles of remote sensing time series](01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.md).
