@@ -47,6 +47,8 @@ By clicking on the **image below** you will be taken to the video on data collec
 
 [![Data collection video on YouTube](media_exercise/E-TRAINEE_Video_M2_part1.jpg)](https://www.youtube.com/watch?v=l7yvqFoo8rE&list=PLyrFi-gvJfnt5qeGNkKxJGCWqWyYItOE6&index=3)
 
+All data for parts 2 and 3 are provided through [Zenodo](https://zenodo.org/records/10003575) (module2_theme_1_exercise.zip).
+
 ## Part 2: Project preparation
 
 This part is devoted to project preparation in QGIS software. In the beginning coordinate reference system will be set up. Universal Transverse Mercator zone 34 is chosen because of it is adequate for Tatra Mountains region and PlanetScope, Sentinel-2 and Landsat data are distributed in it (the aerial orhtoimagery will be reprojected on the fly properly, MODIS data needs to be reprojected). Each type of data will be visualised in two composites. We want to compare the possibility to recognize various objects using different types of visualisations.

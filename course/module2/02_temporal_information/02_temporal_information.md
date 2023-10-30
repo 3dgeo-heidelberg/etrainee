@@ -260,7 +260,7 @@ D. New AstroSat Optical Modular Instrument
 
 <div id="correct_q_01" hidden="">
 
-B D C A
+C D B A
 
 </div>
 

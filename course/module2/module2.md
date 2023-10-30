@@ -32,9 +32,9 @@ This module is structured into the following themes:
 - **[Image processing](03_image_processing/03_image_processing.md)**  
 - **[Multitemporal classification](04_multitemporal_classification/04_multitemporal_classification.md)**  
 - **[Vegetation change and disturbance detection](05_vegetation_monitoring/05_vegetation_monitoring.md)**  
-- **Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains)\](06_cs_tundra_grasslands/06_cs_tundra_grasslands.md)**
-- **Case study: Effects of pollution in Ore Mountains\](07_cs_forest_changes/07_cs_forest_changes.md)**
-- **Case study: Forest disturbance detection (Tatra Mountains)\](08_cs_disturbance_detection/08_cs_disturbance_detection.md)**
+- **[Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains)](06_cs_tundra_grasslands/06_cs_tundra_grasslands.md)**
+- **[Case study: Effects of pollution in Ore Mountains](07_cs_forest_changes/07_cs_forest_changes.md)**
+- **[Case study: Forest disturbance detection (Tatra Mountains)](08_cs_disturbance_detection/08_cs_disturbance_detection.md)**
 
 ## Prerequisites to perform this module
 
@@ -59,11 +59,11 @@ For this module, you will need the software listed below. If you did not install
 
 ### Use Cases
 
-Research-oriented case studies in this module are introduced in **[Monitoring mountain vegetation in Karkonosze/Krkonoše Mountains (Poland/Czechia)](../data_usecases/usecase_tundra_karkonosze.md)** and **[Vegetation disturbance detection in Polish-Slovak Tatra Mountains](../data_usecases/usecase_forests_tatras.md)** use case documents. Familiarize yourself with them to have a better understanding of the analyses performed in Case Studies.
+Research-oriented case studies in this module are introduced in **[Monitoring mountain vegetation in Karkonosze/Krkonoše Mountains (Poland/Czechia)](../data_usecases/usecase_tundra_karkonosze.md)**, **[Forest disturbances in Ore Mountains (Czechia)](../data_usecases/usecase_ore_mts_disturbance.md)** and **[Vegetation disturbance detection in Polish-Slovak Tatra Mountains](../data_usecases/usecase_forests_tatras.md)** use case documents. Familiarize yourself with them to have a better understanding of the analyses performed in Case Studies.
 
 ### Data
 
-Data for the exercises is provided through [Zenodo](https://zenodo.org/record/8402925). Some input imagery is produced throughout the course. The Zenodo package is structured in a way enabling relative paths in R scripts.
+Data for the exercises is provided through [Zenodo](https://zenodo.org/records/10003575). Some input imagery is produced throughout the course. Below you can see the folder tree of data from Module 2.
 
     module2/
     ├───case_study_1
@@ -91,7 +91,7 @@ Data for the exercises is provided through [Zenodo](https://zenodo.org/record/84
         ├───data_exercise/
         └───results/
 
-Each folder in the main catalog contains short description of the data inside in `README.txt` file. Input data is provided in `data_exercise` folders. Empty (except Theme 1) `results` folders are provided to store the outputs. After downloading the package you should follow the **[R language tutorial](../software/software_r_language.md)** to create an environment and start R project in main `module2` catalog.
+Each folder in the main catalog contains short description of the data inside in `README.txt` file. Input data is provided in `data_exercise` folders. Empty (except Theme 1) `results` folders are provided to store the outputs. After downloading the packages you should follow the **[R language tutorial](../software/software_r_language.md)** to create an environment and start R project in the main `module2` catalog.
 
 ## Start the module
 
