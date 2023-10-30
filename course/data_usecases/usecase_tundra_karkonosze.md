@@ -40,12 +40,12 @@ In this course, we will use **multitemporal Sentinel-2 data** and **reference da
 
 The use case is featured in the following parts of the course:
 
-- [Exercise: Image processing workflow (Module 2, Theme 3)](../module2/03_image_processing/03_image_processing_exercise.md)
-- [Exercise: Multitemporal classification (Module 2, Theme 4)](../module2/04_multitemporal_classification/04_multitemporal_classification.md)
-- [Case study: Monitoring tundra grasslands (Karkonosze) (Module 2, Case study 1)](../module2/06_cs_tundra_grasslands/06_cs_tundra_grasslands.md)
+- [Exercise: Image processing (Module 2, Theme 3)](../module2/03_image_processing/03_image_processing_exercise.md)
+- [Exercise: Multitemporal classification (Module 2, Theme 4)](../module2/04_multitemporal_classification/04_multitemporal_classification_exercise.md)
+- [Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains (Module 2, Case Study 1)](../module2/06_cs_tundra_grasslands/06_cs_tundra_grasslands.md)
 
 ## References
 
-Beniston, M. (2016). Environmental change in mountains and uplands. Routledge.
+Beniston, M. (2016). *Environmental change in mountains and uplands*. Routledge.
 
-Wakulińska, M., & Marcinkowska-Ochtyra, A. (2020). Multi-temporal sentinel-2 data in classification of mountain vegetation. Remote Sensing, 12(17), 2696. <https://doi.org/10.3390/rs12172696>
+Wakulińska, M., & Marcinkowska-Ochtyra, A. (2020). *Multi-temporal sentinel-2 data in classification of mountain vegetation*. Remote Sensing, 12(17), 2696. <https://doi.org/10.3390/rs12172696>
