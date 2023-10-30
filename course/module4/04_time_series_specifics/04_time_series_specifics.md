@@ -31,21 +31,21 @@ Classification legend comprises (in ideal case all) materials/surfaces existing 
 ### Endmember extraction from HS imagery
 There are several possibilities how to extract endmembers from the image:
 
-1. Manual picking from image data
+**Manual picking from image data**
 
-  * Assumption of homogeneity of the area
+* Assumption of homogeneity of the area
 
-  * Some endmembers may be missed
+* Some endmembers may be missed
 
-2. Manual picking from existing library spectra
+**Manual picking from existing library spectra**
 
-  * Requires knowledge of ground composition
+* Requires knowledge of ground composition
 
-  * Library spectra may differ from image spectra
+* Library spectra may differ from image spectra
 
-3. Using endmember extraction algorithm
+**Using endmember extraction algorithm**
 
-  * Output endmembers represent “spectral” classes that might differ from “user” classes
+* Output endmembers represent “spectral” classes that might differ from “user” classes
 
 There are several endmember extraction algorithms such as Pixel Purity Index (PPI), N-FINDR, Automatic Morphological Endmember Extraction (AMEE). The often used PPI is based on the Minimum Noise Fraction transformation (see [Theme 2](../02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.md) of this Module). For a detailed explanation and comparison refer to Martínez et al. (2006) and Kale at al., 2017. 
 
@@ -55,7 +55,7 @@ Once the endmember spectra are defined, you can proceed with classification.
 Spectral mixture analysis or spectral unmixing assumes that a spectrum of in a pixel might be a result of a composition (mixure) of several endmembers. The goal of unmixing is to find a fraction of endmembers in a pixel (Adams et al., 1986). If the materials in the field of view are optically separated (there is no multiple scattering between components), it can be assumed that the final signal is a linear combination of the endmembers. The relation can be expressed as:
 
 <p align="center">
-<img src="media/img1.jpg" title="Formula for spectral unmixing" alt="Formula for spectral unmixing" width="100"/>
+<img src="media/img1.png" title="Formula for spectral unmixing" alt="Formula for spectral unmixing" />
 </p>
 
 where r<sub>i</sub> is the measured spectrum, a<sub>ij</sub> is the endmember of the spectrum j, f<sub>ij</sub> is the respective endmember fraction, and e<sub>i</sub> is the error between the measurement and the derived model. The unknown fractions are determined by adjustment (e.g., by the least squares method). It shall be mentioned that spectral unmixing is only possible when the number of endmembers of the image is lower than the number of spectral bands (leads to over-dimensioning of the system of equations). The spectral differences between the original and modelled spectral values in each pixel can be calculated and statistically expressed as the [root mean square error](https://en.wikipedia.org/wiki/Root-mean-square_deviation).
@@ -66,7 +66,7 @@ Numerous examples of applications of linear unmixing can be found e.g., Okujeni 
 The endmember and measured spectra can be considered as vectors in the spectral feature space. Spectral angle mapper (SAM) calculates an n-D angle to match pixels to endmembers. 
  
 <p align="center">
-<img src="media/img2.jpg" title="Formula for SAM" alt="Formula for SAM" width="100"/>
+<img src="media/img2.png" title="Formula for SAM" alt="Formula for SAM"/>
 </p>
  
 where Θ is the calculated spectral angle, t is the measured spectrum, r is the reference (endmember), i is the number of the spectral band. The pixel is assigned to an endmember with smallest angle (Yuhas et al., 1992). For each endmember, the spectral angle to the image pixels can be calculated. After visualisation brighter pixel means a larger spectral angle to the endmember.
