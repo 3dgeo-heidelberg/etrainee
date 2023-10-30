@@ -1,7 +1,19 @@
+---
+title: "Vegetation change and disturbance detection"
+description: This is the fifth theme within the Satellite Multispectral Images Time Series Analysis module.
+dateCreated: 2023-08-31
+authors: Adrian Ochtyra, Adriana Marcinkowska-Ochtyra
+contributors: Krzysztof Gryguc
+estimatedTime: "1.5 hours"
+output: 
+  github_document:
+    pandoc_args: "--wrap=none"
+---
+
 Vegetation change and disturbance detection
 ================
 
-In **[Theme 2](../02_temporal_information/02_temporal_information.md)**, we introduced various types of multitemporal data analysis. In this Module we put most emphasis on classification and **change detection**.Content of this Theme we’ll delve deeper into the latter. We will focus on different definitions of change types, explore various approaches and algorithms for detecting changes (such as disturbances or recovery) in vegetation, as well as on assessing the accuracy of the results.
+In **[Theme 2](../02_temporal_information/02_temporal_information.md)**, we introduced various types of multitemporal data analysis. In this Module we put most emphasis on classification and **change detection**. Content of this Theme we’ll delve deeper into the latter. We will focus on different definitions of change types, explore various approaches and algorithms for detecting changes (such as disturbances or recovery) in vegetation, as well as on assessing the accuracy of the results.
 
 In this theme, you will learn about:
 
@@ -26,13 +38,12 @@ After finishing this theme you will:
 - gain knowledge of multitemporal data analysis techniques, particularly in classification and change detection.
 - understand various methods for change detection in optical satellite data.
 - distinguish different types of changes (abrupt, gradual, seasonal) and their corresponding detection algorithms.
-- grasp mathematical aspects of change detection, including signal difference, regression analysis, and Change Vector Analysis.
+- grasp mathematical aspects of change detection,
 - appreciate the role of time intervals and density in change detection studies.
 - discover the use of time series variables in predicting vegetation disturbance and recovery patterns.
 - learn how to use different satellite data sources for varied cases and fuse data from different sensors to enhance resolutions.
 - understand the process of validating results and assessing accuracy in change detection studies.
 - overview global vegetation change detection products and understand their strengths and limitations.
-- learn assigning specific phenomena to change detection algorithm results through methods like supervised classification
 
 ## Approaches to change detection on optical satellite data
 
@@ -90,7 +101,7 @@ There are also **seasonal** changes, driven by annual temperature and rainfall i
 
 <img src="media/seasonality_parameters.png" title="Seasonality parameters: (a) beginning of season, (b) end of season, (c) length of season, (d) base value, (e) time of middle of season, (f) maximum value, (g) amplitude, (h) small integrated value, (h+i) large integrated value (Jönsson, Eklundh, 2004). The red and blue lines are filtered and original data, respectively." alt="Figure 3" width="400"/>
 
-<i>Seasonality parameters: (a) beginning of season, (b) end of season, (c) length of season, (d) base value, (e) time of middle of season, (f) maximum value, (g) amplitude, (h) small integrated value, (h+i) large integrated value (the red and blue lines are filtered and original data, respectively, figure by [Eklundh 2023](https://web.nateko.lu.se/timesat/timesat.asp)/ [CC BY-NC-ND 2.5 SE](https://creativecommons.org/licenses/by-nc-nd/2.5/se/)).</i>
+<i>Seasonality parameters: (a) beginning of season, (b) end of season, (c) length of season, (d) base value, (e) time of middle of season, (f) maximum value, (g) amplitude, (h) small integrated value, (h+i) large integrated value (the red and blue lines are filtered and original data, respectively, figure by [Eklundh, 2023](https://web.nateko.lu.se/timesat/timesat.asp)/ [CC BY-NC-ND 2.5 SE](https://creativecommons.org/licenses/by-nc-nd/2.5/se/)).</i>
 </center>
 
 ## Vegetation disturbance and recovery
@@ -138,7 +149,7 @@ These metrics can be measured by the use of spectral index anomaly time series. 
 
 Each spectral band of satellite data carries unique information. In the case of vegetation, specific bands can help determine whether the plant is healthy or damaged. Combination of these bands, such as vegetation indices, are commonly employed to monitor vegetation disturbances and recovery. Here we can find **NDVI** (examples of use in: [Vogelmann et al., 2012](https://doi.org/10.1016/j.rse.2011.06.027) or [Brooks et al., 2014](https://doi.org/10.1109/TGRS.2013.2272545)), burned areas detection with **NBR** ([Huang et al., 2010](https://doi.org/10.1016/j.rse.2009.08.017), [Kennedy et al., 2010](https://doi.org/10.1016/j.rse.2010.07.008)), and vegetation water content analyses with **NDMI** ([DeVries et al., 2015](https://doi.org/10.1016/j.rse.2015.02.012), [Ochtyra et al., 2020](https://doi.org/10.1016/j.rse.2020.112026)) or **TC Wetness** ([Griffiths et al., 2014](https://doi.org/10.1016/j.rse.2013.04.022), [Oeser et al., 2017](https://doi.org/10.3390/f8070251)). The selection of the most appropriate variable is essential for the accurate detection of the disturbance signal.
 
-There are various options to select the most relevant one. The majority of studies used an a priori selected index/band based on information found in the literature. [Cohen et al., 2018](https://doi.org/10.1016/j.rse.2017.11.015) presented comprehensive comparison of different variables and they developed **Disturbance Signal to Noise Ratio** to assess their performance. Such selection can be also preceded by **statistical evaluation of differences** between used variables (as e.g. in [Ochtyra et al., 2020](https://doi.org/10.1016/j.rse.2020.112026)).
+There are various options to select the most relevant one. The majority of studies used an a priori selected index/band based on information found in the literature. [Cohen et al., 2018](https://doi.org/10.1016/j.rse.2017.11.015) presented comprehensive comparison of different variables and they developed **Disturbance Signal to Noise Ratio** to assess their performance. Such selection can be also preceded by **statistical evaluation of differences** between used variables (example of such evaluation in [Ochtyra et al., 2020](https://doi.org/10.1016/j.rse.2020.112026)).
 
 Landsat-based Tasseled Cap transformation bands were used to develop **Disturbance Index (DI**, [Healey et al., 2005](https://doi.org/10.1016/j.rse.2005.05.009)). This specific derivative was designed to highlight the non-vegetated areas spectral signatures associated with stand-replacing disturbance and separate them from other forest signatures.
 
@@ -166,7 +177,7 @@ Another index related to disturbance detection is [Moderate Resolution Imaging S
 
 ## Monitoring of changes: spectral trajectory in different time series data
 
-Extracting change from time series satellite data can be complex, as it involves all sorts of changes including seasonal, gradual, and abrupt shifts. The process is further complicated by factors such as clouds, haze, aerosols, lighting differences, and geometric inconsistency. In order to detect changes as accurately as possible, it is crucial to select data with **resolutions that best investigate the phenomenon under study**. Then these additional factors need to be eliminated (as sown in **[Theme 3](../03_image_processing/03_image_processing.md)**). Based on pixel values in the time series we can analyse the trend over time and the relationship between the variables. This type of analysis is referred to as **spectral trajectory** analysis (you can read about this more in **[Theme 4 of Module 1](../../module1/04_trajectory-based_analysis/04_trajectory_based_analysis.md)**.
+Extracting change from time series satellite data can be complex, as it involves all sorts of changes including seasonal, gradual, and abrupt shifts. The process is further complicated by factors such as clouds, haze, aerosols, lighting differences, and geometric inconsistency. In order to detect changes as accurately as possible, it is crucial to select data with **resolutions that best investigate the phenomenon under study**. Then these additional factors need to be eliminated (as shown in **[Theme 3](../03_image_processing/03_image_processing.md)**). Based on pixel values in the time series we can analyse the trend over time and the relationship between the variables. This type of analysis is referred to as **spectral trajectory** analysis (you can read about this more in **[Theme 4 of Module 1](../../module1/04_trajectory-based_analysis/04_trajectory_based_analysis.md)**.
 
 To capture the stages of plant development in **phenological changes** detection, the highest possible temporal resolution of the inter-annual data, at most every few days, is most desirable. The spatial resolution is important here, as meteorological image data are collected for the same area even several times a day, but their pixel size (greater than 1 km) limits the extraction of vegetation alone. The spectral ranges most frequently used are visible light, near and shortwave infrared. Apart from using the original reflectance values, information from more than one band is often combined to enhance the plant properties visible in the image (commonly used index is NDVI, being a good indicator for vegetation phenology).
 
@@ -220,7 +231,7 @@ The algorithms can be used as independent tools implemented in environments such
 
 As you can see, most of the algorithms are able to detect abrupt changes, and some detect gradual changes, although the authors point out that this is a more challenging task. There are also robust phenological change detection algorithms, like the aforementioned BFAST dealing with all types of changes.
 
-*Note: bearing in mind that each of them works in a different way and works better for different applications, it is valuable to* ***compare their performance,*** *such as in collective work of Cohen et al. ([2017](https://doi.org/10.3390/f8040098)) or to* ***combine several algorithms*** *into one polyalgorithm (as proposed by [Saxena et al., (2018](https://doi.org/10.1016/j.isprsjprs.2018.07.002).*
+*Note: bearing in mind that each of them works in a different way and works better for different applications, it is valuable to* ***compare their performance,*** *such as in collective work of [Cohen et al. (2017)](https://doi.org/10.3390/f8040098)) or to* ***combine several algorithms*** *into one polyalgorithm (as proposed by [Saxena et al., (2018)](https://doi.org/10.1016/j.isprsjprs.2018.07.002).*
 
 The algorithms dealing with abrupt/gradual changes have been developed to use mainly data from the Landsat mission, though most are also being adapted to Sentinel-2. In some cases a longer time series may be required for the algorithm to work properly. Phenological changes related algorithms are typically intended for use with MODIS data, although data from the above sensors can also be used (e.g. BFAST). With the recent increase in availability of Planet data, algorithms like **Thresholding Rewards and Penances algorithm** (TRP, [Francini et al., 2020](https://doi.org/10.1080/22797254.2020.1806734)) have been developed to assess forest loss in **near real-time**.
 
@@ -233,7 +244,7 @@ After applying the algorithm to a time series of data, the changes detected by i
 <i>Forests disturbance detection with agents attribution workflow (figure by [Oeser et al., 2017](https://doi.org/10.3390/f8070251)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
 </center>
 
-In order to familiarize you with how these algorithms work (some of which you will use in the [exercise](05_vegetation_monitoring_exercise.md) and [Case study 3](../08_cs_disturbance_detection/08_cs_disturbance_detection.md), below we provide more detailed descriptions on selected ones.
+In order to familiarize you with how these algorithms work (some of which you will use in the **[Exercise](05_vegetation_monitoring_exercise.md)** and **[Case study 3](../08_cs_disturbance_detection/08_cs_disturbance_detection.md)**, below we provide more detailed descriptions on selected ones.
 
 ### The Landsat-based detection of Trends in Disturbance and Recovery (LandTrendr)
 
@@ -252,9 +263,11 @@ As the results, the year of detection with number of changes, magnitude of spect
 
 VCT ([Huang et al., 2010](https://doi.org/10.1016/j.rse.2009.08.017)) normalizes each image into a forest likelihood measures described below, and uses the thresholding approach to detect disturbances.
 
-In the firs part, **forest *z*-score** is calculated as follows:
+In the first part, **forest *z*-score** is calculated as follows:
 
-$FZ_i$ = $\frac{b_i-\bar{b_i}}{SD_i}$
+$FZ_i$ = $\frac{bp_i-\bar{b_i}}{SD_i}$
+
+where $b_i$ and $SD_i$ are mean and standard deviation of the band $i$ spectral values of known forest pixels, and $bp_i$ is any pixel value in the image.
 
 Then, for multispectral satellite data, an **integrated forest *z*-score (IFZ)** value calculation is based on integration $IFZ$ over the spectral bands as:
 
@@ -365,7 +378,7 @@ abrupt and gradual
 
 </div>
 
-<output id="output_q_02">
+<output id="output_q_01">
 </output>
 
 <br><br>
@@ -470,90 +483,94 @@ the year of detection and error of temporal composition creation
 
 ### Key references (recommended reading, looking up background details)
 
-Cohen, W. B., Healey, S. P., Yang, Z., Stehman, S. V., Brewer, C. K., Brooks, E. B., Gorelick, N., Huang, C., Hughes, M.J., Kennedy, R.E., Loveland, T.R., Moisen, G.G., Schroeder, T.A., Vogelmann, J.E., Woodcock, C.E., Yang, L., & Zhu, Z. (2017). How similar are forest disturbance maps derived from different Landsat time series algorithms?. Forests, 8(4), 98. <https://doi.org/10.3390/f8040098>
+Cohen, W. B., Healey, S. P., Yang, Z., Stehman, S. V., Brewer, C. K., Brooks, E. B., Gorelick, N., Huang, C., Hughes, M.J., Kennedy, R.E., Loveland, T.R., Moisen, G.G., Schroeder, T.A., Vogelmann, J.E., Woodcock, C.E., Yang, L., & Zhu, Z. (2017). *How similar are forest disturbance maps derived from different Landsat time series algorithms?*. Forests, 8(4), 98. <https://doi.org/10.3390/f8040098>
 
-Huang, C., Goward, S. N., Masek, J. G., Thomas, N., Zhu, Z., & Vogelmann, J. E. (2010). An automated approach for reconstructing recent forest disturbance history using dense Landsat time series stacks. Remote Sensing of Environment, 114(1), 183-198. <https://doi.org/10.1016/j.rse.2009.08.017>
+Huang, C., Goward, S. N., Masek, J. G., Thomas, N., Zhu, Z., & Vogelmann, J. E. (2010). *An automated approach for reconstructing recent forest disturbance history using dense Landsat time series stacks*. Remote Sensing of Environment, 114(1), 183-198. <https://doi.org/10.1016/j.rse.2009.08.017>
 
-Kennedy, R. E., Yang, Z., & Cohen, W. B. (2010). Detecting trends in forest disturbance and recovery using yearly Landsat time series: 1. LandTrendr—Temporal segmentation algorithms. Remote Sensing of Environment, 114(12), 2897-2910. <https://doi.org/10.1016/j.rse.2010.07.008>
+Kennedy, R. E., Yang, Z., & Cohen, W. B. (2010). D*etecting trends in forest disturbance and recovery using yearly Landsat time series: 1. LandTrendr—Temporal segmentation algorithms*. Remote Sensing of Environment, 114(12), 2897-2910. <https://doi.org/10.1016/j.rse.2010.07.008>
 
-Liu, S., Wei, X., Li, D., & Lu, D. (2017). Examining forest disturbance and recovery in the subtropical forest region of zhejiang province using landsat time-series data. Remote Sensing, 9(5), 479. <https://doi.org/10.3390/rs9050479>
+Liu, S., Wei, X., Li, D., & Lu, D. (2017). *Examining forest disturbance and recovery in the subtropical forest region of zhejiang province using landsat time-series data*. Remote Sensing, 9(5), 479. <https://doi.org/10.3390/rs9050479>
 
-McDowell, N. G., Coops, N. C., Beck, P. S., Chambers, J. Q., Gangodagamage, C., Hicke, J. A., … & Allen, C. D. (2015). Global satellite monitoring of climate-induced vegetation disturbances. Trends in plant science, 20(2), 114-123. <https://doi.org/10.1016/j.tplants.2014.10.008>
+McDowell, N. G., Coops, N. C., Beck, P. S., Chambers, J. Q., Gangodagamage, C., Hicke, J. A., … & Allen, C. D. (2015). *Global satellite monitoring of climate-induced vegetation disturbances*. Trends in plant science, 20(2), 114-123. <https://doi.org/10.1016/j.tplants.2014.10.008>
 
-Ochtyra, A., Marcinkowska-Ochtyra, A., & Raczko, E. (2020). Threshold-and trend-based vegetation change monitoring algorithm based on the inter-annual multi-temporal normalized difference moisture index series: A case study of the Tatra Mountains. Remote Sensing of Environment, 249, 112026. <https://doi.org/10.1016/j.rse.2020.112026>
+Ochtyra, A., Marcinkowska-Ochtyra, A., & Raczko, E. (2020). T*hreshold-and trend-based vegetation change monitoring algorithm based on the inter-annual multi-temporal normalized difference moisture index series: A case study of the Tatra Mountains*. Remote Sensing of Environment, 249, 112026. <https://doi.org/10.1016/j.rse.2020.112026>
 
-Zhu, Z. (2017). Change detection using landsat time series: A review of frequencies, preprocessing, algorithms, and applications. ISPRS Journal of Photogrammetry and Remote Sensing, 130, 370-384. <https://doi.org/10.1016/j.isprsjprs.2017.06.013>
+Zhu, Z. (2017). *Change detection using landsat time series: A review of frequencies, preprocessing, algorithms, and applications*. ISPRS Journal of Photogrammetry and Remote Sensing, 130, 370-384. <https://doi.org/10.1016/j.isprsjprs.2017.06.013>
 
 ### Additional references cited in this theme
 
-Brooks, E., Wynne, R. H., Thomas, V. A., Blinn, C. E., & Coulston, J. (2014). Exponentially Weighted Moving Average Change Detection Around the Country (and the World). In AGU Fall Meeting Abstracts (Vol. 2014, pp. B51L-01). [SOURCE](https://ui.adsabs.harvard.edu/abs/2014AGUFM.B51L..01B/abstract)
+Brooks, E., Wynne, R. H., Thomas, V. A., Blinn, C. E., & Coulston, J. (2014). *Exponentially Weighted Moving Average Change Detection Around the Country (and the World)*. In AGU Fall Meeting Abstracts (Vol. 2014, pp. B51L-01). [SOURCE](https://ui.adsabs.harvard.edu/abs/2014AGUFM.B51L..01B/abstract)
 
-Cleveland, R. B., Cleveland, W. S., McRae, J. E., & Terpenning, I. (1990). STL: A seasonal-trend decomposition. Journal of Official Statistics, 6(1), 3-73. [SOURCE](http://www.nniiem.ru/file/news/2016/stl-statistical-model.pdf)
+Cleveland, R. B., Cleveland, W. S., McRae, J. E., & Terpenning, I. (1990). *STL: A seasonal-trend decomposition*. Journal of Official Statistics, 6(1), 3-73. [SOURCE](http://www.nniiem.ru/file/news/2016/stl-statistical-model.pdf)
 
-Cohen, W. B., Yang, Z., Healey, S. P., Kennedy, R. E., & Gorelick, N. (2018). A LandTrendr multispectral ensemble for forest disturbance detection. Remote sensing of environment, 205, 131-140.https://doi.org/10.1016/j.rse.2017.11.015
+Cohen, W. B., Yang, Z., Healey, S. P., Kennedy, R. E., & Gorelick, N. (2018). *A LandTrendr multispectral ensemble for forest disturbance detection*. Remote Sensing of Environment, 205, 131-140.<https://doi.org/10.1016/j.rse.2017.11.015>
 
-Che, X., Yang, Y., Feng, M., Xiao, T., Huang, S., Xiang, Y., & Chen, Z. (2017). Mapping extent dynamics of small lakes using downscaling MODIS surface reflectance. Remote Sensing, 9(1), 82. <https://doi.org/10.3390/rs9010082>
+Che, X., Yang, Y., Feng, M., Xiao, T., Huang, S., Xiang, Y., & Chen, Z. (2017). *Mapping extent dynamics of small lakes using downscaling MODIS surface reflectance*. Remote Sensing, 9(1), 82. <https://doi.org/10.3390/rs9010082>
 
-DeVries, B., Verbesselt, J., Kooistra, L., & Herold, M. (2015). Robust monitoring of small-scale forest disturbances in a tropical montane forest using Landsat time series. Remote Sensing of Environment, 161, 107-121. <https://doi.org/10.1016/j.rse.2015.02.012>
+DeVries, B., Verbesselt, J., Kooistra, L., & Herold, M. (2015). *Robust monitoring of small-scale forest disturbances in a tropical montane forest using Landsat time series*. Remote Sensing of Environment, 161, 107-121. <https://doi.org/10.1016/j.rse.2015.02.012>
 
-Francini, S., McRoberts, R. E., Giannetti, F., Mencucci, M., Marchetti, M., Scarascia Mugnozza, G., & Chirici, G. (2020). Near-real time forest change detection using PlanetScope imagery. European Journal of Remote Sensing, 53(1), 233-244. <https://doi.org/10.1080/22797254.2020.1806734>
+Francini, S., McRoberts, R. E., Giannetti, F., Mencucci, M., Marchetti, M., Scarascia Mugnozza, G., & Chirici, G. (2020).\* Near-real time forest change detection using PlanetScope imagery\*. European Journal of Remote Sensing, 53(1), 233-244. <https://doi.org/10.1080/22797254.2020.1806734>
 
-Ghaderpour, E., & Vujadinovic, T. (2020). Change detection within remotely sensed satellite image time series via spectral analysis. Remote Sensing, 12(23), 4001. <https://doi.org/10.3390/rs12234001>
+Ghaderpour, E., & Vujadinovic, T. (2020). *Change detection within remotely sensed satellite image time series via spectral analysis*. Remote Sensing, 12(23), 4001. <https://doi.org/10.3390/rs12234001>
 
-Griffiths, P., Kuemmerle, T., Baumann, M., Radeloff, V. C., Abrudan, I. V., Lieskovsky, J., … & Hostert, P. (2014). Forest disturbances, forest recovery, and changes in forest types across the Carpathian ecoregion from 1985 to 2010 based on Landsat image composites. Remote Sensing of Environment, 151, 72-88. <https://doi.org/10.1016/j.rse.2013.04.022>
+Griffiths, P., Kuemmerle, T., Baumann, M., Radeloff, V. C., Abrudan, I. V., Lieskovsky, J., … & Hostert, P. (2014). *Forest disturbances, forest recovery, and changes in forest types across the Carpathian ecoregion from 1985 to 2010 based on Landsat image composites*. Remote Sensing of Environment, 151, 72-88. <https://doi.org/10.1016/j.rse.2013.04.022>
 
-Hansen, M. C., Potapov, P. V., Moore, R., Hancher, M., Turubanova, S. A., Tyukavina, A., … & Townshend, J. (2013). High-resolution global maps of 21st-century forest cover change. science, 342(6160), 850-853. <https://doi.org/10.1126/science.1244693>
+Hansen, M. C., Potapov, P. V., Moore, R., Hancher, M., Turubanova, S. A., Tyukavina, A., … & Townshend, J. (2013). *High-resolution global maps of 21st-century forest cover change*. Science, 342(6160), 850-853. <https://doi.org/10.1126/science.1244693>
 
-Healey, S. P., Cohen, W. B., Zhiqiang, Y., & Krankina, O. N. (2005). Comparison of Tasseled Cap-based Landsat data structures for use in forest disturbance detection. Remote sensing of environment, 97(3), 301-310. <https://doi.org/10.1016/j.rse.2005.05.009>
+Healey, S. P., Cohen, W. B., Zhiqiang, Y., & Krankina, O. N. (2005). *Comparison of Tasseled Cap-based Landsat data structures for use in forest disturbance detection*. Remote Sensing of Environment, 97(3), 301-310. <https://doi.org/10.1016/j.rse.2005.05.009>
 
-Huang, Z., Liu, X., Yang, Q., Meng, Y., Zhu, L., & Zou, X. (2021). Quantifying the spatiotemporal characteristics of multi-dimensional karst ecosystem stability with Landsat time series in southwest China. International Journal of Applied Earth Observation and Geoinformation, 104, 102575. <https://doi.org/10.1016/j.jag.2021.102575>
+Huang, Z., Liu, X., Yang, Q., Meng, Y., Zhu, L., & Zou, X. (2021). *Quantifying the spatiotemporal characteristics of multi-dimensional karst ecosystem stability with Landsat time series in southwest China*. International Journal of Applied Earth Observation and Geoinformation, 104, 102575. <https://doi.org/10.1016/j.jag.2021.102575>
 
-Hughes, M. J., Kaylor, S. D., & Hayes, D. J. (2017). Patch-based forest change detection from Landsat time series. Forests, 8(5), 166. <https://doi.org/10.3390/f8050166>
+Hughes, M. J., Kaylor, S. D., & Hayes, D. J. (2017). *Patch-based forest change detection from Landsat time series*. Forests, 8(5), 166. <https://doi.org/10.3390/f8050166>
 
-Jamali, S., Jönsson, P., Eklundh, L., Ardö, J., & Seaquist, J. (2015). Detecting changes in vegetation trends using time series segmentation. Remote Sensing of Environment, 156, 182-195. <https://doi.org/10.1016/j.rse.2014.09.010>
+Jamali, S., Jönsson, P., Eklundh, L., Ardö, J., & Seaquist, J. (2015). D*etecting changes in vegetation trends using time series segmentation*. Remote Sensing of Environment, 156, 182-195. <https://doi.org/10.1016/j.rse.2014.09.010>
 
-Jin, S., Yang, L., Danielson, P., Homer, C., Fry, J., & Xian, G. (2013). A comprehensive change detection method for updating the National Land Cover Database to circa 2011. Remote Sensing of Environment, 132, 159-175. <https://doi.org/10.1016/j.rse.2013.01.012>
+Jin, S., Yang, L., Danielson, P., Homer, C., Fry, J., & Xian, G. (2013). *A comprehensive change detection method for updating the National Land Cover Database to circa 2011*. Remote Sensing of Environment, 132, 159-175. <https://doi.org/10.1016/j.rse.2013.01.012>
 
-Jönsson, P., & Eklundh, L. (2004). TIMESAT—a program for analyzing time-series of satellite sensor data. Computers & geosciences, 30(8), 833-845. <https://doi.org/10.1016/j.cageo.2004.05.006>
+Jönsson, P., & Eklundh, L. (2004). *TIMESAT—a program for analyzing time-series of satellite sensor data*. Computers & geosciences, 30(8), 833-845. <https://doi.org/10.1016/j.cageo.2004.05.006>
 
-Kavats, O., Khramov, D., Sergieieva, K., & Vasyliev, V. (2020). Monitoring of sugarcane harvest in Brazil based on Optical and SAR data. Remote Sensing, 12(24), 4080. <https://doi.org/10.3390/rs12244080>
+Kavats, O., Khramov, D., Sergieieva, K., & Vasyliev, V. (2020). *Monitoring of sugarcane harvest in Brazil based on Optical and SAR data*. Remote Sensing, 12(24), 4080. <https://doi.org/10.3390/rs12244080>
 
-Kuenzer, C., Dech, S., & Wagner, W. (2015). Remote sensing time series. Remote Sensing and Digital Image Processing, 22, 225-245. <https://link.springer.com/book/10.1007/978-3-319-15967-6>
+Kuenzer, C., Dech, S., & Wagner, W. (2015). *Remote sensing time series*. Remote Sensing and Digital Image Processing, 22, 225-245. [source](https://link.springer.com/book/10.1007/978-3-319-15967-6)
 
-Masiliūnas, D., Tsendbazar, N. E., Herold, M., & Verbesselt, J. (2021). BFAST Lite: A lightweight break detection method for time series analysis. Remote Sensing, 13(16), 3308. <https://doi.org/10.3390/rs13163308>
+Masiliūnas, D., Tsendbazar, N. E., Herold, M., & Verbesselt, J. (2021). *BFAST Lite: A lightweight break detection method for time series analysis*. Remote Sensing, 13(16), 3308. <https://doi.org/10.3390/rs13163308>
 
-McKellip, R.D., Ross, K.W., Spruce, J.P., Smoot, J.C., Ryan, R.E., Gasser, G.E., Prados, D.L., Vaughan, R.D., (2010). Phenological Parameters Estimation Tool. NASA Tech. Briefs, New York. [SOURCE](https://ntrs.nasa.gov/api/citations/20100033570/downloads/20100033570.pdf)
+McKellip, R.D., Ross, K.W., Spruce, J.P., Smoot, J.C., Ryan, R.E., Gasser, G.E., Prados, D.L., Vaughan, R.D., (2010). *Phenological Parameters Estimation Tool*. NASA Tech. Briefs, New York. [SOURCE](https://ntrs.nasa.gov/api/citations/20100033570/downloads/20100033570.pdf)
 
-Miller, J. D., & Yool, S. R. (2002). Mapping forest post-fire canopy consumption in several overstory types using multi-temporal Landsat TM and ETM data. Remote sensing of environment, 82(2-3), 481-496. <https://doi.org/10.1016/S0034-4257(02)00071-8>
+Miller, J. D., & Yool, S. R. (2002). *Mapping forest post-fire canopy consumption in several overstory types using multi-temporal Landsat TM and ETM data*. Remote Sensing of Environment, 82(2-3), 481-496. <https://doi.org/10.1016/S0034-4257(02)00071-8>
 
-Mugiraneza, T., Nascetti, A., & Ban, Y. (2020). Continuous monitoring of urban land cover change trajectories with landsat time series and landtrendr-google earth engine cloud computing. Remote Sensing, 12(18), 2883. <https://doi.org/10.3390/rs12182883>
+Mugiraneza, T., Nascetti, A., & Ban, Y. (2020). *Continuous monitoring of urban land cover change trajectories with landsat time series and landtrendr-google earth engine cloud computing*. Remote Sensing, 12(18), 2883. <https://doi.org/10.3390/rs12182883>
 
-Oeser, J., Pflugmacher, D., Senf, C., Heurich, M., & Hostert, P. (2017). Using intra-annual Landsat time series for attributing forest disturbance agents in Central Europe. Forests, 8(7), 251. <https://doi.org/10.3390/f8070251>
+Oeser, J., Pflugmacher, D., Senf, C., Heurich, M., & Hostert, P. (2017). *Using intra-annual Landsat time series for attributing forest disturbance agents in Central Europe*. Forests, 8(7), 251. <https://doi.org/10.3390/f8070251>
 
-Olson, D. L., & Delen, D. (2008). Advanced data mining techniques. Springer Science & Business Media.
+Olson, D. L., & Delen, D. (2008). *Advanced data mining techniques*. Springer Science & Business Media.[source](https://link.springer.com/book/10.1007/978-3-540-76917-0)
 
-Pasquarella, V. J., Arévalo, P., Bratley, K. H., Bullock, E. L., Gorelick, N., Yang, Z., & Kennedy, R. E. (2022). Demystifying LandTrendr and CCDC temporal segmentation. International Journal of Applied Earth Observation and Geoinformation, 110, 102806. <https://doi.org/10.1016/j.jag.2022.102806>
+Pasquarella, V. J., Arévalo, P., Bratley, K. H., Bullock, E. L., Gorelick, N., Yang, Z., & Kennedy, R. E. (2022). *Demystifying LandTrendr and CCDC temporal segmentation*. International Journal of Applied Earth Observation and Geoinformation, 110, 102806. <https://doi.org/10.1016/j.jag.2022.102806>
 
-Saxena, R., Watson, L. T., Wynne, R. H., Brooks, E. B., Thomas, V. A., Zhiqiang, Y., & Kennedy, R. E. (2018). Towards a polyalgorithm for land use change detection. ISPRS journal of photogrammetry and remote sensing, 144, 217-234. <https://doi.org/10.1016/j.isprsjprs.2018.07.002>
+Saxena, R., Watson, L. T., Wynne, R. H., Brooks, E. B., Thomas, V. A., Zhiqiang, Y., & Kennedy, R. E. (2018). *Towards a polyalgorithm for land use change detection*. ISPRS Journal of Photogrammetry and Remote Sensing, 144, 217-234. <https://doi.org/10.1016/j.isprsjprs.2018.07.002>
 
-Singh, A. (1989). Review article digital change detection techniques using remotely-sensed data. International journal of remote sensing, 10(6), 989-1003. <https://doi.org/10.1080/01431168908903939>.
+Singh, A. (1989). *Review article digital change detection techniques using remotely-sensed data*. International Journal of Remote Sensing, 10(6), 989-1003. <https://doi.org/10.1080/01431168908903939>
 
-Udelhoven, T. (2010). TimeStats: A software tool for the retrieval of temporal patterns from global satellite archives. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 4(2), 310-317. <https://doi.org/10.1109/jstars.2010.2051942>
+Udelhoven, T. (2010). *TimeStats: A software tool for the retrieval of temporal patterns from global satellite archives*. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 4(2), 310-317. <https://doi.org/10.1109/jstars.2010.2051942>
 
-Verbesselt, J., Hyndman, R., Newnham, G., & Culvenor, D. (2010). Detecting trend and seasonal changes in satellite image time series. Remote sensing of Environment, 114(1), 106-115. <https://doi.org/10.1016/j.rse.2009.08.014>
+Verbesselt, J., Hyndman, R., Newnham, G., & Culvenor, D. (2010). *Detecting trend and seasonal changes in satellite image time series*. Remote sensing of Environment, 114(1), 106-115. <https://doi.org/10.1016/j.rse.2009.08.014>
 
-Vogelmann, J. E., Xian, G., Homer, C., & Tolk, B. (2012). Monitoring gradual ecosystem change using Landsat time series analyses: Case studies in selected forest and rangeland ecosystems. Remote Sensing of Environment, 122, 92-105. <https://doi.org/10.1016/j.rse.2011.06.027>
+Vogelmann, J. E., Xian, G., Homer, C., & Tolk, B. (2012). *Monitoring gradual ecosystem change using Landsat time series analyses: Case studies in selected forest and rangeland ecosystems*. Remote Sensing of Environment, 122, 92-105. <https://doi.org/10.1016/j.rse.2011.06.027>
 
-Yan, J., Wang, L., Song, W., Chen, Y., Chen, X., & Deng, Z. (2019). A time-series classification approach based on change detection for rapid land cover mapping. ISPRS Journal of Photogrammetry and Remote Sensing, 158, 249-262. <https://doi.org/10.1016/j.isprsjprs.2019.10.003>
+Yan, J., Wang, L., Song, W., Chen, Y., Chen, X., & Deng, Z. (2019). *A time-series classification approach based on change detection for rapid land cover mapping*. ISPRS Journal of Photogrammetry and Remote Sensing, 158, 249-262. <https://doi.org/10.1016/j.isprsjprs.2019.10.003>
 
-Zhou, J., Jia, L., & Menenti, M. (2015). Reconstruction of global MODIS NDVI time series: Performance of Harmonic ANalysis of Time Series (HANTS). Remote Sensing of Environment, 163, 217-228. <https://doi.org/10.1016/j.rse.2015.03.018>
+Zhou, J., Jia, L., & Menenti, M. (2015). *Reconstruction of global MODIS NDVI time series: Performance of Harmonic ANalysis of Time Series (HANTS)*. Remote Sensing of Environment, 163, 217-228. <https://doi.org/10.1016/j.rse.2015.03.018>
 
-Zhu, Z., & Woodcock, C. E. (2014). Continuous change detection and classification of land cover using all available Landsat data. Remote sensing of Environment, 144, 152-171. <https://doi.org/10.1016/j.rse.2014.01.011>
+Zhu, Z., & Woodcock, C. E. (2014). *Continuous change detection and classification of land cover using all available Landsat data*. Remote sensing of Environment, 144, 152-171. <https://doi.org/10.1016/j.rse.2014.01.011>
 
-Zhu, Z., Zhang, J., Yang, Z., Aljaddani, A. H., Cohen, W. B., Qiu, S., & Zhou, C. (2020). Continuous monitoring of land disturbance based on Landsat time series. Remote Sensing of Environment, 238, 111116. <https://doi.org/10.1016/j.rse.2019.03.009>
+Zhu, Z., Zhang, J., Yang, Z., Aljaddani, A. H., Cohen, W. B., Qiu, S., & Zhou, C. (2020). *Continuous monitoring of land disturbance based on Landsat time series*. Remote Sensing of Environment, 238, 111116. <https://doi.org/10.1016/j.rse.2019.03.009>
 
-Zeileis, A. (2005). A unified approach to structural change tests based on ML scores, F statistics, and OLS residuals. Econometric Reviews, 24(4), 445-466. <https://doi.org/10.1080/07474930500406053>
+Zeileis, A. (2005). *A unified approach to structural change tests based on ML scores, F statistics, and OLS residuals*. Econometric Reviews, 24(4), 445-466. <https://doi.org/10.1080/07474930500406053>
 
 ## Next unit
 
-You have finished all of themes in this module. You can now proceed with case studies: \* [Monitoring tundra grasslands (Karkonosze)](../06_cs_tundra_grasslands/06_cs_tundra_grasslands.md) \* [Effects of pollution in Ore Mountains](../07_cs_forest_changes/07_cs_forest_changes.md) \* [Forest disturbance detection (Tatras)](../08_cs_disturbance_detection/08_cs_disturbance_detection.md)
+You have finished all of themes in this module. You can now proceed with case studies:
+
+- [Monitoring tundra grasslands (Karkonosze)](../06_cs_tundra_grasslands/06_cs_tundra_grasslands.md)
+- [Effects of pollution in Ore Mountains](../07_cs_forest_changes/07_cs_forest_changes.md)
+- [Forest disturbance detection (Tatras)](../08_cs_disturbance_detection/08_cs_disturbance_detection.md)

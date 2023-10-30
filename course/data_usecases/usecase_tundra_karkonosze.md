@@ -1,7 +1,17 @@
+---
+title: "Use case: Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)"
+description:
+dateCreated:
+authors: Adriana Marcinkowska-Ochtyra
+contributors: 
+estimatedTime:
+output: 
+  github_document:
+    pandoc_args: "--wrap=none"
+---
+
 Use case: Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)
 ================
-
-# Use case: Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)
 
 Field data for this use case were collected as a part of the [HyMountEcos project](https://catalogue.ceda.ac.uk/uuid/998847cad2a54c71ab2a39c0d0735ae0), lead by researchers at University of Warsaw and Charles University in Prague, and part of Adriana Marcinkowska-Ochtyra PhD thesis.
 
@@ -20,11 +30,11 @@ The area is located in Polish and Czech Karkonosze/Krkonoše Mountains within th
 <i>Subalpine and alpine vegetation in Karkonosze/Krkonoše Mts. (figure by [Wakulińska and Marcinkowska-Ochtyra 2020](https://doi.org/10.3390/rs12172696), modified/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
 </center>
 
-In this course, we will use **multitemporal Sentinel-2 data** and **reference data** in the following lists:
+In this course, we will use **multitemporal Sentinel-2 data** and **reference data** in the following configurations:
 
-- Sentinel-2 data from four terms of data acquisition (31 May, 7 and 27 August, 18 September 2018) and field data collected in 2013-2014 (updated to 2018 based on high-resolution data interpretation) for classification of **vegetation types**, with focus on **grasslands**,
+- Sentinel-2 data from six terms of data acquisition (19, 24 and 27 June, 19 and 24 July, 20 October 2022) as reference data for **land cover** classification from CORINE Land Cover 2018 database.
 
-- Sentinel-2 data from six terms of data acquisition (19, 24 and 27 June, 19 and 24 July, 20 October 2023) as reference data for **land cover** classification from CORINE Land Cover 2018 database.
+- Sentinel-2 data from seven terms of data acquisition - 14 May, 31 May, 7 August, 27 August, 18 September (five dates from 2018), 25 June and 30 June (two dates from 2019) - and field data collected in 2013-2014 (updated to 2018-2019 based on high-resolution data interpretation) for classification of **vegetation types**, with focus on **grasslands**,
 
 ## Use case in the course
 
