@@ -31,6 +31,8 @@ Methods based on training samples
 SAM, SID, RF, SVM, and CNN classifications are provided as a Jupyter notebook or can be run through Google Colab, the EnMapBox is used for linear spectral unmixing. Each exercise can be done independently and comprises a set of tasks and a sample solution. Comparison of results of different classifications in QGIS is recommended.
 
 ### Dataset
+**Temporarily, the datasets for SAM, SID, SVM, RF, CNN classifications are available separately as [imagery](https://drive.google.com/file/d/1DkhcOSovd8TlHFdIUGwblpBqMulqUFeO/view?usp=drive_link) and [reference data](https://drive.google.com/file/d/1eAbdquxvhkVWOkqskWqYB_6ovupMKDWW/view?usp=drive_link).**
+
 The original dataset comprising 270 spectral bands and 3 cm ground sampling distance (GSD) acquired with a Nano-Hyperspec® camera mounted on DJI Matrice 600 Pro drone was resampled to 54 bands and 9cm GSD for the purpose of this exercise. It covers a 100 m x 100 m plot at the Bílá louka meadow in the Krkonoše Mountains. The training and validation data were collected during the field campaign by botanists. The dataset was collected in August of 2020.
 
 ### Next unit
