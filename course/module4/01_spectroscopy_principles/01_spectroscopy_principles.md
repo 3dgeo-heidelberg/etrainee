@@ -291,7 +291,7 @@ There are numerous operational hyperspectral sensors, especially for airborne pl
 
 ## Exercise
 
-To explore reflectance spectra acquired with a RPAS hyperspectral sensor using the EnMapBox software package, proceed to the [exercise]((01_spectroscopy_principles_exercise.md)) of this theme.
+To explore reflectance spectra acquired with a RPAS hyperspectral sensor using the EnMapBox software package, proceed to the [exercise](01_spectroscopy_principles_exercise.md) of this theme.
 
 ## Self-evaluation quiz
 

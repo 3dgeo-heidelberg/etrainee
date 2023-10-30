@@ -19,7 +19,7 @@ The objective of this theme is to learn about:
 
 The theme ends with a self-evaluation quiz, a set of exercises, and a list of references.
 
-In the practical exercise you will use linear spectral unmixing, CNN, and optionally also earlier learned random forest and support vector machine classifiers on an example of HS data collected at the Bílá louka plot of [the Krkonoše Mountains National Park study site](../../data_usecases/usecase_grasses_krkonose.html) from an RPAS platform.
+In the practical exercise you will use linear spectral unmixing, CNN, and optionally also earlier learned random forest and support vector machine classifiers on an example of HS data collected at the Bílá louka plot of [the Krkonoše Mountains National Park study site](../../data_usecases/usecase_grasses_krkonose.md) from an RPAS platform.
 
 After finishing this theme, you will understand the principles of HS data classification and you will be able implement them in Python, R, or EnMapBox.
 
