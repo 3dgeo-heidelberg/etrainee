@@ -9,7 +9,9 @@ estimatedTime:
 
 # Airborne hyperspectral data acquisition and pre-processing
 
-Acquisition of airborne hyperspectral (HS) images requires a careful flight planning supported with a filed campaign. Following data preprocessing comprises necessary radiometric and geometric corrections. In addition, spectra transformations and filtering can be conducted to reduce data volume and to suppress the noise present in the data.
+Acquisition of airborne hyperspectral images requires careful flight planning supported by field campaigns. 
+
+The following preprocessing of data comprises necessary radiometric and geometric correction. In addition, spectra transformations and filtering can be carried out to reduce data volume and suppress the noise present in the data.
 
 ## Objectives
 
@@ -104,7 +106,7 @@ The platform is equipped with a GNSS/INS. At the same time 2 GCPs were measured.
 </output>
 </form>
 
-## Excercise
+## Exercise
 
 ### Geometric correction
 
@@ -121,6 +123,7 @@ Proceed with [In situ and laboratory spectroscopy of vegetation](../03_relating_
 
 
 ## References
+
 ### Key literature
 
 Pepe, M., Fregonese, L., Scaioni, M. (2018). Planning airborne photogrammetry and remote-sensing missions with modern platforms and sensors. European Journal of Remote Sensing, 51(1), 412-436. https://doi.org/10.1080/22797254.2018.1444945
