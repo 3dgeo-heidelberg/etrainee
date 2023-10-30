@@ -23,17 +23,17 @@ Methods based on training samples
 
 * [Random forest (RF)](04_time_series_specifics_exercise_rf.ipynb)
 * [Support vector machine (SVM – optional)](04_time_series_specifics_exercise_svm.ipynb)
-* Convolutional neural network (CNN – optional)
+* Convolutional neural network (CNN)
   - [3D CNN based on spectro-spatial convolution ](04_exercise_cnn_3d.ipynb)
   - [2D CNN based on spatial convolution (optional)](04_exercise_cnn_2d.ipynb)
   - [1D CNN based on spectral convolution (optional)](04_exercise_cnn_1d.ipynb)
 
 SAM, SID, RF, SVM, and CNN classifications are provided as a Jupyter notebook or can be run through Google Colab, the EnMapBox is used for linear spectral unmixing. Each exercise can be done independently and comprises a set of tasks and a sample solution. Comparison of results of different classifications in QGIS is recommended.
 
-See [next unit](#"Next unit")
-
 ### Dataset
-The original dataset comprising 270 spectral bands and 3 cm ground sampling distance (GSD) acquired with a Nano-Hyperspec® camera mounted on DJI Matrice 600 Pro drone was resampled to 54 bands and 9cm GSD for the purpose of this exercise. It covers a 100 m x 100 m plot at the hillside of Luční hora in the Krkonoše mountains. The training and validation data were collected during the field campaign by botanists. The dataset was collected in August of 2020.
+**Temporarily, the datasets for SAM, SID, SVM, RF, CNN classifications are available separately as [imagery](https://drive.google.com/file/d/1DkhcOSovd8TlHFdIUGwblpBqMulqUFeO/view?usp=drive_link) and [reference data](https://drive.google.com/file/d/1eAbdquxvhkVWOkqskWqYB_6ovupMKDWW/view?usp=drive_link).**
+
+The original dataset comprising 270 spectral bands and 3 cm ground sampling distance (GSD) acquired with a Nano-Hyperspec® camera mounted on DJI Matrice 600 Pro drone was resampled to 54 bands and 9cm GSD for the purpose of this exercise. It covers a 100 m x 100 m plot at the Bílá louka meadow in the Krkonoše Mountains. The training and validation data were collected during the field campaign by botanists. The dataset was collected in August of 2020.
 
 ### Next unit
 Proceed with [Temporal vs. spatial and spectral resolution](../05_specific_resolution_contribution/05_specific_resolution_contribution.md)

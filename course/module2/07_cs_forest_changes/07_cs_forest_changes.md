@@ -233,7 +233,6 @@ Kupková, L., Potůčková, M., Lhotáková, Z., Albrechtová, J. (2018). Forest
 
 Zhai, Y., Roy, D. P., Martins, V. S., Zhang, H. K., Yan, L., Li, Z. (2022). Conterminous United States Landsat-8 top of atmosphere and surface reflectance tasseled cap transformation coefficients. Remote Sensing of Environment, 274, 112992. [https://doi.org/10.1016/j.rse.2022.112992](https://doi.org/10.1016/j.rse.2022.112992)
 
-
 ### Other case studies
 
 - [Monitoring tundra grasslands (Karkonosze)](../06_cs_tundra_grasslands/06_cs_tundra_grasslands.md)

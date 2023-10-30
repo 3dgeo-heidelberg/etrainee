@@ -88,7 +88,7 @@ nav:
     - 'Principles of imaging and laboratory spectroscopy':
         - 'Lesson': 'module4/01_spectroscopy_principles/01_spectroscopy_principles.md'
         - 'Exercise': 'module4/01_spectroscopy_principles/01_spectroscopy_principles_exercise.md'
-    - 'Aerial/RPAS hyperspectral data acquisition and pre-processing':
+    - 'Airborne hyperspectral data acquisition and pre-processing':
         - 'Lesson': 'module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.md'
         - 'Exercise': 'module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing_exercise_geometric.md'
     - 'In situ and laboratory spectroscopy of vegetation':
