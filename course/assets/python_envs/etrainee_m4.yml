@@ -252,4 +252,5 @@ dependencies:
     - networkx==3.1
     - torchnet==0.0.4
     - visdom==0.2.4
+    - etrainee_m4_utils
 
