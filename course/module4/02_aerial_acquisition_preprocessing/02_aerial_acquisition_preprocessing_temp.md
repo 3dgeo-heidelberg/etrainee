@@ -9,21 +9,20 @@ estimatedTime:
 
 # Airborne hyperspectral data acquisition and pre-processing
 
-Acquisition of airborne hyperspectral (HS) images requires a careful flight planning supported with a filed campaign. Following data preprocessing comprises necessary radiometric and geometric corrections. In addition, spectra transformations and filtering can be conducted to reduce data volume and to suppress the noise present in the data.
+Acquisition of airborne hyperspectral images requires careful flight planning supported by field campaigns. 
+The following preprocessing of data comprises necessary radiometric and geometric corrections. 
+In addition, spectra transformations and filtering can be carried out to reduce data volume and suppress the noise present in the data.
 
 ## Objectives
 
-In this theme, you will learn about 
-* flight planning and in-situ measurements for radiometric and geometric correction of images,
-* methods of radiometric correction of HS images,
-* geometric correction,
-* selected spectra transformations (e.g., minimum noise fraction, continuum removal, spectral indices), and spectra smoothening and denoising.
+In this theme, you will learn about: 
 
-The theme includes an exercise, a self-evaluation quiz, and a list of references.
+* [flight planning and in-situ measurements](#planning-airborne-flight-missions) for radiometric and geometric correction of images,
+* methods of [radiometric correction](#radiometric-correction) of HS images,
+* [geometric correction](#geometric-correction),
+* selected [spectra transformations](#spectra-transformations) (e.g., minimum noise fraction, continuum removal, spectral indices), and spectra smoothening and denoising.
 
-
-Acquisition of airborne hyperspectral images requires careful flight planning supported by field campaigns. 
-The following preprocessing of data comprises necessary radiometric and geometric correction. In addition, spectra transformations and filtering can be carried out to reduce data volume and suppress the noise present in the data.
+The theme includes an [exercise](#excercise), a [self-evaluation quiz](#self-evaluation-quiz), and a list of [references](#references).
 
 In the practical exercise you will carry out a geometric correction of images acquired with a Nano-Hyperspec® camera mounted on the DJI Matrice 600 Pro platform.
 After finishing this theme, you will be aware of flight parameters settings and in-situ measurements to be considered for a successful HS flight mission, you will understand principles of radiometric and geometric corrections, and you will be familiar with noise and data volume reduction methods.
