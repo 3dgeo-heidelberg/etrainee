@@ -43,138 +43,177 @@ Details on sensor parameters, so called parameters of interior orientation (foca
 </p>
 
 Given the sensor pixel size *p<sub>x</sub>*, focal length *c*, and the required ground sampling distance *GSD*, 
-the platform flying height above the terrain h can be calculated as $h = GSD / p<sub>x</sub> * c$ 
-and the absolute flying height above the see level $Z = h + Z<sub>GL</sub>$, where *Z<sub>GL</sub>* corresponds to the height of the terrain modelled e.g., from a digital terrain model (DMT). 
-The size of the swath *S* covered with a line scanner is given by the formula $S = h / c * s$ and the area covered with a frame camera can be expressed as $S x L$ [m<sup>2</sup>], where $S = h / c * s$ and $L = h / c * l$. 
+the platform flying height above the terrain h can be calculated as $h={{GSD}\over{p_x}} \ c$ 
+and the absolute flying height above the see level $Z = h + Z_GL$, where *Z<sub>GL</sub>* corresponds to the height of the terrain modelled e.g., from a digital terrain model (DMT). 
+The size of the swath *S* covered with a line scanner is given by the formula $Z =  {{h}\over{c}}  \  s$ and the area covered with a frame camera can be expressed as $S\times L \  {\begin{bmatrix}m^{2}\end{bmatrix}}$ , where $S =  {{h}\over{c}}  \  s$ and $L =  {{h}\over{c}}  \  l$. 
 The relation between above mentioned parameters is shown in *Figure 1*.
-
-h={{y}\over{x}}* x_{z} 
 
 <p align="center">
 <img src="media/Fig1_sensors.png" title="Parameter relations." alt="Figure 1" width="600"/>
 </p>
 
-
 *Figure 1. Relation between ground sampling distance (GSD), focal length c, flying height above the terrain h, and the area covered on the ground with a linear scanner (left) and a frame camera (right). Figure by course authors.*
 
-Other important parameters are exposure time and frame rate (FPS), i.e., the number of scanned lines or frame images acquired per second. They are related – the exposure time must not exceed the frame period FP=1/FPS [s]. Table 2 gives an example of calculating image acquisition parameters.
+Other important parameters are exposure time and frame rate (*FPS*), i.e., the number of scanned lines or frame images acquired per second. 
+They are related – the exposure time must not exceed the frame period *FP=1/FPS* [s]. 
+Table 2 gives an example of calculating image acquisition parameters.
 
 *Table 2. Example of calculating selected parameters for image acquisition with a Nano-Hyperspec® line sensor*
 
 <p align="center">
-<img src="media/table_2.PNG" title="Table2" alt="Figure 2" width="600"/>
+<img src="media/table2.jpg" title="Sensor parameters." alt="Table 2" width="600"/>
 </p>
 
-To cover the whole area of interest with no gaps, the neighbouring strips are flown with a side overlap q of at least 20%-30% of swath S. In the case of frame cameras, a forward overlap p must be also considered (Figure 2). If a photogrammetric processing is included, i.e., image orientation based on aerotriangulation and bundle adjustment (Kraus, 2007), and utilising image matching (Remondino et al., 2014) for derivation of a digital surface model (DSM), overlap values of p = 60% – 80% and q = 30% - 80% are applied. Smaller values hold for aerial acquisitions with a more stable flight control while larger overlaps are used for RPAS missions.
+To cover the whole area of interest with no gaps, the neighbouring strips are flown with a side overlap *q* of at least 20%-30% of swath *S*. 
+In the case of frame cameras, a forward overlap p must be also considered (*Figure 2*). 
+If a photogrammetric processing is included, i.e., image orientation based on aerotriangulation and bundle adjustment ([Kraus, 2007](#references)), and utilising image matching ([Remondino et al., 2014](#references)) for derivation of a digital surface model (DSM), overlap values of *p* = 60% – 80% and *q* = 30% - 80% are applied. 
+Smaller values hold for aerial acquisitions with a more stable flight control while larger overlaps are used for RPAS missions.
 
 <p align="center">
-<img src="media/Fig2_overlap.png" title="Table2" alt="Figure 2" width="600"/>
+<img src="media/Fig2_overlap.png" title="Image overlap." alt="Figure 2" width="600"/>
 </p>
 
 *Figure 2. Side overlap between neighbouring image strips collected with a linear scanner (left); forward overlap and side overlap of images acquired with a frame camera (right). Figure by course authors.*
 
-Both open source and proprietary software tools for flight planning are available. Their usability is to a certain extent limited to the used platform (drone manufacturer in the case of RPAS). Due to dynamic development in this field, a list of the existing software tools is not provided here but you can make your own search based on the key words “drone mission planning software” or “drone flight planner app”. Figure 3  gives a general workflow of airborne HS flight planning.
+Both open source and proprietary software tools for flight planning are available. 
+Their usability is to a certain extent limited to the used platform (drone manufacturer in the case of RPAS). 
+Due to dynamic development in this field, a list of the existing software tools is not provided here but you can make your own search based on the key words “drone mission planning software” or “drone flight planner app”. 
+*Figure 3*  gives a general workflow of airborne HS flight planning.
 
 <p align="center">
-<img src="media/Fig3_schema.png" title="Table2" alt="Figure 2" width="600"/>
+<img src="media/Fig3_schema.png" title="Flight mission workflow" alt="Figure 3" width="600"/>
 </p>
 
 *Figure 3. A general workflow of flight mission planning. Figure by course authors.*
 
-The parameters of the platforms and sensors that are provided in the respective technical data sheets and are either pre-defined by a software provider or they can be set up by a user. The flight mission planning applications contain graphic tools for drawing an area of interest. Importing a *.kmz file is usually also possible. Further settings comprise flight-specific parameters such as altitude above the mean sea level and above the ground, GSD, image overlaps, the platform velocity, etc. (cf. Figure 4) Mutually dependent parameters (e.g., GSD and the flying height above the ground) are automatically adjusted after one of them is set up. Based on the setup parameters, a flight route is automatically planned and visualised. The created flight plan can be further optimised regarding e.g., the starting and landing points, the flight line azimuth, overlap etc. The final flight plan is then exported and can be uploaded to the flight control system. 
+The parameters of the platforms and sensors that are provided in the respective technical data sheets and are either pre-defined by a software provider or they can be set up by a user. 
+The flight mission planning applications contain graphic tools for drawing an area of interest. Importing a **.kmz* file is usually also possible. 
+Further settings comprise flight-specific parameters such as altitude above the mean sea level and above the ground, GSD, image overlaps, the platform velocity, etc. (cf. *Figure 4*). 
+Mutually dependent parameters (e.g., GSD and the flying height above the ground) are automatically adjusted after one of them is set up. 
+Based on the setup parameters, a flight route is automatically planned and visualised. 
+The created flight plan can be further optimised regarding e.g., the starting and landing points, the flight line azimuth, overlap etc. 
+The final flight plan is then exported and can be uploaded to the flight control system. 
 
-A possibility of following the terrain during the flight is an important feature of the flight control system to be considered for the RPAS. It allows for a constant GSD in the sloped terrain. On the other hand, it requires a reliable DTM (and information about the height of vegetation and buildings if they are present) to avoid any collisions of a drone. 
+A possibility of following the terrain during the flight is an important feature of the flight control system to be considered for the RPAS. 
+It allows for a constant GSD in the sloped terrain. 
+On the other hand, it requires a reliable DTM (and information about the height of vegetation and buildings if they are present) to avoid any collisions of a drone. 
 
 <p align="center">
-<img src="media/Fig4_flightPlan.png" title="Table2" alt="Figure 4" width="600"/>
+<img src="media/Fig4_flightPlan.png" title="Flight planning." alt="Figure 4" width="500"/>
 </p>
 
 *Figure 4. Flight route created in the UgCS drone mission planning software for a Nano-Hyperspec® line camera mounted on the DJI Matrice 600 Pro. 100 m x 100 m plot at the Bílá louka meadow, Krkonoše mountains. Figure by course authors.*
 
-It is worth mentioning that the radiometric quality of the HS images is of high importance. With respect to the radiometric corrections discussed later in this theme, it is recommended to set the azimuth of the flight lines very close to the current azimuth of the sun. Moreover, the images shall be acquired on stable illumination conditions, i.e., either clear sky or homogeneous cloud cover (enabling to perform the flight). 
+It is worth mentioning that the radiometric quality of the HS images is of high importance. 
+With respect to the radiometric corrections discussed later in this theme, it is recommended to set the azimuth of the flight lines very close to the current azimuth of the sun. 
+Moreover, the images shall be acquired on stable illumination conditions, i.e., either clear sky or homogeneous cloud cover (enabling to perform the flight). 
 
-For more details on planning airborne image data acquisition missions read the paper Pepe et al. (2018).
+For more details on planning airborne image data acquisition missions read the paper [Pepe et al. (2018)](#references).
 
 ### Field campaigns
 
 The goal of field campaigns is to collect data necessary for a proper geometric and radiometric correction of the acquired images.
 
-The ground control points (GCPs) are used for indirect or integrated sensor orientation (for explanation see the section Geometric correction). Moreover, check points (CPs) are used for an independent check of horizontal accuracy of a final image product (orthoimage). Both kind of points are represented by signalised or natural distinct points (see Figure 5) and their position is usually determined using a Global Navigation Satellite System (GNSS) receiver enabling Real-Time Kinematic (RTK) measurements (horizontal accuracy of 1 – 2 cm, vertical accuracy of 3 – 5 cm).
-To improve the atmospheric correction of the collected data, in-situ spectra of calibration tarps and over selected materials are collected with portable spectroradiometers in the field (Figure 5). Moreover, the solar irradiation can be measured with sunphotometers. How to use these measurements is explained in the section Radiometric correction.
+The ground control points (GCPs) are used for indirect or integrated sensor orientation (for explanation see the section [Geometric correction](#geometric-correction)). 
+Moreover, check points (CPs) are used for an independent check of horizontal accuracy of a final image product (orthoimage). 
+Both kind of points are represented by signalised or natural distinct points (see *Figure 5*) and their position is usually determined using a Global Navigation Satellite System (GNSS) receiver enabling Real-Time Kinematic (RTK) measurements (horizontal accuracy of 1 – 2 cm, vertical accuracy of 3 – 5 cm).
+
+To improve the atmospheric correction of the collected data, in-situ spectra of calibration tarps and over selected materials are collected with portable spectroradiometers in the field (*Figure 5*). 
+Moreover, the solar irradiation can be measured with sunphotometers. How to use these measurements is explained in the section [Radiometric correction](#radiometric-correction).
 
 <p align="center">
-<img src="media/Fig5_VLBetc.jpg" title="Field campaigns" alt="Figure 4" width="600"/>
+<img src="media/Fig5_VLBetc.jpg" title="Field campaigns" alt="Figure 5" width="500"/>
 </p>
 
 *Figure 5. Field campaigns supporting the HS image acquisition - signalised ground control points (left), tarp for radiometric calibration (upper right), measurement of reflectance of selected materials with a portable spectroradiometer for atmospheric correction. Photos by course authors.*
 
 ## Radiometric correction
 
-A raw HS data cube consists of layers of pixels which digital numbers (DNs) are related to the intensity of electromagnetic energy within the given narrow interval of wavelengths incident on respective cells of a charge-coupled device (CCD). DNs do not have any physical unit and the values are dependent on processing of recorded signal in each sensor. In the first step called sensor calibration, the DNs are converted to spectral (at-sensor) radiance Ls [Wm-2sr-1μm-1]. The relation between L and DN is expressed for each sensor’s spectral band b with a linear function Lbs=GbDNb+Ob, where Gb and Ob is the slope (gain) and offset, respectively. If the spectral values shall be compered over time, with in-situ or laboratory values, further corrections due to variable solar illumination, atmospheric effects, and topography must be considered, as it was discussed in the theme on satellite image processing workflow in the Module 3. The output of the radiometric correction is an image whose pixel values represent spectral reflectance at the surface (Figure 6). 
+A raw HS data cube consists of layers of pixels which digital numbers (DNs) are related to the intensity of electromagnetic energy within the given narrow interval of wavelengths incident on respective cells of a charge-coupled device (CCD). 
+DNs do not have any physical unit and the values are dependent on processing of recorded signal in each sensor. 
+In the first step called *sensor calibration*, the DNs are converted to spectral (at-sensor) radiance *L<sup>s</sup>* [Wm<sup>-2</sup>sr<sup>-1</sup>μm<sup>-1</sup>]. 
+The relation between *L* and DN is expressed for each sensor’s spectral band *b* with a linear function $L_b^s=G_b DN_b+O_b$, where *G<sub>b</sub>* and *O<sub>b</sub>* is the slope (gain) and offset, respectively. 
+If the spectral values shall be compered over time, with in-situ or laboratory values, further corrections due to variable solar illumination, atmospheric effects, and topography must be considered, as it was discussed in the theme on satellite image processing workflow in [Module 3](../../module2/03_image_processing/03_image_processing.md#radiometric-and-geometric-correction). 
+The output of the radiometric correction is an image whose pixel values represent spectral reflectance at the surface (*Figure 6*). 
 
 <p align="center">
-<img src="media/Fig6_schema_RC.svg" title="Schema" alt="Figure 4" width="600"/>
+<img src="media/Fig6_schema_RC.svg" title="Radiometric correction workflow." alt="Figure 6" width="600"/>
 </p>
 
 *Figure 6. General workflow of radiometric correction. Figure by course authors.*
 
-Before application of the sensor calibration, the dark current must be subtracted from the raw data. The dark current measurement, i.e., collecting data with covered objectives lens, is performed prior to the flight. Corrections for scattered light, frame shift smear, bad/erroneous pixels are introduced as described e.g., in de Miguel et al. (2015) for the CASI sensor. The sensor calibration follows. The gain and offset parameters for each spectral band are determined in the laboratory and shall be regularly recalibrated (consequence of sensor ageing). 
+Before application of the sensor calibration, the dark current must be subtracted from the raw data. 
+The dark current measurement, i.e., collecting data with covered objectives lens, is performed prior to the flight. 
+Corrections for scattered light, frame shift smear, bad/erroneous pixels are introduced as described e.g., in de [Miguel et al. (2015)](#references) for the CASI sensor. 
+The sensor calibration follows. The gain and offset parameters for each spectral band are determined in the laboratory and shall be regularly recalibrated (consequence of sensor ageing). 
 
 The water vapour content and the composition and content of aerosols in the atmosphere affect the amount of incident solar radiation and surface reflected radiation captured by the sensor. They can change in time and across larger locations which can cause problems in image processing especially in the case of aerial campaigns. Thus, it is always an advantage to perform flights on days when the atmospheric conditions are stable over the area of interest.
 
-Absorption and scattering are the atmospheric effects we deal with. Molecules in the atmosphere (e.g., water vapor, ozone, and carbon dioxide) absorb incident solar radiation at various wavelengths as shown in Figure 7. The fraction of the electromagnetic radiation incident on the Earth’s surface to solar irradiation at the top of the atmosphere is referred as transmittance of the atmosphere. Particles or large gas molecules cause redirecting the electromagnetic radiation from its original path. The result of this interaction is called scattering. Detailes on the absorption and scattering mechanisms can be found e.g., in CCRS Remote Sensing Tutorial and Stull (2023).
+Absorption and scattering are the atmospheric effects we deal with. Molecules in the atmosphere (e.g., water vapor, ozone, and carbon dioxide) absorb incident solar radiation at various wavelengths as shown in *Figure 7*. 
+The fraction of the electromagnetic radiation incident on the Earth’s surface to solar irradiation at the top of the atmosphere is referred as transmittance of the atmosphere. 
+Particles or large gas molecules cause redirecting the electromagnetic radiation from its original path. The result of this interaction is called scattering. 
+Details on the absorption and scattering mechanisms can be found e.g., in [CCRS Remote Sensing Tutorial](https://natural-resources.canada.ca/maps-tools-publications/satellite-imagery-air-photos/remote-sensing-tutorials/introduction/interactions-atmosphere/14635) and [Stull (2023)](#references).
 
 <p align="center">
-<img src="media/Fig7_atm_window.png" title="atm window" alt="Figure 4" width="600"/>
+<img src="media/Fig7_atm_window.svg" title="Atmosphere transmittance" alt="Figure 7" width="600"/>
 </p>
 
-*Figure 7. Transmittance of the atmosphere from visible to far infrared spectrum. Figure by Even 2021/Wikipedia, CC0 1.0 Universal.*
+*Figure 7. Transmittance of the atmosphere from visible to far infrared spectrum. Figure by [Even 2021/Wikipedia](https://commons.wikimedia.org/wiki/File:Atmosfaerisk_spredning-en.svg), [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/deed.en).*
 
-The radiance in the solar region (0.4 - 2.5 um) collected from a flat terrain in the sensor Ls basically consists of following components (ATCOR- 4, Schowengerdt, 2006; see also Figure 8):
+The radiance in the solar region (0.4 - 2.5 um) collected from a flat terrain in the sensor L<sup>s</sup> basically consists of following components ([ATCOR- 4](), [Schowengerdt, 2006)(); see also *Figure 8*):
 
-Ls=L1s+L2s+L3s
-L1s: surface reflected radiation 
-L2s: up-scattered path radiance
-L3s: adjacency radiance (radiation reflected from objects adjacent to the measured surface)
+$$L^s=L_1^s+L_2^s+L_3^s$$
+
+$L_1^s$: surface reflected radiation  
+$L_2^s$: up-scattered path radiance  
+$L_3^s$: adjacency radiance (radiation reflected from objects adjacent to the measured surface)
 
 <p align="center">
-<img src="media/Fig8_LatSensor.png" title="atm window" alt="Figure 4" width="600"/>
+<img src="media/Fig8_LatSensor.png" title="Radiance components" alt="Figure 8" width="400"/>
 </p>
 
 *Figure 8. Components of the measured at-sensor radiance. Figure by course authors.*
 
 Depending on the in-situ measurements and available software tools, the atmospheric correction can be carried out in the following ways:
 
-## Application of radiative transfer models
+#### 1. Application of radiative transfer models
 
-Radiative Transfer Models (RTM) provide an estimate of atmospheric effects of absorption and scattering on measured (at-sensor) radiance. There are several algorithms available for atmospheric correction of HS data acquired during airborne missions:
-* MODTRAN® - MODerate resolution atmospheric TRANsmission (Spectral Sciences Int.) 
-6S - Second Simulation of the Satellite Signal in the Solar Spectrum (Vermote et al., 1997)
-* Airborne ATCOR® - ATCOR4 (ATmospheric and topographic CORrection)( ReSe Applications GmbH)
+Radiative Transfer Models (RTM) provide an estimate of atmospheric effects of absorption and scattering on measured (at-sensor) radiance. 
+There are several algorithms available for atmospheric correction of HS data acquired during airborne missions:
+
+* [MODTRAN®](http://modtran.spectral.com/) - MODerate resolution atmospheric TRANsmission (Spectral Sciences Int.)  
+* 6S - Second Simulation of the Satellite Signal in the Solar Spectrum ([Vermote et al., 1997](#references))  
+* [Airborne ATCOR®](https://www.rese-apps.com/software/atcor-4-airborne/) - ATCOR4 (ATmospheric and topographic CORrection)( ReSe Applications GmbH)  
   
-The amount and composition of atmospheric constituents (aerosols, water vapor) are estimated from in-situ measurements (photometers) or directly from collected data (water vapor bands, aerosol optical thickness retrieval using e.g., the dark dense vegetation algorithm). Based on the parameters of the atmosphere and the flying height, the transmittance of the atmosphere can be modelled for each wavelength (based on look-up tables generated by the radiative transfer model). Under the assumption of flat terrain, cloud free conditions, and neglecting the adjacency radiance, the surface reflectance  can be estimated from the formula Ls=L2s+Eg/, where Ls is measured at-sensor radiance,  - reflectance of the surface,  - transmittance, and Eg – solar irradiance at the surface (sum of direct and scattered solar irradiance). In the final model, the correction to the adjacency radiance must be added.
+The amount and composition of atmospheric constituents (aerosols, water vapor) are estimated from in-situ measurements (photometers) or directly from collected data (water vapor bands, aerosol optical thickness retrieval using e.g., the dark dense vegetation algorithm). Based on the parameters of the atmosphere and the flying height, the transmittance of the atmosphere can be modelled for each wavelength (based on look-up tables generated by the radiative transfer model). 
+Under the assumption of flat terrain, cloud free conditions, and neglecting the adjacency radiance, 
+the surface reflectance can be estimated from the formula Ls=L2s+Eg/, where Ls is measured at-sensor radiance,  - reflectance of the surface,  - transmittance, and Eg – solar irradiance at the surface (sum of direct and scattered solar irradiance). 
+In the final model, the correction to the adjacency radiance must be added.
 
 If the in-situ spectrometric measurements (surface reflectance) are available, inflight radiometric calibration (gain and offset for each spectral band) or at-sensor radiance validation can be carried out.
 
 If a flat terrain cannot be assumed, a DTM is a required input in order to correct for topographic effects (Richter, 1997). Moreover, the Bidirectional Reflectance Distribution Function (BRDF) correction is applied (Richter and Schläpfer, 2002). In addition, corrections for cirrus cloud or shadows removal can be applied (Schläpfer et al., 2009).
 A comprehensive evaluation of RTMs for deriving surface reflectance from HS imagery can be found in Zhou et al. (2023).
 
-### Empirical line correction
+#### 2. Empirical line correction
 
 The Empirical Line Correction is based on a linear regression model relating in-situ and image observations (Figure 9). Its use was justified by several authors (e.g., Baugh and Groeneveld, 2008, Oritz et al., 2017), nevertheless, the combination with RTM models gives better results (Hadley et al., 2008). In case that in-situ the dark target measurements are not available, the empirical line passes through the origin (which limits the method in correcting for the effect of transmitted radiation). 
 
 Figure 10 shows an example of corrected spectra using the empirical line method.
 
 <p align="center">
-<img src="media/Fig9_empirical line.png" title="atm window" alt="Figure 4" width="600"/>
+<img src="media/Fig9_empirical line.png" title="atm window" alt="Figure 4" width="400"/>
 </p>
 
 *Figure 9. Principle of empirical line correction. Figure by course authors.*
 
 
-### Dark object subtraction
+#### 3. Dark object subtraction
 
-This simplest atmospheric correction method is built on a model that the at-sensor radiance Lshas just two components - surface radiance L1s and path radiance L2s: Ls=L1s+L2s. To model the path radiance, regions of the scene with expected zero surface reflectance (the very darkest objects in the scene), are found. The radiance of pixels corresponding to dark objects is removed from the whole scene. The method is easy to implement and requires no further data. The results may not be reliable as the assumption does not hold for real scenarios (Shi et al., 2016). Zhen et al. (2022) propose this methos for haze removal from HS imagery.
+This simplest atmospheric correction method is built on a model that the at-sensor radiance Lshas just two components - surface radiance L1s and path radiance L2s: Ls=L1s+L2s. 
+To model the path radiance, regions of the scene with expected zero surface reflectance (the very darkest objects in the scene), are found. 
+The radiance of pixels corresponding to dark objects is removed from the whole scene. The method is easy to implement and requires no further data. 
+The results may not be reliable as the assumption does not hold for real scenarios (Shi et al., 2016). Zhen et al. (2022) propose this methos for haze removal from HS imagery.
 
 There are other empirical methods applicable on HS imagery such as Flat Filed correction, or Internal Average Relative Reflectance (for comparison of the methods see Merzah and Jaber, 2020). Optionally, experience with methods for a radiometric correction of hyperspectral imagery acquired from RPAS systems were tested, e.g., Suomalainen et al. (2021), Schläpfer et al. (2020), Hakala et al. (2018). 
 
@@ -196,7 +235,8 @@ The airborne systems for HS data acquisition are equipped with a GNSS receiver a
 
 *Figure 11. Direct georeferencing of HS images acquired with a line sensor. The triangles correspond to check points. Figure by course authors.*
 
-In case of a lower quality of the GNSS/INS equipment, GCPs are used to improve the georeferencing. Such approach is called an integrated system orientation (ISO, e.g., Toth and Józków, 2016). An indirect georeferencing is then an approach when the GNSS/INS measurements are not used at all, and the image orientation relies only on GCPs – it used to be a case of frame cameras. All three methods of image orientation (direct, integrated, and indirect) are described in photogrammetric literature (e.g., Colomina and Molina, 2014, Kraus 2007). 
+In case of a lower quality of the GNSS/INS equipment, GCPs are used to improve the georeferencing. 
+Such approach is called an integrated system orientation (ISO, e.g., Toth and Józków, 2016). An indirect georeferencing is then an approach when the GNSS/INS measurements are not used at all, and the image orientation relies only on GCPs – it used to be a case of frame cameras. All three methods of image orientation (direct, integrated, and indirect) are described in photogrammetric literature (e.g., Colomina and Molina, 2014, Kraus 2007). 
 
 If the accuracy of the GNSS/INS is low, remaining distortions after direct georeferencing and orthorectification in images collected with a line scanner can be in the level of decimetres or meters (Hruska et al., 2012). Thus, overlapping images do not also fit, as shown in the Figure 12. 
 
