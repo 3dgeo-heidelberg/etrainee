@@ -1,8 +1,8 @@
 ---
-title: "E-TRAINEE: Aerial and RPAS hyperspectral data acquisition and image pre-processing workflow"
+title: "E-TRAINEE: Airborne hyperspectral data acquisition and pre-processing"
 description: "This is the second theme within the Airborne Imaging Spectroscopy Time Series Analysis module."
-dateCreated: 2021-03-28
-authors:
+dateCreated: 2023-10-30
+authors: Marketa Potuckova
 contributors: 
 estimatedTime: 
 ---
@@ -203,7 +203,7 @@ In case that in-situ the dark target measurements are not available, the empiric
 *Figure 10* shows an example of corrected spectra using the empirical line method.
 
 <p align="center">
-<img src="media/Fig9_empirical line.png" title="Empirical line correction." alt="Figure 9" width="400"/>
+<img src="media/Fig9_empirical line.png" title="Empirical line correction." alt="Figure 9" width="300"/>
 </p>
 
 *Figure 9. Principle of empirical line correction. Figure by course authors.*
@@ -280,7 +280,7 @@ The images from the frame camera were georeferenced using GCPs and a standard ph
                    
 ### Exercise
 
-At this point, you are ready to work on the [exercise](02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing_exercise_geometric.md). 
+At this point, you are ready to work on the [exercise](02_aerial_acquisition_preprocessing_exercise_geometric.md). 
 You will improve georeferencing of a HS image (3 cm GSD, for the purpose of the exercise reduced only to three spectral bands) by its registration into an RGB orthoimage (2cm GSD). 
 The HS image was acquired with a Nano-Hyperspec® line camera mounted on the DJI Matrice 600 Pro georeferenced using GNSS/INS onboard. 
 The RGB images were acquired with the frame camera Sony A7 ILCE-7, georeferenced using the GCPs and structure from motion. 
@@ -299,7 +299,7 @@ $$s_{0} (\lambda) = s_{t} (\lambda) +n (\lambda)$$
 
 The true signal can be estimated by convolution:
 
-$${\widehat s}_{t} (\lambda) = s_{0} (\lambda) +g (\lambda)$$
+$${\widehat s_{t}} (\lambda) = s_{0} (\lambda) +g (\lambda)$$
 
 where ${\widehat s}_{t}$ is the estimation of the true signal and $g (\lambda)$ is a convolutional, in our case smoothening filter.
 
@@ -369,7 +369,7 @@ The other transformed reflectance values take values in the interval 0 - 1 and a
 
 $$\rho^{'}_{\lambda}  = {{\rho _{\lambda}}\over{\rho _{c(\lambda)}}}$$
 
-where $\rho^{'}_{\lambda}$ is the reflectance value after the CR transformation at wavelength *λ*, ${\rho_{\lambda}$ is the original reflectance value at the same wavelength and $\rho _{c(\lambda)}$ is the continuum value, 
+where $\rho^{'} _{\lambda}$ is the reflectance value after the CR transformation at wavelength *λ*, $\rho _{\lambda}$ is the original reflectance value at the same wavelength and $\rho _{c(\lambda)}$ is the continuum value, 
 i.e., the value at wavelength *λ* given on the line connecting the points of the selected interval on the reflectance spectral curve ([Kokaly and Clark, 1999](#references)). 
 Removing the continuum on a selected part of the spectrum allows calculation of the depth of the absorption band or its area. This is used, for example, by the vegetation index ANMB<sub>650-725</sub> 
 (Area under curve Normalized to Maximum Band depth between 650-725 nm, [Malenovský et al., 2006](#references)).
@@ -453,7 +453,7 @@ Proceed with [In situ and laboratory spectroscopy of vegetation](../03_relating_
 
 Pepe, M., Fregonese, L., Scaioni, M. (2018). Planning airborne photogrammetry and remote-sensing missions with modern platforms and sensors. European Journal of Remote Sensing, 51(1), 412-436. [10.1080/22797254.2018.1444945](https://doi.org/10.1080/22797254.2018.1444945).
 
-Schläpfer, D., Richter, R., Hueni, A. (2009). Recent developments in operational atmospheric and radiometric correction of hyperspectral imagery. In Proc. 6th EARSeL SIG IS Workshop (pp. 16-19). [279261110](https://www.researchgate.net/publication/279261110_Recent_developments_in_operational_atmospheric_and_radiometric_correction_of_hyperspectral_imagery).
+Schläpfer, D., Richter, R., Hueni, A. (2009). Recent developments in operational atmospheric and radiometric correction of hyperspectral imagery. In Proc. 6th EARSeL SIG IS Workshop (pp. 16-19). [researchgate.net](https://www.researchgate.net/publication/279261110_Recent_developments_in_operational_atmospheric_and_radiometric_correction_of_hyperspectral_imagery).
 
 Habib, A., Han, Y., Xiong, W., He, F., Zhang, Z., Crawford, M. (2016). Automated ortho-rectification of UAV-based hyperspectral data over an agricultural field using frame RGB imagery. Remote Sensing, 8(10), 796. [10.3390/rs8100796](https://doi.org/10.3390/rs8100796).  
 
