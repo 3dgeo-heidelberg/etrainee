@@ -25,22 +25,33 @@ In this theme, you will learn about:
 The theme includes an [exercise](#excercise), a [self-evaluation quiz](#self-evaluation-quiz), and a list of [references](#references).
 
 In the practical exercise you will carry out a geometric correction of images acquired with a Nano-Hyperspec® camera mounted on the DJI Matrice 600 Pro platform.
+
 After finishing this theme, you will be aware of flight parameters settings and in-situ measurements to be considered for a successful HS flight mission, you will understand principles of radiometric and geometric corrections, and you will be familiar with noise and data volume reduction methods.
 
 ## Planning airborne flight missions
 
-Radiometric and geometric quality of acquired images is one of the key factors influencing success of any application in imaging spectroscopy. Once the decision on the area of interest, required spectral and spatial resolutions is made, it is necessary to choose a suitable sensor and platform – spaceborne, airborne, or remotely piloted aircraft system (RPAS)/uncrewed aerial vehicle (UAV). While the orbits and instruments of the spaceborne systems are fixed by their providers, planning of airborne missions is an important part of each use case. The main sensor and platform parameters to be considered for airborne flight mission are summarised in Table 1. Detailes on sensor parameters, so called parameters of interior orientation (focal length, lens distortion, position of the principal point), and parameters of exterior orientation (position of the projection centre and rotations of the sensor in space) can be found in photogrammetric literature (e.g., Kraus, 2007, Förstner and Wrobel, 2016).
+Radiometric and geometric quality of acquired images is one of the key factors influencing success of any application in imaging spectroscopy. 
+Once the decision on the area of interest, required spectral and spatial resolutions is made, it is necessary to choose a suitable sensor and platform – spaceborne, airborne, or remotely piloted aircraft system (RPAS)/uncrewed aerial vehicle (UAV). 
+While the orbits and instruments of the spaceborne systems are fixed by their providers, planning of airborne missions is an important part of each use case. 
+The main sensor and platform parameters to be considered for airborne flight mission are summarised in Table 1. 
+Details on sensor parameters, so called parameters of interior orientation (focal length, lens distortion, position of the principal point), and parameters of exterior orientation (position of the projection centre and rotations of the sensor in space) can be found in photogrammetric literature (e.g., [Kraus, 2007, Förstner and Wrobel, 2016](#references)).
 
-*Table 1. Selected sensors and airborne platform parameters to be considered for flight mission planning. For explanation of sensor types and platforms visit Theme 1 of this Module.*
+*Table 1. Selected sensors and airborne platform parameters to be considered for flight mission planning. For explanation of sensor types and platforms visit [Theme 1](../01_spectroscopy_principles/01_spectroscopy_principles.md).*
 
 <p align="center">
-<img src="media/table1_intro.PNG" title="Table1." alt="Figure 1" width="600"/>
+<img src="media/table1.jpg" title="Sensor - platform." alt="Table 1" width="600"/>
 </p>
 
-Given the sensor pixel size px, focal length c, and the required ground sampling distance GSD, the platform flying height above the terrain h can be calculated as  h=GSDpxc and the absolute flying height above the see level Z = h + ZGL, where ZGL corresponds to the height of the terrain modelled e.g., from a digital terrain model (DMT). The size of the swath S covered with a line scanner is given by the formula S=hcs and the area covered with a frame camera can be expressed as S x L m2, where S=hcs and L=hcl. The relation between abovementioned parameters is shown in Figure 1.
+Given the sensor pixel size *p<sub>x</sub>*, focal length *c*, and the required ground sampling distance *GSD*, 
+the platform flying height above the terrain h can be calculated as $h = GSD / p<sub>x</sub> * c$ 
+and the absolute flying height above the see level $Z = h + Z<sub>GL</sub>$, where *Z<sub>GL</sub>* corresponds to the height of the terrain modelled e.g., from a digital terrain model (DMT). 
+The size of the swath *S* covered with a line scanner is given by the formula $S = h / c * s$ and the area covered with a frame camera can be expressed as $S x L$ [m<sup>2</sup>], where $S = h / c * s$ and $L = h / c * l$. 
+The relation between above mentioned parameters is shown in *Figure 1*.
+
+h={{y}\over{x}}* x_{z} 
 
 <p align="center">
-<img src="media/Fig1_sensors.png" title="Map of the study area." alt="Figure 1" width="600"/>
+<img src="media/Fig1_sensors.png" title="Parameter relations." alt="Figure 1" width="600"/>
 </p>
 
 
