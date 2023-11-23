@@ -228,29 +228,70 @@ Optionally, experience with methods for a radiometric correction of hyperspectra
 
 ## Geometric correction
 
-The goal of the geometric correction is to compensate for geometric distortions due to perspective projection, changes in the platform altitude, velocity, and rotations and due to uneven terrain. It results in an orthorectified image georeferenced in the required reference coordinate system. 
+The goal of the geometric correction is to compensate for geometric distortions due to perspective projection, changes in the platform altitude, velocity, and rotations and due to uneven terrain. 
+It results in an orthorectified image georeferenced in the required reference coordinate system. 
 
-The airborne systems for HS data acquisition are equipped with a GNSS receiver and an inertial measurement unit – IMU (or an inertial navigation system – INS) to determine the platform position and rotation with respect to the reference coordinate system (e.g., WGS84). Such equipment is necessary in the case of line scanner when each image line has its own parameters of exterior orientation (Pepe et al., 2018). The method of obtaining the image orientation only from the GNSS/INS measurements is called direct georeferencing (e.g., Toth and Józków, 2016; see also Figure 11). It can be realised using the RTK or post-processing kinematic (PPK) measurements. Its use requires high accuracy of the INS which makes the whole system costly. To carry out quality assessment, a number of CPs is needed.
+The airborne systems for HS data acquisition are equipped with a GNSS receiver and an inertial measurement unit – IMU (or an inertial navigation system – INS) to determine the platform position and rotation with respect to the reference coordinate system (e.g., WGS84). 
+Such equipment is necessary in the case of line scanner when each image line has its own parameters of exterior orientation ([Pepe et al., 2018](#references)). 
+The method of obtaining the image orientation only from the GNSS/INS measurements is called direct georeferencing (e.g., [Toth and Józków, 2016](#references); see also *Figure 11*). 
+It can be realised using the RTK or post-processing kinematic (PPK) measurements. Its use requires high accuracy of the INS which makes the whole system costly. To carry out quality assessment, a number of CPs is needed.
 
 <p align="center">
-<img src="media/Fig11_GNSS_INS.png" title="atm window" alt="Figure 4" width="600"/>
+<img src="media/Fig11_GNSS_INS.png" title="Direct georeferencing." alt="Figure 11" width="600"/>
 </p>
 
 *Figure 11. Direct georeferencing of HS images acquired with a line sensor. The triangles correspond to check points. Figure by course authors.*
 
 In case of a lower quality of the GNSS/INS equipment, GCPs are used to improve the georeferencing. 
-Such approach is called an integrated system orientation (ISO, e.g., Toth and Józków, 2016). An indirect georeferencing is then an approach when the GNSS/INS measurements are not used at all, and the image orientation relies only on GCPs – it used to be a case of frame cameras. All three methods of image orientation (direct, integrated, and indirect) are described in photogrammetric literature (e.g., Colomina and Molina, 2014, Kraus 2007). 
+Such approach is called an integrated system orientation (ISO, e.g., [Toth and Józków, 2016](#references)). 
+An indirect georeferencing is then an approach when the GNSS/INS measurements are not used at all, and the image orientation relies only on GCPs – it used to be a case of frame cameras. 
+All three methods of image orientation (direct, integrated, and indirect) are described in photogrammetric literature (e.g., [Colomina and Molina, 2014, Kraus 2007](#references)). 
 
-If the accuracy of the GNSS/INS is low, remaining distortions after direct georeferencing and orthorectification in images collected with a line scanner can be in the level of decimetres or meters (Hruska et al., 2012). Thus, overlapping images do not also fit, as shown in the Figure 12. 
+If the accuracy of the GNSS/INS is low, remaining distortions after direct georeferencing and orthorectification in images collected with a line scanner can be in the level of decimetres or meters ([Hruska et al., 2012](#references)). 
+Thus, overlapping images do not also fit, as shown in the *Figure 12*. 
 
 <p align="center">
-<img src="media/Fig12_Geom_cor_Nano.jpg" title="Geom_cor_nano" alt="Figure 4" width="600"/>
+<img src="media/Fig12_Geom_cor_Nano.jpg" title="Geometric correction Nano-Hyperspec." alt="Figure 12" width="500"/>
 </p>
 
 *Figure 12. Geometric correction of an image acquired with a Nano-Hyperspec® line camera mounted on the DJI Matrice 600 Pro. The two overlapping image strips after directs georeferencing and orthorectification (top) and after their rectification into RGB orthoimages acquired with a frame camera Sony A7 ILCE-7 from the same platform (bottom). The correction includes a transformation from the WGS84 (EPSG 4326) coordinate system to the national coordinate system S-JTSK (EPSG 5514). Figure by course authors.*
 
+A possible solution is in registration of distort images into another geographical layer of higher accuracy. 
+Orthoimages acquired with a RGB frame camera during the same flight or another flight within a short time interval (a few days) are often used for this purpose ([Suomalainen et al. 2014, Turner et al. 2017, Habib et al. 2016, Angel et al., 2020, Červená et al. 2020](#references)). 
+*Figure 13* depicts a processing workflow of orientation of images acquired with a line sensor based on fusion with a simultaneously acquired images with a frame camera. 
+The images from the frame camera were georeferenced using GCPs and a standard photogrammetric workflow using structure from motion (Jiang et al., 2020). 
+*Table* 3 shows that a combined approach brings a considerable improvement to first step orientation based only on GNSS/INS.
 
-A possible solution is in registration of distort images into another geographical layer of higher accuracy. Orthoimages acquired with a RGB frame camera during the same flight or another flight within a short time interval (a few days) are often used for this purpose (Suomalainen et al. 2014, Turner et al. 2017, Habib et al. 2016, Angel et al., 2020, Červená et al. 2020). Figure 13 depicts a processing workflow of orientation of images acquired with a line sensor based on fusion with a simultaneously acquired images with a frame camera. The images from the frame camera were georeferenced using GCPs and a standard photogrammetric workflow using structure from motion (Jiang et al., 2020). Table 3 shows that a combined approach brings a considerable improvement to first step orientation based only on GNSS/INS.
+<p align="center">
+<img src="media/Fig13.png" title="Geometric correction Nano-Hyperspec." alt="Figure 13" width="500"/>
+</p>
+
+*Figure 13. Geometric processing of HS imagery acquired with a line sensor supported with simultaneously collected images with a frame camera. Figure by [Suomalainen et al. (2014)](https://doi.org/10.3390/rs61111013), [CC-BY 4.0 license](https://creativecommons.org/licenses/by/4.0/).*
+
+*Table 3. Comparison of RMSE on CP after direct georeferencing and orthorectification of a line sensor (basic correction) and after improvement using orthoimages from a frame camera (advanced correction).*
+
+ **Reference**       | **GSD [m]** | **RMSE [m] basic correction** | **RMSE [m] advanced correction** 
+---------------------|-------------|-------------------------------|----------------------------------
+ Angel et al. 2020   | 0.007       | ---                           | 0.05 - 0.08                      
+ Červená et al. 2020 | 0.03        | 1.74                          | 0.19                             
+ Habib et al. 2016   | 0.05        | 1.42 - 5.09                   | 0.35 - 0.99                      
+ Hruska et al. 2012  | 0.28        | 4.63                          | ---                              
+ Turner et al. 2017  | 0.02        | ---                           | 0.03 - 0.06                      
+
+### Exercise
+
+At this point, you are ready to work on the [exercise](/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing_exercise_geometric.md). 
+You will improve georeferencing of a HS image (3 cm GSD, for the purpose of the exercise reduced only to three spectral bands) by its registration into an RGB orthoimage (2cm GSD). 
+The HS image was acquired with a Nano-Hyperspec® line camera mounted on the DJI Matrice 600 Pro georeferenced using GNSS/INS onboard. 
+The RGB images were acquired with the frame camera Sony A7 ILCE-7, georeferenced using the GCPs and structure from motion. 
+The GCPs were signalised and measured with a GNSS/RTK receiver with an accuracy of 2 cm in the horizontal and 3 cm in the vertical direction.
+
+## Spectra transformations
+
+Due to noise present in the data and large data volumes, it is practical to carry out further pre-processing steps of radiometrically and geometrically corrected HS imagery before their use for time series statistical analysis or classification. 
+
+
+
 
 ## Self-evaluation quiz
 
