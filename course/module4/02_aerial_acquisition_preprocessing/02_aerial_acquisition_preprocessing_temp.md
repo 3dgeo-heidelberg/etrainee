@@ -324,7 +324,7 @@ Averaging of neighbouring bands followed by subsampling are applied when both da
 
 #### Tutorial
 
-To better understand the Moving Average and Savitzky-Golay filters, go to [Tutorial on Spectra smoothening and denoising](filtering_spectral_curve.md). 
+To better understand the Moving Average and Savitzky-Golay filters, go to [Tutorial on Spectra smoothening and denoising](filtering_spectral_curve.ipynb). 
 In a Jupyter Notebook, you can explore their parameters and their influence on the level of spectra smoothening. 
 To understand the consequences of smoothening on measured spectra, read the study [Vaiphasa, (2006)](#references).
 
