@@ -20,7 +20,7 @@ In this theme, you will learn about:
 * [flight planning and in-situ measurements](#planning-airborne-flight-missions) for radiometric and geometric correction of images,
 * methods of [radiometric correction](#radiometric-correction) of HS images,
 * [geometric correction](#geometric-correction),
-* selected [spectra transformations](#spectra-transformations) (e.g., minimum noise fraction, continuum removal, spectral indices), and spectra smoothing and denoising.
+* selected [spectra transformations](#spectra-transformations) (e.g., maximum noise fraction, continuum removal, spectral indices), and spectra smoothing and denoising.
 
 The theme includes an [exercise](#exercise), a [self-evaluation quiz](#self-evaluation-quiz), and a list of [references](#references).
 
@@ -304,7 +304,7 @@ $$s_{0} (\lambda) = s_{t} (\lambda) +n (\lambda)$$
 
 The true signal can be estimated by convolution:
 
-$${\widehat s_{t}} (\lambda) = s_{0} (\lambda) +g (\lambda)$$
+$${\widehat s_{t}} (\lambda) = s_{0} (\lambda) *g (\lambda)$$
 
 where ${\widehat s}_{t}$ is the estimation of the true signal and $g (\lambda)$ is a convolutional, in our case smoothening filter.
 
@@ -344,9 +344,9 @@ It shall be noted that small but significant band differences may appear only in
 
 *Figure 16. Correlation of 391504 spectral measurements of dominating grass species in the Krkonoše Mts. tundra collected with a Nano-Hyperspec® line camera in August 2020. The correlation was calculated both for original spectra containing nb = 270 spectral bands and spectra reduced to nb = 54 bands, taking a median of 5 neighbouring measurements. Notice the corresponding patterns in both parts of the figure. Figure by course authors.* 
 
-### Minimum Noise Fraction (MNF)
+### Maximum Noise Fraction (MNF)
 
-Noise in HS images can be effectively removed with the minimum noise fraction (MNF) transformation ([Green et al., 1988](#references)). It is a modification of PCA and can improve the isolation of the noisiest bands in a HS image ([Schowengerdt, 2006](#references)). 
+Noise in HS images can be effectively removed with the maximum noise fraction (MNF) transformation ([Green et al., 1988](#references)). It is a modification of PCA and can improve the isolation of the noisiest bands in a HS image ([Schowengerdt, 2006](#references)). 
 The influence of the MNF transformation on the classification accuracy of grass species from time series of HS imagery is part of the case study on [Discrimination of selected grass species from time series of RPAS hyperspectral imagery](../06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.md).
 
 ### Spectral indices
