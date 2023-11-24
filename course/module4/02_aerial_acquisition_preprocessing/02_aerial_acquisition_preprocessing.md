@@ -20,7 +20,7 @@ In this theme, you will learn about:
 * [flight planning and in-situ measurements](#planning-airborne-flight-missions) for radiometric and geometric correction of images,
 * methods of [radiometric correction](#radiometric-correction) of HS images,
 * [geometric correction](#geometric-correction),
-* selected [spectra transformations](#spectra-transformations) (e.g., minimum noise fraction, continuum removal, spectral indices), and spectra smoothening and denoising.
+* selected [spectra transformations](#spectra-transformations) (e.g., minimum noise fraction, continuum removal, spectral indices), and spectra smoothing and denoising.
 
 The theme includes an [exercise](#exercise), a [self-evaluation quiz](#self-evaluation-quiz), and a list of [references](#references).
 
