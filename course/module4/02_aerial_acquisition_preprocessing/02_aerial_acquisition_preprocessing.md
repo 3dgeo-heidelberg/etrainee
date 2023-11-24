@@ -44,9 +44,9 @@ Details on sensor parameters, so called parameters of interior orientation (foca
 </p>
 
 Given the sensor pixel size *p<sub>x</sub>*, focal length *c*, and the required ground sampling distance *GSD*, 
-the platform flying height above the terrain h can be calculated as $h={{GSD}\over{p_x}} \ c$ 
-, and the absolute flying height above the see level $Z = h + Z_GL$, where *Z<sub>GL</sub>* corresponds to the height of the terrain modelled, e.g., from a digital terrain model (DMT). 
-The size of the swath *S* covered with a line scanner is given by the formula $Z =  {{h}\over{c}}  \  s$ , and the area covered with a frame camera can be expressed as $S \times L \  [m^{2}]$ , where $S =  {{h}\over{c}}  \  s$ and $L =  {{h}\over{c}}  \  l$. 
+the platform flying height above the terrain *h* can be calculated as $h={{GSD}\over{p_x}} \ c$ 
+, and the absolute flying height above the see level $Z = h + Z_{GL}$, where *Z<sub>GL</sub>* corresponds to the height of the terrain modelled, e.g., from a digital terrain model (DMT). 
+The size of the swath *S* covered with a line scanner is given by the formula $S =  {{h}\over{c}}  \  s$ , and the area covered with a frame camera can be expressed as $S \times L \  [m^{2}]$ , where $S =  {{h}\over{c}}  \  s$ and $L =  {{h}\over{c}}  \  l$. 
 The relation between the above mentioned parameters is shown in *Figure 1*.
 
 <p align="center">
@@ -134,7 +134,7 @@ Moreover, solar irradiation can be measured with sunphotometers. The section [Ra
 A raw HS data cube consists of layers of pixels, whose digital numbers (DNs) are related to the intensity of electromagnetic energy (incident on cells of a charge-coupled device (CCD)) within a given narrow interval of wavelengths. 
 DNs do not have any physical unit, and the values are dependent on the processing of the recorded signal of each sensor. 
 In the first step called *sensor calibration*, the DNs are converted to spectral (at-sensor) radiance *L<sup>s</sup>* [Wm<sup>-2</sup>sr<sup>-1</sup>μm<sup>-1</sup>]. 
-The relation between *L* and DN is expressed for each sensor’s spectral band *b* with a linear function $L_b^s=G_b DN_b+O_b$, where *G<sub>b</sub>* and *O<sub>b</sub>* are the slope (gain) and offset, respectively. 
+The relation between *L* and *DN* is expressed for each sensor’s spectral band *b* with a linear function $L_b^s=G_b DN_b+O_b$, where *G<sub>b</sub>* and *O<sub>b</sub>* are the slope (gain) and offset, respectively. 
 If the spectral values shall be compared over time with in-situ or laboratory values, further corrections due to variable solar illumination, atmospheric effects, and topography must be considered, as discussed in the theme on satellite image processing workflow in [Module 3](../../module2/03_image_processing/03_image_processing.md#radiometric-and-geometric-correction). 
 The output of radiometric correction is an image whose pixel values represent spectral reflectance at the surface (*Figure 6*). 
 
@@ -146,7 +146,7 @@ The output of radiometric correction is an image whose pixel values represent sp
 
 Before application of the sensor calibration, the dark current must be subtracted from the raw data. 
 The dark current measurement, i.e., collecting data with a covered objective lens, is performed prior to the flight. 
-Corrections for scattered light, frame shift smear, and bad/erroneous pixels are introduced as described ,e.g., in [de Miguel et al. (2015)](#references) for the CASI sensor. 
+Corrections for scattered light, frame shift smear, and bad/erroneous pixels are introduced as described, e.g., in [de Miguel et al. (2015)](#references) for the CASI sensor. 
 The sensor calibration follows. The gain and offset parameters for each spectral band are determined in the laboratory and shall be regularly recalibrated (as a consequence of sensor aging). 
 
 The water vapour content and the composition and content of aerosols in the atmosphere affect the amount of incident solar radiation and surface reflected radiation captured by the sensor. 
@@ -164,7 +164,7 @@ Details on the absorption and scattering mechanisms can be found, e.g., in the [
 
 *Figure 7. Transmittance of the atmosphere from visible to far infrared spectrum. Figure by [Even 2021/Wikipedia](https://commons.wikimedia.org/wiki/File:Atmosfaerisk_spredning-en.svg), [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/deed.en).*
 
-The radiance in the solar region (0.4 - 2.5 um) collected from flat terrain in the sensor L<sup>s</sup> basically consists of the following components ([ATCOR- 4](), [Schowengerdt, 2006)(); see also *Figure 8*):
+The radiance in the solar region (0.4 - 2.5 um) collected from flat terrain in the sensor *L<sup>s</sup>* basically consists of the following components ([ATCOR- 4](https://www.rese-apps.com/software/atcor-4-airborne/atcor-4-method.html), [Schowengerdt, 2006](#references); see also *Figure 8*):
 
 $$L^s=L_1^s+L_2^s+L_3^s$$
 
@@ -216,7 +216,7 @@ In the event that in-situ the dark target measurements are not available, the em
 
 #### 3. Dark object subtraction
 
-This simplest atmospheric correction method is built on the model that the at-sensor radiance $L^s$ has just two components - surface radiance $L_1^s$ and path radiance $L_2^s$: $L^s=L_1^s+L_2^s+L_3^s$. 
+This simplest atmospheric correction method is built on the model that the at-sensor radiance $L^s$ has just two components - surface radiance $L_1^s$ and path radiance $L_2^s$: $L^s=L_1^s+L_2^s$. 
 To model the path radiance, regions of the scene with expected zero surface reflectance (the very darkest objects in the scene) are found. 
 The radiance of pixels corresponding to dark objects is removed from the whole scene. The method is easy to implement and requires no further data. 
 The results may not be reliable as the assumption does not hold for real-life scenarios ([Shi et al., 2016](#references)). 
@@ -358,7 +358,7 @@ In [Module 2](../../module2/01_multispectral_principles/01_multispectral_princip
 The same approach, i.e., using mathematical operations on measurements from two and more spectral bands to emphasize certain properties of the observed surface can be applied to HS imagery. 
 Thanks to its narrow spectral bands, more details can be inspected. 
 The case study on the [seasonal dynamics of flood-plain forests](../07_flood_plain_forest/07_flood_plain_forest.md) gives some examples of indices used in imaging spectroscopy, including their calculation in R. 
-More examples can be found in, e.g., [Roberts et al. (2018); Broge and Mortensen (2002); Envi (2023](#references).
+More examples can be found in, e.g., [Roberts et al. (2018); Broge and Mortensen (2002); Envi (2023)](#references).
 
 ### Continuum removal
 
@@ -369,7 +369,7 @@ The method of Continuum Removal (CR) is applied to normalise the shape of the sp
 <img src="media/Fig17.jpg" title="Continuum removal." alt="Figure 17" width="400"/>
 </p>
 
-*Figure 17. Principle of the continuum removal method. Original spectrum (left) and the transformed spectrum after continuum removal (right). Figure by [Albrechtová et al., (2017)](#references)*
+*Figure 17. Principle of the continuum removal method. Original spectrum (left) and the transformed spectrum after continuum removal (right). Figure by [Albrechtová et al. (2017)](#references)*
 
 The end points of the interval on the spectral curve determine the continuum line, and their new value is equal to one. 
 The other transformed reflectance values take values in the interval 0 - 1 and are recalculated as:
