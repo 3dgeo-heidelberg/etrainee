@@ -173,7 +173,7 @@ $L_2^s$: up-scattered path radiance
 $L_3^s$: adjacency radiance (radiation reflected from objects adjacent to the measured surface)
 
 <p align="center">
-<img src="media/Fig8_LatSensor.png" title="Radiance components." alt="Figure 8" width="400"/>
+<img src="media/Fig8_LatSensor.png" title="Radiance components." alt="Figure 8" width="300"/>
 </p>
 
 *Figure 8. Components of measured at-sensor radiance. Figure by course authors.*
