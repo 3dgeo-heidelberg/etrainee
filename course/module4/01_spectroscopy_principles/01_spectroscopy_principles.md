@@ -31,34 +31,39 @@ In the practical exercise you will explore spectra of selected land cover classe
 
 After finishing this theme, you will be able to assess advantages and drawbacks of using hyperspectral imaging in comparison to multispectral observations and how field and laboratory spectroscopy supports the aerial/RPAS campaigns.
 
-##Imaging and laboratory spectroscopy
+## Imaging and laboratory spectroscopy
 
 Spectroscopy is the study of forming and looking at spectra using spectrometers, spectroscopes, etc. (Oxford Learner’s Dictionaries, 2023). It has variety of applications in chemistry and physics. In the scope of our course, the focus is on spectra of light reflected from matters forming Earth’s surface or optionally spectra of light transmitted through a thin layer of matter. It is important to remember that both reflectance and transmittance depend on the matter properties and are the function of wavelengths. It worth mentioning that the origin of spectroscopy goes back to the turn of the 17th and 18th century when Isac Newton investigated refraction of light and introduced the word “spectrum” to describe the split of white light into component colours on prism (Wikipedia, 2023). 
 
-An optical spectrometer is an instrument used for measurement of properties of light over a defined range of wavelengths. Figure 1 shows a schema of a spectrometer. The incoming electromagnetic radiation is dispersed on a diffraction grating and collected on a detector. The spectrometer is characterised with a spectral range (min/max wavelength), spectral bandwidth, spectral sampling, and signal-to-noise ratio (SNR). Due to narrow spectral ranges collected with a detector, SNR is among parameters that should not be neglected when choosing the instrument. 
+An optical spectrometer is an instrument used for measurement of properties of light over a defined range of wavelengths. *Figure 1* shows a schema of a spectrometer. The incoming electromagnetic radiation is dispersed on a diffraction grating and collected on a detector. The spectrometer is characterised with a spectral range (min/max wavelength), spectral bandwidth, spectral sampling, and signal-to-noise ratio (SNR). Due to narrow spectral ranges collected with a detector, SNR is among parameters that should not be neglected when choosing the instrument. 
 
 <p align="center">
 <img src="media/img1.png" title="Schema of a spectrometer" alt="Schema of a spectrometer" width="700"/>
 </p>
+
 *Figure 1. Schema of a spectrometer. Figure by [Jooja/Wikipedia](https://en.wikipedia.org/wiki/Optical_spectrometer#/media/File:Spectrometer.svg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0)*
 
-In general, spectroradiometers measure the radiance in multiple spectral bands (Liang and Wang, 2019). While multispectral spectroradiometers introduced in the [Theme 1 of Module 2](../../module2/01_multispectral_principles/01_multispectral_principles.md) of this course collect the measurements over several rather broad, and not continuous spectral bands, hyperspectral spectroradiometers divide the observed part of the spectrum into many (40 - > 200) narrow (5 – 20 nm) adjacent bands with fine spectral resolution. 
+In general, spectroradiometers measure the radiance in multiple spectral bands [(Liang and Wang, 2019)](#references). While multispectral spectroradiometers introduced in the [Theme 1 of Module 2](../../module2/01_multispectral_principles/01_multispectral_principles.md) of this course collect the measurements over several rather broad, and not continuous spectral bands, hyperspectral spectroradiometers divide the observed part of the spectrum into many (40 - > 200) narrow (5 – 20 nm) adjacent bands with fine spectral resolution. 
 
-[Whiskbroom](https://en.wikipedia.org/wiki/Whisk_broom_scanner) or [pushbroom](https://en.wikipedia.org/wiki/push_broom_scanner) scanners are used in airborne (i.e., aerial or remotely piloted aircraft systems – RPAS) or spaceborne hyperspectral imaging. The incident light passes through the optical system and a slit, is dispersed and an array of CCD detectors collect radiance in respective spectral bands (Figure 2). The CCD detectors are fabricated from different materials depending on their spectral sensitivity (e.g., silicon detectors for the visible range, indium gallium arsenide for the NIR, and indium-antimonide detectors for the SWIR parts of the spectrum in the AVIRIS sensor, AVIRIS 2023).
+[Whiskbroom](https://en.wikipedia.org/wiki/Whisk_broom_scanner) or [pushbroom](https://en.wikipedia.org/wiki/push_broom_scanner) scanners are used in airborne (i.e., aerial or remotely piloted aircraft systems – RPAS) or spaceborne hyperspectral imaging. The incident light passes through the optical system and a slit, is dispersed and an array of CCD detectors collect radiance in respective spectral bands (*Figure 2*). The CCD detectors are fabricated from different materials depending on their spectral sensitivity (e.g., silicon detectors for the visible range, indium gallium arsenide for the NIR, and indium-antimonide detectors for the SWIR parts of the spectrum in the AVIRIS sensor, AVIRIS 2023).
 
 <p align="center">
 <img src="media/img2.png" title="Schema of a spectrometer" alt="Schema of a spectrometer" width="700"/>
 </p>
+
 *Figure 2. Scheme of data acquisition and processing output from the Airborne Visible InfraRed Imaging Spectrometer - Next Generation. AVIRIS-NG. Figure by [JPL](https://avirisng.jpl.nasa.gov/aviris-ng.html)/Courtesy NASA/JPL-Caltech/[Terms of Use](https://www.jpl.nasa.gov/jpl-image-use-policy)*
+
 
 The raw spectral measurements have to be radiometrically corrected (see [Theme 2](../02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.md) of this Module). A **continuous reflectance spectral curve** of each pixel within the instrument’s spectral range is obtained and can be used to identify the surface materials and their properties. The whole set of overlaying geometrically coregistered images acquired in continuous spectral bands is called a **hyperspectral image cube**. It can be used for visualisation (combination of 3 selected spectral bands to create a true/false colour composite) and for depicting pixels which spectral curves are of interest.
 
-**Laboratory and portable spectroradiometers** are used for collecting reference an in-situ data. They provide **point measurements** (i.e., one spectral curve per measurement) using an optical cable connected to a pistol grip, contact probe, or an integrating sphere (Figure 3). While the first two devices are designed for measurement of reflectance, the integrating sphere can be used for measurement of both reflectance and transmittance of a sample mounted on its holder. Some of so-called leaf clips connected to the spectroradiometer can be used for in situ measurements of both reflectance and transmittance of leaves. 
+**Laboratory and portable spectroradiometers** are used for collecting reference an in-situ data. They provide **point measurements** (i.e., one spectral curve per measurement) using an optical cable connected to a pistol grip, contact probe, or an integrating sphere (*Figure 3*). While the first two devices are designed for measurement of reflectance, the integrating sphere can be used for measurement of both reflectance and transmittance of a sample mounted on its holder. Some of so-called leaf clips connected to the spectroradiometer can be used for in situ measurements of both reflectance and transmittance of leaves. 
 
 <p align="center">
 <img src="media/img3.png" title="Spectroradiometer ADS FieldSpec 4 Hi-Res" alt="Spectroradiometer ADS FieldSpec 4 Hi-Res" width="700"/>
 </p>
+
 *Figure 3. Spectroradiometer ADS FieldSpec 4 Hi-Res connected to a contact probe (a), a pistol grip during filed measurements (b), and to a integrating sphere (c).*
+
 
 Similar to hyperspectral images, the spectra collected with the laboratory spectroradiometers have to be calibrated to obtain the reflectance of the matter comparable in time and with other measurements. Laboratory spectroscopy is a topic of the [Theme 3](../03_relating_imagery_lab_vegetation/03_navig.md) of this Module.
 
