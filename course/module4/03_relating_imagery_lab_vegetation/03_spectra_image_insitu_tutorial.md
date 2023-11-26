@@ -19,12 +19,12 @@ Are the spectra measured by the spectroradiometer ASD FieldSpec4 Wide-Res in the
 
 *Figure 1: Spectra acquired by spectroradiometer ASD FieldSpec4 Wide-Res in the field and spectra extracted from Headwall Nano-Hyperspec® images for four plots with two subplots and three months.*
 
-You can see from Figure 1 that spectra are similar but not the same:
+You can see from *Figure 1* that spectra are similar but not the same:
 * Spectra extracted from the image data are noisier (without further processing). 
-* The difference between the spectra is more visible at near infrared. It can be influenced by different ground sample area which was measured. Spectra in the field were measured from approximately 0.5 m height above the canopy, i.e. a circle with a diameter of 22 cm on the ground. Image data has pixel size of only 9 cm (resampled from original 3cm data).
+* The difference between the spectra is more visible at near infrared. It can be influenced by different ground sample area which was measured. Spectra in the field were measured from approximately 0.5 m height above the canopy, i.e. a circle with a diameter of 22 cm on the ground. Image data has pixel size of only 9 cm (resampled from original 3 cm data).
 * Some of the spectra can be also influenced by changing weather conditions in the mountains
 
-To quantify the differences, the paired t-tests were computed for all the wavelengths and the p-values were saved using script 1. The results can be seen in *Figure 2*. 
+To quantify the differences, the paired t-tests were computed for all the wavelengths and the p-values were saved using *script 1*. The results can be seen in *Figure 2*. 
 
 ```
 data=read.delim("Calamagrostis_drone_spectroradiometer_269bands.txt")
@@ -64,8 +64,11 @@ In the next step we try to answer the second question if the vegetation indices 
 Firstly, we performed paired t-test and here are the results from R for all four indices:
 
 NDVI: t = -0.79486, df = 23, p-value = 0.4348
+
 NDVI2: t = -0.57476, df = 23, p-value = 0.571
+
 Carter4: t = 1.8077, df = 23, p-value = 0.08375
+
 TCARI: t = -1.3071, df = 23, p-value = 0.204
 
 For all four indices the null hypothesis was not rejected based on the p-values. To find out more about the indices we plotted indices calculated from image data against indices calculated from spectroradiometer data (*Figure 3*) and added the linear trend which says how well they are correlated. We can see that both normalized difference indices perform the best, simple ratio is only slightly worse and TCARI index has the worst correlation. 
