@@ -11,7 +11,7 @@ estimatedTime:
 
 ## Comparison of spectra acquired by field spectroradiometer and by hyperspectral camera attached to the drone
 
-Are the spectra measured by the spectroradiometer ASD FieldSpec4 Wide-Res in the field and spectra extracted from Headwall Nano-Hyperspec® images comparable? Are the vegetation indices calculated from both datasets comparable? We will demonstrate this comparison on measurements of Calamagrostis villosa in June, July and August 2020. We had four stable plots (diameter app. 2 m) where two subplots (a, b) were randomly selected every month and measured by the spectroradiometer and by geodetic GNSS instrument for the precise location (for the details of the study design see Červená et al. (2022)). In the same dayas, flights for acquisition of hyperspectral data were performed. From the pixels of hyperspectral images corresponding to measured GNSS positions of sublots the spectra were extracted. However, both spectra sources have different spectral resolution, so data from spectroradiometer with 2151 bands had to be resampled to the same 269 bands as image data has. You can see all the resulting spectra in *Figure 1*.
+Are the spectra measured by the spectroradiometer ASD FieldSpec4 Wide-Res in the field and spectra extracted from Headwall Nano-Hyperspec® images comparable? Are the vegetation indices calculated from both datasets comparable? We will demonstrate this comparison on measurements of Calamagrostis villosa in June, July and August 2020. We had four stable plots (diameter app. 2 m) where two subplots (a, b) were randomly selected every month and measured by the spectroradiometer and by geodetic GNSS instrument for the precise location (for the details of the study design see [Červená et al. (2020)](#references). In the same dayas, flights for acquisition of hyperspectral data were performed. From the pixels of hyperspectral images corresponding to measured GNSS positions of sublots the spectra were extracted. However, both spectra sources have different spectral resolution, so data from spectroradiometer with 2151 bands had to be resampled to the same 269 bands as image data has. You can see all the resulting spectra in *Figure 1*.
 
 <p align="center">
 <img src="media/INPUT_SPECTRA.jpg" title="Spectra acquired by spectroradiometer ASD FieldSpec4 Wide-Res." alt="Figure 1" width="600"/>
@@ -24,7 +24,7 @@ You can see from Figure 1 that spectra are similar but not the same:
 * The difference between the spectra is more visible at near infrared. It can be influenced by different ground sample area which was measured. Spectra in the field were measured from approximately 0.5 m height above the canopy, i.e. a circle with a diameter of 22 cm on the ground. Image data has pixel size of only 9 cm (resampled from original 3cm data).
 * Some of the spectra can be also influenced by changing weather conditions in the mountains
 
-To quantify the differences, the paired t-tests were computed for all the wavelengths and the p-values were saved using script 1. The results can be seen in Figure 2. 
+To quantify the differences, the paired t-tests were computed for all the wavelengths and the p-values were saved using script 1. The results can be seen in *Figure 2*. 
 
 ```
 data=read.delim("Calamagrostis_drone_spectroradiometer_269bands.txt")
@@ -67,7 +67,8 @@ NDVI: t = -0.79486, df = 23, p-value = 0.4348
 NDVI2: t = -0.57476, df = 23, p-value = 0.571
 Carter4: t = 1.8077, df = 23, p-value = 0.08375
 TCARI: t = -1.3071, df = 23, p-value = 0.204
-For all four indices the null hypothesis was not rejected based on the p-values. To find out more about the indices we plotted indices calculated from image data against indices calculated from spectroradiometer data (Figure 3) and added the linear trend which says how well they are correlated. We can see that both normalized difference indices perform the best, simple ratio is only slightly worse and TCARI index has the worst correlation. 
+
+For all four indices the null hypothesis was not rejected based on the p-values. To find out more about the indices we plotted indices calculated from image data against indices calculated from spectroradiometer data (*Figure 3*) and added the linear trend which says how well they are correlated. We can see that both normalized difference indices perform the best, simple ratio is only slightly worse and TCARI index has the worst correlation. 
 
 
 <p align="center">
