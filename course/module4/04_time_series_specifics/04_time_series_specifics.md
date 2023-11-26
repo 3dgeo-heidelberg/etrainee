@@ -26,7 +26,7 @@ After finishing this theme, you will understand the principles of HS data classi
 This theme is focused on supervised methods used for HS classification. Existence of high-resolution spectral information opens up for methods based on spectra comparison. The spectra may originate from spectral libraries or can be derived directly from imagery. For purpose of this text, such methods are further called as “based on reference spectra”. Other option is to use training data in the same manner as you learned in the Module 1 and Module 2 mentioned above. These methods will be referred as “based on training samples”.
 
 ## Supervised classification of hyperspectral images based on reference spectra
-Classification legend comprises (in ideal case all) materials/surfaces existing in the scene. Thus, each of the material shall be specified with a reference spectrum. Available spectral libraries and in-situ measurements do not always contain all spectra needed. This problem can be solved by extracting the reference, so called **endmember spectra** for each class/material from image itself. In hyperspectral imaging, an endmember is understood as an idealized, pure signature for a class which represents only single material within the scene. Not every endmember needs to be a pure pixel, it is a spectral signature that is considered to be pure. Thus, only pixel which spectral signature is an endmember can be called as pure (Kale at al., 2017).
+Classification legend comprises (in ideal case all) materials/surfaces existing in the scene. Thus, each of the material shall be specified with a reference spectrum. Available spectral libraries and in-situ measurements do not always contain all spectra needed. This problem can be solved by extracting the reference, so called **endmember spectra** for each class/material from image itself. In hyperspectral imaging, an endmember is understood as an idealized, pure signature for a class which represents only single material within the scene. Not every endmember needs to be a pure pixel, it is a spectral signature that is considered to be pure. Thus, only pixel which spectral signature is an endmember can be called as pure [(Kale at al., 2017)](#references).
 
 ### Endmember extraction from HS imagery
 There are several possibilities how to extract endmembers from the image:
@@ -47,12 +47,12 @@ There are several possibilities how to extract endmembers from the image:
 
 * Output endmembers represent “spectral” classes that might differ from “user” classes
 
-There are several endmember extraction algorithms such as Pixel Purity Index (PPI), N-FINDR, Automatic Morphological Endmember Extraction (AMEE). The often used PPI is based on the Minimum Noise Fraction transformation (see [Theme 2](../02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.md) of this Module). For a detailed explanation and comparison refer to Martínez et al. (2006) and Kale at al., 2017. 
+There are several endmember extraction algorithms such as Pixel Purity Index (PPI), N-FINDR, Automatic Morphological Endmember Extraction (AMEE). The often used PPI is based on the Minimum Noise Fraction transformation (see [Theme 2](../02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.md) of this Module). For a detailed explanation and comparison refer to [Martínez et al. (2006)](#references) and [Kale at al., 2017](#references). 
 
 Once the endmember spectra are defined, you can proceed with classification.
 
 ### Linear spectral unmixing
-Spectral mixture analysis or spectral unmixing assumes that a spectrum of in a pixel might be a result of a composition (mixure) of several endmembers. The goal of unmixing is to find a fraction of endmembers in a pixel (Adams et al., 1986). If the materials in the field of view are optically separated (there is no multiple scattering between components), it can be assumed that the final signal is a linear combination of the endmembers. The relation can be expressed as:
+Spectral mixture analysis or spectral unmixing assumes that a spectrum of in a pixel might be a result of a composition (mixure) of several endmembers. The goal of unmixing is to find a fraction of endmembers in a pixel [(Adams et al., 1986)](#references). If the materials in the field of view are optically separated (there is no multiple scattering between components), it can be assumed that the final signal is a linear combination of the endmembers. The relation can be expressed as:
 
 <p align="center">
 <img src="media/img1.png" title="Formula for spectral unmixing" alt="Formula for spectral unmixing" />
@@ -60,7 +60,7 @@ Spectral mixture analysis or spectral unmixing assumes that a spectrum of in a p
 
 where r<sub>i</sub> is the measured spectrum, a<sub>ij</sub> is the endmember of the spectrum j, f<sub>ij</sub> is the respective endmember fraction, and e<sub>i</sub> is the error between the measurement and the derived model. The unknown fractions are determined by adjustment (e.g., by the least squares method). It shall be mentioned that spectral unmixing is only possible when the number of endmembers of the image is lower than the number of spectral bands (leads to over-dimensioning of the system of equations). The spectral differences between the original and modelled spectral values in each pixel can be calculated and statistically expressed as the [root mean square error](https://en.wikipedia.org/wiki/Root-mean-square_deviation).
 
-Numerous examples of applications of linear unmixing can be found e.g., Okujeni etal. (2021), Cooper et al. (2020).
+Numerous examples of applications of linear unmixing can be found e.g., [Okujeni etal. (2021)](#references), [Cooper et al. (2020)](#references).
 
 ### Spectral angle mapper
 The endmember and measured spectra can be considered as vectors in the spectral feature space. Spectral angle mapper (SAM) calculates an n-D angle to match pixels to endmembers. 
@@ -69,10 +69,10 @@ The endmember and measured spectra can be considered as vectors in the spectral 
 <img src="media/img2.png" title="Formula for SAM" alt="Formula for SAM"/>
 </p>
  
-where Θ is the calculated spectral angle, t is the measured spectrum, r is the reference (endmember), i is the number of the spectral band. The pixel is assigned to an endmember with smallest angle (Yuhas et al., 1992). For each endmember, the spectral angle to the image pixels can be calculated. After visualisation brighter pixel means a larger spectral angle to the endmember.
+where Θ is the calculated spectral angle, t is the measured spectrum, r is the reference (endmember), i is the number of the spectral band. The pixel is assigned to an endmember with smallest angle [(Yuhas et al., 1992)](#references). For each endmember, the spectral angle to the image pixels can be calculated. After visualisation brighter pixel means a larger spectral angle to the endmember.
 
 ### Spectral information divergence
-A comparison of endmember and measured spectra based on probability theory and entropy was suggested by proposed by Chang (2000). Du et al. (2004) uses this concept and shows advantages to SAM (especially in case of small spectral angles).
+A comparison of endmember and measured spectra based on probability theory and entropy was suggested by proposed by [Chang (2000)](#references). [Du et al. (2004)](#references) uses this concept and shows advantages to SAM (especially in case of small spectral angles).
 
 ## Supervised classification of hyperspectral images based training data
 Support vector machines (SVM), random forest (RF) and CNN classifiers are used for hyperspectral data in same manner as explained for multispectral datasets in the Module 1 and Module 2 of this course. They are further practiced and in the case of the CNN also explained in practical the exercises. RF classification applied on a multitemporal dataset of HS imagery is the topic of the case study on [Discrimination of selected grass species from time series of RPAS hyperspectral imagery](https://3dgeo-heidelberg.github.io/etrainee/module4/06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.html).
