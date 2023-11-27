@@ -57,16 +57,10 @@ Each functional trait represents a physiological or morphological trade-off the 
 
 ## Canopy composition and architecture affects imaging spectroscopy 
 
-When analysing image data, never assume ideal conditions (i.e., one layer of uniformly oriented leaves from a single species in a pixel). It is necessary to take in account different leaf structures, canopy positions, arrangements of leaves on branches, angles of branching, and crown architecture. When analysing data from a whole forest stand, additional parameters corresponding to the characteristics of the whole plant community should be considered (i.e., different layers of vegetation within a canopy, species abundance, and vegetation density). Therefore, the study of vegetation at the level of tree crown, canopy, whole forest stand, or whole ecosystem brings the challenge of upscaling/downscaling laboratory and in-situ analyses and spectroscopy to imaging spectroscopy. One example is using radiative transfer models to upscale/downscale (*Figure 2 [REMOVED TEMPORARILY]* )  ([Schaepman et al., 2009](#references)).  
+When analysing image data, never assume ideal conditions (i.e., one layer of uniformly oriented leaves from a single species in a pixel). It is necessary to take in account different leaf structures, canopy positions, arrangements of leaves on branches, angles of branching, and crown architecture. When analysing data from a whole forest stand, additional parameters corresponding to the characteristics of the whole plant community should be considered (i.e., different layers of vegetation within a canopy, species abundance, and vegetation density). Therefore, the study of vegetation at the level of tree crown, canopy, whole forest stand, or whole ecosystem brings the challenge of upscaling/downscaling laboratory and in-situ analyses and spectroscopy to imaging spectroscopy ([Schaepman et al., 2009](#references)). 
+
 Laboratory spectroscopy brings individual spectral curves obtained from the field of view of the equipment attached to laboratory spectroradiometer – contact probe or integration sphere, while image spectroscopy brings data reflected on top of a canopy.  For this reason, it is important to think carefully about the design of leaf sampling — from which laboratory measurements of biophysical leaf traits will be derived and then used for up- or downscaling to image data.
 
-<!--
-<p align="center">
-<img src="media/leaves_to_biomes.jpg" title="Coupled states, processes and scales ranging from cellular architecture to global biogeochemical cycles." alt="Figure 2" width="500"/>
-</p>
--->
-
-*[REMOVED TEMPORARILY] Figure 2: Coupled states, processes and scales ranging from cellular architecture to global biogeochemical cycles. The contribution of linked radiative transfer models in down-and upscaling ranges from leaves to biomes.*
 
 ## Ground truth for imaging spectroscopy: vegetation sampling
 Ground truth data collection or “ground truthing” is the measurement in-situ of selected foliage samples or measurement of sampled foliage material in a lab. Ground truth data then enable calibration of image data, and aid in the interpretation and analysis of what is being sensed. When preparing to acquire ground truth data for the interpretation of imaging spectroscopic data, it is necessary to take in account all heterogeneity of the vegetation cover to be studied in a given area/ region. 
