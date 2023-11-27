@@ -32,7 +32,7 @@ All above mentioned scales/aspects are interconnected and their evaluation shoul
 The minimal mapping unit is usually set according to the goals of the vegetation monitoring and is dependent on the features of available remote-sensing data. Traditionally, vegetation units are delimited based on expert phytosociological knowledge. Since we are analyzing vegetation with the use of remote sensing data, we expect that different units may be ‘visible’ from the sensor. Based on common literature in which vegetation has been classified with remote-sensing data, we can distinguish single species or larger complexes that form communities or habitats, or, ultimately, we may be interested in a vegetation ecosystem as a whole (*Figure 2*). Selecting the appropriate unit that can be classified with specific data allows us to determine the optimal legend of the final map. 
 
 <p align="center">
-<img src="media/img3.png" title="Vegetation units that can be classified based on mainly spatial resolution of remote sensing data" alt="Vegetation units that can be classified based on mainly spatial resolution of remote sensing data" width="500"/>
+<img src="media/img3.png" title="Classified vegetation unit" alt="Classified vegetation unit" width="600"/>
 </p>
 
 *Figure 2: Vegetation units that can be classified based on mainly spatial resolution of remote sensing data. Source:[Kupková et al. (2021)](#references).*
@@ -40,7 +40,7 @@ The minimal mapping unit is usually set according to the goals of the vegetation
 For example, classifications of grasslands in relict Arctic–alpine tundra of the Krkonoše Mts (Czechia) at the level of habitats and communities (closed alpine grasslands dominated by Nardus stricta, grasses except *Nardus stricta* and subalpine *vaccinium* vegetation) were performed by [Suchá et al. (2016)](#references) and [Kupková et al. (2017)](#references) on satellite remote-sensing data (Landsat 8 and Sentinel-2) with the pixel size 10 – 25 m/pixel using the legend on the level of communities (see *Figure 3* – left part) with satisfactory classification accuracy. However, classification on the species level from this data provided very low reliability. The same studies brought rather good results on the level of selected individual dominant grass species classified from aerial hyperspectral (HS) and multispectral (MS) data with the pixel size around 4 m/pixel (the right part of *Figure 3*). For example, *Nardus stricta* stands were classified with 79% PA and 87% UA from aerial HS data. In the case of *Deschampsia caespitosa*, stands PA reached 88% and 89% UA using the same data. The difference in the legend and classification outputs are presented in *Figure 3*. As it can be seen, the final classification pattern is rather different – caused mainly by different pixel sizes.
 
 <p align="center">
-<img src="media/img4.png" title="Classification outputs for different vegetation units from remote sensing data with different spatial resolution (left – Landsat 8, right – hyperspectral sensor APEX)" alt="Classification outputs for different vegetation units from remote sensing data with different spatial resolution (left – Landsat 8, right – hyperspectral sensor APEX)" width="700"/>
+<img src="media/img4_2.PNG" title="Classification outputs for different vegetation units." alt="Classification outputs for different vegetation units." width="800"/>
 </p>
 
 *Figure 3: Classification outputs for different vegetation units from remote sensing data with different spatial resolution (left – Landsat 8, right – hyperspectral sensor APEX). Source: [Suchá et al., 2016](#references) and [Kupková et al. (2017)](#references).*
@@ -48,7 +48,7 @@ For example, classifications of grasslands in relict Arctic–alpine tundra of t
 ## Platform (height) of data acquisition 
 
  <p align="center">
-<img src="media/img5.png" title="Scale of mapping and related spatial resolution are dependent on the platform used." alt="Scale of mapping and related spatial resolution are dependent on the platform used." width="600"/>
+<img src="media/img5.png" title="Scale and spatial resolution." alt="Scale and spatial resolution." width="600"/>
 </p>
 
 Scale of mapping and related spatial resolution are dependent on the platform used (height of the data acquisition) – see *Table 1*. Each platform has some advantages and weaknesses that are also mentioned.
@@ -63,7 +63,7 @@ Scale of mapping and related spatial resolution are dependent on the platform us
 Spatial resolution is the main parameter influencing classification detail (the number of legend categories that are distinguishable). In the imagery with different spatial resolution, different level of spatial detail can be distinguished – see *Figure 4*. 
 
 <p align="center">
-<img src="media/img7.png" title="The same area (Bílá louka meadow – the Krkonoše Mts. captured in the images with different spatial resolutions." alt="The same area (Bílá louka meadow – the Krkonoše Mts. captured in the images with different spatial resolutions." width="900"/>
+<img src="media/img7.png" title="Bílá louka meadow." alt="Bílá louka meadow." width="900"/>
 </p>
 
 *Figure 4: The same area (Bílá louka meadow – the Krkonoše Mts. captured in the images with different spatial resolutions. Source: [Kupková et al. (2021)](#references).*
@@ -79,7 +79,7 @@ To be able to determine the best scale of elaboration, studies that tested diffe
 The other aspect is classification accuracy in case of different number of classified categories. *Figure 6* compares obtained classification accuracies in case of legends with 8, 5 and 3 categories. When pixel size reached centimeters (HS UAV data), and also meters (PlanetScope data), it was possible to classify dominant *Calamagrostis villosa* and *Nardus stricta* species with reasonably high accuracies. 
 
 <p align="center">
-<img src="media/img9.png" title="Best achieved results of PA (left) and UA (right) in % for selected grass categories." alt="Best achieved results of PA (left) and UA (right) in % for selected grass categories." width="800"/>
+<img src="media/img9_2.png" title="Classification results." alt="Classification results." width="800"/>
 </p>
 
 *Figure 6: Best achieved results of PA (left) and UA (right) in % for selected grass categories.  AV – Avenella flexuosa; CV – Calamagrostis villosa; NS – Nardus stricta; PS 3C – PlanetScope data, legend with 3 categories; APEX 3C – APEX data, legend with 3 categories; OF 5C – UAV RGB orthophoto, legend with 5 categories; HS 5C – UAV HS data, legend with 5 categories; OF 8C – UAV RGB orthophoto, legend with 8 categories; HS 8C – UAV HS data, legend with 8 categories). Source: [Kupková et al. (2021)](#references).*
@@ -93,7 +93,7 @@ The differentiation between particular species/habitat/communities in available 
 In our study ([Kupková et. al, 2023](#references)) we compared classification accuracy of multispectral data with 8 spectral bands (combination of 5 bands from MicaSense RedEdge M and 3 bands from RGB camera Sony A7 ILCE-7) and hyperspectral data with 54 spectral bands (data from hyperspectral camera Headwall NANO-Hyperspec camera – originally 269 bands, resampled to 54 bands and transformed using MNF transformation to 9 bands). The multispectral and hyperspectral data were obtained from UAV and had the same spatial resolution – 3 cm/pixel. Surprisingly, the higher spectral resolution of hyperspectral data did not increase accuracies, and the results for the multispectral and hyperspectral data were comparable. As *Figure 7* shows, considering best producer’s and user’s accuracies of the four dominant grass species (except of *Avenella flexuosa* and *Carex bigelowi*), there was only a slight difference in classification accuracy between the multispectral and hyperspectral data. Larger differences were found for species with low coverage - *Avenella flexuosa* and *Carex bigelowi*, classified with considerably lower accuracies of ~60% for AF and as low as 48.0% UA for CB. For the F1-score, the multispectral multi-temporal composites generally had better results, but the differences for the dominant species were not significant, compared with the hyperspectral multi-temporal composites.
 
 <p align="center">
-<img src="media/img10.png" title="Best Producer’s accuracy (PA), User’s accuracy (UA) (a), and the F1-score (b) for UAV hyperspectral and MS multispectral for permanent research plot Bílá louka Meadow in the Krkonoše Mts." alt="Best Producer’s accuracy (PA), User’s accuracy (UA) (a), and the F1-score (b) for UAV hyperspectral and MS multispectral for permanent research plot Bílá louka Meadow in the Krkonoše Mts." width="800"/>
+<img src="media/img10.png" title="Producer’s accuracy and User’s accuracy." alt="Producer’s accuracy and User’s accuracy." width="800"/>
 </p>
 
 *Figure 7: Best Producer’s accuracy (PA), User’s accuracy (UA) (a), and the F1-score (b) for UAV hyperspectral and MS multispectral for permanent research plot Bílá louka Meadow in the Krkonoše Mts. Species abbreviations: NS - Nardus stricta, CV - Calamagrostis villosa, MC - Molinia caerulea, DC - Deschampsia caespitosa, AF - Avenella flexuosa, CB - Carex bigelowii. Source: [Kupková et al. (2023)](#references).*
@@ -104,7 +104,7 @@ The significance of spectral resolution as compared to spatial resolution, and t
 In [Suchá et al. (2016)](#references), orthoimages of 12.5-cm pixel and four bands performed better than WorldView-2 satellite data with better spectral resolution (eight bands) and lower spatial resolution (2 m), so spatial resolution proved to be more significant (in both cases, bands were registered in visible and near infrared [VNIR] range) – see *Figure 8*. 
 
 <p align="center">
-<img src="media/img11.png" title="Comparison of classification accuracies based on data with different spatial and spectral resolution." alt="Comparison of classification accuracies based on data with different spatial and spectral resolution." width="500"/>
+<img src="media/img11.png" title="Comparison of classification accuracies." alt="Comparison of classification accuracies." width="500"/>
 </p>
 
 *Figure 8: Comparison of classification accuracies based on data with different spatial and spectral resolution. Source: [Suchá et al. (2016)](#references).*
@@ -114,7 +114,7 @@ However, of course, this is not a rule and depends on the type of data and class
 Another study analysed and compared data with similar spectral resolution but different spatial resolution. When vegetation of he Krkonoše Mts. in Poland was classified on spectrally similar APEX (Airborne Prism Experiment) and EnMAP (Environmental Mapping and Analysis Program) data at very different spatial resolutions of 3.12 m and 30 m, respectively, the results for grasslands were both still highly satisfactory (for APEX about 98% UA and PA and for EnMAP 94% PA and 86% UA; [Marcinkowska-Ochtyra et al., 2017](#references)). However, due to the large EnMAP pixel, it was not possible to distinguish two classes (herbs and ruderal vegetation), so the final legend was developed just for this data. Comparison of these classification outputs is presented on *Figure 9*.
 
 <p align="center">
-<img src="media/img12.png" title="Comparison of classification accuracies based on data with different spatial and spectral resolution." alt="Comparison of classification accuracies based on data with different spatial and spectral resolution." width="800"/>
+<img src="media/img12.png" title="Comparison of classification outputs." alt="Comparison of classification outputs." width="800"/>
 </p>
 
 *Figure 9: Comparison of classification outputs from data with similar spectral and different spatial resolution. Source:[ Marcinkowka-Ochytra et al. (2017)](#references).*
@@ -125,7 +125,7 @@ As mentioned above, an important feature is the coverage of the vegetation unit 
 As the physiognomy of vegetation is dynamic in time (during one season) and affected by, for example, weather or management practice, the most important date during the growing season should be indicated for a given species or community/habitat. This specific timing is important because it allows vegetation to be distinguished from background based on knowledge of the specific phenological development of particular classes. For example, the best time for species identification was September for Calamagrostis epigejos, as this was the time of optimum fruit formation, and August for Molinia caerulea, when it was in flower [(Marcinkowska-Ochytra et al., 2018a)](#references). However, that last date of data acquisition was the beginning of September and Molinia were not yet changing colour, as [(Schuster et al., 2015)](#references) recommend. So, the results could be better if data from near to the end of September were used. The temporal dimension and different phenological phases and thus different possibility to classify individual species is obvious from the *Figure 10*. 
 
 <p align="center">
-<img src="media/img13.png" title="Temporal dimension –different species can be distinguished in individual dates during the season in UAV multispectral data." alt="Temporal dimension –different species can be distinguished in individual dates during the season in UAV multispectral data." width="600"/>
+<img src="media/img13.png" title="Temporal dimension." alt="Temporal dimension." width="600"/>
 </p>
 
 *Figure 10: Temporal dimension –different species can be distinguished in individual dates during the season in UAV multispectral data. Source: [Kupková et al. (2023)](#references)*
@@ -133,7 +133,7 @@ As the physiognomy of vegetation is dynamic in time (during one season) and affe
 Multi-temporal classification, which takes into account datasets consisting of several terms (within one season) of data acquisition, can be more effective when spectral information from one date is insufficient to distinguish similar categories of vegetation. The significant improvements of classification accuracy using multi-temporal composites was demonstrated for UAV hyperspectral and multispectral data using various classification methods by [Kupková et al. (2021)](#references) – see *Figure 11*.
 
 <p align="center">
-<img src="media/img14.png" title="Comparison of overall accuracies for UAV monotemporal (1-date – July) and multitemporal data (2-date and 3-data – July, August, September) using Maximum likelihood (MLC), Random forest (RF) and Object-based classification (OBIA)." alt="Comparison of overall accuracies for UAV monotemporal (1-date – July) and multitemporal data (2-date and 3-data – July, August, September) using Maximum likelihood (MLC), Random forest (RF) and Object-based classification (OBIA)." width="600"/>
+<img src="media/img14.png" title="Comparison of overall accuracies." alt="Comparison of overall accuracies." width="600"/>
 </p>
 
 *Figure 11: Comparison of overall accuracies for UAV monotemporal (1-date – July) and multitemporal data (2-date and 3-data – July, August, September) using Maximum likelihood (MLC), Random forest (RF) and Object-based classification (OBIA). Source: [Kupková et al. (2023)](#references)*
@@ -142,7 +142,7 @@ When analysing three grassland Natura 2000 habitats at the Ostoja Nidziańska si
 Figure 12: Differences of classification accuracies using monotemporal and multitemporal datasets for the classification of Nature 2000 habitats.
 
 <p align="center">
-<img src="media/img15.png" title="Differences of classification accuracies using monotemporal and multitemporal datasets for the classification of Nature 2000 habitats." alt="Differences of classification accuracies using monotemporal and multitemporal datasets for the classification of Nature 2000 habitats." width="600"/>
+<img src="media/img15.png" title="Differences of classification accuracies." alt="Differences of classification accuracies." width="600"/>
 </p>
 
 *Figure 12: Differences of classification accuracies using monotemporal and multitemporal datasets for the classification of Nature 2000 habitats. Source: [Marcinkowska-Ochytra et al., (2019)](#references).*
@@ -150,7 +150,7 @@ Figure 12: Differences of classification accuracies using monotemporal and multi
 In the case of some vegetation types – for example for invasive or expansive species classification the knowledge about the best time for data acquisition is crucial for making the decisions on the proper management of the areas of conservation value. In this example in Jaworzno Meadows in Poland, September connected with the fruiting phase turned out to be the best month to classify *Calamagrostis epigejos* with the highest accuracy – see *Figure 13*.
 
 <p align="center">
-<img src="media/img15.png" title="Different phenological phases of Calamagrostis epigejos captured in HySpex data and comparison of classification accuracies according to the date of individual phenological phase (date of the data acquisitions)" alt="Different phenological phases of Calamagrostis epigejos captured in HySpex data and comparison of classification accuracies according to the date of individual phenological phase (date of the data acquisitions)" width="500"/>
+<img src="media/img17.PNG" title="Different phenological phases of Calamagrostis epigejos." alt="Different phenological phases of Calamagrostis epigejos." width="500"/>
 </p>
 
 *Figure 13: Different phenological phases of Calamagrostis epigejos captured in HySpex data and comparison of classification accuracies according to the date of individual phenological phase (date of the data acquisitions). Source: [Marcinkowska-Ochytra et al., 2018](#references).*
