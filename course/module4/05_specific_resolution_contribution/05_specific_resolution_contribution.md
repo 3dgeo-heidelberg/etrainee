@@ -79,7 +79,7 @@ To be able to determine the best scale of elaboration, studies that tested diffe
 The other aspect is classification accuracy in case of different number of classified categories. *Figure 6* compares obtained classification accuracies in case of legends with 8, 5 and 3 categories. When pixel size reached centimeters (HS UAV data), and also meters (PlanetScope data), it was possible to classify dominant *Calamagrostis villosa* and *Nardus stricta* species with reasonably high accuracies. 
 
 <p align="center">
-<img src="media/img9_2.png" title="Classification results." alt="Classification results." width="800"/>
+<img src="media/img9_2.PNG" title="Classification results." alt="Classification results." width="800"/>
 </p>
 
 *Figure 6: Best achieved results of PA (left) and UA (right) in % for selected grass categories.  AV – Avenella flexuosa; CV – Calamagrostis villosa; NS – Nardus stricta; PS 3C – PlanetScope data, legend with 3 categories; APEX 3C – APEX data, legend with 3 categories; OF 5C – UAV RGB orthophoto, legend with 5 categories; HS 5C – UAV HS data, legend with 5 categories; OF 8C – UAV RGB orthophoto, legend with 8 categories; HS 8C – UAV HS data, legend with 8 categories). Source: [Kupková et al. (2021)](#references).*
@@ -150,7 +150,7 @@ Figure 12: Differences of classification accuracies using monotemporal and multi
 In the case of some vegetation types – for example for invasive or expansive species classification the knowledge about the best time for data acquisition is crucial for making the decisions on the proper management of the areas of conservation value. In this example in Jaworzno Meadows in Poland, September connected with the fruiting phase turned out to be the best month to classify *Calamagrostis epigejos* with the highest accuracy – see *Figure 13*.
 
 <p align="center">
-<img src="media/img17.PNG" title="Different phenological phases of Calamagrostis epigejos." alt="Different phenological phases of Calamagrostis epigejos." width="500"/>
+<img src="media/img17.PNG" title="Different phenological phases of Calamagrostis epigejos." alt="Different phenological phases of Calamagrostis epigejos." width="800"/>
 </p>
 
 *Figure 13: Different phenological phases of Calamagrostis epigejos captured in HySpex data and comparison of classification accuracies according to the date of individual phenological phase (date of the data acquisitions). Source: [Marcinkowska-Ochytra et al., 2018](#references).*
