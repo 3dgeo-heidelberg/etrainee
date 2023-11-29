@@ -34,6 +34,12 @@ extra_javascript:
 nav:
 - 'Home': 'index.md'
 - 'Prerequisites': 'module0/module0.md'
+- 'Toolbox intro':
+	- 'Toolbox overview': 'module0/ETRAINEE_intro_overview.md'
+	- 'Visual Studio Code': 'module0/vscode.md'
+	- 'Manage software packages and environments': 'module0/conda.md'
+	- 'Jupyter Notebooks': 'module0/jupyter.ipynb'
+	- 'Geopython quickstart': 'module0/geopython.ipynb'
 - 'Module 1':
     - 'Overview': 'module1/module1.md'
     - 'Principles of remote sensing time series': 'module1/01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.md'
