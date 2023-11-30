@@ -77,7 +77,7 @@ Check which packages and versions are installed in this environment.
 
 Now install some packages to this active environment. Note that we only specify some packages but many others (such as *pandas*, *numpy* and *scipy*) are also installed automatically because they are required for the specified ones to work properly.
 
-    mamba install ipykernel geopandas rasterio xarray
+    mamba install ipykernel geopandas rasterio xarray rioxarray
 
 Check which environments we have. The active one is marked by an asterisk (*).
 
