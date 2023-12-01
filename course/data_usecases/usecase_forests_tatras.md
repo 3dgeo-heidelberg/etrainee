@@ -46,7 +46,7 @@ The use case is featured in the following parts of the course:
 
 Falťan, V., Katina, S., Minár, J., Polčák, N., Bánovský, M., Maretta, M., … & Petrovič, F. (2020). *Evaluation of abiotic controls on windthrow disturbance using a generalized additive model: A case study of the Tatra National Park, Slovakia.* Forests, 11(12), 1259. <https://doi.org/10.3390/f11121259>
 
-Kennedy, R. E., Cohen, W. B., & Schroeder, T. A. (2007). T*rajectory-based change detection for automated characterization of forest disturbance dynamics*. Remote Sensing of Environment, 110(3), 370-386. <https://doi.org/10.1016/j.rse.2010.07.008>
+Kennedy, R. E., Cohen, W. B., & Schroeder, T. A. (2007). *Trajectory-based change detection for automated characterization of forest disturbance dynamics*. Remote Sensing of Environment, 110(3), 370-386. <https://doi.org/10.1016/j.rse.2010.07.008>
 
 Mezei, P., Grodzki, W., Blaženec, M., & Jakuš, R. (2014). F*actors influencing the wind–bark beetles’ disturbance system in the course of an Ips typographus outbreak in the Tatra Mountains*. Forest Ecology and Management, 312, 67-77. <https://doi.org/10.1016/j.foreco.2013.10.020>
 
