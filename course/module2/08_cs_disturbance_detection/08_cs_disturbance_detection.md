@@ -39,7 +39,7 @@ Before you continue, get familiar with the use case (if you did it before in The
 
 Ochtyra, A., Marcinkowska-Ochtyra, A., & Raczko, E. (2020). *Threshold and trend-based vegetation change monitoring algorithm based on the inter-annual multi-temporal normalized difference moisture index series: A case study of the Tatra Mountains*. Remote Sensing of Environment, 249, 112026. <https://doi.org/10.1016/j.rse.2020.112026>
 
-Download data provided through [Zenodo](https://zenodo.org/record/8402925).
+Download data provided through [Zenodo](https://zenodo.org/records/10003575).
 
 ### Imagery data
 

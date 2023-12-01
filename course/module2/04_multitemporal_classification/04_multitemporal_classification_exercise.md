@@ -26,7 +26,7 @@ The primary aim of this exercise is to demonstrate one of the many approaches yo
 For this exercise you will need the following software, data and tools:
 
 - **Software** - R and RStudio. You can access environment setup tutorial for the whole Module 2 here: [R environment setup tutorial](../../software/software_r_language.md). After following the setup guide you should have all the necessary packages installed.
-- **Data** - downloaded data provided through [Zenodo](https://zenodo.org/record/8402925). If you went through **[Module 2 Theme 3 exercise Pipeline 1](../03_image_processing/03_image_processing_exercise.md#processing-pipeline-1)** you can download image the data from your Google Drive.
+- **Data** - downloaded data provided through [Zenodo](https://zenodo.org/records/10003575). If you went through **[Module 2 Theme 3 exercise Pipeline 1](../03_image_processing/03_image_processing_exercise.md#processing-pipeline-1)** you can download image the data from your Google Drive.
 
 Follow the suggested working environment setup in order for the provided relative paths to work properly.
 
@@ -710,6 +710,9 @@ pixel_reference <- merge(pixel_reference, reference_class,
 
 pixel_reference <- select(pixel_reference, -fraction) %>%
   relocate(ID, class)
+  
+saveRDS(pixel_reference, 
+        file = "theme_4_exercise/data_exercise/pixel_reference.RDS")
 
 colnames(pixel_reference)
 
@@ -742,6 +745,7 @@ model_rf <- randomForest(train_data[ , 3:length(train_data)], as.factor(train_da
                          importance = TRUE,
                          do.trace = 50)
 
+saveRDS(model_rf, file = "theme_4_exercise/results/model_rf.RDS")
 
 model_rf
 

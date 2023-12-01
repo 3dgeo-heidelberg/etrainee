@@ -1,6 +1,6 @@
 ---
-title: "Vegetation change and disturbance detection"
-description: "This is the fifth theme within the Satellite Multispectral Images Time Series Analysis module."
+title: "Vegetation change and disturbance detection - Exercise"
+description: This is the exercise in the fifth theme within the Satellite Multispectral Images Time Series Analysis module.
 dateCreated: 2023-08-31
 authors: Adrian Ochtyra, Krzysztof Gryguc
 contributors: Aram Takmadżan
@@ -10,7 +10,7 @@ output:
     pandoc_args: "--wrap=none"
 ---
 
-Vegetation change and disturbance detection
+Vegetation change and disturbance detection - Exercise
 ================
 
 ## Exercise - Forest disturbance mapping in Tatras using LandTrendr
@@ -29,7 +29,7 @@ The second part will use R and RStudio. You can access environment setup tutoria
 
 ### Data
 
-Download data provided through [Zenodo](https://zenodo.org/record/8402925).
+Download data provided through [Zenodo](https://zenodo.org/records/10003575).
 
 #### Imagery data
 

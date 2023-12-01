@@ -25,7 +25,7 @@ Before you continue, get familiar with the use case: **[Land cover monitoring in
 
 Wakulińska, M., & Marcinkowska-Ochtyra, A. (2020). *Multi-temporal sentinel-2 data in classification of mountain vegetation*. Remote Sensing, 12(17), 2696. <https://doi.org/10.3390/rs12172696>
 
-Download exercise data provided through [Zenodo](https://zenodo.org/record/8402925).
+Download exercise data provided through [Zenodo](https://zenodo.org/records/10003575).
 
 ### Imagery data
 

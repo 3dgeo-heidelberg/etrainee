@@ -25,7 +25,7 @@ The main objective of this exercise is not only to illustrate various examples o
 For this exercise you will need the following software, data and tools:
 
 - **Software** - R and RStudio. You can access environment setup tutorial for the whole Module 2 here: [R environment setup tutorial](../../software/software_r_language.md). After following the setup guide you should have all the necessary packages installed.
-- **Data** - downloaded data provided through [Zenodo](https://zenodo.org/record/8402925)
+- **Data** - downloaded data provided through [Zenodo](https://zenodo.org/records/10003575)
 
 Follow the suggested working environment setup in order for the provided relative paths to work properly.
 
