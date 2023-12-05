@@ -7,7 +7,7 @@ contributors: TBA
 estimatedTime: 30 minutes
 ---
 
-<!--Create a Python Anaconda Mamba question mark figure (Bing Create?)!-->
+<!--Create a Python Anaconda Mamba question mark figure!-->
 
 # Conda
 
@@ -21,9 +21,11 @@ To install the general-purpose programming language Python and to manage its ver
 
 *Miniforge* is comparable to Miniconda but it has [conda-forge](https://conda-forge.org/) as the default channel to install packages from and it has Mamba installed in the base environment (more on this later).
 
-```{note}
-If you have anaconda or miniconda or miniforge already installed and it works for you: Just keep your installation. If you encounter problems, uninstall and install as described below. If you do not yet have a Conda distribution installed, we recommend Miniforge.
-```
+## Should I install Miniforge?
+
+* If you have anaconda or miniconda or miniforge already installed and it works for you: Just keep your installation.
+* If you encounter problems with an existing installation, uninstall and install Miniforge as described below.
+* If you do not yet have a Conda distribution installed, we recommend Miniforge.
 
 ## Miniforge installation
 
@@ -39,11 +41,8 @@ Open the Miniforge prompt (in Windows type "miniforge prompt" into the search ba
 
 To see all your Python installations, type ``where Python`` and hit enter. Now you are probably shown multiple paths where Python is installed and this can easily cause confusion about which Python is actually used to run code or to install extensions (packages) for. Conda is made exactly to avoid this confusion and to easily maintain control over your Python installations and packages.
 
-```{note}
-What are Python packages?
-
+*What are Python packages?* - 
 A Python package is a collection of modules, which, in turn, are essentially Python or C scripts that contain published functionality. There are Python packages for data input, data analysis, data visualization, etc. Each package offers a unique toolset and may have its own unique syntax. The Python Standard Library (https://docs.python.org/3/library/) contains a general-purpose set of packages shipped with every Python installation. Many additional ('third-party' or 'external') packages have been published and can be installed as needed.
-```
 
 Package management is useful because you may want to update a package for one of your projects, but keep it at the same version in other projects to ensure that they continue to run as expected. With Conda, we can manage packages in different *environments*, as an installation happens only in the currently active environment (indicated in brackets at the beginning of the prompt and indicated by an asterisk (*) when you list all environemnts whith ``conda env list``). We can switch between environments with ``conda activate <your_env_name>`` Initially, there is only the 'base' environment but we can create others. When you install packages (or another Python version) for a specific project, it is recommended that you do this in a fresh environment (not in the base environment).
 
