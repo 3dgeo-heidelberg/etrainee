@@ -56,9 +56,9 @@ Please cite E-TRAINEE when using it in your teaching or training, and reference 
 
 E-TRAINEE Development Team. {year} ETRAINEE - E-learning course on Time Series Analysis in Remote Sensing for Understanding Human-Environment Interactions. https://doi.org/10.5281/zenodo.8402924
 
-The development team has also presented the course here:
+The course was also presented in the form of a conference paper at the ISPRS Geospatial Week 2023:
 
-Potůčková, M., Albrechtová, J., Anders, K., Červená, L., Dvořák, J., Gryguc, K., Höfle, B., Hunt, L., Lhotáková, Z., Marcinkowska-Ochtyra, A., Mayr, A., Neuwirthová, E., Ochtyra, A., Rutzinger, M., Šedová, A., Šrollerů, A. & Kupková, L. (2023): E-TRAINEE: Open e-Learning Course on Time Series Analysis in Remote Sensing. The International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences. Vol. XLVIII-1/W2-2023, pp. 989-996. [https://isprs-archives.copernicus.org/articles/XLVIII-1-W2-2023/989/2023/](https://isprs-archives.copernicus.org/articles/XLVIII-1-W2-2023/989/2023/)
+Potůčková, M., Albrechtová, J., Anders, K., Červená, L., Dvořák, J., Gryguc, K., Höfle, B., Hunt, L., Lhotáková, Z., Marcinkowska-Ochtyra, A., Mayr, A., Neuwirthová, E., Ochtyra, A., Rutzinger, M., Šedová, A., Šrollerů, A., and Kupková, L. (2023): E-TRAINEE: Open E-Learning course on Time Series Analysis in Remote Sensing. The International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences. Vol. XLVIII-1/W2-2023, pp. 989-996. [https://doi.org/10.5194/isprs-archives-XLVIII-1-W2-2023-989-2023](https://doi.org/10.5194/isprs-archives-XLVIII-1-W2-2023-989-2023)
 
 ## License
 Except when explicitly stated otherwise, the course is licensed under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license, associated code is licensed under the [MIT](https://choosealicense.com/licenses/mit/) license.
