@@ -137,20 +137,22 @@ Proceed with [Temporal vs. spatial and spectral resolution](../05_specific_resol
 
 ## References
 
-Adams, J. B., Smith, M. O., Johnson, P. E. (1986). Spectral mixture modeling: A new analysis of rock and soil types at the Viking Lander 1 site. Journal of Geophysical Research: Solid Earth, 91(B8), 8098-8112. https://doi.org/10.1029/JB091iB08p08098 
+Adams, J. B., Smith, M. O., Johnson, P. E. (1986). Spectral mixture modeling: A new analysis of rock and soil types at the Viking Lander 1 site. Journal of Geophysical Research: Solid Earth, 91(B8), 8098-8112. [https://doi.org/10.1029/JB091iB08p08098](https://doi.org/10.1029/JB091iB08p08098)
 
-Chang, C. I. (2000). An information-theoretic approach to spectral variability, similarity, and discrimination for hyperspectral image analysis. IEEE Transactions on information theory, 46(5), 1927-1932. https://ieeexplore.ieee.org/abstract/document/857802
+Dvořák, J., Potůčková, M., Treml, V. (2022). Weakly supervised learning for treeline ecotone classification based on aerial orthoimages and an ancillary DSM. ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences,  Volume V-3-2022. [https://doi.org/10.5194/isprs-annals-V-3-2022-33-2022](https://doi.org/10.5194/isprs-annals-V-3-2022-33-2022)
 
-Cooper, S., Okujeni, A., Jänicke, C., Clark, M., van der Linden, S., Hostert, P. (2020). Disentangling fractional vegetation cover: Regression-based unmixing of simulated spaceborne imaging spectroscopy data. Remote Sensing of Environment, 246, 111856. https://doi.org/10.1016/j.rse.2020.111856
+Chang, C. I. (2000). An information-theoretic approach to spectral variability, similarity, and discrimination for hyperspectral image analysis. IEEE Transactions on information theory, 46(5), 1927-1932. [https://ieeexplore.ieee.org/abstract/document/857802](https://ieeexplore.ieee.org/abstract/document/857802)
 
-Du, Y., Chang, C. I., Ren, H., Chang, C. C., Jensen, J. O., D’Amico, F. M. (2004). New hyperspectral discrimination measure for spectral characterization. Optical engineering, 43(8), 1777-1786. https://doi.org/10.1117/1.1766301
+Cooper, S., Okujeni, A., Jänicke, C., Clark, M., van der Linden, S., Hostert, P. (2020). Disentangling fractional vegetation cover: Regression-based unmixing of simulated spaceborne imaging spectroscopy data. Remote Sensing of Environment, 246, 111856. [https://doi.org/10.1016/j.rse.2020.111856](https://doi.org/10.1016/j.rse.2020.111856)
 
-Kale, K. V., Solankar, M. M., Nalawade, D. B., Dhumal, R. K., Gite, H. R. (2017). A research review on hyperspectral data processing and analysis algorithms. Proceedings of the national academy of sciences, India section a: physical sciences, 87, 541-555. https://doi.org/10.1007/s40010-017-0433-y 
+Du, Y., Chang, C. I., Ren, H., Chang, C. C., Jensen, J. O., D’Amico, F. M. (2004). New hyperspectral discrimination measure for spectral characterization. Optical engineering, 43(8), 1777-1786. [https://doi.org/10.1117/1.1766301](https://doi.org/10.1117/1.1766301)
 
-Martínez, P. J., Pérez, R. M., Plaza, A., Aguilar, P. L., Cantero, M. C., Plaza, J. (2006). Endmember extraction algorithms from hyperspectral images. http://hdl.handle.net/2122/1963
+Kale, K. V., Solankar, M. M., Nalawade, D. B., Dhumal, R. K., Gite, H. R. (2017). A research review on hyperspectral data processing and analysis algorithms. Proceedings of the national academy of sciences, India section a: physical sciences, 87, 541-555. [https://doi.org/10.1007/s40010-017-0433-y](https://doi.org/10.1007/s40010-017-0433-y)
 
-Okujeni, A., Jänicke, C., Cooper, S., Frantz, D., Hostert, P., Clark, M., ...  van der Linden, S. (2021). Multi-season unmixing of vegetation class fractions across diverse Californian ecoregions using simulated spaceborne imaging spectroscopy data. Remote Sensing of Environment, 264, 112558. https://doi.org/10.1016/j.rse.2021.112558
+Martínez, P. J., Pérez, R. M., Plaza, A., Aguilar, P. L., Cantero, M. C., Plaza, J. (2006). Endmember extraction algorithms from hyperspectral images. [http://hdl.handle.net/2122/1963](http://hdl.handle.net/2122/1963)
 
-Yuhas, R. H., Goetz, A. F., Boardman, J. W. (1992). Discrimination among semi-arid landscape endmembers using the spectral angle mapper (SAM) algorithm. In JPL, Summaries of the Third Annual JPL Airborne Geoscience Workshop. Volume 1: AVIRIS Workshop. https://ntrs.nasa.gov/citations/19940012238 
+Okujeni, A., Jänicke, C., Cooper, S., Frantz, D., Hostert, P., Clark, M., ...  van der Linden, S. (2021). Multi-season unmixing of vegetation class fractions across diverse Californian ecoregions using simulated spaceborne imaging spectroscopy data. Remote Sensing of Environment, 264, 112558. [https://doi.org/10.1016/j.rse.2021.112558](https://doi.org/10.1016/j.rse.2021.112558)
 
-Wang, X., Liu, J., Chi, W., Wang, W., & Ni, Y. (2023). Advances in Hyperspectral Image Classification Methods with Small Samples: A Review. Remote Sensing, 15(15), 3795. https://doi.org/10.3390/rs15153795 
+Yuhas, R. H., Goetz, A. F., Boardman, J. W. (1992). Discrimination among semi-arid landscape endmembers using the spectral angle mapper (SAM) algorithm. In JPL, Summaries of the Third Annual JPL Airborne Geoscience Workshop. Volume 1: AVIRIS Workshop. [https://ntrs.nasa.gov/citations/19940012238](https://ntrs.nasa.gov/citations/19940012238)
+
+Wang, X., Liu, J., Chi, W., Wang, W., & Ni, Y. (2023). Advances in Hyperspectral Image Classification Methods with Small Samples: A Review. Remote Sensing, 15(15), 3795. [https://doi.org/10.3390/rs15153795](https://doi.org/10.3390/rs15153795)

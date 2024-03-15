@@ -49,10 +49,10 @@ Field spectroradiometers measure reflectance at various hierarchical levels depe
 However, the reflectance measurements with CP or IS are not interchangeable. The main reason is the difference between geometry of the light source and the sensor, providing specific advantages regarding speed, laboriousness, and field operability of the spectra collection. The radiation quantity measured by the CP is usually termed in the literature as bidirectional reflectance factor (BRF) as the light source and sensor geometry is fixed in stable directional position to each other (*Figure 3A* ). The radiation quantity acquired by the IS is called directional-hemispherical reflectance factor (DHRF) for having the directional light source and having the reflected or transmitted radiation integrated from the whole hemisphere (*Figure 3B* ). There are several studies focused on the comparison of those two types of spectral quantities [Potůčková et al., 2016a](#references)), or between DHRF acquired by two types of integrating spheres ([Hovi et al., 2020](#references)).
 
 <p align="center">
-<img src="media/t03_02_fig3.jpg" title="Bidirectional and Directional-Hemispherical reflectance factors" alt="Figure 3" width="600"/>
+<img src="media/t03_02_fig3.png" title="Bidirectional and Directional-Hemispherical reflectance factors" alt="Figure 3" width="600"/>
 </p>
 
-*Figure 3. Two most commonly measured reflectance quantities A) Bidirectional Reflectance Factor by the contact probe or leaf clip and B) Directional-Hemispherical reflectance factor by the integrating sphere. (Figure modified from [Schaepman-Strub et al. 2006](https://doi.org/10.1016/j.rse.2006.03.002) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))*
+*Figure 3. Two most commonly measured reflectance quantities A) Bidirectional Reflectance Factor by the contact probe or leaf clip and B) Directional-Hemispherical reflectance factor by the integrating sphere. (Figure by the authors).*
 
 
 ## Spectral reflectance acquisition with the spectroradiometer ASD FieldSpec®
