@@ -1,0 +1,3983 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This is the third case study within the Satellite Multispectral Images Time Series Analysis module.">
+      
+      
+      
+      
+        <link rel="prev" href="../07_cs_forest_changes/07_cs_forest_changes.html">
+      
+      
+        <link rel="next" href="../../module3/module3.html">
+      
+      
+      <link rel="icon" href="../../assets/img/logo_etrainee.svg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
+    
+    
+      
+        <title>Case study: Forest disturbance detection (Tatra Mountains) - E-TRAINEE Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.10ba22f1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#case-study-forest-disturbance-detection-tatra-mountains" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-header__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            E-TRAINEE Course
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Case study: Forest disturbance detection (Tatra Mountains)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-nav__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    E-TRAINEE Course
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module0/module0.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prerequisites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Module 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/module1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principles of remote sensing time series
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Large time series datasets in remote sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/03_time_series_analysis_based_on_classification/03_time_series_analysis_based_on_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series analysis based on classification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/04_trajectory-based_analysis/04_trajectory_based_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trajectory-based analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/05_spatio_temporal_data_fusion/05_spatio-temporal_data_fusion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spatio-temporal data fusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reference data, validation and accuracy assessment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Module 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of multispectral imaging
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of multispectral imaging
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_multispectral_principles/01_multispectral_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_multispectral_principles/01_multispectral_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal information in satellite data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal information in satellite data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_temporal_information/02_temporal_information.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_temporal_information/02_temporal_information_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Image processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Image processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_image_processing/03_image_processing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_image_processing/03_image_processing_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Multitemporal classification
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Multitemporal classification
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_multitemporal_classification/04_multitemporal_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_multitemporal_classification/04_multitemporal_classification_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vegetation change and disturbance detection
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Vegetation change and disturbance detection
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_vegetation_monitoring/05_vegetation_monitoring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_vegetation_monitoring/05_vegetation_monitoring_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_cs_tundra_grasslands/06_cs_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_cs_forest_changes/07_cs_forest_changes.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Effects of pollution in Ore Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Case study: Forest disturbance detection (Tatra Mountains)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="08_cs_disturbance_detection.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Forest disturbance detection (Tatra Mountains)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#study-area-and-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Study area and data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Study area and data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imagery-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Imagery data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting started
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-preparation-loading-required-libraries-and-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment preparation: loading required libraries and data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-values-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference values extraction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tvcma-conditions-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      TVCMA conditions function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accuracy-statistics-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accuracy statistics function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applying-functions-to-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applying functions to data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accuracy-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accuracy assessment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disturbance-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disturbance mapping
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discussion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#other-case-studies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other case studies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module-themes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Module themes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source code
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Module 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/module3.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of 3D/4D geographic point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of 3D/4D geographic point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/01_pointcloud_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/exercise/m3_theme1_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Programming for point cloud analysis with Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Programming for point cloud analysis with Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/02_pointcloud_programming_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/exercise/m3_theme2_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles and basic algorithms of 3D change detection and analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Principles and basic algorithms of 3D change detection and analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/03_3d_change_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/exercise/m3_theme3_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Time series analysis of 3D point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Time series analysis of 3D point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/04_3d_timeseries_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/exercise/m3_theme4_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning-based 3D/4D point cloud analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning-based 3D/4D point cloud analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/05_pointcloud_machine_learning/05_pointcloud_machine_learning.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_rockglacier/06_casestudy_rockglacier.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D change analysis at an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_sandybeach/06_casestudy_sandybeach.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series-based change analysis of sandy beach dynamics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Module 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/module4.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of imaging and laboratory spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of imaging and laboratory spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Airborne hyperspectral data acquisition and pre-processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Airborne hyperspectral data acquisition and pre-processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing_exercise_geometric.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    In situ and laboratory spectroscopy of vegetation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            In situ and laboratory spectroscopy of vegetation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_navig.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_spectra_probe_sphere_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning in imaging spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning in imaging spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal vs. spatial and spectral resolution
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal vs. spatial and spectral resolution
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/05_specific_resolution_contribution/05_specific_resolution_contribution.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/08_spectral_separability_grass/08_spectral_separability_grass.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal spectral separability of grass species (Krkonoše Mts.)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Discrimination of grass species from time series of RPAS hyperspectral imagery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/07_flood_plain_forest/07_flood_plain_forest.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal dynamics of flood-plain forests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_cloudcompare.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudCompare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_enmap_box.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EnMAP-Box
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_qgis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QGIS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_r_language.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_gee.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Earth Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Use Cases and Data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Use Cases and Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://doi.org/10.5281/zenodo.10003574" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data download
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_rockglacier_ahk.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D point clouds of an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_beach_kijkduin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4D point clouds of a sandy beach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_forests_tatras.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vegetation disturbance detection in Polish-Slovak Tatra Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_tundra_karkonosze.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_grasses_krkonose.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tundra vegetation monitoring in Krkonoše Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_ore_mts_disturbance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Forest disturbances in Ore Mountains (Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://web.natur.cuni.cz/gis/etrainee/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About the project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://forms.gle/Cz1yxJv2DDNz83j68" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback form
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#study-area-and-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Study area and data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Study area and data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imagery-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Imagery data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting started
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-preparation-loading-required-libraries-and-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment preparation: loading required libraries and data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-values-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference values extraction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tvcma-conditions-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      TVCMA conditions function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accuracy-statistics-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accuracy statistics function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applying-functions-to-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applying functions to data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accuracy-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accuracy assessment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disturbance-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disturbance mapping
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discussion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#other-case-studies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other case studies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module-themes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Module themes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source code
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+
+                  
+
+  
+  
+
+
+<h1 id="case-study-forest-disturbance-detection-tatra-mountains">Case study: Forest disturbance detection (Tatra Mountains)</h1>
+<p>The Tatra Mountains are a unique and ecologically significant area. Monitoring forest changes there is critical to understanding environmental shifts and potential threats. The aim of this case study is to assess <strong>vegetation (forests) changes</strong> in Tatra Mountains area. If you’ve gone through <strong><a href="../05_vegetation_monitoring/05_vegetation_monitoring_exercise.html">Theme 5 exercise</a></strong> you’ll notice the similarit in topics.</p>
+<p>However, in this case study we’re adopting a different approach. This time we we’ll use <strong>Threshold and trend-based vegetation change monitoring algorithm (TVCMA)</strong> instead of the LandTrendr. TVCMA was developed in R language. Our work will be conducted in RStudio environment. If you haven’t already done this, refer to this tutorial regarding the environment setup: <a href="../../software/software_r_language.html">R environment setup tutorial</a>. We will use the image datasets and validation table prepared and described earlier in <strong><a href="../03_image_processing/03_image_processing_exercise.html#processing-pipeline-2">Theme 3 exercise</a></strong> and <strong><a href="../05_vegetation_monitoring/05_vegetation_monitoring_exercise.html">Theme 5 exercies</a></strong>. We’ll use essential features of TVCMA, which are related to detection of time and location of forest disturbance events based on thresholding and logical rules.</p>
+<p>Our workflow is divided into the following key steps:</p>
+<ol>
+<li><strong>Extraction of spectral indices values using reference data points</strong>: this initial step involves extracting spectral values from our image datasets, forming the foundation for the subsequent stages of our analysis.</li>
+<li><strong>Applying the TVCMA algorithm to various variables (indices) and threshold values</strong>: the core analysis part.</li>
+<li><strong>Accuracy assessment and best model selection</strong>: after acquiring the results we’ll be able to assess and select best performing combination of spectral index &amp; threshold.</li>
+<li><strong>Calculation of forest disturbance maps presenting detected events in the Tatra Mountains</strong>: in this part, we’ll create spatial visual representations of the detected forest disturbances.</li>
+</ol>
+<p><center></p>
+<p><img src="media/cs3_flowchart.png" title="Case study 3 scheme of procedure" alt="Scheme" width="600"/></p>
+<p><i>Case Study 3 scheme of procedure.</i>
+</center></p>
+<h2 id="study-area-and-data">Study area and data</h2>
+<p>Before you continue, get familiar with the use case (if you did it before in Theme 5 you can skip this step): <strong><a href="../../data_usecases/usecase_forest_tatras.md">Use case: Vegetation disturbance detection in Polish-Slovak Tatra Mountains</a></strong>.</p>
+<p>… and read the paper accompanying the use case:</p>
+<p>Ochtyra, A., Marcinkowska-Ochtyra, A., &amp; Raczko, E. (2020). <em>Threshold and trend-based vegetation change monitoring algorithm based on the inter-annual multi-temporal normalized difference moisture index series: A case study of the Tatra Mountains</em>. Remote Sensing of Environment, 249, 112026. <a href="https://doi.org/10.1016/j.rse.2020.112026">https://doi.org/10.1016/j.rse.2020.112026</a></p>
+<p>Download data provided through <a href="https://zenodo.org/records/10003575">Zenodo</a>.</p>
+<h3 id="imagery-data">Imagery data</h3>
+<p>The image data supplied for this exercise consist of Landsat satellite imagery time series. The data preparation process is described in the <strong><a href="../03_image_processing/03_image_processing_exercise.html#processing-pipeline-2">Module 2 Theme 3 exercise Pipeline 2</a></strong>. We’ll use indices time series that you can access in the <code>case_study_3/data_exercise</code> folder.</p>
+<h3 id="reference-data">Reference data</h3>
+<p>For this exercise, 100 reference points have been chosen to perform the assessment of TVCMA. These points were randomly spread out across the research area. Each point was assessed based on chips (method of producing chips is presented in <strong><a href="../02_temporal_information/02_temporal_information_exercise.html">Theme 2 exercise</a></strong>). The attribute table from the point layer was extracted and will be used in the second part of the exercise as a validation dataset. In table rows there are consecutive reference points recorded and in columns there are subsequent years from 1985 (the first possible disturbance observation) to 2022. In cases where no disturbance was identified, the corresponding cell was marked with a “0”. Conversely, if a disturbance was evident, the cell was marked with a “1”.</p>
+<p><center></p>
+<p><img src="media/val_table.jpg" title="Validation table" alt="Validation table" width="800"/></p>
+<p><i>Validation table.</i>
+</center></p>
+<p>The validation process will involve overlaying the extracted TVCMA disturbance points on validation disturbance events and calculating confusion matrix statistics.</p>
+<h2 id="getting-started">Getting started</h2>
+<h3 id="environment-preparation-loading-required-libraries-and-data">Environment preparation: loading required libraries and data</h3>
+<p>To start with, we want to load necessary libraries and data and set up some initial variables, which we will use further down the line. Firstly, load required libraries into the environment: <code>terra</code>, <code>sf</code>, <code>dplyr</code>, <code>readxl</code>, <code>writexl</code> and <code>tools</code>. Functions included in these packages will be used further in this case study.</p>
+<pre><code class="language-r"># raster I/o and processing
+library(terra) 
+
+# vector I/O and processing
+library(sf) 
+
+# tabular data manipulation
+library(dplyr) 
+
+# reading .xlsx files
+library(readxl) 
+
+# writing .xlsx files
+library(writexl) 
+
+# miscellaneous tools
+library(tools)
+</code></pre>
+<p>We can move to loading up the required data. We will start with the raster data which are time series of vegetation indices and products of Tasseled Cap transformation calculated on Landsat cloud-free composites from 1984 to 2022 prepared in <strong><a href="../03_image_processing/03_image_processing_exercise.html#processing-pipeline-2">Theme 3 exercise, pipeline 2</a></strong>. Data can be found in a package provided through <a href="https://zenodo.org/record/8402925">Zenodo</a>. We’ll load 8 multiband rasters to a list and name them appropriately.</p>
+<pre><code class="language-r"># load relative paths to .tif files
+# the first file is forest mask, which we want to load separately
+indices_list &lt;- list.files(&quot;case_study_3/data_exercise/&quot;, 
+                           pattern = &quot;*.tif&quot;, 
+                           full.names = TRUE)[2:9]
+
+# load images as terra rast objects
+indices_imgs &lt;- lapply(indices_list, terra::rast)
+
+# get indices names
+indices_names &lt;- file_path_sans_ext(list.files(&quot;case_study_3/data_exercise/&quot;, 
+                                               pattern = &quot;*.tif&quot;)[2:9])
+
+# rename loaded images
+names(indices_imgs) &lt;- indices_names
+</code></pre>
+<p>After we’ve loaded image data, we can now can also read in 100 reference/validation points.</p>
+<pre><code class="language-r"># read reference points
+points &lt;- st_read(&quot;case_study_3/data_exercise/CS3_points.shp&quot;)
+</code></pre>
+<p>To have all the data needed later we’ll also load validation table at this moment. We’ll get rid of the redundant <code>id</code> column.</p>
+<pre><code class="language-r"># read validation table
+val_table &lt;- read_xlsx(&quot;case_study_3/data_exercise/CS3_validation_table.xlsx&quot;) %&gt;%
+  select(2:39)
+</code></pre>
+<p>Finally, we’ll use forest mask in the final parts of the exercise. Our focus is detection disturbances in the forested areas, so this mask will reduce visual changes in, for example, crops in the disturbance maps.</p>
+<pre><code class="language-r"># read forest mask raster
+forest_mask &lt;- rast(&quot;case_study_3/data_exercise/CS3_forest_mask.tif&quot;)
+</code></pre>
+<h3 id="reference-values-extraction">Reference values extraction</h3>
+<p>TVCMA algorithm needs spectral indices values to apply sets of rules to them to indicate the disturbance events. We want to extract these values for all time series rasters we loaded. We’ll use <code>terra::extract</code> function and apply it to the <code>points</code> layer to produce a list containing extracted values for each index.</p>
+<pre><code class="language-r"># extract indices values to points
+indices_values &lt;- lapply(indices_imgs, terra::extract, y = points, ID = FALSE)
+</code></pre>
+<p>This is the result of that function. Each data frame contains 100 rows (one per point) with 39 columns (one per year from 1984 to 2022).</p>
+<p><center></p>
+<p><img src="media/extracted_values.jpg" title="Extracted values" alt="Validation table" width="400"/></p>
+<p></center></p>
+<p>We can create a single spatial points file, with attribute table populated with extracted values. In order to do that we’ll bind the columns from all extracted data frames and then bind these columns to the attribute table of <code>points</code> shapefile.</p>
+<pre><code class="language-r"># bind columns to point layer
+points_all_values &lt;- bind_cols(points, do.call(bind_cols, indices_values))
+</code></pre>
+<p>We can save the results to shapefile.</p>
+<pre><code># save shapefile with extracted values
+st_write(points_all_values, "case_study_3/results/CS3_points_indices_values.shp")
+</code></pre>
+<p>You may see this warning.</p>
+<pre><code class="language-r"># Warning message:
+#   In CPL_write_ogr(obj, dsn, layer, driver, as.character(dataset_options),  :
+#                      GDAL Message 1: Creating a 256th field, but some DBF readers might only support 255 fields
+</code></pre>
+<p>To make sure the data is saved correctly, save the points to geopackage.</p>
+<pre><code class="language-r"># save geopackage with extracted values
+st_write(points_all_values, &quot;case_study_3/results/CS3_points_indices_values.gpkg&quot;)
+</code></pre>
+<h2 id="analysis">Analysis</h2>
+<p>We are now ready to advance to the analysis part of this Case Study. We’ve acquired a dataset on which we can apply TVCMA conditions to indicate disturbance events. In short, TVCMA checks three conditions in order to classify a point as a disturbance event. <strong><a href="../05_vegetation_monitoring/05_vegetation_monitoring.html#threshold--and-trend-based-vegetation-change-monitoring-algorithm-tvcma">You can see a visualised example in Theme 5 Lesson</a></strong>.</p>
+<h3 id="tvcma-conditions-function">TVCMA conditions function</h3>
+<p>We’ll prepare a function which will take two inputs. The first one <code>ind</code> is a data frame with 100 rows and 39 columns representing extracted values for one index. The second argument <code>threshold</code> is the numerical value which is used to assess whether the conditions are met (resulting in a <code>TRUE</code> value) or not (<code>FALSE</code> value).</p>
+<pre><code class="language-r"># function to check TVCMA conditions on values in a data frame
+apply_tvcma_conditions_points &lt;- function(ind, threshold) {
+
+  # prepare a result matrix with dimensions matching input data frame
+  res &lt;- matrix(data = FALSE, nrow = nrow(ind), ncol = ncol(ind))
+
+  # loop to check TVCMA conditions for years from third (in this case 1986)
+  # to second to last (2021)
+  for (i in 1:nrow(ind)) {
+    for (j in 3:(ncol(ind) - 1)) {
+      if (threshold &gt;= 0) {
+        cond_1 &lt;- (ind[i, j] - ind[i, j - 1]) &gt; threshold
+        cond_2 &lt;- (ind[i, j + 1] - ind[i, j - 1]) &gt; threshold
+        cond_3 &lt;- (ind[i, j] - ind[i, j - 2]) &gt; threshold
+      } else {
+        cond_1 &lt;- (ind[i, j] - ind[i, j - 1]) &lt; threshold
+        cond_2 &lt;- (ind[i, j + 1] - ind[i, j - 1]) &lt; threshold
+        cond_3 &lt;- (ind[i, j] - ind[i, j - 2]) &lt; threshold
+      }
+      res[i, j] &lt;- cond_1 &amp; cond_2 &amp; cond_3
+    }
+
+    # for the second observation (1985), check conditions 1 and 2
+    if (threshold &gt;= 0) {
+      cond_1_second &lt;- (ind[i, 2] - ind[i, 1]) &gt; threshold
+      cond_2_second &lt;- (ind[i, 3] - ind[i, 1]) &gt; threshold
+    } else {
+      cond_1_second &lt;- (ind[i, 2] - ind[i, 1]) &lt; threshold
+      cond_2_second &lt;- (ind[i, 3] - ind[i, 1]) &lt; threshold
+    }
+    res[i, 2] &lt;- cond_1_second &amp; cond_2_second
+
+    # For the last observation (2022), check conditions 1 and 3
+    if (threshold &gt;= 0) {
+      cond_1_last &lt;- (ind[i, ncol(ind)] - ind[i, ncol(ind) - 1]) &gt; threshold
+      cond_3_last &lt;- (ind[i, ncol(ind)] - ind[i, ncol(ind) - 2]) &gt; threshold
+    } else {
+      cond_1_last &lt;- (ind[i, ncol(ind)] - ind[i, ncol(ind) - 1]) &lt; threshold
+      cond_3_last &lt;- (ind[i, ncol(ind)] - ind[i, ncol(ind) - 2]) &lt; threshold
+    }
+    res[i, ncol(ind)] &lt;- cond_1_last &amp; cond_3_last
+  }
+
+
+  # Remove the first column (1984) from resulting matrix 
+  # because no conditions can be applied to the first year in time series
+  res &lt;- res[,2:ncol(res)]
+
+  # return the resulting 1/0 data frame
+  return(res)
+}
+</code></pre>
+<h3 id="accuracy-statistics-function">Accuracy statistics function</h3>
+<p>We want to test two main variables to assess the performance of TVCMA: input spectral index and threshold. To calculate statistics for each pair we can prepare a function (similar to that in <strong><a href="../05_vegetation_monitoring/05_vegetation_monitoring_exercise.html">Theme 5 exercise</a></strong> where we assessed LandTrendr results.)</p>
+<pre><code class="language-r"># prepare a function to calculate statistics
+calculate_confusion_matrix_stats &lt;- function(matrix, validation_matrix, set_name) {
+
+  # Calculate TP, FP, TN, FN
+  TP &lt;- sum(matrix == 1 &amp; validation_matrix == 1)
+  FP &lt;- sum(matrix == 1 &amp; validation_matrix == 0)
+  TN &lt;- sum(matrix == 0 &amp; validation_matrix == 0)
+  FN &lt;- sum(matrix == 0 &amp; validation_matrix == 1)
+
+  # Calculate the metrics
+  Accuracy &lt;- (TP + TN) / (TP + FP + FN + TN)
+  Precision &lt;- TP / (TP + FP)
+  Sensitivity &lt;- TP / (TP + FN)
+  Specificity &lt;- TN / (TN + FP)
+  F1_Score &lt;- 2 * (Sensitivity * Precision) / (Sensitivity  + Precision)
+
+  # Create a data frame with the confusion matrix stats
+  stats &lt;- data.frame(Set = set_name, TP, FP, TN, FN, Accuracy, Precision, Sensitivity, Specificity, F1_Score)
+
+  return(stats)
+}
+</code></pre>
+<h3 id="applying-functions-to-data">Applying functions to data</h3>
+<p>We have prepared necessary data and functions to progress the analysis.</p>
+<p>One additional issue we haven’t considered so far is the direction of change indicating disturbances. In order to detect a disturbance with spectral index values we need to know what is the sign (positive or negative) of delta if the disturbance occurs. Let’s consider as an example NDVI. If NDVI pixel value in 1985 is <code>0.8</code> and in 1986 is <code>0.3</code> then delta is equal to <code>-0.5</code>. That means that disturbances can be detected when delta is negative. On the other hand, indices like NDWI or TCB behave the other way round - positive delta indicates disturbance. In our case these are the lists of positive and negative delta indices.</p>
+<pre><code class="language-r"># direction of index delta when considering disturbances
+pos_indices &lt;- c(&quot;NDWI&quot;, &quot;TCB&quot;)
+neg_indices &lt;- c(&quot;NBR&quot;, &quot;NBR2&quot;, &quot;NDMI&quot;, &quot;NDVI&quot;, &quot;TCG&quot;, &quot;TCW&quot;)
+</code></pre>
+<p>For these two groups we also want to prepare a set of thresholds we’ll test. Each time we’ll consider 50 thresholds with increments of 0.01 each time.</p>
+<pre><code class="language-r">pos_thresholds &lt;- seq(0.01, 0.5, by = 0.01)
+neg_thresholds &lt;- seq(-0.01, -0.5, by = -0.01)
+</code></pre>
+<p>We are finally ready to run TVCMA algorithm and calculate the accuracy results. In the code below we’ll prepare an empty list to store the results separately per index. Each loop will produce an element - accuracy table with 50 rows (one per each threshold) - that will be added to <code>results_list</code>. Each accuracy table will also be separately exported to <code>.xlsx</code> file.</p>
+<pre><code># prepare empty results list
+results_list &lt;- list()
+
+# loop through indices_values 
+for (i in seq(1, length(indices_values))) {
+
+  # select values for one index
+  ind = indices_values[[i]]
+
+  # get the name of the index
+  ind_name &lt;- names(indices_values)[i]
+
+  # check whether to apply positive or negative thresholds
+  if ((ind_name %in% pos_indices) == TRUE) {
+
+    thresholds &lt;- pos_thresholds
+
+  } else {
+
+    thresholds &lt;- neg_thresholds
+  }
+
+  # prepare a names list for each row in the resulting table containing threshold
+  # value with "." replaced by "_"
+  names_list &lt;- paste0("Threshold_", gsub("\\.", "_", thresholds))
+
+  # apply the functions where conditions are checked for each threshold value
+  # in other words: take index values and for each threshold value in the 
+  # thresholds list check the conditions in apply_tvcma_conditions_points
+  thresholds_results &lt;- lapply(thresholds, 
+                               apply_tvcma_conditions_points, 
+                               ind = ind)
+
+  # set names for each separate result
+  thresholds_results &lt;- setNames(thresholds_results, names_list)
+
+  # apply calculate_confusion_matrix_stats for each result
+  # each time take separate result (one result for one threshold tested)
+  # calculate the statistics by comparing the result to validation table
+  stats_list &lt;- lapply(seq_along(thresholds_results), 
+                       function(i) calculate_confusion_matrix_stats(
+                         matrix = thresholds_results[[i]],
+                         validation_matrix = val_table,
+                         set_name = names(thresholds_results)[i]))
+
+  # bind all the results for one index together
+  # 50 rows, one per threshold, containing calculated statistics
+  stats_df &lt;- do.call(rbind, stats_list)
+
+  # save the results to .xlsx file
+  write_xlsx(stats_df, paste0("case_study_3/results/", ind_name, "_th_min_", min(thresholds), "_max_", max(thresholds), ".xlsx"))
+
+  # add the table for one index to a list
+  results_list[[i]] &lt;- stats_df
+
+}
+</code></pre>
+<h3 id="accuracy-assessment">Accuracy assessment</h3>
+<p>In your <code>results</code> folder you should now be able to see 8 <code>.xlsx</code> files. Each file should contain 50 rows with data (+ 1 heading row). See the example below.</p>
+<p><center></p>
+<p><img src="media/results_table.jpg" title="Example results table" alt="Example results table" width="400"/></p>
+<p></center></p>
+<p>The goal of our Case Study is to indicate the best spectral index and threshold combination to detect disturbance events with the highest accuracy. We can do that based on the achieved accuracy metrics. For the purpose of our Case Study we’ll choose <em>F1</em> as a measure to choose the best combination. Take a couple of minutes to assess the results and come back to the contents to see if your assessment is in line with our findings.</p>
+<details>
+<summary>
+The highest F1 was measured for…
+</summary>
+
+NDMI with threshold `0.09`. With F1 value equal to `0.65` this combination allowed us to correctly identify **42** cases of disturbances (True Positive, TP). Our results falsely indicate **17** disturbance events (False Positive, FP). There were also **27** disturbances events omitted in the TVCMA results, which were present in our validation dataset (False Negative, FN).
+
+</details>
+
+<p>If you’ve evaluated the results you can proceed to the next part of the Case Study.</p>
+<h2 id="disturbance-mapping">Disturbance mapping</h2>
+<p>With the best performing index and threshold identified we can calculate disturbance maps for each year in the analysed time series.</p>
+<p>First, we want to set the threshold and choose index to apply the calculations to.</p>
+<details>
+<summary>
+Set the best performing threshold to <b><i>threshold</b></i> variable and best performing image (index) data to <b><i>multiband_raster</b></i> variable.
+</summary>
+
+
+<pre><code class="language-r"># best index image data
+multiband_raster &lt;- indices_imgs$NDMI
+
+# best threshold
+threshold &lt;- -0.09
+</code></pre>
+
+
+</details>
+
+<p>Next up we’ll prepare an array to store the results. We’ll set the dimensions of the array to be equal to input images, except number of layers, which needs to be shorter by one, since we cannot indicate disturbances for the first year in the series. We’ll produce disturbance maps from 1985 to 2022. At the start the 1193x2255x38 array will be populated with zeroes.</p>
+<pre><code class="language-r"># empty array to store the results
+result_array &lt;- array(0, dim = c(nrow(multiband_raster), 
+                                 ncol(multiband_raster), 
+                                 nlyr(multiband_raster) - 1))
+</code></pre>
+<p>We are now ready to start calculating maps of disturbances based on TVCMA algorithm using NDMI and 0.09 threshold value as inputs. The input raster must be open for reading in order for us to be able to extract values from it. In a loop we’ll apply TVCMA conditions for each row of the input image. Results for each row (value 1 for detected disturbance, value 0 for no disturbance) will be pasted into <code>results_array</code>.</p>
+<p>This process may take a couple minutes to finish. Observe the progress printing in the console.</p>
+<pre><code class="language-r"># open a file for reading
+readStart(multiband_raster)
+
+# for each row in input image
+for (i in 1:nrow(multiband_raster)) {
+
+  # extract raster values from the image row 
+  # each row contains 2255 x 39 values
+  row_values &lt;- readValues(multiband_raster, 
+                           row = i, 
+                           nrows = 1, 
+                           col = 1, 
+                           ncols = ncol(multiband_raster), 
+                           mat = TRUE)
+
+  # prepare empty vector to store the TVCMA result for one row
+  results &lt;- rep(NA, ncol(multiband_raster) * (nlyr(multiband_raster) - 1))
+
+  # apply TVCMA conditions to extracted raster values
+  for (k in 1:nrow(row_values)) {
+
+    values &lt;- row_values[k, ]
+    val_len &lt;- length(values)
+
+    if (threshold &gt;= 0) {
+
+      cond_1 &lt;- (values[3:((val_len) - 1)] - values[2:(val_len - 2)]) &gt; threshold
+      cond_2 &lt;- (values[4:(val_len)] - values[2:(val_len - 2)]) &gt; threshold
+      cond_3 &lt;- (values[3:((val_len) - 1)] - values[1:(val_len - 3)]) &gt; threshold
+
+      r1 &lt;- cond_1 &amp; cond_2 &amp; cond_3
+      r2 &lt;- (values[2] - values[1]) &gt; threshold &amp; (values[3] - values[1]) &gt; threshold
+      r3 &lt;- (values[val_len] - values[val_len - 1]) &gt; threshold &amp; (values[val_len] - values[val_len - 2]) &gt; threshold
+
+    } else {
+
+      cond_1 &lt;- (values[3:((val_len) - 1)] - values[2:(val_len - 2)]) &lt; threshold
+      cond_2 &lt;- (values[4:(val_len)] - values[2:(val_len - 2)]) &lt; threshold
+      cond_3 &lt;- (values[3:((val_len) - 1)] - values[1:(val_len - 3)]) &lt; threshold
+
+      r1 &lt;- cond_1 &amp; cond_2 &amp; cond_3
+      r2 &lt;- (values[2] - values[1]) &lt; threshold &amp; (values[3] - values[1]) &lt; threshold
+      r3 &lt;- (values[val_len] - values[val_len - 1]) &lt; threshold &amp; (values[val_len] - values[val_len - 2]) &lt; threshold
+    }
+
+    result &lt;- c(r2, r1, r3)
+    results[(((k - 1) * (val_len - 1)) + 1):(k * (val_len - 1))] &lt;- result
+
+  }
+
+  # number of output layers (38)
+  n_layers_minus_one &lt;- nlyr(multiband_raster) - 1
+
+  # insert TVCMA results to result array
+  for (j in 1:ncol(multiband_raster)) {
+
+    index_start &lt;- (j - 1) * n_layers_minus_one + 1
+    index_end &lt;- j * n_layers_minus_one
+    result_array[i, j, ] &lt;- results[index_start:index_end]
+  }
+
+  # print progress
+  print(paste0(&quot;Row: &quot;, i, &quot;/&quot;, nrow(multiband_raster)))
+
+}
+# close a file from reading
+readStop(multiband_raster)
+</code></pre>
+<p>The result of this loop is an array populated with values 0 (no disturbance) and 1 (disturbance). Our goal is to create a multiband raster to indicate the spatial distribution of detected disturbances. We can achieve that by transforming an array into raster with coordinate reference system. We will also rename the bands to match years of detection of disturbances.</p>
+<pre><code class="language-r"># transform array into raster with coordinate reference system
+results_img &lt;- rast(result_array,
+                    extent = ext(multiband_raster),
+                    crs = crs(multiband_raster))
+
+
+# name the bands
+names(results_img) &lt;- as.character(paste0(&quot;TVCMA_&quot;, seq(1985, 2022)))
+</code></pre>
+<p>Once that’s done we can also mask the resulting image with forest mask. This will limit the area of analysis to mainly forests with some patches of other land cover classes also present (mainly to show that they are volatile and sensitive to TVCMA algorithm, i.e. lake in the SW part of the image).</p>
+<pre><code class="language-r"># mask the results with forest mask
+results_img &lt;- mask(results_img, forest_mask)
+</code></pre>
+<p>To conclude the Case Study we can export the multiband image in a couple variants.</p>
+<p>First, let’s export the image ‘as is’, so the disturbances are marked with pixel value 1 and no disturbances are 0. The masked areas have ‘NA’ pixel values.</p>
+<pre><code class="language-r"># write 1/0 TVCMA image
+writeRaster(results_img, 
+            filename = &quot;case_study_3/results/TVCMA_NDMI_th_-0.09_1_0.tif&quot;,
+            datatype = &quot;INT1U&quot;)
+</code></pre>
+<p>This is the result after loading it to QGIS. This image shows disturbances in yellow detected in 2005 and no disturbances in purple.</p>
+<p><center></p>
+<p><img src="media/tvcma_ndmi_10.png" title="TVCMA results 2005 1/0" alt="TVCMA results 2005 1/0" width="800"/></p>
+<p></center></p>
+<p>We can change the 0 values to NA for pixels where no disturbances were detected to get a clearer view of areas where some negative change occurred.</p>
+<pre><code class="language-r"># write 1/NA TVCMA image
+results_img_1_na &lt;- subst(results_img, from = 0, to = NA,
+                         filename = &quot;case_study_3/results/TVCMA_NDMI_th_-0.09_1_NA.tif&quot;,
+                         datatype = &quot;INT1U&quot;)
+</code></pre>
+<p><center></p>
+<p><img src="media/tvcma_ndmi_1na.png" title="TVCMA results 2005 1/NA" alt="TVCMA results 2005 1/NA" width="800"/></p>
+<p></center></p>
+<p>Finally, we can prepare two single band images presenting the earliest and latest detected disturbance for each pixel. In order to do that we’ll reclassify values indicating disturbance - <strong>1</strong> - in each band to year of detection value. This will allow us to use <code>min</code> and <code>max</code> functions to extract minimum (earliest) and maximum (latest) disturbance year for each pixel.</p>
+<pre><code class="language-r"># get year of detection 
+yod &lt;- seq(1985, 2022)
+
+# iterate over each band and replace values of 1 with the year of detection value
+results_yod &lt;- lapply(1:length(yod), function(i) {
+  band &lt;- results_img_1_na[[i]]
+  band &lt;- band * yod[i]
+  return(band)
+})
+
+# make a raster out of year of detection list
+results_yod_rast &lt;- rast(results_yod)
+
+
+# create a raster showing the earliest detected disturbance
+results_earliest &lt;- min(results_yod_rast, na.rm = TRUE)
+
+writeRaster(results_earliest, 
+            filename = &quot;case_study_3/results/TVCMA_NDMI_th_-0.09_earliest.tif&quot;,
+            datatype = &quot;INT2U&quot;)
+
+
+
+# create a raster showing the latest detected disturbance 
+results_latest &lt;- max(results_yod_rast, na.rm = TRUE)
+
+
+writeRaster(results_latest, 
+            filename = &quot;case_study_3/results/TVCMA_NDMI_th_-0.09_latest.tif&quot;,
+            datatype = &quot;INT2U&quot;)
+</code></pre>
+<p><center></p>
+<p><img src="media/tvcma_ndmi_earliest.jpg" title="TVCMA results earliest" alt="TVCMA results earliest" width="800"/></p>
+<p><i>Year of earliest detected disturbance</i>
+</center>
+<center></p>
+<p><img src="media/tvcma_ndmi_latest.jpg" title="TVCMA results latest" alt="TVCMA results latest" width="800"/></p>
+<p><i>Year of earliest latest disturbance</i>
+</center></p>
+<h2 id="discussion">Discussion</h2>
+<p>Points to discuss:</p>
+<ul>
+<li>comparison of usefulness of each variable/index in disturbance detection based on accuracy metrics</li>
+<li>finer best threshold tuning after establishing the overall valid range of thresholds</li>
+<li>what is the possible reason of False Negatives occurrence</li>
+<li>what is the possible reason of False Positives occurrence</li>
+<li>compare disturbance maps with image composites for corresponding years and think about its correctness</li>
+</ul>
+<h2 id="references">References</h2>
+<p>Ochtyra, A., Marcinkowska-Ochtyra, A., &amp; Raczko, E. (2020). Threshold and trend-based vegetation change monitoring algorithm based on the inter-annual multi-temporal normalized difference moisture index series: A case study of the Tatra Mountains. Remote Sensing of Environment, 249, 112026. <a href="https://doi.org/10.1016/j.rse.2020.112026">https://doi.org/10.1016/j.rse.2020.112026</a></p>
+<h3 id="other-case-studies">Other case studies</h3>
+<ul>
+<li><a href="../06_cs_tundra_grasslands/06_cs_tundra_grasslands.html">Monitoring tundra grasslands (Karkonosze)</a></li>
+<li><a href="07_cs_forest_changes/07_cs_forest_changes.md">Effects of pollution (Ore Mountains)</a></li>
+</ul>
+<h3 id="module-themes">Module themes</h3>
+<ul>
+<li><a href="../01_multispectral_principles/01_multispectral_principles.html">Principles of multispectral imaging</a></li>
+<li><a href="../02_temporal_information/02_temporal_information.html">Temporal information in satellite data</a></li>
+<li><a href="../03_image_processing/03_image_processing.html">Image processing workflow</a></li>
+<li><a href="../04_multitemporal_classification/04_multitemporal_classification.html">Multitemporal classification of vegetation types</a></li>
+<li><a href="../05_vegetation_monitoring/05_vegetation_monitoring.html">Vegetation monitoring and disturbance detection</a></li>
+</ul>
+<h3 id="data">Data</h3>
+<p>Landsat 4, 5, 7, 8 and 9 imagery courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a>/ <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a> processed in and downloaded from <a href="https://doi.org/10.1016/j.rse.2017.06.031">Google Earth Engine by Gorelick et al., 2017</a></p>
+<h3 id="software">Software</h3>
+<ul>
+<li>QGIS Development Team (2022). <em>QGIS Geographic Information System. Open Source Geospatial Foundation Project</em>. <a href="http://qgis.osgeo.org">http://qgis.osgeo.org</a></li>
+<li>R Core Team (2023). <em>R: A language and environment for statistical computing</em>. R Foundation for Statistical Computing, Vienna, Austria. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</li>
+<li>Hijmans R (2023). <em>terra: Spatial Data Analysis</em>. R package version 1.7-39, <a href="https://CRAN.R-project.org/package=terra">https://CRAN.R-project.org/package=terra</a></li>
+<li>Ooms J (2023). <em>writexl: Export Data Frames to Excel ‘xlsx’ Format</em>. R package version 1.4.2, <a href="https://CRAN.R-project.org/package=writexl">https://CRAN.R-project.org/package=writexl</a>.</li>
+<li>Pebesma, E., &amp; Bivand, R. (2023). <em>Spatial Data Science: With Applications in R</em>. Chapman and Hall/CRC. <a href="https://doi.org/10.1201/9780429459016">https://doi.org/10.1201/9780429459016</a></li>
+<li>Pebesma, E., 2018. <em>Simple Features for R: Standardized Support for Spatial Vector Data</em>. The R Journal 10 (1), 439-446, <a href="https://doi.org/10.32614/RJ-2018-009">https://doi.org/10.32614/RJ-2018-009</a></li>
+<li>Wickham H, François R, Henry L, Müller K, Vaughan D (2023). <em>dplyr: A Grammar of Data Manipulation</em>. R package version 1.1.2, <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a></li>
+<li>Wickham H, Bryan J (2023). <em>readxl: Read Excel Files</em>. <a href="https://readxl.tidyverse.org">https://readxl.tidyverse.org</a>, <a href="https://github.com/tidyverse/readxl">https://github.com/tidyverse/readxl</a>.</li>
+</ul>
+<h2 id="source-code">Source code</h2>
+<details>
+<summary>
+You can find the entire code used in this exercise here
+</summary>
+
+
+<pre><code class="language-r"># raster I/o and processing
+library(terra) 
+
+# vector I/O and processing
+library(sf) 
+
+# tabular data manipulation
+library(dplyr) 
+
+# reading .xlsx files
+library(readxl) 
+
+# writing .xlsx files
+library(writexl) 
+
+# miscellaneous tools
+library(tools)
+
+# load relative paths to .tif files
+indices_list &lt;- list.files(&quot;case_study_3/data_exercise/&quot;, 
+                           pattern = &quot;*.tif&quot;, 
+                           full.names = TRUE)[2:9]
+
+# load images as terra rast objects
+indices_imgs &lt;- lapply(indices_list, terra::rast)
+
+# get indices names
+indices_names &lt;- file_path_sans_ext(list.files(&quot;case_study_3/data_exercise/&quot;, 
+                                               pattern = &quot;*.tif&quot;)[2:9])
+
+# rename loaded images
+names(indices_imgs) &lt;- indices_names
+
+# read validation points
+points &lt;- st_read(&quot;case_study_3/data_exercise/CS3_points.shp&quot;)
+
+# read validation table
+val_table &lt;- read_xlsx(&quot;case_study_3/data_exercise/CS3_validation_table.xlsx&quot;) %&gt;%
+  select(2:39)
+
+# read fprest mask raster
+forest_mask &lt;- rast(&quot;case_study_3/data_exercise/CS3_forest_mask.tif&quot;)
+
+
+# extract indices values to points
+indices_values &lt;- lapply(indices_imgs, terra::extract, y = points, ID = FALSE)
+
+# bind columns to point layer
+points_all_values &lt;- bind_cols(points, do.call(bind_cols, indices_values))
+
+# save shapefile with extracted values
+st_write(points_all_values, &quot;case_study_3/results/CS3_points_indices_values.shp&quot;)
+
+# Warning message:
+#   In CPL_write_ogr(obj, dsn, layer, driver, as.character(dataset_options),  :
+#                      GDAL Message 1: Creating a 256th field, but some DBF readers might only support 255 fields
+
+# save geopackage with extracted values
+st_write(points_all_values, &quot;case_study_3/results/CS3_points_indices_values.gpkg&quot;)
+
+
+# function to check TVCMA conditions on values in a data frame
+apply_tvcma_conditions_points &lt;- function(ind, threshold) {
+
+  # prepare a result matrix with dimensions matching input data frame
+  res &lt;- matrix(data = FALSE, nrow = nrow(ind), ncol = ncol(ind))
+
+  # loop to check TVCMA conditions for years from third (in this case 1986)
+  # to second to last (2021)
+  for (i in 1:nrow(ind)) {
+    for (j in 3:(ncol(ind) - 1)) {
+      if (threshold &gt;= 0) {
+        cond_1 &lt;- (ind[i, j] - ind[i, j - 1]) &gt; threshold
+        cond_2 &lt;- (ind[i, j + 1] - ind[i, j - 1]) &gt; threshold
+        cond_3 &lt;- (ind[i, j] - ind[i, j - 2]) &gt; threshold
+      } else {
+        cond_1 &lt;- (ind[i, j] - ind[i, j - 1]) &lt; threshold
+        cond_2 &lt;- (ind[i, j + 1] - ind[i, j - 1]) &lt; threshold
+        cond_3 &lt;- (ind[i, j] - ind[i, j - 2]) &lt; threshold
+      }
+      res[i, j] &lt;- cond_1 &amp; cond_2 &amp; cond_3
+    }
+
+    # for the second observation (1985), check conditions 1 and 2
+    if (threshold &gt;= 0) {
+      cond_1_second &lt;- (ind[i, 2] - ind[i, 1]) &gt; threshold
+      cond_2_second &lt;- (ind[i, 3] - ind[i, 1]) &gt; threshold
+    } else {
+      cond_1_second &lt;- (ind[i, 2] - ind[i, 1]) &lt; threshold
+      cond_2_second &lt;- (ind[i, 3] - ind[i, 1]) &lt; threshold
+    }
+    res[i, 2] &lt;- cond_1_second &amp; cond_2_second
+
+    # For the last observation (2022), check conditions 1 and 3
+    if (threshold &gt;= 0) {
+      cond_1_last &lt;- (ind[i, ncol(ind)] - ind[i, ncol(ind) - 1]) &gt; threshold
+      cond_3_last &lt;- (ind[i, ncol(ind)] - ind[i, ncol(ind) - 2]) &gt; threshold
+    } else {
+      cond_1_last &lt;- (ind[i, ncol(ind)] - ind[i, ncol(ind) - 1]) &lt; threshold
+      cond_3_last &lt;- (ind[i, ncol(ind)] - ind[i, ncol(ind) - 2]) &lt; threshold
+    }
+    res[i, ncol(ind)] &lt;- cond_1_last &amp; cond_3_last
+  }
+
+
+  # Remove the first column (1984 for which it is not possible to check any
+  # conditions) from resulting matrix
+  res &lt;- res[,2:ncol(res)]
+
+  # return the resulting 0/1 data frame
+  return(res)
+}
+
+
+# prepare a function to calculate statistics
+calculate_confusion_matrix_stats &lt;- function(matrix, validation_matrix, set_name) {
+
+  # Calculate TP, FP, TN, FN
+  TP &lt;- sum(matrix == 1 &amp; validation_matrix == 1)
+  FP &lt;- sum(matrix == 1 &amp; validation_matrix == 0)
+  TN &lt;- sum(matrix == 0 &amp; validation_matrix == 0)
+  FN &lt;- sum(matrix == 0 &amp; validation_matrix == 1)
+
+  # Calculate the metrics
+  Accuracy &lt;- (TP + TN) / (TP + FP + FN + TN)
+  Precision &lt;- TP / (TP + FP)
+  Sensitivity &lt;- TP / (TP + FN)
+  Specificity &lt;- TN / (TN + FP)
+  F1_Score &lt;- 2 * (Sensitivity * Precision) / (Sensitivity  + Precision)
+
+  # Create a data frame with the confusion matrix stats
+  stats &lt;- data.frame(Set = set_name, TP, FP, TN, FN, Accuracy, Precision, Sensitivity, Specificity, F1_Score)
+
+  return(stats)
+}
+
+
+# direction of index delta when considering disturbances
+pos_indices &lt;- c(&quot;NDWI&quot;, &quot;TCB&quot;)
+neg_indices &lt;- c(&quot;NBR&quot;, &quot;NBR2&quot;, &quot;NDMI&quot;, &quot;NDVI&quot;, &quot;TCG&quot;, &quot;TCW&quot;)
+
+
+pos_thresholds &lt;- seq(0.01, 0.5, by = 0.01)
+neg_thresholds &lt;- seq(-0.01, -0.5, by = -0.01)
+
+
+
+# prepare empty results list
+results_list &lt;- list()
+
+# loop through indices_values 
+for (i in seq(1, length(indices_values))) {
+
+  # select values for one index
+  ind = indices_values[[i]]
+
+  # get the name of the index
+  ind_name &lt;- names(indices_values)[i]
+
+  # check whether to apply positive or negative thresholds
+  if ((ind_name %in% pos_indices) == TRUE) {
+
+    thresholds &lt;- pos_thresholds
+
+  } else {
+
+    thresholds &lt;- neg_thresholds
+  }
+
+  # prepare a names list to be applied for each result 
+  # name is containing threshold value with &quot;.&quot; replaced by &quot;_&quot;
+  names_list &lt;- paste0(&quot;Threshold_&quot;, gsub(&quot;\\.&quot;, &quot;_&quot;, thresholds)) 
+
+  # apply the functions where conditions are checked for each threshold value
+  # in other words: take index values and for each threshold value in the 
+  # thresholds list check the conditions in apply_tvcma_conditions_points
+  thresholds_results &lt;- lapply(thresholds, 
+                               apply_tvcma_conditions_points, 
+                               ind = ind)
+
+  # set names for each separate result
+  thresholds_results &lt;- setNames(thresholds_results, names_list)
+
+  # apply calculate_confusion_matrix_stats for each result
+  # each time take separate result (one result for one threshold tested)
+  # calculate the statistics by comparing the result to validation table
+  stats_list &lt;- lapply(seq_along(thresholds_results), 
+                       function(i) calculate_confusion_matrix_stats(
+                         matrix = thresholds_results[[i]],
+                         validation_matrix = val_table,
+                         set_name = names(thresholds_results)[i]))
+
+  # bind all the results for one index together
+  # 50 rows, one per threshold, containing calculated statistics
+  stats_df &lt;- do.call(rbind, stats_list)
+
+  # save the results to .xlsx file
+  write_xlsx(stats_df, paste0(&quot;case_study_3/results/&quot;, ind_name, &quot;_th_min_&quot;, min(thresholds), &quot;_max_&quot;, max(thresholds), &quot;.xlsx&quot;))
+
+  # add the table for one index to a list
+  results_list[[i]] &lt;- stats_df
+
+}
+
+
+
+multiband_raster &lt;- indices_imgs$NDMI
+threshold &lt;- -0.09
+
+# empty array to store the results
+result_array &lt;- array(0, dim = c(nrow(multiband_raster), ncol(multiband_raster), nlyr(multiband_raster) - 1))
+
+# open a file for reading
+readStart(multiband_raster)
+# for each row in input image
+for (i in 1:nrow(multiband_raster)) {
+
+  # extract raster values from the image row 
+  # each row contains 2255 x 39 values
+  row_values &lt;- readValues(multiband_raster, row = i, nrows = 1, col = 1, ncols = ncol(multiband_raster), mat = TRUE)
+
+  # prepare empty vector to store the TVCMA result
+  results &lt;- rep(NA, ncol(multiband_raster) * (nlyr(multiband_raster) - 1))
+
+  # apply TVCMA conditions to extracted raster values
+  for (k in 1:nrow(row_values)) {
+
+    values &lt;- row_values[k, ]
+    val_len &lt;- length(values)
+
+    if (threshold &gt;= 0) {
+
+      cond_1 &lt;- (values[3:((val_len) - 1)] - values[2:(val_len - 2)]) &gt; threshold
+      cond_2 &lt;- (values[4:(val_len)] - values[2:(val_len - 2)]) &gt; threshold
+      cond_3 &lt;- (values[3:((val_len) - 1)] - values[1:(val_len - 3)]) &gt; threshold
+
+      r1 &lt;- cond_1 &amp; cond_2 &amp; cond_3
+      r2 &lt;- (values[2] - values[1]) &gt; threshold &amp; (values[3] - values[1]) &gt; threshold
+      r3 &lt;- (values[val_len] - values[val_len - 1]) &gt; threshold &amp; (values[val_len] - values[val_len - 2]) &gt; threshold
+
+    } else {
+
+      cond_1 &lt;- (values[3:((val_len) - 1)] - values[2:(val_len - 2)]) &lt; threshold
+      cond_2 &lt;- (values[4:(val_len)] - values[2:(val_len - 2)]) &lt; threshold
+      cond_3 &lt;- (values[3:((val_len) - 1)] - values[1:(val_len - 3)]) &lt; threshold
+
+      r1 &lt;- cond_1 &amp; cond_2 &amp; cond_3
+      r2 &lt;- (values[2] - values[1]) &lt; threshold &amp; (values[3] - values[1]) &lt; threshold
+      r3 &lt;- (values[val_len] - values[val_len - 1]) &lt; threshold &amp; (values[val_len] - values[val_len - 2]) &lt; threshold
+    }
+
+    result &lt;- c(r2, r1, r3)
+    results[(((k - 1) * (val_len - 1)) + 1):(k * (val_len - 1))] &lt;- result
+
+  }
+
+  # number of output layers (38)
+  n_layers_minus_one &lt;- nlyr(multiband_raster) - 1
+
+  # insert TVCMA results to result array
+  for (j in 1:ncol(multiband_raster)) {
+
+    index_start &lt;- (j - 1) * n_layers_minus_one + 1
+    index_end &lt;- j * n_layers_minus_one
+    result_array[i, j, ] &lt;- results[index_start:index_end]
+  }
+
+  # print progress
+  print(paste0(&quot;Row: &quot;, i, &quot;/&quot;, nrow(multiband_raster)))
+
+}
+# close a file from reading
+readStop(multiband_raster)
+
+
+# transform array into raster with coordinate reference system
+results_img &lt;- rast(result_array,
+                    extent = ext(multiband_raster),
+                    crs = crs(multiband_raster))
+
+# name the bands
+names(results_img) &lt;- as.character(paste0(&quot;TVCMA_&quot;, seq(1985, 2022)))
+
+# mask the results with forest mask
+results_img &lt;- mask(results_img, forest_mask)
+
+# write 1/0 TVCMA image
+writeRaster(results_img, 
+            filename = &quot;case_study_3/results/TVCMA_NDMI_th_-0.09_1_0.tif&quot;,
+            datatype = &quot;INT1U&quot;)
+
+# write 1/NA TVCMA image
+results_img_1_na &lt;- subst(results_img, from = 0, to = NA,
+                         filename = &quot;case_study_3/results/TVCMA_NDMI_th_-0.09_1_NA.tif&quot;,
+                         datatype = &quot;INT1U&quot;)
+
+# get year of detection 
+yod &lt;- seq(1985, 2022)
+
+# iterate over each band and replace values of 1 with the year of detection value
+results_yod &lt;- lapply(1:length(yod), function(i) {
+  band &lt;- results_img_1_na[[i]]
+  band &lt;- band * yod[i]
+  return(band)
+})
+
+# make a raster out of year of detection list
+results_yod_rast &lt;- rast(results_yod)
+
+# create a raster showing the latest detected disturbance 
+results_latest &lt;- max(results_yod_rast, na.rm = TRUE)
+
+
+writeRaster(results_latest, 
+            filename = &quot;case_study_3/results/TVCMA_NDMI_th_-0.09_latest.tif&quot;,
+            datatype = &quot;INT2U&quot;)
+
+# create a raster showing the earliest detected disturbance
+results_earliest &lt;- min(results_yod_rast, na.rm = TRUE)
+
+writeRaster(results_earliest, 
+            filename = &quot;case_study_3/results/TVCMA_NDMI_th_-0.09_earliest.tif&quot;,
+            datatype = &quot;INT2U&quot;)
+
+</code></pre>
+
+
+</details>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../07_cs_forest_changes/07_cs_forest_changes.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Case study: Effects of pollution in Ore Mountains">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Case study: Effects of pollution in Ore Mountains
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../module3/module3.html" class="md-footer__link md-footer__link--next" aria-label="Next: Overview">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Overview
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+	
+    <div class="md-copyright__highlight">
+		<a href="https://erasmus-plus.ec.europa.eu/projects/search/details/2020-1-CZ01-KA203-078308" title="EU Project Page">
+			<img src="../../assets/img/flag_eu.jpg" }} alt="flag of the European Union" style="height:50px; float:left; margin-right:15px; margin-bottom:15px;">
+		</a>
+		<p style="font-family:Arial">
+			Funded by the Erasmus+ Programme<br>of the European Union.
+		</p>
+	</div><br>
+	<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+		<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+	</a>
+	<p>
+		Except when explicitly stated otherwise, the course is licensed under the 
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+		license, associated code is licensed under the
+		<a href="https://choosealicense.com/licenses/mit/">MIT</a>
+		license.
+	</p>
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.highlight", "content.code.copy", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/javascripts/quiz_evaluation.js"></script>
+      
+    
+  </body>
+</html>

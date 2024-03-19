@@ -1,0 +1,3004 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This is the exercise in the first theme within the Satellite Multispectral Images Time Series Analysis module.">
+      
+      
+      
+      
+        <link rel="prev" href="01_multispectral_principles.html">
+      
+      
+        <link rel="next" href="../02_temporal_information/02_temporal_information.html">
+      
+      
+      <link rel="icon" href="../../assets/img/logo_etrainee.svg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
+    
+    
+      
+        <title>Principles of multispectral imaging - Exercise - E-TRAINEE Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.10ba22f1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#principles-of-multispectral-imaging-exercise" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-header__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            E-TRAINEE Course
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Principles of multispectral imaging - Exercise
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-nav__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    E-TRAINEE Course
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module0/module0.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prerequisites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Module 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/module1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principles of remote sensing time series
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Large time series datasets in remote sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/03_time_series_analysis_based_on_classification/03_time_series_analysis_based_on_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series analysis based on classification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/04_trajectory-based_analysis/04_trajectory_based_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trajectory-based analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/05_spatio_temporal_data_fusion/05_spatio-temporal_data_fusion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spatio-temporal data fusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reference data, validation and accuracy assessment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Module 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of multispectral imaging
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of multispectral imaging
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_multispectral_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="01_multispectral_principles_exercise.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-visual-interpretation-on-different-resolution-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise - Visual interpretation on different resolution data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-data-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 1: Data collection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-project-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 2: Project preparation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-image-interpretation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 3: Image interpretation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-and-software-credits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data and software credits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data and software credits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal information in satellite data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal information in satellite data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_temporal_information/02_temporal_information.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_temporal_information/02_temporal_information_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Image processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Image processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_image_processing/03_image_processing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_image_processing/03_image_processing_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Multitemporal classification
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Multitemporal classification
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_multitemporal_classification/04_multitemporal_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_multitemporal_classification/04_multitemporal_classification_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vegetation change and disturbance detection
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Vegetation change and disturbance detection
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_vegetation_monitoring/05_vegetation_monitoring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_vegetation_monitoring/05_vegetation_monitoring_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_cs_tundra_grasslands/06_cs_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_cs_forest_changes/07_cs_forest_changes.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Effects of pollution in Ore Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_cs_disturbance_detection/08_cs_disturbance_detection.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Forest disturbance detection (Tatra Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Module 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/module3.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of 3D/4D geographic point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of 3D/4D geographic point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/01_pointcloud_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/exercise/m3_theme1_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Programming for point cloud analysis with Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Programming for point cloud analysis with Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/02_pointcloud_programming_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/exercise/m3_theme2_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles and basic algorithms of 3D change detection and analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Principles and basic algorithms of 3D change detection and analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/03_3d_change_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/exercise/m3_theme3_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Time series analysis of 3D point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Time series analysis of 3D point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/04_3d_timeseries_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/exercise/m3_theme4_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning-based 3D/4D point cloud analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning-based 3D/4D point cloud analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/05_pointcloud_machine_learning/05_pointcloud_machine_learning.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_rockglacier/06_casestudy_rockglacier.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D change analysis at an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_sandybeach/06_casestudy_sandybeach.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series-based change analysis of sandy beach dynamics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Module 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/module4.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of imaging and laboratory spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of imaging and laboratory spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Airborne hyperspectral data acquisition and pre-processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Airborne hyperspectral data acquisition and pre-processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing_exercise_geometric.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    In situ and laboratory spectroscopy of vegetation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            In situ and laboratory spectroscopy of vegetation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_navig.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_spectra_probe_sphere_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning in imaging spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning in imaging spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal vs. spatial and spectral resolution
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal vs. spatial and spectral resolution
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/05_specific_resolution_contribution/05_specific_resolution_contribution.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/08_spectral_separability_grass/08_spectral_separability_grass.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal spectral separability of grass species (Krkonoše Mts.)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Discrimination of grass species from time series of RPAS hyperspectral imagery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/07_flood_plain_forest/07_flood_plain_forest.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal dynamics of flood-plain forests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_cloudcompare.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudCompare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_enmap_box.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EnMAP-Box
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_qgis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QGIS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_r_language.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_gee.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Earth Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Use Cases and Data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Use Cases and Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://doi.org/10.5281/zenodo.10003574" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data download
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_rockglacier_ahk.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D point clouds of an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_beach_kijkduin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4D point clouds of a sandy beach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_forests_tatras.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vegetation disturbance detection in Polish-Slovak Tatra Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_tundra_karkonosze.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_grasses_krkonose.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tundra vegetation monitoring in Krkonoše Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_ore_mts_disturbance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Forest disturbances in Ore Mountains (Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://web.natur.cuni.cz/gis/etrainee/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About the project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://forms.gle/Cz1yxJv2DDNz83j68" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback form
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-visual-interpretation-on-different-resolution-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise - Visual interpretation on different resolution data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-data-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 1: Data collection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-project-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 2: Project preparation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-image-interpretation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 3: Image interpretation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-and-software-credits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data and software credits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data and software credits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+
+                  
+
+  
+  
+
+
+<h1 id="principles-of-multispectral-imaging-exercise">Principles of multispectral imaging - Exercise</h1>
+<h2 id="exercise-visual-interpretation-on-different-resolution-data">Exercise - Visual interpretation on different resolution data</h2>
+<p>In this exercise you will be able to complete several tasks: search, select and download imagery acquired by different sensors, visualize them in QGIS software in <strong>natural and false color composites</strong> and visually interpret to recognize variety of <strong>land cover classes</strong> and <strong>effects of disturbance agents</strong>. Data used in this exercise was acquired for Tatra Mountains region (southern Poland) which has varying land cover and its vegetation is affected by agents and events such as bark beetle outbreaks, strong winds or avalanches.</p>
+<p>The aim of this exercise is to learn how spatial resolution affects the image interpretation possibility and how usage of true color (RGB) or color-infrared (CIR) composites change our ability to distinguish land cover classes from each other. The knowledge gathered in this exercise will be useful in exercises in <strong><a href="../02_temporal_information/02_temporal_information_exercise.html">Theme 2</a></strong>, <strong><a href="../04_multitemporal_classification/04_multitemporal_classification_exercise.html">Theme 4</a></strong> and <strong><a href="../05_vegetation_monitoring/05_vegetation_monitoring_exercise.html">Theme 5</a></strong>. The exercise is divided into three parts with video tutorial for each one.</p>
+<h2 id="part-1-data-collection">Part 1: Data collection</h2>
+<p>This part will show how to collect image data from various sources. We will later use that data in Part 2 and 3 this exercise. We will use following data and sources:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Data type</th>
+<th style="text-align: center;">Date of acquisition</th>
+<th style="text-align: center;">Product level</th>
+<th style="text-align: center;">Spatial resolution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Aerial orthoimagery<sup>a</sup></td>
+<td style="text-align: center;">26.06.2022</td>
+<td style="text-align: center;">Orthoimagery</td>
+<td style="text-align: center;">0.25 m</td>
+</tr>
+<tr>
+<td style="text-align: center;">PlanetScope (composition of 10 scenes)<sup>b</sup></td>
+<td style="text-align: center;">26.08.2022</td>
+<td style="text-align: center;">Surface Reflectance (SR)</td>
+<td style="text-align: center;">3 m</td>
+</tr>
+<tr>
+<td style="text-align: center;">Sentinel-2B</td>
+<td style="text-align: center;">03.07.2022</td>
+<td style="text-align: center;">Level 1C (SR)</td>
+<td style="text-align: center;">10 m</td>
+</tr>
+<tr>
+<td style="text-align: center;">Landsat8 OLI</td>
+<td style="text-align: center;">22.06.2022</td>
+<td style="text-align: center;">L1TP (Collection 2, SR)</td>
+<td style="text-align: center;">30 m</td>
+</tr>
+<tr>
+<td style="text-align: center;">MODIS</td>
+<td style="text-align: center;">21.06.2022</td>
+<td style="text-align: center;">V6.1 (SR)</td>
+<td style="text-align: center;">500 m</td>
+</tr>
+</tbody>
+</table>
+<p><sup>a</sup> orthoimagery is treated as easily interpretable base material due to very high spatial resolution</p>
+<p><sup>b</sup> video tutorial does not cover the process of searching and downloading PlanetScope data from Planet Explorer (submission for Planet’s Education and Research Program)</p>
+<p>To collect the data we will use following databases:</p>
+<ul>
+<li><a href="https://mapy.geoportal.gov.pl/imap/Imgp_2.html">Polish National Geoportal</a> (aerial orthoimagery; registration is not needed)</li>
+<li><a href="https://dataspace.copernicus.eu/">Copernicus Data Space Ecosystem</a> (Sentinel-2 data; registration is needed)</li>
+<li><a href="https://earthexplorer.usgs.gov/">Earth Explorer</a> (Landsat and MODIS data; registration is needed)</li>
+<li><a href="https://urs.earthdata.nasa.gov/home">Earth Data</a> (registration is needed for MODIS data download)</li>
+<li><a href="https://www.planet.com/markets/education-and-research/">Planet Education and Research Program</a> (PlanetScope data, registration is needed)</li>
+</ul>
+<p>By clicking on the <strong>image below</strong> you will be taken to the video on data collection on YouTube:</p>
+<p><a href="https://www.youtube.com/watch?v=l7yvqFoo8rE&amp;list=PLyrFi-gvJfnt5qeGNkKxJGCWqWyYItOE6&amp;index=3"><img alt="Data collection video on YouTube" src="media_exercise/E-TRAINEE_Video_M2_part1.jpg" /></a></p>
+<p>All data for parts 2 and 3 are provided through <a href="https://zenodo.org/records/10003575">Zenodo</a> (module2_theme_1_exercise.zip).</p>
+<h2 id="part-2-project-preparation">Part 2: Project preparation</h2>
+<p>This part is devoted to project preparation in QGIS software. In the beginning coordinate reference system will be set up. Universal Transverse Mercator zone 34 is chosen because of it is adequate for Tatra Mountains region and PlanetScope, Sentinel-2 and Landsat data are distributed in it (the aerial orhtoimagery will be reprojected on the fly properly, MODIS data needs to be reprojected). Each type of data will be visualised in two composites. We want to compare the possibility to recognize various objects using different types of visualisations.</p>
+<p>By clicking on the <strong>image below</strong> you will be taken to the video on QGIS project preparation on YouTube:</p>
+<p><a href="https://www.youtube.com/watch?v=ibpYFEqOggE&amp;list=PLyrFi-gvJfnt5qeGNkKxJGCWqWyYItOE6"><img alt="Data collection video on YouTube" src="media_exercise/E-TRAINEE_Video_M2_part2.jpg" /></a></p>
+<h2 id="part-3-image-interpretation">Part 3: Image interpretation</h2>
+<p>In the last part we will use QGIS project prepared in part 2. A point vector layer containing example locations of different land cover classes and effect of two disturbance agents will be added. The layer will be helpful in comparison of image data. In this part think about the utility of each type of data for land cover classification and detection of vegetation disturbance effects.</p>
+<p>By clicking on the <strong>image below</strong> you will be taken to the video on image interpretation on YouTube:</p>
+<p><a href="https://www.youtube.com/watch?v=7dxdM7i1Z3E&amp;list=PLyrFi-gvJfnt5qeGNkKxJGCWqWyYItOE6&amp;index=4"><img alt="Data collection video on YouTube" src="media_exercise/E-TRAINEE_Video_M2_part3.jpg" /></a></p>
+<p><b><u>TASK</u></b></p>
+<p>After completing the exercise you should have the knowledge of how different land cover classes and the effects of disturbances look like on different types of satellite data.</p>
+<p>To expand and consolidate the skills you’ve acquired, create a new point vector layer and try to independently indicate two new locations for each of the previously discussed examples. In the layer, create attributes with the name of each data source used in the exercise and mark if given land cover class or disturbance effect is identifiable on given image. Remember the relationship between the scale of phenomena/object and spatial resolution of data. Try using various RGB composites that may be more suitable for distinguishing different classes from one another.</p>
+<p>Good luck !</p>
+<h2 id="data-and-software-credits">Data and software credits</h2>
+<h3 id="data">Data</h3>
+<p>Landsat 8 imagery courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a>/ <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a></p>
+<p>Sentinel-2 <a href="https://dataspace.copernicus.eu/">European Space Agency - ESA</a>/ <a href="https://dataspace.copernicus.eu/terms-and-conditions">Terms of use</a>,</p>
+<p>PlanetScope <a href="https://www.planet.com">Image © 2022 Planet Labs PBC</a>/<a href="https://creativecommons.org/licenses/by-nc/2.0/">CC BY-NC 2.0</a></p>
+<p>MODIS <a href="https://doi.org/10.5067/MODIS/MYD09GA.061">Vermote, E., Wolfe, R. (2021). MODIS/Aqua Surface Reflectance Daily L2G Global 1km and 500m SIN Grid V061 (Data set). NASA EOSDIS Land Processes Distributed Active Archive Center. Accessed 2023-09-01 from https://doi.org/10.5067/MODIS/MYD09GA.061</a></p>
+<p>Orthoimagery <a href="https://www.geoportal.gov.pl">Geoportal.gov.pl</a>/ <a href="https://www.geoportal.gov.pl/regulamin">Terms of use</a></p>
+<h3 id="software">Software</h3>
+<ul>
+<li>QGIS Development Team (2022). <em>QGIS Geographic Information System. Open Source Geospatial Foundation Project</em>. <a href="http://qgis.osgeo.org">http://qgis.osgeo.org</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="01_multispectral_principles.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lesson">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Lesson
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../02_temporal_information/02_temporal_information.html" class="md-footer__link md-footer__link--next" aria-label="Next: Lesson">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Lesson
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+	
+    <div class="md-copyright__highlight">
+		<a href="https://erasmus-plus.ec.europa.eu/projects/search/details/2020-1-CZ01-KA203-078308" title="EU Project Page">
+			<img src="../../assets/img/flag_eu.jpg" }} alt="flag of the European Union" style="height:50px; float:left; margin-right:15px; margin-bottom:15px;">
+		</a>
+		<p style="font-family:Arial">
+			Funded by the Erasmus+ Programme<br>of the European Union.
+		</p>
+	</div><br>
+	<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+		<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+	</a>
+	<p>
+		Except when explicitly stated otherwise, the course is licensed under the 
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+		license, associated code is licensed under the
+		<a href="https://choosealicense.com/licenses/mit/">MIT</a>
+		license.
+	</p>
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.highlight", "content.code.copy", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/javascripts/quiz_evaluation.js"></script>
+      
+    
+  </body>
+</html>

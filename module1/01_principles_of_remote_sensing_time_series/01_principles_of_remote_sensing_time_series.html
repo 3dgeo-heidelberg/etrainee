@@ -1,0 +1,3609 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This is the first theme within module 1">
+      
+      
+      
+      
+        <link rel="prev" href="../module1.html">
+      
+      
+        <link rel="next" href="../02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.html">
+      
+      
+      <link rel="icon" href="../../assets/img/logo_etrainee.svg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
+    
+    
+      
+        <title>E-TRAINEE Theme 1 - Principles of remote sensing time series - E-TRAINEE Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.10ba22f1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#principles-of-remote-sensing-time-series" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-header__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            E-TRAINEE Course
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              E-TRAINEE Theme 1 - Principles of remote sensing time series
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-nav__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    E-TRAINEE Course
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module0/module0.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prerequisites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Module 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Principles of remote sensing time series
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="01_principles_of_remote_sensing_time_series.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Principles of remote sensing time series
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-series-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time series principles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time series principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-time-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a time series?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#properties-of-time-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      Properties of time series
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties of time series">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#patterns-of-persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Patterns of persistence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-stationarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      (Non-)Stationarity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trend-detection-and-removal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trend detection and removal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decomposition-of-a-time-series-trends-cyclic-components-and-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decomposition of a time series: Trends, cyclic components and noise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-domain-vs-frequency-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time domain vs. frequency domain
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal-resampling-aggregationbinning-into-specific-temporal-units" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temporal resampling: aggregation/binning into specific temporal units
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-series-filtering-and-noise-reduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time series filtering and noise reduction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remote-sensing-systems-platforms-and-sensors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remote sensing systems: Platforms and sensors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Remote sensing systems: Platforms and sensors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#platforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Platforms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resolution-and-scale-of-remote-sensing-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resolution and scale of remote sensing data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remote-sensing-time-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remote sensing time series
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Remote sensing time series">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contents-of-remote-sensing-time-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contents of remote sensing time series
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structure-of-remote-sensing-time-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structure of remote sensing time series
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extent-resolution-and-scale-of-phenomena-to-be-observed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extent, resolution and scale of phenomena to be observed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#towards-analysis-ready-remote-sensing-time-series-some-preprocessing-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Towards analysis-ready remote sensing time series - Some preprocessing considerations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-evaluation-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-evaluation quiz
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hands-on-remote-sensing-time-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hands-on remote sensing time series
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hands-on remote sensing time series">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tutorial-1-raster-time-series-in-python-using-xarray" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutorial 1: Raster Time Series in Python using xarray
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorial-2-optional-exploring-a-sentinel-2-time-series-using-qgis-and-the-gee-timeseries-explorer-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutorial 2 (optional): Exploring a Sentinel-2 time series using QGIS and the GEE Timeseries Explorer plugin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorial-3-optional-explore-temporal-profiles-of-a-vegetation-index-in-python-with-pandas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutorial 3 (optional): Explore temporal profiles of a vegetation index in Python with pandas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorial-4-optional-exploring-and-processing-a-sentinel-2-time-series-using-the-grass-gis-temporal-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutorial 4 (optional): Exploring and processing a Sentinel-2 time series using the GRASS GIS temporal framework
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key references
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-references-cited-in-this-theme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional references cited in this theme
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Large time series datasets in remote sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_time_series_analysis_based_on_classification/03_time_series_analysis_based_on_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series analysis based on classification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_trajectory-based_analysis/04_trajectory_based_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trajectory-based analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_spatio_temporal_data_fusion/05_spatio-temporal_data_fusion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spatio-temporal data fusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reference data, validation and accuracy assessment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Module 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/module2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of multispectral imaging
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of multispectral imaging
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/01_multispectral_principles/01_multispectral_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/01_multispectral_principles/01_multispectral_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal information in satellite data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal information in satellite data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/02_temporal_information/02_temporal_information.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/02_temporal_information/02_temporal_information_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Image processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Image processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/03_image_processing/03_image_processing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/03_image_processing/03_image_processing_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Multitemporal classification
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Multitemporal classification
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/04_multitemporal_classification/04_multitemporal_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/04_multitemporal_classification/04_multitemporal_classification_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vegetation change and disturbance detection
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Vegetation change and disturbance detection
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/05_vegetation_monitoring/05_vegetation_monitoring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/05_vegetation_monitoring/05_vegetation_monitoring_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/06_cs_tundra_grasslands/06_cs_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/07_cs_forest_changes/07_cs_forest_changes.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Effects of pollution in Ore Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/08_cs_disturbance_detection/08_cs_disturbance_detection.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Forest disturbance detection (Tatra Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Module 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/module3.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of 3D/4D geographic point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of 3D/4D geographic point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/01_pointcloud_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/exercise/m3_theme1_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Programming for point cloud analysis with Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Programming for point cloud analysis with Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/02_pointcloud_programming_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/exercise/m3_theme2_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles and basic algorithms of 3D change detection and analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Principles and basic algorithms of 3D change detection and analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/03_3d_change_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/exercise/m3_theme3_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Time series analysis of 3D point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Time series analysis of 3D point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/04_3d_timeseries_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/exercise/m3_theme4_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning-based 3D/4D point cloud analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning-based 3D/4D point cloud analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/05_pointcloud_machine_learning/05_pointcloud_machine_learning.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_rockglacier/06_casestudy_rockglacier.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D change analysis at an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_sandybeach/06_casestudy_sandybeach.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series-based change analysis of sandy beach dynamics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Module 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/module4.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of imaging and laboratory spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of imaging and laboratory spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Airborne hyperspectral data acquisition and pre-processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Airborne hyperspectral data acquisition and pre-processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing_exercise_geometric.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    In situ and laboratory spectroscopy of vegetation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            In situ and laboratory spectroscopy of vegetation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_navig.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_spectra_probe_sphere_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning in imaging spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning in imaging spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal vs. spatial and spectral resolution
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal vs. spatial and spectral resolution
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/05_specific_resolution_contribution/05_specific_resolution_contribution.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/08_spectral_separability_grass/08_spectral_separability_grass.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal spectral separability of grass species (Krkonoše Mts.)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Discrimination of grass species from time series of RPAS hyperspectral imagery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/07_flood_plain_forest/07_flood_plain_forest.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal dynamics of flood-plain forests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_cloudcompare.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudCompare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_enmap_box.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EnMAP-Box
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_qgis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QGIS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_r_language.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_gee.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Earth Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Use Cases and Data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Use Cases and Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://doi.org/10.5281/zenodo.10003574" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data download
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_rockglacier_ahk.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D point clouds of an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_beach_kijkduin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4D point clouds of a sandy beach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_forests_tatras.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vegetation disturbance detection in Polish-Slovak Tatra Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_tundra_karkonosze.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_grasses_krkonose.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tundra vegetation monitoring in Krkonoše Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_ore_mts_disturbance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Forest disturbances in Ore Mountains (Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://web.natur.cuni.cz/gis/etrainee/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About the project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://forms.gle/Cz1yxJv2DDNz83j68" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback form
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-series-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time series principles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time series principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-time-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a time series?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#properties-of-time-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      Properties of time series
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties of time series">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#patterns-of-persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Patterns of persistence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-stationarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      (Non-)Stationarity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trend-detection-and-removal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trend detection and removal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decomposition-of-a-time-series-trends-cyclic-components-and-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decomposition of a time series: Trends, cyclic components and noise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-domain-vs-frequency-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time domain vs. frequency domain
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal-resampling-aggregationbinning-into-specific-temporal-units" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temporal resampling: aggregation/binning into specific temporal units
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-series-filtering-and-noise-reduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time series filtering and noise reduction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remote-sensing-systems-platforms-and-sensors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remote sensing systems: Platforms and sensors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Remote sensing systems: Platforms and sensors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#platforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Platforms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resolution-and-scale-of-remote-sensing-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resolution and scale of remote sensing data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remote-sensing-time-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remote sensing time series
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Remote sensing time series">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contents-of-remote-sensing-time-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contents of remote sensing time series
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structure-of-remote-sensing-time-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structure of remote sensing time series
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extent-resolution-and-scale-of-phenomena-to-be-observed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extent, resolution and scale of phenomena to be observed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#towards-analysis-ready-remote-sensing-time-series-some-preprocessing-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Towards analysis-ready remote sensing time series - Some preprocessing considerations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-evaluation-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-evaluation quiz
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hands-on-remote-sensing-time-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hands-on remote sensing time series
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hands-on remote sensing time series">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tutorial-1-raster-time-series-in-python-using-xarray" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutorial 1: Raster Time Series in Python using xarray
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorial-2-optional-exploring-a-sentinel-2-time-series-using-qgis-and-the-gee-timeseries-explorer-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutorial 2 (optional): Exploring a Sentinel-2 time series using QGIS and the GEE Timeseries Explorer plugin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorial-3-optional-explore-temporal-profiles-of-a-vegetation-index-in-python-with-pandas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutorial 3 (optional): Explore temporal profiles of a vegetation index in Python with pandas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorial-4-optional-exploring-and-processing-a-sentinel-2-time-series-using-the-grass-gis-temporal-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutorial 4 (optional): Exploring and processing a Sentinel-2 time series using the GRASS GIS temporal framework
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key references
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-references-cited-in-this-theme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional references cited in this theme
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+
+                  
+
+  
+  
+
+
+<h1 id="principles-of-remote-sensing-time-series">Principles of remote sensing time series</h1>
+<p>This theme provides general knowledge about the principles of remote sensing time series. At first, we look at time series in general and at some important principles of remote sensing. Then we go on to see how time series principles can be transferred to remote sensing data.</p>
+<h2 id="objectives">Objectives</h2>
+<p>At the end of this theme, you will know concepts and typical properties of time series data in general and how to look at these properties. Further, you will understand how remote sensing time series are acquired, and what needs to be considered generally when using them. Finally, you will explore exemplary data and perform some first analysis steps using Python.</p>
+<h2 id="time-series-principles">Time series principles</h2>
+<h3 id="what-is-a-time-series">What is a time series?</h3>
+<p>A time series is <em>a set of observations that are ordered by time</em> (i.e., by their temporal occurrence; <a href="https://doi.org/10.1007/978-3-030-21432-6">Castle and Hendry 2019</a>). That means the observations have a clear and unchangeable chronology and distance to each other. The chronology of observations may been seen like neighbourhood and topology in spatial data analysis.</p>
+<p>Time series are recorded at different frequencies (number of measurements in given time period), which are often expressed through a measurement interval (i.e. the temporal spacing between consecutive measurements). This can be a (more or less) fixed interval (e.g. hourly, daily, every five days, …) or an irregular one. The moment in time when a measurement is recorded is usually referenced as a time stamp (e.g. <em>June 5th, 2019 at 7:00 am</em>).</p>
+<p>Imagine two sets of temperature measurements, one with time (day and daytime) included for each measurement and one where the time is missing … Which temperature data set is more valuable for analysis (and why)?</p>
+<h3 id="properties-of-time-series">Properties of time series</h3>
+<p>The next sections will illustrate some important properties that are commonly found in time series and you will get to know possibilities of looking at these properties, including</p>
+<ul>
+<li>Persistence</li>
+<li>(Non-)stationarity</li>
+<li>Trends, cyclic components and noise</li>
+<li>Temporal aggregates and resampling</li>
+<li>Filtering and noise reduction</li>
+</ul>
+<h4 id="patterns-of-persistence">Patterns of persistence</h4>
+<p>Time series may contain <em>patterns of persistence</em> (<a href="https://doi.org/10.1007/978-3-030-21432-6">Castle and Hendry 2019</a>), with closely succeeding observations being more similar than observations that are longer apart. This is the case in this time series of daily air temperature from an automatic weather station in the Central Alps (<a href="https://doi.org/10.1594/PANGAEA.806623">Institute of Meteorology and Geophysics 2013)</a>), contrasted by an example with random numbers:</p>
+<p><img src="media/daily_T_2_months.png" alt="daily T 2 months" title="Daily air temperature" height="180"></p>
+<p><img src="media/random_numbers.png" alt="random numbers 2 months" title="Random numbers (drawn from a standard normal distribution)" height="180"></p>
+<p>The persistent patterns in the temperature time series can be clearly seen if we calculate and plot the correlations between temperature values <em>n</em> days apart (i.e. with a lag of <em>n</em> days). On a warm day, chances are quite good that the next day is also quite warm, but often the weather changes after a few days. Accordingly, temperatures measured within a few days show some positive correlation with each other. This effect is decreasing rapidly with increasing time lag, and autocorrelation values range between the 95% and 99% confidence bands (solid grey and dashed lines), suggesting that these autocorrelations are not statistically significant. The series of random numbers shows much less patterns of persistence and lacks the autocorrelation of a few consecutive observation values.</p>
+<p><img src="media/autocorrelation_daily_T_vs_random_numbers.png" title="Autocorrelation for a lag of n days (with 95% and 99% confidence bands)" width="400"></p>
+<h4 id="non-stationarity">(Non-)Stationarity</h4>
+<p>A time series where the mean and variance of the observations stay constant over time is considered <em>stationary</em> (see <a href="https://doi.org/10.1007/978-3-030-21432-6">Castle and Hendry (2019</a>, p. 10) for more detailed explanations and examples). In many environmantal and socio-economic time series this is not the case (<em>non-stationarity</em>). Staying with the air temperature example, it matters a lot if temperature on a specific day of the year (DOY) was measured in the 1920ies or very recently, with climate change having now strongly affected the temperatures to be expected with a certain probability. Non-stationarity can be related to gradual developments (like atmospheric CO<sub>2</sub> increase) but also to sudden events (like volcanic eruptions), which cause shifts in the means and variances of the data. If undetected, non-stationarity is a problem for empirical forecasting and for an analysis of relations between variables by their temporal development (<a href="https://doi.org/10.1007/978-3-030-21432-6">Castle and Hendry 2019</a>). Therefore, it can be advisable to check the time series for stationarity, e.g. using the Kwiatkowski-Phillips-Schmidt-Shin test (<a href="https://doi.org/10.1016/0304-4076(92)90104-Y">Kwiatkowski et al. 1992</a>) or by visual inspection of plotted values.</p>
+<h4 id="trend-detection-and-removal">Trend detection and removal</h4>
+<p>A trend in a time series is often detected by fitting a regression. Here, we detect a linear trend, but note that trends do not need to be linear and other functions (e.g. exponential) may be more appropriate.</p>
+<p><img src="media/TTT_trend_v01-1_short-term.png" alt="TTT trend long and short" title="Linear trend in different sections of a time series" width="800"></p>
+<p>Note also that the time period we look at can matter a lot: In this example, we can detect an overall positive trend, but a negative trend if we take only the observations of a shorter time period (dotted line). Detection of breaks as another source of non-stationarity in time series is treated in Module 1 Theme 4. Some analyses may require to first remove a trend. The detrended series below simply contains the residuals of a regression of a given order.</p>
+<p><img src="media/CO2_detrended.png" alt="Detrending" title="Detrending" width="800"></p>
+<h4 id="decomposition-of-a-time-series-trends-cyclic-components-and-noise">Decomposition of a time series: Trends, cyclic components and noise</h4>
+<p>It may also be informative to further split the variation of a time series. In addition to a level and some amount of noise, a time series may contain a trend and a seasonal or daily (cyclic or periodic) component (sometimes periods span even multiple years, e.g. (due to) the sunspot activity or the El Niño–Southern Oscillation (ENSO)). In a simple model, these components can be combined either additively or multiplicatively with an observation <em>y</em> at time <em>t</em> given as</p>
+<pre><code>y(t) = Level + Trend + Seasonality + Noise
+</code></pre>
+<p>or</p>
+<pre><code>y(t) = Level * Trend * Seasonality * Noise
+</code></pre>
+<p>The next figure shows (from top to bottom) weekly observations of atmospheric CO<sub>2</sub> at Maona Loa (Hawaii), which can be decomposed into a trend, a seasonal component and a residual component based on a simple additive model.</p>
+<p><img src="media/CO2_decomposed.png" alt="Decomposition" title="Decomposition" width="800"></p>
+<p>After subtraction of the trend and the seasonal component, we get relatively small residuals centred around zero, which is usually a good result. Such a decomposition may be a helpful tool for understanding your time series data and conceiving the analysis but should always be used with caution. There are more advanced methods available, such as <a href="https://www.statsmodels.org/dev/generated/statsmodels.tsa.seasonal.STL.html">STL</a> (Season-Trend decomposition using LOESS; based on the work by Cleveland et al. (1990). Nevertheless, a time series can also contain abrupt changes (“breaks”) – we will get back to this later.</p>
+<h4 id="time-domain-vs-frequency-domain">Time domain vs. frequency domain</h4>
+<p>Time series can be visualized and analysed in the time domain or in the frequency domain. We can use the <a href="https://en.wikipedia.org/wiki/Fast_Fourier_transform">Fast Fourier Transform (FFT)</a> to calculate the <a href="https://en.wikipedia.org/wiki/Discrete_Fourier_transform">Discrete Fourier Transform (DFT)</a>, and such a decomposition of time series into different frequencies can reveal different cyclic components. Here, we see a distinct periodicity of 52 weeks in the CO<sub>2</sub> dataset, as the CO<sub>2</sub> concentration is fluctuating seasonally:</p>
+<p><img src="media/CO2_FFT_weeks_02.png" alt="CO2_FFT" title="CO2_FFT" width="800"></p>
+<h4 id="temporal-resampling-aggregationbinning-into-specific-temporal-units">Temporal resampling: aggregation/binning into specific temporal units</h4>
+<p>Time series data is often resampled by aggregating (or <em>binning</em>) the observations into specific temporal units by calculating a descriptive statistical measure such as the mean (or minimum, maximum, standard deviation, ...) on a daily (weekly, monthly or yearly) basis. This is a useful step for many applications but one might also loose important information.</p>
+<p><img src="media/TTT_resampling_2004_v01.png" alt="TTT resampling" title="Temporal resampling" width="800"></p>
+<p><img src="media/TTT_resampling_2002-2005_v01.png" alt="TTT resampling" title="Temporal resampling" width="800"></p>
+<h4 id="time-series-filtering-and-noise-reduction">Time series filtering and noise reduction</h4>
+<p>As far as possible, (systematic) errors in a data set should be corrected (e.g. atmospheric and topographic correction of satellite imagery) or, if this is impossible, erroneous points should be removed prior to an analysis (e.g. exclude cloudy satellite images completely or mask clouds and cloud shadows, see the exercises (tutorials) in this and the next theme).
+Often, however, some unsystematic errors remain and cause noise in a time series. Apart from random errors, also high-frequency cyclic components (e.g. diurnal temperature cycles) can be regarded as noise if this is not what you are actually interested in. Especially if the sampling rate (temporal resolution) is high, we can reduce noise (by sacrificing some temporal resolution) using temporal filter techniques, while preserving more longer-term variation and trends.
+In the following example, we calculated the daily mean air temperature from a time series consisting of three measurements per day, and then we smooth this further by calculating a 10-day rolling mean. In this case, a window/kernel of length 10 days is incrementally moved by observation along the time series, in this case centered on the currently re-computed data point, to compute an average value from all values in the window. We could also aggregate daily means further, e.g., into the monthly mean air temperature.</p>
+<p><img src="media/TTT_resampling_and_smoothing_v01.png" alt="TTT resampling and smoothing" title="Temporal resampling and smoothing" width="800"></p>
+<p>Another popular method for time-series smoothing is the Savitzky-Golay filter (<a href="https://doi.org/10.1021%2Fac60214a047">Savitzky and Golay 1964</a>), that fits local polynomials to successive subsets of the data to produce values of a new time series.</p>
+<p><img src="media/sav-gol_filter.gif" title="Time series smoothing by the Savitzky-Golay filter" width="600"></p>
+<p><em>Smoothing of noisy data by the Savitzky-Golay method (3rd degree polynomial, 9 points wide sliding window). Blue curve: raw data; blue circle: point after smoothing; yellow curve: polynomial used to determine the current point; red curve: polynomial restricted to the sliding window around the current point (figure by <a href="https://en.wikipedia.org/wiki/Savitzky%E2%80%93Golay_filter#/media/File:Lissage_sg3_anim.gif">Cdang 2013/Wikipedia</a>/ <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>).</em></p>
+<h2 id="remote-sensing-systems-platforms-and-sensors">Remote sensing systems: Platforms and sensors</h2>
+<p>Following earlier definitions in the literature (<a href="https://www.wiley.com/en-us/Remote+Sensing+and+Image+Interpretation%2C+7th+Edition-p-9781118343289">Lillesand et al. 2015</a>, <a href="https://doi.org/10.1016/j.isprsjprs.2015.10.004">Toth and Józków 2016</a>), we define <em>remote sensing</em> as <em>the collection of information about the Earth's surface or other objects without making physical contact with it/them, instead using electromagnetic radiation</em>.
+Today a large variety of remote sensing systems is in operational use, with their main components being the sensor and the platform carrying the sensor(s). Furthermore, some systems contain a ground segment dedicated to mission control and data processing.</p>
+<p>A general idea of these platforms and sensors is also important for anybody working with their data, as this is related to a number of crucial aspects of data acquisition:</p>
+<ul>
+<li>distance between sensor and Earth surface/object of interest</li>
+<li>viewing angle</li>
+<li>spatial and temporal extent (coverage)</li>
+<li>accuracy and resolution (error sources for measurements, sampling density, repetition frequency, etc.)</li>
+</ul>
+<p>More details on the acquisition systems and the characteristics of data covered by this course are provided in the respective modules.</p>
+<h3 id="platforms">Platforms</h3>
+<p><strong>Satellite</strong></p>
+<p>Earth observation satellites carry a wide range of specifically developed sensors and have played a major role in remote sensing for decades. They often travel around the Earth in a near-polar and sun-synchronous orbit, allowing them to cross the same latitude at the same local solar time (i.e. with similar illumination, which is important for sensing reflected sunlight). Often the orbit exactly repeats after completing a distinct pattern of sub-satellite tracks. Thereby almost the entire Earth is captured during one repeat cycle, with a defined revisit period (repetition frequency). Other (very high spatial resolution) satellite missions are designed to choose the direction of the sensor and thus capture selected parts of the Earth more frequently according to user needs as a commercial service (<em>tasking</em>). The continuity of time series provided by such satellite missions over multiple years to decades offers great potential for monitoring Earth surface dynamics and analyses of human-environment interactions.</p>
+<p><strong>Aircraft</strong></p>
+<p>Various types of (occupied) aircraft are flexibly operated to carry a wide range of sensors at hundreds to thousands of metres above ground. Along with the capabilities of the sensor, flying speed determines the covered spatial extent as well as the resulting data resolution and quality.</p>
+<p><strong>Uncrewed aircraft system (UAS)</strong></p>
+<p>During the last decade, drones (uncrewed aircraft) have evolved into an important platform for remote sensing, a development that has been fostered by the rapid miniaturisation of suitable sensors (<a href="https://doi.org/10.1016/j.isprsjprs.2014.02.013">Colomina and Molina 2014</a>, <a href="https://doi.org/10.14358/PERS.83.4.317">Cummings et al. 2017</a>). In addition to the term drone, many alternative terms and acronyms are in use, most commonly uncrewed aerial vehicle (UAV), uncrewed aircraft system (UAS) and remotely piloted aircraft system (RPAS) (<a href="https://doi.org/10.1111/phor.12244">Granshaw 2018</a>).</p>
+<p><strong>Terrestrial systems</strong></p>
+<p>Terrestrial (i.e. ground-based) systems can be static (such as terrestrial laser scanners (TLS), which are usually operated on a tripod) or mobile (with sensors mounted on a car, ship, backpack, etc.). While the above platforms mainly acquire data from above the object of interest, terrestrial systems can have very different viewing angles. Sensor-to-object distances are often short (in the order of 10<sup>0</sup> m to 10<sup>2</sup> m; "close-range sensing"), although longer ranges may be possible with suitable equipment and terrain. Recently, more and more large time series are being built with autonomously operating terrestrial systems installed permanently at monitoring sites.</p>
+<h3 id="sensors">Sensors</h3>
+<p>Depending on the application, sensors record radiation in different parts of the electromagnetic spectrum (wavelegths) ranging from ultraviolet to radio frequencies. Sensors follow either a passive or an active measurement principle, based on measuring electromagnetic radiation that is emitted either from an external source or actively by the system itself, respectively.</p>
+<p><strong>Passive</strong> measurement principles use radiation from an external source, which is (in earth observation) very often the Sun. Examples are passive microwave sensing and imaging in the visible and near-infrared (NIR) to thermal infrared (TIR) parts of the spectrum. Today most people carry an optical imaging sensor in their pocket (in the camera of their smartphone), which can produce colour images with three bands in the visible spectrum (sensing red, green and blue light). In this Module and in Module 2 you will learn how to use time series of multispectral satellite images, which include additional bands in the NIR to TIR spectrum. Even more (and narrower) bands are recorded by hyperspectral imaging, which is the focus of Module 4.</p>
+<p>Systems with an <strong>active</strong> measurement principle record radiation emitted by themselves and then reflected by a surface/object. This includes synthetic aperture radar interferometry and laser scanning, also known as LiDAR (Light detection and ranging). In addition to the quantity of radiation also the time-structure of the emitted and detected radiation can be important, as this contains information about sensor-to-object distances (range measurement). In Module 3 you will learn how to work with time series of 3D point clouds acquired by laser scanning. </p>
+<h3 id="resolution-and-scale-of-remote-sensing-data">Resolution and scale of remote sensing data</h3>
+<p>Typically, the capabilities of these remote sensing systems in terms of coverage/extent, accuracy and resolution (in the spectral, spatial, radiometric and temporal domains) are inversely related, so a large extent usually precludes a very high spatial and temporal resolution. Moreover, a high resolution in multiple domains is largely restricted by sensor properties and their physical limitations. Different remote sensing platforms tend to be associated with typical spatial and temporal acquisition scales related to repetition rate, operative range and spatial resolution.</p>
+<p><img src="media/RS_platforms_freq_range_res_lr.jpg" title="RS platforms" width="700"></p>
+<p><em>Different remote sensing platforms along with their typical repetition rate, operative range, and spatial resolution (modified from Rutzinger et al. 2021).</em></p>
+<h2 id="remote-sensing-time-series">Remote sensing time series</h2>
+<h3 id="contents-of-remote-sensing-time-series">Contents of remote sensing time series</h3>
+<p>Typical remote sensing time series (RSTS) can be built from</p>
+<ul>
+<li>Geophysical or biophysical variables (e.g. temperature in °C or K, leaf-area-index (LAI), surface reflectance, surface elevation, ...)</li>
+<li>Index variables (often spectral indices, e.g. Normalized Difference Vegetation Index (NDVI), Normalized Difference Snow Index (NDSI), and many more ...)</li>
+<li>Thematic variables<ul>
+<li>Discrete thematic variables (e.g. a landcover category, or a binary snow/no snow value)</li>
+<li>Continuous field estimates of a thematic variable (e.g. fractional snow cover, or fractional tree cover) indicating how much of a spatial unit (often one pixel) the thematic variable covers</li>
+</ul>
+</li>
+</ul>
+<p><img src="media/Montero_et_al_2023_spectral_indices_cubes.png" title="Spectral indices time series" width="500"></p>
+<p><em>Time series of spectral indices computed from Sentinel-2 satellite imagery. Each of the nine spectral indices (a) to (i) forms a rectangular cuboid with three dimensions (</em>x<em>, </em>y<em>, </em>time<em>) of length {</em>l<sub>x</sub><em> = 512, </em>l<sub>y</sub><em> = 512, </em>l<sub>time</sub><em> = 195}. The initial date is 2018-07-09 (front) and the final date is 2021-09-26 (back) (figure by <a href="https://doi.org/10.1038/s41597-023-02096-0">Montero et al. 2023</a>/ <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</em></p>
+<h3 id="structure-of-remote-sensing-time-series">Structure of remote sensing time series</h3>
+<p>The structure of most remote sensing time series (RSTS) can be imagined as a raster stack. In case of a single-band image time series or an elevation model time series (<em>3D array</em>), each pixel (defined by location in <em>x</em> and <em>y</em> dimension) contains one series of observations with unique time stamps (date-time index along the time dimension). </p>
+<p>Often, each timestamp is associated with a couple of variables that are observed (e.g. multispectral image time series from an optical sensor with several bands at different wavelengths) or even hundreds of them (e.g. in hyperspectral time series). A multi-/hyperspectral image time series with <em>n</em> bands can be considered as an array with four dimensions (<em>x, y, time, band</em>), where each pixel contains <em>n</em> series of observations (i.e. length of the <em>band</em> dimension). Compared to raster data with its regular spatial structure, the structure of 3D point cloud time series is a bit less straightforward - this will be detailed in Module 3. A good spatial alignment is an important prerequisite of remote sensing time series. If this precondition is not met directly after the data acquisition, it must be established by a co-registration procedure.</p>
+<h3 id="extent-resolution-and-scale-of-phenomena-to-be-observed">Extent, resolution and scale of phenomena to be observed</h3>
+<p>Extent and resolution in various domains are key properties of remote sensing data. The extent is the range covered in space (area in 2D, but possibly also in 3D), or in another domain, such as time (the entire Landsat archive, for instance covers the time period since 1972 (<a href="https://doi.org/10.1016/j.rse.2015.11.032">Wulder et al. 2016</a>), whereas most other RSTS have a much shorter temporal extent). Similarly, the resolution of remote sensing data is defined in different domains, i.e. in the spatial, spectral, radiometric and temporal domain (<a href="https://doi.org/10.1016/C2017-0-03489-4">Liang et al. 2020</a>).</p>
+<p><strong>Spatial resolution</strong></p>
+<p><em>Spatial resolution</em> most often refers to the (geometric) distance between samples or the size of sampling units in object space (i.e. very often on the ground, sometimes on other objects (such as trees or buildings)), thus also referred to as <em>ground sample distance</em> (GSD). Together with the sharpness (blur) and noise of an image, the GSD largely determines the size of the smallest objects or phenomena that can be discriminated (<a href="https://www.usgs.gov/media/images/spatial-resolution-digital-imagery-guideline">ECCOE 2020</a>/<a href="https://www.i2rcorp.com/main-business-lines/sensor-hardware-design-support-services/spatial-resolution-digital-imagery-guideline">I2R Corp</a>). Depending on the sensor and on the acquisition geometry, the spatial resolution can be (more or less) homogeneous (e.g. satellite imagery) or strongly varying across the captured area (e.g. point density in terrestrial laser scanning point clouds).</p>
+<p><strong>Spectral resolution</strong></p>
+<p>The <em>spectral resolution</em> of a sensor system is determined by the number and width of its spectral bands. A normal digital camera, for instance, can detect visible light and has three bands in the red, green and blue part of the electromagnetic spectrum, whereas <em>hyperspectral</em> systems have hundreds of narrow bands. Multispectral sensors typically record a number of bands somewhere in between, i.e. between three and a few tens of bands.</p>
+<p><strong>Radiometric resolution</strong></p>
+<p><em>Radiometric resolution</em> defines the dynamic range and is given as number of bits used to represent the recorded radiation. It determines how many different levels can be differentiated (in each band). With 1 bit, only two levels (e.g. black and white) can be stored, and an 8 bit image can already resolve 256 (2<sup>8</sup>) grey levels per band.</p>
+<p><strong>Temporal resolution</strong></p>
+<p>The repeat cycle or frequency of observations is expressed by the <em>temporal resolution</em>. Regular repeat cycles can range from minutes (e.g. ground-based time-lapse cameras/webcams) to days (many satellite systems) and years (typical repeat cycle for aerial imagery). Clearly, this is a critical aspect regarding the frequency and speed of changes to be observed.</p>
+<p><img src="media/RS_data_resolution_overview.png" title="Remote sensing data resolution in different domains" width="400"></p>
+<p><em>Remote sensing data resolution in different domains.</em></p>
+<p><img src="media/Sat_data_bands_overview_v00.jpg" alt="Sat_data_bands_overview" title="Overview of bands for major satellite missions" width="800"></p>
+<p><em>Comparison of spectral bands for Sentinel-2, Landsat 8, Landsat 7, ASTER and MODIS and atmospheric transmission curve (figure by <a href="https://twitter.com/USGSLandsat/status/773939936755982336/photo/1">USGS Landsat</a>). Details and other versions of this graphic are provided by <a href="https://landsat.gsfc.nasa.gov/article/the-intervening-atmosphere-tracing-the-provenance-of-a-favorite-landsat-infographic/">NASA/Barsi and Rocchio 2020</a>.</em></p>
+<h3 id="towards-analysis-ready-remote-sensing-time-series-some-preprocessing-considerations">Towards analysis-ready remote sensing time series - Some preprocessing considerations</h3>
+<p>Important for applied remote sensing, the data and its resolution in various domains must be appropriate to resolve the studied phenomena with enough detail (further reading in <a href="https://doi.org/10.1016/j.rse.2008.07.018">Kennedy et al. 2009</a>). While this often means that we need a data acquisition at high resolution to capture small variations, it can also mean that we need to resample or smooth our data spatially or temporally to extract only the relevant variation, excluding small changes occurring over short spatial distances or in short time periods (depending on the application and data).</p>
+<p>In practice, the temporal interval of observations in a remote sensing time series is often irregular due to various constraints of data acquisition (dependence on suitable environmental conditions, temporary system outage, change of the measurement protocol, etc.) or because invalid data has been removed (e.g. by a cloud mask, an outlier filter or some other form of preprocessing). Depending on the further analysis steps, consider if your data should be resampled to regular intervals (e.g. when observations are averaged over a fixed time interval).</p>
+<p>Most data sets contain at least some missing values (gaps in certain spatial areas or time periods) and some methods cannot be used adequately with missing values (e.g. many of the popular machine learning algorithms propagate a missing value in the feature vector to the prediction). Therefore, an important consideration is if and how to fill gaps (e.g. impute missing values by a dummy value or by the preceeding/succeeding valid observation ('forward/backward filling'), or interpolate between observations?).</p>
+<p>A further pre-processing step potentially needed is some form of harmonization or normalization of data acquired under different conditions or with different sensors. This can prevent a systematic bias being interpreted as change.</p>
+<p>Moreover, it is generally a good idea to get to know the quality of your input data before you dive into more complex processing and interpretation. Thus, it is often worth analysing the completeness (proportion and distribution of missing values/gaps) and correctness (comparison with reference data or visual plausibility assessment) of observations.</p>
+<h2 id="self-evaluation-quiz">Self-evaluation quiz</h2>
+<form name="quiz" action="" method="post" onsubmit="evaluate_quiz(); return false">
+
+<!--Question 1-->
+<label for="q_01">
+What are some of the main characteristics of a time series?
+</label><br>
+<input type="checkbox" name="q_01">All values are measured without any errors.<br>
+<input type="checkbox" name="q_01">The time of observation is referenced by a time stamp.<br>
+<input type="checkbox" name="q_01">A time series is a set of observations recorded at the same time.<br>
+<input type="checkbox" name="q_01">The observed values are ordered clearly by time.<br>
+<div hidden id="correct_q_01">The time of observation is referenced by a time stamp.&The observed values are ordered clearly by time.</div>
+<output id="output_q_01"></output><br><br>
+
+<!--Question 2-->
+<label for="q_02">
+How are patterns of persistence in a time series recognized?
+</label><br>
+<input type="checkbox" name="q_02">Temporally succeeding observations are more similar to each other than those observed longer apart.<br>
+<input type="checkbox" name="q_02">Temporally close observations show some negative correlation, while those observed longer apart are positively correlated.<br>
+<input type="checkbox" name="q_02">Temporally close observations tend to show some positive correlation, while those observed longer do not.<br>
+<div hidden id="correct_q_02">Temporally succeeding observations are more similar to each other than those observed longer apart.&Temporally close observations tend to show some positive correlation, while those observed longer do not.</div>
+<output id="output_q_02"></output><br><br>
+
+<!--Question 3-->
+<label for="q_03">
+Trends in a time series: Which statement is correct?
+</label><br>
+<input type="checkbox" name="q_03">A trend is always linear.<br>
+<input type="checkbox" name="q_03">A trend is always positive (i.e., values are increasing with time).<br>
+<input type="checkbox" name="q_03">A trend is always the same in one particular time series, regardless if we look at the entire time series or only a part of it.<br>
+<input type="checkbox" name="q_03">Trends can be computationally removed to reveal other components of a time series.<br>
+<div hidden id="correct_q_03">Trends can be computationally removed to reveal other components of a time series.</div>
+<output id="output_q_03"></output><br><br>
+
+<!--Question 4-->
+<label for="q_04">
+Which of these sensors use a passive measurement principle?
+</label><br>
+<input type="checkbox" name="q_04">Terrestrial laser scanner<br>
+<input type="checkbox" name="q_04">Hyperspectral camera onboard a drone<br>
+<input type="checkbox" name="q_04">Multi-spectral instrument onboard the Sentinel-2 satellites<br>
+<input type="checkbox" name="q_04">Synthetic aperture radar onboard the Sentinel-1 satellites<br>
+<div hidden id="correct_q_04">Hyperspectral camera onboard a drone&Multi-spectral instrument onboard the Sentinel-2 satellites</div>
+<output id="output_q_04"></output><br><br>
+
+<!--Question 5-->
+<label for="q_05">
+Extent, resolution, and scale of remote sensing time series: Which statement is correct?
+</label><br>
+<input type="checkbox" name="q_05">A high spatial resolution of imagery means each pixel corresponds to a large area on the ground.<br>
+<input type="checkbox" name="q_05">A high spatial resolution of imagery means each pixel corresponds to a small area on the ground.<br>
+<input type="checkbox" name="q_05">We should avoid recording time series with very high temporal resolution because this makes it difficult to detect long term changes and the resolution cannot be changed.<br>
+<input type="checkbox" name="q_05">To constrain the timing of rapid changes, a high temporal resolution is required.<br>
+<div hidden id="correct_q_05">A high spatial resolution of imagery means each pixel corresponds to a small area on the ground.&To constrain the timing of rapid changes, a high temporal resolution is required.</div>
+<output id="output_q_05"></output><br><br>
+
+
+<input type="submit" value="Submit" style="font-size:14pt"><br><br>
+
+<output id="output_overall">
+</output>
+</form>
+
+<h2 id="hands-on-remote-sensing-time-series">Hands-on remote sensing time series</h2>
+<h3 id="tutorial-1-raster-time-series-in-python-using-xarray">Tutorial 1: Raster Time Series in Python using xarray</h3>
+<p>This <a href="T1_S2_xarray.html">Jupyter notebook</a> introduces Python's <a href="https://docs.xarray.dev/en/stable/#"><code>xarray</code></a>, a package for processing large multi-dimensional arrays (<a href="https://doi.org/10.5334/jors.148">Hoyer and Hamman 2017</a>) and shows how to use it for handling and analysing a Sentinel-2 image time series. The next themes will build on this tutorial, as they use xarray as well (but they also repeat some explanations).</p>
+<h3 id="tutorial-2-optional-exploring-a-sentinel-2-time-series-using-qgis-and-the-gee-timeseries-explorer-plugin">Tutorial 2 (optional): Exploring a Sentinel-2 time series using QGIS and the GEE Timeseries Explorer plugin</h3>
+<p>As a straightforward option to access huge collections of Earth observation data we try out the <a href="https://geetimeseriesexplorer.readthedocs.io/en/latest/index.html">QGIS GEE Timeseries Explorer</a> plugin (<a href="https://doi.org/10.5194/isprs-archives-XLVI-4-W2-2021-155-2021">Rufin et al. 2021</a>).</p>
+<p>Overview:</p>
+<ul>
+<li>Load a few points as geopackage or shapefile (download from the course data repository as <code>T1_sample_points_001.gpkg</code> or digitize your own points in a new layer in QGIS) and browse for S2 cloud-free NDVI time series data at these points</li>
+<li>Query NDVI data for a defined time period and for a defined area-of-interest</li>
+<li>Visualize search result: time series plot and single scenes</li>
+<li>Apply a reducer to aggregate data to temporal units</li>
+<li>Visualize aggregated data</li>
+<li>Optionally continue with Tutorial 3: Download temporal profiles as raw text and import them to Python</li>
+</ul>
+<p>For more detailed explanations see <a href="T1_QGIS_GEE_TS_Explorer.html">this tutorial</a> and the <a href="https://geetimeseriesexplorer.readthedocs.io/en/latest/index.html">official plugin documentation</a>.</p>
+<h3 id="tutorial-3-optional-explore-temporal-profiles-of-a-vegetation-index-in-python-with-pandas">Tutorial 3 (optional): Explore temporal profiles of a vegetation index in Python with pandas</h3>
+<p>Export temporal profiles of a vegetation index from GEE via QGIS and explore them in Python</p>
+<p>In <a href="T1_spectral-temporal_profiles.html">this tutorial</a> we explore temporal profiles of Sentinel-2 Normalized Difference Vegetation Index (NDVI). Sample points for different landcover classes are used. They are all located around the village of Obergurgl (Central Alps, Tyrol, Austria).</p>
+<h3 id="tutorial-4-optional-exploring-and-processing-a-sentinel-2-time-series-using-the-grass-gis-temporal-framework">Tutorial 4 (optional): Exploring and processing a Sentinel-2 time series using the GRASS GIS temporal framework</h3>
+<p><a href="T1_GRASS_raster_time_series.html">This tutorial</a> shows how an entire workflow for Sentinel-2 optical image time series can be implemented in GRASS GIS. This includes the search and download of scenes from the Copernicus Open Access Hub, a number of preparatory steps within the GRASS GIS temporal framework and, finally, the exploration and analysis of a Space-Time Raster Dataset (STRDS).</p>
+<p><em>WARNING:</em></p>
+<p><em>This excercise is provided for interested course participants who are motivated to experiment with GRASS GIS (and ideally have already some experience with the software). Currently, however, we do not recommend this excercise because of known occasional problems with the download from the Copernicus Open Access Hub (especially with data older than one month), with installation of the i.sentinel addon, and a bug in the creation of the temporal register file. Maybe these issues are (partly) resolved in current versions, but this needs further testing. So don't get frustrated if you still encounter problems ...</em></p>
+<h2 id="references">References</h2>
+<h3 id="key-references">Key references</h3>
+<p>Castle, J. L., &amp; Hendry, D. F. (2019). Modelling our changing world. Springer Nature. 128 p. https://doi.org/10.1007/978-3-030-21432-6</p>
+<p>Eitel, J. U., Höfle, B., Vierling, L. A., Abellán, A., Asner, G. P., Deems, J. S., ... &amp; Vierling, K. T. (2016). Beyond 3-D: The new spectrum of lidar applications for earth and ecological sciences. Remote Sensing of Environment, 186, 372-392. https://doi.org/10.1016/j.rse.2016.08.018</p>
+<p>Kennedy, R. E., Townsend, P. A., Gross, J. E., Cohen, W. B., Bolstad, P., Wang, Y. Q., &amp; Adams, P. (2009). Remote sensing change detection tools for natural resource managers: Understanding concepts and tradeoffs in the design of landscape monitoring projects. Remote Sensing of Environment, 113(7), 1382-1396. https://doi.org/10.1016/j.rse.2008.07.018</p>
+<p>Künzer, C., Dech, S., &amp; Wagner, W. (2015). Remote sensing time series - Revealing land surface dynamics, Springer, 441 p. https://doi.org/10.1007/978-3-319-15967-6</p>
+<p>Liang, S., &amp; Wang, J. (2020). Advanced remote sensing: Terrestrial information extraction and applications, 2nd edition, Academic Press, 1010 p. https://doi.org/10.1016/C2017-0-03489-4</p>
+<p>Lillesand, T. M., R. W. Kiefer, and J. W. Chipman, 2015: Remote sensing and image interpretation. 7th ed., John Wiley &amp; Sons, New York, 736 p.</p>
+<p>Rees, W. G. (2012). Physical principles of remote sensing, 3rd edition, Cambridge University Press, 441 p. https://doi.org/10.1017/CBO9781139017411</p>
+<p>Toth, C. and G. Józków, 2016. Remote sensing platforms and sensors: A survey. ISPRS Journal of Photogrammetry and Remote Sensing, 115, 22–36. https://doi.org/10.1016/j.isprsjprs.2015.10.004</p>
+<p>Vosselman, G., &amp; Maas, H.-G. (2010). Airborne and terrestrial laser scanning, CRC Press, 336 p.</p>
+<p>Woodcock, C. E., Loveland, T. R., Herold, M., &amp; Bauer, M. E. (2020). Transitioning from change detection to monitoring with remote sensing: A paradigm shift. Remote Sensing of Environment, 238, 111558. https://doi.org/10.1016/j.rse.2019.111558</p>
+<h3 id="additional-references-cited-in-this-theme">Additional references cited in this theme</h3>
+<p>Cleveland, R. B., Cleveland, W. S., McRae, J. E., &amp; Terpenning, I. (1990). STL: A seasonal-trend decomposition procedure based on LOESS. Journal of Official Statistics, 6, 3-73.</p>
+<p>Colomina, I., &amp; Molina, P. (2014). Unmanned aerial systems for photogrammetry and remote sensing: A review. ISPRS Journal of Photogrammetry and Remote Sensing, 92, 79-97.
+https://doi.org/10.1016/j.isprsjprs.2014.02.013</p>
+<p>Cummings, A. R., McKee, A., Kulkarni, K., &amp; Markandey, N. (2017). The rise of UAVs. Photogrammetric Engineering &amp; Remote Sensing, 83(4), 317-325. https://doi.org/10.14358/PERS.83.4.317</p>
+<p>ECCOE (EROS CalVal Center of Excellence)/I2R Corp (2020). Spatial Resolution Digital Imagery Guideline. https://www.usgs.gov/media/images/spatial-resolution-digital-imagery-guideline</p>
+<p>Gebbert, S., Pebesma, E. (2014). A temporal GIS for field based environmental modeling. Environmental Modelling &amp; Software, 53, 1-12. https://doi.org/10.1016/j.envsoft.2013.11.001</p>
+<p>Gebbert, S., Pebesma, E. (2017). The GRASS GIS temporal framework. International Journal of Geographical Information Science, 31, 1273-1292. http://dx.doi.org/10.1080/13658816.2017.1306862</p>
+<p>Granshaw, S. I. (2018). RPV, UAV, UAS, RPAS … or just drone? The Photogrammetric Record, 33(162), 160-170. https://doi.org/10.1111/phor.12244</p>
+<p>Hoyer, S., &amp; Hamman, J. (2017). xarray: ND labeled arrays and datasets in Python. Journal of Open Research Software, 5(1). https://doi.org/10.5334/jors.148</p>
+<p>Institute of Meteorology and Geophysics (2013). Air temperature and precipitation time series from weather station Obergurgl, 2000-2009. University of Innsbruck, PANGAEA. https://doi.org/10.1594/PANGAEA.806623</p>
+<p>Montero, D., Aybar, C., Mahecha, M. D., Martinuzzi, F., Söchting, M., &amp; Wieneke, S. (2023). A standardized catalogue of spectral indices to advance the use of remote sensing in Earth system research. Scientific Data, 10(1), 197. https://doi.org/10.1038/s41597-023-02096-0</p>
+<p>Rouse, J.W, Haas, R.H., Scheel, J.A., and Deering, D.W. (1974) 'Monitoring Vegetation Systems in the Great Plains with ERTS.' Proceedings, 3rd Earth Resource Technology Satellite (ERTS) Symposium, Vol. 1, p. 48-62. https://ntrs.nasa.gov/citations/19740022614</p>
+<p>Rutzinger, M., Bremer, M., Zieher, T., Mayr, A. (2021): Fernerkundung. In: Bork-Hüffer, Tabea; Füller, Henning; Straube, Till (Eds.): Handbuch Digitale Geographien: Welt - Wissen - Werkzeuge. Bern, Stuttgart, Wien: UTB Hauptverlag, ISBN: 9783825255671. https://elibrary.utb.de/doi/book/10.36198/9783838555676</p>
+<p>Savitzky, A., &amp; Golay, M. J. (1964). Smoothing and differentiation of data by simplified least squares procedures. Analytical chemistry, 36(8), 1627-1639. https://doi.org/10.1021%2Fac60214a047</p>
+<p>Wulder, M. A., White, J. C., Loveland, T. R., Woodcock, C. E., Belward, A. S., Cohen, W. B., ... &amp; Roy, D. P. (2016). The global Landsat archive: Status, consolidation, and direction. Remote Sensing of Environment, 185, 271-283. https://doi.org/10.1016/j.rse.2015.11.032</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../module1.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Overview
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.html" class="md-footer__link md-footer__link--next" aria-label="Next: Large time series datasets in remote sensing">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Large time series datasets in remote sensing
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+	
+    <div class="md-copyright__highlight">
+		<a href="https://erasmus-plus.ec.europa.eu/projects/search/details/2020-1-CZ01-KA203-078308" title="EU Project Page">
+			<img src="../../assets/img/flag_eu.jpg" }} alt="flag of the European Union" style="height:50px; float:left; margin-right:15px; margin-bottom:15px;">
+		</a>
+		<p style="font-family:Arial">
+			Funded by the Erasmus+ Programme<br>of the European Union.
+		</p>
+	</div><br>
+	<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+		<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+	</a>
+	<p>
+		Except when explicitly stated otherwise, the course is licensed under the 
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+		license, associated code is licensed under the
+		<a href="https://choosealicense.com/licenses/mit/">MIT</a>
+		license.
+	</p>
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.highlight", "content.code.copy", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/javascripts/quiz_evaluation.js"></script>
+      
+    
+  </body>
+</html>

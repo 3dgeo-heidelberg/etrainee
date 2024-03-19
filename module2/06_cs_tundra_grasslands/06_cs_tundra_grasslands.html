@@ -1,0 +1,4133 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This is the first case study within the Satellite Multispectral Images Time Series Analysis module.">
+      
+      
+      
+      
+        <link rel="prev" href="../05_vegetation_monitoring/05_vegetation_monitoring_exercise.html">
+      
+      
+        <link rel="next" href="../07_cs_forest_changes/07_cs_forest_changes.html">
+      
+      
+      <link rel="icon" href="../../assets/img/logo_etrainee.svg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
+    
+    
+      
+        <title>Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše) - E-TRAINEE Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.10ba22f1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#case-study-monitoring-tundra-grasslands-karkonoszekrkonose" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-header__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            E-TRAINEE Course
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-nav__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    E-TRAINEE Course
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module0/module0.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prerequisites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Module 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/module1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principles of remote sensing time series
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Large time series datasets in remote sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/03_time_series_analysis_based_on_classification/03_time_series_analysis_based_on_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series analysis based on classification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/04_trajectory-based_analysis/04_trajectory_based_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trajectory-based analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/05_spatio_temporal_data_fusion/05_spatio-temporal_data_fusion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spatio-temporal data fusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reference data, validation and accuracy assessment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Module 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of multispectral imaging
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of multispectral imaging
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_multispectral_principles/01_multispectral_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_multispectral_principles/01_multispectral_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal information in satellite data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal information in satellite data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_temporal_information/02_temporal_information.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_temporal_information/02_temporal_information_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Image processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Image processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_image_processing/03_image_processing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_image_processing/03_image_processing_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Multitemporal classification
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Multitemporal classification
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_multitemporal_classification/04_multitemporal_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_multitemporal_classification/04_multitemporal_classification_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vegetation change and disturbance detection
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Vegetation change and disturbance detection
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_vegetation_monitoring/05_vegetation_monitoring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_vegetation_monitoring/05_vegetation_monitoring_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="06_cs_tundra_grasslands.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#study-area-and-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Study area and data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Study area and data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imagery-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Imagery data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-preparation-loading-required-libraries-and-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment preparation: loading required libraries and data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-values-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference values extraction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#classification-scenario-1-single-scene" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification scenario 1: single scene
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classification-scenario-2-multitemporal-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification scenario 2: multitemporal set
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classification-scenario-3-selected-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification scenario 3: selected features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discussion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#other-case-studies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other case studies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module-themes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Module themes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-and-software-credits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data and software credits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data and software credits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source code
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_cs_forest_changes/07_cs_forest_changes.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Effects of pollution in Ore Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_cs_disturbance_detection/08_cs_disturbance_detection.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Forest disturbance detection (Tatra Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Module 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/module3.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of 3D/4D geographic point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of 3D/4D geographic point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/01_pointcloud_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/exercise/m3_theme1_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Programming for point cloud analysis with Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Programming for point cloud analysis with Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/02_pointcloud_programming_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/exercise/m3_theme2_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles and basic algorithms of 3D change detection and analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Principles and basic algorithms of 3D change detection and analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/03_3d_change_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/exercise/m3_theme3_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Time series analysis of 3D point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Time series analysis of 3D point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/04_3d_timeseries_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/exercise/m3_theme4_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning-based 3D/4D point cloud analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning-based 3D/4D point cloud analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/05_pointcloud_machine_learning/05_pointcloud_machine_learning.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_rockglacier/06_casestudy_rockglacier.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D change analysis at an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_sandybeach/06_casestudy_sandybeach.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series-based change analysis of sandy beach dynamics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Module 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/module4.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of imaging and laboratory spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of imaging and laboratory spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Airborne hyperspectral data acquisition and pre-processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Airborne hyperspectral data acquisition and pre-processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing_exercise_geometric.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    In situ and laboratory spectroscopy of vegetation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            In situ and laboratory spectroscopy of vegetation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_navig.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_spectra_probe_sphere_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning in imaging spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning in imaging spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal vs. spatial and spectral resolution
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal vs. spatial and spectral resolution
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/05_specific_resolution_contribution/05_specific_resolution_contribution.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/08_spectral_separability_grass/08_spectral_separability_grass.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal spectral separability of grass species (Krkonoše Mts.)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Discrimination of grass species from time series of RPAS hyperspectral imagery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/07_flood_plain_forest/07_flood_plain_forest.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal dynamics of flood-plain forests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_cloudcompare.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudCompare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_enmap_box.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EnMAP-Box
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_qgis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QGIS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_r_language.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_gee.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Earth Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Use Cases and Data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Use Cases and Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://doi.org/10.5281/zenodo.10003574" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data download
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_rockglacier_ahk.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D point clouds of an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_beach_kijkduin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4D point clouds of a sandy beach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_forests_tatras.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vegetation disturbance detection in Polish-Slovak Tatra Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_tundra_karkonosze.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_grasses_krkonose.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tundra vegetation monitoring in Krkonoše Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_ore_mts_disturbance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Forest disturbances in Ore Mountains (Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://web.natur.cuni.cz/gis/etrainee/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About the project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://forms.gle/Cz1yxJv2DDNz83j68" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback form
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#study-area-and-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Study area and data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Study area and data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imagery-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Imagery data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-preparation-loading-required-libraries-and-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment preparation: loading required libraries and data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-values-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference values extraction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#classification-scenario-1-single-scene" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification scenario 1: single scene
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classification-scenario-2-multitemporal-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification scenario 2: multitemporal set
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classification-scenario-3-selected-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification scenario 3: selected features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discussion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#other-case-studies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other case studies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module-themes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Module themes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-and-software-credits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data and software credits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data and software credits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source code
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+
+                  
+
+  
+  
+
+
+<h1 id="case-study-monitoring-tundra-grasslands-karkonoszekrkonose">Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše)</h1>
+<p>In this case study we will focus on classifying non-forest tundra vegetation in higher parts of Karkonosze/Krkonoše Mountains, laying on the Polish-Czech border. The process will consist of extracting reference data based on field inventory from multitemporal Sentinel-2 imagery and classifying it with the Support Vector Machine algorithm. Additional analysis will consist of feature importance assessment performed for grasslands class as the main object of this case study.</p>
+<p>This exercise we’ll be conducted with R and RStudio. If you haven’t already done this, refer to this tutorial regarding the environment setup: <a href="../../software/software_r_language.html">R environment setup tutorial</a>.</p>
+<h2 id="study-area-and-data">Study area and data</h2>
+<p>Before you continue, get familiar with the use case: <strong><a href="../../data_usecases/usecase_tundra_karkonosze.html">Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)</a></strong>.</p>
+<p>… and read the paper accompanying the use case and case study:</p>
+<p>Wakulińska, M., &amp; Marcinkowska-Ochtyra, A. (2020). <em>Multi-temporal sentinel-2 data in classification of mountain vegetation</em>. Remote Sensing, 12(17), 2696. <a href="https://doi.org/10.3390/rs12172696">https://doi.org/10.3390/rs12172696</a></p>
+<p>Download exercise data provided through <a href="https://zenodo.org/records/10003575">Zenodo</a>.</p>
+<h3 id="imagery-data">Imagery data</h3>
+<p>In the case study Sentinel‐2 satellite images with no/minimal cloud coverage from 7 terms of 2018 and 2019 will be used. The dates were chosen to take into account the variability of alpine and subalpine grasslands during one growing season. The limitation was the high occurrence of clouds during the chosen period. The data with 2A processing level were selected. The processing pipeline for preparing data for this Case Study is showcased in <strong><a href="../03_image_processing/03_image_processing_exercise.html#processing-pipeline-3">Theme 3 exercise processing pipeline 3</a></strong>.</p>
+<p>The reference data came mainly from the field, as these are not simple land cover classes but more complex ones, botanical information was required. The designated classes included: grasslands (<strong>G</strong>; of special importance), deciduous shrubs vegetation (<strong>DSV</strong>), bogs and fens (<strong>BF</strong>), subalpine tall-forbs (<strong>STF</strong>), rocks and scree vegetation (<strong>RSV</strong>), heathlands (<strong>H</strong>), subalpine dwarf pine scrubs (<strong>SDPS</strong>) and forests (<strong>F</strong>).</p>
+<h3 id="environment-preparation-loading-required-libraries-and-data">Environment preparation: loading required libraries and data</h3>
+<p>To start with, we want to load necessary libraries and data and set up some initial variables, which we will use further down the line.</p>
+<p>Firstly, load required libraries into the environment: <code>terra</code>, <code>sf</code>, <code>dplyr</code>, <code>caret</code>, <code>kernlab</code> and <code>ggsci</code>. Functions included in these packages will be used in the latter parts of this case study.</p>
+<pre><code class="language-r"># raster I/o and processing
+library(terra) 
+
+# vector I/O and processing
+library(sf)
+
+# tabular data manipulation
+library(dplyr) 
+
+# model tuning and training
+library(caret) 
+
+# applying model
+library(kernlab) 
+
+# visualization colour palettes
+library(ggsci) 
+</code></pre>
+<p>We can move to loading up the required data. We shall start with the raster data. The imagery used in this case study are Sentinel-2 images collected in 2018 and 2019 within the growing season (exact dates are 14 May, 31 May, 7 August, 27 August, 18 September (2018), 25 June and 30 June (2019)). Data preparation pipeline for this case study was presented in the <strong><a href="../03_image_processing/03_image_processing_exercise.html">pipeline 3 in Theme 3 exercise</a></strong>.</p>
+<p><em>Note: we have combined the set of all seven scenes into one to select data from it for each of the 3 scenarios. The bands are ordered chronologically, from May 2018 to June 2019.</em></p>
+<pre><code class="language-r"># load .tif image of stacked 70 bands (10 bands per 7 acquisition dates)
+image_data &lt;- rast(&quot;case_study_1/data_exercise/CS1_image_data.tif&quot;) 
+</code></pre>
+<p>Now add the vector reference data to our workspace. It consists of field collected polygons with appropriate classes assigned (including <em>grasslands</em>, which are the most interesting from this case study point of view) , which will be used to classify multitemporal Sentinel-2 images from 2018 and 2019. Load <code>.shp</code> file to the <code>reference_data</code> variable.</p>
+<pre><code class="language-r"># load reference .shp dataset containing reference polygons
+# with class names and acronyms
+reference_data &lt;- st_read(&quot;case_study_1/data_exercise/CS1_reference_data.shp&quot;) 
+</code></pre>
+<h3 id="reference-values-extraction">Reference values extraction</h3>
+<p>The two main required data sources are now loaded into the workspace, so we can proceed with preparing data for classification. First of all, we need to extract pixel values from loaded images of areas covered by the reference data. In order to do that we will use our own function, which will assign each pixel in each polygon values from spectral bands of Sentinel-2 imagery.</p>
+<pre><code class="language-r">extract_pixel_values &lt;- function(image, vector_reference, class_field_name){
+
+  # number of polygon used to extract
+  counter &lt;- 1 
+
+  # information about progress printed in the console
+  print(&quot;Number of polygons done:&quot;) 
+
+  # number of polygons in the reference dataset
+  number_of_polygons &lt;- nrow(vector_reference) 
+
+  # empty data frame to store the results of extraction
+  extracted_values &lt;- data.frame() 
+
+  # which columns stores the class names
+  class_column_index &lt;- which(names(vector_reference) == class_field_name) 
+
+  for (polygon_index in seq(number_of_polygons)) {
+
+    selected_polygon &lt;- vector_reference[polygon_index, ]
+    class_name &lt;- selected_polygon$class
+
+    # extract pixel values from selected polygon
+    polygon_pixel_values &lt;- extract(image, selected_polygon, df = TRUE) 
+
+    # add class name and polygon index to extracted values
+    polygon_pixel_values &lt;- cbind(polygon_pixel_values[ ,2: ncol(polygon_pixel_values)], 
+                                  class_name, 
+                                  polygon_index) 
+
+    # add the extracted values with additional information to the results data frame                              
+    extracted_values &lt;- rbind(extracted_values, polygon_pixel_values) 
+
+    # information about progress printed in the console
+    print(paste0(counter, &quot;/&quot;, number_of_polygons)) 
+
+    counter &lt;- counter + 1 # go to the next polygon
+
+  }
+  return(extracted_values) # function results - data frame with extracted values
+}
+</code></pre>
+<p>Now we shall use the above function to extract the values with the data from the reference dataset we loaded earlier. This process should take about 3 minutes. You can observe the progress in the console.</p>
+<pre><code class="language-r">
+# use the above function to extract pixel values from the reference dataset, 
+# set class_field_name as &quot;class&quot; (the name of the field containing desired 
+# information in the .shp loaded to reference_data variable)
+
+pixel_reference &lt;- extract_pixel_values(image_data, reference_data, &quot;class&quot;) 
+</code></pre>
+<p>In order for the classifier to work properly we only want to retain observations with no NA values.</p>
+<pre><code class="language-r">pixel_reference &lt;- na.omit(pixel_reference)
+</code></pre>
+<p>Save the extracted and filtered values to <code>.RDS</code> file.</p>
+<pre><code class="language-r"># save pixel reference
+saveRDS(pixel_reference, file = &quot;case_study_1/results/pixel_reference.RDS&quot;) 
+</code></pre>
+<p>We now have all the data we need to proceed. We will start with classifying single scenes, then multitemporal classification and end with best features selection classification. Each classification will be performed using the Support Vector Machine algorithm with radial kernel function. Each time we’ll preceed the classifcation with parameters tuning. The scheme of the procedure in the entire case study is presented in the figure below.</p>
+<p><center></p>
+<p><img src="media/cs1_flowchart.png" title="Case study 1 scheme of procedure" alt="Scheme" width="600"/></p>
+<p><i>Case study 1 scheme of procedure.</i>
+</center></p>
+<h2 id="analysis">Analysis</h2>
+<h3 id="classification-scenario-1-single-scene">Classification scenario 1: single scene</h3>
+<p>We will start the single scene classification process with extracting only Sentinel-2 bands values from the single scene. In case of the earliest acquired image (14 May 2018) these will be the first 10 columns of the <em>pixel_reference</em> data frame, as well two last columns including class names and polygon indices.</p>
+<pre><code class="language-r"># select columns with pixel values from the first term of acquisition
+# plus class names and indices
+pixel_reference_14May &lt;- pixel_reference %&gt;%
+  select(`2018-05-14_B2`:`2018-05-14_B12`, class_name, polygon_index) 
+</code></pre>
+<p>In order to make our work reproducible we shall set a common seed number.</p>
+<pre><code class="language-r">set.seed(1410)
+</code></pre>
+<p>We can now assess how many <strong>pixel samples</strong> for every class we acquired during values extraction.</p>
+<pre><code class="language-r"># show in the console the amount of pixel samples for every class
+table(pixel_reference_14May$class_name) 
+</code></pre>
+<p>In comparison we can see how many <strong>polygons</strong> for each class.</p>
+<pre><code class="language-r"># show in the console the amount of polygons for every class
+table(reference_data$class) 
+</code></pre>
+<p>In this part we will divide our reference dataset into training and validation parts. We will divide the whole set into 2 parts of equal number of polygons in each of 2 parts. Notice that the number of pixels may be different in both sets due to differences in polygon sizes.</p>
+<pre><code class="language-r"># randomly pick half of observations based on class field
+train_index &lt;- createDataPartition(reference_data$class, p = 0.5, list = FALSE) 
+
+# select training pixel observations using polygon indexes
+training_data &lt;- pixel_reference_14May[pixel_reference_14May$polygon_index %in% train_index, ] 
+
+# select validation pixel observations using polygon indexes
+validation_data &lt;- pixel_reference_14May[!(pixel_reference_14May$polygon_index %in% train_index), ] 
+
+# show in the console the amount of pixel samples in training data
+table(training_data$class_name) 
+
+# show in the console the amount of pixel samples in validation data
+table(validation_data$class_name) 
+</code></pre>
+<p>Now that we established the training and validation datasets we can perform a step called tuning classification parameters. For determining best parameters we will use tenfold cross validation of results achieved with different sets of predetermined parameters.</p>
+<pre><code class="language-r"># set 10-fold cross validation to find the best model
+control &lt;- trainControl(method = &quot;cv&quot;, number = 10) 
+
+# test these parameters to find the best combination
+tune_parameters &lt;- data.frame(C = c(10, 100, 100), sigma = c(0.1, 0.5, 0.95)) 
+
+# train the model using SVM with radial kernel using selected parameters
+model &lt;- train(training_data[, 1:10], 
+               training_data$class_name, 
+               method = &quot;svmRadial&quot;, 
+               trControl = control, 
+               tuneGrid = tune_parameters) 
+</code></pre>
+<p>We can plot the variable importance. Features are sorted descending from the most useful in classification (importance summed for all the classes). For now, we will not dig deeper into this subject. We will return to feature selection and importance analysis in classification scenario 3.</p>
+<pre><code class="language-r">varImp(model) # show predictors apparent importance
+plot(varImp(model)) # plot predictors apparent importance
+</code></pre>
+<p><center></p>
+<p><img src="media/varimp_all.png" title="Variable importance." alt="Variable importance" width="600"/></p>
+<p><i>Variable importance.</i>
+</center></p>
+<p>We will now assess the accuracy of the model by applying it to the validation dataset.</p>
+<pre><code class="language-r"># use the chosen model to predict classes in the validation dataset
+predictions &lt;- predict(model, validation_data[, 1:10]) 
+
+# show confusion matrix based on validation results
+confusion_matrix &lt;- confusionMatrix(predictions, 
+                                    as.factor(validation_data$class_name), 
+                                    mode = &quot;everything&quot;) 
+
+# show accuracy metrics in the console
+print(round(confusion_matrix$overall, 3)) 
+
+# save confusion matrix
+saveRDS(confusion_matrix, 
+        file = &quot;case_study_1/results/14May_confusion_matrix.RDS&quot;) 
+</code></pre>
+<p>In this part of the exercise we will use the model to classify the image. In order to do that we no need to extract the bands from the multitemporal data brick, which were acquired on 14 May.</p>
+<pre><code class="language-r">bands_14May &lt;- subset(image_data, c(1:10))
+</code></pre>
+<p>And now we can apply the model to the appropriate 10 bands. This will classify the image into the classes provided earlier with the reference dataset.</p>
+<p>We will first classify only the spatial subset of the whole image to use it in results comparison.</p>
+<pre><code class="language-r">aoi &lt;- vect(&quot;case_study_1/data_exercise/aoi.shp&quot;)
+
+# crop the whole image to the interesting polygon
+bands_14May_crop &lt;- crop(bands_14May, ext(aoi)) 
+
+try(terra::predict(bands_14May_crop, 
+                  model, 
+                  filename = &quot;case_study_1/results/14May_sample_classification_result.tif&quot;, 
+                  progress = &quot;text&quot;, 
+                  format = &quot;GTiff&quot;, 
+                  na.rm = TRUE), 
+    silent = TRUE)
+</code></pre>
+<p>You have successfully classified 1 of the 7 images contained in the case study data repository. Your task is now to go over necessary steps to classify the remaining 3 images. In order to speed things up we will provide a looped function of the steps above to automatically produce the results for 6 remaining dates.</p>
+<p>First prepare two variables to be used inside the loop. The first one indicates bands of different sets (which are numbers of fields in the <code>pixel_reference</code> variable). The second one will be used to name the results.</p>
+<pre><code class="language-r">scene_list &lt;- list(c(11:20), c(21:30), c(31:40), c(41:50), c(51:60), c(61:70))
+scene_scenario_name &lt;- c(&quot;31May&quot;, &quot;7Aug&quot;, &quot;27Aug&quot;, &quot;18Sep&quot;, &quot;25Jun&quot;, &quot;30Jun&quot;)
+</code></pre>
+<p>The steps presented earlier are repeated with small adjustments to be able to work inside the loop.</p>
+<pre><code class="language-r">for (i in seq(length(scene_scenario_name))) {
+
+  scene_index &lt;- scene_list[[i]]
+  scenario_name &lt;- scene_scenario_name[i]
+
+  print(scenario_name)
+
+  scenario_pixel_reference &lt;- pixel_reference[c(scene_index, 71, 72)]
+
+  set.seed(1410)
+
+  train_index &lt;- createDataPartition(reference_data$class, p = 0.5, list = FALSE)
+
+  training_data &lt;- scenario_pixel_reference[scenario_pixel_reference$polygon_index %in% train_index, ]
+  validation_data &lt;- scenario_pixel_reference[!(scenario_pixel_reference$polygon_index %in% train_index), ]
+
+  control &lt;- trainControl(method = &quot;cv&quot;, number = 10)
+
+  tune_parameters &lt;- data.frame(C = c(10, 100, 100), sigma = c(0.1, 0.5, 0.95))
+
+  model &lt;- train(training_data[, 1:10], 
+                 training_data$class_name, 
+                 method = &quot;svmRadial&quot;, 
+                 trControl = control,
+                 tuneGrid = tune_parameters)  
+
+  predictions &lt;- predict(model, validation_data[, 1:10])
+  confusion_matrix &lt;- confusionMatrix(predictions, 
+                                      as.factor(validation_data$class_name), 
+                                      mode = &quot;everything&quot;)
+
+  print(round(confusion_matrix$overall, 3)) 
+
+  saveRDS(confusion_matrix, 
+          file = paste0(&quot;case_study_1/results/&quot;, 
+                        scenario_name, 
+                        &quot;_confusion_matrix.RDS&quot;))
+
+  scenario_bands &lt;- subset(image_data, c(scene_index))
+
+  scenario_bands_crop &lt;- crop(scenario_bands, ext(aoi))
+
+  try(terra::predict(scenario_bands_crop, 
+                     model, 
+                     filename = paste0(&quot;case_study_1/results/&quot;, 
+                                        scenario_name, 
+                                        &quot;_sample_classification_result.tiff&quot;), 
+                     progress = &quot;text&quot;, 
+                     format = &quot;GTiff&quot;, 
+                     na.rm = TRUE))
+
+}
+</code></pre>
+<p>After the loop has completed you should be able to see 4 resulting images and confusion matrices inside your working directory. Let’s compare the results.</p>
+<p>First, let’s load all the saved confusion matrices.</p>
+<pre><code class="language-r">cm_14May &lt;- readRDS(&quot;case_study_1/results/14May_confusion_matrix.RDS&quot;)
+cm_31May &lt;- readRDS(&quot;case_study_1/results/31May_confusion_matrix.RDS&quot;)
+cm_7Aug &lt;- readRDS(&quot;case_study_1/results/7Aug_confusion_matrix.RDS&quot;)
+cm_27Aug &lt;- readRDS(&quot;case_study_1/results/27Aug_confusion_matrix.RDS&quot;)
+cm_18Sep &lt;- readRDS(&quot;case_study_1/results/18Sep_confusion_matrix.RDS&quot;)
+cm_25Jun &lt;- readRDS(&quot;case_study_1/results/25Jun_confusion_matrix.RDS&quot;)
+cm_30Jun &lt;- readRDS(&quot;case_study_1/results/30Jun_confusion_matrix.RDS&quot;)
+</code></pre>
+<p>We will set the labels for easier plotting. You can relate acronyms to the full class names by looking at the reference dataset attributes table.</p>
+<pre><code class="language-r">labels &lt;- c(&quot;BF&quot;, &quot;DSV&quot;, &quot;F&quot;, &quot;G&quot;, &quot;H&quot;, &quot;NV&quot;, &quot;RSV&quot;, &quot;SDPS&quot;, &quot;STF&quot;)
+</code></pre>
+<p>From the confusion matrices variables we want to pull F1 metric to compare the results to one another. In order to do this we shall access one of the numbers stored inside the variable (we chose F1 because it combines producer and user accuracies, making the comparison more general, of course you can select and compare other available measures in the confusion matrix).</p>
+<pre><code class="language-r">f1_14May &lt;- cm_14May$byClass[, 7]
+f1_31May &lt;- cm_31May$byClass[, 7]
+f1_7Aug &lt;- cm_7Aug$byClass[, 7]
+f1_27Aug &lt;- cm_27Aug$byClass[, 7]
+f1_18Sep &lt;- cm_18Sep$byClass[, 7]
+f1_25Jun &lt;- cm_25Jun$byClass[, 7]
+f1_30Jun &lt;- cm_30Jun$byClass[, 7]
+</code></pre>
+<p>With that we are able to plot the results. We will show them in 2 ways: by points and bars.</p>
+<pre><code class="language-r"># set colour palette for all the remaining plots
+colour_palette &lt;- pal_d3(&quot;category10&quot;, alpha = 0.7)(9) 
+
+
+png(filename = &quot;case_study_1/results/comp_points.png&quot;, 
+    width = 1920, 
+    height = 1080, 
+    res = 200, 
+    pointsize = 9)
+
+plot(f1_14May, xaxt = &quot;n&quot;, xlab = &quot;Class&quot;, ylab = &quot;F1&quot;,
+     ylim = c(0,1), pch = 1, col = colour_palette[1], lwd = 2, las = 2,
+     main = &quot;Comparison of F1 scores for different terms of data acquisition.&quot;)
+
+abline(h = c(0,0.2,0.4,0.6,0.8,1), lty = 3)
+points(f1_31May, pch = 2, col = colour_palette[2], lwd = 2)
+points(f1_7Aug, pch = 3, col = colour_palette[3], lwd = 2)
+points(f1_27Aug, pch = 4, col = colour_palette[4], lwd = 2)
+points(f1_18Sep, pch = 5, col = colour_palette[5], lwd = 2)
+points(f1_25Jun, pch = 7, col = colour_palette[6], lwd = 2)
+points(f1_30Jun, pch = 8, col = colour_palette[7], lwd = 2)
+axis(1, at = 1:9, labels = labels)
+legend(&quot;bottom&quot;, 
+       legend = c(&quot;14May&quot;, &quot;31May&quot;, &quot;7Aug&quot;, &quot;27Aug&quot;, &quot;18Sep&quot;, &quot;25Jun&quot;, &quot;30Jun&quot;),
+       col = colour_palette[1:7], pch = c(1, 2, 3, 4, 5, 6, 7), cex = 1.1,
+       title = &quot;Terms of data acquisition&quot;)
+dev.off()
+</code></pre>
+<p><center></p>
+<p><img src="media/comp_points.png" title="F1 accuracy for different terms of data acquisition." alt="F1" width="1080"/></p>
+<p><i>F1 accuracy for different terms of data acquisition.</i>
+</center></p>
+<pre><code class="language-r"># barplot
+f1_matrix &lt;- matrix(data = c(f1_14May, f1_31May, f1_7Aug, f1_27Aug, f1_18Sep, f1_25Jun, f1_30Jun),  ncol = 9, nrow = 7, byrow = TRUE)
+
+png(filename = &quot;case_study_1/results/comp_barplot.png&quot;, width = 1920, height = 1080, res = 200, pointsize = 9)
+
+par(mar=c(5, 4, 4, 8), xpd = TRUE)
+barplot(f1_matrix, beside = TRUE, xaxt = &quot;n&quot;, xlab = &quot;Class&quot;, ylab = &quot;F1&quot;,
+        ylim = c(0, 1), las = 2, col = colour_palette[1:7],
+        main = &quot;Comparison of F1 scores for different terms of data acquisition.&quot;)
+legend(&quot;topright&quot;, legend = c(&quot;14May&quot;, &quot;31May&quot;, &quot;7Aug&quot;, &quot;27Aug&quot;, &quot;18Sep&quot;, &quot;25Jun&quot;, &quot;30Jun&quot;),
+       fill = colour_palette[1:7],  title = &quot;Terms of\ndata acquisition&quot;, inset=c(-0.1, 0))
+par(xpd=FALSE)
+abline(h = c(0, 0.2, 0.4, 0.6, 0.8, 1), lty = 3)
+axis(1, at=c(4.5, 12.5, 20.5, 28.5, 36.5, 44.5, 52.5, 60.5, 68.5), labels = labels)
+
+dev.off()
+</code></pre>
+<p><center></p>
+<p><img src="media/comp_barplot.png" title="F1 accuracy for different terms of data acquisition." alt="F1" width="1080"/></p>
+<p><i>F1 accuracy for different terms of data acquisition.</i>
+</center></p>
+<p>TASK: Assess the results using F1 values shown on the plots. Focus on the grasslands (G) class.</p>
+<h3 id="classification-scenario-2-multitemporal-set">Classification scenario 2: multitemporal set</h3>
+<p>After we classified each individual term we now want to classify the multitemporal set. The steps will be very similar to what we have done previously with single term classification. The main difference will be that we now want to use all 70 bands in model building and classification.</p>
+<p>TASK: Perform classification scenario consisting of all the available bands. Try to recreate the steps learned in the single term classification. Save the results: confusion matrix as <code>All_terms_confusion_matrix.RDS</code> and image as <code>All_terms_sample_classification_result.tif</code>. In case of any problems you can look below at the solution.</p>
+<details>
+<summary>
+Solution with code.
+</summary>
+
+
+<pre><code class="language-r">set.seed(1410)
+train_index &lt;- createDataPartition(reference_data$class, p = 0.5, list = FALSE) # randomly pick half of observations based on class field
+
+training_data &lt;- pixel_reference[pixel_reference$polygon_index %in% train_index, ] # select training pixel observations using polygon indexes
+validation_data &lt;- pixel_reference[!(pixel_reference$polygon_index %in% train_index), ] # select validation pixel observations using polygon indexes
+
+control &lt;- trainControl(method = &quot;cv&quot;, number = 10) # set 10-fold cross validation to find the best model
+
+tune_parameters &lt;- data.frame(C = c(10, 100, 100), sigma = c(0.1, 0.5, 0.95)) # test these parameters to find the best combination
+
+model &lt;- train(training_data[, 1:70], training_data$class_name, method = &quot;svmRadial&quot;, trControl = control, tuneGrid = tune_parameters) # train the model using SVM with radial kernel using selected parameters
+
+predictions &lt;- predict(model, validation_data[, 1:70]) # use the chosen model to predict classes in the validation dataset
+confusion_matrix &lt;- confusionMatrix(predictions, as.factor(validation_data$class_name), mode = &quot;everything&quot;) # show confusion matrix based on validation results
+print(round(confusion_matrix$overall, 3)) # show confusion metrics in the console
+saveRDS(confusion_matrix, file = &quot;case_study_1/results/All_terms_confusion_matrix.RDS&quot;) # save confusion matrix
+
+
+image_data_crop &lt;- crop(image_data, ext(aoi)) # crop the whole image to the interesting polygon
+
+try(terra::predict(image_data_crop, model, filename = &quot;case_study_1/results/All_terms_sample_classification_results.tif&quot;, progress = &quot;text&quot;, format = &quot;GTiff&quot;, na.rm = TRUE), silent = TRUE)
+</code></pre>
+
+
+</details>
+
+<p>Now also compare the results of the multitemporal classification to the single term classification. Add one more result from the confusion matrix to the plots we produced earlier. We will only present the barplot version (but point plots are a valid presentation option as well).</p>
+<pre><code class="language-r">cm_all_terms &lt;- readRDS(&quot;case_study_1/results/All_terms_confusion_matrix.RDS&quot;)
+f1_all_terms &lt;- cm_all_terms$byClass[, 7]
+
+
+# barplot
+f1_matrix &lt;- matrix(data = c(f1_14May, f1_31May, f1_7Aug, f1_27Aug, 
+                              f1_18Sep, f1_25Jun, f1_30Jun, f1_all_terms),  
+                              ncol = 9, nrow = 8, byrow = TRUE)
+
+png(filename = &quot;case_study_1/results/comp2_barplot.png&quot;, 
+    width = 1920, height = 1080, res = 200, pointsize = 9)
+
+par(mar=c(5, 4, 4, 8), xpd = TRUE)
+barplot(f1_matrix, beside = TRUE, xaxt = &quot;n&quot;, xlab = &quot;Class&quot;, ylab = &quot;F1&quot;,
+        ylim = c(0, 1), las = 2, col = colour_palette[1:8],
+        main = &quot;Comparison of F1 scores for different classification input datasets.&quot;)
+
+legend(&quot;topright&quot;, legend = c(&quot;14May&quot;, &quot;31May&quot;, &quot;7Aug&quot;, &quot;27Aug&quot;, 
+                              &quot;18Sep&quot;, &quot;25Jun&quot;, &quot;30Jun&quot;, &quot;All_terms&quot;),
+       fill = colour_palette[1:8],  
+       title = &quot;Classification input datasets&quot;, 
+       bty = &quot;n&quot;, 
+       xjust = 1, 
+       inset=c(-0.1, 0))
+
+par(xpd = FALSE)
+abline(h = c(0, 0.2, 0.4, 0.6, 0.8, 1), lty = 3)
+axis(1, at = c(5, 14, 23, 32, 41, 50, 59, 68, 77), labels = labels)
+
+dev.off()
+</code></pre>
+<p><center></p>
+<p><img src="media/comp2_barplot.png" title="F1 accuracy for different classification input datasets." alt="F1 inputs" width="1080"/></p>
+<p><i>F1 accuracy for different classification input datasets.</i>
+</center></p>
+<p>TASK: Assess the results using F1 values shown on the plots. Focus on the grasslands (G) class.</p>
+<h3 id="classification-scenario-3-selected-features">Classification scenario 3: selected features</h3>
+<p>In this case study we use the area under <strong>ROC (Receiver Operator Characteristic)</strong> curves to measure the importance of every input feature. ROC curve is graphical plotting of true positive and false positive rates at different thresholds for binary classification results. See more details about it on classification problems in <a href="https://doi.org/10.1109/ijcnn.2010.5596692">Serrano et al., 2010</a>. Since we are focused on grasslands we want to discover the best variables for this class, not for the whole classified image (for the second one you can use e.g. statistical variable importance analysis in Random Forests classifier).</p>
+<p><center></p>
+<p><img src="media/roc.png" title="ROC curve generated for grasslands class." alt="ROC curve" width="600"/></p>
+<p><i>ROC curve generated for grasslands class.</i>
+</center></p>
+<p>Most of the classification scenarios will be similar to what we previously showed. One additional step now is best feature selection for classification. We will assess this by looking at the graphs and numbers showing apparent importance. This will allow us to choose which predictors (bands) to use in the final model. For now, let’s go through the necessary steps.</p>
+<pre><code class="language-r">
+set.seed(1410)
+
+# randomly pick half of observations based on class field
+train_index &lt;- createDataPartition(reference_data$class, p = 0.5, list = FALSE) 
+
+# select training pixel observations using polygon indexes
+training_data &lt;- pixel_reference[pixel_reference$polygon_index %in% train_index, ] 
+
+# select validation pixel observations using polygon indexes
+validation_data &lt;- pixel_reference[!(pixel_reference$polygon_index %in% train_index), ] 
+
+# set 10-fold cross validation to find the best model
+control &lt;- trainControl(method = &quot;cv&quot;, number = 10) 
+
+# test these parameters to find the best combination
+tune_parameters &lt;- data.frame(C = c(10, 100, 100), sigma = c(0.1, 0.5, 0.95)) 
+
+# train the model using SVM with radial kernel
+model &lt;- train(training_data[, 1:70], 
+               training_data$class_name, 
+               method = &quot;svmRadial&quot;, 
+               trControl = control, 
+               tuneGrid = tune_parameters) 
+</code></pre>
+<p>Now we can see the variable importance values for all the classes. We’ll plot the first 15 features</p>
+<pre><code class="language-r"># show predictor apparent importance
+feature_selection &lt;- varImp(model) 
+
+# plot predictor apparent importance
+plot(feature_selection, top = 15) 
+</code></pre>
+<p>Plotting many variables for a few classes causes the plot to be almost unreadable. We can fortunately pull the necessary values from the model. This information will now be used to sort the variable importance in descending order using previously mentioned ROC scores for the grasslands class. Predictor names with the highest apparent importance for grasslands classification can be then identified and chosen for the final classification model. In our case we will choose 10 best performing predictors.</p>
+<pre><code class="language-r"># values of apparent importance for grasslands class
+ROC_scores_grasslands &lt;- feature_selection$importance$grasslands 
+
+# predictor names for best performing predictors
+names(ROC_scores_grasslands) &lt;- rownames(feature_selection$importance) 
+
+# arrange predictors from best to least performing
+ROC_scores_grasslands &lt;- sort(ROC_scores_grasslands, decreasing = TRUE) 
+</code></pre>
+<p>The values could be plotted in many readable ways. For this case study we supply the horizontal barplot, with colours of the bars corresponding to the dates of data acquisition.</p>
+<details>
+<summary>
+Code to prepare this barplot.
+</summary>
+
+
+<pre><code class="language-r">colours &lt;- c(colour_palette[6], colour_palette[6], colour_palette[3], colour_palette[2], colour_palette[3], colour_palette[7], colour_palette[2], colour_palette[4], colour_palette[7], colour_palette[4], colour_palette[2], colour_palette[3], colour_palette[6], colour_palette[7], colour_palette[4], colour_palette[5], colour_palette[5], colour_palette[1], colour_palette[1], colour_palette[1], colour_palette[6], colour_palette[5], colour_palette[7], colour_palette[2], colour_palette[6], colour_palette[6], colour_palette[3], colour_palette[2], colour_palette[2], colour_palette[7], colour_palette[1], colour_palette[6], colour_palette[7], colour_palette[2], colour_palette[6])
+
+rev_colours &lt;- rev(colours)
+
+ROC_scores_grasslands_increasing &lt;- sort(ROC_scores_grasslands[1:35])
+
+png(filename = &quot;case_study_1/results/grasslands_importance.png&quot;, width = 1920, height = 1080, res = 200, pointsize = 9)
+
+
+barplot(ROC_scores_grasslands_increasing, 
+        names = names(ROC_scores_grasslands_increasing), 
+        horiz = TRUE, 
+        main = &quot;Grasslands class feature importance&quot;,
+        xlab = &quot;Importance&quot;, 
+        las = 1,
+        border = NA,
+        cex.names = 0.5,
+        xlim = c(60, 100),
+        xpd = FALSE,
+        col = rev_colours
+)
+
+legend(&quot;bottomright&quot;, legend = c(&quot;14May&quot;, &quot;31May&quot;, &quot;7Aug&quot;, &quot;27Aug&quot;, &quot;18Sep&quot;, &quot;25Jun&quot;, &quot;30Jun&quot;),
+       fill = colour_palette[1:7],  title = &quot;Terms of data acquisition&quot;)
+
+dev.off()
+</code></pre>
+
+
+</details>
+<p><center></p>
+<p><img src="media/grasslands_importance.png" title="Grasslands importance." alt="Grasslands importance" width="1080"/></p>
+<p><i>The most important features for grasslands class.</i>
+</center></p>
+<p>Based on the plot and the values we can assess which predictors would work best in classifying grasslands with the highest accuracy. Now from the <code>pixel_reference</code> variable we are able to pull values of the best 10 performing predictors and use it to classify the image. The overall procedure is similar to the previous steps.</p>
+<pre><code class="language-r"># pull 10 best performing predictors names
+first_10 &lt;- names(ROC_scores_grasslands)[1:10] 
+
+# get first most informative predictors
+best_10_predictors &lt;- pixel_reference[, c(which(names(pixel_reference) %in% first_10), 71, 72)] 
+</code></pre>
+<p>TASK: Use <code>best_10_predictors</code> to perform classification. Divide the dataset into training and validation data, train and apply model, and save confusion matrix as <code>FS_confusion_matrix.RDS</code> and image as <code>FS_sample_classification_result.tif</code> (FS meaning <em>Feature Selection</em>).</p>
+<details>
+<summary>
+Solution with code.
+</summary>
+
+
+<pre><code class="language-r">set.seed(1410)
+# randomly pick half of observations based on class field
+train_index &lt;- createDataPartition(reference_data$class, p = 0.5, list = FALSE) 
+
+# select training pixel observations using polygon indexes
+training_data &lt;- best_10_predictors[best_10_predictors$polygon_index %in% train_index, ] 
+
+# select validation pixel observations using polygon indexes
+validation_data &lt;- best_10_predictors[!(best_10_predictors$polygon_index %in% train_index), ] 
+
+# set 10-fold cross validation to find the best model
+control &lt;- trainControl(method = &quot;cv&quot;, number = 10) 
+
+# test these parameters to find the best combination
+tune_parameters &lt;- data.frame(C = c(10, 100, 100), sigma = c(0.1, 0.5, 0.95)) 
+
+# train the model using SVM with radial kernel using selected parameters
+model &lt;- train(training_data[, 1:10], 
+               training_data$class_name, 
+               method = &quot;svmRadial&quot;, 
+               trControl = control, 
+               tuneGrid = tune_parameters) 
+
+# use the chosen model to predict classes in the validation dataset
+predictions &lt;- predict(model, validation_data[, 1:10]) 
+
+# show confusion matrix based on validation results
+confusion_matrix &lt;- confusionMatrix(predictions, 
+                                    as.factor(validation_data$class_name), 
+                                    mode = &quot;everything&quot;) 
+
+# show confusion metrics in the console
+print(round(confusion_matrix$overall, 3)) 
+
+# save confusion matrix
+saveRDS(confusion_matrix, file = &quot;case_study_1/results/FS_confusion_matrix.RDS&quot;) 
+
+
+scenario_bands &lt;- subset(image_data, first_10)
+
+# crop the whole image to the interesting polygon
+image_data_crop &lt;- crop(scenario_bands, ext(aoi)) 
+
+try(terra::predict(image_data_crop, 
+                  model, 
+                  filename = &quot;case_study_1/results/FS_terms_sample_classification_result.tif&quot;, 
+                  progress = &quot;text&quot;, 
+                  format = &quot;GTiff&quot;, 
+                  na.rm = TRUE), 
+    silent = TRUE)
+</code></pre>
+
+
+</details>
+
+<p>Finally we can compare all the results in one plot.</p>
+<pre><code class="language-r">cm_fs &lt;- readRDS(&quot;case_study_1/results/FS_confusion_matrix.RDS&quot;)
+f1_fs &lt;- cm_fs$byClass[, 7]
+
+f1_matrix &lt;- matrix(data = c(f1_14May, f1_31May, f1_7Aug, f1_27Aug, f1_18Sep, 
+                            f1_25Jun, f1_30Jun, f1_all_terms, f1_fs),
+                            ncol = 9, nrow = 9, byrow = TRUE)
+
+png(filename = &quot;case_study_1/results/comp3_barplot.png&quot;, 
+    width = 1920, height = 1080, res = 200, pointsize = 9)
+par(mar=c(5, 4, 4, 9), xpd = TRUE)
+barplot(f1_matrix, beside = TRUE, xaxt = &quot;n&quot;, xlab = &quot;Class&quot;, ylab = &quot;F1&quot;,
+        ylim = c(0, 1), las = 2, col = colour_palette[1:9],
+        main = &quot;Comparison of F1 scores for different classification input datasets.&quot;)
+legend(&quot;topright&quot;, legend = c(&quot;14May&quot;, &quot;31May&quot;, &quot;7Aug&quot;, &quot;27Aug&quot;, &quot;18Sep&quot;, 
+                              &quot;25Jun&quot;, &quot;30Jun&quot;, &quot;All_terms&quot;, &quot;FS&quot;),
+       fill = colour_palette[1:9],  
+       title = &quot;Classification input datasets&quot;, 
+       bty = &quot;n&quot;, xjust = 1, inset = c(-0.1, 0))
+
+par(xpd = FALSE)
+abline(h = c(0, 0.2, 0.4, 0.6, 0.8, 1), lty = 3)
+axis(1, at = c(5.5, 15.5, 25.5, 35.5, 45.5, 55.5, 65.5, 75.5, 85.5), 
+     labels = labels)
+
+dev.off()
+</code></pre>
+<p><center></p>
+<p><img src="media/comp3_barplot.png" title="F1 accuracy for different classification input datasets." alt="F1 inputs" width="1080"/></p>
+<p><i>F1 accuracy for different classification input datasets.</i>
+</center></p>
+<p>Display the resulting image in QGIS. Use the attached <strong>symbology.clr</strong> file to assign class names and colors.</p>
+<p><center></p>
+<p><img src="media/classification_result.jpg" title="Predicted image" alt="Predicted image" width="1000"/></p>
+<p><i>Predicted image.</i>
+</center></p>
+<h2 id="discussion">Discussion</h2>
+<p>Points to discuss:<br />
+- comparison of F1 results for grasslands class between single term classifications<br />
+- comparison of F1 results for grasslands class between single term and multitemporal classifications<br />
+- feature selection analysis: which variables had the most impact on multitemporal classification<br />
+- time spent on classification vs. accuracy (plot)</p>
+<p><center></p>
+<p><img src="media/time_f1_barplot_features.png" title="Accuracy / time relationship." alt="Accuracy and time" width="1080"/></p>
+<p><i>Accuracy / time relationship.</i>
+</center></p>
+<h2 id="references">References</h2>
+<p>Serrano, A. J., Soria, E., Martin, J. D., Magdalena, R., &amp; Gomez, J. (2010, July). <em>Feature selection using roc curves on classification problems</em>. In The 2010 International Joint Conference on Neural Networks (IJCNN) (pp. 1-6). IEEE. <a href="https://doi.org/10.1109/ijcnn.2010.5596692">https://doi.org/10.1109/ijcnn.2010.5596692</a></p>
+<p>Wakulińska, M., &amp; Marcinkowska-Ochtyra, A. (2020). <em>Multi-temporal sentinel-2 data in classification of mountain vegetation</em>. Remote Sensing, 12(17), 2696. <a href="https://doi.org/10.3390/rs12172696">https://doi.org/10.3390/rs12172696</a></p>
+<h3 id="other-case-studies">Other case studies</h3>
+<ul>
+<li><a href="../08_cs_disturbance_detection/08_cs_disturbance_detection.html">Forest disturbance detection (Tatras)</a></li>
+<li><a href="07_cs_forest_changes/07_cs_forest_changes.md">Effects of pollution (Ore Mountains)</a></li>
+</ul>
+<h3 id="module-themes">Module themes</h3>
+<ul>
+<li><a href="../01_multispectral_principles/01_multispectral_principles.html">Principles of multispectral imaging</a></li>
+<li><a href="../02_temporal_information/02_temporal_information.html">Temporal information in satellite data</a></li>
+<li><a href="../03_image_processing/03_image_processing.html">Image processing workflow</a></li>
+<li><a href="../04_multitemporal_classification/04_multitemporal_classification.html">Multitemporal classification</a></li>
+<li><a href="../05_vegetation_monitoring/05_vegetation_monitoring.html">Vegetation change and disturbance detection</a></li>
+</ul>
+<h2 id="data-and-software-credits">Data and software credits</h2>
+<h3 id="data">Data</h3>
+<p>Sentinel-2 imagery <a href="https://scihub.copernicus.eu/">European Space Agency - ESA</a>/ <a href="https://scihub.copernicus.eu/twiki/do/view/SciHubWebPortal/TermsConditions">Terms of use</a> processed in and downloaded from <a href="https://doi.org/10.1016/j.rse.2017.06.031">Google Earth Engine by Gorelick et al., 2017</a></p>
+<h3 id="software">Software</h3>
+<ul>
+<li>R Core Team (2023). <em>R: A language and environment for statistical computing</em>. R Foundation for Statistical Computing, Vienna, Austria. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</li>
+<li>Hijmans R (2023). <em>terra: Spatial Data Analysis</em>. R package version 1.7-39, <a href="https://CRAN.R-project.org/package=terra">https://CRAN.R-project.org/package=terra</a></li>
+<li>Karatzoglou A, Smola A, Hornik K (2023). <em>kernlab: Kernel-Based Machine Learning Lab</em>. R package version 0.9-32, <a href="https://CRAN.R-project.org/package=kernlab">https://CRAN.R-project.org/package=kernlab</a>.</li>
+<li>Karatzoglou A, Smola A, Hornik K, Zeileis A (2004). <em>kernlab - An S4 Package for Kernel Methods in R.</em> Journal of Statistical Software, 11(9), 1-20. <a href="https://doi.org/10.18637/jss.v011.i09">doi:10.18637/jss.v011.i09</a>.</li>
+<li>Kuhn, M. (2008). <em>Building Predictive Models in R Using the caret Package</em>. Journal of Statistical Software, 28(5), 1–26. <a href="https://doi.org/10.18637/jss.v028.i05">https://doi.org/10.18637/jss.v028.i05</a></li>
+<li>Pebesma, E., &amp; Bivand, R. (2023). <em>Spatial Data Science: With Applications in R</em>. Chapman and Hall/CRC. <a href="https://doi.org/10.1201/9780429459016">https://doi.org/10.1201/9780429459016</a></li>
+<li>Pebesma, E., 2018. <em>Simple Features for R: Standardized Support for Spatial Vector Data</em>. The R Journal 10 (1), 439-446, <a href="https://doi.org/10.32614/RJ-2018-009">https://doi.org/10.32614/RJ-2018-009</a></li>
+<li>Wickham H, François R, Henry L, Müller K, Vaughan D (2023). <em>dplyr: A Grammar of Data Manipulation</em>. R package version 1.1.2, <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a></li>
+<li>Xiao N (2023). <em>ggsci: Scientific Journal and Sci-Fi Themed Color Palettes for ‘ggplot2’</em>. R package version 3.0.0, <a href="https://CRAN.R-project.org/package=ggsci">https://CRAN.R-project.org/package=ggsci</a>.</li>
+</ul>
+<h2 id="source-code">Source code</h2>
+<details>
+<summary>
+You can find the entire code used in this exercise here
+</summary>
+
+
+<pre><code class="language-r">library(terra) # raster I/o and processing
+library(sf) # vector I/O and processing
+library(dplyr) # tabular data manipulation
+library(caret) # model tuning and training
+library(kernlab) # applying model
+library(ggsci) # visualization colour palettes
+
+
+image_data &lt;- rast(&quot;case_study_1/data_exercise/CS1_image_data.tif&quot;) # load .tif image of stacked 70 bands (10 bands per 7 acquisition dates)
+
+reference_data &lt;- st_read(&quot;case_study_1/data_exercise/CS1_reference_data.shp&quot;) # load reference .shp dataset containing reference polygons with class names and acronyms
+
+
+extract_pixel_values &lt;- function(image, vector_reference, class_field_name){
+
+  counter &lt;- 1 # number of polygon used to extract
+  print(&quot;Number of polygons done:&quot;) # information about progress printed in the console
+
+  number_of_polygons &lt;- nrow(vector_reference) # number of polygons in the reference dataset
+  extracted_values &lt;- data.frame() # empty data frame to store the results of extraction
+
+  class_column_index &lt;- which(names(vector_reference) == class_field_name) # which columns stores the class names
+
+  for (polygon_index in seq(number_of_polygons)) {
+
+    selected_polygon &lt;- vector_reference[polygon_index, ]
+    class_name &lt;- selected_polygon$class
+    polygon_pixel_values &lt;- extract(image, selected_polygon, df = TRUE) # extract pixel values from selected polygon
+    polygon_pixel_values &lt;- cbind(polygon_pixel_values[ ,2: ncol(polygon_pixel_values)], class_name, polygon_index) # add class name and polygon index to extracted values
+    extracted_values &lt;- rbind(extracted_values, polygon_pixel_values) # add the extracted values with additional information to the results data frame
+
+    print(paste0(counter, &quot;/&quot;, number_of_polygons)) # information about progress printed in the console
+    counter &lt;- counter + 1 # go to the next polygon
+
+  }
+  return(extracted_values) # function results - data frame with extracted values
+}
+
+
+pixel_reference &lt;- extract_pixel_values(image_data, reference_data, &quot;class&quot;) # use the above function to extract pixel values from the reference dataset, set class_field_name as &quot;class&quot; (the name of the field containing desired information in the .shp loaded to reference_data variable)
+
+pixel_reference &lt;- na.omit(pixel_reference)
+
+
+saveRDS(pixel_reference, file = &quot;case_study_1/results/pixel_reference.RDS&quot;) # save pixel reference
+
+pixel_reference_14May &lt;- pixel_reference %&gt;%
+  select(`2018-05-14_B2`:`2018-05-14_B12`, class_name, polygon_index) # select columns with pixel values from the first term of acquisition plus class names and indices
+
+set.seed(1410)
+
+table(pixel_reference_14May$class_name) # show in the console the amount of pixel samples for every class
+
+table(reference_data$class) # show in the console the amount of polygons for every class
+
+
+train_index &lt;- createDataPartition(reference_data$class, p = 0.5, list = FALSE) # randomly pick half of observations based on class field
+training_data &lt;- pixel_reference_14May[pixel_reference_14May$polygon_index %in% train_index, ] # select training pixel observations using polygon indexes
+validation_data &lt;- pixel_reference_14May[!(pixel_reference_14May$polygon_index %in% train_index), ] # select validation pixel observations using polygon indexes
+
+table(training_data$class_name) # show in the console the amount of pixel samples in training data
+table(validation_data$class_name) # show in the console the amount of pixel samples in validation data
+
+
+
+control &lt;- trainControl(method = &quot;cv&quot;, number = 10) # set 10-fold cross validation to find the best model
+
+tune_parameters &lt;- data.frame(C = c(10, 100, 100), sigma = c(0.1, 0.5, 0.95)) # test these parameters to find the best combination
+
+model &lt;- train(training_data[, 1:10], training_data$class_name, method = &quot;svmRadial&quot;, trControl = control, tuneGrid = tune_parameters) # train the model using SVM with radial kernel using selected parameters
+
+varImp(model) # show predictors apparent importance
+plot(varImp(model)) # plot predictors apparent importance
+
+
+
+predictions &lt;- predict(model, validation_data[, 1:10]) # use the chosen model to predict classes in the validation dataset
+confusion_matrix &lt;- confusionMatrix(predictions, as.factor(validation_data$class_name), mode = &quot;everything&quot;) # show confusion matrix based on validation results
+print(round(confusion_matrix$overall, 3)) # show accuracy metrics in the console
+saveRDS(confusion_matrix, file = &quot;case_study_1/results/14May_confusion_matrix.RDS&quot;) # save confusion matrix
+
+
+
+bands_14May &lt;- subset(image_data, c(1:10))
+
+aoi &lt;- vect(&quot;case_study_1/data_exercise/aoi.shp&quot;)
+
+bands_14May_crop &lt;- crop(bands_14May, ext(aoi)) # crop the whole image to the interesting polygon
+
+try(terra::predict(bands_14May_crop, model, filename = &quot;case_study_1/results/14May_sample_classification_result.tif&quot;, progress = &quot;text&quot;, format = &quot;GTiff&quot;, na.rm = TRUE), silent = TRUE)
+
+
+scene_list &lt;- list(c(11:20), c(21:30), c(31:40), c(41:50), c(51:60), c(61:70))
+scene_scenario_name &lt;- c(&quot;31May&quot;, &quot;7Aug&quot;, &quot;27Aug&quot;, &quot;18Sep&quot;, &quot;25Jun&quot;, &quot;30Jun&quot;)
+
+
+for (i in seq(length(scene_scenario_name))) {
+
+  scene_index &lt;- scene_list[[i]]
+  scenario_name &lt;- scene_scenario_name[i]
+
+  print(scenario_name)
+
+  scenario_pixel_reference &lt;- pixel_reference[c(scene_index, 71, 72)]
+
+  set.seed(1410)
+
+  train_index &lt;- createDataPartition(reference_data$class, p = 0.5, list = FALSE)
+
+  training_data &lt;- scenario_pixel_reference[scenario_pixel_reference$polygon_index %in% train_index, ]
+  validation_data &lt;- scenario_pixel_reference[!(scenario_pixel_reference$polygon_index %in% train_index), ]
+
+  control &lt;- trainControl(method = &quot;cv&quot;, number = 10)
+
+  tune_parameters &lt;- data.frame(C = c(10, 100, 100), sigma = c(0.1, 0.5, 0.95))
+
+  model &lt;- train(training_data[, 1:10], training_data$class_name, method = &quot;svmRadial&quot;, trControl = control,
+                 tuneGrid = tune_parameters)  
+
+  predictions &lt;- predict(model, validation_data[, 1:10])
+  confusion_matrix &lt;- confusionMatrix(predictions, as.factor(validation_data$class_name), mode = &quot;everything&quot;)
+
+  print(round(confusion_matrix$overall, 3)) 
+
+  saveRDS(confusion_matrix, file = paste0(&quot;case_study_1/results/&quot;, scenario_name, &quot;_confusion_matrix.RDS&quot;))
+
+  scenario_bands &lt;- subset(image_data, c(scene_index))
+
+  scenario_bands_crop &lt;- crop(scenario_bands, ext(aoi))
+
+  try(terra::predict(scenario_bands_crop, model, filename = paste0(&quot;case_study_1/results/&quot;, scenario_name, &quot;_sample_classification_result.tiff&quot;), progress = &quot;text&quot;, format = &quot;GTiff&quot;, na.rm = TRUE))
+
+}
+
+
+cm_14May &lt;- readRDS(&quot;case_study_1/results/14May_confusion_matrix.RDS&quot;)
+cm_31May &lt;- readRDS(&quot;case_study_1/results/31May_confusion_matrix.RDS&quot;)
+cm_7Aug &lt;- readRDS(&quot;case_study_1/results/7Aug_confusion_matrix.RDS&quot;)
+cm_27Aug &lt;- readRDS(&quot;case_study_1/results/27Aug_confusion_matrix.RDS&quot;)
+cm_18Sep &lt;- readRDS(&quot;case_study_1/results/18Sep_confusion_matrix.RDS&quot;)
+cm_25Jun &lt;- readRDS(&quot;case_study_1/results/25Jun_confusion_matrix.RDS&quot;)
+cm_30Jun &lt;- readRDS(&quot;case_study_1/results/30Jun_confusion_matrix.RDS&quot;)
+
+
+labels &lt;- c(&quot;BF&quot;, &quot;DSV&quot;, &quot;F&quot;, &quot;G&quot;, &quot;H&quot;, &quot;NV&quot;, &quot;RSV&quot;, &quot;SDPS&quot;, &quot;STF&quot;)
+
+f1_14May &lt;- cm_14May$byClass[, 7]
+f1_31May &lt;- cm_31May$byClass[, 7]
+f1_7Aug &lt;- cm_7Aug$byClass[, 7]
+f1_27Aug &lt;- cm_27Aug$byClass[, 7]
+f1_18Sep &lt;- cm_18Sep$byClass[, 7]
+f1_25Jun &lt;- cm_25Jun$byClass[, 7]
+f1_30Jun &lt;- cm_30Jun$byClass[, 7]
+
+
+colour_palette &lt;- pal_d3(&quot;category10&quot;, alpha = 0.7)(9) # set colour palette for all the remaining plots
+
+png(filename = &quot;case_study_1/results/comp_points.png&quot;, width = 1920, height = 1080, res = 200, pointsize = 9)
+
+plot(f1_14May, xaxt = &quot;n&quot;, xlab = &quot;Class&quot;, ylab = &quot;F1&quot;,
+     ylim = c(0,1), pch = 1, col = colour_palette[1], lwd = 2, las = 2,
+     main = &quot;Comparison of F1 scores for different terms of data acquisition.&quot;)
+abline(h = c(0,0.2,0.4,0.6,0.8,1), lty = 3)
+points(f1_31May, pch = 2, col = colour_palette[2], lwd = 2)
+points(f1_7Aug, pch = 3, col = colour_palette[3], lwd = 2)
+points(f1_27Aug, pch = 4, col = colour_palette[4], lwd = 2)
+points(f1_18Sep, pch = 5, col = colour_palette[5], lwd = 2)
+points(f1_25Jun, pch = 7, col = colour_palette[6], lwd = 2)
+points(f1_30Jun, pch = 8, col = colour_palette[7], lwd = 2)
+axis(1, at = 1:9, labels = labels)
+legend(&quot;bottom&quot;, legend = c(&quot;14May&quot;, &quot;31May&quot;, &quot;7Aug&quot;, &quot;27Aug&quot;, &quot;18Sep&quot;, &quot;25Jun&quot;, &quot;30Jun&quot;),
+       col = colour_palette[1:7], pch = c(1, 2, 3, 4, 5, 6, 7), cex = 1.1,
+       title = &quot;Terms of data acquisition&quot;)
+dev.off()
+
+
+
+
+# barplot
+f1_matrix &lt;- matrix(data = c(f1_14May, f1_31May, f1_7Aug, f1_27Aug, f1_18Sep, f1_25Jun, f1_30Jun),  ncol = 9, nrow = 7, byrow = TRUE)
+
+png(filename = &quot;case_study_1/results/comp_barplot.png&quot;, width = 1920, height = 1080, res = 200, pointsize = 9)
+
+par(mar=c(5, 4, 4, 8), xpd = TRUE)
+barplot(f1_matrix, beside = TRUE, xaxt = &quot;n&quot;, xlab = &quot;Class&quot;, ylab = &quot;F1&quot;,
+        ylim = c(0, 1), las = 2, col = colour_palette[1:7],
+        main = &quot;Comparison of F1 scores for different terms of data acquisition.&quot;)
+legend(&quot;topright&quot;, legend = c(&quot;14May&quot;, &quot;31May&quot;, &quot;7Aug&quot;, &quot;27Aug&quot;, &quot;18Sep&quot;, &quot;25Jun&quot;, &quot;30Jun&quot;),
+       fill = colour_palette[1:7],  title = &quot;Terms of\ndata acquisition&quot;, inset=c(-0.1, 0))
+par(xpd=FALSE)
+abline(h = c(0, 0.2, 0.4, 0.6, 0.8, 1), lty = 3)
+axis(1, at=c(4.5, 12.5, 20.5, 28.5, 36.5, 44.5, 52.5, 60.5, 68.5), labels = labels)
+
+dev.off()
+
+
+
+
+set.seed(1410)
+train_index &lt;- createDataPartition(reference_data$class, p = 0.5, list = FALSE) # randomly pick half of observations based on class field
+
+training_data &lt;- pixel_reference[pixel_reference$polygon_index %in% train_index, ] # select training pixel observations using polygon indexes
+validation_data &lt;- pixel_reference[!(pixel_reference$polygon_index %in% train_index), ] # select validation pixel observations using polygon indexes
+
+control &lt;- trainControl(method = &quot;cv&quot;, number = 10) # set 10-fold cross validation to find the best model
+
+tune_parameters &lt;- data.frame(C = c(10, 100, 100), sigma = c(0.1, 0.5, 0.95)) # test these parameters to find the best combination
+
+model &lt;- train(training_data[, 1:70], training_data$class_name, method = &quot;svmRadial&quot;, trControl = control, tuneGrid = tune_parameters) # train the model using SVM with radial kernel using selected parameters
+
+predictions &lt;- predict(model, validation_data[, 1:70]) # use the chosen model to predict classes in the validation dataset
+confusion_matrix &lt;- confusionMatrix(predictions, as.factor(validation_data$class_name), mode = &quot;everything&quot;) # show confusion matrix based on validation results
+print(round(confusion_matrix$overall, 3)) # show confusion metrics in the console
+saveRDS(confusion_matrix, file = &quot;case_study_1/results/All_terms_confusion_matrix.RDS&quot;) # save confusion matrix
+
+
+image_data_crop &lt;- crop(image_data, ext(aoi)) # crop the whole image to the interesting polygon
+
+try(terra::predict(image_data_crop, model, filename = &quot;case_study_1/results/All_terms_sample_classification_results.tif&quot;, progress = &quot;text&quot;, format = &quot;GTiff&quot;, na.rm = TRUE), silent = TRUE)
+
+
+
+cm_all_terms &lt;- readRDS(&quot;case_study_1/results/All_terms_confusion_matrix.RDS&quot;)
+f1_all_terms &lt;- cm_all_terms$byClass[, 7]
+
+
+# barplot
+f1_matrix &lt;- matrix(data = c(f1_14May, f1_31May, f1_7Aug, f1_27Aug, f1_18Sep, f1_25Jun, f1_30Jun, f1_all_terms),  ncol = 9, nrow = 8, byrow = TRUE)
+
+png(filename = &quot;case_study_1/results/comp2_barplot.png&quot;, width = 1920, height = 1080, res = 200, pointsize = 9)
+
+par(mar=c(5, 4, 4, 8), xpd = TRUE)
+barplot(f1_matrix, beside = TRUE, xaxt = &quot;n&quot;, xlab = &quot;Class&quot;, ylab = &quot;F1&quot;,
+        ylim = c(0, 1), las = 2, col = colour_palette[1:8],
+        main = &quot;Comparison of F1 scores for different classification input datasets.&quot;)
+
+legend(&quot;topright&quot;, legend = c(&quot;14May&quot;, &quot;31May&quot;, &quot;7Aug&quot;, &quot;27Aug&quot;, &quot;18Sep&quot;, &quot;25Jun&quot;, &quot;30Jun&quot;, &quot;All_terms&quot;),
+       fill = colour_palette[1:8],  title = &quot;Classification input datasets&quot;, bty = &quot;n&quot;, xjust = 1 , inset=c(-0.1, 0))
+par(xpd = FALSE)
+abline(h = c(0, 0.2, 0.4, 0.6, 0.8, 1), lty = 3)
+axis(1, at = c(5, 14, 23, 32, 41, 50, 59, 68, 77), labels = labels)
+
+dev.off()
+
+
+
+
+
+set.seed(1410)
+train_index &lt;- createDataPartition(reference_data$class, p = 0.5, list = FALSE) # randomly pick half of observations based on class field
+
+training_data &lt;- pixel_reference[pixel_reference$polygon_index %in% train_index, ] # select training pixel observations using polygon indexes
+validation_data &lt;- pixel_reference[!(pixel_reference$polygon_index %in% train_index), ] # select validation pixel observations using polygon indexes
+
+control &lt;- trainControl(method = &quot;cv&quot;, number = 10) # set 10-fold cross validation to find the best model
+
+tune_parameters &lt;- data.frame(C = c(10, 100, 100), sigma = c(0.1, 0.5, 0.95)) # test these parameters to find the best combination
+
+model &lt;- train(training_data[, 1:70], training_data$class_name, method = &quot;svmRadial&quot;, trControl = control, tuneGrid = tune_parameters) # train the model using SVM with radial kernel
+
+
+
+feature_selection &lt;- varImp(model) # show predictor apparent importance
+plot(feature_selection, top = 15) # plot predictor apparent importance
+
+
+ROC_scores_grasslands &lt;- feature_selection$importance$grasslands # values of apparent importance for grasslands class
+names(ROC_scores_grasslands) &lt;- rownames(feature_selection$importance) # predictor names for best performing predictors
+ROC_scores_grasslands &lt;- sort(ROC_scores_grasslands, decreasing = TRUE) # arrange predictors from best to least performing
+
+# Feature Selection barplot
+
+colours &lt;- c(colour_palette[6], colour_palette[6], colour_palette[3], colour_palette[2], colour_palette[3], colour_palette[7], colour_palette[2], colour_palette[4], colour_palette[7], colour_palette[4], colour_palette[2], colour_palette[3], colour_palette[6], colour_palette[7], colour_palette[4], colour_palette[5], colour_palette[5], colour_palette[1], colour_palette[1], colour_palette[1], colour_palette[6], colour_palette[5], colour_palette[7], colour_palette[2], colour_palette[6], colour_palette[6], colour_palette[3], colour_palette[2], colour_palette[2], colour_palette[7], colour_palette[1], colour_palette[6], colour_palette[7], colour_palette[2], colour_palette[6])
+
+rev_colours &lt;- rev(colours)
+
+ROC_scores_grasslands_increasing &lt;- sort(ROC_scores_grasslands[1:35])
+
+png(filename = &quot;case_study_1/results/grasslands_importance.png&quot;, width = 1920, height = 1080, res = 200, pointsize = 9)
+
+
+barplot(ROC_scores_grasslands_increasing, 
+        names = names(ROC_scores_grasslands_increasing), 
+        horiz = TRUE, 
+        main = &quot;Grasslands class feature importance&quot;,
+        xlab = &quot;Importance&quot;, 
+        las = 1,
+        border = NA,
+        cex.names = 0.5,
+        xlim = c(60, 100),
+        xpd = FALSE,
+        col = rev_colours
+)
+
+legend(&quot;bottomright&quot;, legend = c(&quot;14May&quot;, &quot;31May&quot;, &quot;7Aug&quot;, &quot;27Aug&quot;, &quot;18Sep&quot;, &quot;25Jun&quot;, &quot;30Jun&quot;),
+       fill = colour_palette[1:7],  title = &quot;Terms of data acquisition&quot;)
+
+dev.off()
+
+
+
+
+
+
+
+
+
+
+
+
+
+first_10 &lt;- names(ROC_scores_grasslands)[1:10] # pull 10 best performing predictors names
+best_10_predictors &lt;- pixel_reference[, c(which(names(pixel_reference) %in% first_10), 71, 72)] # get first most informative predictors
+
+
+
+set.seed(1410)
+train_index &lt;- createDataPartition(reference_data$class, p = 0.5, list = FALSE) # randomly pick half of observations based on class field
+
+training_data &lt;- best_10_predictors[best_10_predictors$polygon_index %in% train_index, ] # select training pixel observations using polygon indexes
+validation_data &lt;- best_10_predictors[!(best_10_predictors$polygon_index %in% train_index), ] # select validation pixel observations using polygon indexes
+
+control &lt;- trainControl(method = &quot;cv&quot;, number = 10) # set 10-fold cross validation to find the best model
+
+tune_parameters &lt;- data.frame(C = c(10, 100, 100), sigma = c(0.1, 0.5, 0.95)) # test these parameters to find the best combination
+
+model &lt;- train(training_data[, 1:10], training_data$class_name, method = &quot;svmRadial&quot;, trControl = control, tuneGrid = tune_parameters) # train the model using SVM with radial kernel using selected parameters
+
+predictions &lt;- predict(model, validation_data[, 1:10]) # use the chosen model to predict classes in the validation dataset
+confusion_matrix &lt;- confusionMatrix(predictions, as.factor(validation_data$class_name), mode = &quot;everything&quot;) # show confusion matrix based on validation results
+print(round(confusion_matrix$overall, 3)) # show confusion metrics in the console
+saveRDS(confusion_matrix, file = &quot;case_study_1/results/FS_confusion_matrix.RDS&quot;) # save confusion matrix
+
+
+
+scenario_bands &lt;- subset(image_data, first_10)
+
+image_data_crop &lt;- crop(scenario_bands, ext(aoi)) # crop the whole image to the interesting polygon
+
+try(terra::predict(image_data_crop, model, filename = &quot;case_study_1/results/FS_terms_sample_classification_result.tif&quot;, progress = &quot;text&quot;, format = &quot;GTiff&quot;, na.rm = TRUE), silent = TRUE)
+
+
+
+
+cm_fs &lt;- readRDS(&quot;case_study_1/results/FS_confusion_matrix.RDS&quot;)
+f1_fs &lt;- cm_fs$byClass[, 7]
+
+f1_matrix &lt;- matrix(data = c(f1_14May, f1_31May, f1_7Aug, f1_27Aug, f1_18Sep, f1_25Jun, f1_30Jun, f1_all_terms, f1_fs), ncol = 9, nrow = 9, byrow = TRUE)
+
+png(filename = &quot;case_study_1/results/comp3_barplot.png&quot;, width = 1920, height = 1080, res = 200, pointsize = 9)
+par(mar=c(5, 4, 4, 9), xpd = TRUE)
+barplot(f1_matrix, beside = TRUE, xaxt = &quot;n&quot;, xlab = &quot;Class&quot;, ylab = &quot;F1&quot;,
+        ylim = c(0, 1), las = 2, col = colour_palette[1:9],
+        main = &quot;Comparison of F1 scores for different classification input datasets.&quot;)
+legend(&quot;topright&quot;, legend = c(&quot;14May&quot;, &quot;31May&quot;, &quot;7Aug&quot;, &quot;27Aug&quot;, &quot;18Sep&quot;, &quot;25Jun&quot;, &quot;30Jun&quot;, &quot;All_terms&quot;, &quot;FS&quot;),
+       fill = colour_palette[1:9],  title = &quot;Classification input datasets&quot;, bty = &quot;n&quot;, xjust = 1, inset = c(-0.1, 0))
+par(xpd = FALSE)
+abline(h = c(0, 0.2, 0.4, 0.6, 0.8, 1), lty = 3)
+axis(1, at = c(5.5, 15.5, 25.5, 35.5, 45.5, 55.5, 65.5, 75.5, 85.5), labels = labels)
+
+dev.off()
+
+
+</code></pre>
+
+
+</details>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../05_vegetation_monitoring/05_vegetation_monitoring_exercise.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Exercise">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Exercise
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../07_cs_forest_changes/07_cs_forest_changes.html" class="md-footer__link md-footer__link--next" aria-label="Next: Case study: Effects of pollution in Ore Mountains">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Case study: Effects of pollution in Ore Mountains
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+	
+    <div class="md-copyright__highlight">
+		<a href="https://erasmus-plus.ec.europa.eu/projects/search/details/2020-1-CZ01-KA203-078308" title="EU Project Page">
+			<img src="../../assets/img/flag_eu.jpg" }} alt="flag of the European Union" style="height:50px; float:left; margin-right:15px; margin-bottom:15px;">
+		</a>
+		<p style="font-family:Arial">
+			Funded by the Erasmus+ Programme<br>of the European Union.
+		</p>
+	</div><br>
+	<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+		<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+	</a>
+	<p>
+		Except when explicitly stated otherwise, the course is licensed under the 
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+		license, associated code is licensed under the
+		<a href="https://choosealicense.com/licenses/mit/">MIT</a>
+		license.
+	</p>
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.highlight", "content.code.copy", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/javascripts/quiz_evaluation.js"></script>
+      
+    
+  </body>
+</html>

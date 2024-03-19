@@ -1,0 +1,3625 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This is the third theme within the Satellite Multispectral Images Time Series Analysis module.">
+      
+      
+      
+      
+        <link rel="prev" href="../02_temporal_information/02_temporal_information_exercise.html">
+      
+      
+        <link rel="next" href="03_image_processing_exercise.html">
+      
+      
+      <link rel="icon" href="../../assets/img/logo_etrainee.svg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
+    
+    
+      
+        <title>Image processing - E-TRAINEE Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.10ba22f1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#image-processing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-header__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            E-TRAINEE Course
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Image processing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-nav__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    E-TRAINEE Course
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module0/module0.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prerequisites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Module 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/module1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principles of remote sensing time series
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Large time series datasets in remote sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/03_time_series_analysis_based_on_classification/03_time_series_analysis_based_on_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series analysis based on classification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/04_trajectory-based_analysis/04_trajectory_based_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trajectory-based analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/05_spatio_temporal_data_fusion/05_spatio-temporal_data_fusion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spatio-temporal data fusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reference data, validation and accuracy assessment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Module 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of multispectral imaging
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of multispectral imaging
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_multispectral_principles/01_multispectral_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_multispectral_principles/01_multispectral_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal information in satellite data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal information in satellite data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_temporal_information/02_temporal_information.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_temporal_information/02_temporal_information_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Image processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Image processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="03_image_processing.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#goals-of-automating-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Goals of automating processes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radiometric-and-geometric-correction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radiometric and geometric correction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unwanted-areas-detection-and-masking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unwanted areas detection and masking
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#missing-information-reconstruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Missing information reconstruction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-fusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data fusion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-harmonization-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data harmonization / normalization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview-of-tools-and-algorithms-used-with-satellite-multispectral-imagetime-series-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of tools and algorithms used with satellite multispectral image/time series processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview of tools and algorithms used with satellite multispectral image/time series processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#satellitesensor-processors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Satellite/sensor processors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#platformsframeworksengines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Platforms/frameworks/engines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r-packageslibraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      R packages/libraries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-earth-engine-javascript-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Google Earth Engine JavaScript extensions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-evaluation-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-evaluation quiz
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-references-recommended-reading-looking-up-background-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key references (recommended reading, looking up background details)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-references-cited-in-this-theme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional references cited in this theme
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next unit
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03_image_processing_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Multitemporal classification
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Multitemporal classification
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_multitemporal_classification/04_multitemporal_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_multitemporal_classification/04_multitemporal_classification_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vegetation change and disturbance detection
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Vegetation change and disturbance detection
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_vegetation_monitoring/05_vegetation_monitoring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_vegetation_monitoring/05_vegetation_monitoring_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_cs_tundra_grasslands/06_cs_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_cs_forest_changes/07_cs_forest_changes.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Effects of pollution in Ore Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_cs_disturbance_detection/08_cs_disturbance_detection.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Forest disturbance detection (Tatra Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Module 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/module3.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of 3D/4D geographic point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of 3D/4D geographic point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/01_pointcloud_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/exercise/m3_theme1_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Programming for point cloud analysis with Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Programming for point cloud analysis with Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/02_pointcloud_programming_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/exercise/m3_theme2_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles and basic algorithms of 3D change detection and analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Principles and basic algorithms of 3D change detection and analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/03_3d_change_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/exercise/m3_theme3_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Time series analysis of 3D point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Time series analysis of 3D point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/04_3d_timeseries_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/exercise/m3_theme4_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning-based 3D/4D point cloud analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning-based 3D/4D point cloud analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/05_pointcloud_machine_learning/05_pointcloud_machine_learning.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_rockglacier/06_casestudy_rockglacier.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D change analysis at an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_sandybeach/06_casestudy_sandybeach.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series-based change analysis of sandy beach dynamics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Module 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/module4.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of imaging and laboratory spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of imaging and laboratory spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Airborne hyperspectral data acquisition and pre-processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Airborne hyperspectral data acquisition and pre-processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing_exercise_geometric.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    In situ and laboratory spectroscopy of vegetation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            In situ and laboratory spectroscopy of vegetation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_navig.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_spectra_probe_sphere_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning in imaging spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning in imaging spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal vs. spatial and spectral resolution
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal vs. spatial and spectral resolution
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/05_specific_resolution_contribution/05_specific_resolution_contribution.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/08_spectral_separability_grass/08_spectral_separability_grass.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal spectral separability of grass species (Krkonoše Mts.)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Discrimination of grass species from time series of RPAS hyperspectral imagery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/07_flood_plain_forest/07_flood_plain_forest.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal dynamics of flood-plain forests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_cloudcompare.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudCompare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_enmap_box.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EnMAP-Box
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_qgis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QGIS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_r_language.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_gee.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Earth Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Use Cases and Data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Use Cases and Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://doi.org/10.5281/zenodo.10003574" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data download
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_rockglacier_ahk.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D point clouds of an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_beach_kijkduin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4D point clouds of a sandy beach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_forests_tatras.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vegetation disturbance detection in Polish-Slovak Tatra Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_tundra_karkonosze.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_grasses_krkonose.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tundra vegetation monitoring in Krkonoše Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_ore_mts_disturbance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Forest disturbances in Ore Mountains (Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://web.natur.cuni.cz/gis/etrainee/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About the project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://forms.gle/Cz1yxJv2DDNz83j68" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback form
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#goals-of-automating-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Goals of automating processes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radiometric-and-geometric-correction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radiometric and geometric correction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unwanted-areas-detection-and-masking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unwanted areas detection and masking
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#missing-information-reconstruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Missing information reconstruction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-fusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data fusion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-harmonization-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data harmonization / normalization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview-of-tools-and-algorithms-used-with-satellite-multispectral-imagetime-series-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of tools and algorithms used with satellite multispectral image/time series processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview of tools and algorithms used with satellite multispectral image/time series processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#satellitesensor-processors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Satellite/sensor processors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#platformsframeworksengines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Platforms/frameworks/engines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r-packageslibraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      R packages/libraries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-earth-engine-javascript-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Google Earth Engine JavaScript extensions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-evaluation-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-evaluation quiz
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-references-recommended-reading-looking-up-background-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key references (recommended reading, looking up background details)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-references-cited-in-this-theme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional references cited in this theme
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next unit
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+
+                  
+
+  
+  
+
+
+<h1 id="image-processing">Image processing</h1>
+<p>Preprocessing of the images is a crucial step in remote sensing data analysis. Any defects of data will have an impact on the accuracy of results. Before using any dataset we recommend you to read the data manual which helps you select the proper <strong>processing pipeline</strong> for your certain purpose. Preparing images for analysis is often the most time consuming and computationally intensive part of dealing with remote sensing data, so it is essential to apply necessary tools and algorithms thoughtfully.</p>
+<p>In this theme you will learn about:</p>
+<ul>
+<li><strong><a href="#goals-of-automating-processes">goals of automating processes</a></strong></li>
+<li><strong><a href="#radiometric-and-geometric-correction">radiometric and geometric correction</a></strong></li>
+<li><strong><a href="#unwanted-areas-detection-and-masking">unwanted areas detection and masking</a></strong></li>
+<li><strong><a href="#missing-information-reconstruction">missing information reconstruction</a></strong></li>
+<li><strong><a href="#data-fusion">data fusion</a></strong></li>
+<li><strong><a href="#data-harmonization--normalization">data harmonization / normalization</a></strong></li>
+<li><strong><a href="#overview-of-tools-and-algorithms-used-with-satellite-multispectral-imagetime-series-processing">tools and algorithms used with satellite multispectral image/time series processing</a></strong></li>
+</ul>
+<p>This theme will conclude with:</p>
+<ul>
+<li><strong><a href="#self-evaluation-quiz">Self-evaluation quiz</a></strong></li>
+<li><strong><a href="#references">References</a></strong></li>
+</ul>
+<p>To consolidate your knowledge and test it in more practical environment complete the <strong><a href="03_image_processing_exercise.html">Exercise</a></strong>.</p>
+<p>After finishing this theme you will:</p>
+<ul>
+<li>understand the importance of preprocessing images in remote sensing data analysis</li>
+<li>recognize the impact of data defects on the accuracy of analysis results</li>
+<li>know the significance of reading the data manual to select the appropriate processing pipeline for your specific purpose</li>
+<li>be aware of the time-consuming nature of preparing images for analysis and the need for thoughtful application of tools and algorithms</li>
+<li>learn the steps involved in automating image processing to save time and ensure standardized data production</li>
+<li>understand the need for appropriate correction for quantitative and multitemporal analysis of satellite data</li>
+<li>understand the significance of cloud masking in optical data processing and the various methods used for detecting and masking clouds</li>
+<li>gain insights into missing information reconstruction techniques, such as gap filling and data fusion, to ensure complete and reliable time series analysis</li>
+<li>be introduced to data fusion</li>
+<li>familiarize yourself with various widely used tools, algorithms and packages</li>
+</ul>
+<h2 id="goals-of-automating-processes">Goals of automating processes</h2>
+<p>Before time series analysis we need to select proper data which covers the area of interest and time period. Then images should be calibrated radiometrically to convert Digital Numbers (DN; amount of registered energy) to physical quantity as radiance and in second step <strong>reflectance</strong>. Images in time series should be fitted geometrically so sometimes must be co-registered to improve their <strong>geometric consistency</strong>. Optical data processing is also related to <strong>clouds masking</strong>. If the images are acquired by two or more different sensors they need to be <strong>harmonized</strong> due to differences between their spatial, spectral and radiometric resolutions. We can use <strong>all available images</strong> for the analyzed period or <strong>time composites</strong> created based on images from sub-periods. All these steps are important but also laborious and time consuming, especially when we deal with dense time series and areas of large spatial extent (countries or continents). Hence, the main goal of using automation of image processing is <strong>saving time</strong> and producing the data in a <strong>standardized</strong> manner.</p>
+<p>The exercise in this theme will show you how to prepare satellite image time series using different pipelines in mostly automatic way using code editor, so you can focus more on <strong>results interpretation</strong> and spend less time clicking the same buttons in graphical software whenever you process a new image.</p>
+<p><center></p>
+<p><img src="media/fig1_processing_pipeline.png" title="Processing pipeline overview" alt="Pipeline" width="800"/></p>
+<p><i>Processing pipeline overview (figure by course authors).</i>
+</center></p>
+<h2 id="radiometric-and-geometric-correction">Radiometric and geometric correction</h2>
+<p>For quantitative, multitemporal analyzes on satellite data or on data from various sensors, geometric and radiometric correction is necessary. Pixel values on raw images are expressed in DN which depend on strength of the signal (amount of energy) arriving at the certain physical sensor pixel. Such images can be analysed and compared visually but when it will be used as part of a time series it should be <strong>calibrated and corrected</strong>. Calibration process converts DN to top of atmosphere (TOA) radiance (units: W m<sup>−2</sup> sr<sup>−1</sup> μm<sup>−1</sup>), then it can be converted to top of atmosphere reflectance. Such data are still affected by atmospheric effects like scattering, absorption or emission of radiation. To avoid atmosphere influence the images are atmospherically corrected (via absolute or relative atmospheric correction methods, utilizing time-dependent parameters and image-based information, respectively) and in result pixels present values of <strong>surface reflectance (SR)</strong>.</p>
+<p>If we are processing images for rugged terrain we also need to perform <strong>topographic correction</strong> due to differences in illumination of areas located on various aspects and slopes. For example, the same cover type on slopes oriented away from and towards the sun will appear darker and brighter, respectively, if compared to a horizontal geometry (<a href="https://doi.org/10.3390/rs1030184">Richter et al., 2009</a>). Those differences can cause errors in analysis results of even one image. Illumination conditions strictly depend on solar elevation and azimuth angles which obviously change between different dates of acquisition so in case of time series analysis is important to reduce its impact.</p>
+<p><center></p>
+<p><img src="media/fig2_topo_corr.jpg" title="Sentinel-2 data L1C product before and after topographic correction (Karkonosze Mountains area, RGB composite from 10.10.2021)." alt="Sentinel-2 data" width="600"/></p>
+<p><i>Sentinel-2 data L1C product, before and after topographic correction (Karkonosze Mountains area, RGB composite from 10.10.2021. Figure by course authors, source of image: <a href="https://dataspace.copernicus.eu/">European Space Agency - ESA</a>/ <a href="https://dataspace.copernicus.eu/terms-and-conditions">Terms of use</a>).</i>
+</center></p>
+<p>Another key factor which should be considered during satellite image processing is impact of direction of incident irradiance and sensor viewing angle. Both of these are expressed by azimuth and zenith angles and described by <strong>Bidirectional Reflectance Distribution Function (BRDF)</strong>.</p>
+<p><center></p>
+<p><img src="media/BRDF.png" title="Bidirectional Reflectance Distribution Function concept." alt="BRDF" width="600"/></p>
+<p><i>Left: Bidirectional Reflectance Distribution Function concept (figure by <a href="https://commons.wikimedia.org/wiki/Category:Bidirectional_reflectance_distribution_function#/media/File:BRDF_Diagram.png">Commons Wikimedia</a>/ <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>), right: the example of BRDF as pattern seen on the grass of a golf course after mowing (figure by <a href="https://pixabay.com/photos/golf-golf-course-green-grass-787473/">Pixabay</a>).</i>
+</center></p>
+<p><strong>Geometric matching</strong> of images is a key element of monitoring changes, its absence will result in the detection of false changes that do not result from changes in object features, but from image shifts. Imagery geometry errors can be systematic and random (<a href="https://www.wiley.com/en-us/Remote+Sensing+and+Image+Interpretation,+7th+Edition-p-9781118343289">Lillesand et al., 2015</a>). The first results from the rotation of the Earth or distortion of the optical system and are relatively easy to correct using an appropriate mathematical model. Random errors result from changes in the height of the orbit and tilts of the optical axis from the vertical and rotation of the platform. They can be corrected on the basis of recorded data concerning the path of the platform’s movement (<strong>parametric methods</strong>) or with the use of ground control points (GCPs) and Digital Terrain Model (DTM, <strong>non-parametric methods</strong>).</p>
+<h2 id="unwanted-areas-detection-and-masking">Unwanted areas detection and masking</h2>
+<p>Automatic process of unwanted areas such as clouds, shadows and seasonal snow masking on satellite images is the first step of time series data processing after corrections. In the data selection stage the information about the percentage coverage of the scene with clouds is crucial. If the whole image is 90% under clouds you have still a 10% chance that your area of interest is clear (see illustrative example in Figure below). This information becomes even more important when we consider multitemporal analysis, where in each of the multiple images this coverage will be different.</p>
+<p><center></p>
+<p><img src="media/fig4_clouds.jpg" title="Low stratus clouds framing iceberg A-56 drifted in the South Atlantic Ocean." alt="Stratus" width="400"/></p>
+<p><i>Low stratus clouds framing iceberg A-56 drifted in the South Atlantic Ocean (<a href="https://www.earthdata.nasa.gov/learn/find-data/near-real-time/rapid-response">VIIRS NASA figure by J. Schmaltz, LANCE/EOSDIS Rapid Response</a>/ <a href="https://www.earthdata.nasa.gov/learn/use-data/data-use-policy">Terms of use</a>, source: <a href="https://earthobservatory.nasa.gov/images/88136/clouds-frame-iceberg-a-56">NASA Earth Observatory</a>/ <a href="https://earthobservatory.nasa.gov/image-use-policy">Terms of use</a>).</i>
+</center></p>
+<p>Using the information about the percentage coverage with clouds we can <strong>filter</strong> metadata or <strong>mask</strong> the images (we will show you both approaches in the <strong><a href="03_image_processing_exercise.html">Exercise</a></strong>). The first one means that we can automatically choose the date that has the least cloud coverage within our specific area of interest and time range. The second one is oriented on excluding the areas covered by clouds by equalizing pixel values into binary flags (clouds occurrence and no-occurence). In this process the assumption is that clouds differ from the underlying Earth surface in terms of spectral characteristics and they are brighter and colder than these other areas. Commonly used approaches is the selection of cloud <strong>probability threshold</strong> for defining cloud/non-cloud masks. One of the most popular algorithms is <a href="https://github.com/GERSL/Fmask">Fmask</a> (<a href="https://doi.org/10.1016/j.rse.2011.10.028">Zhu, Woodcock, 2012</a>) which uses all spectral bands, NDVI and Normalized Difference Snow Index (NDSI), initially developed for Landsat TM and ETM+; with further improvements for next Landsat sensors or Sentinel-2 with additional Cirrus bands and the application to cloud shadow and snow detection (<a href="https://doi.org/10.1016/j.rse.2019.05.024">Qiu et al., 2019</a>). <strong>Machine and deep learning</strong> are also the approaches to the unwanted areas detection, e.g. <a href="https://github.com/sentinel-hub/sentinel2-cloud-detector">s2cloudless</a> algorithm uses gradient boosting classification method trained on global coverage training dataset. It can be used both for single-date and multitemporal data processing, however, there are also special algorithms dedicated to the latter. In general, in multitemporal data use, clouds can be considered ‘anomalies’ contrary to clear pixels in time series. Here we can find e.g. <a href="https://github.com/GERSL/Tmask">multiTemporal mask (Tmask)</a> that firstly fits a time series model of each single pixel using remaining clear pixels from Fmask product, and then compares model estimates with time series observations to detect pixels of clouds and shadows omitted in Fmask (<a href="https://doi.org/10.1016/j.rse.2014.06.012">Zhu, Woodcock, 2014</a>). Of course, there are still many other algorithms, dedicated to specific sensors as well as more universal, and the choice of the best one for our needs must fit the specificity of our area and data (you can see the comparative works, in e.g. <a href="https://doi.org/10.1016/j.rse.2017.03.026">Foga et al., 2017</a>, <a href="https://doi.org/10.1016/j.srs.2020.100010">Tarrio et al., 2020</a>, and <a href="https://doi.org/10.1016/j.rse.2022.112990">Skakun et al., 2022</a>).</p>
+<p><center></p>
+<p><img src="media/fig5_masked_clouds.jpg" title="Examples of cloud masking by various algorithms over the Sentinel-2 scene." alt="cloud masks" width="600"/></p>
+<p><i>Examples of cloud masking by various algorithms over the Sentinel-2 scene (figure by <a href="https://doi.org/10.1016/j.rse.2022.112990">Skakun et al., 2022</a>/ <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
+</center></p>
+<p>In this work the performance of existing clouds masking methods was evaluated using independent datasets concerning clouds occurrence by assessing detection accuracy. Generally, today data providers develop layers regarding data quality including masks of clouds, shadows and snow/ice (e.g. for Sentinel-2 – <strong>s2cloudless</strong> and Landsat – <strong>CFmask</strong> algorithms were selected as one of the most reliable and suitable for application over the entire archives). You will use them in the <strong><a href="03_image_processing_exercise.html">Exercise in this theme</a></strong>.</p>
+<h2 id="missing-information-reconstruction">Missing information reconstruction</h2>
+<p>The big advantage of satellite data is the global range of their acquisition. Depending on the location on the globe, in some areas more images will be acquired, in others less, and to some extent the imaging paths may overlap, resulting in an increase in the number of downloadable scenes (Figure below shows the example of Sentinel-2 coverage and the overlap between adjacent orbits).</p>
+<p><center></p>
+<p><img src="media/fig6_sentinel_revisit.jpg" title="Example of Sentinel-2 satellite revisit frequency due to the overlap between adjacent orbits." alt="Figure 6" width="600"/></p>
+<p><i>Example of Sentinel-2 satellite revisit frequency due to the overlap between adjacent orbits (figure by P. Lacroix, <a href="https://sentinels.copernicus.eu/web/sentinel/user-guides/sentinel-2-msi/revisit-coverage">European Space Agency - ESA</a>/ <a href="https://sentinels.copernicus.eu/web/sentinel/terms-conditions">Terms of use</a>).</i>
+</center></p>
+<p>Coverage of some areas with satellite data can be reduced by sensor’s errors, seasonal snow or clouds and shadows mentioned above, etc., making interpretation difficult. Diverse algorithms for missing data reconstruction divided into spatial-, spectral-, temporal-based and hybrid methods groups are proposed in remote sensing literature (<a href="https://doi.org/10.1109/mgrs.2015.2441912">Shen et al., 2015</a>). As we mainly focus on temporal aspects in this course, we will present more deeply those.</p>
+<p><center></p>
+<p><img src="media/gap_errors.png" title="Examples of missing information in Landsat satellite data: (a) partial cover, (b) permanent ETM+ SLC-off error, (c) random TM registration error, (d) clouds with shadows, (e) topographic shadows." alt="missing data" width="600"/></p>
+<p><i>Examples of missing information in satellite data: (a) partial cover, (b) random TM registration error, (c) permanent ETM+ SLC-off error, (d) clouds with shadows, (e) topographic shadows (figure by course authors, sources of images: (a), (b): Landsat 5 courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a>/ <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a>), (c): Landsat 7 courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a>/ <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a>, (d), (e): Landsat 8 courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a>/ <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a>).</i>
+</center></p>
+<p>One of the solution of this uncompleted satellite data problem in multitemporal analysis is integration of data from different terms of data acquisition into <strong>gap-free compositions</strong>. Purely statistical approaches use mean, median or medoid (value closest to median from the actual observations) values of unmasked pixels to fill the missing pixel with numerical value. There are many other established approaches to perform this and majority of them follow ‘the best available pixel’ strategy (<a href="https://doi.org/10.1016/j.isprsjprs.2017.06.013">Zhu, 2017</a>). One is the highest NDVI value presented below.</p>
+<p><center></p>
+<p><img src="media/fig8_composition.png" title="Concept of creating time composites from three different dates images based on the highest NDVI value." alt="concept of time composites" width="600"/></p>
+<p><i>Concept of creating time composites from three different dates images based on the highest NDVI value (figure by course authors).</i>
+</center></p>
+<p>As you can see, the selection of pixels for composition consists of the highest possible value of NDVI, which can be helpful especially in vegetation analysis. It can also be a median value of another index or single band (<a href="https://doi.org/10.1016/j.rse.2010.10.001">Potapov et al., 2011</a> found the median NIR band value better than NDVI on Landsat time series) or combination of index value with Brightness Temperature (as pixel’s temperature is a good indicator for cloud; <a href="https://doi.org/10.1016/j.rse.2009.08.011">Roy et al., 2010</a>). There are also other possible conditions to apply for the composition, e.g. temporal distance to target <strong>Day of the Year</strong> (DOY) acquisition or <strong>distance to the clouds</strong> (<a href="https://doi.org/10.1109/jstars.2012.2228167">Griffiths et al., 2013</a>). The comparison of 10 different compositing algorithms can be found in <a href="https://doi.org/10.1016/j.rse.2022.113375">Qiu et al., 2023</a>. The results of this work demonstrated that no single algorithm outperformed all others, but that performance depended on compositing intervals and cloud cover.</p>
+<p>Another strategy to provide gap-free composites is generating synthetic images by model predictions (e.g. regression on all available 2001-2004 Landsat data provided by <a href="https://doi.org/10.1016/j.rse.2015.02.009">Zhu et al., 2015</a>) which can mitigate the effect of seasonality visible in the best available pixel composites. When comparing these both strategies for further change detection, synthetic images can produce more omission errors like not noticing subtle, gradual changes in a time series, while composites can lead to more commission errors, detecting change when there are still some clouds, cloud shadow or missing values.</p>
+<p><center></p>
+<p><img src="media/com_synt.gif" title="Composite and synthetic Landsat time series data example." alt="composite" width="600"/></p>
+<p><i>Composite and synthetic time series data example (Landsat courtesy of <a href="https://www.usgs.gov/media/images/composite-imagery-v-synthetic-imagery">the U.S. Geological Survey</a>/ <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a>).</i>
+</center></p>
+<p>Since we have dense time series data or we want to analyze seasonal variations an important step could be noise reduction by the use of <strong>smoothing / filtering</strong> methods (see <strong><a href="../../module1/01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.html">Theme 1 in Module 1</a></strong>). They are used for the single points of a time series, where the assumption is that these are chronological and display regular fluctuations (<a href="https://doi.org/10.1109/mgrs.2015.2441912">Shen et al., 2015</a>). There are three approaches to perform such filtering, depending on the way they handle time series data:</p>
+<ul>
+<li>
+sliding window filter methods based on predefined criteria (e.g. adaptive Savitzky-Golay filter),
+</li>
+<li>
+function-based methods (e.g. Asymmetric Gaussian and Double Logistic function),
+</li>
+<li>
+frequency domain methods (e.g. Fourier transform).
+</li>
+</ul>
+
+<p>In most cases they are dealing with NDVI (you can read the examples in: <a href="https://doi.org/10.1080/014311600209814">Roerink et al., 2000</a>, <a href="https://doi.org/10.1109/igarss.2012.6351057">Song et al., 2012</a>, <a href="https://doi.org/10.1016/j.jag.2018.11.008">Julien, Sobrino 2019</a>), which is a well-known metric for measuring vegetation condition/productivity and in time series presents strong seasonality.</p>
+<h2 id="data-fusion">Data fusion</h2>
+<p>The above examples showed how to handle data completion based on data from the same sensor, taking advantage of their own resolutions (especially temporal). However, if the information from them is of a poor quality, the reconstruction effect will not be satisfied. In such a case, <strong>multisource</strong> data can bring additional valuable information from another sensor.</p>
+<p>For example, freely available MODIS data provides daily global observations allowing to rapidly track changes and maximizing the chance to obtain cloud-free data. However, its spatial resolution (250-1000 m) is a limit in fine-scale environmental applications, for which Landsat would be better in terms of spatial resolution (30 m), but it’s revisit time is longer (16 days). Hence, MODIS and Landsat data are often combined to increase spatiotemporal potential. Image fusion methods to predict Landsat-like synthetic images from dense MODIS time series data were developed, e.g. <strong>Spatial and Temporal Adaptive Reflectance Fusion Model</strong> (STARFM, <a href="https://doi.org/10.1109/tgrs.2006.872081">Gao et al., 2006</a>) or its enhanced version more useful in heterogeneous landscapes due to the use of observed reflectance trend between two points in time and spectral unmixing (<strong>ESTARFM</strong>, <a href="https://doi.org/10.1016/j.rse.2010.05.032">Zhu et al., 2010</a>). For more detailed multitemporal analysis, Sentinel-2 and PlanetScope data fusion can be performed, combining the spatial, temporal and spectral advantages of both sensors. You can see the example of developing super-resolution (2.5 m) Sentinel-2 data based on PlanetScope pixel size in the work of <a href="https://doi.org/10.3390/rs12152366">Latte, Lejeune (2020)</a>. Here PlanetScope data were also normalized radiometrically (we refer to this below).</p>
+<p><center></p>
+<p><img src="media/fig11_sentinel_planetscope.jpg" title="Sentinel-2 and PlanetScope spectral resolution and wavelength range (Latte, Lejeune, 2020)." alt="Sentinel-2 and PlanetScope" width="600"/></p>
+<p><i>Sentinel-2 and PlanetScope spectral resolution and wavelength range (figure by <a href="https://doi.org/10.3390/rs12152366">Latte, Lejeune, 2020</a>/ <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
+</center></p>
+<p>In this module we focus only on optical data for whom the main ‘Achilles’ heel’ is cloud coverage. If you want to work in an area regularly covered with clouds or where you study rapid changes and there is no room for gaps or creating compositions, you may consider fusion of optical with <strong>Synthetic Aperture Radar</strong> (SAR) data where this inconvenience might be mitigated (several examples can be found <a href="https://medium.com/sentinel-hub/data-fusion-combine-satellite-datasets-to-unlock-new-possibilities-26356c481169">here</a>).</p>
+<h2 id="data-harmonization-normalization">Data harmonization / normalization</h2>
+<p>As mentioned above it is possible to use data from several different sensors to build a time series of images. The advantage of such an approach is getting denser time series with more clear observations/pixels. But due to the differences in spectral, spatial and radiometric domains images from different sensors should be harmonized to avoid errors in analysis. Great example of potential harmonization data is a collection named <strong><a href="https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/harmonized-landsat-sentinel-2-hls-overview/">Harmonized Landsat Sentinel-2 (HLS)</a></strong> providing consistent, 30-meters surface reflectance data from Landsat 8 and 9 OLI and Sentinel-2 MSI from Sentinel-2 A and B satellites collected every 2-3 days (see more details in <strong><a href="../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.html">Theme 2 of Module 1</a></strong>. For the same continued constellation of satellites with different sensors in the multitemporal analysis, it is necessary to assess whether the differences are significant and for what purpose of the analysis the data are to be used. You may find that your data collection already provides consistency (e.g. <a href="https://www.usgs.gov/landsat-missions/landsat-collection-2">Collection 2 of Landsat images</a>).</p>
+<p>In multitemporal analysis the absolute radiometric correction is more challenging than image-based methods (scene-to-scene normalization) which are more common. Normalization methods can be divided into direct application of <strong>linear regression</strong> or those using <strong>pseudo-invariant features</strong> (PIFs) which means targets whose spectral reflectance have not changed over time (<a href="https://doi.org/10.1016/0034-4257(88)90116-2">Schott et al., 1988</a>). Examples of such targets are dark and bright places such as bare rocks or car park surfaces made from concrete or asphalt. They can be selected manually or automatically.</p>
+<p>Radiometric normalization is necessary for e.g. PlanetScope data due to the differences in Dove microsatellites spectral response, which are sensor-specific. Other satellite constellation images such as MODIS, Landsat and Sentinel-2 data can be used for their normalization (<a href="https://doi.org/10.3390/rs12152366">Latte, Lejeune, 2020</a>).</p>
+<p><center></p>
+<p><img src="media/fig12_normalization.jpg" title="PlanetScope data normalization effect (on the right) based on Sentinel-2 data (Latte and Lejeune, 2020)." alt="Normalization" width="300"/></p>
+<p><i>PlanetScope data normalization effect (on the right) based on Sentinel-2 data (figure by <a href="https://doi.org/10.3390/rs12152366">Latte, Lejeune, 2020</a>/ <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
+</center></p>
+<h2 id="overview-of-tools-and-algorithms-used-with-satellite-multispectral-imagetime-series-processing">Overview of tools and algorithms used with satellite multispectral image/time series processing</h2>
+<p>Most of the processing steps applied to the multitemporal imagery data are identical with those used in single image preparation workflow. Some - like composites or harmonization - are specific for datasets with temporal dimension. Different types of tools are present in many resources like closed software, open platforms or extensions, libraries and packages expanding the base capabilities of programming languages, software or platforms. Here is a sample of different tools and algorithms commonly used in processing of multispectral imagery. This selection contains only applications used during <strong>data preparation</strong>. Data analysis is a whole other collection, parts of which can be found in contents of <strong><a href="../04_multitemporal_classification/04_multitemporal_classification.html">Theme 4</a></strong> and <strong><a href="../05_vegetation_monitoring/05_vegetation_monitoring.html">Theme 5</a></strong>. Strictly code-based tools are extensions of Google Earth Engine JavaScript and R. More examples of Python based algorithms can be found in <strong><a href="../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.html">Theme 2 of Module 1</a></strong>+.</p>
+<h3 id="satellitesensor-processors">Satellite/sensor processors</h3>
+<ul style="list-style: none;">
+<li>
+<h4>
+<a href="https://www.usgs.gov/landsat-missions/landsat-project-documents">Landsat</a>
+</h4>
+<dl>
+<dt>
+Landsat Product Generation System (LPGS)
+</dt>
+<dd>
+Used to produce Landsat Collections Level-1. It applies standard processing parameters. Level-1 scene-based products are created using the best processing level available for each scene.
+</dd>
+<dd>
+<b>SOURCES</b>: <a href="https://www.usgs.gov/landsat-missions/landsat-level-1-processing-details">Landsat Level-1 Processing Details</a>
+</dd>
+<dt>
+Landsat Ecosystem Disturbance Adaptive Processing System (LEDAPS)
+</dt>
+<dd>
+Used to produce top-of-atmosphere reflectance from Landsat Thematic Mapper and Enhanced Thematic Mapper Plus Level 1 digital numbers and to apply atmospheric corrections to generate a surface-reflectance (SR Level 2) products.
+</dd>
+<dd>
+<b>SOURCES</b>: <a href="https://pubs.usgs.gov/of/2013/1057/ofr13_1057.pdf">Technical description</a>, <a href="https://www.usgs.gov/media/files/landsat-4-7-collection-2-level-2-science-product-guide">Collection 2 product guide products with LEDAPS v3.4.0</a>, <a href="https://www.usgs.gov/media/files/landsat-4-7-ledaps-add">Detailed algorithm description</a>
+</dd>
+<dt>
+Land Surface Reflectance Code (LaSRC)
+</dt>
+<dd>
+Used to produce top-of-atmosphere reflectance from Operational Land Imagers Level 1 digital numbers and to apply atmospheric corrections to generate a surface-reflectance (SR Level 2) products.
+</dd>
+<dd>
+<b>SOURCES</b>: <a href="https://ntrs.nasa.gov/api/citations/20190001670/downloads/20190001670.pdf">Technical description</a>, <a href="https://www.usgs.gov/media/files/landsat-8-9-collection-2-level-2-science-product-guide">Collection 2 product guide products with LaSRC v1.5.0 </a>, <a href="https://www.usgs.gov/media/files/landsat-8-9-calibration-validation-algorithm-description-document">Detailed algorithm description</a>
+</dd>
+</dl>
+</li>
+<li>
+<h4>
+<a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi">Sentinel-2</a>
+</h4>
+<dl>
+<dt>
+Instrument Data Processing (IDP)
+</dt>
+<dd>
+The processing from Level-0 up to Level-1C is performed by IDP functionality of the Copernicus Ground Segment. Level-0 and Level-1A products are Copernicus Ground Segment internal products not made available to users.
+</dd>
+<dd>
+<b>SOURCES</b>: <a href="https://sentinels.copernicus.eu/web/sentinel/missions/sentinel-2/ground-segment/core-ground-segment/systematic-processing-and-reprocessing-services">Copernicus Ground Segment description</a>, <a href="https://sentinel.esa.int/documents/247904/685211/sentinel-2_user_handbook">Sentinel-2 User Handbook</a>, <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-0-algorithms-products">Level-0 Processing Overview</a>, <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-1a-algorithms-products">Level-1A Processing Overview</a>, <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-1b/algorithm-overview">Level-1B Algorithm Overview</a>, <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-1c/algorithm-overview">Level-1C Algorithm Overview</a>
+</dd>
+<dt>
+Sen2Cor / Sentinel-2 Toolbox functionalities
+</dt>
+<dd>
+Each observation from the Level-1C, is processed by the European Space Agency (ESA) through the Sen2Cor algorithm. The Level-2A operational processor generates, from algorithms of scene classification and atmospheric correction, BOA reflectance products.
+</dd>
+<dd>
+<b>SOURCES</b>: <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm-overview">Level-2A Algorithm Overview</a>, <a href="http://step.esa.int/main/snap-supported-plugins/sen2cor/">Sen2Cor processor</a>, <a href="https://sentinel.esa.int/web/sentinel/toolboxes/sentinel-2">The Sentinel-2 Toolbox</a>, <a href="https://doi.org/10.3390/rs9060584">Paper with detailed processing description (Gascon et al., 2017)</a>
+</dd>
+</dl>
+</li>
+<li>
+<h4>
+<a href="https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/modis-overview/">MODIS</a>
+</h4>
+<dl>
+<dt>
+MODIS Adaptive Processing System (MODAPS)
+</dt>
+<dd>
+Algorithm is used to produce Level 1A, Level 1B, geolocation and cloud mask products and the Higher-level MODIS land and atmosphere products.
+</dd>
+<dd>
+<b>SOURCES</b>: <a href="https://www.earthdata.nasa.gov/learn/find-data/near-real-time/lance/about-modaps">About MODAPS</a>, <a href="https://modaps.modaps.eosdis.nasa.gov/services/">MODAPS page (not updated)</a>
+</dd>
+</dl>
+</li>
+</ul>
+
+<h3 id="platformsframeworksengines">Platforms/frameworks/engines</h3>
+<ul style="list-style: none;">
+<li>
+<h4>
+<a href="https://developers.google.com/earth-engine/apidocs">Google Earth Engine</a>
+</h4>
+<dl>
+<dt>
+API with native data types, objects and methods
+</dt>
+<dd>
+Built-in tools for cloud-based imagery processing, including filtering, reducing, loops/function mapping over image collections.
+</dd>
+<dd>
+<b>SOURCES</b>: <a href="https://developers.google.com/earth-engine/guides/getstarted">GEE Get started article</a>, <a href="https://developers.google.com/earth-engine/apidocs">API Reference</a>, <a href="https://doi.org/10.1016/j.rse.2017.06.031">Gorelick et al., 2017 paper</a>
+</dd>
+</li>
+<li>
+<h4>
+<a href="https://force-eo.readthedocs.io/en/latest/">Framework for Operational Radiometric Correction for Environmental monitoring (FORCE)</a>
+</h4>
+<dl>
+<dt>
+C-based satellite imagery processing engine
+</dt>
+<dd>
+Data cubes processing to prepare analysis ready data.
+</dd>
+<dd>
+<b>SOURCES</b>: <a href="https://force-eo.readthedocs.io/en/latest/howto/index.html">Tutorials</a>, <a href="https://force-eo.readthedocs.io/en/latest/components/comp_overview.html">Modules overview</a>, <a href="https://doi.org/10.3390/rs11091124">Frantz, 2017 paper</a>
+</dd>
+</li>
+<li>
+<h4>
+<a href="https://artmotoolbox.com/plugins-standalone/91-plugins-standalone/34-datimes.html">Decomposition and Analysis of Time Series Software (DATimeS)</a>
+</h4>
+<dl>
+<dt>
+MATLAB-based stand-alone image processing GUI toolbox.
+</dt>
+<dd>
+Focuses on generating spatially continuous (gap-filled) maps.
+</dd>
+<dd>
+<b>SOURCES</b>: <a href="https://drive.google.com/file/d/1jGpClOzuFff20Y0ojuAGOf9PyHuB33AL/view">Tutorial video</a>, <a href="https://drive.google.com/file/d/10ajcWb5S2jweojFIflH0B7jfMaYDunHm/view">Promotional video</a>, <a href="https://doi.org/10.1016/j.envsoft.2020.104666">Belda et al., 2020 paper</a>
+</dd>
+</li>
+<li>
+<h4>
+<a href="https://github.com/senbox-org/sen2like">Sen2Like</a>
+</h4>
+<dl>
+<dt>
+Python-based Sentinel-2 data processor.
+</dt>
+<dd>
+Aims to produce harmonised/fused surface reflectance imagery with higher periodicity by integrating additional compatible optical mission sensors.
+</dd>
+<dd>
+<b>SOURCES</b>: <a href="https://github.com/senbox-org/sen2like/blob/master/howto.md">User manual</a>, <a href="https://github.com/senbox-org/sen2like/tree/master/sen2like">Reference</a>, <a href="https://doi.org/10.1109/IGARSS.2019.8899213">Saunier et al., 2019 paper</a>, <a href="https://doi.org/10.3390/rs14163855">Saunier et al., 2022 paper</a>
+</dd>
+</li>
+</ul>
+
+<h3 id="r-packageslibraries">R packages/libraries</h3>
+<dl>
+<dt>
+<a href="https://cran.r-project.org/web/packages/ASIP/index.html">ASIP: Automated Satellite Image Processing</a>
+</dt>
+<dd>
+Primary applications: atmospheric corrections, derivatives calculation.
+</dd>
+<dt>
+<a href="https://cran.r-project.org/web/packages/gdalcubes/index.html">gdalcubes: Earth Observation Data Cubes from Satellite Image Collections</a>
+</dt>
+<dd>
+Filtering, reducing, aggregating and applying arithmetic expressions on data cubes.
+</dd>
+<dt>
+<a href="https://cran.r-project.org/web/packages/geoTS/index.html">geoTS: Methods for Handling and Analyzing Time Series of Satellite Images</a>
+</dt>
+<dd>
+Includes maximum gap (amount of consecutive missing values) calculation and fitting harmonic regression models to periodic time series.
+</dd>
+<dt>
+<a href="https://cran.r-project.org/web/packages/landsat/index.html">landsat: Radiometric and Topographic Correction of Satellite Imagery</a>
+</dt>
+<dd>
+Processing of Landsat or other multispectral satellite imagery. Includes relative normalization, image-based radiometric correction, and topographic correction options.
+</dd>
+<dt>
+<a href="https://github.com/fdetsch/MODIS">MODIS: Acquisition and Processing of MODIS Products</a>
+</dt>
+<dd>
+Basic MODIS download and processing functionalities.
+</dd>
+<dt>
+<a href="https://cran.r-project.org/web/packages/MODIStsp/vignettes/MODIStsp.html">MODIStsp: Find, Download and Process MODIS Land Products Data</a>
+</dt>
+<dd>
+Creation of time series of rasters derived from MODIS Land Products data.
+</dd>
+<dt>
+<a href="https://cran.r-project.org/web/packages/rgee/index.html">rgee: Google Earth Engine for R</a>
+</dt>
+<dd>
+Binding package for calling Google Earth Engine API from within R
+</dd>
+<dt>
+<a href="https://docs.ropensci.org/rsat/">rsat: Dealing with Multiplatform Satellite Images</a>
+</dt>
+<dd>
+Various functions, including gap filling, cloud masking and smoothing.
+</dd>
+<dt>
+<a href="http://bleutner.github.io/RStoolbox/rstbx-docu/RStoolbox.html">RStoolbox: A Collection of Remote Sensing Tools</a>
+</dt>
+<dd>
+Corrections, coregistering, derivatives calculation.
+</dd>
+<dt>
+<a href="https://cran.r-project.org/web/packages/satellite/index.html">satellite: Handling and Manipulating Remote Sensing Data</a>
+</dt>
+<dd>
+Contains functions which are useful for handling, manipulating, and visualizing satellite-based remote sensing data.
+</dd>
+<dt>
+<a href="https://github.com/ranghetti/sen2r">sen2r: Find, Download and Process Sentinel-2 Data</a>
+</dt>
+<dd>
+Contains Sen2cor processing algorithm, as well as functions to mask cloudy pixels and compute derivaties.
+</dd>
+</dl>
+
+<h3 id="google-earth-engine-javascript-extensions">Google Earth Engine JavaScript extensions</h3>
+<dl>
+<dt>
+<a href="https://github.com/fitoprincipe/geetools-code-editor/wiki">A set of tools to use in Google Earth Engine Code Editor by Rodrigo E. Principe</a>
+</dt>
+<dd>
+Modules include cloud masks, spectral indices, compositing, batch processing and various tools.
+</dd>
+<dt>
+<a href="https://www.open-geocomputing.org/OpenEarthEngineLibrary/">Open Earth Engine Library (OEEL)</a>
+</dt>
+<dd>
+‘Collection of code goodies for Google Earth Engine(GEE)’ (cloud masking, filtering, compositing etc.)
+</dd>
+<dt>
+<a href="https://github.com/MarcYin/SIAC_GEE">Sensor Invariant Atmospheric Correction (SIAC)</a>
+</dt>
+<dd>
+GUI application for atmospheric correction os Sentinel-2 data. <a href="https://doi.org/10.5194/gmd-15-7933-2022">Example paper</a>
+</dd>
+<dt>
+<a href="https://github.com/ndminhhus/geeguide/blob/master/README.md">Harmonization of Landsat and Sentinel 2</a>
+</dt>
+<dd>
+Documentation of technical part of Minh D. Nguyen’s masters thesis, including filtering, corrections, maskings, compositing etc. <a href="https://doi.org/10.3390/rs12020281">Paper</a>
+</dd>
+<dt>
+Various sets of tools and scripts
+</dt>
+<dd>
+<a href="https://github.com/kr-stn/EarthEngine_scripts">kr-stn/EarthEngine_scripts</a><br> <a href="https://github.com/renelikestacos/Google-Earth-Engine-JavaScript-Examples">renelikestacos/Google-Earth-Engine-JavaScript-Examples</a><br> <a href="https://github.com/aazuspan/geeTools">aazuspan/geeTools</a><br>
+</dd>
+</dl>
+
+<h2 id="self-evaluation-quiz">Self-evaluation quiz</h2>
+<p>After going through the theory in this theme you should now be ready to take on self-evaluation quiz. You should be able to find any answer you have trouble with in the contents above or in the additional <a href="#references">references</a> below. Good luck!</p>
+<form name="quiz" action method="post" onsubmit="evaluate_quiz(); return false">
+<!--Question 1-->
+<label for="q_01"> <b>Question 1.</b> What causes user-independent gaps in time series data planned for use in land cover mapping? </label><br> <input type="radio" name="q_01">cloudiness, sensor registration errors, seasonal accumulation of snow cover<br> <input type="radio" name="q_01">sensor registration errors, image spatial cropping, cloud shadows<br> <input type="radio" name="q_01">cloud cover, incomplete set of spectral bands, seasonal accumulation of snow cover<br> <input type="radio" name="q_01">cloud shadows, incomplete set of spectral bands, sensor registration errors<br>
+
+<div id="correct_q_01" hidden="">
+
+cloudiness, sensor registration errors, seasonal accumulation of snow cover
+
+</div>
+
+<output id="output_q_01">
+</output>
+
+<br><br>
+
+<!--Question 2-->
+<label for="q_02"> <b>Question 2.</b> Which fusion of data would be most useful in monitoring crops on individual plots? </label><br> <input type="radio" name="q_02">MODIS+Sentinel-2<br> <input type="radio" name="q_02">MODIS+Landsat<br> <input type="radio" name="q_02">Sentinel-2+Landsat<br> <input type="radio" name="q_02">Sentinel-2+PlanetScope<br>
+
+<div id="correct_q_02" hidden="">
+
+Sentinel-2+PlanetScope
+
+</div>
+
+<output id="output_q_02">
+</output>
+
+<br><br>
+
+<!--Question 3-->
+<label for="q_03"> <b>Question 3.</b> Which parameters are not used for compositing gap-free images? </label><br> <input type="radio" name="q_03">brightness temperature, distance to the clouds, median NDVI value<br> <input type="radio" name="q_03">mean NDVI value, acquisition Day of the Year, brightness temperature<br> <input type="radio" name="q_03">added subsequent NIR band values, distance to the clouds, acquisition Day of the Year<br> <input type="radio" name="q_03">distance to the clouds, median NIR band value, acquisition Day of the Year<br>
+
+<div id="correct_q_03" hidden="">
+
+added subsequent NIR band values, distance to the clouds, acquisition Day of the Year
+
+</div>
+
+<output id="output_q_03">
+</output>
+
+<br><br>
+
+<!--Question 4-->
+<label for="q_04"> <b>Question 4.</b> Having in mind correctness and computational optimization, choose correct order of processing: </label><br> <input type="radio" name="q_04">radiometric correction, derivatives calculation, gap filling<br> <input type="radio" name="q_04">radiometric correction, gap filling, metadata filtering<br> <input type="radio" name="q_04">composite building, cloud masking, derivatives calculation<br> <input type="radio" name="q_04">metadata filtering, cloud masking, composite building<br>
+
+<div id="correct_q_04" hidden="">
+
+metadata filtering, cloud masking, composite building
+
+</div>
+
+<output id="output_q_04">
+</output>
+
+<br><br>
+
+<!--Question 5-->
+<label for="q_05"> <b>Question 5.</b> Which of the following processing steps would be redundant if you chose Sentinel-2 Level-2A (surface reflectance) products for phenological analysis in the Alps? </label><br> <input type="radio" name="q_05">topographic correction<br> <input type="radio" name="q_05">smoothing<br> <input type="radio" name="q_05">clouds masking<br> <input type="radio" name="q_05">spatial filtering<br>
+
+<div id="correct_q_05" hidden="">
+
+topographic correction
+
+</div>
+
+<output id="output_q_05">
+</output>
+
+<br><br>
+
+<!--Question 6-->
+<label for="q_06"> <b>Question 6.</b> Which raw data (from the same sensor) processing steps are always necessary for mountain terrain change analysis? </label><br> <input type="radio" name="q_06">atmospheric correction, topographic correction, spectral smoothing<br> <input type="radio" name="q_06">geometric correction, atmospheric correction, topographic correction<br> <input type="radio" name="q_06">geometric correction, normalization, harmonization<br> <input type="radio" name="q_06">atmospheric correction, geometric correction, temporal composites creation<br>
+
+<div id="correct_q_06" hidden="">
+
+geometric correction, atmospheric correction, topographic correction
+
+</div>
+
+<output id="output_q_06">
+</output>
+
+<br><br>
+
+<!--Question 7-->
+<label for="q_07"> <b>Question 7.</b> The value of percentage cover of clouds in images metadata allow to: </label><br> <input type="radio" name="q_07">filter clouds with the least value<br> <input type="radio" name="q_07">filter images with the least value<br> <input type="radio" name="q_07">mask images based on this value<br> <input type="radio" name="q_07">classify clouds based on the highest value<br>
+
+<div id="correct_q_07" hidden="">
+
+filter images with the least value
+
+</div>
+
+<output id="output_q_07">
+</output>
+
+<br><br>
+
+<output id="output_overall">
+</output>
+
+<input type="submit" value="Submit" style="font-size:14pt"><br><br>
+
+</form>
+<script src="../../assets/javascripts/quiz_evaluation.js"></script>
+
+<h2 id="exercise">Exercise</h2>
+<p><a href="03_image_processing_exercise.html">Proceed with the exercise by going to the next page below or clicking this link</a></p>
+<h2 id="references">References</h2>
+<h3 id="key-references-recommended-reading-looking-up-background-details">Key references (recommended reading, looking up background details)</h3>
+<p>Lillesand, T., Kiefer, R. W., &amp; Chipman, J. (2015). <em>Remote sensing and image interpretation</em>. John Wiley &amp; Sons. <a href="https://www.wiley.com/en-us/Remote+Sensing+and+Image+Interpretation,+7th+Edition-p-9781118343289">SOURCE</a></p>
+<p>Qiu, S., Zhu, Z., Olofsson, P., Woodcock, C. E., &amp; Jin, S. (2023). <em>Evaluation of Landsat image compositing algorithms</em>. Remote Sensing of Environment, 285, 113375. <a href="https://doi.org/10.1016/j.rse.2022.113375">https://doi.org/10.1016/j.rse.2022.113375</a></p>
+<p>Shen, H., Li, X., Cheng, Q., Zeng, C., Yang, G., Li, H., &amp; Zhang, L. (2015). <em>Missing information reconstruction of remote sensing data: A technical review</em>. IEEE Geoscience and Remote Sensing Magazine, 3(3), 61-85. <a href="https://doi.org/10.1109/mgrs.2015.2441912">https://doi.org/10.1109/mgrs.2015.2441912</a></p>
+<p>Zhu, Z. (2017). <em>Change detection using landsat time series: A review of frequencies, preprocessing, algorithms, and applications</em>. ISPRS Journal of Photogrammetry and Remote Sensing, 130, 370-384 <a href="https://doi.org/10.1016/j.isprsjprs.2017.06.013">https://doi.org/10.1016/j.isprsjprs.2017.06.013</a></p>
+<h3 id="additional-references-cited-in-this-theme">Additional references cited in this theme</h3>
+<p>Belda, S., Pipia, L., Morcillo-Pallarés, P., Rivera-Caicedo, J. P., Amin, E., De Grave, C., &amp; Verrelst, J. (2020). <em>DATimeS: A machine learning time series GUI toolbox for gap-filling and vegetation phenology trends detection</em>. Environmental Modelling &amp; Software, 127, 104666. <a href="https://doi.org/10.1016/j.envsoft.2020.104666">https://doi.org/10.1016/j.envsoft.2020.104666</a></p>
+<p>Foga, S., Scaramuzza, P. L., Guo, S., Zhu, Z., Dilley Jr, R. D., Beckmann, T., Dwyer, J. L., Hughes, J. H., Laue, B. (2017). <em>Cloud detection algorithm comparison and validation for operational Landsat data products</em>. Remote sensing of Environment, 194, 379-390. <a href="https://doi.org/10.1016/j.rse.2017.03.026">https://doi.org/10.1016/j.rse.2017.03.026</a></p>
+<p>Frantz, D. (2019). <em>FORCE—Landsat + Sentinel-2 Analysis Ready Data and Beyond</em>. Remote Sensing, 11(9), 1124. <a href="https://doi.org/10.3390/rs11091124">https://doi.org/10.3390/rs11091124</a></p>
+<p>Gao, F., Masek, J., Schwaller, M., &amp; Hall, F. (2006). <em>On the blending of the Landsat and MODIS surface reflectance: Predicting daily Landsat surface reflectance</em>. IEEE Transactions on Geoscience and Remote sensing, 44(8), 2207-2218. <a href="https://doi.org/10.1109/tgrs.2006.872081">https://doi.org/10.1109/tgrs.2006.872081</a></p>
+<p>Gascon, F., Bouzinac, C., Thépaut, O., Jung, M., Francesconi, B., Louis, J., Lonjou, V., Lafrance, B., Massera, S., Gaudel-Vacaresse, A., Languille, F., Alhammoud, B., Viallefont, F., Pflug, B., Bieniarz, J., Clerc, S., Pessiot, L., Trémas, T., Cadau, E., … Fernandez, V. (2017). <em>Copernicus Sentinel-2A Calibration and Products Validation Status</em>. Remote Sensing, 9(6), 584. <a href="https://doi.org/10.3390/rs9060584">https://doi.org/10.3390/rs9060584</a></p>
+<p>Griffiths, P., van der Linden, S., Kuemmerle, T., &amp; Hostert, P. (2013). <em>A pixel-based Landsat compositing algorithm for large area land cover mapping</em>. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 6(5), 2088-2101. <a href="https://doi.org/10.1109/jstars.2012.2228167">https://doi.org/10.1109/jstars.2012.2228167</a></p>
+<p>Gorelick, N., Hancher, M., Dixon, M., Ilyushchenko, S., Thau, D., &amp; Moore, R. (2017). <em>Google Earth Engine: Planetary-scale geospatial analysis for everyone</em>. Remote Sensing of Environment, 202, 18–27. <a href="https://doi.org/10.1016/j.rse.2017.06.031">https://doi.org/10.1016/j.rse.2017.06.031</a></p>
+<p>Jensen, J. R. (2000). <em>Remote sensing of the environment: An earth resource perspective Prentice Hall</em>. Upper Saddle River (NJ), USA. <a href="https://www.pearson.com/en-us/subject-catalog/p/remote-sensing-of-the-environment-an-earth-resource-perspective/P200000006978/9780131889507">SOURCE</a></p>
+<p>Julien, Y., &amp; Sobrino, J. A. (2019). <em>Optimizing and comparing gap-filling techniques using simulated NDVI time series from remotely sensed global data</em>. International Journal of Applied Earth Observation and Geoinformation, 76, 93-111. <a href="https://doi.org/10.1016/j.jag.2018.11.008">https://doi.org/10.1016/j.jag.2018.11.008</a></p>
+<p>Latte, N., &amp; Lejeune, P. (2020).* PlanetScope Radiometric Normalization and Sentinel-2 Super-Resolution (2.5 m): A Straightforward Spectral-Spatial Fusion of Multi-Satellite Multi-Sensor Images Using Residual Convolutional Neural Networks*. Remote Sensing, 12(15), 2366. <a href="https://doi.org/10.3390/rs12152366">https://doi.org/10.3390/rs12152366</a></p>
+<p>Potapov, P., Turubanova, S., &amp; Hansen, M. C. (2011). <em>Regional-scale boreal forest cover and change mapping using Landsat data composites for European Russia</em>. Remote Sensing of Environment, 115(2), 548-561. <a href="https://doi.org/10.1016/j.rse.2010.10.001">https://doi.org/10.1016/j.rse.2010.10.001</a></p>
+<p>Qiu, S., Zhu, Z., &amp; He, B. (2019). <em>Fmask 4.0: Improved cloud and cloud shadow detection in Landsats 4–8 and Sentinel-2 imagery</em>. Remote Sensing of Environment, 231, 111205. <a href="https://doi.org/10.1016/j.rse.2019.05.024">https://doi.org/10.1016/j.rse.2019.05.024</a></p>
+<p>Richter, R., Kellenberger, T., &amp; Kaufmann, H. (2009). <em>Comparison of topographic correction methods</em>. Remote Sensing, 1(3), 184-196. <a href="https://doi.org/10.3390/rs1030184">https://doi.org/10.3390/rs1030184</a></p>
+<p>Roerink, G. J., Menenti, M., &amp; Verhoef, W. (2000). <em>Reconstructing cloudfree NDVI composites using Fourier analysis of time series</em>. International Journal of Remote Sensing, 21(9), 1911-1917. <a href="https://doi.org/10.1080/014311600209814">https://doi.org/10.1080/014311600209814</a></p>
+<p>Roy, D. P., Ju, J., Kline, K., Scaramuzza, P. L., Kovalskyy, V., Hansen, M., Loveland, T. R., Vermote, E., &amp; Zhang, C. (2010). <em>Web-enabled Landsat Data (WELD): Landsat ETM+ composited mosaics of the conterminous United States</em>. Remote Sensing of Environment, 114(1), 35-49. <a href="https://doi.org/10.1016/j.rse.2009.08.011">https://doi.org/10.1016/j.rse.2009.08.011</a></p>
+<p>Saunier, S., Louis, J., Debaecker, V., Beaton, T., Cadau, E. G., Boccia, V., &amp; Gascon, F. (2019). <em>Sen2like, A Tool To Generate Sentinel-2 Harmonised Surface Reflectance Products - First Results with Landsat-8</em>. IGARSS 2019 - 2019 IEEE International Geoscience and Remote Sensing Symposium. <a href="https://doi.org/10.1109/igarss.2019.8899213">https://doi.org/10.1109/igarss.2019.8899213</a></p>
+<p>Saunier, S., Pflug, B., Lobos, I. M., Franch, B., Louis, J., De Los Reyes, R., Debaecker, V., Cadau, E. G., Boccia, V., Gascon, F., &amp; Kocaman, S. (2022). <em>Sen2Like: Paving the Way towards Harmonization and Fusion of Optical Data</em>. Remote Sensing, 14(16), 3855. <a href="https://doi.org/10.3390/rs14163855">https://doi.org/10.3390/rs14163855</a></p>
+<p>Schill, S. R., Jensen, J. R., Raber, G. T., &amp; Porter, D. E. (2004). <em>Temporal modeling of bidirectional reflection distribution function (BRDF) in coastal vegetation</em>. GIScience &amp; Remote Sensing, 41(2), 116-135. <a href="https://doi.org/10.2747/1548-1603.41.2.116">https://doi.org/10.2747/1548-1603.41.2.116</a></p>
+<p>Schmidt, G., Jenkerson, C. B., Masek, J., Vermote, E., &amp; Gao, F. (2013). <em>Landsat ecosystem disturbance adaptive processing system (LEDAPS) algorithm description</em>. Open-File Report. <a href="https://doi.org/10.3133/ofr20131057">https://doi.org/10.3133/ofr20131057</a></p>
+<p>Schott, J. R., Salvaggio, C., &amp; Volchok, W. J. (1988). <em>Radiometric scene normalization using pseudoinvariant features</em>. Remote Sensing of Environment, 26(1), 1-16. <a href="https://doi.org/10.1016/0034-4257(88)90116-2">https://doi.org/10.1016/0034-4257(88)90116-2</a></p>
+<p>Skakun, S., Wevers, J., Brockmann, C., Doxani, G., Aleksandrov, M., Batič, M., Frantz, D., Gascon, F., Gómez-Chova, L., Hagolle, O., López-Puigdollers, D., Louis, J., Lubej, M., Mateo-García, G., Osman, J., Peressutti, D., Pflug, B., Puc, J., Richter, R., … Žust, L. (2022). Cloud Mask Intercomparison eXercise (CMIX): <em>An evaluation of cloud masking algorithms for Landsat 8 and Sentinel-2</em>. Remote Sensing of Environment, 274, 112990. <a href="https://doi.org/10.1016/j.rse.2022.112990">https://doi.org/10.1016/j.rse.2022.112990</a></p>
+<p>Song, C., Huang, B., &amp; You, S. (2012). C<em>omparison of three time-series NDVI reconstruction methods based on TIMESAT</em>. 2012 IEEE International Geoscience and Remote Sensing Symposium. <a href="https://doi.org/10.1109/igarss.2012.6351057">https://doi.org/10.1109/igarss.2012.6351057</a></p>
+<p>Tarrio, K., Tang, X., Masek, J. G., Claverie, M., Ju, J., Qiu, S., Zhu, Z., &amp; Woodcock, C. E. (2020). <em>Comparison of cloud detection algorithms for Sentinel-2 imagery</em>. Science of Remote Sensing, 2, 100010. <a href="https://doi.org/10.1109/igarss.2012.6351057">https://doi.org/10.1016/j.srs.2020.100010</a></p>
+<p>Vermote, E., Roger, J. C., Franch, B., &amp; Skakun, S. (2018, July). <em>LaSRC (Land Surface Reflectance Code): Overview, application and validation using MODIS, VIIRS, LANDSAT and Sentinel 2 data’s</em>. In IGARSS 2018-2018 IEEE International Geoscience and Remote Sensing Symposium (pp. 8173-8176). IEEE. <a href="https://doi.org/10.1109/igarss.2018.8517622">https://doi.org/10.1109/igarss.2018.8517622</a></p>
+<p>Zhu, X., Chen, J., Gao, F., Chen, X., &amp; Masek, J. G. (2010). <em>An enhanced spatial and temporal adaptive reflectance fusion model for complex heterogeneous regions</em>. Remote Sensing of Environment, 114(11), 2610–2623. <a href="https://doi.org/10.1016/j.rse.2010.05.032">https://doi.org/10.1016/j.rse.2010.05.032</a></p>
+<p>Zhu, Z., Woodcock, C. E., Holden, C., &amp; Yang, Z. (2015). G<em>enerating synthetic Landsat images based on all available Landsat data: Predicting Landsat surface reflectance at any given time</em>. Remote Sensing of Environment, 162, 67-83. <a href="https://doi.org/10.1016/j.rse.2015.02.009">https://doi.org/10.1016/j.rse.2015.02.009</a></p>
+<p>Zhu, Z., &amp; Woodcock, C. E. (2012). <em>Object-based cloud and cloud shadow detection in Landsat imagery</em>. Remote Sensing of Environment, 118 (15), 83-94. <a href="https://doi.org/10.1016/j.rse.2011.10.028">https://doi.org/10.1016/j.rse.2011.10.028</a></p>
+<p>Zhu, Z., &amp; Woodcock, C. E. (2014). A<em>utomated cloud, cloud shadow, and snow detection in multitemporal Landsat data: An algorithm designed specifically for monitoring land cover change</em>. Remote Sensing of Environment, 152, 217-234. <a href="https://doi.org/10.1016/j.rse.2014.06.012">https://doi.org/10.1016/j.rse.2014.06.012</a></p>
+<p><em>Data Fusion - combine satellite datasets to unlock new possibilities!</em> by Maxim Lamare. <a href="https://medium.com/sentinel-hub">Sentinel Hub Blog</a>. Access: 31.08.2023. <a href="https://medium.com/sentinel-hub/data-fusion-combine-satellite-datasets-to-unlock-new-possibilities-26356c481169">https://medium.com/sentinel-hub/data-fusion-combine-satellite-datasets-to-unlock-new-possibilities-26356c481169</a></p>
+<h2 id="next-unit">Next unit</h2>
+<p>Proceed with <a href="../04_multitemporal_classification/04_multitemporal_classification.html">Multitemporal classification</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../02_temporal_information/02_temporal_information_exercise.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Exercise">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Exercise
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="03_image_processing_exercise.html" class="md-footer__link md-footer__link--next" aria-label="Next: Exercise">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Exercise
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+	
+    <div class="md-copyright__highlight">
+		<a href="https://erasmus-plus.ec.europa.eu/projects/search/details/2020-1-CZ01-KA203-078308" title="EU Project Page">
+			<img src="../../assets/img/flag_eu.jpg" }} alt="flag of the European Union" style="height:50px; float:left; margin-right:15px; margin-bottom:15px;">
+		</a>
+		<p style="font-family:Arial">
+			Funded by the Erasmus+ Programme<br>of the European Union.
+		</p>
+	</div><br>
+	<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+		<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+	</a>
+	<p>
+		Except when explicitly stated otherwise, the course is licensed under the 
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+		license, associated code is licensed under the
+		<a href="https://choosealicense.com/licenses/mit/">MIT</a>
+		license.
+	</p>
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.highlight", "content.code.copy", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/javascripts/quiz_evaluation.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,3790 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This is the first theme within the Satellite Multispectral Images Time Series Analysis module.">
+      
+      
+      
+      
+        <link rel="prev" href="../module2.html">
+      
+      
+        <link rel="next" href="01_multispectral_principles_exercise.html">
+      
+      
+      <link rel="icon" href="../../assets/img/logo_etrainee.svg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
+    
+    
+      
+        <title>Principles of multispectral imaging - E-TRAINEE Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.10ba22f1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#principles-of-multispectral-imaging" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-header__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            E-TRAINEE Course
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Principles of multispectral imaging
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-nav__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    E-TRAINEE Course
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module0/module0.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prerequisites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Module 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/module1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principles of remote sensing time series
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Large time series datasets in remote sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/03_time_series_analysis_based_on_classification/03_time_series_analysis_based_on_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series analysis based on classification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/04_trajectory-based_analysis/04_trajectory_based_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trajectory-based analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/05_spatio_temporal_data_fusion/05_spatio-temporal_data_fusion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spatio-temporal data fusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reference data, validation and accuracy assessment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Module 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of multispectral imaging
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of multispectral imaging
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="01_multispectral_principles.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#visual-interpretation-of-satellite-data-concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual interpretation of satellite data concept
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spectral-ranges-in-the-optical-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spectral ranges in the optical domain
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-of-different-ranges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use of different ranges
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spectral-indices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spectral indices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transformations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selected-sensor-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selected sensor characteristics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advantages-and-limitations-of-satellite-multispectral-imaging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advantages and limitations of satellite multispectral imaging
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multispectral-satellite-data-archives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multispectral satellite data archives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-evaluation-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-evaluation quiz
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-references-recommended-reading-looking-up-background-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key references (recommended reading, looking up background details)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-references-cited-in-this-theme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional references cited in this theme
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next unit
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_multispectral_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal information in satellite data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal information in satellite data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_temporal_information/02_temporal_information.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_temporal_information/02_temporal_information_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Image processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Image processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_image_processing/03_image_processing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_image_processing/03_image_processing_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Multitemporal classification
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Multitemporal classification
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_multitemporal_classification/04_multitemporal_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_multitemporal_classification/04_multitemporal_classification_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vegetation change and disturbance detection
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Vegetation change and disturbance detection
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_vegetation_monitoring/05_vegetation_monitoring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_vegetation_monitoring/05_vegetation_monitoring_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_cs_tundra_grasslands/06_cs_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_cs_forest_changes/07_cs_forest_changes.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Effects of pollution in Ore Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_cs_disturbance_detection/08_cs_disturbance_detection.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Forest disturbance detection (Tatra Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Module 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/module3.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of 3D/4D geographic point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of 3D/4D geographic point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/01_pointcloud_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/exercise/m3_theme1_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Programming for point cloud analysis with Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Programming for point cloud analysis with Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/02_pointcloud_programming_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/exercise/m3_theme2_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles and basic algorithms of 3D change detection and analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Principles and basic algorithms of 3D change detection and analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/03_3d_change_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/exercise/m3_theme3_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Time series analysis of 3D point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Time series analysis of 3D point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/04_3d_timeseries_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/exercise/m3_theme4_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning-based 3D/4D point cloud analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning-based 3D/4D point cloud analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/05_pointcloud_machine_learning/05_pointcloud_machine_learning.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_rockglacier/06_casestudy_rockglacier.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D change analysis at an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_sandybeach/06_casestudy_sandybeach.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series-based change analysis of sandy beach dynamics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Module 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/module4.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of imaging and laboratory spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of imaging and laboratory spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Airborne hyperspectral data acquisition and pre-processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Airborne hyperspectral data acquisition and pre-processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing_exercise_geometric.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    In situ and laboratory spectroscopy of vegetation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            In situ and laboratory spectroscopy of vegetation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_navig.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_spectra_probe_sphere_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning in imaging spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning in imaging spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal vs. spatial and spectral resolution
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal vs. spatial and spectral resolution
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/05_specific_resolution_contribution/05_specific_resolution_contribution.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/08_spectral_separability_grass/08_spectral_separability_grass.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal spectral separability of grass species (Krkonoše Mts.)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Discrimination of grass species from time series of RPAS hyperspectral imagery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/07_flood_plain_forest/07_flood_plain_forest.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal dynamics of flood-plain forests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_cloudcompare.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudCompare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_enmap_box.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EnMAP-Box
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_qgis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QGIS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_r_language.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_gee.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Earth Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Use Cases and Data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Use Cases and Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://doi.org/10.5281/zenodo.10003574" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data download
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_rockglacier_ahk.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D point clouds of an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_beach_kijkduin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4D point clouds of a sandy beach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_forests_tatras.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vegetation disturbance detection in Polish-Slovak Tatra Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_tundra_karkonosze.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_grasses_krkonose.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tundra vegetation monitoring in Krkonoše Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_ore_mts_disturbance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Forest disturbances in Ore Mountains (Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://web.natur.cuni.cz/gis/etrainee/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About the project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://forms.gle/Cz1yxJv2DDNz83j68" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback form
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#visual-interpretation-of-satellite-data-concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual interpretation of satellite data concept
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spectral-ranges-in-the-optical-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spectral ranges in the optical domain
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-of-different-ranges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use of different ranges
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spectral-indices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spectral indices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transformations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selected-sensor-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selected sensor characteristics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advantages-and-limitations-of-satellite-multispectral-imaging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advantages and limitations of satellite multispectral imaging
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multispectral-satellite-data-archives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multispectral satellite data archives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-evaluation-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-evaluation quiz
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-references-recommended-reading-looking-up-background-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key references (recommended reading, looking up background details)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-references-cited-in-this-theme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional references cited in this theme
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next unit
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+
+                  
+
+  
+  
+
+
+<h1 id="principles-of-multispectral-imaging">Principles of multispectral imaging</h1>
+<p>Before we move on to time series analysis we will generally introduce the topic of <strong>multispectral satellite data properties</strong>. We acknowledge that multispectral imagery can also be acquired with aerial and UAV platforms. However, since this module covers satellite data level of acquisition we will focus only on this type of data. We will present the potential of these satellite images in environmental applications.</p>
+<p>In this theme, you will learn about:</p>
+<ul>
+<li><strong><a href="#visual-interpretation-of-satellite-data-concept">visual interpretation of satellite data</a></strong></li>
+<li><strong><a href="#spectral-ranges-in-the-optical-domain">the concept of multispectral data</a></strong></li>
+<li><strong><a href="#use-of-different-ranges">use of different ranges</a></strong></li>
+<li><strong><a href="#spectral-indices">spectral indices and transformations</a></strong></li>
+<li><strong><a href="#selected-sensor-characteristics">selected sensor characteristics</a></strong></li>
+<li><strong><a href="#advantages-and-limitations-of-satellite-multispectral-imaging">advantages and limitations of satellite multispectral imaging</a></strong></li>
+<li><strong><a href="#multispectral-satellite-data-archives">multispectral satellite data archives</a></strong></li>
+</ul>
+<p>This theme will conclude with:</p>
+<ul>
+<li><strong><a href="#self-evaluation-quiz">Self-evaluation quiz</a></strong></li>
+<li><strong><a href="#references">References</a></strong></li>
+</ul>
+<p>To consolidate your knowledge and test it in a more practical environment complete the <strong><a href="01_multispectral_principles_exercise.html">Exercise</a></strong>.</p>
+<p>After finishing this theme you will:</p>
+<ul>
+<li>gain knowledge of the spatial and spectral resolution in the context of satellite data</li>
+<li>understand how to visually interpret satellite images based on more or less complex features (e.g. tone/brightness, size, texture, shadows, phenology)</li>
+<li>learn about the use of specific spectral ranges and RGB compositions to observe and analyze different phenomena</li>
+<li>understand how to calculate, differentiate, and use selected spectral indices and data transformation techniques like Tasseled Cap (TC) and Principal Component Analysis (PCA) for dealing with multispectral data</li>
+<li>gain familiarity with various satellite multispectral sensors and their specific applications in remote sensing research</li>
+<li>discover the advantages and limitations of satellite multispectral imaging for diverse fields of study</li>
+<li>know the increasing availability and variety of satellite data archives and their relevance for various applications</li>
+</ul>
+<h2 id="visual-interpretation-of-satellite-data-concept">Visual interpretation of satellite data concept</h2>
+<p>Image data can be analyzed based on their <strong>resolutions</strong>. In the context of satellite data, we consider four types of resolution: spatial, spectral, radiometric, and fixed temporal. We will discuss the last in more detail in <a href="../02_temporal_information/02_temporal_information.html"><strong>Theme 2</strong></a>, while the others will be covered in this Theme.</p>
+<p>Starting with the visual interpretation of satellite images, they can be grouped hierarchically, with respect to the degree of complexity (<a href="https://op.europa.eu/en/publication-detail/-/publication/6a5a57d8-d7af-4947-9074-609e792ffaad">European Commission, 1994</a>, <a href="https://doi.org/10.1201/9780429506482">Chuvieco, 2020</a>). At the most basic level, <strong>tone/brightness</strong> and <strong>color</strong> are the most intuitive factors for visual interpretation. Following these, spatial characteristics such as the <strong>size</strong>, <strong>form (shape)</strong>, and <strong>texture (spatial heterogeneity)</strong> of identified objects are considered. More complex factors include <strong>spatial patterns</strong> or <strong>shadows</strong>, which are connected with the <strong>height</strong> of objects. Finally, <strong>phenology</strong> is considered the most challenging to capture visually, since it is influenced by seasonal and interannual variations in climate. This requires a deep understanding of the biological and ecological processes at play, as well as the ability to interpret subtle changes in color and texture that may indicate changes in vegetation health.</p>
+<p>We will discuss <strong>spectral</strong> factors in the following sections, explaining how multispectral data is constructed.</p>
+<h2 id="spectral-ranges-in-the-optical-domain">Spectral ranges in the optical domain</h2>
+<p>Optical remote sensing is based on specific parts of the electromagnetic spectrum, particularly the wavelengths from the visible, near, and shortwave infrared ranges (approximately 0.4-2.5 micrometers <a href="https://doi.org/10.1002/0471723800">Landgrebe, 2003</a>). Specific wavelength ranges can be captured into separate images of the same scene, known as <strong>bands</strong>. Such data is referred to as <strong>multispectral</strong>.</p>
+<p><center></p>
+<p><img src="media/ms_data_concept.png" title="The example of selected Landsat 9 OLI-2 spectral bands (acquired 5.06.2022)." alt="MS data concept" width="800"/></p>
+<p><i>The example of selected Landsat OLI2 spectral bands (acquired 5.06.2022, figure by course authors, Landsat 9 <a href="https://www.usgs.gov/">courtesy of the U.S. Geological Survey</a>/ <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a>).</i>
+</center></p>
+<p>The satellite multispectral data gathering process is based on three interrelated fundamental parameters: <strong>spatial</strong> and <strong>spectral</strong> resolution and <strong>signal-to-noise (S/N) ratio</strong>. The power level of energy in each pixel is divided into the spectral bands. The finer the spatial and spectral resolution, the less power is left to overcome the system sensor noise. This is where the S/N ratio comes into play. The primary objective of remote sensing is to maximize the S/N ratio, ensuring that the recorded signal significantly surpasses the noise, thereby enhancing the quality of the data collected.</p>
+<p>The prerequisite for further quantitative analysis of satellite data in the optical domain is the calibration to spectral radiance, followed by the calculation of reflectance (we describe this in <strong><a href="../03_image_processing/03_image_processing.html"><strong>Theme 3</strong></a></strong>). But qualitatively, we can visually analyze images as described above based on tone/brightness or color.</p>
+<h2 id="use-of-different-ranges">Use of different ranges</h2>
+<p>Various materials have unique reflection and absorption properties of electromagnetic radiation at different wavelengths. Those different characteristics make it possible to use particular spectral ranges for their analysis and target specific phenomena. For instance <strong>band 1</strong> (0.43-0.45 micrometers) from Landsat 8 OLI is particularly useful for <strong>coastal zone</strong> observations due to the way water absorbs and reflects light in this range.</p>
+<p>This dependence on the use of specific bands for specific analyses results from the <strong>number of gray levels</strong> associated with <strong>radiometric</strong> resolution of the data and <strong>brightness</strong> of particular pixels. The greater the variation in the brightness of pixels representing different objects - the more useful the band for analysis. However, the human eye is more sensitive to color variations than brightness variations, which is why <strong>color (multiband) compositions</strong> are often used in the visual interpretation of satellite images.</p>
+<p>Plotting three selected spectral bands together allows for the creation of an <strong>RGB image composition</strong>. While our eyes are most accustomed to compositions based on red, green, and blue bands (part (a) of Figure below), the availability of near and shortwave infrared bands allows us to create false color images (part (b)). Such compositions allow for better discrimination of e.g. deciduous/coniferous forests, healthy/damaged vegetation, and so on.</p>
+<p><center></p>
+<p><img src="media/ms_data_concept_curve.png" title="Multispectral data concept: left: Landsat 9 OLI-2 natural and false colours RGB compositions (a) - 432 and b) 543 bands used), right: spectral curves for selected land cover classes (Note: the reflectance values for specific objects are from a particular time, not general)." alt="Multispectral data concept" width="800"/></p>
+<p><i>Multispectral data concept: left: Landsat OLI2 natural and false colours RGB compositions (a) 432 and b) 543 bands used), right: spectral curves for selected land cover classes (NOTE: the reflectance values for specific objects are from a particular time, not general. Figure by course authors, Landsat 9 courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a>/ <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a>).</i>
+</center></p>
+<p>In multispectral data, the number of bands and their width are crucial factors. Generally, this type of data includes 3 to 10 discrete and rather broad bands (distinguishing them from hyperspectral data, which can include hundreds of very narrow bands, see <strong><a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles.html">Theme 1 of Module 4</a></strong>). The figure below presents the comparison of bandwidths of several Landsat sensors as well as a comparison of multi- and hyperspectral characteristics of healthy plant.</p>
+<p><center></p>
+<p><img src="media/curves.png" title="Differences between Landsat sensors vs hyperspectral data" alt="Multi- vs hyperspectral data" width="600"/></p>
+<p><i>Differences between multispectral vs hyperspectral data, plant spectral characteristics example (each color of the line at the top of the figure corresponds to a specific Landsat sensor band, and the width is approximately proportional to the range of wavelengths that it covers. Figure by course authors).</i>
+</center></p>
+<p>Many spectral bands offer numerous possibilities for analysis (e.g. assessment of leaf pigments or cellular structures of plant as you can see above), however, they can also be correlated, leading to redundancy in gathered information. Therefore, remote sensing offers the possibility to choose the bands that interest us the most. These selected bands can both be used to calculate <strong>spectral indices</strong> and subjected to <strong>transformations</strong>.</p>
+<h2 id="spectral-indices">Spectral indices</h2>
+<p>Different spectral bands allow for creating their combinations called <strong>spectral indices</strong>. Let’s recall what spectral indices are: mathematical measures that compare the spectral reflection in more than one spectral band.</p>
+<p>For multispectral data analysis, both broadband and narrowband indices can be calculated, depending on the sensor used (e.g. <a href="https://www.researchgate.net/publication/259802556_Development_of_an_online_indices_database_Motivation_concept_and_implementation">Henrich et al., 2009</a> listed 249 indices possible to calculate on only Sentinel-2 data! And many others).</p>
+<p>Spectral indices can be dedicated to various objects and their characteristics. Due to the great dynamics of the changes taking place, most indices are related to <strong>vegetation</strong>. There are also indices developed for studying topics such as <strong>snow cover</strong>, <strong>built-up areas</strong>, <strong>rocks and minerals</strong>, and <strong>fire/burnt areas</strong>. You can find the examples of those in <a href="https://www.indexdatabase.de/">Index Database</a> or <a href="https://awesome-ee-spectral-indices.readthedocs.io/en/latest/index.html#">Awesome Spectral Indices</a>.</p>
+<p><center></p>
+<p><img src="media/indices.png" title="Example spectral indices applications." alt="spectral indices" width="400"/></p>
+<p><i>Example spectral indices applications (figure by course authors).</i>
+</center></p>
+<p>Vegetation is one of the most <em>visually dynamic</em> land cover classes during the year and over many years, hence it is one of the most frequently studied objects using spectral indices. Its physiognomy and morphology are expressed in specific values of the reflectance. That, for instance, allows the user to assess whether the plant is healthy, stressed, or dead.</p>
+<p><strong>Normalized Difference Vegetation Index</strong> (NDVI, <a href="https://ntrs.nasa.gov/api/citations/19730017588/downloads/19730017588.pdf">Rouse et al., 1973</a>) is one of the most common vegetation indices, which provides a measure of the general condition of vegetation and biomass. It is also often used in multitemporal analysis, as you will see throughout our course. However, there are also other indices related to:</p>
+<ul>
+<li>water content in plants, e.g. <strong>Normalized Difference Moisture Index</strong> (NDMI, <a href="https://www.asprs.org/wp-content/uploads/pers/1983journal/jan/1983_jan_77-83.pdf">Hardisky et al., 1983</a>),</li>
+<li>chlorophyll content, e.g. <strong>Normalized Pigment Chlorophyll Index</strong> (NPCI, <a href="https://doi.org/10.1080/01431169308954010">Peñuelas et al., 1993</a>),</li>
+<li>light use efficiency, e.g. <strong>Structural Independent Pigment Index</strong> (SIPI, <a href="https://www.researchgate.net/profile/Josep-Penuelas/publication/235645504_Photosyn1995/links/02bfe512443728f376000000/Photosyn1995.pdf">Peñuelas et al., 1994</a>). etc.</li>
+</ul>
+<p><strong>Normalized Burn Ratio</strong> (NBR, <a href="https://doi.org/10.1109/LGRS.2005.858485">Roy et al., 2006</a>) is also frequently used for mapping burned areas.</p>
+<p>As you will see in the next chapter discussing the characteristics of various satellite sensors, they differ in, among others, spectral ranges. The formulas for calculating spectral indices on them are the same, but the correct band must be inserted into the formula. The <strong>Table</strong> below presents the formulas for the above-mentioned indices defined using bands from several selected sensors.</p>
+<div>
+
+<b>Table 1. Selected vegetation indices formulas.</b>
+
+</div>
+
+<table>
+<thead>
+<tr>
+<th>index</th>
+<th>general formula</th>
+<th>Landsat 5-7</th>
+<th>Landsat 8-9</th>
+<th>Sentinel-2</th>
+<th>PlanetScope PSB.SD</th>
+<th>PlanetScope PS2.SD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NDVI</td>
+<td>NIR-RED/NIR+RED</td>
+<td>B4-B3/B4+B3</td>
+<td>B5-B4/B5+B4</td>
+<td>B8-B4/B8+B4</td>
+<td>B8-B6/B8+B6</td>
+<td>B4-B3/B4+B3</td>
+</tr>
+<tr>
+<td>NDMI</td>
+<td>NIR-SWIR/NIR+SWIR</td>
+<td>B4-B5/B4+B5</td>
+<td>B5-B6/B5+B6</td>
+<td>B8-B11/B8+B11</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>NPCI</td>
+<td>RED-BLUE/RED+BLUE</td>
+<td>B3-B1/B3+B1</td>
+<td>B4-B2/B4+B2</td>
+<td>B4-B2/B4+B2</td>
+<td>B6-B2/B6+B2</td>
+<td>B3-B1/B3+B1</td>
+</tr>
+<tr>
+<td>SIPI</td>
+<td>NIR-BLUE/NIR-RED</td>
+<td>B4-B1/B4-B3</td>
+<td>B5-B2/B5-B4</td>
+<td>B8-B2/B8-B4</td>
+<td>B8-B2/B8-B6</td>
+<td>B4-B1/B4-B3</td>
+</tr>
+<tr>
+<td>NBR</td>
+<td>NIR-SWIR/NIR+SWIR</td>
+<td>B4-B7/B4+B7</td>
+<td>B5-B7/B5+B7</td>
+<td>B8-B12/B8+B12</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p><strong>NOTE: some of the indices cannot be calculated on particular satellite data due to the lack of bands from specific ranges (e.g. lack of SWIR bands in PlanetScope data).</strong></p>
+<p>Interestingly, both NDMI and NBR make use of NIR and SWIR bands and the general formula is the same, however, the SWIR band in NBR has a longer wavelength than in the case of NDMI, as you can see below.</p>
+<p><center></p>
+<p><img src="media/nbr_ndmi.png" title="Difference between NDMI and NBR indices" alt="Difference" width="600"/></p>
+<p><i>Difference between the formulas in NDMI and NBR indices (figure by course authors).</i>
+</center></p>
+<p>Spectral indices can be presented on a map to analyze their values on various forms of land cover, but they can also be used as variables:</p>
+<ul>
+<li>increasing the accuracy of classification</li>
+</ul>
+<p>or</p>
+<ul>
+<li>indicating a change in time.</li>
+</ul>
+<p>We will show you examples of their use in the exercises of Themes <a href="../04_multitemporal_classification/04_multitemporal_classification_exercise.html">4</a> and <a href="../05_vegetation_monitoring/05_vegetation_monitoring_exercise.html">5</a>, respectively.</p>
+<p>More about vegetation indices calculated on e.g. multispectral Sentinel-2 data and their applications you can find <a href="http://www.eo4geo.eu/training/sentinel-2-data-and-vegetation-indices/">in this EO4GEO course</a>.</p>
+<h2 id="transformations">Transformations</h2>
+<p>Apart from spectral indices, multispectral data bands can be used to transform into new informative, <strong>uncorrelated</strong> bands. This can be particularly useful when dealing with time series data or when trying to reduce redundancy in the data.</p>
+<p>One of the most well-known transformations is <strong>Tasselled Cap</strong> (TC) producing thematic bands, from which the three most commonly used are <strong>Greenness</strong> (TCG), <strong>Brightness</strong> (TCB), and <strong>Wetness</strong> (TCW). This transformation was introduced for Landsat MSS data crops analysis and its name is because of the shape of phenological trajectories in red-NIR feature space (<a href="(http://docs.lib.purdue.edu/lars_symp?utm_source=docs.lib.purdue.edu%2Flars_symp%2F159&amp;utm_medium=PDF&amp;utm_campaign=PDFCoverPages)">Kauth and Thomas, 1976</a>). TC transformation has since been adapted for newer Landsat sensors and other platforms such as Sentinel-2. The applications have broadened as well. For instance, in forest disturbance detection researchers often use TCW band, which uses the contrast between shortwave and near-infrared, which is a good characteristic of disturbed and regenerating vegetation (<a href="https://doi.org/10.1016/j.rse.2010.07.008">Cohen et al., 2010</a>, we refer to this in <a href="../05_vegetation_monitoring/05_vegetation_monitoring.html"><strong>Theme 5</strong></a>).</p>
+<p>Another transformation is <strong>Principal Component Analysis</strong> (PCA, <a href="https://doi.org/10.1037/h0071325">Hotelling, 1933</a>) which is used for dimensionality reduction or noise removal by maximising the amount of information from original spectral bands by transforming them into a new set of bands, called principal components. They are uncorrelated with each other and ordered by the amount of variance they explain in the original data. The resulting band does not contain spectral information but instead provides a different, statistically most informative quality data.</p>
+<p><center></p>
+<p><img src="media/PCA.png" title="First PCA bands RGB composition (right) and principal components from Landsat 9 OLI-2 (acquired 5.06.2022). You can note that PC7 contains more noise than information." alt="Figure 7" width="500"/></p>
+<p><i>First PCA bands RGB composition (right) and principal components from Landsat OLI2 (acquired 5.06.2022). You can note that PC7 contains more noise than information (figure by course authors, Landsat 9 courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a>/ <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a>).</i>
+</center></p>
+<h2 id="selected-sensor-characteristics">Selected sensor characteristics</h2>
+<p>Over the past decades, the development of remote sensing instruments has been carried out. An extensive database of satellites is provided by <a href="https://www.ucsusa.org/resources/satellite-database">Union of Concerned Scientists (UCS)</a>, where they listed a total number of 6718 operational satellites in orbit around Earth (updated Jan 1, 2023). From over 600 are oriented on Earth Observation and more specifically on multispectral, optical, and infrared imaging as well as Earth science. They are also divided into the user’s classes like government, military, commercial, and civil.</p>
+<p><strong>Table 2</strong> presents the characteristics of selected satellite multispectral sensors most often used in scientific remote sensing research. Temporal information concerning most of them is described in <a href="../02_temporal_information/02_temporal_information.html#temporal-resolution-of-selected-sensors"><strong>Theme 2 of this Module</strong></a>. See also <a href="../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.html#major-earth-observation-missions-data-archives-and-access"><strong>Module 1 Theme 2</strong></a> for different satellites characteristics.</p>
+<div>
+
+<b>Table 2. Selected satellite sensor characteristics.</b>
+
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Satellite</th>
+<th>Sensor</th>
+<th>Abbreviation</th>
+<th>Spectral range (µm)</th>
+<th>Pixel size (m)</th>
+<th>Swath width (km)</th>
+<th>Sources</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aqua</td>
+<td>Moderate Resolution Imaging Spectroradiometer</td>
+<td>MODIS</td>
+<td>VNIR+SWIR (0.40-2.155), TIR (3.66-14.28)</td>
+<td>250-1000</td>
+<td>2330</td>
+<td><a href="https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/modis/">LAADS DAAC</a></td>
+</tr>
+<tr>
+<td>Landsat 1/2/3</td>
+<td>Return Beam Vidicon</td>
+<td>RBV</td>
+<td>VNIR (0.47-0.83)</td>
+<td>80/80/80</td>
+<td>185</td>
+<td><a href="https://www.usgs.gov/landsat-missions/landsat-1">USGS LT1</a><br /> <a href="https://www.usgs.gov/landsat-missions/landsat-2">USGS LT2</a><br /> <a href="https://www.usgs.gov/landsat-missions/landsat-3">USGS LT3</a></td>
+</tr>
+<tr>
+<td>Landsat 1/2/3/4/5</td>
+<td>Multispectral Scanner</td>
+<td>MSS</td>
+<td>VNIR (0.50-1.10)</td>
+<td>80/80/40/80</td>
+<td>185</td>
+<td><a href="https://www.usgs.gov/landsat-missions/landsat-1">USGS LT1</a><br /> <a href="https://www.usgs.gov/landsat-missions/landsat-2">USGS LT2</a><br /> <a href="https://www.usgs.gov/landsat-missions/landsat-3">USGS LT3</a><br /> <a href="https://www.usgs.gov/landsat-missions/landsat-4">USGS LT4</a><br /> <a href="https://www.usgs.gov/landsat-missions/landsat-5">USGS LT5</a></td>
+</tr>
+<tr>
+<td>Landsat 4/5</td>
+<td>Thematic Mapper</td>
+<td>TM</td>
+<td>VNIR+SWIR (0.45-2.35)</td>
+<td>30/30</td>
+<td>185</td>
+<td><a href="https://www.usgs.gov/landsat-missions/landsat-4">USGS LT4</a><br /> <a href="https://www.usgs.gov/landsat-missions/landsat-5">USGS LT5</a></td>
+</tr>
+<tr>
+<td>Landsat 7</td>
+<td>Enhanced Thematic Mapper Plus</td>
+<td>ETM+</td>
+<td>PAN (0.52-0.90), VNIR+SWIR (0.45-2.35), TIR (10.40-12.50)</td>
+<td>15 (PAN), 30 (MS), 60 (TIR)</td>
+<td>185</td>
+<td><a href="https://www.usgs.gov/landsat-missions/landsat-7">USGS LT7</a></td>
+</tr>
+<tr>
+<td>Landsat 8</td>
+<td>Operational Land Imager/</td>
+<td>OLI/TIRS</td>
+<td>PAN (0.50-0.68), VNIR+SWIR (0.43-2.29), TIR (10.60-12.51)</td>
+<td>15 (PAN), 30 (MS), 100 (TIR)</td>
+<td>185</td>
+<td><a href="https://www.usgs.gov/landsat-missions/landsat-8">USGS LT8</a></td>
+</tr>
+<tr>
+<td>Landsat 9</td>
+<td>Operational Land Imager 2</td>
+<td>OLI2</td>
+<td>PAN (0.50-0.68), VNIR+SWIR (0.43-2.29), TIR (10.30-12.50)</td>
+<td>15 (PAN), 30 (MS), 100 (TIR)</td>
+<td>185</td>
+<td><a href="https://www.usgs.gov/landsat-missions/landsat-9">USGS LT9</a></td>
+</tr>
+<tr>
+<td>Pleiades-1</td>
+<td>High-Resolution Imager</td>
+<td>HiRI</td>
+<td>PAN (0.47-0.83), VNIR (0.43-0.94)</td>
+<td>0.5 (PAN), 2 (MS)</td>
+<td>20</td>
+<td><a href="https://www.eoportal.org/satellite-missions/pleiades#pleiades-hr-high-resolution-optical-imaging-constellation-of-cnes">eoPortal</a></td>
+</tr>
+<tr>
+<td>PlanetScope</td>
+<td>PS2, PS2.SD, PSB.SD</td>
+<td>-</td>
+<td>VNIR (0.45-0.86)</td>
+<td>3</td>
+<td>24</td>
+<td><a href="https://developers.planet.com/docs/apis/data/sensors/">Planet</a></td>
+</tr>
+<tr>
+<td>RapidEye</td>
+<td>RapidEye Earth-imaging System</td>
+<td>REIS</td>
+<td>VNIR (0.40-0.85)</td>
+<td>5</td>
+<td>77</td>
+<td><a href="https://www.eoportal.org/satellite-missions/rapideye">eoPortal</a></td>
+</tr>
+<tr>
+<td>Sentinel-2</td>
+<td>Multispectral Instrument</td>
+<td>MSI</td>
+<td>VNIR+SWIR (0.44-2.20)</td>
+<td>10-60 (MS)</td>
+<td>290</td>
+<td><a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/msi-instrument">ESA</a></td>
+</tr>
+<tr>
+<td>SPOT 1/2/3</td>
+<td>High Resolution Visible</td>
+<td>HRV</td>
+<td>PAN (0.51-0.73), VNIR (0.50-0.89)</td>
+<td>10 (PAN), 20 (MS)</td>
+<td>60</td>
+<td><a href="https://www.intelligence-airbusds.com/files/pmedia/public/r329_9_spotsatellitetechnicaldata_en_sept2010.pdf">Airbus</a></td>
+</tr>
+<tr>
+<td>SPOT 4</td>
+<td>High Resolution Visible Infrared</td>
+<td>HRVIR</td>
+<td>PAN (0.61-0.68), VNIR+SWIR (0.50-1.75)</td>
+<td>10 (PAN), 20 (MS)</td>
+<td>60</td>
+<td><a href="https://www.intelligence-airbusds.com/files/pmedia/public/r329_9_spotsatellitetechnicaldata_en_sept2010.pdf">Airbus</a></td>
+</tr>
+<tr>
+<td>SPOT 5</td>
+<td>High Resolution Stereoscopic</td>
+<td>HRS</td>
+<td>PAN (0.48-0.70)</td>
+<td>5-10</td>
+<td>120</td>
+<td><a href="https://www.intelligence-airbusds.com/files/pmedia/public/r329_9_spotsatellitetechnicaldata_en_sept2010.pdf">Airbus</a></td>
+</tr>
+<tr>
+<td>SPOT 5</td>
+<td>High Resolution Geometric</td>
+<td>HRG</td>
+<td>PAN (0.48-0.71), VNIR+SWIR (0.50-1.75)</td>
+<td>2.5-5 (PAN), 10-20 (MS)</td>
+<td>60</td>
+<td><a href="https://www.intelligence-airbusds.com/files/pmedia/public/r329_9_spotsatellitetechnicaldata_en_sept2010.pdf">Airbus</a></td>
+</tr>
+<tr>
+<td>SPOT 6/7</td>
+<td>New AstroSat Optical Modular Instrument</td>
+<td>Naomi</td>
+<td>PAN (0.45-0.75), VNIR (0.45-0.89)</td>
+<td>1.5 (PAN), 6 (MS)</td>
+<td>60</td>
+<td><a href="https://www.intelligence-airbusds.com/files/pmedia/public/r329_9_spotsatellitetechnicaldata_en_sept2010.pdf">Airbus</a></td>
+</tr>
+<tr>
+<td>Terra</td>
+<td>Advanced Spaceborne Thermal Emission and Reflection Radiometer</td>
+<td>ASTER</td>
+<td>VNIR+SWIR (0.52-2.43), TIR (8.12-11.65)</td>
+<td>15-30 (MS), 90 (TIR)</td>
+<td>60</td>
+<td><a href="https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/aster-overview/">LAADS DAAC</a></td>
+</tr>
+<tr>
+<td>Terra</td>
+<td>Moderate Resolution Imaging Spectroradiometer</td>
+<td>MODIS</td>
+<td>VNIR+SWIR (0.40-2.155), TIR (3.66-14.28)</td>
+<td>250-1000</td>
+<td>2330</td>
+<td><a href="https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/modis/">LAADS DAAC</a></td>
+</tr>
+<tr>
+<td>QuickBird</td>
+<td>Ball Global Imagery System 2000</td>
+<td>BGIS2000</td>
+<td>PAN (0.45-0.90), VNIR (0.45-0.90)</td>
+<td>0.65-0.73 (PAN), 2.62-2.92 (MS)</td>
+<td>16.8/18</td>
+<td><a href="https://www.satimagingcorp.com/satellite-sensors/quickbird/">Satellite Imaging Corporation</a></td>
+</tr>
+<tr>
+<td>WorldView-2</td>
+<td>WorldView-110 camera</td>
+<td>WV110</td>
+<td>PAN (0.45-0.80), VNIR (0.40-1.04)</td>
+<td>0.46 (PAN), 1.8 (MS)</td>
+<td>16.4</td>
+<td><a href="https://www.satimagingcorp.com/satellite-sensors/worldview-2/">Satellite Imaging Corporation</a></td>
+</tr>
+<tr>
+<td>WorldView-3</td>
+<td>WorldView-110 camera</td>
+<td>WV110</td>
+<td>PAN (0.45-0.80), VNIR+SWIR (0.40-2.36), CAVIS (0.40-2.24)</td>
+<td>0.31 (PAN), 1.24-3.70 (MS), 30 (CAVIS)</td>
+<td>13.1</td>
+<td><a href="https://www.satimagingcorp.com/satellite-sensors/worldview-3/">Satellite Imaging Corporation</a></td>
+</tr>
+<tr>
+<td>WorldView-4</td>
+<td>SpaceView-110 camera</td>
+<td>WV110</td>
+<td>PAN (0.45-0.80), VNIR (0.45-0.92)</td>
+<td>0.31 (PAN), 1.24 (MS)</td>
+<td>13.1</td>
+<td><a href="https://www.satimagingcorp.com/satellite-sensors/geoeye-2/">Satellite Imaging Corporation</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="advantages-and-limitations-of-satellite-multispectral-imaging">Advantages and limitations of satellite multispectral imaging</h2>
+<p>Multiple spectral bands foster a wider range of interpretation and analysis possibilities of objects than in the case of ‘traditional’ RGB photographs. Availability of <strong>red-edge, near-infrared, and mid-infrared</strong> bands significantly strengthens vegetation analyses. The width of the spectral bands is of great importance here, which varies depending on the sensor as mentioned above.</p>
+<p>The temporal regularity of the satellite level of data acquisition greatly enhances the potential of multitemporal analyses. Even that advantage, however, doesn’t prevent the occurrence of a clouded series of images. This phenomenon concerns data collected on request as well.</p>
+<p>Individual mission differences in technical parameters, which are presented in Table 1 above, make it complicated to generalise advantages and disadvantages across the whole satellite data industry. Multispectral data can also be obtained from the airborne or UAV level. Similarly, in recent years, new hyperspectral satellites have appeared (e.g. <a href="https://www.asi.it/en/earth-science/prisma/">PRISMA</a> in 2019 or <a href="https://www.enmap.org/">EnMAP</a> in 2022), but since this Module deals with multispectral satellite data, the information below is limited to such sensor characteristics.</p>
+<p><center></p>
+<p><img src="media/proscons.png" title="Advantages and limitations" alt="Advantages and limitations" width="500"/></p>
+<p><i>Advantages and limitations of satellite multispectral imaging (figure by course authors).</i>
+</center></p>
+<p>More points at the positive side should hint on the promising opportunities for using this data for a wide variety of applications.</p>
+<h2 id="multispectral-satellite-data-archives">Multispectral satellite data archives</h2>
+<p>The wide range of Earth observation missions by various government agencies and private companies means that the <strong>number of available sources with access to satellite data is increasing every year</strong>. The vast amount of information requires that the data be properly catalogued and offered to the end user in as simple a form as possible so that they can easily find the data relevant to the applications and effects they wish to obtain. It also offers access to the computing power to find, process, and analyse multi-temporal (and sometimes multi-sensor) collections in some cases within a single platform. The large data archive services of major national and international government agencies such as NASA or ESA and the major private companies that provide cloud space and computing power are filled with data from many different missions. Smaller archives often offer more specialised data from smaller satellite missions or are processed to a level that allows analysis in selected areas.</p>
+<p>Data available in archives can be divided by several characteristics. Archives offering free access are most often projects of agencies (that own the satellites), universities, and enthusiast communities. Commercially available data are owned by companies that operate private satellites and repositories of data from them. Some of the preprocessed Analysis Ready Data may also sometimes be available for a fee. Commercial parties often offer a free sample of data or a trial plan to get you acquainted with the service. All services may offer tools for <strong>searching, browsing, downloading, processing, and analysing data</strong>. Some offer multiple functionalities simultaneously. Depending on the user’s needs and level of sophistication, they can be operated using a graphical interface or, in some cases, also using a programming console and API. Large fragmentation and multiplicity of possibilities, apart from many advantages of such a solution, also make it necessary to spend time on the selection of appropriate sources, which may require creating multiple accounts in different services and the necessity of learning how to use them.</p>
+<p>The <strong>Table 3</strong> below consists of multiple different purposes and content platforms available in English containing optical satellite imagery. We chose to present archives not related to just one area or mission, albeit those services can be useful for a specific purpose. A short list of such platforms can be found below.</p>
+<div>
+
+<b>Table 3. Selected satellite data platforms.</b>
+
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Company/agency</th>
+<th>Platform (site)</th>
+<th>Description</th>
+<th>Quick links</th>
+<th>Open</th>
+<th>Commercial (free samples)</th>
+<th>Visualize</th>
+<th>Download</th>
+<th>Analysis</th>
+<th>Imagery sources/satellites</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.aboutamazon.com/">Amazon</a></td>
+<td><a href="https://aws.amazon.com/earth/">Amazon Web Services Earth</a></td>
+<td>Cloud computing platform offering various ranges of data and services.</td>
+<td><a href="https://portal.aws.amazon.com/billing/signup?nc2=h_ct&amp;src=header_signup&amp;redirect_url=https%3A%2F%2Faws.amazon.com%2Fregistration-confirmation#/start/email">REGISTRATION</a><br /> <a href="https://signin.aws.amazon.com/signin?redirect_uri=https%3A%2F%2Fus-east-1.console.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26region%3Dus-east-1%26skipRegion%3Dtrue%26src%3Dheader-signin%26state%3DhashArgsFromTB_us-east-1_e67c8d43f6386ce8&amp;client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&amp;forceMobileApp=0&amp;code_challenge=-7EUqosuAN20vM4WJTC2QwD0T0wLzWD8jzd2ATzLvaQ&amp;code_challenge_method=SHA-256">LOGIN</a><br /> <a href="https://aws.amazon.com/getting-started/">GETTING STARTED</a></td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>Sentinel, Landsat, NOAA, SpaceNet, regional datasets.</td>
+<td>One of the largest data providers/cloud computing services available.</td>
+</tr>
+<tr>
+<td><a href="https://www.esa.int/">ESA</a></td>
+<td><a href="https://dataspace.copernicus.eu/">Copernicus Data Space Ecosystem</a></td>
+<td>Platform provides complete, free and open access to Sentinel mission data.</td>
+<td><a href="https://documentation.dataspace.copernicus.eu/Registration.html">REGISTRATION</a><br /> <a href="https://documentation.dataspace.copernicus.eu/Home.html">USER GUIDE</a></td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>Sentinel</td>
+<td>Enables API.</td>
+</tr>
+<tr>
+<td><a href="https://www.maxar.com/">Maxar</a></td>
+<td><a href="https://discover.maxar.com/">Discover</a></td>
+<td>Browser of products collected by Maxar’s satellites.</td>
+<td></td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>WorldView, GeoEye, Quickbird</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.usgs.gov/">USGS</a></td>
+<td><a href="https://earthexplorer.usgs.gov/">EarthExplorer</a></td>
+<td>USGS/NASA platform providing tools to search, browse display, export metadata, and download data from its vast archive consisting of data reaching 75 years back.</td>
+<td><a href="https://ers.cr.usgs.gov/register">REGISTRATION</a><br /> <a href="https://ers.cr.usgs.gov/login?RET_ADDR=https%3A%2F%2Fearthexplorer.usgs.gov%2F">LOGIN</a> <br /> <a href="https://www.usgs.gov/centers/eros/science/earthexplorer-help-index#ERS">HELP</a></td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>Landsat, plus MODIS, ASTER. Also open source datasets provided under collaboration with ISRO (Resourcesat-1 and 2), ESA (Sentinel-2), and some commercial high-resolution satellite data (IKONOS-2, OrbView-3, historical SPOT data)</td>
+<td>Enables Bulk Download with standalone manager. Enables API.</td>
+</tr>
+<tr>
+<td><a href="https://geocento.com/">GeoCento</a></td>
+<td><a href="https://geocento.com/earthimages">Earthimages</a></td>
+<td>Platform for ordering high and very high resolution imagery.</td>
+<td><a href="https://geocento.com/contact">CONTACT</a></td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>Landsat, Sentinel, Worldview, SPOT</td>
+<td>Platform for ordering high and very high resolution imagery.</td>
+</tr>
+<tr>
+<td><a href="https://www.sentinel-hub.com/">Sentinel Hub</a></td>
+<td><a href="https://apps.sentinel-hub.com/eo-browser/">EO Browser</a></td>
+<td>Visualisation, download and simple analysis online platform.</td>
+<td><a href="https://www.sentinel-hub.com/explore/eobrowser/">EXPLORE</a><br /> <a href="https://www.sentinel-hub.com/explore/eobrowser/user-guide/">USER GUIDE</a></td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>Landsat, Sentinel, MODIS, ENVISAT, Proba-V</td>
+<td>Allows for ordering of private satellite imagery.</td>
+</tr>
+<tr>
+<td><a href="https://www.esa.int/">ESA</a></td>
+<td><a href="https://eocat.esa.int/sec/#data-services-area">EO-Cat</a></td>
+<td>Metadata and imagery browser of Earth Observation data acquired by various satellites.</td>
+<td><a href="https://eocat.esa.int/sec/help.html">HELP</a></td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>Envisat, AVHRR, Geosat, JERS-1, Landsat, Proba, Rapideye, Worldview-2</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.airbus.com/en">Airbus</a></td>
+<td><a href="https://www.intelligence-airbusds.com/geostore/">GeoStore</a></td>
+<td>Platform allowing access for specific satellite missions.</td>
+<td><a href="https://account4.intelligence-airbusds.com/account/CreateAccount.aspx?l=en&amp;RelayState=https://www.intelligence-airbusds.com/">REGISTRATION</a><br /> <a href="https://connect4.intelligence-airbusds.com/adfs/ls/?SAMLRequest=rVLBTuMwEP2VyPfUiSmktdpKhQpRiYWKlj3sZTV1ptSSPc56HAp%2FT5ruCrj0tKfRPM978%2Fw0EwbvGj1v056e8E%2BLnLI374h1%2FzAVbSQdgC1rAo%2Bsk9Hr%2BY97rQaFbmJIwQQnvlDOM4AZY7KBRLZcTMXvolLlGNSuqi5hiJUZ4pWpxiNVIKhaFWV1NcaxudgWFyL7iZE75lR0Qh2ducUlcQJKHVQolReXeak2ZamLkVajXyJbdL%2BxBKln7VNqWEtpAhGaNBxYSuicfUEymION25ZrHpjgJdQ7lo6lyOb%2F%2FN4E4tZjXGN8tQafn%2B4%2FFQ%2BHwxkxtr5xeIxG%2BlC3DgfNvpF9z6eqcjDco8fFrQElstXfaK8t1ZZezqe6PQ2xvttsVvnqcb0Rs8lRWfcpxdn%2FcOoxQQ0JvhmdyK9rJqdjeugMLher4Kx5z25D9JDO%2Bz8its53%2FahOEYgtUhJydtL%2Ffp%2BzDw%3D%3D&amp;RelayState=https%3A%2F%2Fwww.intelligence-airbusds.com%2Fuser-login%2F%3Fl%3Den">LOGIN</a><br /> <a href="https://www.intelligence-airbusds.com/en/8714-questions-and-answers">HELP</a></td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>Pleiades, SPOT, DMC</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://about.google">Google</a></td>
+<td><a href="https://cloud.google.com/storage/docs/public-datasets/">Google Cloud Storage</a></td>
+<td>Cloud Storage provides a variety of public datasets that can be accessed by the community and integrated into their applications.</td>
+<td><a href="https://accounts.google.com/signup/v2/webcreateaccount?service=cloudconsole&amp;continue=https%3A%2F%2Fconsole.cloud.google.com%2Ffreetrial%3F_ga%3D2.48750438.1590195550.1652279703-232008209.1604320050&amp;dsh=S1326015960%3A1652353991880874&amp;biz=false&amp;hl=en-GB&amp;flowName=GlifWebSignIn&amp;flowEntry=SignUp&amp;nogm=true">REGISTRATION</a><br /> <a href="https://cloud.google.com/storage/docs/support">HELP</a></td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>Sentinel-2, Landsat</td>
+<td>Enables API.</td>
+</tr>
+<tr>
+<td><a href="http://about.google">Google</a></td>
+<td><a href="https://earth.google.com/web/">Google Earth</a></td>
+<td>Visualisation of the whole globe on many levels of detail.</td>
+<td><a href="https://www.google.pl/intl/pl/earth/resources/">RESOURCES</a></td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td></td>
+<td>Available in the Web browser, and as a stand alone PC and mobile app.</td>
+</tr>
+<tr>
+<td><a href="http://about.google">Google</a></td>
+<td><a href="https://earthengine.google.com/">Google Earth Engine</a></td>
+<td>A planetary-scale platform for Earth science data &amp; analysis.</td>
+<td><a href="https://earthengine.google.com/faq/">FAQ</a> <a href="https://earthengine.google.com/platform/">PLATFORM INFORMATION</a></td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>Landsat, Sentinel, MODIS</td>
+<td>Enables API.</td>
+</tr>
+<tr>
+<td><a href="https://eos.com/">EOS</a></td>
+<td><a href="https://eos.com/landviewer/">Landviewer</a></td>
+<td>Satellite observation imagery tool that allows for on-the-fly searching, processing and getting valuable insights from satellite data.</td>
+<td><a href="https://eos.com/products/landviewer/user-guide/">USER GUIDE</a></td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>Landsat, Sentinel, SPOT, Pleiades</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://www.microsoft.com/">Microsoft</a></td>
+<td><a href="https://planetarycomputer.microsoft.com/">Microsoft Planetary Computer</a></td>
+<td>Data archive platform with expanding functionalities.</td>
+<td><a href="https://planetarycomputer.microsoft.com/docs/overview/about">ABOUT</a></td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>Landsat, Sentinel, ASTER</td>
+<td>Enables API.</td>
+</tr>
+<tr>
+<td><a href="https://www.airbus.com/en">Airbus</a></td>
+<td><a href="https://oneatlas.airbus.com/">OneAtlas</a></td>
+<td>Airbus satellite images and add maps enabled by ordering features.</td>
+<td><a href="https://api.oneatlas.airbus.com/tutorials/t-explore-data/">TUTORIALS</a></td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td></td>
+<td>Enables API.</td>
+</tr>
+<tr>
+<td><a href="https://www.sentinel-hub.com/">Sentinel Hub</a></td>
+<td><a href="https://apps.sentinel-hub.com/sentinel-playground/">Sentinel Playground</a></td>
+<td>A free-to-use web application that allows for rapid online viewing and access to image archives.</td>
+<td><a href="https://www.sentinel-hub.com/explore/sentinelplayground/">INFORMATION</a></td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>Landsat, Sentinel, MODIS</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="self-evaluation-quiz">Self-evaluation quiz</h2>
+<p>After going through the theory in this theme you should now be ready to take on self-evaluation quiz. You should be able to find any answer you have trouble with in the contents above or the additional <a href="#references">references</a> below. Good luck!</p>
+<form name="quiz" action method="post" onsubmit="evaluate_quiz(); return false">
+<!--Question 1-->
+<label for="q_01"> <b>Question 1.</b> Select the visual interpretation factors, ranked from most to least complex: </label><br> <input type="radio" name="q_01">seasonal conditions, brightness, shadows<br> <input type="radio" name="q_01">spatial pattern, size, tone<br> <input type="radio" name="q_01">shadow, form, colour<br> <input type="radio" name="q_01">tone, texture, seasonal conditions<br>
+
+<div id="correct_q_01" hidden="">
+
+spatial pattern, size, tone
+
+</div>
+
+<output id="output_q_01">
+</output>
+
+<br><br>
+
+<!--Question 2-->
+<label for="q_02"> <b>Question 2.</b> What is the main purpose of performing data transformation? </label><br> <input type="radio" name="q_02">dimensionality reduction via selection of spectral bands<br> <input type="radio" name="q_02">creation of new, uncorrelated bands without spectral information<br> <input type="radio" name="q_02">noise removal from shortwave and near infrared bands<br> <input type="radio" name="q_02">creation of new spectral bands<br>
+
+<div id="correct_q_02" hidden="">
+
+creation of new, uncorrelated bands without spectral information
+
+</div>
+
+<output id="output_q_02">
+</output>
+
+<br><br>
+
+<!--Question 3-->
+<label for="q_03"> <b>Question 3.</b> Which satellite data would be most suitable for identifying the roofing of buildings? </label><br> <input type="radio" name="q_03">Landsat 9<br> <input type="radio" name="q_03">World-View-4<br> <input type="radio" name="q_03">Terra MODIS<br> <input type="radio" name="q_03">SPOT 4<br>
+
+<div id="correct_q_03" hidden="">
+
+World-View-4
+
+</div>
+
+<output id="output_q_03">
+</output>
+
+<br><br>
+
+<!--Question 4-->
+<label for="q_04"> <b>Question 4.</b> Which satellite data would be most suitable for land surface temperature analysis throughout Poland? </label><br> <input type="radio" name="q_04">Sentinel-2<br> <input type="radio" name="q_04">Terra MODIS<br> <input type="radio" name="q_04">PlanetScope<br> <input type="radio" name="q_04">SPOT 1<br>
+
+<div id="correct_q_04" hidden="">
+
+Terra MODIS
+
+</div>
+
+<output id="output_q_04">
+</output>
+
+<br><br>
+
+<!--Question 5-->
+<label for="q_05"> <b>Question 5.</b> Spectral indices will <b>NOT</b> help in assessing: </label><br> <input type="radio" name="q_05">water content in plants<br> <input type="radio" name="q_05">water quality<br> <input type="radio" name="q_05">chlorophyll content in water<br> <input type="radio" name="q_05">height of the water table<br>
+
+<div id="correct_q_05" hidden="">
+
+height of the water table
+
+</div>
+
+<output id="output_q_05">
+</output>
+
+<br><br>
+
+<!--Question 6-->
+<label for="q_06"> <b>Question 6.</b> Which multispectral data feature best identifies a damaged plant: </label><br> <input type="radio" name="q_06">narrow spectral bands in the SWIR range<br> <input type="radio" name="q_06">use of VIS and NIR bands<br> <input type="radio" name="q_06">high spatial resolution of the panchromatic image<br> <input type="radio" name="q_06">texture presenting the surroundings of the plant<br>
+
+<div id="correct_q_06" hidden="">
+
+use of VIS and NIR bands
+
+</div>
+
+<output id="output_q_06">
+</output>
+
+<br><br>
+
+<!--Question 7-->
+<label for="q_07"> <b>Question 7.</b> What is the main difference between multi- and hyperspectral data: </label><br> <input type="radio" name="q_07">pixel size<br> <input type="radio" name="q_07">pixel brightness<br> <input type="radio" name="q_07">band width<br> <input type="radio" name="q_07">RGB composition creation<br>
+
+<div id="correct_q_07" hidden="">
+
+band width
+
+</div>
+
+<output id="output_q_07">
+</output>
+
+<br><br>
+
+<output id="output_overall">
+</output>
+
+<input type="submit" value="Submit" style="font-size:14pt"><br><br>
+
+</form>
+<script src="../../assets/javascripts/quiz_evaluation.js"></script>
+
+<h2 id="exercise">Exercise</h2>
+<p><a href="01_multispectral_principles_exercise.html">Proceed with the exercise by going to the next page below or clicking this link</a></p>
+<h2 id="references">References</h2>
+<h3 id="key-references-recommended-reading-looking-up-background-details">Key references (recommended reading, looking up background details)</h3>
+<p>Chuvieco, E. (2020). <em>Fundamentals of satellite remote sensing: An environmental approach</em>. CRC Press. <a href="https://doi.org/10.1201/9780429506482">https://doi.org/10.1201/9780429506482</a></p>
+<h3 id="additional-references-cited-in-this-theme">Additional references cited in this theme</h3>
+<p>Cohen W. B., Yang Z., Kennedy R. (2010). Detecting trends in forest disturbance and recovery using yearly Landsat time series: 2. TimeSync—Tools for calibration and validation, Remote Sensing of Environment, 114(12), 2911-2924. <a href="https://doi.org/10.1016/j.rse.2010.07.008">https://doi.org/10.1016/j.rse.2010.07.008</a></p>
+<p>European Commission, Directorate-General for Environment, Directorate-General for the Information Society and Media, <em>Corine land cover – Technical guide</em>, Publications Office, 1994. <a href="https://op.europa.eu/en/publication-detail/-/publication/6a5a57d8-d7af-4947-9074-609e792ffaad">source</a></p>
+<p>Hardisky, M.A., Klemas, V. (1983). <em>The Influence of Soil Salinity, Growth Form, and LeafMoisture on the Spectral Reflectances of Spartina alterniflora Canopies</em>. Photogramm. Eng, Remote Sensing. <a href="https://www.asprs.org/wp-content/uploads/pers/1983journal/jan/1983_jan_77-83.pdf">source</a></p>
+<p>Henrich, V., Götze, E., Jung, A., Sandow, C., Thürkow, D., &amp; Gläßer, C. (2009, March). <em>Development of an online indices database: Motivation, concept and implementation</em>. In Proceedings of the 6th EARSeL imaging spectroscopy sig workshop innovative tool for scientific and commercial environment applications, Tel Aviv, Israel (pp. 16-18). <a href="https://www.researchgate.net/publication/259802556_Development_of_an_online_indices_database_Motivation_concept_and_implementation">source</a></p>
+<p>Hotelling, H. (1933). <em>Analysis of a complex of statistical variables into principal components</em>. Journal of Educational Psychology, 24(6), 417. <a href="https://doi.org/10.1037/h0071325">https://doi.org/10.1037/h0071325</a></p>
+<p>Kauth, R. J., &amp; Thomas, G. S. (1976). <em>The Tasseled Cap—A Graphic Description of the Spectral-Temporal Development of Agricultural Crops as Seen by Landsat</em>. LARS: Proceedings of the Symposium on Machine Processing of Remotely Sensed Data, West Lafayette, IN: Purdue University, 4B-41-4B-51. <a href="http://docs.lib.purdue.edu/lars_symp?utm_source=docs.lib.purdue.edu%2Flars_symp%2F159&amp;utm_medium=PDF&amp;utm_campaign=PDFCoverPages">source</a></p>
+<p>Landgrebe, D. A. (2003). <em>Signal theory methods in multispectral remote sensing</em> (Vol. 24). John Wiley &amp; Sons. <a href="https://doi.org/10.1002/0471723800">https://doi.org/10.1002/0471723800</a></p>
+<p>Peñuelas, J., Baret, F., &amp; Filella, I. (1995). <em>Semi-empirical indices to assess carotenoids/chlorophyll a ratio from leaf spectral reflectance</em>. Photosynthetica, 31(2), 221-230. <a href="https://www.researchgate.net/profile/Josep-Penuelas/publication/235645504_Photosyn1995/links/02bfe512443728f376000000/Photosyn1995.pdf">source</a></p>
+<p>Peñuelas, J., Filella, I., Biel, C., Serrano, L., &amp; Save, R. (1993). <em>The reflectance at the 950–970 nm region as an indicator of plant water status</em>. International Journal of Remote Sensing, 14(10), 1887-1905. <a href="https://doi.org/10.1080/01431169308954010">https://doi.org/10.1080/01431169308954010</a></p>
+<p>Rouse Jr, J. W., Haas, R. H., Schell, J. A., &amp; Deering, D. W. (1973). <em>Monitoring the vernal advancement and retrogradation (green wave effect) of natural vegetation</em> (No. NASA-CR-132982). <a href="https://ntrs.nasa.gov/api/citations/19730017588/downloads/19730017588.pdf">source</a></p>
+<p>Roy, D. P., Boschetti, L., &amp; Trigg, S. N. (2006). <em>Remote sensing of fire severity: assessing the performance of the normalized burn ratio</em>. IEEE Geoscience and Remote Sensing Letters, 3(1), 112-116. <a href="https://doi.org/10.1109/LGRS.2005.858485">https://doi.org/10.1109/LGRS.2005.858485</a></p>
+<h2 id="next-unit">Next unit</h2>
+<p>Proceed with <a href="../02_temporal_information/02_temporal_information.html">Temporal information in satellite data</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../module2.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Overview
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="01_multispectral_principles_exercise.html" class="md-footer__link md-footer__link--next" aria-label="Next: Exercise">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Exercise
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+	
+    <div class="md-copyright__highlight">
+		<a href="https://erasmus-plus.ec.europa.eu/projects/search/details/2020-1-CZ01-KA203-078308" title="EU Project Page">
+			<img src="../../assets/img/flag_eu.jpg" }} alt="flag of the European Union" style="height:50px; float:left; margin-right:15px; margin-bottom:15px;">
+		</a>
+		<p style="font-family:Arial">
+			Funded by the Erasmus+ Programme<br>of the European Union.
+		</p>
+	</div><br>
+	<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+		<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+	</a>
+	<p>
+		Except when explicitly stated otherwise, the course is licensed under the 
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+		license, associated code is licensed under the
+		<a href="https://choosealicense.com/licenses/mit/">MIT</a>
+		license.
+	</p>
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.highlight", "content.code.copy", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/javascripts/quiz_evaluation.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,3675 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This is the second theme within the Airborne Imaging Spectroscopy Time Series Analysis module.">
+      
+      
+      
+      
+        <link rel="prev" href="../01_spectroscopy_principles/01_spectroscopy_principles_exercise.html">
+      
+      
+        <link rel="next" href="02_aerial_acquisition_preprocessing_exercise_geometric.html">
+      
+      
+      <link rel="icon" href="../../assets/img/logo_etrainee.svg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
+    
+    
+      
+        <title>E-TRAINEE: Airborne hyperspectral data acquisition and pre-processing - E-TRAINEE Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.10ba22f1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#airborne-hyperspectral-data-acquisition-and-pre-processing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-header__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            E-TRAINEE Course
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              E-TRAINEE: Airborne hyperspectral data acquisition and pre-processing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-nav__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    E-TRAINEE Course
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module0/module0.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prerequisites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Module 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/module1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principles of remote sensing time series
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Large time series datasets in remote sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/03_time_series_analysis_based_on_classification/03_time_series_analysis_based_on_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series analysis based on classification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/04_trajectory-based_analysis/04_trajectory_based_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trajectory-based analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/05_spatio_temporal_data_fusion/05_spatio-temporal_data_fusion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spatio-temporal data fusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reference data, validation and accuracy assessment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Module 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/module2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of multispectral imaging
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of multispectral imaging
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/01_multispectral_principles/01_multispectral_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/01_multispectral_principles/01_multispectral_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal information in satellite data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal information in satellite data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/02_temporal_information/02_temporal_information.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/02_temporal_information/02_temporal_information_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Image processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Image processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/03_image_processing/03_image_processing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/03_image_processing/03_image_processing_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Multitemporal classification
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Multitemporal classification
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/04_multitemporal_classification/04_multitemporal_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/04_multitemporal_classification/04_multitemporal_classification_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vegetation change and disturbance detection
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Vegetation change and disturbance detection
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/05_vegetation_monitoring/05_vegetation_monitoring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/05_vegetation_monitoring/05_vegetation_monitoring_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/06_cs_tundra_grasslands/06_cs_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/07_cs_forest_changes/07_cs_forest_changes.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Effects of pollution in Ore Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/08_cs_disturbance_detection/08_cs_disturbance_detection.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Forest disturbance detection (Tatra Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Module 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/module3.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of 3D/4D geographic point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of 3D/4D geographic point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/01_pointcloud_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/exercise/m3_theme1_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Programming for point cloud analysis with Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Programming for point cloud analysis with Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/02_pointcloud_programming_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/exercise/m3_theme2_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles and basic algorithms of 3D change detection and analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Principles and basic algorithms of 3D change detection and analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/03_3d_change_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/exercise/m3_theme3_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Time series analysis of 3D point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Time series analysis of 3D point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/04_3d_timeseries_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/exercise/m3_theme4_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning-based 3D/4D point cloud analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning-based 3D/4D point cloud analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/05_pointcloud_machine_learning/05_pointcloud_machine_learning.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_rockglacier/06_casestudy_rockglacier.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D change analysis at an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_sandybeach/06_casestudy_sandybeach.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series-based change analysis of sandy beach dynamics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Module 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module4.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of imaging and laboratory spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of imaging and laboratory spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_spectroscopy_principles/01_spectroscopy_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_spectroscopy_principles/01_spectroscopy_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Airborne hyperspectral data acquisition and pre-processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Airborne hyperspectral data acquisition and pre-processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="02_aerial_acquisition_preprocessing.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#planning-airborne-flight-missions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Planning airborne flight missions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Planning airborne flight missions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#field-campaigns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Field campaigns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radiometric-correction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radiometric correction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Radiometric correction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-application-of-radiative-transfer-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Application of radiative transfer models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-empirical-line-correction" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Empirical line correction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-dark-object-subtraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Dark object subtraction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#geometric-correction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Geometric correction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Geometric correction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spectra-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spectra transformations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Spectra transformations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spectra-smoothening-and-denoising" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spectra smoothening and denoising
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Spectra smoothening and denoising">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutorial
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principal-component-analysis-pca" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principal Component Analysis (PCA)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maximum-noise-fraction-mnf" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maximum Noise Fraction (MNF)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spectral-indices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spectral indices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuum-removal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuum removal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-evaluation-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-evaluation quiz
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Self-evaluation quiz">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#next-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next unit
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-literature" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key literature
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#further-articles-referenced-literature-and-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further articles, referenced literature and resources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02_aerial_acquisition_preprocessing_exercise_geometric.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    In situ and laboratory spectroscopy of vegetation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            In situ and laboratory spectroscopy of vegetation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_relating_imagery_lab_vegetation/03_navig.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_relating_imagery_lab_vegetation/03_spectra_probe_sphere_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning in imaging spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning in imaging spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_time_series_specifics/04_time_series_specifics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_time_series_specifics/04_time_series_specifics_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal vs. spatial and spectral resolution
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal vs. spatial and spectral resolution
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_specific_resolution_contribution/05_specific_resolution_contribution.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_spectral_separability_grass/08_spectral_separability_grass.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal spectral separability of grass species (Krkonoše Mts.)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Discrimination of grass species from time series of RPAS hyperspectral imagery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_flood_plain_forest/07_flood_plain_forest.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal dynamics of flood-plain forests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_cloudcompare.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudCompare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_enmap_box.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EnMAP-Box
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_qgis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QGIS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_r_language.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_gee.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Earth Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Use Cases and Data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Use Cases and Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://doi.org/10.5281/zenodo.10003574" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data download
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_rockglacier_ahk.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D point clouds of an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_beach_kijkduin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4D point clouds of a sandy beach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_forests_tatras.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vegetation disturbance detection in Polish-Slovak Tatra Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_tundra_karkonosze.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_grasses_krkonose.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tundra vegetation monitoring in Krkonoše Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_ore_mts_disturbance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Forest disturbances in Ore Mountains (Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://web.natur.cuni.cz/gis/etrainee/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About the project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://forms.gle/Cz1yxJv2DDNz83j68" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback form
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#planning-airborne-flight-missions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Planning airborne flight missions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Planning airborne flight missions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#field-campaigns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Field campaigns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radiometric-correction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radiometric correction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Radiometric correction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-application-of-radiative-transfer-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Application of radiative transfer models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-empirical-line-correction" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Empirical line correction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-dark-object-subtraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Dark object subtraction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#geometric-correction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Geometric correction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Geometric correction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spectra-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spectra transformations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Spectra transformations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spectra-smoothening-and-denoising" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spectra smoothening and denoising
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Spectra smoothening and denoising">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tutorial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutorial
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principal-component-analysis-pca" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principal Component Analysis (PCA)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maximum-noise-fraction-mnf" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maximum Noise Fraction (MNF)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spectral-indices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spectral indices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuum-removal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuum removal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-evaluation-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-evaluation quiz
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Self-evaluation quiz">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#next-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next unit
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-literature" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key literature
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#further-articles-referenced-literature-and-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further articles, referenced literature and resources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+
+                  
+
+  
+  
+
+
+<h1 id="airborne-hyperspectral-data-acquisition-and-pre-processing">Airborne hyperspectral data acquisition and pre-processing</h1>
+<p>Acquisition of airborne hyperspectral (HS) images requires careful flight planning supported by field campaigns. 
+The following preprocessing of data comprises necessary radiometric and geometric corrections. 
+In addition, spectra transformations and filtering can be carried out to reduce data volume and suppress the noise present in the data.</p>
+<h2 id="objectives">Objectives</h2>
+<p>In this theme, you will learn about: </p>
+<ul>
+<li><a href="#planning-airborne-flight-missions">flight planning and in-situ measurements</a> for radiometric and geometric correction of images,</li>
+<li>methods of <a href="#radiometric-correction">radiometric correction</a> of HS images,</li>
+<li><a href="#geometric-correction">geometric correction</a>,</li>
+<li>selected <a href="#spectra-transformations">spectra transformations</a> (e.g., maximum noise fraction, continuum removal, spectral indices), and spectra smoothing and denoising.</li>
+</ul>
+<p>The theme includes an <a href="#exercise">exercise</a>, a <a href="#self-evaluation-quiz">self-evaluation quiz</a>, and a list of <a href="#references">references</a>.</p>
+<p>In the practical exercise, you will carry out geometric correction of images acquired with a Nano-Hyperspec® camera mounted on the DJI Matrice 600 Pro platform.</p>
+<p>After finishing this theme, you will be aware of flight parameter settings and in-situ measurements to be considered for a successful HS flight mission;
+ you will understand the principles of radiometric and geometric correction; and you will be familiar with noise and data volume reduction methods.</p>
+<h2 id="planning-airborne-flight-missions">Planning airborne flight missions</h2>
+<p>Radiometric and geometric quality of acquired images is one of the key factors influencing the success of any application in imaging spectroscopy. 
+Once the decision on the area of interest and required spectral and spatial resolution is made, it is necessary to choose a suitable sensor and platform – spaceborne, airborne, or remotely piloted aircraft system (RPAS)/uncrewed aerial vehicle (UAV). 
+While the orbits and instruments of the spaceborne systems are fixed by their providers, planning of airborne missions is an important part of each use case. 
+The main sensor and platform parameters to be considered for an airborne flight mission are summarised in <em>Table 1</em>. 
+Details on sensor parameters, so called parameters of interior orientation (focal length, lens distortion, and position of the principal point), and parameters of exterior orientation (position of the projection centre and rotations of the sensor in space), can be found in photogrammetric literature (e.g., <a href="#references">Kraus, 2007, Förstner and Wrobel, 2016</a>).</p>
+<p><em>Table 1. Selected sensors and airborne platform parameters to be considered for flight mission planning. For an explanation of sensor types and platforms, visit <a href="../01_spectroscopy_principles/01_spectroscopy_principles.html">Theme 1</a>.</em></p>
+<p align="center">
+<img src="media/table1.jpg" title="Sensor - platform." alt="Table 1" width="600"/>
+</p>
+
+<p>Given the sensor pixel size <em>p<sub>x</sub></em>, focal length <em>c</em>, and the required ground sampling distance <em>GSD</em>, 
+the platform flying height above the terrain <em>h</em> can be calculated as <span class="arithmatex">\(h={{GSD}\over{p_x}} \ c\)</span> 
+, and the absolute flying height above the see level <span class="arithmatex">\(Z = h + Z_{GL}\)</span>, where <em>Z<sub>GL</sub></em> corresponds to the height of the terrain modelled, e.g., from a digital terrain model (DMT). 
+The size of the swath <em>S</em> covered with a line scanner is given by the formula <span class="arithmatex">\(S =  {{h}\over{c}}  \  s\)</span> , and the area covered with a frame camera can be expressed as <span class="arithmatex">\(S \times L \  [m^{2}]\)</span> , where <span class="arithmatex">\(S =  {{h}\over{c}}  \  s\)</span> and <span class="arithmatex">\(L =  {{h}\over{c}}  \  l\)</span>. 
+The relation between the above mentioned parameters is shown in <em>Figure 1</em>.</p>
+<p align="center">
+<img src="media/Fig1_sensors.png" title="Parameter relations." alt="Figure 1" width="600"/>
+</p>
+
+<p><em>Figure 1. Relation between ground sampling distance (GSD), focal length c, flying height above the terrain h, and the area covered on the ground with a linear scanner (left) and a frame camera (right). Figure by course authors.</em></p>
+<p>Other important parameters are exposure time and frame rate (<em>FPS</em>), i.e., the number of scanned lines or frame images acquired per second. 
+They are related – the exposure time must not exceed the frame period <em>FP=1/FPS</em> [s]. 
+<em>Table 2</em> gives an example of calculating image acquisition parameters.</p>
+<p><em>Table 2. Example of calculating selected parameters for image acquisition with a Nano-Hyperspec® line sensor</em></p>
+<p align="center">
+<img src="media/table2.jpg" title="Sensor parameters." alt="Table 2" width="600"/>
+</p>
+
+<p>To cover the whole area of interest with no gaps, the neighbouring strips are flown with a side overlap <em>q</em> of at least 20%-30% of swath <em>S</em>. 
+In the case of frame cameras, a forward overlap p must also be considered (<em>Figure 2</em>). 
+If photogrammetric processing is included, i.e., image orientation based on aerotriangulation and bundle adjustment (<a href="#references">Kraus, 2007</a>), 
+utilising image matching (<a href="#references">Remondino et al., 2014</a>) for the derivation of a digital surface model (DSM), overlap values of <em>p</em> = 60% – 80% and <em>q</em> = 30% - 80% are applied. 
+Smaller values hold for aerial acquisitions with more stable flight control, while larger overlaps are used for RPAS missions.</p>
+<p align="center">
+<img src="media/Fig2_overlap.png" title="Image overlap." alt="Figure 2" width="600"/>
+</p>
+
+<p><em>Figure 2. Side overlap between neighbouring image strips collected with a linear scanner (left); forward overlap and side overlap of images acquired with a frame camera (right). Figure by course authors.</em></p>
+<p>Both open source and proprietary software tools for flight planning are available. 
+Their usability is to a certain extent limited to the used platform (drone manufacturer in the case of RPAS). 
+Due to the dynamic development in this field, a list of the existing software tools is not provided, but you can make your own search based on the key words “drone mission planning software” or “drone flight planner app”. 
+<em>Figure 3</em>  gives a general workflow for airborne HS flight planning.</p>
+<p align="center">
+<img src="media/Fig3_schema.png" title="Flight mission workflow" alt="Figure 3" width="600"/>
+</p>
+
+<p><em>Figure 3. A general workflow for flight mission planning. Figure by course authors.</em></p>
+<p>The parameters of the platforms and sensors that are provided in the respective technical data sheets are either pre-defined by a software provider or can be set by the user. 
+The flight mission planning applications contain graphic tools for drawing an area of interest. Importing a <em><em>.kmz</em> file is usually also possible. 
+Further settings comprise flight-specific parameters such as altitude above the mean sea level and above the ground, GSD, image overlaps, platform velocity, etc. (cf. </em>Figure 4*). 
+Mutually dependent parameters (e.g., GSD and the flying height above the ground) are automatically adjusted after one of them is set up. 
+Based on the setup parameters, a flight route is automatically planned and visualised. 
+The created flight plan can be further optimised regarding, e.g., the starting and landing points, the flight line azimuth, overlap, etc. 
+The final flight plan is then exported and can be uploaded to the flight control system. </p>
+<p>The possibility of following the terrain during the flight is an important feature of the flight control system to be considered for RPAS. 
+It allows for a constant GSD in sloped terrain. 
+On the other hand, it requires a reliable DTM (and information about the height of vegetation and buildings if they are present) to avoid any collisions of the drone. </p>
+<p align="center">
+<img src="media/Fig4_flightPlan.png" title="Flight planning." alt="Figure 4" width="500"/>
+</p>
+
+<p><em>Figure 4. Flight route created in the UgCS drone mission planning software for a Nano-Hyperspec® line camera mounted on the DJI Matrice 600 Pro. 100 m x 100 m plot at the Bílá louka meadow, Krkonoše mountains. Figure by course authors.</em></p>
+<p>It is worth mentioning that the radiometric quality of HS images is of high importance. 
+With respect to the radiometric corrections discussed later in this theme, it is recommended to set the azimuth of the flight lines very close to the current azimuth of the sun. 
+Moreover, the images shall be acquired under stable illumination conditions, i.e., either a clear sky or a homogeneous cloud cover (enabling to perform the flight). </p>
+<p>For more details on planning airborne image data acquisition missions, read the paper by <a href="#references">Pepe et al. (2018)</a>.</p>
+<h3 id="field-campaigns">Field campaigns</h3>
+<p>The goal of field campaigns is to collect data necessary for proper geometric and radiometric correction of the acquired images.</p>
+<p>The ground control points (GCPs) are used for indirect or integrated sensor orientation (for explanation, see the section <a href="#geometric-correction">Geometric correction</a>). 
+Moreover, check points (CPs) are used for an independent check of the horizontal accuracy of a final image product (orthoimage). 
+Both kinds of points are represented by signalised or natural distinct points (see <em>Figure 5</em>), and their position is usually determined using a Global Navigation Satellite System (GNSS) receiver enabling Real-Time Kinematic (RTK) measurements (horizontal accuracy of 1 – 2 cm, vertical accuracy of 3 – 5 cm).</p>
+<p>In-situ spectra of calibration tarps and overselected materials are collected in the field with portable spectroradiometers to improve atmospheric correction of collected data (<em>Figure 5</em>). 
+Moreover, solar irradiation can be measured with sunphotometers. The section <a href="#radiometric-correction">Radiometric correction</a> explains how to use these measurements.</p>
+<p align="center">
+<img src="media/Fig5_VLBetc.jpg" title="Field campaigns" alt="Figure 5" width="500"/>
+</p>
+
+<p><em>Figure 5. Field campaigns supporting the HS image acquisition - signalised ground control points (left), tarp for radiometric calibration (upper right), measurement of reflectance of selected materials with a portable spectroradiometer for atmospheric correction. Photos by course authors.</em></p>
+<h2 id="radiometric-correction">Radiometric correction</h2>
+<p>A raw HS data cube consists of layers of pixels, whose digital numbers (DNs) are related to the intensity of electromagnetic energy (incident on cells of a charge-coupled device (CCD)) within a given narrow interval of wavelengths. 
+DNs do not have any physical unit, and the values are dependent on the processing of the recorded signal of each sensor. 
+In the first step called <em>sensor calibration</em>, the DNs are converted to spectral (at-sensor) radiance <em>L<sup>s</sup></em> [Wm<sup>-2</sup>sr<sup>-1</sup>μm<sup>-1</sup>]. 
+The relation between <em>L</em> and <em>DN</em> is expressed for each sensor’s spectral band <em>b</em> with a linear function <span class="arithmatex">\(L_b^s=G_b DN_b+O_b\)</span>, where <em>G<sub>b</sub></em> and <em>O<sub>b</sub></em> are the slope (gain) and offset, respectively. 
+If the spectral values shall be compared over time with in-situ or laboratory values, further corrections due to variable solar illumination, atmospheric effects, and topography must be considered, as discussed in the theme on satellite image processing workflow in <a href="../../module2/03_image_processing/03_image_processing.html#radiometric-and-geometric-correction">Module 3</a>. 
+The output of radiometric correction is an image whose pixel values represent spectral reflectance at the surface (<em>Figure 6</em>). </p>
+<p align="center">
+<img src="media/Fig6_schema_RC.svg" title="Radiometric correction workflow." alt="Figure 6" width="600"/>
+</p>
+
+<p><em>Figure 6. General workflow for radiometric correction. Figure by course authors.</em></p>
+<p>Before application of the sensor calibration, the dark current must be subtracted from the raw data. 
+The dark current measurement, i.e., collecting data with a covered objective lens, is performed prior to the flight. 
+Corrections for scattered light, frame shift smear, and bad/erroneous pixels are introduced as described, e.g., in <a href="#references">de Miguel et al. (2015)</a> for the CASI sensor. 
+The sensor calibration follows. The gain and offset parameters for each spectral band are determined in the laboratory and shall be regularly recalibrated (as a consequence of sensor aging). </p>
+<p>The water vapour content and the composition and content of aerosols in the atmosphere affect the amount of incident solar radiation and surface reflected radiation captured by the sensor. 
+They can change in time and across larger locations, which can cause problems in image processing, especially in the case of aerial campaigns. 
+Thus, it is always an advantage to perform flights on days when the atmospheric conditions are stable over the area of interest.</p>
+<p>Absorption and scattering are the atmospheric effects we deal with. Molecules in the atmosphere (e.g., water vapor, ozone, and carbon dioxide) absorb incident solar radiation at various wavelengths, as shown in <em>Figure 7</em>. 
+The fraction of the electromagnetic radiation incident on the Earth’s surface to the solar irradiation at the top of the atmosphere is referred to as transmittance of the atmosphere. 
+Particles or large gas molecules redirect the electromagnetic radiation from its original path. The result of this interaction is called scattering. 
+Details on the absorption and scattering mechanisms can be found, e.g., in the <a href="https://natural-resources.canada.ca/maps-tools-publications/satellite-imagery-air-photos/remote-sensing-tutorials/introduction/interactions-atmosphere/14635">CCRS Remote Sensing Tutorial</a> and <a href="#references">Stull (2023)</a>.</p>
+<p align="center">
+<img src="media/Fig7_atm_window.svg" title="Atmosphere transmittance." alt="Figure 7" width="600"/>
+</p>
+
+<p><em>Figure 7. Transmittance of the atmosphere from visible to far infrared spectrum. Figure by <a href="https://commons.wikimedia.org/wiki/File:Atmosfaerisk_spredning-en.svg">Even 2021/Wikipedia</a>, <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0 1.0 Universal</a>.</em></p>
+<p>The radiance in the solar region (0.4 - 2.5 um) collected from flat terrain in the sensor <em>L<sup>s</sup></em> basically consists of the following components (<a href="https://www.rese-apps.com/software/atcor-4-airborne/atcor-4-method.html">ATCOR- 4</a>, <a href="#references">Schowengerdt, 2006</a>; see also <em>Figure 8</em>):</p>
+<div class="arithmatex">\[L^s=L_1^s+L_2^s+L_3^s\]</div>
+<p><span class="arithmatex">\(L_1^s\)</span>: surface reflected radiation<br />
+<span class="arithmatex">\(L_2^s\)</span>: up-scattered path radiance<br />
+<span class="arithmatex">\(L_3^s\)</span>: adjacency radiance (radiation reflected from objects adjacent to the measured surface)</p>
+<p align="center">
+<img src="media/Fig8_LatSensor.png" title="Radiance components." alt="Figure 8" width="300"/>
+</p>
+
+<p><em>Figure 8. Components of measured at-sensor radiance. Figure by course authors.</em></p>
+<p>Depending on the in-situ measurements and available software tools, atmospheric correction can be carried out in the following ways:</p>
+<h4 id="1-application-of-radiative-transfer-models">1. Application of radiative transfer models</h4>
+<p>Radiative Transfer Models (RTM) provide an estimate of the atmospheric effects of absorption and scattering on measured (at-sensor) radiance. 
+There are several algorithms available for atmospheric correction of HS data acquired during airborne missions:</p>
+<ul>
+<li><a href="http://modtran.spectral.com/">MODTRAN®</a> - MODerate resolution atmospheric TRANsmission (Spectral Sciences Int.)  </li>
+<li>6S - Second Simulation of the Satellite Signal in the Solar Spectrum (<a href="#references">Vermote et al., 1997</a>)  </li>
+<li><a href="https://www.rese-apps.com/software/atcor-4-airborne/">Airborne ATCOR®</a> - ATCOR4 (ATmospheric and topographic CORrection)( ReSe Applications GmbH)  </li>
+</ul>
+<p>The amount and composition of atmospheric constituents (aerosols, water vapor) are estimated from in-situ measurements (photometers) or directly from collected data (water vapor bands, aerosol optical thickness retrieval using, e.g., the dark dense vegetation algorithm). Based on the parameters of the atmosphere and the flying height, the transmittance of the atmosphere can be modelled for each wavelength (based on look-up tables generated by the radiative transfer model). 
+Under the assumption of flat terrain, cloud-free conditions, and neglecting the adjacency radiance, 
+the surface reflectance <span class="arithmatex">\(\rho\)</span> can be estimated from the formula <span class="arithmatex">\(L^{s} = L^{s}_{2}  + \rho \tau E_g / \pi\)</span> where <em>L<sup>s</sup></em> is measured at-sensor radiance, <span class="arithmatex">\(\rho\)</span> - reflectance of the surface, <span class="arithmatex">\(\tau\)</span> - transmittance, and <em>E<sub>g</sub></em> – solar irradiance at the surface (sum of direct and scattered solar irradiance). 
+In the final model, correction of the adjacency radiance must be added.</p>
+<p>If in-situ spectrometric measurements (surface reflectance) are available, inflight radiometric calibration (gain and offset for each spectral band) or at-sensor radiance validation can be carried out.</p>
+<p>If flat terrain cannot be assumed, a DTM is a required input in order to correct for topographic effects (<a href="#references">Richter, 1997</a>). Moreover, the Bidirectional Reflectance Distribution Function (BRDF) correction is applied (<a href="#references">Richter and Schläpfer, 2002</a>). 
+In addition, corrections for cirrus cloud or shadow removal can be applied (<a href="#references">Schläpfer et al., 2009</a>).
+A comprehensive evaluation of RTMs for deriving surface reflectance from HS imagery can be found in <a href="#references">Zhou et al. (2023)</a>.</p>
+<h4 id="2-empirical-line-correction">2. Empirical line correction</h4>
+<p>Empirical line correction is based on a linear regression model relating in-situ and image observations (<em>Figure 9</em>). 
+Its use was justified by several authors (e.g., <a href="#references">Baugh and Groeneveld, 2008; Oritz et al., 2017</a>), nevertheless, the combination with RTM models gives better results (<a href="#references">Hadley et al., 2008</a>). 
+In the event that in-situ the dark target measurements are not available, the empirical line passes through the origin (which limits the method in correcting for the effect of transmitted radiation). 
+<em>Figure 10</em> shows an example of corrected spectra using the empirical line method.</p>
+<p align="center">
+<img src="media/Fig9_empirical line.png" title="Empirical line correction." alt="Figure 9" width="300"/>
+</p>
+
+<p><em>Figure 9. Principle of empirical line correction. Figure by course authors.</em></p>
+<h4 id="3-dark-object-subtraction">3. Dark object subtraction</h4>
+<p>This simplest atmospheric correction method is built on the model that the at-sensor radiance <span class="arithmatex">\(L^s\)</span> has just two components - surface radiance <span class="arithmatex">\(L_1^s\)</span> and path radiance <span class="arithmatex">\(L_2^s\)</span>: <span class="arithmatex">\(L^s=L_1^s+L_2^s\)</span>. 
+To model the path radiance, regions of the scene with expected zero surface reflectance (the very darkest objects in the scene) are found. 
+The radiance of pixels corresponding to dark objects is removed from the whole scene. The method is easy to implement and requires no further data. 
+The results may not be reliable as the assumption does not hold for real-life scenarios (<a href="#references">Shi et al., 2016</a>). 
+<a href="#references">Zhen et al. (2022)</a> propose this method for haze removal from HS imagery.</p>
+<p>There are other empirical methods applicable to HS imagery, such as Flat Filed correction or Internal Average Relative Reflectance (for comparison of the methods see <a href="#references">Merzah and Jaber, 2020</a>). 
+Optionally, experience with methods for radiometric correction of hyperspectral imagery acquired from RPAS systems was tested, e.g., <a href="#references">Suomalainen et al. (2021); Schläpfer et al. (2020); Hakala et al. (2018)</a>. </p>
+<p align="center">
+<img src="media/Fig10_Rad_cor.png" title="Atmospheric correction." alt="Figure 10" width="600"/>
+</p>
+
+<p><em>Figure 10. Example of spectra before (up right) and after (down right) atmospheric correction. The image was acquired with a Nano-Hyperspec® line camera mounted on the DJI Matrice 600 Pro with a GSD of 3 cm. The empirical line calibration was carried out based on measurements of a pre-calibrated calibration tarp. Figure by course authors.</em></p>
+<h2 id="geometric-correction">Geometric correction</h2>
+<p>The goal of geometric correction is to compensate for geometric distortions due to perspective projection, changes in the platform altitude, velocity, and rotations, and uneven terrain. 
+It results in an orthorectified image georeferenced in the required reference coordinate system. </p>
+<p>The airborne systems for HS data acquisition are equipped with a GNSS receiver and an inertial measurement unit – IMU (or an inertial navigation system – INS) to determine the platform position and rotation with respect to the reference coordinate system (e.g., WGS84). 
+Such equipment is necessary in the case of a line scanner when each image line has its own parameters of exterior orientation (<a href="#references">Pepe et al., 2018</a>). 
+The method of obtaining the image orientation only from the GNSS/INS measurements is called direct georeferencing (e.g., <a href="#references">Toth and Józków, 2016</a>; see also <em>Figure 11</em>). 
+It can be realized using RTK or post-processing kinematic (PPK) measurements. Its use requires high accuracy of the INS, which makes the whole system costly. To carry out quality assessment, a number of CPs is needed.</p>
+<p align="center">
+<img src="media/Fig11_GNSS_INS.png" title="Direct georeferencing." alt="Figure 11" width="600"/>
+</p>
+
+<p><em>Figure 11. Direct georeferencing of HS images acquired with a line sensor. The triangles correspond to check points. Figure by course authors.</em></p>
+<p>In cases where the GNSS/INS equipment is of lower quality, GCPs are used to improve the georeferencing. 
+Such an approach is called integrated system orientation (ISO, e.g., <a href="#references">Toth and Józków, 2016</a>). 
+Indirect georeferencing is then an approach when the GNSS/INS measurements are not used at all and the image orientation relies only on the GCPs – usually the case of frame cameras. 
+All three methods of image orientation (direct, integrated, and indirect) are described in photogrammetric literature (e.g., <a href="#references">Colomina and Molina, 2014; Kraus, 2007</a>). </p>
+<p>If the accuracy of the GNSS/INS is low, remaining distortions after direct georeferencing and orthorectification in images collected with a line scanner can be in the order of decimetres or meters (<a href="#references">Hruska et al., 2012</a>). 
+Thus, overlapping images do not match, as shown in <em>Figure 12</em>. </p>
+<p align="center">
+<img src="media/Fig12_Geom_cor_Nano.jpg" title="Geometric correction Nano-Hyperspec." alt="Figure 12" width="500"/>
+</p>
+
+<p><em>Figure 12. Geometric correction of an image acquired with a Nano-Hyperspec® line camera mounted on the DJI Matrice 600 Pro. The two overlapping image strips after direct georeferencing and orthorectification (top) and after their rectification into RGB orthoimages acquired with a frame camera Sony A7 ILCE-7 from the same platform (bottom). The correction includes transformation from the WGS84 (EPSG 4326) coordinate system to the national coordinate system S-JTSK (EPSG 5514). Figure by course authors.</em></p>
+<p>A possible solution is the registration of distorted images into another geographical layer with higher accuracy. 
+Orthoimages acquired with a RGB frame camera during the same flight or another flight within a short time interval (a few days) are often used for this purpose (<a href="#references">Suomalainen et al., 2014; Turner et al., 2017; Habib et al., 2016; Angel et al., 2020; Červená et al. 2020</a>). 
+<em>Figure 13</em> depicts a processing workflow for the orientation of images acquired with a line sensor based on fusion with simultaneously acquired images with a frame camera. 
+The images from the frame camera were georeferenced using GCPs and a standard photogrammetric workflow using structure from motion (<a href="#references">Jiang et al., 2020</a>). 
+<em>Table</em> 3 shows that a combined approach brings a considerable improvement to first-step orientation based solely on GNSS/INS.</p>
+<p align="center">
+<img src="media/Fig13.png" title="Geometric correction Nano-Hyperspec." alt="Figure 13" width="500"/>
+</p>
+
+<p><em>Figure 13. Geometric processing of HS imagery acquired with a line sensor supported by simultaneously collected images with a frame camera. Figure by <a href="https://doi.org/10.3390/rs61111013">Suomalainen et al., (2014)</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0 license</a>.</em></p>
+<p><em>Table 3. Comparison of RMSE on CPs after direct georeferencing and orthorectification of a line sensor (basic correction) and after improvement using orthoimages from a frame camera (advanced correction).</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Reference</strong></th>
+<th style="text-align: center;"><strong>GSD [m]</strong></th>
+<th style="text-align: center;"><strong>RMSE [m] basic correction</strong></th>
+<th style="text-align: center;"><strong>RMSE [m] advanced correction</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Angel et al. 2020</td>
+<td style="text-align: center;">0.007</td>
+<td style="text-align: center;">---</td>
+<td style="text-align: center;">0.05 - 0.08</td>
+</tr>
+<tr>
+<td style="text-align: center;">Červená et al. 2020</td>
+<td style="text-align: center;">0.03</td>
+<td style="text-align: center;">1.74</td>
+<td style="text-align: center;">0.19</td>
+</tr>
+<tr>
+<td style="text-align: center;">Habib et al. 2016</td>
+<td style="text-align: center;">0.05</td>
+<td style="text-align: center;">1.42 - 5.09</td>
+<td style="text-align: center;">0.35 - 0.99</td>
+</tr>
+<tr>
+<td style="text-align: center;">Hruska et al. 2012</td>
+<td style="text-align: center;">0.28</td>
+<td style="text-align: center;">4.63</td>
+<td style="text-align: center;">---</td>
+</tr>
+<tr>
+<td style="text-align: center;">Turner et al. 2017</td>
+<td style="text-align: center;">0.02</td>
+<td style="text-align: center;">---</td>
+<td style="text-align: center;">0.03 - 0.06</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exercise">Exercise</h3>
+<p>At this point, you are ready to work on the <a href="02_aerial_acquisition_preprocessing_exercise_geometric.html">exercise</a>. 
+You will improve georeferencing of a HS image (3 cm GSD, for the purpose of the exercise, reduced only to three spectral bands) by its registration into a RGB orthoimage (2cm GSD). 
+The HS image was acquired with a Nano-Hyperspec® line camera mounted on the DJI Matrice 600 Pro georeferenced using onboard GNSS/INS. 
+The RGB images were acquired with the frame camera Sony A7 ILCE-7, georeferenced using the GCPs and structure from motion. 
+The GCPs were signalised and measured with a GNSS/RTK receiver with an accuracy of 2 cm in the horizontal direction and 3 cm in the vertical.</p>
+<h2 id="spectra-transformations">Spectra transformations</h2>
+<p>Due to tge noise present in data and large data volumes, it is practical to carry out further pre-processing steps of radiometrically and geometrically corrected HS imagery before their use for time series statistical analysis or classification. </p>
+<h3 id="spectra-smoothening-and-denoising">Spectra smoothening and denoising</h3>
+<p>Spectral curves collected with an airborne HS sensor contain a relatively high amount of noise due to narrow bandwidth, remaining errors from radiometric correction, etc. (<a href="#references">Vaiphasa, 2006</a>). 
+The collected spectrum <span class="arithmatex">\(s_{0} (\lambda)\)</span> can be then expressed as the sum of true signal <span class="arithmatex">\(s_{t} (\lambda)\)</span> and noise <span class="arithmatex">\(n (\lambda)\)</span>:</p>
+<div class="arithmatex">\[s_{0} (\lambda) = s_{t} (\lambda) +n (\lambda)\]</div>
+<p>The true signal can be estimated by convolution:</p>
+<div class="arithmatex">\[{\widehat s_{t}} (\lambda) = s_{0} (\lambda) *g (\lambda)\]</div>
+<p>where <span class="arithmatex">\({\widehat s}_{t}\)</span> is the estimation of the true signal and <span class="arithmatex">\(g (\lambda)\)</span> is a convolutional, in our case smoothening filter.</p>
+<p>One possibility of signal smoothing is the <strong>moving average</strong> method, when the given spectral value is replaced with a mean or median of <em>L = 2k+1</em> neighbouring values, where <em>k</em> is the number of preceding and following values, respectively, of the evaluated value. 
+<em>Figure 14</em> gives an example of a spectrum smoothed with a mean and a median filter of length <em>L = 5</em>. </p>
+<p align="center">
+<img src="media/Fig14.jpg" title="Spectra smoothening." alt="Figure 14" width="400"/>
+</p>
+
+<p><em>Figure 14. Example of spectrum smoothing using mean and median filters with the size of the convolution window L = 5. The original spectrum of tufted hairgrass was measured with a Nano-Hyperspec® line camera in June 2020. Figure by course authors.</em></p>
+<p>The <strong>Savitzky-Golay filter</strong> discussed in <a href="../../module1/01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.html">Module 1</a> in connection with smoothing time series data is also applied to measured spectra.</p>
+<p>Averaging of neighbouring bands followed by subsampling is applied when both data denoising and reduction are desired. Such procedure was used for the HS dataset from the Krkonoše Mts. tundra (<a href="../../data_usecases/usecase_grasses_krkonose.html">see the dataset description</a>) and <em>Figure 15</em>.</p>
+<p align="center">
+<img src="media/Fig15.jpg" title="Spectra smoothening 2." alt="Figure 15" width="400"/>
+</p>
+
+<p><em>Figure 15. Example of spectrum smoothing using a median filter with the size of the convolution window  L= 5 followed by sampling using the step size 5. The original spectrum of tufted hairgrass was measured with a Nano-Hyperspec® line camera in June 2020. It contained 270 bands that were reduced to 54 bands, taking a median of 5 neighbouring measurements. Figure by course authors.</em></p>
+<h4 id="tutorial">Tutorial</h4>
+<p>To better understand the Moving Average and Savitzky-Golay filters, go to the <a href="filtering_spectral_curve.html">Tutorial on Spectra smoothing and denoising</a>. 
+In a Jupyter Notebook, you can explore their parameters and their influence on the level of spectra smoothing. 
+To understand the consequences of smoothing on measured spectra, read the by study <a href="#references">Vaiphasa, (2006)</a>.</p>
+<h3 id="principal-component-analysis-pca">Principal Component Analysis (PCA)</h3>
+<p>The spectral bands of HS images are highly correlated, as depicted in <em>Figure 16</em>. 
+As explained in <a href="../../module2/01_multispectral_principles/01_multispectral_principles.html#spectral-indices">Module 2</a>, the Principal Component Analysis (PCA) transforms the image into new, uncorrelated bands and gives the possibility to reduce data volume and uncorrelated noise if only components preserving high image variance are used. 
+It shall be noted that small but significant band differences may appear only in the components of low variance, and thus, their removal must be done with caution (<a href="#references">Schowengerdt, 2006</a>).</p>
+<p align="center">
+<img src="media/Fig16_correlation.jpg" title="Measurement correlation." alt="Figure 16" width="400"/>
+</p>
+
+<p><em>Figure 16. Correlation of 391504 spectral measurements of dominating grass species in the Krkonoše Mts. tundra collected with a Nano-Hyperspec® line camera in August 2020. The correlation was calculated both for original spectra containing nb = 270 spectral bands and spectra reduced to nb = 54 bands, taking a median of 5 neighbouring measurements. Notice the corresponding patterns in both parts of the figure. Figure by course authors.</em> </p>
+<h3 id="maximum-noise-fraction-mnf">Maximum Noise Fraction (MNF)</h3>
+<p>Noise in HS images can be effectively removed with the maximum noise fraction (MNF) transformation (<a href="#references">Green et al., 1988</a>). It is a modification of PCA and can improve the isolation of the noisiest bands in a HS image (<a href="#references">Schowengerdt, 2006</a>). 
+The influence of the MNF transformation on the classification accuracy of grass species from time series of HS imagery is part of the case study on <a href="../06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.html">Discrimination of selected grass species from time series of RPAS hyperspectral imagery</a>.</p>
+<h3 id="spectral-indices">Spectral indices</h3>
+<p>A direct comparison of radiometrically corrected surface reflectance in time series is possible. 
+In many cases, the relationship between spectral properties of the studied surface and its physical and chemical properties is known. 
+Thus, instead of studying the whole spectrum, attention can be paid only to selected spectral bands and their combinations. 
+In <a href="../../module2/01_multispectral_principles/01_multispectral_principles.html#spectral-indices">Module 2</a>, the term spectral index was introduced, and some examples of indices used for multispectral data were given. 
+The same approach, i.e., using mathematical operations on measurements from two and more spectral bands to emphasize certain properties of the observed surface can be applied to HS imagery. 
+Thanks to its narrow spectral bands, more details can be inspected. 
+The case study on the <a href="../07_flood_plain_forest/07_flood_plain_forest.html">seasonal dynamics of flood-plain forests</a> gives some examples of indices used in imaging spectroscopy, including their calculation in R. 
+More examples can be found in, e.g., <a href="#references">Roberts et al. (2018); Broge and Mortensen (2002); Envi (2023)</a>.</p>
+<h3 id="continuum-removal">Continuum removal</h3>
+<p>The method of Continuum Removal (CR) is applied to normalise the shape of the spectral curve on selected wavelength intervals. These intervals are characteristic for the phenomenon under study, typically around the absorption bands. 
+<em>Figure 17</em> explains the principle of the method.</p>
+<p align="center">
+<img src="media/Fig17.jpg" title="Continuum removal." alt="Figure 17" width="400"/>
+</p>
+
+<p><em>Figure 17. Principle of the continuum removal method. Original spectrum (left) and the transformed spectrum after continuum removal (right). Figure by <a href="#references">Albrechtová et al. (2017)</a></em></p>
+<p>The end points of the interval on the spectral curve determine the continuum line, and their new value is equal to one. 
+The other transformed reflectance values take values in the interval 0 - 1 and are recalculated as:</p>
+<div class="arithmatex">\[\rho^{'}_{\lambda}  = {{\rho _{\lambda}}\over{\rho _{c(\lambda)}}}\]</div>
+<p>where <span class="arithmatex">\(\rho^{'} _{\lambda}\)</span> is the reflectance value after the CR transformation at wavelength <em>λ</em>, <span class="arithmatex">\(\rho _{\lambda}\)</span> is the original reflectance value at the same wavelength and <span class="arithmatex">\(\rho _{c(\lambda)}\)</span> is the continuum value, 
+i.e., the value at wavelength <em>λ</em> given on the line connecting the points of the selected interval on the reflectance spectral curve (<a href="#references">Kokaly and Clark, 1999</a>). 
+Removing the continuum from a selected part of the spectrum allows for the calculation of the depth of the absorption band or its area. This is used, for example, by the vegetation index ANMB<sub>650-725</sub> 
+(Area under curve Normalized to Maximum Band depth between 650-725 nm, <a href="#references">Malenovský et al., 2006</a>).</p>
+<h2 id="self-evaluation-quiz">Self-evaluation quiz</h2>
+<form name="quiz" action="" method="post" onsubmit="evaluate_quiz(); return false">
+
+<!--Question 1-->
+<label for="q_01">
+When planning a flight mission,
+</label><br>
+<input type="checkbox" name="q_01">no overlap between image lines/strips is necessary.<br>
+<input type="checkbox" name="q_01">overlap is necessary only in the hilly terrain.<br>
+<input type="checkbox" name="q_01">a higher value of overlap is better in hilly terrain than in flat terrain.<br>
+<div hidden id="correct_q_01">a higher value of overlap is better in hilly terrain than in flat terrain.</div>
+<output id="output_q_01"></output><br><br>
+
+<!--Question 2-->
+<label for="q_02">
+If possible, how would you choose the flight azimuth?
+</label><br>
+<input type="checkbox" name="q_02">Perpendicular to the current sun azimuth.<br>
+<input type="checkbox" name="q_02">Close to the current sun azimuth.<br>
+<input type="checkbox" name="q_02">Arbitrary. The relations between the azimuths does not influence the image radiometry.<br>
+<div hidden id="correct_q_02">Close to the current sun azimuth.</div>
+<output id="output_q_02"></output><br><br>
+
+<!--Question 3-->
+<label for="q_03">
+You have a camera with a focal length of 15 mm and a pixel size of 7.5 μm. What flying height above the terrain do you need to plan to achieve the GSD of 5 cm?
+</label><br>
+<input type="checkbox" name="q_03">70 m<br>
+<input type="checkbox" name="q_03">85 m<br>
+<input type="checkbox" name="q_03">100 m<br>
+<div hidden id="correct_q_03">100 m</div>
+<output id="output_q_03"></output><br><br>
+
+<!--Question 4-->
+<label for="q_04">
+Radiometric correction includes:
+</label><br>
+<input type="checkbox" name="q_04">sensor calibration and atmospheric correction.<br>
+<input type="checkbox" name="q_04">sensor calibration.<br>
+<input type="checkbox" name="q_04">atmospheric correction.<br>
+<div hidden id="correct_q_04">sensor calibration and atmospheric correction.</div>
+<output id="output_q_04"></output><br><br>
+
+<!--Question 5-->
+<label for="q_05">
+Which are empirical methods for atmospheric correction?
+</label><br>
+<input type="checkbox" name="q_05">Empirical line and radiative transfer model.<br>
+<input type="checkbox" name="q_05">Empirical line and dark object subtraction.<br>
+<input type="checkbox" name="q_05">Dark object subtraction and radiative transfer model.<br>
+<div hidden id="correct_q_05">Empirical line and dark object subtraction.</div>
+<output id="output_q_05"></output><br><br>
+
+<!--Question 6-->
+<label for="q_06">
+The platform is equipped with a GNSS/INS. At the same time, two GCPs were measured. What kind of georeferencing can you use?
+</label><br>
+<input type="checkbox" name="q_06">Direct georeferencing<br>
+<input type="checkbox" name="q_06">Integrated sensor orientation<br>
+<input type="checkbox" name="q_06">Indirect georeferencing<br>
+<div hidden id="correct_q_06">Direct georeferencing&Integrated sensor orientation</div>
+<output id="output_q_06"></output><br><br>
+
+<input type="submit" value="Submit" style="font-size:14pt"><br><br>
+
+<output id="output_overall">
+</output>
+</form>
+
+<h3 id="next-unit">Next unit</h3>
+<p>Proceed with <a href="../03_relating_imagery_lab_vegetation/03_01_optical_parameters_of_foliage.html">In situ and laboratory spectroscopy of vegetation</a></p>
+<h2 id="references">References</h2>
+<h3 id="key-literature">Key literature</h3>
+<p>Pepe, M., Fregonese, L., Scaioni, M. (2018). Planning airborne photogrammetry and remote-sensing missions with modern platforms and sensors. European Journal of Remote Sensing, 51(1), 412-436. <a href="https://doi.org/10.1080/22797254.2018.1444945">10.1080/22797254.2018.1444945</a>.</p>
+<p>Schläpfer, D., Richter, R., Hueni, A. (2009). Recent developments in operational atmospheric and radiometric correction of hyperspectral imagery. In Proc. 6th EARSeL SIG IS Workshop (pp. 16-19). <a href="https://www.researchgate.net/publication/279261110_Recent_developments_in_operational_atmospheric_and_radiometric_correction_of_hyperspectral_imagery">researchgate.net</a>.</p>
+<p>Habib, A., Han, Y., Xiong, W., He, F., Zhang, Z., Crawford, M. (2016). Automated ortho-rectification of UAV-based hyperspectral data over an agricultural field using frame RGB imagery. Remote Sensing, 8(10), 796. <a href="https://doi.org/10.3390/rs8100796">10.3390/rs8100796</a>.  </p>
+<h3 id="further-articles-referenced-literature-and-resources">Further articles, referenced literature and resources</h3>
+<p>Angel, Y., Turner, D., Parkes, S., Malbeteau, Y., Lucieer, A., McCabe, M. F. (2019). Automated georectification and mosaicking of UAV-based hyperspectral imagery from push-broom sensors. Remote Sensing, 12(1), 34. <a href="https://doi.org/10.3390/rs12010034">10.3390/rs12010034</a>. </p>
+<p>ATCOR-4 (2023): ATCOR 4 - for Airborne Remote Sensing Systems. <a href="https://www.rese-apps.com/software/atcor-4-airborne/index.html">rese-apps.com</a>. </p>
+<p>Baugh, W. M., Groeneveld, D. P. (2008). Empirical proof of the empirical line. International Journal of Remote Sensing, 29(3), 665-672. <a href="https://doi.org/10.1080/01431160701352162">10.1080/01431160701352162</a>.</p>
+<p>Broge, N. H., &amp; Mortensen, J. V. (2002). Deriving green crop area index and canopy chlorophyll density of winter wheat from spectral reflectance data. Remote sensing of environment, 81(1), 45-57. <a href="https://doi.org/10.1016/S0034-4257(01)00332-7">10.1016/S0034-4257(01)00332-7)</a>. </p>
+<p>Canada Centre for Mapping and Earth Observation – Remote Sensing Tutorial. <a href="https://natural-resources.canada.ca/maps-tools-and-publications/satellite-imagery-and-air-photos/tutorial-fundamentals-remote-sensing/9309">natural-resources.canada.ca</a>.</p>
+<p>Albrechtová, J., Kupková, L., Campbell, P. K. (2017). Metody hodnocení fyziologického stavu smrkových porostů: případové studie sledování vývoje stavu smrkových porostů v Krušných horách v letech 1998-2013. Česká geografická společnost. </p>
+<p>Červená, L., Lysák, J., Potůčková, M., Kupková, L. (2020). Zkušenosti se zpracováním hyperspektrálních dat pořízených UAV. GIS Ostrava. <a href="https://doi.org/10.31490/9788024843988-4">10.31490/9788024843988-4</a>. </p>
+<p>Colomina, I., Molina, P. (2014). Unmanned aerial systems for photogrammetry and remote sensing: a review. ISPRS J. Photogramm. Remote Sens. 92, 79–97 <a href="https://doi.org/10.1016/j.isprsjprs.2014.02.013">10.1016/j.isprsjprs.2014.02.013</a>. </p>
+<p>ENVI (2023). Vegetation Indices Background. <a href="https://www.nv5geospatialsoftware.com/docs/backgroundvegetationindices.html">nv5geospatialsoftware.com</a>. </p>
+<p>Förstner, W., Wrobel, B. P. (2016). Photogrammetric computer vision. Springer International Publishing Switzerland.</p>
+<p>Green, A. A., Berman, M., Switzer, P., &amp; Craig, M. D. (1988). A transformation for ordering multispectral data in terms of image quality with implications for noise removal. IEEE Transactions on geoscience and remote sensing, 26(1), 65-74. <a href="https://ieeexplore.ieee.org/document/3001">10.1109/36.3001</a>.</p>
+<p>Hadley, B. C., Garcia-Quijano, M., Jensen, J. R., Tullis, J. A. (2005). Empirical versus model‐based atmospheric correction of digital airborne imaging spectrometer hyperspectral data. Geocarto International, 20(4), 21-28. <a href="https://doi.org/10.1080/10106040508542360">10.1080/10106040508542360</a>.</p>
+<p>Hakala, T. et al. (2018). Direct reflectance measurements from drones: Sensor absolute radiometric calibration and system tests for forest reflectance characterization. Sensors, 18(5), 1417. <a href="https://doi.org/10.3390/s18051417">10.3390/s18051417</a>. </p>
+<p>Hanuš, J., Fabiánek, T., Fajmon, L. (2016). Potential of airborne imaging spectroscopy at CzechGlobe. The International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences, 41, 15-17. <a href="https://doi.org/10.5194/isprs-archives-XLI-B1-15-2016">10.5194/isprs-archives-XLI-B1-15-2016</a>. </p>
+<p>Hruska, R., Mitchell, J., Anderson, M., Glenn, N. F. (2012): Radiometric and Geometric Analysis of Hyperspectral Imagery Acquired from an Unmanned Aerial Vehicle. Remote Sensing. 9, 4, 2736–2752. <a href="https://doi.org/10.3390/rs4092736">10.3390/rs4092736</a>. </p>
+<p>Jiang, S., Jiang, C., Jiang, W. (2020). Efficient structure from motion for large-scale UAV images: A review and a comparison of SfM tools. ISPRS Journal of Photogrammetry and Remote Sensing, 167, 230-251. <a href="https://doi.org/10.1016/j.isprsjprs.2020.04.016">10.1016/j.isprsjprs.2020.04.016</a>. </p>
+<p>Kokaly, R. F., Clark, R. N. (1999). Spectroscopic determination of leaf biochemistry using band-depth analysis of absorption features and stepwise multiple linear regression. Remote sensing of environment, 67(3), 267-287. <a href="https://doi.org/10.1016/S0034-4257(98)00084-4">10.1016/S0034-4257(98)00084-4</a>. </p>
+<p>Kraus, K. (2007).  Photogrammetry: Geometry from Images and Laser Scans. de Gryter, 2nd edition.</p>
+<p>Malenovsky, Z., Ufer, C., Lhotáková, Z., Clevers, J. G., Schaepman, M. E., Albrechtová, J., &amp; Cudlín, P. (2006). A new hyperspectral index for chlorophyll estimation of a forest canopy: Area under curve normalised to maximal band depth between 650-725 nm. EARSeL eProceedings, 5(2), 161-172. <a href="https://library.wur.nl/WebQuery/wurpubs/346566">library.wur.nl</a>.</p>
+<p>Merzah, Z. F.,  Jaber, H. S. (2020). Assessment of Atmospheric Correction Methods for Hyperspectral Remote Sensing Imagery Using Geospatial Techniques. In IOP Conference Series: Materials Science and Engineering (Vol. 745, No. 1, p. 012123). IOP Publishing. <a href="https://iopscience.iop.org/article/10.1088/1757-899X/745/1/012123">10.1088/1757-899X/745/1/012123</a>.</p>
+<p>de Miguel, E., Jiménez, M., Pérez, I., de la CÁMARA, Ó. G., Muñoz, F., Gómez-Sánchez, J. A. (2015). AHS and CASI processing for the REFLEX remote sensing campaign: methods and results. Acta Geophysica, 63, 1485-1498. <a href="https://doi.org/10.1515/acgeo-2015-0031">10.1515/acgeo-2015-0031</a>. </p>
+<p>Ortiz, J. D., Avouris, D., Schiller, S., Luvall, J. C., Lekki, J. D., Tokars, R. P., Becker, R. (2017). Intercomparison of approaches to the empirical line method for vicarious hyperspectral reflectance calibration. Frontiers in Marine Science, 4, 296. <a href="https://doi.org/10.3389/fmars.2017.00296">10.3389/fmars.2017.00296</a>. </p>
+<p>Remondino, F., Spera, M. G., Nocerino, E., Menna, F., Nex, F. (2014). State of the art in high density image matching. The photogrammetric record, 29(146), 144-166. <a href="https://doi.org/10.1111/phor.12063">10.1111/phor.12063</a>.</p>
+<p>Richter, R. (1997). Correction of atmospheric and topographic effects for high spatial resolution satellite imagery. International journal of remote sensing, 18(5), 1099-1111. <a href="https://doi.org/10.1080/014311697218593">10.1080/014311697218593</a>.</p>
+<p>Richter, R., Schläpfer, D. (2002). Geo-atmospheric processing of airborne imaging spectrometry data. Part 2: Atmospheric/topographic correction. International Journal of Remote Sensing, 23(13), 2631-2649. <a href="https://doi.org/10.1080/01431160110115834">10.1080/01431160110115834</a>. </p>
+<p>Roberts, D. A., Roth, K. L., Wetherley, E. B., Meerdink, S. K., Perroy, R. L. (2018). Hyperspectral vegetation indices. In Hyperspectral indices and image classifications for agriculture and vegetation (pp. 3-26). CRC press. </p>
+<p>Schläpfer, D., Popp, C., Richter, R. (2020). Drone data atmospheric correction concept for multi-and hyperspectral imagery–the DROACOR model. Int. Arch. Photogramm. Remote Sens. Spatial Inf. Sci., XLIII-B3-2020, 473–478. <a href="https://doi.org/10.5194/isprs-archives-XLIII-B3-2020-473-2020">10.5194/isprs-archives-XLIII-B3-2020-473-2020</a>. </p>
+<p>Schowengerdt, R. A. (2006). Remote sensing: models and methods for image processing. Elsevier, 3rd edition.</p>
+<p>Stull, R. (2023): Scattering. LibreTexts, Geosciences. 22.4 Scattering. <a href="https://geo.libretexts.org/Bookshelves/Meteorology_and_Climate_Science/Practical_Meteorology_%28Stull%29/22%3A_Atmospheric_Optics/22.03%3A_New_Page">geo.libretexts.org</a>.</p>
+<p>Suomalainen, J., Anders, N., Iqbal, S., Roerink, G., Franke, J., Wenting, P., ... , Kooistra, L. (2014). A lightweight hyperspectral mapping system and photogrammetric processing chain for unmanned aerial vehicles. Remote Sensing, 6(11), 11013-11030. <a href="https://doi.org/10.3390/rs61111013">10.3390/rs61111013</a>.</p>
+<p>Suomalainen, J., Oliveira, R. A., Hakala, T., Koivumäki, N., Markelin, L., Näsi, R., Honkavaara, E. (2021). Direct reflectance transformation methodology for drone-based hyperspectral imaging. Remote Sensing of Environment, 266, 112691. <a href="https://doi.org/10.1016/j.rse.2021.112691">10.1016/j.rse.2021.112691</a>.</p>
+<p>Toth, C., Józków, G. (2016). Remote sensing platforms and sensors: A survey. ISPRS Journal of Photogrammetry and Remote Sensing, 115 (2016) 22–36. <a href="https://doi.org/10.1016/j.isprsjprs.2015.10.004">10.1016/j.isprsjprs.2015.10.004</a>.</p>
+<p>Turner, D., Lucieer, A., McCabe, M., Parkes, S., Clarke, I. (2017). Pushbroom hyperspectral imaging from an unmanned aircraft system (uas)–geometric processing workflow and accuracy assessment. The International Archives of the Photogrammetry. Remote Sensing and Spatial Information Sciences. XLII-2/W6. 379–384. <a href="http://dx.doi.org/10.5194/isprs-archives-xlii-2-w6-379-2017">10.5194/isprs-archives-xlii-2-w6-379-2017</a>. </p>
+<p>Vaiphasa, C. (2006). Consideration of smoothing techniques for hyperspectral remote sensing. ISPRS journal of photogrammetry and remote sensing, 60(2), 91-99. <a href="https://doi.org/10.1016/j.isprsjprs.2005.11.002">10.1016/j.isprsjprs.2005.11.002</a>. </p>
+<p>Vermote, E. F., Tanré, D., Deuze, J. L., Herman, M., Morcette, J. J. (1997). Second simulation of the satellite signal in the solar spectrum, 6S: An overview. IEEE transactions on geoscience and remote sensing, 35(3), 675-686. <a href="https://ieeexplore.ieee.org/document/581987">10.1109/36.581987</a>. </p>
+<p>Zhou, Q., Wang, S., Liu, N., Townsend, P. A., Jiang, C., Peng, B., Verhoef, W., Guan, K. (2023). Towards operational atmospheric correction of airborne hyperspectral imaging spectroscopy: Algorithm evaluation, key parameter analysis, and machine learning emulators. ISPRS Journal of Photogrammetry and Remote Sensing, 196, 386-401. <a href="https://doi.org/10.1016/j.isprsjprs.2022.11.016">10.1016/j.isprsjprs.2022.11.016</a>. </p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../01_spectroscopy_principles/01_spectroscopy_principles_exercise.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Exercise">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Exercise
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="02_aerial_acquisition_preprocessing_exercise_geometric.html" class="md-footer__link md-footer__link--next" aria-label="Next: Exercise">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Exercise
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+	
+    <div class="md-copyright__highlight">
+		<a href="https://erasmus-plus.ec.europa.eu/projects/search/details/2020-1-CZ01-KA203-078308" title="EU Project Page">
+			<img src="../../assets/img/flag_eu.jpg" }} alt="flag of the European Union" style="height:50px; float:left; margin-right:15px; margin-bottom:15px;">
+		</a>
+		<p style="font-family:Arial">
+			Funded by the Erasmus+ Programme<br>of the European Union.
+		</p>
+	</div><br>
+	<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+		<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+	</a>
+	<p>
+		Except when explicitly stated otherwise, the course is licensed under the 
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+		license, associated code is licensed under the
+		<a href="https://choosealicense.com/licenses/mit/">MIT</a>
+		license.
+	</p>
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.highlight", "content.code.copy", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/javascripts/quiz_evaluation.js"></script>
+      
+    
+  </body>
+</html>

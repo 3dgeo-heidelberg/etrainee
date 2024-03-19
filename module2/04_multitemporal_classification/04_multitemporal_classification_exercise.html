@@ -1,0 +1,3874 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This is the exercise in the fourth theme within the Satellite Multispectral Images Time Series Analysis module.">
+      
+      
+      
+      
+        <link rel="prev" href="04_multitemporal_classification.html">
+      
+      
+        <link rel="next" href="../05_vegetation_monitoring/05_vegetation_monitoring.html">
+      
+      
+      <link rel="icon" href="../../assets/img/logo_etrainee.svg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
+    
+    
+      
+        <title>Multitemporal classification - Exercise - E-TRAINEE Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.10ba22f1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#multitemporal-classification-exercise" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-header__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            E-TRAINEE Course
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Multitemporal classification - Exercise
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-nav__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    E-TRAINEE Course
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module0/module0.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prerequisites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Module 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/module1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principles of remote sensing time series
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Large time series datasets in remote sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/03_time_series_analysis_based_on_classification/03_time_series_analysis_based_on_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series analysis based on classification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/04_trajectory-based_analysis/04_trajectory_based_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trajectory-based analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/05_spatio_temporal_data_fusion/05_spatio-temporal_data_fusion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spatio-temporal data fusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reference data, validation and accuracy assessment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Module 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of multispectral imaging
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of multispectral imaging
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_multispectral_principles/01_multispectral_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_multispectral_principles/01_multispectral_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal information in satellite data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal information in satellite data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_temporal_information/02_temporal_information.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_temporal_information/02_temporal_information_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Image processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Image processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_image_processing/03_image_processing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_image_processing/03_image_processing_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Multitemporal classification
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Multitemporal classification
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04_multitemporal_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="04_multitemporal_classification_exercise.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-multitemporal-classification-of-land-cover-in-karkonosze-mountains-region" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise - Multitemporal classification of land cover in Karkonosze Mountains region
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic preparation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic preparation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imagery-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Imagery data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loading-libraries-and-reading-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading libraries and reading data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pixel-values-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pixel values extraction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classification-scenario-1-the-entire-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification scenario 1: the entire dataset
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classification scenario 1: the entire dataset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trainingvalidation-data-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training/validation data preparation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters tuning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accuracy-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accuracy assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-importance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variable importance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-classification-using-trained-rf-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image classification using trained RF model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classification-scenarios-2-and-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification scenarios 2 and 3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-additional-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional additional tasks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-and-software-credits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data and software credits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data and software credits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source code
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Source code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#this-is-the-end-of-this-exercise-proceed-with-other-themes-and-exercises-good-luck" class="md-nav__link">
+    <span class="md-ellipsis">
+      This is the end of this exercise. Proceed with other Themes and Exercises. Good luck!
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vegetation change and disturbance detection
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Vegetation change and disturbance detection
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_vegetation_monitoring/05_vegetation_monitoring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_vegetation_monitoring/05_vegetation_monitoring_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_cs_tundra_grasslands/06_cs_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_cs_forest_changes/07_cs_forest_changes.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Effects of pollution in Ore Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_cs_disturbance_detection/08_cs_disturbance_detection.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Forest disturbance detection (Tatra Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Module 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/module3.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of 3D/4D geographic point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of 3D/4D geographic point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/01_pointcloud_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/exercise/m3_theme1_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Programming for point cloud analysis with Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Programming for point cloud analysis with Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/02_pointcloud_programming_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/exercise/m3_theme2_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles and basic algorithms of 3D change detection and analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Principles and basic algorithms of 3D change detection and analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/03_3d_change_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/exercise/m3_theme3_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Time series analysis of 3D point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Time series analysis of 3D point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/04_3d_timeseries_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/exercise/m3_theme4_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning-based 3D/4D point cloud analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning-based 3D/4D point cloud analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/05_pointcloud_machine_learning/05_pointcloud_machine_learning.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_rockglacier/06_casestudy_rockglacier.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D change analysis at an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_sandybeach/06_casestudy_sandybeach.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series-based change analysis of sandy beach dynamics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Module 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/module4.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of imaging and laboratory spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of imaging and laboratory spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Airborne hyperspectral data acquisition and pre-processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Airborne hyperspectral data acquisition and pre-processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing_exercise_geometric.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    In situ and laboratory spectroscopy of vegetation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            In situ and laboratory spectroscopy of vegetation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_navig.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_spectra_probe_sphere_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning in imaging spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning in imaging spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal vs. spatial and spectral resolution
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal vs. spatial and spectral resolution
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/05_specific_resolution_contribution/05_specific_resolution_contribution.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/08_spectral_separability_grass/08_spectral_separability_grass.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal spectral separability of grass species (Krkonoše Mts.)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Discrimination of grass species from time series of RPAS hyperspectral imagery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/07_flood_plain_forest/07_flood_plain_forest.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal dynamics of flood-plain forests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_cloudcompare.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudCompare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_enmap_box.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EnMAP-Box
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_qgis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QGIS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_r_language.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_gee.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Earth Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Use Cases and Data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Use Cases and Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://doi.org/10.5281/zenodo.10003574" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data download
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_rockglacier_ahk.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D point clouds of an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_beach_kijkduin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4D point clouds of a sandy beach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_forests_tatras.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vegetation disturbance detection in Polish-Slovak Tatra Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_tundra_karkonosze.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_grasses_krkonose.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tundra vegetation monitoring in Krkonoše Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_ore_mts_disturbance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Forest disturbances in Ore Mountains (Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://web.natur.cuni.cz/gis/etrainee/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About the project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://forms.gle/Cz1yxJv2DDNz83j68" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback form
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-multitemporal-classification-of-land-cover-in-karkonosze-mountains-region" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise - Multitemporal classification of land cover in Karkonosze Mountains region
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic preparation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic preparation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imagery-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Imagery data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loading-libraries-and-reading-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading libraries and reading data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pixel-values-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pixel values extraction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classification-scenario-1-the-entire-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification scenario 1: the entire dataset
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classification scenario 1: the entire dataset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trainingvalidation-data-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training/validation data preparation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameters tuning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accuracy-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accuracy assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-importance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variable importance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-classification-using-trained-rf-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image classification using trained RF model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classification-scenarios-2-and-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification scenarios 2 and 3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-additional-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional additional tasks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-and-software-credits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data and software credits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data and software credits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source code
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Source code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#this-is-the-end-of-this-exercise-proceed-with-other-themes-and-exercises-good-luck" class="md-nav__link">
+    <span class="md-ellipsis">
+      This is the end of this exercise. Proceed with other Themes and Exercises. Good luck!
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+
+                  
+
+  
+  
+
+
+<h1 id="multitemporal-classification-exercise">Multitemporal classification - Exercise</h1>
+<h2 id="exercise-multitemporal-classification-of-land-cover-in-karkonosze-mountains-region">Exercise - Multitemporal classification of land cover in Karkonosze Mountains region</h2>
+<p>In this exercise, you will gain practical experience with the topic of <strong>multitemporal classification</strong>, which is presented in <em><a href="04_multitemporal_classification.html">Theme 4 theoretical part</a></em>. You will employ a multitemporal Sentinel-2 dataset to carry out a Random Forest classification. Upon completing the necessary steps, you’ll have the ability to compare results obtained from different sets of input data, as well as evaluate the accuracy attained for various classes.</p>
+<p>The primary aim of this exercise is to demonstrate one of the many approaches you can employ in performing multitemporal satellite image classification. Based on the techniques learned here, you’ll be equipped to apply these methods to a range of input data types, algorithms, and accuracy assessment procedures.</p>
+<h2 id="basic-preparation">Basic preparation</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>For this exercise you will need the following software, data and tools:</p>
+<ul>
+<li><strong>Software</strong> - R and RStudio. You can access environment setup tutorial for the whole Module 2 here: <a href="../../software/software_r_language.html">R environment setup tutorial</a>. After following the setup guide you should have all the necessary packages installed.</li>
+<li><strong>Data</strong> - downloaded data provided through <a href="https://zenodo.org/records/10003575">Zenodo</a>. If you went through <strong><a href="../03_image_processing/03_image_processing_exercise.html#processing-pipeline-1">Module 2 Theme 3 exercise Pipeline 1</a></strong> you can download image the data from your Google Drive.</li>
+</ul>
+<p>Follow the suggested working environment setup in order for the provided relative paths to work properly.</p>
+<h3 id="data">Data</h3>
+<h4 id="imagery-data">Imagery data</h4>
+<p>The imagery provided for this exercise consists of Sentinel-2 satellite imagery. The process of data preparation is described in the <strong><a href="../03_image_processing/03_image_processing_exercise.html#processing-pipeline-1">Module 2 Theme 3 exercise Pipeline 1</a></strong>.</p>
+<h4 id="reference-data">Reference data</h4>
+<p>The process of reference data preparation is describe in this document. Click here to open in in a new tab.</p>
+<p><a href="media_exercise/T4_Reference_data_preparation.pdf" target="_blank"><b>Reference data preparation tutorial</b></a></p>
+<h3 id="loading-libraries-and-reading-data">Loading libraries and reading data</h3>
+<p>Initiate a new R script in RStudio within your working directory (new file icon is in top left corner) and name it, for instance, <code>theme_4_exercise_script.R</code>.</p>
+<p>In this newly created script, we aim to load the necessary libraries and data, as well as set up some initial variables, which we will utilize later.</p>
+<p>Begin by loading libraries that contain the functions essential for completing this exercise (<code>terra</code>, <code>dplyr</code>, <code>caret</code>, and <code>randomForest</code>) into your environment.</p>
+<pre><code class="language-r"># raster and vector I/O and processing
+library(terra)
+
+# tabular data manipulation
+library(dplyr) 
+
+# training/test layers preparation
+library(caret) 
+
+# RF model preparation
+library(randomForest) 
+</code></pre>
+<p>At this point, we can import the necessary data into the RStudio environment. We require a reference vector layer and multiband image data. These can be found in the dedicated folder for Theme 4.</p>
+<pre><code class="language-r"># object representing reference vector data
+reference_data &lt;- vect(&quot;theme_4_exercise/data_exercise/T4_reference_data.shp&quot;)
+
+# object representing multiband raster with all the available bands
+image_data &lt;- rast(&quot;theme_4_exercise/data_exercise/T4_image_data.tif&quot;)
+</code></pre>
+<p>The bands in the multiband raster are arranged by date: the first 11 bands (10 spectral bands + NDVI) correspond to the first acquisition period (2022-06-19), with subsequent periods following in order.</p>
+<p>The reference data comprises 450 polygons, with 50 each for nine classes. You can get an overview of both the image and reference data by executing the following commands in the R console.</p>
+<pre><code class="language-r">image_data
+reference_data
+</code></pre>
+<pre><code>class       : SpatRaster 
+dimensions  : 1687, 2459, 66  (nrow, ncol, nlyr)
+resolution  : 10, 10  (x, y)
+extent      : 534440, 559030, 5619440, 5636310  (xmin, xmax, ymin, ymax)
+coord. ref. : WGS 84 / UTM zone 33N (EPSG:32633) 
+source      : T4_image_data.tif 
+names       : 2022-~19_B2, 2022-~19_B3, 2022-~19_B4, 2022-~19_B5, 2022-~19_B6, ...
+
+class       : SpatVector 
+geometry    : polygons 
+dimensions  : 450, 2  (geometries, attributes)
+extent      : 534690.7, 558829.3, 5619701, 5635629  (xmin, xmax, ymin, ymax)
+source      : T4_reference_data.shp
+coord. ref. : WGS 84 / UTM zone 33N (EPSG:32633) 
+names       :   ID             class
+type        : &lt;int&gt;             &lt;chr&gt;
+values      :   1         coniferous forest
+                2         coniferous forest
+                3         coniferous forest
+</code></pre>
+<h2 id="pixel-values-extraction">Pixel values extraction</h2>
+<p>With the data now loaded, our next step is to extract all the image values corresponding to each of the reference polygons. Each reference polygon encompasses nine 10x10 m pixels. Consequently, after extraction, we’ll have a total of 4050 samples (450 x 9) to utilize in our training and validation data.</p>
+<p>The extract function from the <code>terra</code> package, also denoted as <code>terra::extract</code>, is employed to read pixel values based on the vector layer’s location. This vector layer could either be a point layer (yielding one pixel value) or a polygon layer (yielding multiple pixel values).</p>
+<p>We’ll feed three arguments into the <code>terra::extract</code> function:</p>
+<ul>
+<li><code>x</code> - a variable containing the image data</li>
+<li><code>y</code> - a variable containing the vector reference polygons</li>
+<li><code>exact</code> - if set to <code>TRUE</code>, an additional coverage fraction for each cell is added as a column</li>
+</ul>
+<p>The extraction results will be stored in the <code>pixel_reference</code> variable as a <em>data frame</em>. This function may take a few minutes to execute.</p>
+<pre><code class="language-r">pixel_reference &lt;- extract(image_data, reference_data, exact = TRUE) 
+</code></pre>
+<p>Inspect the produced extraction results.</p>
+<pre><code class="language-r">nrow(pixel_reference)
+colnames(pixel_reference)
+</code></pre>
+<pre><code>[1] 4066
+
+ [1] "ID"              "2022-06-19_B2"   "2022-06-19_B3"   "2022-06-19_B4"  
+ [5] "2022-06-19_B5"   "2022-06-19_B6"   "2022-06-19_B7"   "2022-06-19_B8"  
+ [9] "2022-06-19_B8A"  "2022-06-19_B11"  "2022-06-19_B12"  "2022-06-19_NDVI"
+[13] "2022-06-24_B2"   "2022-06-24_B3"   "2022-06-24_B4"   "2022-06-24_B5"  
+[17] "2022-06-24_B6"   "2022-06-24_B7"   "2022-06-24_B8"   "2022-06-24_B8A" 
+[21] "2022-06-24_B11"  "2022-06-24_B12"  "2022-06-24_NDVI" "2022-06-27_B2"  
+[25] "2022-06-27_B3"   "2022-06-27_B4"   "2022-06-27_B5"   "2022-06-27_B6"  
+[29] "2022-06-27_B7"   "2022-06-27_B8"   "2022-06-27_B8A"  "2022-06-27_B11" 
+[33] "2022-06-27_B12"  "2022-06-27_NDVI" "2022-07-19_B2"   "2022-07-19_B3"  
+[37] "2022-07-19_B4"   "2022-07-19_B5"   "2022-07-19_B6"   "2022-07-19_B7"  
+[41] "2022-07-19_B8"   "2022-07-19_B8A"  "2022-07-19_B11"  "2022-07-19_B12" 
+[45] "2022-07-19_NDVI" "2022-07-24_B2"   "2022-07-24_B3"   "2022-07-24_B4"  
+[49] "2022-07-24_B5"   "2022-07-24_B6"   "2022-07-24_B7"   "2022-07-24_B8"  
+[53] "2022-07-24_B8A"  "2022-07-24_B11"  "2022-07-24_B12"  "2022-07-24_NDVI"
+[57] "2022-10-20_B2"   "2022-10-20_B3"   "2022-10-20_B4"   "2022-10-20_B5"  
+[61] "2022-10-20_B6"   "2022-10-20_B7"   "2022-10-20_B8"   "2022-10-20_B8A" 
+[65] "2022-10-20_B11"  "2022-10-20_B12"  "2022-10-20_NDVI" "fraction"
+</code></pre>
+<hr />
+<p><em>Note: The ID column is not drawn from the original data source but is generated by the <code>extract</code> function as the index of the record from which values are extracted. In the case of the data prepared for this exercise, the ID column of the reference data matches the ID in the data frame with extracted values. If you wish to replicate this part of the exercise with your own input reference data, we suggest adding a column/attribute with row index numbers. For example:</em></p>
+<pre><code>ref &lt;- vect("source.shp")
+ref_df &lt;- as.data.frame(ref)
+ref_id &lt;- cbind(ref_df, ID = seq(1, nrow(ref_df)))
+</code></pre>
+<hr />
+<p>If everything proceeded as expected, there should be 4066 rows in the resulting data frame. Earlier, we noted that, given each reference polygon is 30x30 meters in size, we would anticipate a total of 4050 pixel values. A higher number suggests some polygons are misaligned, intersecting parts of additional polygons. To rectify this, we aim to filter out those pixels with minimal coverage by applying a data frame filter to rows with a coverage fraction of less than 0.5.</p>
+<p><center></p>
+<p><img src="media_exercise/misaligned_polygon.jpg" title="Polygon id == 2 visible misalignment in relation to image pixel mesh" alt="polygon misalignment" width="600"/></p>
+<p><i>Polygon id == 2 visible misalignment in relation to image pixel mesh.</i>
+</center></p>
+<pre><code class="language-r">pixel_reference &lt;- filter(pixel_reference, fraction &gt; 0.5)
+</code></pre>
+<p>Inspect the filtered result.</p>
+<pre><code class="language-r">nrow(pixel_reference)
+colnames(pixel_reference)
+</code></pre>
+<pre><code>[1] 4050
+
+ [1] "ID"              "2022-06-19_B2"   "2022-06-19_B3"   "2022-06-19_B4"  
+ [5] "2022-06-19_B5"   "2022-06-19_B6"   "2022-06-19_B7"   "2022-06-19_B8"  
+ [9] "2022-06-19_B8A"  "2022-06-19_B11"  "2022-06-19_B12"  "2022-06-19_NDVI"
+[13] "2022-06-24_B2"   "2022-06-24_B3"   "2022-06-24_B4"   "2022-06-24_B5"  
+[17] "2022-06-24_B6"   "2022-06-24_B7"   "2022-06-24_B8"   "2022-06-24_B8A" 
+[21] "2022-06-24_B11"  "2022-06-24_B12"  "2022-06-24_NDVI" "2022-06-27_B2"  
+[25] "2022-06-27_B3"   "2022-06-27_B4"   "2022-06-27_B5"   "2022-06-27_B6"  
+[29] "2022-06-27_B7"   "2022-06-27_B8"   "2022-06-27_B8A"  "2022-06-27_B11" 
+[33] "2022-06-27_B12"  "2022-06-27_NDVI" "2022-07-19_B2"   "2022-07-19_B3"  
+[37] "2022-07-19_B4"   "2022-07-19_B5"   "2022-07-19_B6"   "2022-07-19_B7"  
+[41] "2022-07-19_B8"   "2022-07-19_B8A"  "2022-07-19_B11"  "2022-07-19_B12" 
+[45] "2022-07-19_NDVI" "2022-07-24_B2"   "2022-07-24_B3"   "2022-07-24_B4"  
+[49] "2022-07-24_B5"   "2022-07-24_B6"   "2022-07-24_B7"   "2022-07-24_B8"  
+[53] "2022-07-24_B8A"  "2022-07-24_B11"  "2022-07-24_B12"  "2022-07-24_NDVI"
+[57] "2022-10-20_B2"   "2022-10-20_B3"   "2022-10-20_B4"   "2022-10-20_B5"  
+[61] "2022-10-20_B6"   "2022-10-20_B7"   "2022-10-20_B8"   "2022-10-20_B8A" 
+[65] "2022-10-20_B11"  "2022-10-20_B12"  "2022-10-20_NDVI"
+</code></pre>
+<p>An additional step is to reintegrate the <code>class</code> information from the original <code>reference_data</code> into the extracted values. To accomplish this, we’ll create another data frame based on the original attributes of the <code>reference_data</code> vector file. We can then merge information from the two data frames using the identifying values from the <code>ID</code> columns.</p>
+<pre><code class="language-r">reference_class &lt;- as.data.frame(reference_data)
+
+pixel_reference &lt;- merge(pixel_reference, reference_class, 
+                         by = &quot;ID&quot;, 
+                         all = TRUE)
+</code></pre>
+<p>After this step, there should be an additional column in the data frame. Lastly, we aim to rearrange the columns so that they start with <code>ID</code> and <code>class</code>, followed by the names of the bands from which data was extracted. Since we’ve already filtered the data, we can discard the <code>fraction</code> column. To achieve this, we’ll use <code>dplyr</code> functions <code>select</code> and <code>relocate</code>: <code>select</code> to remove the <code>fraction</code> column and <code>relocate</code> to move the <code>ID</code> and <code>class</code> columns to the beginning of the data frame. The <code>%&gt;%</code> operator, also known as a pipe-line operator from the <code>magrittr</code> package, is used to <em>send</em> the value from the previous function to the next.</p>
+<pre><code class="language-r">pixel_reference &lt;- select(pixel_reference, -fraction) %&gt;%
+  relocate(ID, class)
+
+colnames(pixel_reference)
+</code></pre>
+<pre><code> [1] "ID"              "class"           "2022-06-19_B2"   "2022-06-19_B3"  
+ [5] "2022-06-19_B4"   "2022-06-19_B5"   "2022-06-19_B6"   "2022-06-19_B7"  
+ [9] "2022-06-19_B8"   "2022-06-19_B8A"  "2022-06-19_B11"  "2022-06-19_B12" 
+[13] "2022-06-19_NDVI" "2022-06-24_B2"   "2022-06-24_B3"   "2022-06-24_B4"  
+[17] "2022-06-24_B5"   "2022-06-24_B6"   "2022-06-24_B7"   "2022-06-24_B8"  
+[21] "2022-06-24_B8A"  "2022-06-24_B11"  "2022-06-24_B12"  "2022-06-24_NDVI"
+[25] "2022-06-27_B2"   "2022-06-27_B3"   "2022-06-27_B4"   "2022-06-27_B5"  
+[29] "2022-06-27_B6"   "2022-06-27_B7"   "2022-06-27_B8"   "2022-06-27_B8A" 
+[33] "2022-06-27_B11"  "2022-06-27_B12"  "2022-06-27_NDVI" "2022-07-19_B2"  
+[37] "2022-07-19_B3"   "2022-07-19_B4"   "2022-07-19_B5"   "2022-07-19_B6"  
+[41] "2022-07-19_B7"   "2022-07-19_B8"   "2022-07-19_B8A"  "2022-07-19_B11" 
+[45] "2022-07-19_B12"  "2022-07-19_NDVI" "2022-07-24_B2"   "2022-07-24_B3"  
+[49] "2022-07-24_B4"   "2022-07-24_B5"   "2022-07-24_B6"   "2022-07-24_B7"  
+[53] "2022-07-24_B8"   "2022-07-24_B8A"  "2022-07-24_B11"  "2022-07-24_B12" 
+[57] "2022-07-24_NDVI" "2022-10-20_B2"   "2022-10-20_B3"   "2022-10-20_B4"  
+[61] "2022-10-20_B5"   "2022-10-20_B6"   "2022-10-20_B7"   "2022-10-20_B8"  
+[65] "2022-10-20_B8A"  "2022-10-20_B11"  "2022-10-20_B12"  "2022-10-20_NDVI"
+</code></pre>
+<p>Save the extracted data frame to the external file in case you need to reload it, so you don’t have to wait for the extraction process to complete. By saving to <code>.RDS</code> file you can then read that file into custom variable name.</p>
+<pre><code class="language-r">saveRDS(pixel_reference, 
+        file = &quot;theme_4_exercise/data_exercise/pixel_reference.RDS&quot;)
+
+# in case you need to load it use the command below
+# pixel_reference &lt;- readRDS(&quot;theme_4_exercise/data_exercise/pixel_reference.RDS&quot;)
+</code></pre>
+<h2 id="classification-scenario-1-the-entire-dataset">Classification scenario 1: the entire dataset</h2>
+<h3 id="trainingvalidation-data-preparation">Training/validation data preparation</h3>
+<p>Now that we have the reference dataset prepared, we can commence the classification scenario. Initially, we’ll divide the complete dataset into a training set and a validation set. By executing the commands below, we can check the number of samples for each class we have, as well as the number of reference polygons per class.</p>
+<pre><code class="language-r">table(pixel_reference$class)
+table(reference_data$class)
+</code></pre>
+<pre><code>&gt; table(pixel_reference$class)
+
+broad-leaved forest       built-up area   coniferous forest 
+                450                 450                 450 
+             fields             meadows  natural grasslands 
+                450                 450                 450 
+              rocks               scrub               water 
+                450                 450                 450
+
+
+&gt; table(reference_data$class)
+
+broad-leaved forest       built-up area   coniferous forest 
+                 50                  50                  50 
+             fields             meadows  natural grasslands 
+                 50                  50                  50 
+              rocks               scrub               water 
+                 50                  50                  50
+</code></pre>
+<p>To ensure reproducibility of partitioning we will set seed.</p>
+<pre><code class="language-r">set.seed(14)
+</code></pre>
+<p>The partitioning process consists of two steps. The first step involves randomly selecting 50% of polygons from each class and storing their position number in the <code>train_index</code> variable. This approach ensures that pixels from a single polygon are used exclusively in either the training or validation set, preventing overlap. Given that each polygon contains the same number of pixels, we will have an equal number of training and validation samples. This balanced division of the reference dataset into training and validation sets aims to enhance model performance and reduce any bias towards specific classes.</p>
+<p>In the second step, we’ll filter the entire <code>pixel_reference</code> set into <code>train_data</code> and <code>val_data</code>. This is done using the <code>train_index</code> variable to extract corresponding values by the <code>ID</code> column from the <code>pixel_reference</code> table.</p>
+<pre><code class="language-r">train_index &lt;- createDataPartition(reference_data$class, p = 0.5, list = FALSE)
+
+train_data &lt;- pixel_reference[ pixel_reference$ID %in% train_index, ]
+val_data &lt;- pixel_reference[ !(pixel_reference$ID %in% train_index), ]
+</code></pre>
+<p>Now we should have two sets of equal number of reference pixels for each class.</p>
+<pre><code class="language-r">table(train_data$class)
+table(val_data$class)
+</code></pre>
+<pre><code>&gt; table(train_data$class)
+
+broad-leaved forest       built-up area   coniferous forest 
+                225                 225                 225 
+             fields             meadows  natural grasslands 
+                225                 225                 225 
+              rocks               scrub               water 
+                225                 225                 225 
+&gt; table(val_data$class)
+
+broad-leaved forest       built-up area   coniferous forest 
+                225                 225                 225 
+             fields             meadows  natural grasslands 
+                225                 225                 225 
+              rocks               scrub               water 
+                225                 225                 225
+</code></pre>
+<h3 id="parameters-tuning">Parameters tuning</h3>
+<p>In order to achieve a satisfying result we want to tune the model parameters. One of the Random Forest algorithm parameter is <strong><em>mtry</em></strong>, which is the number of random variables used in each tree. To find the value, which should yield the highest accuracy numbers we will use <code>tuneRF</code> function from the <code>randomForest</code> package.</p>
+<p>The function takes several arguments:</p>
+<ul>
+<li><code>x</code> (first argument) - matrix or data frame of predictor variables;</li>
+<li><code>y</code> (second argument) - response vector (factor for classification);</li>
+<li><code>ntreeTry</code> - number of trees used during the tuning step;</li>
+<li><code>improve</code> - the (relative) improvement in out-of-bag (OOB) error must be at least this much for the search to continue;</li>
+<li><code>stepFactor</code> - at each iteration, <code>mtry</code> value is inflated (or deflated) by this value.</li>
+</ul>
+<p>We will again set seed and assign the function’s results to <code>tune</code> variable.</p>
+<pre><code class="language-r">set.seed(141)
+
+tune &lt;- tuneRF(train_data[, 3:length(train_data)], 
+               as.factor(train_data$class),
+               ntreeTry = 500,
+               improve = 0.001,
+               stepFactor = 1.2)
+
+tune
+</code></pre>
+<pre><code>&gt; tune
+       mtry    OOBError
+7.OOB     7 0.004444444
+8.OOB     8 0.003456790
+9.OOB     9 0.002962963
+10.OOB   10 0.003456790
+</code></pre>
+<p><center></p>
+<p><img src="media_exercise/mtry_tuning.png" title="mtry tuning" alt="mtry tuning" width="500"/></p>
+<p><i>mtry parameter tuning.</i>
+</center></p>
+<p>The lowest Out-Of-Bag (OOB) error values were achieved with an <code>mtry</code> value of 9. Theoretically, a higher <code>mtry</code> value results in a more robust model, but it can also increase the correlation among the variables chosen for the split. In this case, we will not test different values and will set the <code>mtry</code> parameter in the model to 9 due to its lowest error.</p>
+<h3 id="model">Model</h3>
+<p>The next step after tuning the parameters is training the classification model. The <code>randomForest</code> function from the package of the same name is an implementation of the original Random Forest algorithm. The following code snippet uses this function with the following arguments:</p>
+<ul>
+<li><code>x</code> (first argument) - a data frame or a matrix of predictors (from <code>train_data</code> variable);</li>
+<li><code>y</code> (second argument) - a response vector (a factor for classification);</li>
+<li><code>ntree</code> - the number of trees used to produce the final model; 500 is a number that has been empirically tested to usually yield satisfactory results;</li>
+<li><code>mtry</code> - number of variables randomly sampled as candidates at each split (tuned in the previous step);</li>
+<li><code>importance</code> - a boolean (TRUE/FALSE) indicating whether the model should store variable importance (required for producing the plots);</li>
+<li><code>do.trace</code> - useful for keeping track of the modelling progress.</li>
+</ul>
+<pre><code class="language-r">model_rf &lt;- randomForest(train_data[ , 3:length(train_data)],
+                         as.factor(train_data$class), 
+                         ntree = 500,
+                         mtry = 9, 
+                         importance = TRUE,
+                         do.trace = 50)
+</code></pre>
+<p>To be able to access the model later it is recommended to save it locally. Create new <code>results</code> folder to store files produced in this script.</p>
+<pre><code>saveRDS(model_rf, file = "theme_4_exercise/results/model_rf.RDS")
+</code></pre>
+<h3 id="accuracy-assessment">Accuracy assessment</h3>
+<p>If we access the variable <code>model_rf</code> (by running this variable in console) we will see the basic model information and confusion matrix calculated for the training data.</p>
+<pre><code>&gt; model_rf
+
+Call:
+ randomForest(x = train_data[, 3:length(train_data)], 
+ y = as.factor(train_data$class), 
+ ntree = 500, 
+ mtry = 9, 
+ importance = TRUE, 
+ do.trace = 50)
+
+
+               Type of random forest: classification
+               Number of trees: 500
+               No. of variables tried at each split: 9
+
+        OOB estimate of  error rate: 0.4%
+</code></pre>
+<p>Confusion matrix</p>
+<pre><code>Confusion matrix:
+                    broad-leaved forest built-up area coniferous forest
+broad-leaved forest                 225             0                 0
+built-up area                         0           223                 0
+coniferous forest                     0             0               225
+fields                                0             0                 0
+meadows                               0             0                 0
+natural grasslands                    0             0                 0
+rocks                                 0             5                 0
+scrub                                 0             0                 0
+water                                 0             0                 0
+
+                    fields meadows natural grasslands rocks scrub water
+broad-leaved forest      0       0                  0     0     0     0
+built-up area            0       0                  0     2     0     0
+coniferous forest        0       0                  0     0     0     0
+fields                 224       1                  0     0     0     0
+meadows                  0     225                  0     0     0     0
+natural grasslands       0       0                225     0     0     0
+rocks                    0       0                  0   220     0     0
+scrub                    0       0                  0     0   225     0
+water                    0       0                  0     0     0   225
+
+                    class.error
+broad-leaved forest 0.000000000
+built-up area       0.008888889
+coniferous forest   0.000000000
+fields              0.004444444
+meadows             0.000000000
+natural grasslands  0.000000000
+rocks               0.022222222
+scrub               0.000000000
+water               0.000000000
+</code></pre>
+<p>Our primary objective is to evaluate the performance of the model using the reference data. To obtain an accurate measure of the model’s effectiveness, it’s crucial to test it against data it hasn’t seen during the training process. This subset of the data is known as the validation set. To achieve this, we’ll make use of the <code>val_data</code> we prepared earlier. After prediction, we’ll contrast the model’s predicted classes against the true classes in the validation dataset.</p>
+<pre><code class="language-r">predicted_rf &lt;- predict(model_rf, val_data[ , 3:length(val_data)])
+
+confusion_matrix_predicted_rf &lt;- confusionMatrix(predicted_rf, 
+                                                 as.factor(val_data$class), 
+                                                 mode = &quot;everything&quot;)
+confusion_matrix_predicted_rf
+</code></pre>
+<pre><code>Confusion Matrix and Statistics
+
+                     Reference
+Prediction            broad-leaved forest built-up area coniferous forest
+  broad-leaved forest                 217             0                 9
+  built-up area                         0           200                 0
+  coniferous forest                     3             0               209
+  fields                                0             5                 0
+  meadows                               0             3                 0
+  natural grasslands                    0             0                 0
+  rocks                                 0            10                 0
+  scrub                                 5             1                 7
+  water                                 0             6                 0
+
+                     Reference
+Prediction            fields meadows natural grasslands rocks scrub water
+  broad-leaved forest      0       0                  0     0     0     0
+  built-up area            2       0                  0    25     4     0
+  coniferous forest        0       0                  0     0     9     0
+  fields                 194      50                  0     0     0     0
+  meadows                 29     166                 19     0     2     0
+  natural grasslands       0       9                206     0     0     0
+  rocks                    0       0                  0   200     5     0
+  scrub                    0       0                  0     0   205     0
+  water                    0       0                  0     0     0   225
+
+Overall Statistics
+
+               Accuracy : 0.8998          
+                 95% CI : (0.8858, 0.9125)
+    No Information Rate : 0.1111          
+    P-Value [Acc &gt; NIR] : &lt; 2.2e-16
+
+                  Kappa : 0.8872
+
+ Mcnemar's Test P-Value : NA
+
+Statistics by Class:
+
+                     Class: broad-leaved forest Class: built-up area
+Sensitivity                              0.9644              0.88889
+Specificity                              0.9950              0.98278
+Pos Pred Value                           0.9602              0.86580
+Neg Pred Value                           0.9956              0.98606
+Precision                                0.9602              0.86580
+Recall                                   0.9644              0.88889
+F1                                       0.9623              0.87719
+Prevalence                               0.1111              0.11111
+Detection Rate                           0.1072              0.09877
+Detection Prevalence                     0.1116              0.11407
+Balanced Accuracy                        0.9797              0.93583
+
+                     Class: coniferous forest Class: fields Class: meadows
+Sensitivity                            0.9289        0.8622        0.73778
+Specificity                            0.9933        0.9694        0.97056
+Pos Pred Value                         0.9457        0.7791        0.75799
+Neg Pred Value                         0.9911        0.9825        0.96733
+Precision                              0.9457        0.7791        0.75799
+Recall                                 0.9289        0.8622        0.73778
+F1                                     0.9372        0.8186        0.74775
+Prevalence                             0.1111        0.1111        0.11111
+Detection Rate                         0.1032        0.0958        0.08198
+Detection Prevalence                   0.1091        0.1230        0.10815
+Balanced Accuracy                      0.9611        0.9158        0.85417
+
+                     Class: natural grasslands Class: rocks Class: scrub
+Sensitivity                             0.9156      0.88889       0.9111
+Specificity                             0.9950      0.99167       0.9928
+Pos Pred Value                          0.9581      0.93023       0.9404
+Neg Pred Value                          0.9895      0.98619       0.9889
+Precision                               0.9581      0.93023       0.9404
+Recall                                  0.9156      0.88889       0.9111
+F1                                      0.9364      0.90909       0.9255
+Prevalence                              0.1111      0.11111       0.1111
+Detection Rate                          0.1017      0.09877       0.1012
+Detection Prevalence                    0.1062      0.10617       0.1077
+Balanced Accuracy                       0.9553      0.94028       0.9519
+
+                     Class: water
+Sensitivity                1.0000
+Specificity                0.9967
+Pos Pred Value             0.9740
+Neg Pred Value             1.0000
+Precision                  0.9740
+Recall                     1.0000
+F1                         0.9868
+Prevalence                 0.1111
+Detection Rate             0.1111
+Detection Prevalence       0.1141
+Balanced Accuracy          0.9983
+</code></pre>
+<p><b><u>TASK</u></b></p>
+<p>Identify classes with highest and lowest accuracy metrics. Start with <code>F1</code>.</p>
+<h3 id="variable-importance">Variable importance</h3>
+<p>One of the major advantages of models generated by the <code>randomForest</code> package is the wealth of information they provide, which can be further utilized to assess the model’s performance. The <code>varImpPlot</code> function from the <code>randomForest</code> package leverages the stored <strong>OOB errors</strong> to identify the best-performing predictors (bands). The <code>importance</code> values used to generate the plots are stored inside the model, which should be accessible via the <code>model_rf</code> variable. Setting <code>type = 1</code> results in the production of a plot showing the mean decrease in accuracy measure. To learn more about this type of plot and <code>type = 2</code> plots, type and run <code>?randomForest::importance()</code> into the R console.</p>
+<pre><code class="language-r">varImpPlot(model_rf, type = 1, n.var = 30)
+</code></pre>
+<p><center></p>
+<p><img src="media_exercise/var_imp_plot.png" title="variable importance" alt="variable importance" width="600"/></p>
+<p><i>Variable importance plot.</i>
+</center></p>
+<p><b><u>TASK</u></b></p>
+<p>Identify terms and bands with the highest Mean Decrease Accuracy values. Modify <code>n.var</code> parameter to see more or less variables.</p>
+<h3 id="image-classification-using-trained-rf-model">Image classification using trained RF model</h3>
+<p>With our trained model, we can now classify the image data we have to produce a classification image. To do this, we will use the <code>predict</code> function from the <code>terra</code> package and provide the following arguments:</p>
+<ul>
+<li><code>object</code> - the image data</li>
+<li><code>model</code> - the fitted statistical model</li>
+<li><code>filename</code> - path to the result and file name with extension</li>
+<li><code>datatype</code> - for the classification result <code>INT1U</code> (0-255) will suffice</li>
+<li><code>na.rm</code> - ignore cells with NA values</li>
+<li><code>overwrite</code> - save over existing file of the same name</li>
+</ul>
+<p>The classification process should take approximately 2-4 minutes.</p>
+<pre><code class="language-r">terra::predict(image_data, model_rf, 
+               filename = &quot;theme_4_exercise/results/predicted_image_all_bands.tif&quot;, 
+               datatype = &quot;INT1U&quot;, 
+               na.rm = TRUE, 
+               overwrite = TRUE)
+</code></pre>
+<p><b><u>TASK</u></b></p>
+<p>Display the resulting image in QGIS. Use the attached <strong>symbology.clr</strong> file to assign class names and colors.</p>
+<p><center></p>
+<p><img src="media_exercise/predicted_image.jpg" title="Predicted image" alt="Predicted image" width="1000"/></p>
+<p><i>Predicted image (all variables).</i>
+</center></p>
+<h2 id="classification-scenarios-2-and-3">Classification scenarios 2 and 3</h2>
+<p>Now that you have experienced the classification process, the next step is to apply this knowledge to scenarios 2 and 3.</p>
+<ul>
+<li>Scenario 2: Only spectral bands</li>
+<li>Scenario 3: Only NDVI bands</li>
+</ul>
+<p>The workflow remains the same, but you need to modify the reference data to include only values from specific bands.</p>
+<details>
+<summary>
+Reference for classification scenario 2
+</summary>
+
+
+<pre><code class="language-r">reference_scenario2 &lt;- select(pixel_reference, -contains(&quot;NDVI&quot;))
+</code></pre>
+
+
+</details>
+<details>
+<summary>
+Reference for classification scenario 3
+</summary>
+
+
+<pre><code class="language-r">reference_scenario3 &lt;- select(pixel_reference, ID, class, ends_with(&quot;NDVI&quot;))
+</code></pre>
+
+
+</details>
+
+<p><b><u>TASK</u></b></p>
+<ul>
+<li>Divide the reference datasets into training and validation subsets.</li>
+<li>Tune <code>mtry</code> parameter.</li>
+<li>Create and save Random Forest classification model.</li>
+<li>Apply the model to test (validation) data and image.</li>
+<li>Compare the accuracy results and visual images.</li>
+</ul>
+<h2 id="optional-additional-tasks">Optional additional tasks</h2>
+<p>After completing all the scenarios, consider comparing the results. You could create a table with the F1 accuracies for the class of interest in each scenario. Additionally, consider performing the following tests:</p>
+<ul>
+<li>Extract a single term and perform classification.</li>
+<li>Extract only the best-performing bands based on variable importance from a selected scenario and repeat the classification</li>
+<li>Test different <code>mtry</code> values and compare the results.</li>
+</ul>
+<p>If you want to further explore the vast topic of classification consider reading the <code>randomForest</code> and <code>caret</code> packages documentation and experiment with different model tuning and classification parameters.</p>
+<h2 id="data-and-software-credits">Data and software credits</h2>
+<h3 id="data_1">Data</h3>
+<p>Sentinel-2 imagery <a href="https://dataspace.copernicus.eu/">European Space Agency - ESA</a>/ <a href="https://dataspace.copernicus.eu/terms-and-conditions">Terms of use</a> processed in and downloaded from <a href="https://doi.org/10.1016/j.rse.2017.06.031">Google Earth Engine by Gorelick et al., 2017</a></p>
+<h3 id="software">Software</h3>
+<ul>
+<li>R Core Team (2023). <em>R: A language and environment for statistical computing</em>. R Foundation for Statistical Computing, Vienna, Austria. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</li>
+<li>A. Liaw and M. Wiener (2002). <em>Classification and Regression by randomForest</em>. R News 2(3), 18–22.<a href="https://CRAN.R-project.org/package=randomForest">https://CRAN.R-project.org/package=randomForest</a></li>
+<li>Hijmans R (2023). <em>terra: Spatial Data Analysis</em>. R package version 1.7-39, <a href="https://CRAN.R-project.org/package=terra">https://CRAN.R-project.org/package=terra</a></li>
+<li>Kuhn, M. (2008). <em>Building Predictive Models in R Using the caret Package</em>. Journal of Statistical Software, 28(5), 1–26. <a href="https://doi.org/10.18637/jss.v028.i05">https://doi.org/10.18637/jss.v028.i05</a> <a href="https://CRAN.R-project.org/package=caret">https://CRAN.R-project.org/package=caret</a></li>
+<li>Wickham H, François R, Henry L, Müller K, Vaughan D (2023). <em>dplyr: A Grammar of Data Manipulation</em>. R package version 1.1.2, <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a></li>
+</ul>
+<h2 id="source-code">Source code</h2>
+<details>
+<summary>
+You can find the entire code used in this exercise here
+</summary>
+
+
+<pre><code class="language-r"># raster and vector I/O and processing
+library(terra)
+
+# tabular data manipulation
+library(dplyr) 
+
+# training/test layers preparation
+library(caret) 
+
+# RF model preparation
+library(randomForest) 
+
+# object representing reference vector data
+reference_data &lt;- vect(&quot;theme_4_exercise/data_exercise/T4_reference_data.shp&quot;)
+
+# object representing multiband raster with all the available bands
+image_data &lt;- rast(&quot;theme_4_exercise/data_exercise/T4_image_data.tif&quot;)
+
+
+image_data
+reference_data
+
+pixel_reference &lt;- extract(image_data, reference_data, exact = TRUE) 
+
+
+nrow(pixel_reference)
+colnames(pixel_reference)
+
+pixel_reference &lt;- filter(pixel_reference, fraction &gt; 0.5)
+
+nrow(pixel_reference)
+colnames(pixel_reference)
+
+reference_class &lt;- as.data.frame(reference_data)
+
+pixel_reference &lt;- merge(pixel_reference, reference_class, 
+                         by = &quot;ID&quot;, 
+                         all = TRUE)
+
+pixel_reference &lt;- select(pixel_reference, -fraction) %&gt;%
+  relocate(ID, class)
+
+colnames(pixel_reference)
+
+
+set.seed(14)
+
+train_index &lt;- createDataPartition(reference_data$class, p = 0.5, list = FALSE)
+
+train_data &lt;- pixel_reference[ pixel_reference$ID %in% train_index, ]
+val_data &lt;- pixel_reference[ !(pixel_reference$ID %in% train_index), ]
+
+
+table(train_data$class)
+table(val_data$class)
+
+set.seed(141)
+
+tune &lt;- tuneRF(train_data[, 3:length(train_data)], 
+               as.factor(train_data$class),
+               ntreeTry = 500,
+               improve = 0.001,
+               stepFactor = 1.2)
+
+tune
+
+
+model_rf &lt;- randomForest(train_data[ , 3:length(train_data)], as.factor(train_data$class), 
+                         ntree = 500,
+                         mtry = 9, 
+                         importance = TRUE,
+                         do.trace = 50)
+
+
+model_rf
+
+
+
+predicted_rf &lt;- predict(model_rf, val_data[ , 3:length(val_data)])
+
+confusion_matrix_predicted_rf &lt;- confusionMatrix(predicted_rf, as.factor(val_data$class), mode = &quot;everything&quot;)
+confusion_matrix_predicted_rf
+
+varImpPlot(model_rf, type = 1, n.var = 30)
+
+
+terra::predict(image_data, model_rf, 
+               filename = &quot;theme_4_exercise/results/predicted_image_all_bands.tif&quot;, 
+               datatype = &quot;INT1U&quot;, 
+               na.rm = TRUE, 
+               overwrite = TRUE)
+</code></pre>
+
+
+</details>
+
+<h3 id="this-is-the-end-of-this-exercise-proceed-with-other-themes-and-exercises-good-luck">This is the end of this exercise. Proceed with other Themes and Exercises. Good luck!</h3>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="04_multitemporal_classification.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lesson">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Lesson
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../05_vegetation_monitoring/05_vegetation_monitoring.html" class="md-footer__link md-footer__link--next" aria-label="Next: Lesson">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Lesson
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+	
+    <div class="md-copyright__highlight">
+		<a href="https://erasmus-plus.ec.europa.eu/projects/search/details/2020-1-CZ01-KA203-078308" title="EU Project Page">
+			<img src="../../assets/img/flag_eu.jpg" }} alt="flag of the European Union" style="height:50px; float:left; margin-right:15px; margin-bottom:15px;">
+		</a>
+		<p style="font-family:Arial">
+			Funded by the Erasmus+ Programme<br>of the European Union.
+		</p>
+	</div><br>
+	<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+		<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+	</a>
+	<p>
+		Except when explicitly stated otherwise, the course is licensed under the 
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+		license, associated code is licensed under the
+		<a href="https://choosealicense.com/licenses/mit/">MIT</a>
+		license.
+	</p>
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.highlight", "content.code.copy", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/javascripts/quiz_evaluation.js"></script>
+      
+    
+  </body>
+</html>

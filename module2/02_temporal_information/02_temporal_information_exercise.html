@@ -1,0 +1,4906 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This is the exercise in the second theme within the Satellite Multispectral Images Time Series Analysis module.">
+      
+      
+      
+      
+        <link rel="prev" href="02_temporal_information.html">
+      
+      
+        <link rel="next" href="../03_image_processing/03_image_processing.html">
+      
+      
+      <link rel="icon" href="../../assets/img/logo_etrainee.svg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
+    
+    
+      
+        <title>Temporal information in satellite data - Exercise - E-TRAINEE Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.10ba22f1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#temporal-information-in-satellite-data-exercise" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-header__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            E-TRAINEE Course
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Temporal information in satellite data - Exercise
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-nav__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    E-TRAINEE Course
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module0/module0.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prerequisites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Module 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/module1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principles of remote sensing time series
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Large time series datasets in remote sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/03_time_series_analysis_based_on_classification/03_time_series_analysis_based_on_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series analysis based on classification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/04_trajectory-based_analysis/04_trajectory_based_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trajectory-based analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/05_spatio_temporal_data_fusion/05_spatio-temporal_data_fusion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spatio-temporal data fusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reference data, validation and accuracy assessment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Module 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of multispectral imaging
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of multispectral imaging
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_multispectral_principles/01_multispectral_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_multispectral_principles/01_multispectral_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal information in satellite data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal information in satellite data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02_temporal_information.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="02_temporal_information_exercise.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-change-events-and-agents-in-tatra-mountains" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise - Change Events and Agents in Tatra Mountains
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic preparation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic preparation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment preparation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualising-imagery-chips-and-spectral-trajectories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visualising imagery chips and spectral trajectories
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visualising imagery chips and spectral trajectories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imagery-chips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Imagery chips
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spectral-trajectories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spectral trajectories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge-chips-with-trajectories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merge chips with trajectories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assesment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assesment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self training
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-and-software-credits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data and software credits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data and software credits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source code
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Source code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#this-is-the-end-of-this-exercise-proceed-with-other-themes-and-exercises-good-luck" class="md-nav__link">
+    <span class="md-ellipsis">
+      This is the end of this exercise. Proceed with other Themes and Exercises. Good luck!
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Image processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Image processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_image_processing/03_image_processing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_image_processing/03_image_processing_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Multitemporal classification
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Multitemporal classification
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_multitemporal_classification/04_multitemporal_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_multitemporal_classification/04_multitemporal_classification_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vegetation change and disturbance detection
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Vegetation change and disturbance detection
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_vegetation_monitoring/05_vegetation_monitoring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_vegetation_monitoring/05_vegetation_monitoring_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_cs_tundra_grasslands/06_cs_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_cs_forest_changes/07_cs_forest_changes.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Effects of pollution in Ore Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_cs_disturbance_detection/08_cs_disturbance_detection.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Forest disturbance detection (Tatra Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Module 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/module3.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of 3D/4D geographic point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of 3D/4D geographic point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/01_pointcloud_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/exercise/m3_theme1_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Programming for point cloud analysis with Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Programming for point cloud analysis with Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/02_pointcloud_programming_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/exercise/m3_theme2_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles and basic algorithms of 3D change detection and analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Principles and basic algorithms of 3D change detection and analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/03_3d_change_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/exercise/m3_theme3_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Time series analysis of 3D point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Time series analysis of 3D point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/04_3d_timeseries_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/exercise/m3_theme4_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning-based 3D/4D point cloud analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning-based 3D/4D point cloud analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/05_pointcloud_machine_learning/05_pointcloud_machine_learning.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_rockglacier/06_casestudy_rockglacier.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D change analysis at an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_sandybeach/06_casestudy_sandybeach.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series-based change analysis of sandy beach dynamics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Module 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/module4.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of imaging and laboratory spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of imaging and laboratory spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Airborne hyperspectral data acquisition and pre-processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Airborne hyperspectral data acquisition and pre-processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing_exercise_geometric.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    In situ and laboratory spectroscopy of vegetation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            In situ and laboratory spectroscopy of vegetation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_navig.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_spectra_probe_sphere_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning in imaging spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning in imaging spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal vs. spatial and spectral resolution
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal vs. spatial and spectral resolution
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/05_specific_resolution_contribution/05_specific_resolution_contribution.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/08_spectral_separability_grass/08_spectral_separability_grass.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal spectral separability of grass species (Krkonoše Mts.)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Discrimination of grass species from time series of RPAS hyperspectral imagery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/07_flood_plain_forest/07_flood_plain_forest.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal dynamics of flood-plain forests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_cloudcompare.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudCompare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_enmap_box.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EnMAP-Box
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_qgis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QGIS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_r_language.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_gee.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Earth Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Use Cases and Data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Use Cases and Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://doi.org/10.5281/zenodo.10003574" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data download
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_rockglacier_ahk.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D point clouds of an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_beach_kijkduin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4D point clouds of a sandy beach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_forests_tatras.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vegetation disturbance detection in Polish-Slovak Tatra Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_tundra_karkonosze.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_grasses_krkonose.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tundra vegetation monitoring in Krkonoše Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_ore_mts_disturbance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Forest disturbances in Ore Mountains (Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://web.natur.cuni.cz/gis/etrainee/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About the project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://forms.gle/Cz1yxJv2DDNz83j68" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback form
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-change-events-and-agents-in-tatra-mountains" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise - Change Events and Agents in Tatra Mountains
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic preparation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic preparation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment preparation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualising-imagery-chips-and-spectral-trajectories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visualising imagery chips and spectral trajectories
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visualising imagery chips and spectral trajectories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imagery-chips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Imagery chips
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spectral-trajectories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spectral trajectories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge-chips-with-trajectories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merge chips with trajectories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assesment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assesment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self training
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-and-software-credits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data and software credits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data and software credits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source code
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Source code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#this-is-the-end-of-this-exercise-proceed-with-other-themes-and-exercises-good-luck" class="md-nav__link">
+    <span class="md-ellipsis">
+      This is the end of this exercise. Proceed with other Themes and Exercises. Good luck!
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+
+                  
+
+  
+  
+
+
+<h1 id="temporal-information-in-satellite-data-exercise">Temporal information in satellite data - Exercise</h1>
+<h2 id="exercise-change-events-and-agents-in-tatra-mountains">Exercise - Change Events and Agents in Tatra Mountains</h2>
+<p>In this exercise, you will undertake a number of tasks associated with identifying <strong>events of changes</strong> visible in the imagery, and attributing <strong>change agents</strong> to these detected events based on the trajectories of selected spectral indices.</p>
+<p>The main objective of this exercise is not only to illustrate various examples of change events and change agents, but also to equip you with the skills needed to prepare your own reference datasets. Photointerpretation of imagery chips and charts that present relationships between spectral indices values and ground-level changes are often the only viable sources of data for assessing analysis results, particularly when ground truth data is unavailable.</p>
+<h2 id="basic-preparation">Basic preparation</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>For this exercise you will need the following software, data and tools:</p>
+<ul>
+<li><strong>Software</strong> - R and RStudio. You can access environment setup tutorial for the whole Module 2 here: <a href="../../software/software_r_language.html">R environment setup tutorial</a>. After following the setup guide you should have all the necessary packages installed.</li>
+<li><strong>Data</strong> - downloaded data provided through <a href="https://zenodo.org/records/10003575">Zenodo</a></li>
+</ul>
+<p>Follow the suggested working environment setup in order for the provided relative paths to work properly.</p>
+<h3 id="data">Data</h3>
+<p>The imagery provided for this exercise comprises a time series of Landsat program satellites 5, 7, and 8 satellite images spanning from 1984 to 2016. This time series is composed of images from summer periods, defined as the timeframe between June 15 and September 15. Images for each available year (with the exceptions of 1990, 1998, and 2004 due to low-quality data - primarily due to high cloud cover) underwent atmospheric and topographic correction using the ATCOR 2/3 software. The outcomes of these corrections were validated using in-situ surface reflectance measurements. Furthermore, these images were harmonized to match the Landsat 8 surface reflectance values using a linear regression derived from the comparison of clear pixel values.</p>
+<p>Please note that due to cloud cover during certain periods, selected images (14 out of 30) are composites of two different images. These composites were calculated by using the higher NDVI value between the two images.</p>
+<p><center></p>
+<p><img src="media_exercise/exercise_tatra_mountains_1984_2016.png" title="Tatra Mountains 1984-2016" alt="Point 1" width="800"/></p>
+<p><i>Left: Landsat 5 TM 31.07.1984, RGB 321; right: Landsat 8 OLI 8.09.2016, RGB 432. Landsat imagery courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a>/ <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a></i>
+</center></p>
+<p>The preprocessing of images resulted in 30 multiband images, each containing six bands corresponding to Landsat 5 bands 1-5, and 7. These bands were subsequently used to calculate spectral indices. For this exercise, you will be utilizing 30-layer raster bricks of bands 4 (NIR), 3 (Red), and 2 (Green) for displaying image chips data, along with vector data with reference points. These points have assigned attributes denoting the year of detected change, change agent, and time series values of three spectral indices: NDVI, NDMI, and NBR.</p>
+<p>More information about the data and processing can be found in <a href="https://doi.org/10.1016/j.rse.2020.112026">Ochtyra et. al, 2020</a>.</p>
+<h3 id="environment-preparation">Environment preparation</h3>
+<p>Let’s begin by loading the necessary libraries and datasets, and setting up some initial variables to use down the line.</p>
+<p>Firstly, load required libraries into the environment: <em>terra</em>, <em>sf</em> and <em>dplyr</em>.</p>
+<pre><code class="language-r"># raster I/O and processing
+library(terra)
+
+# vector and attribute handling
+library(sf) 
+
+# tabular data manipulation
+library(dplyr)
+</code></pre>
+<h3 id="reading-data">Reading data</h3>
+<p>With the libraries in place, we can now load the necessary data. We’ll begin with three multiband rasters corresponding to the green, red, and NIR bands respectively.</p>
+<pre><code class="language-r"># multiband raster containing 30 green bands from 1984-2016 period
+green &lt;- rast(&quot;theme_2_exercise/data_exercise/T2_green_stack.tif&quot;) 
+
+# multiband raster containing 30 red bands from 1984-2016 period
+red &lt;- rast(&quot;theme_2_exercise/data_exercise/T2_red_stack.tif&quot;) 
+
+# multiband raster containing 30 NIR bands from 1984-2016 period
+nir &lt;- rast(&quot;theme_2_exercise/data_exercise/T2_nir_stack.tif&quot;) 
+</code></pre>
+<p>The bands in the raster bricks are chronologically ordered, with the first layer being the earliest acquired image from 1984 and the last from 2016. Note the missing years.</p>
+<p>You can visualize the first couple of bands of one of rasters to get a sense of the overall data extent and band values.</p>
+<pre><code class="language-r">e &lt;- c(400000, 460000, 5410000, 5415000)
+plot(nir, 1:6, 
+     col = colorRampPalette(c(&quot;black&quot;, &quot;white&quot;))(255), 
+     range = c(0, 10000), 
+     mar = NA,
+     plg = list(ext = e, loc = &quot;bottom&quot;))
+</code></pre>
+<p><center></p>
+<p><img src="media_exercise/nir_6.png" title="First six NIR bands" alt="first six nir bands" width="1000"/></p>
+<p><i>First six NIR bands.</i>
+</center></p>
+<p>We can now create a vector of dates corresponding to each image. Remember that some images are composites, and their assigned date corresponds to the main image that contributes the majority of pixels to the final composite.</p>
+<pre><code class="language-r"># vector of dates assigned to subsequent raster layers in each band brick
+years &lt;- as.Date(c(&quot;1984-07-31&quot;, &quot;1985-08-03&quot;,&quot;1986-08-22&quot;, &quot;1987-07-08&quot;, 
+                   &quot;1988-08-18&quot;, &quot;1989-07-04&quot;, &quot;1991-09-05&quot;, &quot;1992-07-20&quot;, 
+                   &quot;1993-08-16&quot;, &quot;1994-08-28&quot;, &quot;1995-07-21&quot;, &quot;1996-08-24&quot;, 
+                   &quot;1997-09-12&quot;, &quot;1999-08-09&quot;, &quot;2000-08-20&quot;, &quot;2001-08-15&quot;, 
+                   &quot;2002-06-15&quot;, &quot;2003-08-12&quot;, &quot;2005-09-02&quot;, &quot;2006-07-19&quot;, 
+                   &quot;2007-08-23&quot;, &quot;2008-09-02&quot;, &quot;2009-08-21&quot;, &quot;2010-08-23&quot;, 
+                   &quot;2011-08-27&quot;, &quot;2012-08-28&quot;, &quot;2013-09-08&quot;,&quot;2014-09-04&quot;, 
+                   &quot;2015-07-12&quot;, &quot;2016-08-08&quot;)) 
+</code></pre>
+<p>Finally, let’s load the reference point data into our workspace. Using the <code>st_read</code> function from the <code>sf</code> package, we can easily import and manipulate the data contained in the attribute table of the vector file.</p>
+<pre><code class="language-r"># set of 13 reference points with attribute table
+points &lt;- st_read(
+  &quot;theme_2_exercise/data_exercise/T2_tatra_mountains_change_points.shp&quot;) 
+</code></pre>
+<p>The reference layer consists of 13 points. Nine of them have attributes regarding the year of change detection and change agent, while all of them have 90 spectral indices values (30 each for NDVI, NDMI, and NBR). The remaining four points, which have missing attribute values, will be used later in this exercise for self-training. For now, we’ll work with only the first nine points.</p>
+<h2 id="visualising-imagery-chips-and-spectral-trajectories">Visualising imagery chips and spectral trajectories</h2>
+<h3 id="imagery-chips">Imagery chips</h3>
+<p>Having loaded the required data, we can now prepare our plotting environment. The aim is to generate <em>image chips</em> — parts of the images surrounding reference points. As an example, we’ll use point number 1 for now, but we’ll later create a loop to process each point.</p>
+<p>First, we need to select one of the points and delineate the range of the chip based on its coordinates. In this instance, we’ll use chips with an area of 39x39 pixels.</p>
+<pre><code class="language-r"># indicate the index (row) of point as read into the environment
+point_number &lt;- 1 
+
+# retrieve coordinates from point
+point_cords &lt;- st_coordinates(points)[point_number, ]
+
+# retrieve image column, where the point lies
+row &lt;- colFromX(green, point_cords[1]) 
+
+# rerieve image row, where the point lies
+col &lt;- rowFromY(green, point_cords[2]) 
+
+# set up size of the image chip
+window_size &lt;- 39 
+
+# half of the window size
+half_widow_size &lt;- floor(window_size / 2) 
+
+# image columns, which will we used for image chip visualisation
+col_cords &lt;- (col - half_widow_size) : (col + half_widow_size) 
+
+# image rows, which will we used for image chip visualisation
+row_cords &lt;- (row - half_widow_size) : (row + half_widow_size) 
+</code></pre>
+<p>Next, we’ll set up the output name for the chip mosaic, initialize the device and prepare plotting grid. Initializing new device is a step that prepares a new blank plotting area, which we will save to our disk after adding elements to it. Our aim is to display chips in a 3-row, 10-column grid, so we’ll set up an appropriate layout.</p>
+<pre><code class="language-r"># set up output name of the file
+output_name &lt;- &quot;theme_2_exercise/results/point_1_chips_example.png&quot;  
+
+# initialize device, plotting area 1920x1080 px, text size 16 points
+png(filename = output_name, 
+width = 1920, 
+height = 800, 
+pointsize = 16) 
+
+# plotting area set up as a 3x10 matrix
+layout(matrix(seq(1,30),3, 10, byrow = TRUE), heights = c(1,1,1)) 
+</code></pre>
+<p>Finally, we can start plotting our chips. In the loop below, we’ll use the 3 raster bricks with <strong>NIR</strong>, <strong>red</strong>, and <strong>green bands</strong> to create 30 NIR/RED/GREEN (color infrared band) composites—one for each year—for the selected point. To visualize each chip with similar parameters, we’ll also trim histogram stretches to preset values. Furthermore, we’ll display the date and location of the selected point for each chip.</p>
+<pre><code class="language-r"># enable reading pixel values from multiband rasters
+readStart(green)
+readStart(red)
+readStart(nir)
+
+# loop 30 times - once for each raster layer in the brick
+for (j in seq(30)){ 
+
+  # prepare image slice from the appropriate green raster
+  # using previously prepared rows/columns
+  o_b1 &lt;- rast(matrix(readValues(green[[j]], 
+                                       col = row_cords[1], 
+                                       nrows = window_size, 
+                                       row = col_cords[1],
+                                       ncols = window_size),
+                        nrow = window_size, 
+                        ncol = window_size, 
+                        byrow = TRUE))  
+
+  # prepare image slice from the appropriate red raster
+  # using previously prepared rows/columns
+  o_b2 &lt;- rast(matrix(readValues(red[[j]], 
+                                       col = row_cords[1], 
+                                       nrows = window_size, 
+                                       row = col_cords[1],
+                                       ncols = window_size),
+                        nrow = window_size, 
+                        ncol = window_size, 
+                        byrow = TRUE))
+
+  # prepare image slice from the appropriate green raster
+  # using previously prepared rows/columns
+  o_b3 &lt;- rast(matrix(readValues(nir[[j]], 
+                                       col = row_cords[1], 
+                                       nrows = window_size, 
+                                       row = col_cords[1],
+                                       ncols = window_size),
+                        nrow = window_size, 
+                        ncol = window_size, 
+                        byrow = TRUE))
+
+  # trim histogram of green band for harmonized viewing of the whole set
+  b_min &lt;- 10
+  b_max &lt;- 1000
+  o_b1 &lt;- (o_b1 - b_min) / (b_max - b_min) * 255 
+
+  # trim histogram of red band for harmonized viewing of the whole set
+  b_min &lt;- 10
+  b_max &lt;- 1000
+  o_b2 &lt;- (o_b2 - b_min) / (b_max - b_min) * 255 
+
+  # trim histogram of NIR band for harmonized viewing of the whole set
+  b_min &lt;- 10
+  b_max &lt;- 4000
+  o_b3 &lt;- (o_b3 - b_min) / (b_max - b_min) * 255 
+
+  # convert any negative values to 0 for better viewing
+  o_b1[o_b1 &lt; 0] &lt;- 0 
+  o_b2[o_b2 &lt; 0] &lt;- 0 
+  o_b3[o_b3 &lt; 0] &lt;- 0
+
+  # convert any values above 255 to 0
+  o_b1[o_b1 &gt; 255] &lt;- 255
+  o_b2[o_b2 &gt; 255] &lt;- 255 
+  o_b3[o_b3 &gt; 255] &lt;- 255
+
+  # set up margins around each of 30 plotting blocks
+  par(mar = c(0,1,1,1)) 
+
+  # plot RGB chip in the appropriate place in the layout 
+  plotRGB(c(o_b3, o_b2, o_b1), 
+          r = 1, g = 2, b = 3,
+          mar = 1) 
+
+  # draw the location of reference point 
+  points(20, 19.4, pch = &quot;.&quot;, col = c(&quot;white&quot;))
+  symbols(x = 19.6, 
+          y = 19.4, 
+          squares = 3, 
+          inches = F, 
+          add = T, 
+          fg = &quot;yellow&quot;, 
+          lwd = 0.01)
+
+  # show date of the image acquisition above the RGB chip
+  title(years[j], line = -2) 
+
+}
+
+# close files - we read necessary values
+readStop(green)
+readStop(red)
+readStop(nir)
+
+# turn off the device - save .png image to working directory
+dev.off() 
+</code></pre>
+<p>This is the result after executing the preceding code.</p>
+<p><center>
+<img src="media_exercise/point_1_chips_example.png" title="Point 1. Bark beetle outbreak" alt="Point 1 - chips" width="1080"/>
+</center></p>
+<p>You’ll observe that we successfully visualized the entire image time series in one comprehensive layout, facilitating an easier visual comparison between the images.</p>
+<h3 id="spectral-trajectories">Spectral trajectories</h3>
+<p>Next, we’ll present values for three distinct spectral indices. To accomplish this, we’ll adjust our plotting environment. Additionally, the data preparation phase involves extracting a series of 30 values for each spectral index from the attribute table.</p>
+<pre><code class="language-r"># set up output name of the file
+output_name = &quot;theme_2_exercise/results/point_1_trajectory_example.png&quot; 
+
+png(filename = output_name, width = 1920, height = 1080, pointsize = 16)
+
+# plotting area set up as a 4x1 matrix, 
+# which will present as 3 long spanning over the whole plotting area
+layout(matrix(seq(1, 4), 4, 1, byrow = TRUE), 
+       heights = c(0.25, 1.25, 1.25, 1.25)) 
+
+# the first element of the plot - title; 
+# we begin by setting margins of part of the plot 
+par(mar = c(0, 0, 0, 0)) 
+# new element in the plot, in this case title
+plot.new() 
+
+# title will contain point number 
+# and change agent retrieved from attribute table
+text(0.5, 0.5, 
+     paste0(&quot;Spectral trajectories. Point &quot;, 
+            point_number, 
+            &quot;. Change agent: &quot;, 
+            points$chng_agnt[point_number], &quot;.&quot;), 
+     cex = 1.4, 
+     font = 1) 
+
+# new margins to use for the rest of the plot
+par(mar = c(4, 4, 1, 3)) 
+
+# Add NDVI trajectory
+# in this fragment we retrieve spectral index
+# values from attribute table of vector file
+ndvi_vals &lt;- points[point_number, ] %&gt;% 
+  # we use pipe operator to perform several actions;
+  # first we pick the desired point from the vector file
+  st_drop_geometry() %&gt;% 
+  # then we extract just the attribute table 
+  # and select only spectral index values
+  select(NDVI_1984:NDVI_2016) %&gt;% 
+  # in the end we create a vector of values to plot 
+  unlist(., use.names = FALSE)
+
+
+# calculate minimum value - 5%
+min_val &lt;- min(ndvi_vals, na.rm = TRUE) - 0.05 * abs(min(ndvi_vals, na.rm = TRUE))
+# calculate maximum value + 5%
+max_val &lt;- max(ndvi_vals, na.rm = TRUE) + 0.05 * abs(max(ndvi_vals, na.rm = TRUE))
+dynamic_range &lt;- c(min_val, max_val)
+# calculate where to plot ablines
+abline_seq &lt;- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, 
+                  by = 0.1)
+
+# we initiate a point-line plot of index values
+plot(ndvi_vals, 
+     type = &quot;b&quot;,
+     main = &quot;NDVI trajectory&quot;,
+     lwd = 2, 
+     xlab = &quot;&quot;, 
+     ylab = &quot;NDVI&quot;,
+     ylim = dynamic_range, 
+     xaxt = &quot;n&quot;, 
+     yaxt = &quot;n&quot;) 
+
+# add y-axis labels on the right side of the plot by 0.1
+axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+
+# add y-axis labels on the left side of the plot
+axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+
+# add tics on x-axis
+axis(1, at = 1:30, labels = FALSE) 
+
+# Determine the range of y values
+y_range &lt;- diff(dynamic_range)
+# Choose a percentage of the range (e.g., 5%) as a buffer
+buffer_percent &lt;- 0.1
+# Calculate the position for the text labels
+text_y_position &lt;- min_val - buffer_percent * y_range
+
+# text with tilted x-axis labels
+text(x = 1:30, 
+     y = text_y_position, 
+     labels = years, 
+     srt = 35, 
+     adj = 1, 
+     xpd = TRUE, 
+     cex = 1, 
+     font = 1) 
+
+# we can also add some lines in the plot to ease the reading
+sapply(abline_seq, function(h) abline(h = h, lty = 3))
+
+
+# now we repeat the above steps to plot the remaining two trajectories
+
+# Add NDMI trajectory
+ndmi_vals &lt;- points[point_number, ] %&gt;%
+  st_drop_geometry() %&gt;%
+  select(NDMI_1984:NDMI_2016) %&gt;%
+  unlist(., use.names = FALSE)
+
+
+min_val &lt;- min(ndmi_vals, na.rm = TRUE) - 0.05 * abs(min(ndmi_vals, na.rm = TRUE))
+max_val &lt;- max(ndmi_vals, na.rm = TRUE) + 0.05 * abs(max(ndmi_vals, na.rm = TRUE))
+dynamic_range &lt;- c(min_val, max_val)
+abline_seq &lt;- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, 
+                  by = 0.1)
+
+plot(ndmi_vals, 
+     type = &quot;b&quot;,
+     main = &quot;NDMI trajectory&quot;,
+     lwd = 2, 
+     xlab = &quot;&quot;, 
+     ylab = &quot;NDMI&quot;,
+     ylim = dynamic_range, 
+     xaxt = &quot;n&quot;, 
+     yaxt = &quot;n&quot;) 
+
+axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+axis(1, at = 1:30, labels = FALSE)
+
+y_range &lt;- diff(dynamic_range)
+buffer_percent &lt;- 0.1
+text_y_position &lt;- min_val - buffer_percent * y_range
+
+text(x = 1:30, 
+     y = text_y_position, 
+     labels = years, 
+     srt = 35, 
+     adj = 1, 
+     xpd = TRUE, 
+     cex = 1, 
+     font = 1) 
+
+sapply(abline_seq, function(h) abline(h = h, lty = 3))
+
+
+# Add NBR trajectory
+nbr_vals &lt;- points[point_number, ] %&gt;%
+  st_drop_geometry() %&gt;%
+  select(NBR_1984:NBR_2016) %&gt;%
+  unlist(., use.names = FALSE)
+
+min_val &lt;- min(nbr_vals, na.rm = TRUE) - 0.05 * abs(min(nbr_vals, na.rm = TRUE))
+max_val &lt;- max(nbr_vals, na.rm = TRUE) + 0.05 * abs(max(nbr_vals, na.rm = TRUE))
+dynamic_range &lt;- c(min_val, max_val)
+abline_seq &lt;- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2,
+                  by = 0.1)
+
+plot(nbr_vals, 
+     type = &quot;b&quot;,
+     main = &quot;NBR trajectory&quot;,
+     lwd = 2, 
+     xlab = &quot;&quot;, 
+     ylab = &quot;NBR&quot;,
+     ylim = dynamic_range, 
+     xaxt = &quot;n&quot;, 
+     yaxt = &quot;n&quot;) 
+axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+axis(1, at = 1:30, labels = FALSE) 
+y_range &lt;- diff(dynamic_range)
+buffer_percent &lt;- 0.1
+text_y_position &lt;- min_val - buffer_percent * y_range
+
+text(x = 1:30, 
+     y = text_y_position, 
+     labels = years, 
+     srt = 35, 
+     adj = 1, 
+     xpd = TRUE, 
+     cex = 1, 
+     font = 1) 
+
+
+sapply(abline_seq, function(h) abline(h = h, lty = 3))
+
+# turn off the device - save .png image to working directory
+dev.off() 
+</code></pre>
+<p>The result of the above chunk of code should look like this.</p>
+<p><center></p>
+<p><img src="media_exercise/point_1_trajectory_example.png" title="Point 1. Bark beetle outbreak" alt="Point 1 - spectral trajectories" width="1080"/></p>
+<p></center></p>
+<h3 id="merge-chips-with-trajectories">Merge chips with trajectories</h3>
+<p>To streamline the process, we’ll encapsulate the aforementioned functions within a loop. This loop will enable the repetitive execution of all the steps for every distinct point, eventually combining the two output images—both chips and trajectories—into a singular cohesive image. While much of the code remains consistent, there will be several modifications to ensure the loop’s smooth operation. These changes in the code will be clearly annotated within the code chunk for clarity.</p>
+<pre><code class="language-r"># enable reading pixel values from multiband rasters
+readStart(green)
+readStart(red)
+readStart(nir)
+
+# set up window size for all elements which will come out of the loop
+window_size &lt;- 39 
+
+# the loop will last till all of the first 9 points in the layer are used
+for (i in seq(1, 9)){ 
+
+
+  point_cords &lt;- st_coordinates(points)[i, ] 
+  row &lt;- colFromX(green, point_cords[1])
+  col &lt;- rowFromY(green, point_cords[2])
+
+  half_widow_size &lt;- floor(window_size / 2)
+  col_cords &lt;- (col - half_widow_size) : (col + half_widow_size)
+  row_cords &lt;- (row - half_widow_size) : (row + half_widow_size)
+
+  # name of the file will contain information about point 
+  # number and change agent
+  output_name &lt;- paste0(&quot;theme_2_exercise/results/Point &quot;, 
+                        i, 
+                        &quot;. &quot;, 
+                        points$chng_agnt[i], &quot;.png&quot;) 
+
+  png(filename = output_name, width = 1920, height = 1500, pointsize = 16)
+
+  # plot area divided into more parts to fit all of the components
+  layout(matrix(c(rep(1, 10), seq(2, 31), rep(32, 10), rep(33, 10), rep(34, 10)),
+                7, 10, byrow = TRUE), 
+         heights = c(0.25, 1, 1, 1, 2, 2, 2)) 
+
+  par(mar = c(0, 0, 0, 0))
+  plot.new()
+  text(0.5, 0.5, paste0(&quot;CIR chips and spectral trajectories. Point &quot;, 
+                        i, 
+                        &quot;. Change agent: &quot;, 
+                        points$chng_agnt[i], &quot;.&quot;), 
+       cex = 1.4, font = 1)
+
+  par(mar = c(0,0,1,0))
+  for (j in seq(30)){
+
+
+    o_b1 &lt;- rast(matrix(readValues(green[[j]], 
+                                   col = row_cords[1], 
+                                   nrows = window_size, 
+                                   row = col_cords[1],
+                                   ncols = window_size),
+                        nrow = window_size, 
+                        ncol = window_size, 
+                        byrow = TRUE))  
+
+
+    o_b2 &lt;- rast(matrix(readValues(red[[j]], 
+                                   col = row_cords[1], 
+                                   nrows = window_size, 
+                                   row = col_cords[1],
+                                   ncols = window_size),
+                        nrow = window_size, 
+                        ncol = window_size, 
+                        byrow = TRUE))
+
+
+    o_b3 &lt;- rast(matrix(readValues(nir[[j]], 
+                                   col = row_cords[1], 
+                                   nrows = window_size, 
+                                   row = col_cords[1],
+                                   ncols = window_size),
+                        nrow = window_size, 
+                        ncol = window_size, 
+                        byrow = TRUE))
+
+
+    b_min &lt;- 10
+    b_max &lt;- 1000
+    o_b1 &lt;- (o_b1 - b_min) / (b_max - b_min) * 255 
+
+
+    b_min &lt;- 10
+    b_max &lt;- 1000
+    o_b2 &lt;- (o_b2 - b_min) / (b_max - b_min) * 255 
+
+
+    b_min &lt;- 10
+    b_max &lt;- 4000
+    o_b3 &lt;- (o_b3 - b_min) / (b_max - b_min) * 255 
+
+
+    o_b1[o_b1 &lt; 0] &lt;- 0 
+    o_b2[o_b2 &lt; 0] &lt;- 0 
+    o_b3[o_b3 &lt; 0] &lt;- 0
+
+    o_b1[o_b1 &gt; 255] &lt;- 255
+    o_b2[o_b2 &gt; 255] &lt;- 255 
+    o_b3[o_b3 &gt; 255] &lt;- 255
+
+
+    par(mar = c(0,1,1,1)) 
+
+
+    plotRGB(c(o_b3, o_b2, o_b1), 
+            r = 1, g = 2, b = 3,
+            mar = 1) 
+
+
+    points(20, 19.4, pch = &quot;.&quot;, col = c(&quot;white&quot;))
+    symbols(x = 19.6, y = 19.4, 
+            squares = 3.2, 
+            inches = F, 
+            add = T, 
+            fg = &quot;yellow&quot;, 
+            lwd = 0.01)
+
+    # show date of the image acquisition above the RGB chip
+    title(years[j], line = 0.2) 
+
+  }
+
+
+  par(mar = c(4, 4, 1, 3))
+
+  ndvi_vals &lt;- points[i, ] %&gt;% 
+    st_drop_geometry() %&gt;% 
+    select(NDVI_1984:NDVI_2016) %&gt;% 
+    unlist(., use.names = FALSE)
+
+  # calculate minimum value - 5%
+  min_val &lt;- min(ndvi_vals, na.rm = TRUE) - 0.05 * abs(min(ndvi_vals, na.rm = TRUE))
+  # calculate maximum value + 5%
+  max_val &lt;- max(ndvi_vals, na.rm = TRUE) + 0.05 * abs(max(ndvi_vals, na.rm = TRUE))
+  dynamic_range &lt;- c(min_val, max_val)
+  # calculate where to plot ablines
+  abline_seq &lt;- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, 
+                    by = 0.1)
+
+  plot(ndvi_vals, 
+       type = &quot;b&quot;,
+       main = &quot;NDVI trajectory&quot;,
+       lwd = 2, 
+       xlab = &quot;&quot;, 
+       ylab = &quot;NDVI&quot;,
+       ylim = dynamic_range, 
+       xaxt = &quot;n&quot;, 
+       yaxt = &quot;n&quot;) 
+
+  axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(1, at = 1:30, labels = FALSE) 
+
+  # Determine the range of y values
+  y_range &lt;- diff(dynamic_range)
+  # Choose a percentage of the range (e.g., 5%) as a buffer
+  buffer_percent &lt;- 0.1
+  # Calculate the position for the text labels
+  text_y_position &lt;- min_val - buffer_percent * y_range
+
+  text(x = 1:30, 
+       y = text_y_position, 
+       labels = years, 
+       srt = 35, 
+       adj = 1, 
+       xpd = TRUE, 
+       cex = 1, 
+       font = 1) 
+
+  sapply(abline_seq, function(h) abline(h = h, lty = 3))
+
+
+  ndmi_vals &lt;- points[i, ] %&gt;%
+    st_drop_geometry() %&gt;%
+    select(NDMI_1984:NDMI_2016) %&gt;%
+    unlist(., use.names = FALSE)
+
+  min_val &lt;- min(ndmi_vals, na.rm = TRUE) - 0.05 * abs(min(ndmi_vals, na.rm = TRUE))
+  max_val &lt;- max(ndmi_vals, na.rm = TRUE) + 0.05 * abs(max(ndmi_vals, na.rm = TRUE))
+  dynamic_range &lt;- c(min_val, max_val)
+
+  abline_seq &lt;- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2,
+                    by = 0.1)
+
+  plot(ndmi_vals, 
+       type = &quot;b&quot;,
+       main = &quot;NDMI trajectory&quot;,
+       lwd = 2, 
+       xlab = &quot;&quot;, 
+       ylab = &quot;NDMI&quot;,
+       ylim = dynamic_range, 
+       xaxt = &quot;n&quot;, 
+       yaxt = &quot;n&quot;) 
+
+  axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(1, at = 1:30, labels = FALSE) 
+  y_range &lt;- diff(dynamic_range)
+  buffer_percent &lt;- 0.1
+  text_y_position &lt;- min_val - buffer_percent * y_range
+  text(x = 1:30, y = text_y_position, 
+       labels = years, srt = 35, adj = 1, xpd = TRUE, cex = 1, font = 1) 
+  sapply(abline_seq, function(h) abline(h = h, lty = 3))
+
+  nbr_vals &lt;- points[i, ] %&gt;%
+    st_drop_geometry() %&gt;%
+    select(NBR_1984:NBR_2016) %&gt;%
+    unlist(., use.names = FALSE)
+
+  min_val &lt;- min(nbr_vals, na.rm = TRUE) - 0.05 * abs(min(nbr_vals, na.rm = TRUE))
+  max_val &lt;- max(nbr_vals, na.rm = TRUE) + 0.05 * abs(max(nbr_vals, na.rm = TRUE))
+  dynamic_range &lt;- c(min_val, max_val)
+  abline_seq &lt;- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2,
+                    by = 0.1)
+
+  plot(nbr_vals, 
+       type = &quot;b&quot;,
+       main = &quot;NBR trajectory&quot;,
+       lwd = 2, 
+       xlab = &quot;&quot;, 
+       ylab = &quot;NBR&quot;,
+       ylim = dynamic_range, 
+       xaxt = &quot;n&quot;, 
+       yaxt = &quot;n&quot;) 
+
+  axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(1, at = 1:30, labels = FALSE) 
+  y_range &lt;- diff(dynamic_range)
+  buffer_percent &lt;- 0.1
+  text_y_position &lt;- min_val - buffer_percent * y_range
+  text(x = 1:30, y = text_y_position, 
+       labels = years, srt = 35, adj = 1, xpd = TRUE, cex = 1, font = 1) 
+  sapply(abline_seq, function(h) abline(h = h, lty = 3))
+
+  dev.off() 
+
+}
+
+# close files - we read necessary values
+readStop(green)
+readStop(red)
+readStop(nir)
+</code></pre>
+<p>The first resulting image should be looking like the example below.</p>
+<p><center></p>
+<p><img src="media_exercise/all_elements_example.png" title="Point 1. Bark beetle outbreak" alt="Point 1 - all elements" width="1080"/></p>
+<p></center></p>
+<h3 id="assesment">Assesment</h3>
+<p>Take a moment to thoroughly analyze the resultant nine images. Your primary focus should be on discerning the changes apparent within the chips. Attempt to identify the year of the change through visual interpretation, and cross-reference your findings with the date provided in the attribute table and the image’s title. Additionally, endeavor to associate a change agent with the spectral index that most prominently highlights the change moment. This exercise will prove invaluable for the concluding segment, wherein you’ll be tasked with discerning the date of the change and correlating the change agent autonomously.</p>
+<h2 id="self-training">Self training</h2>
+<p>Having absorbed the insights from the previous segment, let’s now apply this knowledge to a new data set. This data set, however, lacks attributes that specify the year of change and the associated change agent. Your mission? Accurately identify these attributes.</p>
+<p><b><u>TASK</u></b></p>
+<ul>
+<li>Execute the earlier steps for points 10-13 from <code>T2_tatra_mountains_change_points</code> (<code>points</code> variable)</li>
+<li>Set <code>window_size</code> to 39</li>
+<li>Within the loop, modify <code>output_name</code> to <code>paste0("Training point ", i, ". ", points$chng_agnt[[i]], ".png")</code></li>
+<li>Also within the loop, change text displayed inside the image to <code>paste0("Training point ", i, ".")</code></li>
+<li>Initiate the loop to produce chips images for <code>points[10:13, ]</code> layer.</li>
+</ul>
+<hr />
+<details>
+<summary>
+<b>Click here to see the solution.</b><br> Try to solve the task yourself and use the solution if you get stuck or to check if you are on the right way to the solution.
+</summary>
+
+Code chunk
+
+
+<pre><code class="language-r"># enable reading pixel values from multiband rasters
+readStart(green)
+readStart(red)
+readStart(nir)
+
+# set up window size for all elements which will come out of the loop
+window_size &lt;- 39 
+
+# the loop will last till all of the first 9 points in the layer are used
+for (i in seq(10, 13)){ 
+
+
+  point_cords &lt;- st_coordinates(points)[i, ] 
+  row &lt;- colFromX(green, point_cords[1])
+  col &lt;- rowFromY(green, point_cords[2])
+
+  half_widow_size &lt;- floor(window_size / 2)
+  col_cords &lt;- (col - half_widow_size) : (col + half_widow_size)
+  row_cords &lt;- (row - half_widow_size) : (row + half_widow_size)
+
+  # name of the file will contain information about point 
+  # number and change agent
+  output_name &lt;- paste0(&quot;theme_2_exercise/results/Training point &quot;, i, &quot;.png&quot;) 
+
+  png(filename = output_name, width = 1920, height = 1500, pointsize = 16)
+
+  # plot area divided into more parts to fit all of the components
+  layout(matrix(c(rep(1, 10), seq(2, 31), rep(32, 10), rep(33, 10), rep(34, 10)),
+                7, 10, byrow = TRUE), 
+         heights = c(0.25, 1, 1, 1, 2, 2, 2)) 
+
+  par(mar = c(0, 0, 0, 0))
+  plot.new()
+  text(0.5, 0.5, paste0(&quot;Training point &quot;, i, &quot;.&quot;), cex = 1.4, font = 1)
+
+  par(mar = c(0,0,1,0))
+  for (j in seq(30)){
+
+
+    o_b1 &lt;- rast(matrix(readValues(green[[j]], 
+                                   col = row_cords[1], 
+                                   nrows = window_size, 
+                                   row = col_cords[1],
+                                   ncols = window_size),
+                        nrow = window_size, 
+                        ncol = window_size, 
+                        byrow = TRUE))  
+
+
+    o_b2 &lt;- rast(matrix(readValues(red[[j]], 
+                                   col = row_cords[1], 
+                                   nrows = window_size, 
+                                   row = col_cords[1],
+                                   ncols = window_size),
+                        nrow = window_size, 
+                        ncol = window_size, 
+                        byrow = TRUE))
+
+
+    o_b3 &lt;- rast(matrix(readValues(nir[[j]], 
+                                   col = row_cords[1], 
+                                   nrows = window_size, 
+                                   row = col_cords[1],
+                                   ncols = window_size),
+                        nrow = window_size, 
+                        ncol = window_size, 
+                        byrow = TRUE))
+
+
+    b_min &lt;- 10
+    b_max &lt;- 1000
+    o_b1 &lt;- (o_b1 - b_min) / (b_max - b_min) * 255 
+
+
+    b_min &lt;- 10
+    b_max &lt;- 1000
+    o_b2 &lt;- (o_b2 - b_min) / (b_max - b_min) * 255 
+
+
+    b_min &lt;- 10
+    b_max &lt;- 4000
+    o_b3 &lt;- (o_b3 - b_min) / (b_max - b_min) * 255 
+
+
+    o_b1[o_b1 &lt; 0] &lt;- 0 
+    o_b2[o_b2 &lt; 0] &lt;- 0 
+    o_b3[o_b3 &lt; 0] &lt;- 0
+
+    o_b1[o_b1 &gt; 255] &lt;- 255
+    o_b2[o_b2 &gt; 255] &lt;- 255 
+    o_b3[o_b3 &gt; 255] &lt;- 255
+
+
+    par(mar = c(0,1,1,1)) 
+
+
+    plotRGB(c(o_b3, o_b2, o_b1), 
+            r = 1, g = 2, b = 3,
+            mar = 1) 
+
+
+    points(20, 19.4, pch = &quot;.&quot;, col = c(&quot;white&quot;))
+    symbols(x = 19.6, y = 19.4,  squares = 3.2, inches = F, add = T, fg = &quot;yellow&quot;, lwd = 0.01)
+
+    # show date of the image acquisition above the RGB chip
+    title(years[j], line = 0.2) 
+
+  }
+
+
+  par(mar = c(4, 4, 1, 3))
+
+  ndvi_vals &lt;- points[i, ] %&gt;% 
+    st_drop_geometry() %&gt;% 
+    select(NDVI_1984:NDVI_2016) %&gt;% 
+    unlist(., use.names = FALSE)
+
+  # calculate minimum value - 5%
+  min_val &lt;- min(ndvi_vals, na.rm = TRUE) - 0.05 * abs(min(ndvi_vals, na.rm = TRUE))
+  # calculate maximum value + 5%
+  max_val &lt;- max(ndvi_vals, na.rm = TRUE) + 0.05 * abs(max(ndvi_vals, na.rm = TRUE))
+  dynamic_range &lt;- c(min_val, max_val)
+  # calculate where to plot ablines
+  abline_seq &lt;- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+
+  plot(ndvi_vals, 
+       type = &quot;b&quot;,
+       main = &quot;NDVI trajectory&quot;,
+       lwd = 2, 
+       xlab = &quot;&quot;, 
+       ylab = &quot;NDVI&quot;,
+       ylim = dynamic_range, 
+       xaxt = &quot;n&quot;, 
+       yaxt = &quot;n&quot;) 
+
+  axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(1, at = 1:30, labels = FALSE) 
+
+  # Determine the range of y values
+  y_range &lt;- diff(dynamic_range)
+  # Choose a percentage of the range (e.g., 5%) as a buffer
+  buffer_percent &lt;- 0.1
+  # Calculate the position for the text labels
+  text_y_position &lt;- min_val - buffer_percent * y_range
+
+  text(x = 1:30, 
+       y = text_y_position, 
+       labels = years, 
+       srt = 35, 
+       adj = 1, 
+       xpd = TRUE, 
+       cex = 1, 
+       font = 1) 
+
+  sapply(abline_seq, function(h) abline(h = h, lty = 3))
+
+
+  ndmi_vals &lt;- points[i, ] %&gt;%
+    st_drop_geometry() %&gt;%
+    select(NDMI_1984:NDMI_2016) %&gt;%
+    unlist(., use.names = FALSE)
+
+  min_val &lt;- min(ndmi_vals, na.rm = TRUE) - 0.05 * abs(min(ndmi_vals, na.rm = TRUE))
+  max_val &lt;- max(ndmi_vals, na.rm = TRUE) + 0.05 * abs(max(ndmi_vals, na.rm = TRUE))
+  dynamic_range &lt;- c(min_val, max_val)
+
+  abline_seq &lt;- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+
+  plot(ndmi_vals, 
+       type = &quot;b&quot;,
+       main = &quot;NDMI trajectory&quot;,
+       lwd = 2, 
+       xlab = &quot;&quot;, 
+       ylab = &quot;NDMI&quot;,
+       ylim = dynamic_range, 
+       xaxt = &quot;n&quot;, 
+       yaxt = &quot;n&quot;) 
+
+  axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(1, at = 1:30, labels = FALSE) 
+  y_range &lt;- diff(dynamic_range)
+  buffer_percent &lt;- 0.1
+  text_y_position &lt;- min_val - buffer_percent * y_range
+  text(x = 1:30, y = text_y_position, 
+       labels = years, srt = 35, adj = 1, xpd = TRUE, cex = 1, font = 1) 
+  sapply(abline_seq, function(h) abline(h = h, lty = 3))
+
+  nbr_vals &lt;- points[i, ] %&gt;%
+    st_drop_geometry() %&gt;%
+    select(NBR_1984:NBR_2016) %&gt;%
+    unlist(., use.names = FALSE)
+
+  min_val &lt;- min(nbr_vals, na.rm = TRUE) - 0.05 * abs(min(nbr_vals, na.rm = TRUE))
+  max_val &lt;- max(nbr_vals, na.rm = TRUE) + 0.05 * abs(max(nbr_vals, na.rm = TRUE))
+  dynamic_range &lt;- c(min_val, max_val)
+  abline_seq &lt;- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+
+  plot(nbr_vals, 
+       type = &quot;b&quot;,
+       main = &quot;NBR trajectory&quot;,
+       lwd = 2, 
+       xlab = &quot;&quot;, 
+       ylab = &quot;NBR&quot;,
+       ylim = dynamic_range, 
+       xaxt = &quot;n&quot;, 
+       yaxt = &quot;n&quot;) 
+
+  axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1) 
+  axis(1, at = 1:30, labels = FALSE) 
+  y_range &lt;- diff(dynamic_range)
+  buffer_percent &lt;- 0.1
+  text_y_position &lt;- min_val - buffer_percent * y_range
+  text(x = 1:30, y = text_y_position, 
+       labels = years, srt = 35, adj = 1, xpd = TRUE, cex = 1, font = 1) 
+  sapply(abline_seq, function(h) abline(h = h, lty = 3))
+
+  dev.off() 
+
+}
+
+# close files - we read necessary values
+readStop(green)
+readStop(red)
+readStop(nir)
+</code></pre>
+
+
+</details>
+
+<p><br></p>
+<hr />
+<p>This should be the resulting image of the task above - image of point 13.</p>
+<div style="display: flex; flex-direction: column; align-items:center;">
+
+<img src="media_exercise/training_13.png" ttitle="Point 13" alt="Point 13" width="1080"/>
+
+</div>
+
+<p>Now try to answer these questions. When you are confident in your answer, expand text to see the correct answers.</p>
+<details>
+<summary>
+Question 1: In what year can we observe the change in Point 13?
+</summary>
+A1: 2007
+</details>
+<details>
+<summary>
+Question 2: What is the most probable cause of change in Point 13?
+</summary>
+A2: Construction of a ski slope.
+</details>
+
+<p><br></p>
+<hr />
+<p><b><u>TRAINING TASK</u></b></p>
+<p>Try to answer similar questions regarding rest of the points in the self training layer. When you are ready check the correct answers here.</p>
+<details>
+<summary>
+Answers
+</summary>
+Point 10: landslide<br> Point 11: bark beetle outbreak<br> Point 12: windthrow<br>
+</details>
+
+<hr />
+<h2 id="data-and-software-credits">Data and software credits</h2>
+<h3 id="data_1">Data</h3>
+<p>Landsat 5, 7 and 8 imagery courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a>/ <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a></p>
+<h3 id="software">Software</h3>
+<ul>
+<li>R Core Team (2023). <em>R: A language and environment for statistical computing</em>. R Foundation for Statistical Computing, Vienna, Austria. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</li>
+<li>Hijmans R (2023). <em>terra: Spatial Data Analysis</em>. R package version 1.7-39, <a href="https://CRAN.R-project.org/package=terra">https://CRAN.R-project.org/package=terra</a></li>
+<li>Pebesma, E., &amp; Bivand, R. (2023). <em>Spatial Data Science: With Applications in R</em>. Chapman and Hall/CRC. <a href="https://doi.org/10.1201/9780429459016">https://doi.org/10.1201/9780429459016</a></li>
+<li>Pebesma, E., 2018. <em>Simple Features for R: Standardized Support for Spatial Vector Data</em>. The R Journal 10 (1), 439-446, <a href="https://doi.org/10.32614/RJ-2018-009">https://doi.org/10.32614/RJ-2018-009</a></li>
+<li>Wickham H, François R, Henry L, Müller K, Vaughan D (2023). <em>dplyr: A Grammar of Data Manipulation</em>. R package version 1.1.2, <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a></li>
+</ul>
+<h2 id="source-code">Source code</h2>
+<details>
+<summary>
+You can find the entire code used in this exercise here
+</summary>
+
+
+<pre><code class="language-r"># raster processing
+library(terra)
+
+# vector and attributes handling
+library(sf)
+
+# tabular data manipulation
+library(dplyr)
+
+
+# Multiband raster containing 30 green bands from 1984-2016 period
+green &lt;- rast(&quot;theme_2_exercise/data_exercise/T2_green_stack.tif&quot;) 
+
+# Multiband raster containing 30 red bands from 1984-2016 period
+red &lt;- rast(&quot;theme_2_exercise/data_exercise/T2_red_stack.tif&quot;) 
+
+# Multiband raster containing 30 NIR bands from 1984-2016 period
+nir &lt;- rast(&quot;theme_2_exercise/data_exercise/T2_nir_stack.tif&quot;) 
+
+
+e &lt;- c(400000, 460000, 5410000, 5415000)
+plot(nir, 1:6, 
+     col = colorRampPalette(c(&quot;black&quot;, &quot;white&quot;))(255), 
+     range = c(0, 10000), 
+     mar = NA,
+     plg = list(ext = e, loc = &quot;bottom&quot;))
+
+
+# vector of dates assigned to subsequent raster layers in each band brick
+years &lt;- as.Date(c(&quot;1984-07-31&quot;, &quot;1985-08-03&quot;,&quot;1986-08-22&quot;, &quot;1987-07-08&quot;, &quot;1988-08-18&quot;, &quot;1989-07-04&quot;, &quot;1991-09-05&quot;, &quot;1992-07-20&quot;, 
+                   &quot;1993-08-16&quot;, &quot;1994-08-28&quot;, &quot;1995-07-21&quot;, &quot;1996-08-24&quot;, &quot;1997-09-12&quot;, &quot;1999-08-09&quot;, &quot;2000-08-20&quot;, &quot;2001-08-15&quot;, &quot;2002-06-15&quot;, 
+                   &quot;2003-08-12&quot;, &quot;2005-09-02&quot;, &quot;2006-07-19&quot;, &quot;2007-08-23&quot;, &quot;2008-09-02&quot;, &quot;2009-08-21&quot;, &quot;2010-08-23&quot;, &quot;2011-08-27&quot;, 
+                   &quot;2012-08-28&quot;, &quot;2013-09-08&quot;,&quot;2014-09-04&quot;, &quot;2015-07-12&quot;, &quot;2016-08-08&quot;)) 
+
+
+# set of 13 reference points with attribute table
+points &lt;- st_read(&quot;theme_2_exercise/data_exercise/T2_tatra_mountains_change_points.shp&quot;) 
+
+
+# indicate the index (row) of point as read into the environment
+point_number &lt;- 1 
+
+# retrieve coordinates from point
+point_cords &lt;- st_coordinates(points)[point_number, ]
+
+# retrieve image column, where the point lies
+row &lt;- colFromX(green, point_cords[1]) 
+
+# rerieve image row, where the point lies
+col &lt;- rowFromY(green, point_cords[2]) 
+
+# set up size of the image chip
+window_size &lt;- 39 
+
+# half of the window size
+half_widow_size &lt;- floor(window_size / 2) 
+
+# image columns, which will we used for image chip visualisation
+col_cords &lt;- (col - half_widow_size) : (col + half_widow_size) 
+
+# image rows, which will we used for image chip visualisation
+row_cords &lt;- (row - half_widow_size) : (row + half_widow_size) 
+
+
+
+# set up output name of the file
+output_name &lt;- &quot;theme_2_exercise/results/point_1_chips_example.png&quot; 
+
+# initialize device, plotting area 1920x1080 px, text size 16 points
+png(filename = output_name, 
+    width = 1920, 
+    height = 800, 
+    pointsize = 16) 
+
+# plotting area set up as a 3x10 matrix
+layout(matrix(seq(1,30),3, 10, byrow = TRUE), heights = c(1,1,1)) 
+
+
+
+# enable reading pixel values from multiband rasters
+readStart(green)
+readStart(red)
+readStart(nir)
+
+# loop 30 times - once for each raster layer in the brick
+for (j in seq(30)){ 
+
+
+
+  # prepare image slice from the appropriate green raster using previously prepared rows/columns
+  o_b1 &lt;- rast(matrix(readValues(green[[j]], 
+                                 col = row_cords[1], 
+                                 nrows = window_size, 
+                                 row = col_cords[1],
+                                 ncols = window_size),
+                      nrow = window_size, 
+                      ncol = window_size, 
+                      byrow = TRUE)) 
+
+  # prepare image slice from the appropriate red raster using previously prepared rows/columns
+  o_b2 &lt;- rast(matrix(readValues(red[[j]], 
+                                 col = row_cords[1], 
+                                 nrows = window_size, 
+                                 row = col_cords[1],
+                                 ncols = window_size),
+                      nrow = window_size, 
+                      ncol = window_size, 
+                      byrow = TRUE))
+
+  # prepare image slice from the appropriate green raster using previously prepared rows/columns
+  o_b3 &lt;- rast(matrix(readValues(nir[[j]], 
+                                 col = row_cords[1], 
+                                 nrows = window_size, 
+                                 row = col_cords[1],
+                                 ncols = window_size),
+                      nrow = window_size, 
+                      ncol = window_size, 
+                      byrow = TRUE))
+
+
+
+  # trim histogram of green band for harmonized viewing of the whole set
+  b_min &lt;- 10
+  b_max &lt;- 1000
+  o_b1 &lt;- (o_b1 - b_min) / (b_max - b_min) * 255 
+
+  # trim histogram of red band for harmonized viewing of the whole set
+  b_min &lt;- 10
+  b_max &lt;- 1000
+  o_b2 &lt;- (o_b2 - b_min) / (b_max - b_min) * 255 
+
+  # trim histogram of NIR band for harmonized viewing of the whole set
+  b_min &lt;- 10
+  b_max &lt;- 4000
+  o_b3 &lt;- (o_b3 - b_min) / (b_max - b_min) * 255 
+
+  # convert any negative values to 0 for better viewing
+  o_b1[o_b1 &lt; 0] &lt;- 0 
+  o_b2[o_b2 &lt; 0] &lt;- 0 
+  o_b3[o_b3 &lt; 0] &lt;- 0
+
+  # convert any values above 255 to 0
+  o_b1[o_b1 &gt; 255] &lt;- 255
+  o_b2[o_b2 &gt; 255] &lt;- 255 
+  o_b3[o_b3 &gt; 255] &lt;- 255
+
+  # set up margins around each of 30 plotting blocks
+  par(mar = c(0,1,1,1)) 
+
+  # plot RGB chip in the appropriate place in the layout 
+  plotRGB(c(o_b3, o_b2, o_b1), 
+          r = 1, g = 2, b = 3,
+          mar = 1) 
+
+  # draw the location of reference point 
+  points(20, 19.4, pch = &quot;.&quot;, col = c(&quot;white&quot;))
+  symbols(x = 19.6, y = 19.4,  squares = 3, inches = F, add = T, fg = &quot;yellow&quot;, lwd = 0.01)
+
+  # show date of the image acquisition above the RGB chip
+  title(years[j], line = -2) 
+
+}
+
+# close files - we read necessary values
+readStop(green)
+readStop(red)
+readStop(nir)
+
+# turn off the device - save .png image to working directory
+dev.off() 
+
+
+
+
+# set up output name of the file
+output_name = &quot;theme_2_exercise/results/point_1_trajectory_example.png&quot; 
+
+png(filename = output_name, width = 1920, height = 1080, pointsize = 16)
+
+# plotting area set up as a 4x1 matrix, 
+# which will present as 3 long spanning over the whole plotting area
+layout(matrix(seq(1, 4), 4, 1, byrow = TRUE), 
+       heights = c(0.25, 1.25, 1.25, 1.25)) 
+
+# the first element of the plot - title; we begin by setting margins of part of the plot 
+par(mar = c(0, 0, 0, 0)) 
+# new element in the plot, in this case title
+plot.new() 
+
+# title will contain point number and change agent retrieved from attribute table
+text(0.5, 0.5, 
+     paste0(&quot;Spectral trajectories. Point &quot;, point_number, &quot;. Change agent: &quot;, points$chng_agnt[point_number], &quot;.&quot;), 
+     cex = 1.4, 
+     font = 1) 
+
+# new margins to use for the rest of the plot
+par(mar = c(4, 4, 1, 3)) 
+
+# Add NDVI trajectory
+# in this fragment we retrieve spectral index values from attribute table of vector file
+ndvi_vals &lt;- points[point_number, ] %&gt;% 
+  # we use pipe operator to perform several actions; first we pick the desired point from the vector file
+  st_drop_geometry() %&gt;% 
+  # then we extract just the attribute table and select only spectral index values
+  select(NDVI_1984:NDVI_2016) %&gt;% 
+  # in the end we create a vector of values to plot 
+  unlist(., use.names = FALSE)
+
+
+# calculate minimum value - 5%
+min_val &lt;- min(ndvi_vals, na.rm = TRUE) - 0.05 * abs(min(ndvi_vals, na.rm = TRUE))
+# calculate maximum value + 5%
+max_val &lt;- max(ndvi_vals, na.rm = TRUE) + 0.05 * abs(max(ndvi_vals, na.rm = TRUE))
+dynamic_range &lt;- c(min_val, max_val)
+# calculate where to plot ablines
+abline_seq &lt;- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+
+# we initiate a point-line plot of index values
+plot(ndvi_vals, 
+     type = &quot;b&quot;,
+     main = &quot;NDVI trajectory&quot;,
+     lwd = 2, 
+     xlab = &quot;&quot;, 
+     ylab = &quot;NDVI&quot;,
+     ylim = dynamic_range, 
+     xaxt = &quot;n&quot;, 
+     yaxt = &quot;n&quot;) 
+
+# add y-axis labels on the right side of the plot by 0.1
+axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+
+# add y-axis labels on the left side of the plot
+axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+
+# add tics on x-axis
+axis(1, at = 1:30, labels = FALSE) 
+
+# Determine the range of y values
+y_range &lt;- diff(dynamic_range)
+# Choose a percentage of the range (e.g., 5%) as a buffer
+buffer_percent &lt;- 0.1
+# Calculate the position for the text labels
+text_y_position &lt;- min_val - buffer_percent * y_range
+
+# text with tilted x-axis labels
+text(x = 1:30, 
+     y = text_y_position, 
+     labels = years, 
+     srt = 35, 
+     adj = 1, 
+     xpd = TRUE, 
+     cex = 1, 
+     font = 1) 
+
+# we can also add some lines in the plot to ease the reading
+sapply(abline_seq, function(h) abline(h = h, lty = 3))
+
+
+# now we repeat the above steps to plot the remaining two trajectories
+
+# Add NDMI trajectory
+ndmi_vals &lt;- points[point_number, ] %&gt;%
+  st_drop_geometry() %&gt;%
+  select(NDMI_1984:NDMI_2016) %&gt;%
+  unlist(., use.names = FALSE)
+
+
+min_val &lt;- min(ndmi_vals, na.rm = TRUE) - 0.05 * abs(min(ndmi_vals, na.rm = TRUE))
+max_val &lt;- max(ndmi_vals, na.rm = TRUE) + 0.05 * abs(max(ndmi_vals, na.rm = TRUE))
+dynamic_range &lt;- c(min_val, max_val)
+abline_seq &lt;- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+
+plot(ndmi_vals, 
+     type = &quot;b&quot;,
+     main = &quot;NDMI trajectory&quot;,
+     lwd = 2, 
+     xlab = &quot;&quot;, 
+     ylab = &quot;NDMI&quot;,
+     ylim = dynamic_range, 
+     xaxt = &quot;n&quot;, 
+     yaxt = &quot;n&quot;) 
+
+axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+axis(1, at = 1:30, labels = FALSE)
+
+y_range &lt;- diff(dynamic_range)
+buffer_percent &lt;- 0.1
+text_y_position &lt;- min_val - buffer_percent * y_range
+
+text(x = 1:30, 
+     y = text_y_position, 
+     labels = years, 
+     srt = 35, 
+     adj = 1, 
+     xpd = TRUE, 
+     cex = 1, 
+     font = 1) 
+
+sapply(abline_seq, function(h) abline(h = h, lty = 3))
+
+
+# Add NBR trajectory
+nbr_vals &lt;- points[point_number, ] %&gt;%
+  st_drop_geometry() %&gt;%
+  select(NBR_1984:NBR_2016) %&gt;%
+  unlist(., use.names = FALSE)
+
+min_val &lt;- min(nbr_vals, na.rm = TRUE) - 0.05 * abs(min(nbr_vals, na.rm = TRUE))
+max_val &lt;- max(nbr_vals, na.rm = TRUE) + 0.05 * abs(max(nbr_vals, na.rm = TRUE))
+dynamic_range &lt;- c(min_val, max_val)
+abline_seq &lt;- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+
+plot(nbr_vals, 
+     type = &quot;b&quot;,
+     main = &quot;NBR trajectory&quot;,
+     lwd = 2, 
+     xlab = &quot;&quot;, 
+     ylab = &quot;NBR&quot;,
+     ylim = dynamic_range, 
+     xaxt = &quot;n&quot;, 
+     yaxt = &quot;n&quot;) 
+axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+axis(1, at = 1:30, labels = FALSE) 
+y_range &lt;- diff(dynamic_range)
+buffer_percent &lt;- 0.1
+text_y_position &lt;- min_val - buffer_percent * y_range
+
+text(x = 1:30, 
+     y = text_y_position, 
+     labels = years, 
+     srt = 35, 
+     adj = 1, 
+     xpd = TRUE, 
+     cex = 1, 
+     font = 1) 
+
+
+sapply(abline_seq, function(h) abline(h = h, lty = 3))
+
+# turn off the device - save .png image to working directory
+dev.off() 
+
+
+
+# enable reading pixel values from multiband rasters
+readStart(green)
+readStart(red)
+readStart(nir)
+
+# set up window size for all elements which will come out of the loop
+window_size &lt;- 39 
+
+# the loop will last till all of the first 9 points in the layer are used
+for (i in seq(1, 9)){ 
+
+
+  point_cords &lt;- st_coordinates(points)[i, ] 
+  row &lt;- colFromX(green, point_cords[1])
+  col &lt;- rowFromY(green, point_cords[2])
+
+  half_widow_size &lt;- floor(window_size / 2)
+  col_cords &lt;- (col - half_widow_size) : (col + half_widow_size)
+  row_cords &lt;- (row - half_widow_size) : (row + half_widow_size)
+
+  # name of the file will contain information about point 
+  # number and change agent
+  output_name &lt;- paste0(&quot;theme_2_exercise/results/Point &quot;, i, &quot;. &quot;, points$chng_agnt[i], &quot;.png&quot;) 
+
+  png(filename = output_name, width = 1920, height = 1500, pointsize = 16)
+
+  layout(matrix(c(rep(1, 10), seq(2, 31), rep(32, 10), rep(33, 10), rep(34, 10)),
+                7, 10, byrow = TRUE), 
+         heights = c(0.25, 1, 1, 1, 2, 2, 2)) # plot area divided into more parts to fit all of the components
+
+  par(mar = c(0, 0, 0, 0))
+  plot.new()
+  text(0.5, 0.5, paste0(&quot;CIR chips and spectral trajectories. Point &quot;, i, &quot;. Change agent: &quot;, points$chng_agnt[i], &quot;.&quot;), cex = 1.4, font = 1)
+
+  par(mar = c(0,0,1,0))
+  for (j in seq(30)){
+
+
+    o_b1 &lt;- rast(matrix(readValues(green[[j]], 
+                                   col = row_cords[1], 
+                                   nrows = window_size, 
+                                   row = col_cords[1],
+                                   ncols = window_size),
+                        nrow = window_size, 
+                        ncol = window_size, 
+                        byrow = TRUE))  
+
+
+    o_b2 &lt;- rast(matrix(readValues(red[[j]], 
+                                   col = row_cords[1], 
+                                   nrows = window_size, 
+                                   row = col_cords[1],
+                                   ncols = window_size),
+                        nrow = window_size, 
+                        ncol = window_size, 
+                        byrow = TRUE))
+
+
+    o_b3 &lt;- rast(matrix(readValues(nir[[j]], 
+                                   col = row_cords[1], 
+                                   nrows = window_size, 
+                                   row = col_cords[1],
+                                   ncols = window_size),
+                        nrow = window_size, 
+                        ncol = window_size, 
+                        byrow = TRUE))
+
+
+    b_min &lt;- 10
+    b_max &lt;- 1000
+    o_b1 &lt;- (o_b1 - b_min) / (b_max - b_min) * 255 
+
+
+    b_min &lt;- 10
+    b_max &lt;- 1000
+    o_b2 &lt;- (o_b2 - b_min) / (b_max - b_min) * 255 
+
+
+    b_min &lt;- 10
+    b_max &lt;- 4000
+    o_b3 &lt;- (o_b3 - b_min) / (b_max - b_min) * 255 
+
+
+    o_b1[o_b1 &lt; 0] &lt;- 0 
+    o_b2[o_b2 &lt; 0] &lt;- 0 
+    o_b3[o_b3 &lt; 0] &lt;- 0
+
+    o_b1[o_b1 &gt; 255] &lt;- 255
+    o_b2[o_b2 &gt; 255] &lt;- 255 
+    o_b3[o_b3 &gt; 255] &lt;- 255
+
+
+    par(mar = c(0,1,1,1)) 
+
+
+    plotRGB(c(o_b3, o_b2, o_b1), 
+            r = 1, g = 2, b = 3,
+            mar = 1) 
+
+
+    points(20, 19.4, pch = &quot;.&quot;, col = c(&quot;white&quot;))
+    symbols(x = 19.6, y = 19.4,  squares = 3.2, inches = F, add = T, fg = &quot;yellow&quot;, lwd = 0.01)
+
+    # show date of the image acquisition above the RGB chip
+    title(years[j], line = 0.2) 
+
+  }
+
+
+  par(mar = c(4, 4, 1, 3))
+
+  ndvi_vals &lt;- points[i, ] %&gt;% 
+    st_drop_geometry() %&gt;% 
+    select(NDVI_1984:NDVI_2016) %&gt;% 
+    unlist(., use.names = FALSE)
+
+  # calculate minimum value - 5%
+  min_val &lt;- min(ndvi_vals, na.rm = TRUE) - 0.05 * abs(min(ndvi_vals, na.rm = TRUE))
+  # calculate maximum value + 5%
+  max_val &lt;- max(ndvi_vals, na.rm = TRUE) + 0.05 * abs(max(ndvi_vals, na.rm = TRUE))
+  dynamic_range &lt;- c(min_val, max_val)
+  # calculate where to plot ablines
+  abline_seq &lt;- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+
+  plot(ndvi_vals, 
+       type = &quot;b&quot;,
+       main = &quot;NDVI trajectory&quot;,
+       lwd = 2, 
+       xlab = &quot;&quot;, 
+       ylab = &quot;NDVI&quot;,
+       ylim = dynamic_range, 
+       xaxt = &quot;n&quot;, 
+       yaxt = &quot;n&quot;) 
+
+  axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(1, at = 1:30, labels = FALSE) 
+
+  # Determine the range of y values
+  y_range &lt;- diff(dynamic_range)
+  # Choose a percentage of the range (e.g., 5%) as a buffer
+  buffer_percent &lt;- 0.1
+  # Calculate the position for the text labels
+  text_y_position &lt;- min_val - buffer_percent * y_range
+
+  text(x = 1:30, 
+       y = text_y_position, 
+       labels = years, 
+       srt = 35, 
+       adj = 1, 
+       xpd = TRUE, 
+       cex = 1, 
+       font = 1) 
+
+  sapply(abline_seq, function(h) abline(h = h, lty = 3))
+
+
+  ndmi_vals &lt;- points[i, ] %&gt;%
+    st_drop_geometry() %&gt;%
+    select(NDMI_1984:NDMI_2016) %&gt;%
+    unlist(., use.names = FALSE)
+
+  min_val &lt;- min(ndmi_vals, na.rm = TRUE) - 0.05 * abs(min(ndmi_vals, na.rm = TRUE))
+  max_val &lt;- max(ndmi_vals, na.rm = TRUE) + 0.05 * abs(max(ndmi_vals, na.rm = TRUE))
+  dynamic_range &lt;- c(min_val, max_val)
+
+  abline_seq &lt;- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+
+  plot(ndmi_vals, 
+       type = &quot;b&quot;,
+       main = &quot;NDMI trajectory&quot;,
+       lwd = 2, 
+       xlab = &quot;&quot;, 
+       ylab = &quot;NDMI&quot;,
+       ylim = dynamic_range, 
+       xaxt = &quot;n&quot;, 
+       yaxt = &quot;n&quot;) 
+
+  axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(1, at = 1:30, labels = FALSE) 
+  y_range &lt;- diff(dynamic_range)
+  buffer_percent &lt;- 0.1
+  text_y_position &lt;- min_val - buffer_percent * y_range
+  text(x = 1:30, y = text_y_position, 
+       labels = years, srt = 35, adj = 1, xpd = TRUE, cex = 1, font = 1) 
+  sapply(abline_seq, function(h) abline(h = h, lty = 3))
+
+  nbr_vals &lt;- points[i, ] %&gt;%
+    st_drop_geometry() %&gt;%
+    select(NBR_1984:NBR_2016) %&gt;%
+    unlist(., use.names = FALSE)
+
+  min_val &lt;- min(nbr_vals, na.rm = TRUE) - 0.05 * abs(min(nbr_vals, na.rm = TRUE))
+  max_val &lt;- max(nbr_vals, na.rm = TRUE) + 0.05 * abs(max(nbr_vals, na.rm = TRUE))
+  dynamic_range &lt;- c(min_val, max_val)
+  abline_seq &lt;- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+
+  plot(nbr_vals, 
+       type = &quot;b&quot;,
+       main = &quot;NBR trajectory&quot;,
+       lwd = 2, 
+       xlab = &quot;&quot;, 
+       ylab = &quot;NBR&quot;,
+       ylim = dynamic_range, 
+       xaxt = &quot;n&quot;, 
+       yaxt = &quot;n&quot;) 
+
+  axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(1, at = 1:30, labels = FALSE) 
+  y_range &lt;- diff(dynamic_range)
+  buffer_percent &lt;- 0.1
+  text_y_position &lt;- min_val - buffer_percent * y_range
+  text(x = 1:30, y = text_y_position, 
+       labels = years, srt = 35, adj = 1, xpd = TRUE, cex = 1, font = 1) 
+  sapply(abline_seq, function(h) abline(h = h, lty = 3))
+
+  dev.off() 
+
+}
+
+# close files - we read necessary values
+readStop(green)
+readStop(red)
+readStop(nir)
+
+
+
+
+
+# enable reading pixel values from multiband rasters
+readStart(green)
+readStart(red)
+readStart(nir)
+
+# set up window size for all elements which will come out of the loop
+window_size &lt;- 39 
+
+# the loop will last till all of the first 9 points in the layer are used
+for (i in seq(10, 13)){ 
+
+
+  point_cords &lt;- st_coordinates(points)[i, ] 
+  row &lt;- colFromX(green, point_cords[1])
+  col &lt;- rowFromY(green, point_cords[2])
+
+  half_widow_size &lt;- floor(window_size / 2)
+  col_cords &lt;- (col - half_widow_size) : (col + half_widow_size)
+  row_cords &lt;- (row - half_widow_size) : (row + half_widow_size)
+
+  # name of the file will contain information about point 
+  # number and change agent
+  output_name &lt;- paste0(&quot;theme_2_exercise/results/Training point &quot;, i, &quot;.png&quot;) 
+
+  png(filename = output_name, width = 1920, height = 1500, pointsize = 16)
+
+  layout(matrix(c(rep(1, 10), seq(2, 31), rep(32, 10), rep(33, 10), rep(34, 10)),
+                7, 10, byrow = TRUE), 
+         heights = c(0.25, 1, 1, 1, 2, 2, 2)) # plot area divided into more parts to fit all of the components
+
+  par(mar = c(0, 0, 0, 0))
+  plot.new()
+  text(0.5, 0.5, paste0(&quot;Training point &quot;, i, &quot;.&quot;), cex = 1.4, font = 1)
+
+  par(mar = c(0,0,1,0))
+  for (j in seq(30)){
+
+
+    o_b1 &lt;- rast(matrix(readValues(green[[j]], 
+                                   col = row_cords[1], 
+                                   nrows = window_size, 
+                                   row = col_cords[1],
+                                   ncols = window_size),
+                        nrow = window_size, 
+                        ncol = window_size, 
+                        byrow = TRUE))  
+
+
+    o_b2 &lt;- rast(matrix(readValues(red[[j]], 
+                                   col = row_cords[1], 
+                                   nrows = window_size, 
+                                   row = col_cords[1],
+                                   ncols = window_size),
+                        nrow = window_size, 
+                        ncol = window_size, 
+                        byrow = TRUE))
+
+
+    o_b3 &lt;- rast(matrix(readValues(nir[[j]], 
+                                   col = row_cords[1], 
+                                   nrows = window_size, 
+                                   row = col_cords[1],
+                                   ncols = window_size),
+                        nrow = window_size, 
+                        ncol = window_size, 
+                        byrow = TRUE))
+
+
+    b_min &lt;- 10
+    b_max &lt;- 1000
+    o_b1 &lt;- (o_b1 - b_min) / (b_max - b_min) * 255 
+
+
+    b_min &lt;- 10
+    b_max &lt;- 1000
+    o_b2 &lt;- (o_b2 - b_min) / (b_max - b_min) * 255 
+
+
+    b_min &lt;- 10
+    b_max &lt;- 4000
+    o_b3 &lt;- (o_b3 - b_min) / (b_max - b_min) * 255 
+
+
+    o_b1[o_b1 &lt; 0] &lt;- 0 
+    o_b2[o_b2 &lt; 0] &lt;- 0 
+    o_b3[o_b3 &lt; 0] &lt;- 0
+
+    o_b1[o_b1 &gt; 255] &lt;- 255
+    o_b2[o_b2 &gt; 255] &lt;- 255 
+    o_b3[o_b3 &gt; 255] &lt;- 255
+
+
+    par(mar = c(0,1,1,1)) 
+
+
+    plotRGB(c(o_b3, o_b2, o_b1), 
+            r = 1, g = 2, b = 3,
+            mar = 1) 
+
+
+    points(20, 19.4, pch = &quot;.&quot;, col = c(&quot;white&quot;))
+    symbols(x = 19.6, y = 19.4,  squares = 3.2, inches = F, add = T, fg = &quot;yellow&quot;, lwd = 0.01)
+
+    # show date of the image acquisition above the RGB chip
+    title(years[j], line = 0.2) 
+
+  }
+
+
+  par(mar = c(4, 4, 1, 3))
+
+  ndvi_vals &lt;- points[i, ] %&gt;% 
+    st_drop_geometry() %&gt;% 
+    select(NDVI_1984:NDVI_2016) %&gt;% 
+    unlist(., use.names = FALSE)
+
+  # calculate minimum value - 5%
+  min_val &lt;- min(ndvi_vals, na.rm = TRUE) - 0.05 * abs(min(ndvi_vals, na.rm = TRUE))
+  # calculate maximum value + 5%
+  max_val &lt;- max(ndvi_vals, na.rm = TRUE) + 0.05 * abs(max(ndvi_vals, na.rm = TRUE))
+  dynamic_range &lt;- c(min_val, max_val)
+  # calculate where to plot ablines
+  abline_seq &lt;- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+
+  plot(ndvi_vals, 
+       type = &quot;b&quot;,
+       main = &quot;NDVI trajectory&quot;,
+       lwd = 2, 
+       xlab = &quot;&quot;, 
+       ylab = &quot;NDVI&quot;,
+       ylim = dynamic_range, 
+       xaxt = &quot;n&quot;, 
+       yaxt = &quot;n&quot;) 
+
+  axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(1, at = 1:30, labels = FALSE) 
+
+  # Determine the range of y values
+  y_range &lt;- diff(dynamic_range)
+  # Choose a percentage of the range (e.g., 5%) as a buffer
+  buffer_percent &lt;- 0.1
+  # Calculate the position for the text labels
+  text_y_position &lt;- min_val - buffer_percent * y_range
+
+  text(x = 1:30, 
+       y = text_y_position, 
+       labels = years, 
+       srt = 35, 
+       adj = 1, 
+       xpd = TRUE, 
+       cex = 1, 
+       font = 1) 
+
+  sapply(abline_seq, function(h) abline(h = h, lty = 3))
+
+
+  ndmi_vals &lt;- points[i, ] %&gt;%
+    st_drop_geometry() %&gt;%
+    select(NDMI_1984:NDMI_2016) %&gt;%
+    unlist(., use.names = FALSE)
+
+  min_val &lt;- min(ndmi_vals, na.rm = TRUE) - 0.05 * abs(min(ndmi_vals, na.rm = TRUE))
+  max_val &lt;- max(ndmi_vals, na.rm = TRUE) + 0.05 * abs(max(ndmi_vals, na.rm = TRUE))
+  dynamic_range &lt;- c(min_val, max_val)
+
+  abline_seq &lt;- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+
+  plot(ndmi_vals, 
+       type = &quot;b&quot;,
+       main = &quot;NDMI trajectory&quot;,
+       lwd = 2, 
+       xlab = &quot;&quot;, 
+       ylab = &quot;NDMI&quot;,
+       ylim = dynamic_range, 
+       xaxt = &quot;n&quot;, 
+       yaxt = &quot;n&quot;) 
+
+  axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(1, at = 1:30, labels = FALSE) 
+  y_range &lt;- diff(dynamic_range)
+  buffer_percent &lt;- 0.1
+  text_y_position &lt;- min_val - buffer_percent * y_range
+  text(x = 1:30, y = text_y_position, 
+       labels = years, srt = 35, adj = 1, xpd = TRUE, cex = 1, font = 1) 
+  sapply(abline_seq, function(h) abline(h = h, lty = 3))
+
+  nbr_vals &lt;- points[i, ] %&gt;%
+    st_drop_geometry() %&gt;%
+    select(NBR_1984:NBR_2016) %&gt;%
+    unlist(., use.names = FALSE)
+
+  min_val &lt;- min(nbr_vals, na.rm = TRUE) - 0.05 * abs(min(nbr_vals, na.rm = TRUE))
+  max_val &lt;- max(nbr_vals, na.rm = TRUE) + 0.05 * abs(max(nbr_vals, na.rm = TRUE))
+  dynamic_range &lt;- c(min_val, max_val)
+  abline_seq &lt;- seq(floor(min_val / 0.2) * 0.2, ceiling(max_val / 0.2) * 0.2, by = 0.1)
+
+  plot(nbr_vals, 
+       type = &quot;b&quot;,
+       main = &quot;NBR trajectory&quot;,
+       lwd = 2, 
+       xlab = &quot;&quot;, 
+       ylab = &quot;NBR&quot;,
+       ylim = dynamic_range, 
+       xaxt = &quot;n&quot;, 
+       yaxt = &quot;n&quot;) 
+
+  axis(2, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1)
+  axis(4, at = seq(floor(min_val), ceiling(max_val), by = 0.1), las = 1) 
+  axis(1, at = 1:30, labels = FALSE) 
+  y_range &lt;- diff(dynamic_range)
+  buffer_percent &lt;- 0.1
+  text_y_position &lt;- min_val - buffer_percent * y_range
+  text(x = 1:30, y = text_y_position, 
+       labels = years, srt = 35, adj = 1, xpd = TRUE, cex = 1, font = 1) 
+  sapply(abline_seq, function(h) abline(h = h, lty = 3))
+
+  dev.off() 
+
+}
+
+# close files - we read necessary values
+readStop(green)
+readStop(red)
+readStop(nir)
+
+</code></pre>
+
+
+</details>
+
+<h3 id="this-is-the-end-of-this-exercise-proceed-with-other-themes-and-exercises-good-luck">This is the end of this exercise. Proceed with other Themes and Exercises. Good luck!</h3>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="02_temporal_information.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lesson">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Lesson
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../03_image_processing/03_image_processing.html" class="md-footer__link md-footer__link--next" aria-label="Next: Lesson">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Lesson
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+	
+    <div class="md-copyright__highlight">
+		<a href="https://erasmus-plus.ec.europa.eu/projects/search/details/2020-1-CZ01-KA203-078308" title="EU Project Page">
+			<img src="../../assets/img/flag_eu.jpg" }} alt="flag of the European Union" style="height:50px; float:left; margin-right:15px; margin-bottom:15px;">
+		</a>
+		<p style="font-family:Arial">
+			Funded by the Erasmus+ Programme<br>of the European Union.
+		</p>
+	</div><br>
+	<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+		<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+	</a>
+	<p>
+		Except when explicitly stated otherwise, the course is licensed under the 
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+		license, associated code is licensed under the
+		<a href="https://choosealicense.com/licenses/mit/">MIT</a>
+		license.
+	</p>
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.highlight", "content.code.copy", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/javascripts/quiz_evaluation.js"></script>
+      
+    
+  </body>
+</html>

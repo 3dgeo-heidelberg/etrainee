@@ -1,0 +1,3685 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This is the first theme within the 3D/4D Geographic Point Cloud Time Series Analysis module.">
+      
+      
+      
+      
+        <link rel="prev" href="../module3.html">
+      
+      
+        <link rel="next" href="exercise/m3_theme1_exercise1.html">
+      
+      
+      <link rel="icon" href="../../assets/img/logo_etrainee.svg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
+    
+    
+      
+        <title>E-TRAINEE Principles of 3D/4D geographic point clouds - E-TRAINEE Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.10ba22f1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#principles-of-3d4d-geographic-point-clouds" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-header__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            E-TRAINEE Course
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              E-TRAINEE Principles of 3D/4D geographic point clouds
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-nav__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    E-TRAINEE Course
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module0/module0.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prerequisites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Module 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/module1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principles of remote sensing time series
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Large time series datasets in remote sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/03_time_series_analysis_based_on_classification/03_time_series_analysis_based_on_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series analysis based on classification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/04_trajectory-based_analysis/04_trajectory_based_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trajectory-based analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/05_spatio_temporal_data_fusion/05_spatio-temporal_data_fusion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spatio-temporal data fusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reference data, validation and accuracy assessment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Module 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/module2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of multispectral imaging
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of multispectral imaging
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/01_multispectral_principles/01_multispectral_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/01_multispectral_principles/01_multispectral_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal information in satellite data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal information in satellite data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/02_temporal_information/02_temporal_information.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/02_temporal_information/02_temporal_information_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Image processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Image processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/03_image_processing/03_image_processing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/03_image_processing/03_image_processing_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Multitemporal classification
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Multitemporal classification
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/04_multitemporal_classification/04_multitemporal_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/04_multitemporal_classification/04_multitemporal_classification_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vegetation change and disturbance detection
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Vegetation change and disturbance detection
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/05_vegetation_monitoring/05_vegetation_monitoring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/05_vegetation_monitoring/05_vegetation_monitoring_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/06_cs_tundra_grasslands/06_cs_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/07_cs_forest_changes/07_cs_forest_changes.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Effects of pollution in Ore Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/08_cs_disturbance_detection/08_cs_disturbance_detection.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Forest disturbance detection (Tatra Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Module 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module3.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of 3D/4D geographic point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of 3D/4D geographic point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="01_pointcloud_principles.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-geographic-3d4d-point-clouds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to Geographic 3D/4D Point Clouds
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to Geographic 3D/4D Point Clouds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-of-3d4d-point-clouds-in-geography" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance of 3D/4D Point Clouds in Geography
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multitemporal-and-4d-point-clouds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multitemporal and 4D Point Clouds
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concepts-of-change-in-3d4d-point-clouds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts of Change in 3D/4D Point Clouds
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#point-cloud-model-and-fundamental-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Point Cloud Model and Fundamental Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Point Cloud Model and Fundamental Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#point-cloud-acquisition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Point Cloud Acquisition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#point-cloud-data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Point Cloud Data Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multisource-and-multitemporal-data-fusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multisource and Multitemporal Data Fusion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neighborhood-operations-and-neighborhood-based-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Neighborhood Operations and Neighborhood-Based Attributes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Neighborhood Operations and Neighborhood-Based Attributes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spatial-neighborhood" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spatial Neighborhood
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal-neighborhood" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temporal Neighborhood
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normal-vector-and-3d-structure-tensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Normal vector and 3D structure tensor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transformation-of-3d-point-cloud-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transformation of 3D point cloud data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-management-of-4d-point-clouds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Management of 4D Point Clouds
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Management of 4D Point Clouds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data formats
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-and-supplementary-datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata and Supplementary Datasets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-evaluation-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-evaluation quiz
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-literature" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key literature
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#further-articles-and-referenced-literature" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further articles and referenced literature
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exercise/m3_theme1_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Programming for point cloud analysis with Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Programming for point cloud analysis with Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_pointcloud_programming_python/02_pointcloud_programming_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_pointcloud_programming_python/exercise/m3_theme2_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles and basic algorithms of 3D change detection and analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Principles and basic algorithms of 3D change detection and analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_3d_change_analysis/03_3d_change_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_3d_change_analysis/exercise/m3_theme3_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Time series analysis of 3D point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Time series analysis of 3D point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_3d_timeseries_analysis/04_3d_timeseries_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_3d_timeseries_analysis/exercise/m3_theme4_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning-based 3D/4D point cloud analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning-based 3D/4D point cloud analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_pointcloud_machine_learning/05_pointcloud_machine_learning.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_casestudy_rockglacier/06_casestudy_rockglacier.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D change analysis at an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_casestudy_sandybeach/06_casestudy_sandybeach.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series-based change analysis of sandy beach dynamics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Module 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/module4.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of imaging and laboratory spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of imaging and laboratory spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Airborne hyperspectral data acquisition and pre-processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Airborne hyperspectral data acquisition and pre-processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing_exercise_geometric.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    In situ and laboratory spectroscopy of vegetation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            In situ and laboratory spectroscopy of vegetation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_navig.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_spectra_probe_sphere_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning in imaging spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning in imaging spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal vs. spatial and spectral resolution
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal vs. spatial and spectral resolution
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/05_specific_resolution_contribution/05_specific_resolution_contribution.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/08_spectral_separability_grass/08_spectral_separability_grass.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal spectral separability of grass species (Krkonoše Mts.)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Discrimination of grass species from time series of RPAS hyperspectral imagery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/07_flood_plain_forest/07_flood_plain_forest.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal dynamics of flood-plain forests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_cloudcompare.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudCompare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_enmap_box.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EnMAP-Box
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_qgis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QGIS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_r_language.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_gee.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Earth Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Use Cases and Data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Use Cases and Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://doi.org/10.5281/zenodo.10003574" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data download
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_rockglacier_ahk.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D point clouds of an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_beach_kijkduin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4D point clouds of a sandy beach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_forests_tatras.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vegetation disturbance detection in Polish-Slovak Tatra Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_tundra_karkonosze.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_grasses_krkonose.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tundra vegetation monitoring in Krkonoše Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_ore_mts_disturbance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Forest disturbances in Ore Mountains (Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://web.natur.cuni.cz/gis/etrainee/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About the project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://forms.gle/Cz1yxJv2DDNz83j68" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback form
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-geographic-3d4d-point-clouds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to Geographic 3D/4D Point Clouds
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to Geographic 3D/4D Point Clouds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importance-of-3d4d-point-clouds-in-geography" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importance of 3D/4D Point Clouds in Geography
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multitemporal-and-4d-point-clouds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multitemporal and 4D Point Clouds
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concepts-of-change-in-3d4d-point-clouds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts of Change in 3D/4D Point Clouds
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#point-cloud-model-and-fundamental-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Point Cloud Model and Fundamental Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Point Cloud Model and Fundamental Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#point-cloud-acquisition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Point Cloud Acquisition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#point-cloud-data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Point Cloud Data Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multisource-and-multitemporal-data-fusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multisource and Multitemporal Data Fusion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neighborhood-operations-and-neighborhood-based-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Neighborhood Operations and Neighborhood-Based Attributes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Neighborhood Operations and Neighborhood-Based Attributes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spatial-neighborhood" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spatial Neighborhood
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temporal-neighborhood" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temporal Neighborhood
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normal-vector-and-3d-structure-tensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Normal vector and 3D structure tensor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transformation-of-3d-point-cloud-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transformation of 3D point cloud data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-management-of-4d-point-clouds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Management of 4D Point Clouds
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Management of 4D Point Clouds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data formats
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata-and-supplementary-datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata and Supplementary Datasets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-evaluation-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-evaluation quiz
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-literature" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key literature
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#further-articles-and-referenced-literature" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further articles and referenced literature
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+
+                  
+
+  
+  
+
+
+<h1 id="principles-of-3d4d-geographic-point-clouds">Principles of 3D/4D geographic point clouds</h1>
+<p>In this theme, you will learn about 3D/4D point cloud data, fundamental point cloud operations and concepts of change analysis:</p>
+<ul>
+<li><a href="#introduction-to-geographic-3d4d-point-clouds">Introduction to Geographic 3D/4D Point Clouds</a></li>
+<li><a href="#point-cloud-model-and-fundamental-operations">Point Cloud Model and Fundamental Operations</a></li>
+<li><a href="#data-management-of-4d-point-clouds">Data Management of 4D Point Clouds</a></li>
+</ul>
+<p>The theme will conclude with:</p>
+<ul>
+<li><a href="#self-evaluation-quiz">Self-evaluation quiz</a></li>
+<li><a href="#exercise">Exercise</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<p>Afterwards, you will understand a broad set of topics required for analyzing topographic change in point cloud time series. You will apply this knowledge in the exercise, and require it for all subsequent themes.</p>
+<h2 id="introduction-to-geographic-3d4d-point-clouds">Introduction to Geographic 3D/4D Point Clouds</h2>
+<h3 id="importance-of-3d4d-point-clouds-in-geography">Importance of 3D/4D Point Clouds in Geography</h3>
+<p>The third dimension of geospatial data is essential for a multitude of research and applications fields. <strong>3D geodata</strong> contains information about the geometry and structure of the surface, and dynamics therein. This information is useful for <strong>researching the physical environment or impacts of climate change</strong>. For example, changes to a glacier or the coast indicate effects of environmental processes and can ultimately be linked to climate change. Processes of vegetation growth and disturbance are inherently dynamic and benefit from observation at different temporal scales (e.g., regarding processes with day-night patterns, seasonal variations, and developments over multiple years) (<a href="#references">Guo et al., 2020</a>). 3D geodata can further be useful in <strong>natural hazard monitoring and disaster management</strong>, e.g. for the observation of areas that are affected by rockfalls, avalanches or landslides. For a broad variety of applications, 3D point clouds together with temporal information help us to observe landscape evolution and to understand and monitor spatiotemporal dynamics of Earth surface phenomena (<a href="#references">Eitel et al., 2016</a>)</p>
+<p>Analysis of surface or structural dynamics in 3D/4D geodata provides information in different domains:</p>
+<ul>
+<li>
+<p><strong>Mapping</strong> of objects or landforms. With regards to monitoring, mapping can regard certain landscape processes which are characterized by specific spatiotemporal properties. An example is visualized with avalanches in a snow-covered scene in the figure below (left). The process, e.g. an avalanche, can be mapped based on the change information, rather than on geometric or spectral properties of the scene (<a href="#references">Anders et al., 2022</a>).</p>
+</li>
+<li>
+<p><strong>Characterization</strong> of surface dynamics can describe their properties, i.e. how the surface or an object changed. The figure below (middle) illustrates changes related to sand transport at the surface of a mega dune form (<a href="#references">Herzog et al., 2022</a>). The volume and direction of change allow an interpretation on drivers of sand transport and mechanisms of dune evolution.</p>
+</li>
+<li>
+<p><strong>Modelling</strong> of Earth surface processes can make use of information on surface or structural dynamics (as model input or for improved parametrization). Tree structure dynamics (see figure below on the right) can be important, for example, for assessing forest biomass and its dynamics (<a href="#references">Wang et al., 2022</a>).</p>
+</li>
+</ul>
+<p><center>
+<img src="media/m3_theme1_analysis_domains_examples.png" alt="Examples of 4D analysis domains" title="Examples domains for change analysis in 3D geodata" width="700"></p>
+<p><i>Examples of different domains supported by change analysis of surface or structure dynamics in 3D/4D point clouds. Figures by K. Anders (left, middle) and <a href="https://doi.org/10.1016/j.jag.2022.102781">Wang et al. (2022)</a> / <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a> (right).</i>
+</center></p>
+<h3 id="multitemporal-and-4d-point-clouds">Multitemporal and 4D Point Clouds</h3>
+<p>For capturing and analyzing dynamics in the topography, the <strong>temporal dimension</strong> can be added to 3D point cloud data through repeat acquisition. Each point cloud acquired at one point in time represents a so-called <strong>epoch</strong>. Such repeat measurements provide <strong>multitemporal point clouds</strong> and changes can be assessed between epochs. We refer to <strong>time series of point clouds</strong>, if the acquisition is repeated to obtain a sequence of data. These time series are often acquired at more or less regular intervals, e.g., hourly, monthly, or annually (there is no strict definition). </p>
+<p>Multitemporal or time series of point clouds are widely available through repeat surveying at the national level, for example. Airborne laser scanning (ALS) point clouds of several years are openly available, e.g., for The Netherlands (<a href="https://www.ahn.nl/">https://www.ahn.nl/</a>) or Norway (<a href="https://kartverket.no/en">https://kartverket.no/en</a>). Further open data is made available on geographic data repositories such as <a href="https://www.opentopography.org/">Open Topography</a> or <a href="https://pangaea.de/">PANGAEA</a>, often by research projects.</p>
+<p>When point clouds are acquired at higher frequencies, the data may represent surface dynamics in their evolution rather than at single points in time (e.g., before and after an event or surface process). For such near-continuous temporal sampling, we speak of <strong>4D point clouds</strong>, as they contain a full temporal domain in addition to the 3D spatial domain (3D space + 1D time).</p>
+<p>The figure below illustrates the additional information that can be obtained from 4D point clouds, where <strong>surface processes are represented near-continuously</strong>. The example is taken from the <a href="../../data_usecases/usecase_beach_kijkduin.html">use case of beach monitoring</a>. The map visualizes surface changes due to sand transport over three weeks. In this timespan, a sand bar formed which becomes apparent in the elongated shape of sand volume increase. As hourly point cloud data is available at this site, we can inspect the time series of topographic measurements, for example, at one location on the sand bar. From this, we can identify when the sand bar started forming via the onset of surface increase, and when it disappears at a later point (after Feb-27). We can derive further temporal properties, such as the change rate and also determine the highest magnitude of the sand bar during its existence. Overall, the example demonstrates how surface dynamics can be characterized in their spatiotemporal properties using 4D point clouds, compared to more limited information with sparse time series or multitemporal point clouds of few epochs. </p>
+<p><center>
+<img src="media/m3_theme1_beach_bitemporal_4d.png" alt="temporal surface information & time series" title="Multitemporal vs. 4D surface information" width="600"></p>
+<p><i>Temporal surface information in bitemporal change representation (map on the left) and as near-continuous time series at a location in 4D point clouds (right). Figure by K. Anders, modified after <a href="https://doi.org/10.5194/isprs-annals-IV-2-W5-317-2019">Anders et al. (2019)</a>.</i>
+</center></p>
+<h3 id="concepts-of-change-in-3d4d-point-clouds">Concepts of Change in 3D/4D Point Clouds</h3>
+<p>This section gives a brief overview on concepts of change in multitemporal and 4D point clouds and on a typical change analysis workflow. Details on principles and methods of 3D/4D change analysis are part of <a href="../03_3d_change_analysis/03_3d_change_analysis.html">Theme 3</a>.</p>
+<p>Using topographic 3D point clouds, we are typically looking for changes in the geometry of the surface or objects. In general, a change analysis requires the following typical series of steps:</p>
+<ol>
+<li><strong>Data acquisition</strong>: Acquiring 3D/4D point clouds for the observation of surface dynamics includes considerations of typical aspects such as the geometric accuracy, spatial resolution and coverage (choice of sensors, platforms, and survey strategy). Regarding monitoring applications, an additional important consideration is the temporal resolution, i.e. acquisition frequency, with respect to the observed phenomena. An overview of different modes of point cloud acquisition will be given <a href="#point-cloud-acquisition">in the following section</a>.</li>
+<li><strong>Co-registration</strong>: Epochs in multitemporal 3D/4D datasets need to be aligned in a common coordinate reference frame to enable change measurements. This can be solved by accurate georeferencing of acquired data, but often additional fine alignment is applied to further increase the detectability of 'real' change, opposed to small offsets between surface positions in the point cloud. </li>
+<li><strong>Change detection and quantification</strong>: This step is the core of any change analysis. Depending on the geographic setting and types of input data, there are various approaches to change analysis, and different methods using point clouds and rasterized data. Specific approaches and algorithms will be introduced in <a href="../03_3d_change_analysis/03_3d_change_analysis.html">Theme 3</a>. </li>
+<li><strong>Uncertainty assessment</strong>: Assessment of uncertainties associated to change detection and quantification is essential to interpret and communicate results. Different components contributing to uncertainty in change analysis and how to quantify them are part of <a href="../03_3d_change_analysis/03_3d_change_analysis.html">Theme 3</a>.</li>
+<li><strong>Change representation</strong>: The final step in change analysis is the representation of changes, which is closely linked to the characteristics of observed surface dynamics and the analysis objective. Depending on the objective, the representation of uncertainties can even be essential to decision making, for example in the case of natural hazard monitoring.</li>
+</ol>
+<p>To further familiarize yourself with approaches and applications of 3D change analysis, look into the review article by <a href="#references">Qin et al. (2016)</a>. For a first interactive experience of topographic change analysis from point cloud data, check out this <a href="https://portal.opentopography.org/differencing?opentopoID=OTLAS.012013.26913.2">on-demand tool by OpenTopography</a>, coming with an informative <a href="https://youtu.be/BlDx66AQ3G0">tutorial video</a> (<a href="#references">Scott et al., 2021</a>). It will perform simple vertical differencing of the elevation, and nicely visualize topographic change, in this example, due to dune migration:</p>
+<p><center>
+<img src="media/m3_theme1_opentopo_differencing.png" alt="OpenTopo, hillshade & vertical differences" title="Result of on-demand topographic differencing in OpenTopography showing the hillshades of terrain elevation for each LiDAR survey (left and middle), and resulting vertical differences (right)" width="800"></p>
+<p><i>Result of on-demand topographic differencing in OpenTopography showing the hillshades of terrain elevation for each LiDAR survey (left and middle), and resulting vertical differences (right). Data: White Sands National Monument, NM: LiDAR Survey of Dune Fields (Sept 2009). Lidar data acquisition and processing completed by the National Center for Airborne Laser Mapping (<a href="http://www.ncalm.org">NCALM</a>). NCALM funding provided by NSF's Division of Earth Sciences, Instrumentation and Facilities Program (EAR-1043051). Distributed by <a href="https://doi.org/10.5069/G9ZK5DMD">OpenTopography</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</i>
+</center></p>
+<p>The remainder of this theme will focus on basic principles of point clouds acquisition and processing for change analysis or monitoring in general.</p>
+<h2 id="point-cloud-model-and-fundamental-operations">Point Cloud Model and Fundamental Operations</h2>
+<p>This section introduces sources and characteristics of point clouds, the corresponding data model, and fundamental point cloud operations as a basis to processing steps in 3D/4D point cloud analysis.</p>
+<h3 id="point-cloud-acquisition">Point Cloud Acquisition</h3>
+<p>3D point clouds can be acquired with different sensing techniques and survey strategies. The most common source of point cloud data is laser scanning (<a href="#references">Otepka et al., 2013; Telling et al., 2017</a>) and photogrammetry (via dense image matching techniques; <a href="#references">Passalacqua et al., 2015</a>). A broad overview of Earth observation sensors, platforms, and their properties is given in <a href="../../module1/01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.html#remote-sensing-systems-platforms-and-sensors">Theme 1 of Module 1</a>. Regarding 3D/4D point clouds, the acquisition mode spans terrestrial, UAV-borne, and airborne (i.e. aircraft-based) platforms. The acquisition platform is decisive for the spatial and temporal scales at which data can be captured.</p>
+<!--
+<center>
+<img src="media/m3_theme1_ls_sources.png" alt="ls_sources" title="Sources of laser scanning data" width="500">
+
+<i>Sources of laser scanning data covering different ranges of typical spatial and temporal resolutions. Figure by course authors. Image sources: [Pixabay](https://pixabay.com/de/service/terms/) by [AlexandrVe](https://pixabay.com/de/illustrations/machen-modell-3-d-reaktive-ebene-1447942/) and [AlanLiu](https://pixabay.com/de/photos/uav-industrial-design-design-1204473/), and [Riegl LMS GmbH]() / ???. </i>
+</center>
+-->
+
+<p>Airborne acquisition is usually not performed more than once a year, due to the high cost and effort. UAV-based acquisition can be repeated more frequently, but still requires operators to be on site, which also poses a cost factor for each repetition of a survey. The repetition interval of terrestrial laser scanning (TLS), at the moment, is limited only by the duration of individual scans themselves. A scan can be repeated as soon as the acquisition of a current scan is finished, if the instrument remains at one, fixed position. </p>
+<p>Automatic TLS has become possible with the availability of programmable laser scanning instruments. By setting up TLS instruments in fixed positions for several days to years, <strong>permanent 3D observation systems</strong> have been developed, which acquire the surrounding scene at scheduled intervals from minutes to days (<a href="#references">Eitel et al., 2016</a>). An alternative to laser scanning are fixed installations of time-lapse 3D photogrammetry. A collection of selected examples for both are given with the figures below:</p>
+<p><center>
+<img src="media/m3_theme1_atls_systems_examples.png" alt="atls_examples" title="Examples of automatic TLS for 4D point cloud acquisition" width="800"></p>
+<p><i>Selected examples of automatic TLS for 4D point cloud acquisition in different geographic settings. Figures by <a href="https://doi.org/10.5194/esurf-5-293-2017">Kromer et al. (2017)</a> / <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>, <a href="https://doi.org/10.3389/fpls.2020.606752">Campos et al. (2021)</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, <a href="https://doi.org/10.1007/s10064-019-01632-w">Stumvoll et al. (2020)</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, <a href="https://doi.org/10.5194/esurf-6-101-2018">Williams et al. (2018)</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, <a href="https://doi.org/10.5194/esurf-2021-103">Winiwarter et al. (2022a)</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, <a href="https://doi.org/10.1038/s41597-022-01291-9">Vos et al. (2022)</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, and <a href="https://doi.org/10.5194/isprs-annals-V-2-2021-153-2021">Voordendag et al. (2021)</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. </i>
+</center></p>
+<p><center>
+<img src="media/m3_theme1_timelapse_photo_systems_examples.png" alt="photo_examples" title="Examples of time-lapse photogrammetry for 4D point cloud acquisition" width="300"></p>
+<p><i>Example of automatic time-lapse photogrammetry for 4D point cloud acquisition for rockfall monitoring. Figure by <a href="https://doi.org/10.3390/rs11161890">Kromer et al. (2019)</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</i>
+</center></p>
+<p>Accordingly, permanent TLS and 3D photogrammetry has been used to observe vegetation dynamics (<a href="#references">Campos et al., 2021</a>), landslides (<a href="#references">Kromer et al., 2017; Stumvoll et al., 2020</a>), rockfalls (<a href="#references">Kromer et al., 2019; Williams et al., 2018</a>), glaciers (<a href="#references">Voordendag et al., 2021</a>), beach environments (<a href="#references">O'Dea et al., 2019; Vos et al., 2022</a>), and soil erosion (<a href="#references">Eltner et al., 2017</a>), among others. More information on the requirements and special characteristics of permanent 3D acquisition is given in <a href="../04_3d_timeseries_analysis/04_3d_timeseries_analysis.html">Theme 4 of this module</a>.</p>
+<p>An alternative strategy for generating point clouds is <strong>virtual laser scanning (VLS)</strong>, which has gained increasing importance in recent years. VLS simulates the acquisition of LiDAR point clouds by scanning virtual 3D scenes by any combination of input 3D models, platforms, and sensors. The suitability of simulated laser scanning data mostly depends on the application, and simulations that are more realistic come with stricter requirements on input data quality and higher computational costs (<a href="#references">Winiwarter et al., 2022b</a>). VLS can be useful in different use cases: survey planning, method development, and generation of training data for machine learning.</p>
+<ul>
+<li><strong>Survey planning</strong>: The objective of data acquisition is typically to minimize cost and effort while obtaining data that is fit for the purpose of the planned analysis, e.g. characterization of specific surface processes. With VLS, a 3D point cloud can be generated and tested for its usability in the planned application, by applying the planned analysis method. </li>
+<li><strong>Method development</strong>: In 3D/4D point cloud analysis, we are often developing methods to extract certain features describing our objects or surface processes of interest. Real point cloud data to calibrate algorithms and validate results are costly to acquire and not error free. Here, VLS can be used to generate data with perfectly know reference values, e.g., if synthetic changes are applied to a virtual scene in case of 4D applications.</li>
+<li><strong>Generation of training data for machine learning algorithms</strong>: Recently, several methods for deep learning on point clouds have been presented. However, such methods require immense amounts of training data to achieve acceptable performance. We present how VLS can be used to generate training data in machine learning classifiers, and how different sensor settings influence the classification results.</li>
+</ul>
+<p>A pioneer study using <strong>4D VLS point cloud</strong> for change detection is presented by <a href="#references">Winiwarter et al. (2022a)</a>. In this study, VLS point clouds of different ALS acquisition settings are generated to evaluate at which flight altitude a specific target change can be detected using an available analysis method. This consideration has high practical relevance, since it supports decision making of stakeholders, for example, in the context of natural hazard management. </p>
+<p>VLS data can be acquired using the scientific open source software HELIOS++ (<a href="#references">Winiwarter et al., 2022b</a>). HELIOS++ is implemented in C++ for optimized runtimes, and provides bindings in Python to allow integration into scripting environments (e.g., GIS plugins, Jupyter Notebooks). A variety of model types to represent 3D scenes are supported: terrain models, voxel models, and mesh models. As platforms, four options are currently supported: airplane, multicopter, ground vehicle and static tripod. In the figure below, a schematic diverging laser beam and its corresponding waveform (magenta) is shown being emitted from the airplane and interacting with a mesh model tree and the rasterized ground surface.</p>
+<p><center>
+<img src="media/m3_theme1_helios++.png" alt="helios++" title="Virtual laser scanning with HELIOS++" width="600"></p>
+<p><i>Schematic concept of virtual laser scanning with HELIOS++, showcasing platforms (tripod, car, UAV, airplane) and 3D object models (mesh, point cloud, voxels, raster) composing a scene. Figure by <a href="https://doi.org/10.1016/j.rse.2021.112772">Winiwarter et al. (2022b)</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</i>
+</center></p>
+<p>In this module, you will learn to create VLS point clouds with HELIOS++ for your own analyses (<a href="../02_pointcloud_programming_python/exercise/m3_theme2_exercise1.html">exercise in Theme 2</a>). For alternative implementations of LiDAR simulation and their specific purposes and differences, see the detailed literature review in <a href="#references">Winiwarter et al. (2022b)</a></p>
+<h3 id="point-cloud-data-model">Point Cloud Data Model</h3>
+<p>In this section, we have a closer look at the data model of point clouds and their characteristics depending on the data source and acquisition mode. Aspects beyond the point cloud itself, such as metadata and supplementary data, will be considered in a later section on <a href="#data-management-of-4d-point-clouds">data management of 4D point clouds</a>.</p>
+<p>A point cloud is an unorganized set of <strong>points in three-dimensional cartesian space</strong> (<a href="#references">Otepka et al., 2013</a>). Each point has three coordinates X, Y, and Z, and can have an arbitrary number of attributes (or none). The composition of a point cloud is illustrated in the figure below, with the corresponding data entries in tabular format. Therein, one point is stored in each row with attributes in columns in addition to the xyz coordinate.</p>
+<p><center>
+<img src="media/m3_theme1_pointcloud_model.png" alt="pointcloud_model" title="Visualization of point cloud model" width="400">
+</center></p>
+<p><center>
+<img src="media/m3_theme1_pointcloud_model_list.png" alt="pointcloud_model_table" title="Point cloud model in ascii table" width="400"></p>
+<p><i>Visual and tabular representation of a 3D point cloud with three coordinates (XYZ) and attributes classification (ID), LiDAR backscatter (Intensity), and true color (RGB). Figure by K. Anders, modified after <a href="https://doi.org/10.1109/MGRS.2018.2890023">Ghamisi et al. (2019)</a>.</i>
+</center></p>
+<p>Typical <strong>attributes</strong> for LiDAR point clouds (i.e. acquired via laser scanning) are the LiDAR intensity and information on multiple returns. LiDAR measurements do not include color information, but RGB information can be added from images that are taken in addition to scanning (<a href="#references">Ghamisi et al., 2019</a>). This step belongs to the concept of <a href="#multisource-and-multitemporal-data-fusion">data fusion</a>. Point clouds which are acquired with photogrammetric techniques directly contain RGB as attribute from the original photographs, which are used for 3D reconstruction through dense image matching (<a href="#references">Westoby et al., 2012</a>).</p>
+<p><center>
+<img src="media/m3_theme1_pointcloud_model_fusion.png" alt="Fusion" title="Fusion of photographic data with a LiDAR point cloud" width="800"></p>
+<p><i>Fusion of photographic data with a LiDAR point cloud by assigning color values as RGB attributes to the point cloud. Figure by K. Anders, modified after <a href="https://doi.org/10.1109/MGRS.2018.2890023">Ghamisi et al. (2019)</a>.</i>
+</center></p>
+<p>Point clouds can be used to derive other data models or GIS layers as result of analysis. The most common derivative of point clouds are <strong>rasters</strong>. They can be 2D projections of any attribute information onto raster cells. Also the geometric information can be gridded to represent the topography. Deriving, for example, a Digital Terrain Model (DTM) from point clouds results in a 2.5D represenation of the topography: 2D raster locations with elevation values. This typically entails decisions for a fixed resolution and interpolation of data, e.g. when gridding the terrain in a DTM (<a href="#references">Pfeifer &amp; Mandlburger, 2008</a>). The unorganized nature of the point cloud allows to have different point spacing within a scene, i.e. a denser representation of the terrain by 3D points in some parts than in others. In contrast, a rasterized terrain representation either has exactly one value or no value (NoData) per cell:</p>
+<p><center>
+<img src="media/m3_theme1_pc_raster.png" alt="pc_vs_raster" title="Point cloud vs. raster representation of terrain" width="500"></p>
+<p><i>Comparison of terrain representation as point cloud and raster. Figure by course authors.</i>
+</center></p>
+<p>The geometry of full 3D objects, such as trees, cannot be represented in rasters. Especially when analyzing complex geometries or surface dynamics, conducting <strong>analyses in full 3D</strong> has the important advantage of avoiding information loss compared to raster-based analysis. </p>
+<p><center>
+<img src="media/m3_theme1_terrain_surface_objects.png" alt="terrain, surface & object structure" title="Representation of terrain, surface and object structure in point cloud data" width="800"></p>
+<p><i>Representation of terrain, surface and object structure in 3D point clouds. Figure by course authors.</i>
+</center></p>
+<p>In this module, you will learn about change analysis methods using the full 3D data provided by point clouds, as well as raster-based methods when deriving rasterized terrain models from point cloud data (especially in <a href="../02_pointcloud_programming_python/02_pointcloud_programming_python.html">Themes 2</a> and <a href="../03_3d_change_analysis/03_3d_change_analysis.html">3</a>). If you would like to get deeper into concepts of terrain interpolation from 3D point clouds, take a look at <a href="#references">Pfeifer &amp; Mandlburger (2008)</a>.</p>
+<h3 id="multisource-and-multitemporal-data-fusion">Multisource and Multitemporal Data Fusion</h3>
+<p>3D point clouds of a scene are often available from multiple sources. Particularly in case of multitemporal data, point clouds may have been acquired from various sensors and platforms throughout a full observation period of a site throughout many years. For change analysis, it is often desirable to use as many point cloud epochs as possible, to assess the state of the topography at many points in time. Combining data from multiple sources and/or multiple points in time is referred to as data fusion (<a href="#references">Ghamisi et al., 2019</a>).</p>
+<p>For point clouds, an example of <strong>multisensor fusion</strong> is the combination of laser scanning and photogrammetric point cloud. This can regard attributes, which are assigned from one point cloud to the other based on spatial proximity of points (we will have a look at neighborhood operations in the <a href="#neighborhood-operations-and-neighborhood-based-attributes">next section</a>). Apart from an increase in attributes, fusion can yield an increase in coverage. For example, terrestrially acquired point clouds which suffer from occlusion can be complemented by UAV-borne point clouds with higher completeness in certain areas of the scene. Multitemporal fusion regards the combination of measurements which were acquired at different points in time.</p>
+<p>Temporally, point clouds can be fused to obtain one multitemporal point cloud dataset or time series to perform change analysis on (<a href="#references">Ghamisi et al., 2019</a>).
+With respect to the data model, <strong>temporal fusion</strong> can yield a time series where each epoch is a separate point cloud. Accordingly, the spatial sampling between epochs can differ. This applies even for repeat acquisitions from a single, fixed TLS position, as no point in a scene is ever measured twice by 3D surveys. Alternatively, temporal fusion can add measurements per epoch as attribute to one single point cloud, thereby storing the change in a feature (incl. geometric features) for the same set of 3D points. Assigning multitemporal measurements, possibly from different data sources, to the same 3D points, requires spatial neighborhood operations - a fundamental step in any 3D data analysis - which are introduced in the following section.</p>
+<h3 id="neighborhood-operations-and-neighborhood-based-attributes">Neighborhood Operations and Neighborhood-Based Attributes</h3>
+<p>Calculations based on the neighborhood are among the most important operations when working with point cloud data, besides standard geospatial operations, such as attribute-based calculations, coordinate transformations and distribution measures. They are required for almost any filtering, smoothing or interpolation step, and for (surface) modeling and information extraction.
+Neighborhoods mainly regard the spatial neighborhood of 3D points, but can also include the temporal neighborhood.</p>
+<h4 id="spatial-neighborhood">Spatial Neighborhood</h4>
+<p>Spatial neighborhoods in a point cloud are subsets of all points in a point cloud defined either by a fixed distance or by a fixed number of nearest neighbors (<a href="#references">Weinmann et al., 2015</a>). 
+The <strong>fixed distance</strong> can be in 2D. It is then called a <strong>cylindrical neighborhood</strong>. This means that all 3D points belong to a local neighborhood whose 2D projection on a plane are within a circle of given radius.
+For a horizontal plane, this means that all points whose XY coordinate is within the radius around the search point belong to the neighborhood of that point - irrespective of their height (Z value). Fixed-distance neighborhoods can also be 3D. In this case they are <strong>spherical neighborhoods</strong>, as the neighborhood radius is considered in all three dimensions.</p>
+<p><center>
+<img src="media/m3_theme1_neigh_cylindrical.png" alt="cylindrical_neighborhood" title="Cylindrical neighborhood with fixed distance" width="500"></p>
+<p><i>Cylindrical point cloud neighborhood of a 3D point (black) with a fixed 2D distance of radius r in a schematic view from the side (left) and above (right). Figure by course authors.</i>
+</center></p>
+<p>Besides radius-based distances, one can also use <strong>box neighborhoods</strong> in either 2D or 3D. In 2D, a neighborhood is then similar to points lying within a raster cell. In 3D, the 2D cell becomes a box and the vertical point position is considered.</p>
+<p>In contrast to a fixed distance, a point cloud neighborhood can be defined by a <strong>fixed number of neighbors</strong>. The number of neighbors is conventionally specified as <em>k</em>, so that the concept is known as k nearest neighbors (<strong>kNN</strong>). The search of kNN around a point can, again, be performed in 2D or in 3D Euclidian distances.
+The size of kNN neighborhoods can be highly different within a neighborhood, depending on the local point density. In the same way, the number of neighbors in the fixed-distance neighborhood varies depending on the point density.</p>
+<p><center>
+<img src="media/m3_theme1_neigh_knn.png" alt="knn_neighborhood" title="kNN neighborhood with fixed number of neighbors" width="500"></p>
+<p><i>Point cloud neighborhood around a 3D search point (black) with a fixed number of k nearest neighbors in 2D (left) and 3D (right). When considering the 3D Euclidian distance, the point neighborhood may change, because a point may have a vertically large distance compared to another point which is horizontally further away (indicated by the red connection lines). Figure by course authors.</i>
+</center></p>
+<p>We generally need to consider two aspects when deciding on the definition of the spatial neighborhood in a point cloud:</p>
+<ol>
+<li><strong>Neighborhoods may be empty</strong> when using a fixed distance, if there is no other point in the point cloud at the specified distance around a search point.</li>
+<li><strong>Neighborhoods may not be unique</strong> when using a fixed number of neighbors, for example if a group of 3D points is spatially isolated so that each of the points shares the same neighborhood including each other (i.e., same set of kNN).</li>
+</ol>
+<p>For some applications, it may be helpful to combine a fixed distance neighborhood with a fixed number of kNN to overcome drawbacks of each. Accordingly, one may avoid empty neighborhoods by setting a large distance radius, but restricting the number of neighbors to the k nearest points. Depending on the purpose of the operation, there are even more advanced methods for neighborhood selection, such as quadrant- or octant-based kNN. If you would like to learn more about this, you may look into <a href="#references">Pfeifer et al. (2014)</a>.</p>
+<p><strong>So what can the neighborhood of a point tell us?</strong>
+A basic attribute to be derived from the spatial neighborhood is the <strong>point density</strong> within a point cloud. The 3D point density, for example, can be derived as the number of points (kNN) within the radius of a local sphere:</p>
+<div class="arithmatex">\[ 
+D = {k+1 \over {4 \over 3} \pi r{^3}_{kNN}} 
+\]</div>
+<p>By calculating the point density like this for every point in a point cloud, we can tell for the entire point cloud how many points are contained within a radius of, e.g., 1.0 m, in a certain area of the scene. This information can also be used to identify isolated points and removing outliers. A common method for this is the <em>statistical outlier removal</em> (SOR; <a href="#references">Rusu &amp; Cousins, 2011</a>). A selection of further useful point cloud features to be derived from the spatial neighborhood are:
+* <strong>normal vectors</strong>
+* <strong>principal components on local point distribution</strong>
+* <strong>the local surface roughness</strong></p>
+<p>We will have a look at these in the remainder of this theme. But first, since we are dealing with time series, let's have a look at the concept of temporal neighbors.</p>
+<h4 id="temporal-neighborhood">Temporal Neighborhood</h4>
+<p>The temporal neighborhood regards measurements of a variable at the same spatial location prior or successively to a certain point in time. For time series, the neighborhood is typically defined as a temporal window of a certain timespan.
+For 3D/4D point clouds, most times a combination of spatial and temporal neighborhoods is used. In the same way that spatial neighbors are searched among the 3D points within one point cloud, they may be searched in another, separate point cloud. <strong>You may note:</strong> looking for spatially close points in the temporal neighborhood (i.e., another point cloud epoch), yields information on how properties of these neighboring points change over time, e.g. through attribute differences or height differences. Being aware of possible neighborhood operations in multitemporal point clouds, gives you already one point cloud-based approach of change analysis (with more to come in <a href="../03_3d_change_analysis/03_3d_change_analysis.html">Theme 3 of this module</a>).</p>
+<p>The spatial-temporal neighborhood is used in an approach for 4D point cloud processing by <a href="#references">Kromer et al. (2015)</a> to filter noise from the data. The concept uses the redundancy of frequent and spatially dense measurements in 4D point clouds and averages each point to the median of points which are neighboring in space and time:</p>
+<p><center>
+<img src="media/m3_theme1_kromer_etal_2015_edt.png" alt="spatiotemporal neighborhood" title="combination of spherical spatial neighborhoods and temporal window neighborhood" width="800"></p>
+<p><i>Spherical spatial neighborhoods (left) and temporal window neighborhood (right) are combined to a spatiotemporal neighborhood (middle) to perform noise filtering in 4D point clouds, with number of neighbors NN, reference point cloud T<sub>ref</sub> and temporal window T<sub>step</sub>. Figure modified from <a href="https://doi.org/10.3390/rs71013029">Kromer et al. (2015)</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</i>
+</center></p>
+<h4 id="normal-vector-and-3d-structure-tensor">Normal vector and 3D structure tensor</h4>
+<p>Coming back to the spatial neighborhood, this section introduces the concept of the normal vector in 3D point clouds. The normal vector is the surface normal of a tangent plane. Fitting a plane to a set of points therefore allows us to <strong>characterize point neighborhoods as local surfaces</strong>, even though each 3D point itself has no dimensionality.</p>
+<p>So if you think of a surface in a scene which is sampled by a 3D point cloud and fit a tangent plane to these measurements, the normal vector is perpendicular to the plane and reflects the direction into which the plane is oriented:</p>
+<p><center>
+<img src="media/m3_theme1_normalvector.png" alt="normalvector" title="Schematic of normal vector of a tangent plane" width="500"></p>
+<p><i>Normal vector of a tangent plane fit to a set of 3D points, which are sampled on a surface in the scene. Figure by course authors.</i>
+</center></p>
+<p>The normal vector of a plane in 3D has three direction components <span class="arithmatex">\(n_x\)</span>, <span class="arithmatex">\(n_y\)</span>, and <span class="arithmatex">\(n_z\)</span>, which describe the direction in three-dimensional space.</p>
+<p>The normal vector of a point in a point cloud is estimated by adjusting a plane to all points in its local neighborhood. A plane can be adjusted to a set of point using least-squares regression. In 3D space, this means minimizing the orthogonal distances of points to the (unknown plane), i.e. finding the best set of plane parameters. The result of this plane adjustment are the plane parameters (see below) and the residual distance of the adjustment based on point distances to the fitted plane (<a href="#references">Dorninger &amp; Nothegger, 2007</a>).</p>
+<p>The plane parameters derived with a plane fit in 3D cartesian space are based on the <em>Hessian</em> normal form with the following equation:</p>
+<div class="arithmatex">\[ 
+0 = d + n_x + n_x + n_z 
+\]</div>
+<p>with <span class="arithmatex">\(n_x\)</span>, <span class="arithmatex">\(n_y\)</span>, <span class="arithmatex">\(n_z\)</span> representing the normal vector, and <span class="arithmatex">\(d\)</span> representing the normal distance of the plane to the origin of the Cartesian coordinate system. </p>
+<p><center>
+<img src="media/m3_theme1_plane_equation_hessian.png" alt="plane_equation" title="Plane parameters according to Hessian normal form" width="350"></p>
+<p><i>Definition of a plane with parameters according to the Hessian normal form. Figure by <a href="https://commons.wikimedia.org/w/index.php?curid=31080804">Quartl</a> / <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC BY-SA 3.0</a>.</i>
+</center></p>
+<p>As surfaces in point clouds scenes are rarely perfectly planar, a simple least-squares plane fit is not robust to outliers or edges, where part of the neighboring points strongly deviate from the actual planar surface. Robust local regression planes can be derived by considering outliers using weighting of points based on their residual distances, and excluding outliers from the final plane adjustment (<a href="#references">Dorninger &amp; Nothegger, 2007</a>).</p>
+<p>In the context of the local regression plane, there is more information to be obtained about local spatial point cloud characteristics to describe the scene. <strong>Principal component analysis (PCA)</strong> allows us to assess how points are dispersed around their center (search point or centroid). By spanning the covariance matrix, we can derive the <strong>3D structure tensor</strong> formed by eigenvalues and eigenvectors. These describe the principal components of directions into which 3D points are dispersed. If you are not familiar with the concept of PCA and eigenvalue decomposition, you may have a look at <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">this tutorial</a> (<a href="#references">VanderPlas, 2016</a>).</p>
+<p><center>
+<img src="media/m3_theme1_pca.png" alt="pca" title="Schematic of principal components for two sets of 3D points" width="600"></p>
+<p><i>Schematic of principal components for two sets of 3D point. Figure by course authors.</i>
+</center></p>
+<p>If we look at the box in the figure above, the points are dispersed into all three directions. Accordingly, the eigenvectors are pointing into all directions with similar magnitude, i.e. the eigenvalues have the same scale. The example of a plane (right figure above) demonstrates how the components of the eigenvector on the plane are very large (red and green arrows), whereas the component perpendicular to the plane is small (blue arrow). Thereby, PCA provides information about the planarity of a point neighborhood: if you take the smallest eigenvalue, denoted by <span class="arithmatex">\(\lambda\)</span>, this represents the direction where there is least dispersion of points. The corresponding eigenvector represents the surface normal of the plane. If you'd like to go further into normal estimation using PCA, look into <a href="https://pcl.readthedocs.io/projects/tutorials/en/pcl-1.12.0/normal_estimation.html">this tutorial by the Point Cloud Library (PCL)</a>.</p>
+<p>Further information on the 3D structure of points can be expressed based on the eigenvalues. For example, the ratio to the sum of eigenvalues describes the change in curvature, which corresponds to local surface variation:</p>
+<div class="arithmatex">\[
+\lambda_3 \over {\lambda_1 + \lambda_2 + \lambda_3}
+\]</div>
+<p>with $$ \lambda_3 &lt; \lambda_2 &lt; \lambda_1 $$</p>
+<p>Find out more about geometric interpretations of the 3D structure tensor and <strong>shape features based on eigenvalues</strong> in <a href="#references">Weinmann et al. (2015)</a>.</p>
+<p>Another point feature to be exploited from the local plane adjustment is the <strong>roughness</strong>. The surface roughness as point feature expresses the discrepancy between an ideal surface (i.e. plane fit) and the actual surface (point distribution). This roughness can therefore be derived as the standard deviation of residual distances of the plane fit, or via the smallest eigenvalue of the 3D structure tensor (as described for the figure above).</p>
+<p>For all geometric operations and features, it is important to bear in mind that they are <strong>scale-dependent</strong>, i.e. always depending on the size of the spatial neighborhood. Consider a plane fit to point neighborhoods in the following figure, with a large radius on the left and smaller radius on the right - resulting in different orientations of the local surfaces. This must be considered when parametrizing any analysis and should be determined regarding the respective objective.</p>
+<p><center>
+<img src="media/m3_theme1_roughness.png" alt="roughness" title="Schematic of scale-dependent roughness" width="500"></p>
+<p><i>Scale-dependent roughness where the local plane fit depends on the size of the spatial neighborhood. Figure by course authors.</i>
+</center></p>
+<p>The following figure shows how different radii affect the derived roughness of a surface. Here you can see the roughness derived for three different radii on a small extent of a laser scanning point cloud of a rock glacier (you will use this <a href="../../data_usecases/usecase_rockglacier_ahk.html">use case</a> in the exercise and throughout the module).</p>
+<p><center>
+<img src="media/m3_theme1_roughness_for_different_radius.png" alt="computed roughness" title="Schematic of scale-dependent roughness for different radius" width="1000"> </p>
+<p><i>Roughness derived for radii r of 0.25 m, 5 m and 10 m (left to right) for an area of a rock glacier point cloud, derived as standard deviation of residual distances of points to a local plane fit. Figure by course authors.</i>
+</center></p>
+<p>A smaller radius (0.25 m) yields lower roughness values here, as the planes can be well fit to the local surfaces of boulder faces composing the rock glacier surface. Larger radii yield higher roughness values, as the surface is composed of multiple boulders at these scales, and plane fits represent the overall topography of the rock glacier tongue.</p>
+<h3 id="transformation-of-3d-point-cloud-data">Transformation of 3D point cloud data</h3>
+<p>Transformation of point cloud data is another fundamental task in many analysis. 3D coordinates of points need to be transformed, for example, to register the data in coordinate reference systems (i.e., georeferencing). Transformation is further used to improve the co-registration between datasets, particularly multitemporal point clouds. There is a dedicated section on <a href="../03_3d_change_analysis/03_3d_change_analysis.html">alignment for 3D change analysis</a> in the corresponding theme on principles of 3D change analysis. Here, we get familiar with some principles:</p>
+<p>In general, transformation can be split into three components: <strong>translation, rotation, and scaling</strong>. Translation regards the shift of the coordinates in X, Y, and/or Z direction. Rotation is conducted around the X-, Y-, and/or Z-axis respectively. applying a rotation, it is crucial to know what the rotation center of the point cloud is. Without any prior translation, the rotation center is at the origin (0, 0, 0) of the Cartesian coordinate system. Translation and rotation represent a <strong>rigid transformation</strong>, whereas additional scaling would represent <strong>affine transformation</strong>. Scaling is usually not applied LiDAR measurements, which are accurate in (relative) metric space. Scaling may be required for photogrammetric data, which inherently contain no information on absolute measures in the scene. </p>
+<p><center>
+<img src="media/m3_theme1_transformation.png" alt="transformation" title="Components of transformation representing rigid and affine transformation" width="450"></p>
+<p><i>Components of transformation representing rigid and affine transformation. Figure by course authors.</i>
+</center></p>
+<h2 id="data-management-of-4d-point-clouds">Data Management of 4D Point Clouds</h2>
+<h3 id="data-formats">Data formats</h3>
+<p>Point cloud data can be stored in many formats, including tabular representations of plain-text ascii. The best practice is to adhere to the open binary <strong>LAS format</strong>, which is the de-facto standard following the <a href="https://www.asprs.org/divisions-committees/lidar-division/laser-las-file-format-exchange-activities">specification of the American Society for Photogrammetry and Remote Sensing (ASPRS)</a>. With the <a href="https://laszip.org/">LAZ format</a>, there is a losslessly compressed version LAS, which strongly reduces file sizes.
+For repeat acquisitions, or 4D point clouds, data is usually available as one point cloud file per epoch, i.e. point in time of acquisition. </p>
+<p>In practice, 4D data is often made accessible by appending the observed variables or change attributes to a set of <em>core points</em> (more on that in <a href="../03_3d_change_analysis/03_3d_change_analysis.html">Themes 3</a> and <a href="../04_3d_timeseries_analysis/04_3d_timeseries_analysis.html">4</a> of this module). By this, for each location in a 3D scene, the full temporal information on each variable is available (corresponding to a 1D time series).</p>
+<p><center>
+<img src="media/m3_theme1_pointcloud_time_attributes.png" alt="point cloud time attributes" title="Point cloud model with attributes over time" width="400"></p>
+<p><i>Point cloud model with XYZ coordinates and attributes of a variable A for each point in time t of T epochs in the point cloud time series. Figure by K. Anders, modified after <a href="https://doi.org/10.1109/MGRS.2018.2890023">Ghamisi et al. (2019)</a>.</i>
+</center></p>
+<h3 id="metadata-and-supplementary-datasets">Metadata and Supplementary Datasets</h3>
+<p>As with any type of geodata, metadata on 3D/4D point clouds are essential for their analysis and determining the fitness of purpose for certain tasks. When working with point cloud data, it should always be documented by which <strong>instrument</strong> the data was acquired (including the sensor, model, platform, measurement accuracy and other specifications). Further metadata regards <strong>survey information</strong>, so for example the trajectory of aerial/mobile acquisitions or scan positiopns of terrestrial laser scanning, which provides insight into the survey geometry (e.g., measurement range and incidence angle, if not available as point cloud attributes).
+Other metadata that is required is the <strong>coordinate reference system (CRS)</strong> of the 3D points in the point clouds. Since <a href="https://www.asprs.org/divisions-committees/lidar-division/laser-las-file-format-exchange-activities">LAS format version 1.4</a> it is required to define the coordinate system in the LAS file. But up to now, CRS information is often not contained in the point cloud file itself and must be separately documented.</p>
+<p>When point clouds are provided at a certain processing level (cf. <a href="#key-literature">Otepka et al., 2013</a>), a full documentation of this processing must be provided and wherever useful, also the files or scripts used to apply the processing. In the context of 4D point clouds, this shall specifically mention registration information. Multitemporal point clouds are often registered to fit some reference point cloud, improving single-epoch georeferencing for change analysis. Any of these <a href="#transformation-of-3d-point-cloud-data">point cloud transformations</a> should be provided with additional files containing the matrices. The rationale of this is to always allow reverting modifications of the data. This is relevant, for example, if improved methods become available in the future.</p>
+<p>And the most important when working with temporal information is to always provide timestamps corresponding to the acquisition of each epoch. Only this time information allows any inference about, for example, change rates or other process properties observed in the data.</p>
+<h2 id="self-evaluation-quiz">Self-evaluation quiz</h2>
+<p>You have now completed the theme contents. Use the following quiz to evaluate yourself - do you remember the important aspects, did you learn about <em>Principles of 3D/4D geographic point clouds</em>? If you are struggling with the following questions, revisit some of the topics or consider looking into additional resources (e.g., linked in the theme contents).</p>
+<form name="quiz" action="" method="post" onsubmit="evaluate_quiz(); return false">
+<!--Question 1-->
+<label for="q_01">
+What is the standard data format to store point cloud files?
+</label><br>
+<textarea rows = "5" cols = "50" name = "q_01"></textarea><br>
+
+<div id="correct_q_01" hidden="">
+
+LAS
+
+</div>
+
+<output id="output_q_01">
+</output>
+
+<br><br>   
+
+<!--Question 2-->    
+<label for="q_02">
+Which of the following attributes is not contained in laser scanning point clouds without performing fusion operations?
+</label><br>
+<input type="radio" name="q_02"> XYZ (coordinate)<br>
+<input type="radio" name="q_02"> Intensity (LIDAR backscatter)<br>
+<input type="radio" name="q_02"> RGB (color)<br>
+
+<div id="correct_q_02" hidden="">
+
+RGB (color)
+
+</div>
+
+<output id="output_q_02">
+</output>
+
+<br><br>       
+
+<!--Question 3-->    
+<label for="q_03">
+Check the correct answer: Virtual laser scanning provides a means to
+</label><br>
+<input type="radio" name="q_03"> operate a laser scanner in an augmented reality, but no data is generated of the surrounding scene<br>
+<input type="radio" name="q_03"> simulate laser scanning acquisitions of virtual 3D scenes, for example, to test acquisition strategies or new methods<br>
+<input type="radio" name="q_03"> increase the spatial detail of point clouds acquired in real-world scenes by adding virtual point measurements<br>
+
+<div id="correct_q_03" hidden="">
+
+simulate laser scanning acquisitions of virtual 3D scenes, for example, to test acquisition strategies or new methods
+
+</div>
+
+<output id="output_q_03">
+</output>
+
+<br><br>      
+
+<!--Question 4--> 
+<label for="q_04">
+Sort the following typical steps of 3D change analysis by their order. If you do not know what a step means, revisit the contents:<br>
+Co-registration, Change detection and quantification, Data acquisition, Change representation, Uncertainty assessment
+</label><br>
+<textarea rows = "5" cols = "50" name = "q_04"></textarea><br>
+
+<div id="correct_q_04" hidden="">
+
+Data acquisition > Co-registration > Change detection and quantification > Uncertainty assessment > Change representation
+
+</div>
+
+<output id="output_q_04">
+</output>
+
+<br><br>  
+
+<!--Question 5--> 
+<label for="q_05">
+What useful metadate or supplementary files should be provided with 4D point clouds? Name at least 3.
+</label><br>
+<textarea rows = "5" cols = "50" name = "q_05"></textarea><br>
+
+<div id="correct_q_05" hidden="">
+
+Instrument used for acquisition, sensor settings, acquisition platform, timestamp of each point cloud epoch, transformation matrices for co-registration, details about applied processing,...
+
+</div>
+
+<output id="output_q_05">
+</output>
+
+<br><br>  
+
+<!--Question 6--> 
+<label for="q_06">
+What are the two possibilities to define a spatial neighborhood in 3D point clouds?
+</label><br>
+<textarea rows = "5" cols = "50" name = "q_06"></textarea><br>
+
+<div id="correct_q_06" hidden="">
+
+Spatial neighborhoods in 3D point clouds can be defined via a fixed distance or a fixed number of neighbors.
+
+</div>
+
+<output id="output_q_06">
+</output>
+
+<br><br> 
+
+<!--Question 7--> 
+<label for="q_07">
+Which one of these local point cloud properties cannot be described with the normal vector?
+</label><br>
+<input type="radio" name="q_07"> surface orientation<br>
+<input type="radio" name="q_07"> surface roughness<br>
+<input type="radio" name="q_07"> surface density<br>
+
+<div id="correct_q_07" hidden="">
+
+surface density
+
+</div>
+
+<output id="output_q_07">
+</output>
+
+<br><br>
+
+<!--Question 8-->
+<label for="q_08">
+Which transformation type is included in affine transformation and not in rigid transformation?
+</label><br>
+<input type="radio" name="q_08"> scaling<br>
+<input type="radio" name="q_08"> translation<br>
+<input type="radio" name="q_08"> rotation<br>
+
+<div id="correct_q_08" hidden="">
+
+scaling
+
+</div>
+
+<output id="output_q_08">
+</output>
+
+<br><br>
+
+<!--Question 9-->
+<label for="q_09">
+Sort the following 3D acquisitions strategies by time interval, at which acquisitions can be repeated (with reasonable effort and cost): <br>
+UAV photogrammetry, Airborne laser scanning, Time-lapse photogrammetry, Terrestrial laser scanning
+</label><br>
+<textarea rows = "5" cols = "50" name = "q_09"></textarea><br>
+
+<div id="correct_q_09" hidden="">
+
+Time-lapse photogrammetry (seconds to minutes from static cameras) > Terrestrial laser scanning (minutes to hours from static scan position) > UAV photogrammetry (daily to monthly, piloted) > Airborne laser scanning (seasonally to annually, piloted and high cost)
+
+</div>
+
+<output id="output_q_09">
+</output>
+
+<br><br> 
+
+<!--Question 10-->
+<label for="q_10">
+What is the special property of 4D point clouds compared to multitemporal point clouds in general?
+</label><br>
+<textarea rows = "5" cols = "50" name = "q_10"></textarea><br>
+
+<div id="correct_q_10" hidden="">
+
+With 4D point clouds, the observed variable is represented near-continuously. the acquisition interval is so high that the change process in itself can be described from the data, not only the before and after state as with standard multitemporal point clouds of two or few epochs
+
+</div>
+
+<output id="output_q_10">
+</output>
+
+<br><br> 
+
+<input type="submit" value="Submit" style="font-size:14pt"><br><br>
+
+<output id="output_overall">
+</output>
+</form>
+
+<h2 id="exercise">Exercise</h2>
+<p>Made it through the quiz? Then you are ready for the exercise, where you will be getting your hands on multisource, multitemporal point cloud data of an active rock glacier.</p>
+<p><a class="md-button md-button--primary" href="exercise/m3_theme1_exercise1.html">Exercise</a></p>
+<h2 id="references">References</h2>
+<h3 id="key-literature">Key literature</h3>
+<ol>
+<li>Otepka, J., Ghuffar, S., Waldhauser, C., Hochreiter, R., &amp; Pfeifer, N. (2013). Georeferenced Point Clouds: A Survey of Features and Point Cloud Management. ISPRS International Journal of Geo-Information, 2 (4), pp. 1038-1065. doi: <a href="https://doi.org/10.3390/ijgi2041038">10.3390/ijgi2041038</a>.</li>
+<li>Eitel, J. U. H., Höfle, B., Vierling, L. A., Abellán, A., Asner, G. P., Deems, J. S., Glennie, C. L., Joerg, P. C., LeWinter, A. L., Magney, T. S., Mandlburger, G., Morton, D. C., Müller, J., &amp; Vierling, K. T. (2016). Beyond 3-D: The new spectrum of lidar applications for earth and ecological sciences. Remote Sensing of Environment, 186, pp. 372-392. doi: <a href="https://doi.org/10.1016/j.rse.2016.08.018">10.1016/j.rse.2016.08.018</a>.</li>
+</ol>
+<h3 id="further-articles-and-referenced-literature">Further articles and referenced literature</h3>
+<ul>
+<li>Anders, K., Winiwarter, L., &amp; Höfle, B. (2022). Improving Change Analysis From Near-Continuous 3D Time Series by Considering Full Temporal Information. IEEE Geoscience and Remote Sensing Letters, 19, pp. 1-5. doi: <a href="https://doi.org/10.1109/LGRS.2022.3148920">10.1109/LGRS.2022.3148920</a>.</li>
+<li>Campos, M. B. , Litkey, P. , Wang, Y. , Chen, Y. , Hyyti, H. , Hyyppä, J. &amp; Puttonen, E. (2021). A long-Term Terrestrial Laser Scanning Measurement Station to Continuously Monitor Structural and Phenological Dynamics of Boreal Forest Canopy. Frontiers in Plant Science, 11: 606752. doi: <a href="https://doi.org/10.3389/fpls.2020.606752">10.3389/fpls.2020.606752</a>.</li>
+<li>Czerwonka-Schröder, D., Anders, K., Winiwarter L. &amp; Wujanz, D.(2022):Permanent terrestrial LiDAR monitoring in mining, natural hazard prevention and infrastructure protection – Chances, risks, and challenges: A case study of a rockfall in Tyrol, Austria. 5th Joint International Symposium on Deformation Monitoring (JISDM). doi: <a href="http://dx.doi.org/10.4995/JISDM2022.2022.13649">10.4995/JISDM2022.2022.13649</a>.</li>
+<li>Dorninger, P. &amp; Nothegger, C. (2007). 3D segmentation of unstructured point clouds for building modelling. International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences, 35(3/W49A), pp. 191-196. </li>
+<li>Eitel, J. U. H., Höfle, B., Vierling, L. A., Abellán, A., Asner, G. P., Deems, J. S., Glennie, C. L., Joerg, P. C., LeWinter, A. L., Magney, T. S., Mandlburger, G., Morton, D. C., Müller, J., &amp; Vierling, K. T. (2016). Beyond 3-D: The new spectrum of lidar applications for earth and ecological sciences. Remote Sensing of Environment, 186, pp. 372-392. doi: <a href="https://doi.org/10.1016/j.rse.2016.08.018">10.1016/j.rse.2016.08.018</a>.</li>
+<li>Eltner, A., Baumgart, P., Domula, A. R., Barkleit, A. &amp; Faust, D. (2017): Scale dependent soil erosion dynamics in a fragile loess landscape. Zeitschrift für Geomorphologie Supplementary Issues, 61(3), pp. 191-206. doi: <a href="https://doi.org/10.1127/zfg/2017/0409">10.1127/zfg/2017/0409</a>.</li>
+<li>Ghamisi, P., Rasti, B., Yokoya, N., Wang, Q., Höfle, B., Bruzzone, L., Bovolo, F., Chi, M., Anders, K., Gloaguen, R., Atkinson, P. M., &amp; Benediktsson, J. A. (2019). Multisource and Multitemporal Data Fusion in Remote Sensing: A Comprehensive Review of the State of the Art. IEEE Geoscience and Remote Sensing Magazine, 7 (1), pp. 6-39. doi: <a href="https://doi.org/10.1109/MGRS.2018.2890023">10.1109/MGRS.2018.2890023</a>.</li>
+<li>Guo, Q., Su, Y., Hu, T., Guan, H., Jin, S., Zhang, J., Zhao, X., Xu, K., Wei, D., Kelly, M., &amp; Coops, N. C. (2020). Lidar boosts 3d ecological observations and modelings: A review and perspective. IEEE Geoscience and Remote Sensing Magazine, 9(1), pp. 232-257. doi: <a href="https://doi.org/10.1109/MGRS.2020.3032713">10.1109/MGRS.2020.3032713</a>.</li>
+<li>Herzog, M., Anders, K., Höfle, B., Bubenzer, O. (2022). Capturing complex star dune dynamics ‐ Repeated highly accurate surveys combining multitemporal 3D topographic measurements and local wind data. Earth Surface Processes and Landforms, 47(11), pp. 2726-2739. doi: <a href="https://doi.org/10.1002/esp.5420">10.1002/esp.5420</a>.</li>
+<li>Kromer, R., Abellán, A., Hutchinson, D., Lato, M., Edwards, T., &amp; Jaboyedoff, M. (2015). A 4D Filtering and Calibration Technique for Small-Scale Point Cloud Change Detection with a Terrestrial Laser Scanner. Remote Sensing, 7 (10), pp. 13029-13052. doi: <a href="https://doi.org/10.3390/rs71013029">10.3390/rs71013029</a></li>
+<li>Kromer, R. A., Abellán, A., Hutchinson, D. J., Lato, M., Chanut, M.-A., Dubois, L. &amp; Jaboyedoff, M. (2017). Automated terrestrial laser scanning with near-real-time change detection – monitoring of the Séchilienne landslide. Earth Surface Dynamics, 5, pp. 293–310. doi: <a href="https://doi.org/10.5194/esurf-5-293-2017">10.5194/esurf-5-293-2017</a>.</li>
+<li>Kromer, R., Walton, G., Gray, B., Lato, M. &amp; Group, R. (2019): Development and Optimization of an Automated Fixed-Location Time Lapse Photogrammetric Rock Slope Monitoring System. Remote Sensing, 11(16). doi: <a href="https://doi.org/10.3390/rs11161890">10.3390/rs11161890</a>.</li>
+<li>O'Dea, A., Brodie, K. L. &amp; Hartzell, P. (2019). Continuous Coastal Monitoring with an Automated Terrestrial Lidar Scanner. Journal of Marine Science and Engineering, 7(2):37. doi: <a href="https://doi.org/10.3390/jmse7020037">10.3390/jmse7020037</a>.</li>
+<li>Otepka, J., Ghuffar, S., Waldhauser, C., Hochreiter, R., &amp; Pfeifer, N. (2013). Georeferenced Point Clouds: A Survey of Features and Point Cloud Management. ISPRS International Journal of Geo-Information, 2 (4), pp. 1038-1065. doi: <a href="https://doi.org/10.3390/ijgi2041038">10.3390/ijgi2041038</a>.</li>
+<li>Passalacqua, P., Belmont, P., Staley, D. M., Simley, J. D., Arrowsmith, J. R., Bode, C. A., Crosby, C., DeLong, S. B., Glenn, N. F., Kelly, S. A., Lague, D., Sangireddy, H., Schaffrath, K., Tarboton, D. G., Wasklewicz, T., &amp; Wheaton, J. M. (2015). Analyzing high resolution topography for advancing the understanding of mass and energy transfer through landscapes: A review. Earth-Science Reviews, 148, pp. 174-193. doi: <a href="https://doi.org/10.1016/j.earscirev.2015.05.012">10.1016/j.earscirev.2015.05.012</a>.</li>
+<li>Pfeifer &amp; Mandlburger (2008). LiDAR Data Filtering and DTM Generation. In: Shan &amp; Toth (Edts): Topographic Laser Ranging and Scanning: Principles and Processing. Chapter 11. </li>
+<li>Pfeifer, N., Mandlburger, G., Otepka, J., &amp; Karel, W. (2014). OPALS - A framework for Airborne Laser Scanning data analysis. Computers, Environment and Urban Systems, 45, pp. 125-136. <a href="https://doi.org/10.1016/j.compenvurbsys.2013.11.002">doi: 10.1016/j.compenvurbsys.2013.11.002</a>.</li>
+<li>Qin, R., Tian, J., &amp; Reinartz, P. (2016). 3D change detection – Approaches and applications. ISPRS Journal of Photogrammetry and Remote Sensing, 122, pp. 41-56. doi: <a href="https://doi.org/10.1016/j.isprsjprs.2016.09.013">10.1016/j.isprsjprs.2016.09.013</a>.</li>
+<li>Riegl LMS GmbH: Retrieved from: http://www.riegl.com/.</li>
+<li>Rusu, R. B. &amp; Cousins, S. (2011). 3D is here: Point Cloud Library (PCL). 2011 IEEE International Conference on Robotics and Automation, pp. 1-4. doi: <a href="https://doi.org/10.1109/ICRA.2011.5980567">10.1109/ICRA.2011.5980567</a>.</li>
+<li>Schröder, D., Anders, K., Winiwarter, L., &amp; Wujanz, D. (2022). Permanent terrestrial LiDAR monitoring in mining, natural hazard prevention and infrastructure protection – Chances, risks, and challenges: A case study of a rockfall in Tyrol, Austria. 5th Joint International Symposium on Deformation Monitoring (JISDM 2022), doi: <a href="https://doi.org/10.4995/JISDM2022.2022.13649">10.4995/JISDM2022.2022.13649</a>.</li>
+<li>Scott, C., Phan, M., Nandigam, V., Crosby, C. &amp; Arrowsmith, R. (2021). Measuring change at Earth’s surface: On-demand vertical and three- dimensional topographic differencing implemented in OpenTopography. Geosphere, 17 (4), pp. 1318-1332. doi: <a href="https://doi.org/10.1130/GES02259.1">10.1130/GES02259.1</a>.</li>
+<li>Stumvoll, M. J., Canli, E., Engels, A., Thiebes, B., Groiss, B., Glade, T., Schweigl, J. &amp; Bertagnoli, M. (2020): The “Salcher” landslide observatory—experimental long-term monitoring in the Flysch Zone of Lower Austria. Bulletin of Engineering Geology and the Environment, 79, pp. 1831-1848. doi: <a href="https://doi.org/10.1007/s10064-019-01632-w">10.1007/s10064-019-01632-w</a>.</li>
+<li>Telling, J., Lyda, A., Hartzell, P., &amp; Glennie, C. (2017): Review of Earth science research using terrestrial laser scanning. Earth-Science Reviews, 169, pp. 35-68. doi: <a href="https://doi.org/10.1016/j.earscirev.2017.04.007">10.1016/j.earscirev.2017.04.007</a>.</li>
+<li>VanderPlas, J. (2016). Python Data Science Handbook. O'Reilly Media, Inc.</li>
+<li>Voordendag, A. B., Goger, B., Klug, C., Prinz, R., Rutzinger, M. &amp; Kaser, G. (2021). Automated and permanent long-range terrestrial laser scanning in a high mountain environment: Setup and first results. ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, V-2-2021, pp. 153-160. doi: <a href="https://doi.org/10.5194/isprs-annals-V-2-2021-153-2021">10.5194/isprs-annals-V-2-2021-153-2021</a>.</li>
+<li>Vos, S., Anders, K., Kuschnerus, M., Lindenberg, R., Höfle, B., Aarnikhof, S. &amp; Vries, S. (2022). A high-resolution 4D terrestrial laser scan dataset of the Kijkduin beach-dune system, The Netherlands.  Scientific Data, 9:191. doi: <a href="https://doi.org/10.1038/s41597-022-01291-9">10.1038/s41597-022-01291-9</a>.</li>
+<li>Wang, D., Puttonen, E., &amp; Casella, E. (2022). PlantMove: A tool for quantifying motion fields of plant movements from point cloud time series. International Journal of Applied Earth Observation and Geoinformation, 110, pp. 102781. doi: <a href="https://doi.org/10.1016/j.jag.2022.102781">10.1016/j.jag.2022.102781</a>.</li>
+<li>Weinmann, M., Jutzi, B., Hinz, S., &amp; Mallet, C. (2015). Semantic point cloud interpretation based on optimal neighborhoods, relevant features and efficient classifiers. ISPRS Journal of Photogrammetry and Remote Sensing, 105, pp. 286-304. doi: <a href="https://doi.org/10.1016/j.isprsjprs.2015.01.016">10.1016/j.isprsjprs.2015.01.016</a>.</li>
+<li>Westoby, M. J., Brasington, J., Glasser, N. F., Hambrey, M. J., &amp; Reynolds, J. M. (2012). ‘Structure-from-Motion’ photogrammetry: A low-cost, effective tool for geoscience applications. Geomorphology, 179, pp. 300-314. doi: 10.1016/j.geomorph.2012.08.021.</li>
+<li>Williams, J. G., Rosser, N. J., Hardy, R. J., Brain, M. J. &amp; Afana, A. A. (2018). Optimising 4-D surface change detection: an approach for capturing rockfall magnitude–frequency. Earth Surface Dynamics, 6, pp. 101–119. doi: <a href="https://doi.org/10.5194/esurf-6-101-2018">10.5194/esurf-6-101-2018</a>.</li>
+<li>Winiwarter, L., Anders, K., Schröder, D. &amp; Höfle, B. (2022a). Full 4D Change Analysis of Topographic Point Cloud Time Series using Kalman Filtering. Earth Surface Dynamics, Discussion (preprint). doi: <a href="https://doi.org/10.5194/esurf-2021-103">10.5194/esurf-2021-103</a>.</li>
+<li>Winiwarter, L., Pena, A. M. E., Weiser, H., Anders, K., Sanchez, J. M., Searle, M. &amp; Höfle, B. (2022b). Virtual laser scanning with HELIOS++: A novel take on ray tracing-based simulation of topographic full-waveform 3D laser scanning. Remote Sensing of Environment, 269. doi: <a href="https://doi.org/10.1016/j.rse.2021.112772">10.1016/j.rse.2021.112772</a>.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../module3.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Overview
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="exercise/m3_theme1_exercise1.html" class="md-footer__link md-footer__link--next" aria-label="Next: Exercise">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Exercise
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+	
+    <div class="md-copyright__highlight">
+		<a href="https://erasmus-plus.ec.europa.eu/projects/search/details/2020-1-CZ01-KA203-078308" title="EU Project Page">
+			<img src="../../assets/img/flag_eu.jpg" }} alt="flag of the European Union" style="height:50px; float:left; margin-right:15px; margin-bottom:15px;">
+		</a>
+		<p style="font-family:Arial">
+			Funded by the Erasmus+ Programme<br>of the European Union.
+		</p>
+	</div><br>
+	<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+		<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+	</a>
+	<p>
+		Except when explicitly stated otherwise, the course is licensed under the 
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+		license, associated code is licensed under the
+		<a href="https://choosealicense.com/licenses/mit/">MIT</a>
+		license.
+	</p>
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.highlight", "content.code.copy", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/javascripts/quiz_evaluation.js"></script>
+      
+    
+  </body>
+</html>

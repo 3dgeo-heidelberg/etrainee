@@ -1,0 +1,3532 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This is the sixth theme within module 1.">
+      
+      
+      
+      
+        <link rel="prev" href="../05_spatio_temporal_data_fusion/05_spatio-temporal_data_fusion.html">
+      
+      
+        <link rel="next" href="../../module2/module2.html">
+      
+      
+      <link rel="icon" href="../../assets/img/logo_etrainee.svg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
+    
+    
+      
+        <title>E-TRAINEE Theme 6 - Reference data, validation and accuracy assessment - E-TRAINEE Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.10ba22f1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#theme-6-reference-data-validation-and-accuracy-assessment" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-header__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            E-TRAINEE Course
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              E-TRAINEE Theme 6 - Reference data, validation and accuracy assessment
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-nav__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    E-TRAINEE Course
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module0/module0.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prerequisites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Module 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principles of remote sensing time series
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Large time series datasets in remote sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_time_series_analysis_based_on_classification/03_time_series_analysis_based_on_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series analysis based on classification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_trajectory-based_analysis/04_trajectory_based_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trajectory-based analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_spatio_temporal_data_fusion/05_spatio-temporal_data_fusion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spatio-temporal data fusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Reference data, validation and accuracy assessment
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="06_reference_data_validation_accuracy_assessment.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Reference data, validation and accuracy assessment
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#principles-of-validation-and-accuracy-assessment-in-remote-sensing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principles of validation and accuracy assessment in remote sensing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Principles of validation and accuracy assessment in remote sensing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aims-of-validation-and-accuracy-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aims of validation and accuracy assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methodological-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methodological principles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#freely-available-reference-data-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Freely available reference data sets
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acquiring-reference-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acquiring reference data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Acquiring reference data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acquisition-of-reference-data-in-the-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acquisition of reference data in the field
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remotely-sensed-reference-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remotely sensed reference data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sampling-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sampling strategies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#citizen-science" class="md-nav__link">
+    <span class="md-ellipsis">
+      Citizen science
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accuracy-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accuracy metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accuracy metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regression
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenges-of-accuracy-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenges of accuracy analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-evaluation-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-evaluation quiz
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-assessment-of-landcover-classification-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: Assessment of landcover classification accuracy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise: Assessment of landcover classification accuracy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Module 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/module2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of multispectral imaging
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of multispectral imaging
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/01_multispectral_principles/01_multispectral_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/01_multispectral_principles/01_multispectral_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal information in satellite data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal information in satellite data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/02_temporal_information/02_temporal_information.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/02_temporal_information/02_temporal_information_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Image processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Image processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/03_image_processing/03_image_processing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/03_image_processing/03_image_processing_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Multitemporal classification
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Multitemporal classification
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/04_multitemporal_classification/04_multitemporal_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/04_multitemporal_classification/04_multitemporal_classification_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vegetation change and disturbance detection
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Vegetation change and disturbance detection
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/05_vegetation_monitoring/05_vegetation_monitoring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/05_vegetation_monitoring/05_vegetation_monitoring_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/06_cs_tundra_grasslands/06_cs_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/07_cs_forest_changes/07_cs_forest_changes.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Effects of pollution in Ore Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/08_cs_disturbance_detection/08_cs_disturbance_detection.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Forest disturbance detection (Tatra Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Module 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/module3.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of 3D/4D geographic point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of 3D/4D geographic point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/01_pointcloud_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/exercise/m3_theme1_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Programming for point cloud analysis with Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Programming for point cloud analysis with Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/02_pointcloud_programming_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/exercise/m3_theme2_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles and basic algorithms of 3D change detection and analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Principles and basic algorithms of 3D change detection and analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/03_3d_change_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/exercise/m3_theme3_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Time series analysis of 3D point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Time series analysis of 3D point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/04_3d_timeseries_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/exercise/m3_theme4_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning-based 3D/4D point cloud analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning-based 3D/4D point cloud analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/05_pointcloud_machine_learning/05_pointcloud_machine_learning.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_rockglacier/06_casestudy_rockglacier.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D change analysis at an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_sandybeach/06_casestudy_sandybeach.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series-based change analysis of sandy beach dynamics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Module 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/module4.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of imaging and laboratory spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of imaging and laboratory spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Airborne hyperspectral data acquisition and pre-processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Airborne hyperspectral data acquisition and pre-processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing_exercise_geometric.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    In situ and laboratory spectroscopy of vegetation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            In situ and laboratory spectroscopy of vegetation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_navig.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_spectra_probe_sphere_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning in imaging spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning in imaging spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal vs. spatial and spectral resolution
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal vs. spatial and spectral resolution
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/05_specific_resolution_contribution/05_specific_resolution_contribution.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/08_spectral_separability_grass/08_spectral_separability_grass.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal spectral separability of grass species (Krkonoše Mts.)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Discrimination of grass species from time series of RPAS hyperspectral imagery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/07_flood_plain_forest/07_flood_plain_forest.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal dynamics of flood-plain forests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_cloudcompare.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudCompare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_enmap_box.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EnMAP-Box
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_qgis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QGIS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_r_language.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_gee.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Earth Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Use Cases and Data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Use Cases and Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://doi.org/10.5281/zenodo.10003574" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data download
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_rockglacier_ahk.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D point clouds of an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_beach_kijkduin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4D point clouds of a sandy beach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_forests_tatras.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vegetation disturbance detection in Polish-Slovak Tatra Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_tundra_karkonosze.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_grasses_krkonose.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tundra vegetation monitoring in Krkonoše Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_ore_mts_disturbance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Forest disturbances in Ore Mountains (Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://web.natur.cuni.cz/gis/etrainee/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About the project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://forms.gle/Cz1yxJv2DDNz83j68" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback form
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#principles-of-validation-and-accuracy-assessment-in-remote-sensing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principles of validation and accuracy assessment in remote sensing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Principles of validation and accuracy assessment in remote sensing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aims-of-validation-and-accuracy-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aims of validation and accuracy assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methodological-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methodological principles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#freely-available-reference-data-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Freely available reference data sets
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acquiring-reference-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acquiring reference data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Acquiring reference data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acquisition-of-reference-data-in-the-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acquisition of reference data in the field
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remotely-sensed-reference-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remotely sensed reference data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sampling-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sampling strategies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#citizen-science" class="md-nav__link">
+    <span class="md-ellipsis">
+      Citizen science
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accuracy-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accuracy metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accuracy metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regression
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenges-of-accuracy-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenges of accuracy analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-evaluation-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-evaluation quiz
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-assessment-of-landcover-classification-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise: Assessment of landcover classification accuracy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise: Assessment of landcover classification accuracy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+
+                  
+
+  
+  
+
+
+<h1 id="theme-6-reference-data-validation-and-accuracy-assessment">Theme 6 - Reference data, validation and accuracy assessment</h1>
+<h2 id="introduction">Introduction</h2>
+<p>As we have seen in the previous themes of this module, remote sensing time series analysis is a powerful tool for monitoring changes in the environment over time. When we ground our interpretations and decisions in such an analysis, however, it is essential to validate the analysis results and ensure their reliability. In this theme we will have a look at how this can be done and what data we might use as a reference.</p>
+<p><strong>Objectives</strong></p>
+<p>The objective of this theme is to understand important principles of validation in remote sensing analyses. You will get an idea of potential reference data sources and learn which metrics are appropriate for assessing the accuracy of regressions, classifications and change detection. A particular focus is on critical issues in acquiring and using reference data for time series analysis in remote sensing. Finally, you will gain practical experience with assessing the accuracy of a classification in an excercise.</p>
+<h2 id="principles-of-validation-and-accuracy-assessment-in-remote-sensing">Principles of validation and accuracy assessment in remote sensing</h2>
+<h3 id="aims-of-validation-and-accuracy-assessment">Aims of validation and accuracy assessment</h3>
+<p>A rigorous validation and accuracy assessment should be a key element of any remote sensing analysis as it serves to</p>
+<ul>
+<li>Judge the performance of a method: We want to know how good it works, i.e. how accurate it is.</li>
+<li>Learn in which situations a method tends to deliver reliable results and in which situations uncertainty remains high (e.g. by assessing the spatial or temporal distribution of errors or uncertainty).</li>
+<li>Identify strengths and weaknesses of a method for a certain application (e.g. ability to predict a certain class, effects of data acquisition scenarios and error propagation).</li>
+<li>Help with improving the method and/or the input data it uses.</li>
+<li>Make it possible to compare different methods subjectively and by scientific standards (thereby helping ourselves or others to choose the most suitable method for applied use).</li>
+<li>Evaluate a method's potential for transferability and scalability (to some degree).</li>
+<li>Provide you and others with confidence (or scepticism) for any interpretation, conclusions and decisions based on the data analysis. An accuracy assessment is needed to judge if and how far such further steps make sense.</li>
+</ul>
+<h3 id="methodological-principles">Methodological principles</h3>
+<p><strong>'External' accuracy estimates</strong></p>
+<!-- Do you agree with this separation of 'external' and 'internal' accuracy estimates? -->
+
+<p>Validation and accuracy analysis in remote sensing is typically based on a comparison of analysis results against <em>reference data</em>. Reference data are measurements or observations of the target variable collected <em>in-situ</em> (i.e. directly at the site) or through remote sensing. In many cases <em>reference data</em> serves two different purposes:</p>
+<ul>
+<li><em>Model building</em> (often by training a supervised classifier or regression model through statistical learning; see theme 3)</li>
+<li><em>Validation and accuracy analysis</em> (i.e. checking if the information obtained via our analysis is correct (to a required degree) and quantify the errors of this analysis)</li>
+</ul>
+<p>In this theme, we focus on the second purpose, and hence can (more specifically) refer to <em>validation data</em>. Typically, the validation data covers only a fraction of the space (and time) under investigation but is of higher quality (more accurate) than the classification or regression result. As the validation data and the calculation of accuracy metrics is separated from the classification or regression part (main analysis), we refer to the outcomes of this approach as 'external' accuracy estimates.</p>
+<p>Some key principles of validation and accuracy analysis are</p>
+<ul>
+<li>Transparency: Clearly describe the methods and data used.</li>
+<li>Independence of validation data<ul>
+<li>Use data for validation that has not been used for building your model (e.g. for training a machine learning classifier):<ul>
+<li>Often an initial reference data set is split into a training data set and a validation (or 'test') data set. Then, the training data is used for building the model (<em>training</em>), while the validation data is excluded from this (put aside) and subsequently used for accuracy assessment.</li>
+<li>Such a split can be random with a defined ratio (e.g., 70% of the data for training, 30% of the data for validation), or by spatial subsets of your study area (i.e. use one part of the area for training and the other one for validation).</li>
+<li>Looking not only at the (in-sample) <em>training error</em> but also at the (out-of-sample) <em>test error</em> is important to evaluate how good the model generalizes, i.e. avoids <em>overfitting</em> (to the training data). In most cases we want a model that does not only fit well to the data it was trained on but also accurately predicts cases not seen during training.</li>
+<li>Using only one hold-out test set from a single (random) split is straightforward. However, the resulting accuracy estimate lacks robustness because, if the proceedure is repeated with different random splits, the variance of estimated accuracy is large. More robust estimates and confidence intervals (or variance) for classification accuracy can be obtained by resampling frameworks, typically using bootstrapping or cross-validation, into the classification and accuracy assessment (further reading in <a href="../../module2/04_multitemporal_classification/04_multitemporal_classification.html#results-validation-and-accuracy-assesment">Module 2</a> and in <a href="https://doi.org/10.1016/j.rse.2018.02.026">Lyons et al. 2018</a>).</li>
+<li>Cross-validation (CV) - In the basic version, <em>k</em>-fold CV, the training set is split into <em>k</em> smaller sets of data (called <em>folds</em>), and for each fold a model is trained on the other (<em>k</em> - 1) folds and then validated on the current fold.</li>
+<li>Cross validation can be used to assess the performance of a (final) model, but also for tuning hyperparameters of a machine learning model</li>
+<li>If you have multi-temporal reference data, you can also make a temporal split (e.g. use one year for training, the other years for validation or set up a temporal cross-validation with years as folds).</li>
+</ul>
+</li>
+<li>As an alternative to splitting the initial reference dataset into training data and validation data, you might collect new validation data (in a separate campaign after collecting training data) but beware of a potential operator bias if you already know the predicted results at this time.</li>
+</ul>
+</li>
+<li>Reporting: It is often advisable to present your accuracy assessment in different ways, graphically and with different statistical measures (accuracy metrics) for summary. This allows you and others to judge the results critically and from different perspectives. Commonly used accuracy metrics are detailed below.</li>
+</ul>
+<p><center>
+<img src="media/train_test_split.png" title="splitting a dataset for training and validation - Single split vs. cross-validation" width="500"></p>
+<p><i>Two possibilities of (randomly) splitting a dataset for training and validation (testing). a) Single split (here as a 60/40 split). b) Cross-validation (CV) with k-folds (here with k = 5) and averaging the output of k runs for modelling and validation.</i>
+</center></p>
+<p><strong>'Internal' accuracy estimates</strong></p>
+<p>'Internal' accuracy estimates, in contrast, are indicators of reliability computed without the use of external validation data. Instead, they are based on knowledge and understanding of the data observation and information extraction processes, on certain assumptions made, and on statistics. Examples are</p>
+<ul>
+<li><strong>Probability</strong> of a classification based on ensemble classifiers<ul>
+<li>Ensemble models can be constructed by combining multiple components (such as trees in a Random Forest, a model used in different variations (e.g. with different thresholds), or a set of models with different approaches).</li>
+<li>Outputs of ensemble components are usually aggregated (i) into a 'majority vote', i.e. the most frequently predicted class per predicted unit (pixel, point, or segment), or (ii) by averaging the components' probabilistic predictions.</li>
+<li>Additionally, the fraction of components predicting this class can be reported as relative probability of the class being the best prediction (Note that 'best' prediction and 'probability' must be seen in the context of model setups tested (algorithm, parameters, parameters' range, features, training data, defined classes).</li>
+</ul>
+</li>
+<li>An <strong>error budget</strong> of measurements can be constructed from known or estimated error components as an estimate for analysis uncertainty. It is also important to consider how the error components of single epochs can propagate into multitemporal derivatives (e.g., in change analysis; see <a href="../../module3/03_3d_change_analysis/03_3d_change_analysis.md#uncertainty-in-change-analysis">Module 3</a>)</li>
+<li><strong>Level-of-detection</strong> and confidence intervals for topographic change<ul>
+<li>Topographic change detection studies often propagate the uncertainty (error budget) of multitemporal input data (3D point clouds or raster digital terrain models (DTMs)) and potentially other parameters (such as local surface roughness) into a global or spatially varying <em>level-of-detection (LOD)</em> at a defined confidence interval (e.g. <a href="https://doi.org/10.1002/esp.483">Lane et al. 2003</a>, <a href="https://doi.org/10.1002/esp.1886">Wheaton et al. 2010</a>, <a href="https://doi.org/10.1016/j.isprsjprs.2013.04.009">Lague et al. 2013</a>). This LOD indicates the minimum magnitude of change that can be detected; smaller changes are then excluded from further analysis as they could also result from measurement errors.</li>
+<li>For 3D point clouds from topographic laser scanning, different error sources can be considered to determine such an LOD (including registration errors, local surface roughness, and 3D positional errors per point as a function of the scanning geometry; see e.g. <a href="https://doi.org/10.5194/isprs-annals-V-2-2020-765-2020">Mayr et al. 2020</a>).</li>
+<li>For terrestrial laser scanning time series (4D point clouds) the temporal resolution can additionally be considered for investigating the LOD (<a href="https://doi.org/10.5194/esurf-5-293-2017">Kromer et al. 2017</a>, <a href="https://doi.org/10.5194/isprs-annals-IV-2-W5-317-2019">Anders et al. 2019</a>). <!-- How? --></li>
+</ul>
+</li>
+<li>Learn more about uncertainty in 3D change analysis and how it can be quantified in <a href="../../module3/03_3d_change_analysis/03_3d_change_analysis.md#uncertainty-in-change-analysis">Module 3</a></li>
+<li>Learn more about uncertainty of satellite data products in <a href="../../module2/02_temporal_information/02_temporal_information.html#uncertainty-of-satellite-time-series-data-products">Module 2</a></li>
+</ul>
+<p><center>
+<img src="media/RF_probability.png" title="Probability map of an RF landcover classification" width="64%">
+<img src="media/RF_probability_per_class.png" title="Distribution of RF classification probabilities per landcover class" width="35%"></p>
+<p><i>Left: Example for a classification probability raster, derived for the landcover map produced in theme 3 by Random Forest classification based on spectral-temporal metrics. For every pixel, the map shows the average probability of all trees for the most likely class (i.e. the majority vote of the ensemble). Thereby, it indicates where the classifier is certain about a predicted class and where it is less certain. Right: Distribution of classification probabilities per landcover class.</i>
+</center></p>
+<h2 id="freely-available-reference-data-sets">Freely available reference data sets</h2>
+<p>When looking for reference data, you can search public archives hosted by governmental authorities. These increasingly open the access to regional and national geodata acquired covering a range of different topics. In addition, you might find reference data for your (satellite-based) analysis in collections and platforms of a range of (international) initiatives dedicated to collecting, harmonizing and provisioning of reference data (see also <a href="../../module2/04_multitemporal_classification/04_multitemporal_classification.html#multitemporal-reference-dataset">Module 2</a>). Examples are</p>
+<ul>
+<li>The <a href="https://mlhub.earth/">Radiant MLHub</a> by the Radiant Earth Foundation allows anyone to access, store, register, and share open training datasets and models for machine learning in Earth observation. The <a href="https://mlhub.earth/datasets">datasets</a> cover applications ranging from crops, wildfire, flood, building footprints, and tropical storms to land cover, and they can be useful also for validation of your models (not only training) if you split the data appropriately.</li>
+<li><a href="https://worldcereal-rdm.geo-wiki.org/">World Cereal</a> - The WorldCereal Reference Data Module (RDM) is a reference data store containing labelled data which can be used for crop and irrigation related model training and validation (with varying accessibility and licences of datasets).</li>
+<li>Land Use/Cover Area frame Survey (<a href="https://ec.europa.eu/eurostat/web/lucas">LUCAS</a>) - Since 2006, the LUCAS initiative has collected tri-annual in-situ observations of land cover, land use and environmental parameters along with photographs at hundreds of thousands of unique locations across the European Union. The datasets have been used for supervised landcover classification (e.g. <a href="https://doi.org/10.1016/j.rse.2018.12.001">Pflugmacher et al. 2019</a>, <a href="https://doi.org/10.1016/j.jag.2020.102065">Weigand et al. 2020</a>) and harmonized into a consolidated, openly accessible <a href="https://doi.org/10.2905/f85907ae-d123-471f-a44a-8cca993485a2">database</a> by <a href="https://doi.org/10.1038/s41597-020-00675-z">d'Andrimont et al. (2020)</a>.</li>
+</ul>
+<p><center>
+<img src="media/LUCAS_overview.png" title="Land Use/Cover Area frame Survey and harmonisation of datasets" width="700"></p>
+<p><i>Schematic overview of the LUCAS initiative and harmonisation of datasets (figure by <a href="https://doi.org/10.1038/s41597-020-00675-z">d'Andrimont et al. 2020</a>/ <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
+</center></p>
+<h2 id="acquiring-reference-data">Acquiring reference data</h2>
+<h3 id="acquisition-of-reference-data-in-the-field">Acquisition of reference data in the field</h3>
+<p>One possibility of getting reference data is visiting sample locations in the field (<em>in-situ</em>) and</p>
+<ul>
+<li>making (visual) observations and categorizing these into discrete semantic categories (such as landcover, landform or status of the land surface) or into categorized values of a continuous variable (e.g. plant species cover values in percent in percent of a certain area)</li>
+<li>performing measurements of a (bio-)physical variable (such as temperature, snow depth, vegetation height, surface elevation, ...) with appropriate measurement devices</li>
+<li>collecting samples of soil, rock, plants etc. for subsequent analysis in the lab (if the properties of interest cannot be estimated in the field)</li>
+</ul>
+<p>A wide variety of measurement devices is used for such purposes, ranging from simple tools like a ruler to more complex instruments like field spectrometers. For time series observations, sensors connected to a data logger or a data transmission system can be used.</p>
+<p>Thorough planning is crucial to any field data acquisition campaign, so include this planning stage in your time schedule.
+To avoid observer/surveyor bias, data at each sample location should be acquired by a standardized procedure defined in a manual before the field campaign. In the planning stage of a field campaign consider also</p>
+<ul>
+<li>safety-related issues (e.g. when working in areas with rough terrain or extreme climate)</li>
+<li>privacy-related issues (e.g. permission to collect and publish data)</li>
+<li>accessibility (permission, time needed, terrain, physical ability and hazard management)</li>
+</ul>
+<p>A key issue of field observations and measurements is the recording of their position, which can often be achieved by (differentially corrected) Global Navigation Satellite System (GNSSS) measurements. To facilitate re-locating the exact locations for repeat measurements, consider marking them physically (in addition to recording the GNSS position). In general, a thorough documentation following a pre-designed protocol is important, and (geotagged) photographs of the sample site are recommended. Often, a mobile GIS (e.g. <a href="https://qfield.org/">QField</a>, a mobile app version of QGIS) is an ideal tool for these tasks.</p>
+<p><center>
+<img src="media/qfield.png" title="QField mobile app used for the collection of observations and metadata and for navigation" width="250"></p>
+<p><i>QField app on a smartphone used for the collection of observations and metadata and for navigation to sample locations.</i>
+</center></p>
+<!--Any nice images for reference data collection? -->
+
+<h3 id="remotely-sensed-reference-data">Remotely sensed reference data</h3>
+<p>Furthermore, reference data is frequently collected through remote sensing:</p>
+<ul>
+<li>This typically involves input data of higher (spatial) resolution and/or alternative analysis methods with presumably superior accuracy (e.g. visual interpretation and manual mapping). Module 1 Theme 3 of this course includes a tutorial where the landcover data was collected by placing and labelling points in an aerial orthophoto (0.2 m resolution), and this data was used for training a classifier on Sentinel-2 data (20 m resolution). Similarly, we could use a part of this data or new data acquired in the same way for validation of the classification results.</li>
+<li>When we generate reference data by visual interpretation and manual labelling, we have different options:<ul>
+<li>Labelling entire scenes</li>
+<li>Labelling individual points or pixels</li>
+<li>Labelling groups of points or pixels<ul>
+<li>Contiguous patches that are homogeneous according to certain features and labelled with one label per patch<ul>
+<li>Derived by segmentation (e.g <a href="https://doi.org/10.1016/j.jag.2020.102208">Kollert et al. 2021</a>)</li>
+<li>Delineated by visual interpretation</li>
+</ul>
+</li>
+<li>Contiguous patches defined by a (random) sampling strategy and labelled on a per pixel basis (e.g. random points with a buffer or rectangular image chips)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Critically judge the quality of your reference data: Depending on the target classes and their visual separability in the remote sensing data interpreted to create a reference, such an approach may be quite accurate or not.</li>
+</ul>
+<p><strong>Tools for reference data acquisition and for validation</strong></p>
+<p>Various tools have been developed to improve the efficiency of reference data collection based on remote sensing data and for using such data for validation, e.g.:</p>
+<ul>
+<li><a href="https://timesync.forestry.oregonstate.edu/">TimeSync</a> - A tool for human interpretation of Landsat time series. It is made to calibrate and validate a temporal segmentation of Landsat time series and a trajectory-based detection of land change <a href="https://doi.org/10.1016/j.rse.2010.07.010">Cohen et al. (2010)</a>.</li>
+<li><a href="https://opencv.github.io/cvat/docs/">Computer Vision Annotation Tool (CVAT)</a> - A free, online, interactive video and image annotation tool for computer vision.</li>
+<li>R tool for reference data collection presented in <a href="../../module2/02_temporal_information/02_temporal_information_exercise.html">Exercise 2 in Module 2</a></li>
+<li>Standard GIS packages (and plugins) contain various tools for accuracy assessment of raster-based remote sensing classifications<ul>
+<li>Digitizing tools to create points or polygons as reference (and optionally rasterize them)</li>
+<li>Tools for placing sample points randomly or on a regular grid</li>
+<li>QGIS <a href="https://smbyc.github.io/AcATaMa/">AcATaMa</a> plugin (<a href="https://github.com/SMByC/AcATaMa">Llano 2022</a>) - A comprehensive plugin for accuracy assessment of thematic maps with many options for sample design, response design  following key recommendations in the scientific literature (e.g. in <a href="https://doi.org/10.1016/j.rse.2019.05.018">Stehman and Foody 2019</a>)</li>
+<li>QGIS Semi-automatic Classification Plugin (SCP) - Amongst many other tools for satellite remote sensing, this plugin by <a href="https://doi.org/10.21105/joss.03172">Congedo (2021)</a> contains a tool for accuracy assesssment, see the <a href="https://semiautomaticclassificationmanual.readthedocs.io/it/latest/accuracyTab.html">documentation</a> and this <a href="https://fromgistors.blogspot.com/2019/09/Accuracy-Assessment-of-Land-Cover-Classification.html">tutorial</a>.</li>
+<li>GRASS GIS features the <a href="https://grass.osgeo.org/grass82/manuals/r.kappa.html">r.kappa</a> module for creating a confusion matrix and deriving accuracy metrics.</li>
+<li>SAGA GIS has two tools for accuracy assessment of a classification raster: The tool <a href="https://saga-gis.sourceforge.io/saga_tool_doc/9.0.1/imagery_classification_6.html"><em>Confusion Matrix (Polygons / Grid)</em></a>) taking the reference data as polygons, and the tool <a href="https://saga-gis.sourceforge.io/saga_tool_doc/9.0.1/imagery_classification_2.html"><em>Confusion Matrix (Two Grids)</em></a> taking the reference data as a raster.</li>
+</ul>
+</li>
+</ul>
+<h3 id="sampling-strategies">Sampling strategies</h3>
+<!-- Add references and a figure to illustrate the sampling strategies.-->
+
+<p>When collecting your own reference data, where do you sample? I.e. which locations do you choose for measurements, to collect sample material for analysis in the lab, or for placing manually labelled points in images?</p>
+<p>In general we should aim for samples that are representative for the problem at hand and for the study area where the analysis is applied. Therefore, try to cover the variability of your target variable (if known) or the variables (features) used for analysis as good as possible with a given number of samples. As a guideline, 50 sample units (locations) per thematic class (or more for complex scenarios, i.e. with large areas or many classes) are recommended by <a href="https://doi.org/10.1201/b19294">Congalton (2015)</a>.</p>
+<p>Popular sampling strategies include:</p>
+<ul>
+<li>User defined sampling - A simple approach is to subjectively select locations to sample (not recommended in general).</li>
+<li>Sampling on a regular grid - Sample points are placed in regular spatial intervals to cover the study area homogeneously</li>
+<li>Random sampling  - A defined number of samples is placed in the study area.</li>
+<li>Stratified (random) sampling - Prior to sampling, the study area is divided into sub-units (strata), where samples are then placed (randomly). A stratification can be achieved by categories of a single variable (e.g. elevation bands or categories of an available land cover map) or by clustering several variables (clusters then used as strata). If you already have a (pre-)classification of your data and need validation data (no training data), you could also use the target classes as strata.</li>
+<li>A stratified sampling can be designed to either place a fixed, equal number of samples per stratum or a variable number of samples per stratum. The latter option typically defines the number of samples as proportionate to the stratum size.</li>
+<li>Sometimes you have to constrain the area for sampling by auxiliary variables (e.g. accessibility of terrain, distance from road network, ...).</li>
+</ul>
+<p>For a multitemporal analysis consider if you can collect multitemporal samples and if this is needed. Then, an additional question is how to distribute the samples in time. Do we place the samples randomly in time or with a defined number of samples per fixed time interval?</p>
+<h3 id="citizen-science">Citizen science</h3>
+<p>Collecting reference data in the field or by manually labelling (remote sensing) imagery is often relatively easy for humans. Depending on the specific task, even untrained persons can do this quite reliably. However, labelling a large amount of digital samples or visiting a lot of sampling locations spread across large areas is costly in terms of time and labour.</p>
+<p>TO improve the efficiency of data collection (amongst others), <em>crowdsourcing</em> and digital <em>citizen science</em> approaches have emerged (<a href="https://doi.org/10.1371/journal.pone.0147152">Kullenberg and Kasperowski 2016</a>, <a href="https://doi.org/10.3390/ijgi5050055">See et al. 2016</a>, <a href="https://doi.org/10.1007/978-3-030-58278-4_22">Liu et al. 2021</a>), and are also used in remote sensing (<a href="https://www.taylorfrancis.com/chapters/edit/10.1201/b19294-41/crowdsourcing-remote-sensing-combining-two-views-planet-earth-fabio-dell-acqua?context=ubx&amp;refId=d573b2ee-1333-4969-8e86-98863fca6802">Dell'Acqua 2015</a>, <a href="https://doi.org/10.3390/rs9040357">Fritz et al. 2017a</a>, <a href="https://doi.org/10.1016/j.jag.2022.103148">Purdy et al. 2023</a>). The idea is to spread relatively simple, yet repetitive tasks over a large group of volunteers, thereby gathering a large set of urgently needed reference data. These volunteers usually perform well defined tasks, like image labelling or making and reporting geolocalized field observations, typically using smartphones and/or dedicated web applications. Motivating a sufficent number of people for engaging in such a citizen science initiative is a key issue. Therefore, the usefulness and value of the collected datasets for a higher-level goal (serving sustainable development, environmental protection, food security, solving socio-economic problems, contributing to the progress of basic science) must be well communicated. Moreover, some citizen science apps are designed like a game (e.g. with points earned for the tasks and participant rankings being listed) to let participants have fun while performing the task. Citizen Science is also seen as contributing to Open Science aims and principles (<a href="https://doi.org/10.1162/dint_a_00085">Wagenknecht et al. 2021</a>).</p>
+<p>Examples for citizen science projects and platforms in remote sensing are</p>
+<ul>
+<li><a href="https://www.zooniverse.org/">Zooniverse</a> - A large platform hosting many citizen science projects from various domains, such as <a href="https://www.zooniverse.org/projects/ab-beavers/beavers-from-space">Beavers from Space</a> or <a href="https://fafaria.wixsite.com/fabiofaria/amazon-deforestation">ForestEyes</a> (<a href="https://doi.org/10.1109/LGRS.2020.3032098">Dallacqua et al. 2020</a>).</li>
+<li><a href="https://landsense.eu/About">LandSense</a> - A project that aims to bring together various citizen science data sets on land use and land cover.</li>
+<li><a href="https://www.geo-wiki.org/">Geo-Wiki</a> (<a href="https://doi.org/10.1016/j.envsoft.2011.11.015">Fritz et al. 2012</a>, <a href="https://doi.org/10.1038/sdata.2017.75">Fritz et al. 2017b</a>)</li>
+<li><a href="https://www.laco-wiki.net/en/Welcome">LACO-Wiki</a>, 'The Land Cover Validation Platform' (<a href="https://doi.org/10.5194/isprsannals-II-3-W5-167-2015">See et al. 2015</a>).</li>
+<li><a href="http://fotoquest-go.org/en/">FotoQuest Go</a></li>
+<li><a href="https://www.mountainow.net/en/community/">MountaiNow</a> - A platform for sharing mountain observations (e.g. in the context of glacier and permafrost monitoring).</li>
+<li><a href="https://icewatch.met.no/">IceWatch</a> - A program collecting sea ice observations.</li>
+<li><a href="https://eu-citizen.science/">eu-citizen.science</a> - A platform that aims to become the central knowledge-sharing hub for citizen science in Europe.</li>
+</ul>
+<h2 id="accuracy-metrics">Accuracy metrics</h2>
+<p>Depending on the type of data that you compare against reference data, different sets of accuracy metrics can be used. We will first look at ways to assess categorical data (discrete values or labels of a classification), then at measures for assessing continuous variables measured by a sensor or predicted by a model with one or more input variables.</p>
+<h3 id="classification">Classification</h3>
+<p><strong>The confusion matrix</strong></p>
+<p>A basic, yet quite useful way of presenting the output of a classification model (<em>predicted labels</em>) compared with values at validation samples (<em>reference labels</em>) is the <em>confusion matrix</em> (also known as <em>cross-tabulation matrix</em> or <em>error matrix</em>). This is a cross-tabulation of how many classification units (pixels, points or polygons) were predicted for a certain class vs. how many actually belong to this class (according to the reference data). The matrix allows us to see if a classifier confuses two classes (hence the name), i.e. mislabels one class as another.</p>
+<p>The following figure illustrates this for a binary classification. The two classes ('positive' and 'negative') could be, for example, 'snow' and 'no snow'.</p>
+<p><center>
+<img src="media/confusion_matrix_01.png" title="The confusion matrix" width="500"></p>
+<p><i>Confusion matrix for binary classification.</i>
+</center></p>
+<p>Here, we display the predicted values along the rows, the reference values along the columns. Note, however, that the matrix may be transposed (i.e. the axes swapped), as there is no uniform convention for this layout; so check the documentation of the software package you are using.</p>
+<p><strong>Classification metrics</strong></p>
+<p>The confusion matrix itself is already very informative, especially if colourized as a heatmap (i.e. colorized by the (relative) number of samples in a matrix cell). Moreover, it forms the basis of different accuracy metrics , e.g.:</p>
+<ul>
+<li>
+<p><em>Overall accuracy</em>: The fraction of correctly classified samples (TP + TN) out of all reference samples, a value ranging from 0 to 1 (or from 0% to 100%).</p>
+</li>
+<li>
+<p><em>Precision</em> (a.k.a. <em>user's accuracy</em> or <em>correctness</em>)</p>
+<pre><code>precision = TP / TP + FP
+</code></pre>
+</li>
+<li>
+<p><em>Recall</em> (a.k.a. <em>producers's accuracy</em> or <em>completeness</em> or <em>sensitivity</em>)</p>
+<pre><code>recall = TP / TP + FN
+</code></pre>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/F-score"><em>F1 score</em></a>, the harmonic mean of precision and recall (equal contributions of the two measures)</p>
+<pre><code>F1 score = 2 * (precision * recall) / (precision + recall)
+</code></pre>
+<p>As the different types of mis-classification are not for all applications equally important, measures with different a weighting of precision and recall have been proposed (see e.g. <a href="https://en.wikipedia.org/wiki/Precision_and_recall#F-measure">here</a>).</p>
+</li>
+<li>
+<p><em>Error of omission</em> and <em>error of commission</em></p>
+<pre><code>error of omission = 1 - recall
+
+error of commission = 1 - precision
+</code></pre>
+</li>
+</ul>
+<p>To understand the performance of a model, it is often a good idea to look at a few different metrics as well as the confusion matrix itself. The 'Kappa' metric, despite being widely used to assess remote sensing classifications, is critized as providing redundant or misleading information for practical decision making and is, therefore, no longer recommended (<a href="https://doi.org/10.1080/01431161.2011.552923">Pontius and Millones 2011</a>, <a href="https://doi.org/10.1016/j.rse.2019.111630">Foody 2020</a>).</p>
+<p>Most metrics range from 0 to 1, with 1 being the best rating. We recommend to look up details on interpretation as well as advantages and drawbacks of the metrics or options to calculate with specific settings (especially in the multilabel case), e.g. in <a href="https://doi.org/10.1007/978-3-540-76917-0">Olson and Delen 2008</a>, <a href="https://doi.org/10.1201/9780429052729">Congalton and Green 2019</a>, <a href="https://doi.org/10.1016/j.rse.2019.05.018">Stehman et al. 2019</a>, <a href="https://doi.org/10.1111/j.1751-5823.2012.00183.x">Hand et al. 2012</a>. Also the documentation of software packages often provides details on the implementation and advice on the use of available accuracy metrics, e.g. in Python <a href="https://scikit-learn.org/stable/modules/model_evaluation.html">scikit-learn</a>.</p>
+<p><strong>Confusion matrix with more than two categories</strong></p>
+<p>The next figure illustrates a confusion matrix for more than two classes. If all samples are predicted correctly, they are aligned along the diagonal (top left to lower right). Here, we also sum up the number of samples per class.</p>
+<p>In such multiclass scenarios, accuracy metrics can be calculated for each class separately or for all classes. Class-specific accuracy metrics provide a more differentiated view and often a better identification of potential problems with a specific class. To summarize the performance for all classes, a metric can be averaged over all classes, with different possibilities how this is done in case of imbalanced datasets (weighting etc.; further reading in the <a href="https://scikit-learn.org/stable/modules/model_evaluation.html#from-binary-to-multiclass-and-multilabel">scikit-learn documentation</a>).</p>
+<p align="center">
+<img src="media/confusion_matrix_02.png" title="The confusion matrix" width="39%">
+<img src="media/landcover_confusion_matrix.png" title="Example confusion matrix for a landcover classification" width="50%">
+</p>
+
+<p><i>Left: Schematic confusion matrix for multiple classes (classes A, B, and C). Right: Confusion matrix for the landcover map produced in the classification tutorial of theme 3. Here, the confusion matrix is normalized over the predicted conditions, i.e. the displayed values indicate the fraction of predictions per class being correct or misclassified as a certain other class.</i></p>
+<p>In the matrix above, <em>n<sub>ij</sub></em> is the number of samples labelled as class <em>i</em> in the reference and predicted as class <em>j</em> by the model. <em>n<sub>i+</sub></em> is the total number of samples actually being class <em>i</em>, <em>n<sub>+i</sub></em> is the total number of samples predicted as class <em>i</em>, and <em>n</em> is the total number of samples. <!--Is this correct and understandable?--></p>
+<p>How would you calculate precision and recall for class A? Write down the two formulas.</p>
+<!--This could be a quizz question for self-evaluation!?-->
+
+<h3 id="regression">Regression</h3>
+<p>For a comparison of continuous variables, such as a variable estimated through a regression vs. an observed (reference) variable, we need different measures than for categorical data. In addition to a visual inspection of (i) predicted values plotted against actual values (reference data) or (ii) residuals plotted against predicted values, these are a few metrics commonly used to assess the performance of regression:</p>
+<ul>
+<li><strong>R<sup>2</sup></strong> - The 'coefficient of determination' R<sup>2</sup> provides a measure for the goodness of fit (model output vs. reference) and indicates the proportion of variance (of a target variable <em>y</em>) that is explained by the model based on the independent variables. Ideally, R<sup>2</sup> yields 1.0 (or 100%) but, unlike most other metrics, the R<sup>2</sup> can be negative for badly performing models.</li>
+<li><strong>Mean error (ME)</strong> - The average of the errors (or 'residuals' if computed on the training set), i.e. the differences between observed (reference) values and estimated values. An accurate prediction has a small ME. However, large positive and negative errors can balance each other out and lead to a small ME as well. A large ME points to systematic errors into one direction (bias).</li>
+<li><strong>Mean squared error (MSE)</strong> - The MSE is the average of the squared errors. Squaring the errors avoids that positive and negative ones cancel each other out. Squaring both the errors and their units, however, makes them difficult to interpret.</li>
+<li><strong>Root mean squared error (RMSE)</strong> - The RMSE is the square root of the MSE and, thus, has the same unit as the estimated quantity. As a result of squaring each error, both MSE and RMSE put more weight to large errors than to small ones and, therefore, are sensitive to outliers (more than, e.g., the MAE). If occasional large outliers in the prediction of a model are acceptable for an application or cannot be avoided, RMSE and MSE are the wrong metrics. If you want to penalize large errors strongly, RMSE may be suitable.</li>
+<li><strong>Mean absolute error (MAE)</strong> - The MAE is the average of the absolute (i.e. non-negative) errors. It avoids the effect of positive and negative errors balancing each other out.</li>
+</ul>
+<p>Of these metrics, only R<sup>2</sup> is on a relative scale and is, thereby, suitable for direct comparisons of regression performance with different datasets. The other metrics depend on the dataset and problem at hand and on the scale and unit of the estimated quantity and are, thus, often harder to assess (What is a good MSE?). However, keep in mind, that also metrics on a relative (or normalized) scale (like R<sup>2</sup> or recall of a classification) must be seen in context, and depending on the application requirements and our expectation on model performance. For some applications we may be excited about an R<sup>2</sup> of 0.7, for others we need an R<sup>2</sup> &gt; 0.9 to make use of the model. It is often a good idea to compute R<sup>2</sup>, ME and MAE as a basis for evaluation.</p>
+<h2 id="challenges-of-accuracy-analysis">Challenges of accuracy analysis</h2>
+<p>Acquisition of reference data is in most cases constrained by practical aspects (e.g. site accessibility) and costs (time and money). So there is usually a tradeoff between quality and size of the reference data set, and this tradeoff needs to be balanced. In other words:</p>
+<ul>
+<li>How can we obtain reliable data for a sufficient number of samples?</li>
+<li>Where do we collect reference samples to get unbiased, statistically defendable accuracy estimates?</li>
+</ul>
+<p>Moreover, when validating analysis results by comparison against external, independent data (e.g. from <em>in-situ</em> observations), we must consider the quality of this validation data. Can we justify the assumption that this is the 'best available measurement'? Can we quantify the uncertainty of this validation data itself?</p>
+<p>For a validation of <strong>time series analyses</strong> we face additional challenges that need to be considered:</p>
+<ul>
+<li>How can we ensure that the samples are not only representative for our area of interest but also for our time period under investigation or for certain points in time?</li>
+<li>For retrospective analyses we often do not have specifically collected in-situ data and must rely on archive data.</li>
+<li>Archive data often does not match the points in time and area that we cover by our (main) analysis. Therefore, we might have to perform an accuracy analysis for areas and time periods matching the available reference data and then assume that the outcomes are valid also for our main analysis.</li>
+<li>Repeat visits of a site for multi-temporal sampling are often difficult to organize practically. Often we need to balance a tradeoff between spatial and temporal coverage.</li>
+<li>Permanently installed in-situ or close-range sensing systems collecting time series data autonomously at high spatial and temporal resolution can be useful. An example are webcams or soil temperature loggers used to validate satellite-based snow cover products<!--Example figures from Microclim project coming soon-->.</li>
+</ul>
+<h2 id="self-evaluation-quiz">Self-evaluation quiz</h2>
+<form name="quiz" action="" method="post" onsubmit="evaluate_quiz(); return false">
+
+<!--Question 1-->
+<label for="q_01">
+Principles of validation and accuracy assessment – Which of the following statements is correct?
+</label><br>
+<input type="checkbox" name="q_01">Accuracy assessment of a remote sensing analysis is needed to judge if we can use the results as a basis for further interpretation and/or decision making.<br>
+<input type="checkbox" name="q_01">To ensure consistency we should use the same data for accuracy assessment that we used for training our model.<br>
+<div hidden id="correct_q_01">Accuracy assessment of a remote sensing analysis is needed to judge if we can use the results as a basis for further interpretation and/or decision making.</div>
+<output id="output_q_01"></output><br><br>
+
+<!--Question 2-->
+<label for="q_02">
+Which accuracy metrics are suited for classification?
+</label><br>
+<input type="checkbox" name="q_02">Root mean squared error<br>
+<input type="checkbox" name="q_02">User’s accuracy<br>
+<input type="checkbox" name="q_02">Producer’s accuracy<br>
+<input type="checkbox" name="q_02">Recall<br>
+<div hidden id="correct_q_02">User’s accuracy&Producer’s accuracy&Recall</div>
+<output id="output_q_02"></output><br><br>
+
+<!--Question 3-->
+<label for="q_03">
+Which accuracy metrics are suitable for regression?
+</label><br>
+<input type="checkbox" name="q_03">Mean absolute error<br>
+<input type="checkbox" name="q_03">F1 score<br>
+<input type="checkbox" name="q_03">R²<br>
+<div hidden id="correct_q_03">Mean absolute error&R²</div>
+<output id="output_q_03"></output><br><br>
+
+<!--Question 4-->
+<label for="q_04">
+True or false: Overall accuracy or the Kappa value are the best metric to look at, when we want to learn how to improve a method.
+</label><br>
+<input type="radio" name="q_04">True
+<input type="radio" name="q_04">False<br>
+<div hidden id="correct_q_04">False</div>
+<output id="output_q_04"></output><br><br>
+
+
+<input type="submit" value="Submit" style="font-size:14pt"><br><br>
+
+<output id="output_overall">
+</output>
+</form>
+
+<h2 id="exercise-assessment-of-landcover-classification-accuracy">Exercise: Assessment of landcover classification accuracy</h2>
+<p>In the image time series classification tutorial of theme 3, we produced a landcover classification by a machine learning approach with time series metrics as features. The resulting landcover map of this tutorial is provided in the course data repository.</p>
+<h3 id="task">Task</h3>
+<p>The task in this excercise is to perform an accuracy assessment for this landcover map (using Python and/or a GIS package). These are the main steps:</p>
+<ul>
+<li>Place random points as validation samples. To get an equal number of samples (e.g. 10) for each class use e.g.<ul>
+<li>QGIS and the tool <a href="https://docs.qgis.org/3.28/en/docs/user_manual/processing_algs/qgis/vectorcreation.html#random-points-in-polygons">Random Points in Polygons</a> or</li>
+<li>Python and the GeoPandas <a href="https://geopandas.org/en/stable/docs/user_guide/sampling.html#"><code>sample_points()</code></a>) method</li>
+</ul>
+</li>
+<li>Label samples (QGIS editing functionality recommended)</li>
+<li>Compute confusion matrix and accuracy metrics, using e.g. one of these:<ul>
+<li>Python scikit-learn with its <a href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics"><code>sklearn.metrics</code></a> module (Tipp: <a href="https://scikit-learn.org/stable/modules/model_evaluation.html#classification-report"><code>classification_report</code></a> and <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.ConfusionMatrixDisplay.html#sklearn.metrics.ConfusionMatrixDisplay"><code>ConfusionMatrixDisplay</code></a> functions)</li>
+<li>QGIS with the AcaTaMa plugin or the Semi-Automatic Classification plugin</li>
+<li>SAGA GIS or GRASS GIS (as standalone software or within QGIS)</li>
+</ul>
+</li>
+<li>Discuss the results of this accuracy analysis:<ul>
+<li>Which classes have been classified well and which classes not?</li>
+<li>How do you see this in the computed metrics?</li>
+<li>Which classes get confused frequently? Any ideas why? How could this be improved?</li>
+<li>Limitations of this accuracy analysis?</li>
+</ul>
+</li>
+</ul>
+<h3 id="solution">Solution</h3>
+<p>A Python solution is provided in <a href="T6_S2_landcover_classification_accuracy_solution.html">this notebook</a>. The notebook demonstrates how to create validation data by stratified random sampling of points and manual labelling of these points in an orthophoto (in QGIS), then creates a confusion matrix and a tabular classification report from this validation data and the classified map.</p>
+<h2 id="references">References</h2>
+<p>Anders, K., Lindenbergh, R. C., Vos, S. E., Mara, H., De Vries, S., &amp; Höfle, B. (2019). High-frequency 3D geomorphic observation using hourly terrestrial laser scanning data of a sandy beach. ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, 4(2/W5), 317-324. https://doi.org/10.5194/isprs-annals-IV-2-W5-317-2019</p>
+<p>Cohen, W. B., Yang, Z., &amp; Kennedy, R. (2010). Detecting trends in forest disturbance and recovery using yearly Landsat time series: 2. TimeSync—Tools for calibration and validation. Remote Sensing of Environment, 114(12), 2911-2924. https://doi.org/10.1016/j.rse.2010.07.010</p>
+<p>Congalton R.G. (2015). Assessing positional and thematic accuracies of maps generated from remotely sensed data. In: Thenkabail P.S. (ed.). Remotely sensed data characterisation, classification, and accuracies. CRC Press, Boca Raton, 712 p. https://doi.org/10.1201/b19294 </p>
+<p>Congalton , R. G., &amp; Green, K. (2019). Assessing the accuracy of remotely sensed data: principles and practices. 3rd edition, CRC Press, Boca Raton. https://doi.org/10.1201/9780429052729</p>
+<p>Congedo, L. (2021). Semi-Automatic Classification Plugin: A Python tool for the download and processing of remote sensing images in QGIS. Journal of Open Source Software, 6(64), 3172, https://doi.org/10.21105/joss.03172</p>
+<p>Dallaqua, F. B. J. R., Faria, F. A., &amp; Fazenda, Á. L. (2020). Building data sets for rainforest deforestation detection through a citizen science project. IEEE Geoscience and Remote Sensing Letters, 19, 1-5. https://doi.org/10.1109/LGRS.2020.3032098</p>
+<p>Dell’Acqua, F. (2015). Crowdsourcing and Remote Sensing: Combining Two Views of Planet Earth. In: Thenkabail P.S. (ed.). Remotely sensed data characterisation, classification, and accuracies. CRC Press, Boca Raton, 712 p. https://doi.org/10.1201/b19294</p>
+<p>d’Andrimont, R., Yordanov, M., Martinez-Sanchez, L., Eiselt, B., Palmieri, A., Dominici, P., ... &amp; van der Velde, M. (2020). Harmonised LUCAS in-situ land cover and use database for field surveys from 2006 to 2018 in the European Union. Scientific data, 7(1), 352. https://doi.org/10.1038/s41597-020-00675-z</p>
+<p>Foody, G. M. (2020). Explaining the unsuitability of the kappa coefficient in the assessment and comparison of the accuracy of thematic maps obtained by image classification. Remote Sensing of Environment, 239, 111630. https://doi.org/10.1016/j.rse.2019.111630</p>
+<p>Fritz, S., McCallum, I., Schill, C., Perger, C., See, L., Schepaschenko, D., ... &amp; Obersteiner, M. (2012). Geo-Wiki: An online platform for improving global land cover. Environmental Modelling &amp; Software, 31, 110-123. https://doi.org/10.1016/j.envsoft.2011.11.015</p>
+<p>Fritz, S., Fonte, C. C., &amp; See, L. (2017). The role of citizen science in earth observation. Remote Sensing, 9(4), 357. https://doi.org/10.3390/rs9040357</p>
+<p>Fritz, S., See, L., Perger, C., McCallum, I., Schill, C., Schepaschenko, D., ... &amp; Obersteiner, M. (2017b). A global dataset of crowdsourced land cover and land use reference data. Scientific data, 4(1), 1-8. https://doi.org/10.1038/sdata.2017.75</p>
+<p>Hand, D. J. (2012). Assessing the performance of classification methods. International Statistical Review, 80(3), 400-414. https://doi.org/10.1111/j.1751-5823.2012.00183.x</p>
+<p>Kollert, A., Bremer, M., Löw, M., &amp; Rutzinger, M. (2021). Exploring the potential of land surface phenology and seasonal cloud free composites of one year of Sentinel-2 imagery for tree species mapping in a mountainous region. International Journal of Applied Earth Observation and Geoinformation, 94, 102208. https://doi.org/10.1016/j.jag.2020.102208</p>
+<p>Kromer, R. A., Abellán, A., Hutchinson, D. J., Lato, M., Chanut, M. A., Dubois, L., &amp; Jaboyedoff, M. (2017). Automated terrestrial laser scanning with near-real-time change detection–monitoring of the Séchilienne landslide. Earth Surface Dynamics, 5(2), 293-310. https://doi.org/10.5194/esurf-5-293-2017</p>
+<p>Kullenberg, C., &amp; Kasperowski, D. (2016). What is citizen science? – A scientometric meta-analysis. PloS one, 11(1), e0147152. https://doi.org/10.1371/journal.pone.0147152</p>
+<p>Lague, D., Brodu, N., &amp; Leroux, J. (2013). Accurate 3D comparison of complex topography with terrestrial laser scanner: Application to the Rangitikei canyon (NZ). ISPRS Journal of Photogrammetry and Remote Sensing, 82, 10-26. https://doi.org/10.1016/j.isprsjprs.2013.04.009</p>
+<p>Lane, S.N., Westaway, R.M., Murray HD., (2003). Estimation of erosion and deposition volumes in a large, gravel‐bed, braided river using synoptic remote sensing. Earth Surface Processes and Landforms, 28(3), 249-271. https://doi.org/10.1002/esp.483</p>
+<p>Lyons, M. B., Keith, D. A., Phinn, S. R., Mason, T. J., &amp; Elith, J. (2018). A comparison of resampling methods for remote sensing classification and accuracy assessment. Remote Sensing of Environment, 208, 145-153. https://doi.org/10.1016/j.rse.2018.02.026</p>
+<p>Llano, X. (2022), SMByC-IDEAM. AcATaMa - QGIS plugin for Accuracy Assessment of Thematic Maps, version v23.4. https://github.com/SMByC/AcATaMa</p>
+<p>Liu, H. Y., Dörler, D., Heigl, F., &amp; Grossberndt, S. (2021). Citizen science platforms. In: Vohland et al. (Eds.): The Science of Citizen Science, Springer, Cham, 439-459. https://doi.org/10.1007/978-3-030-58278-4_22</p>
+<p>Mayr, A., Bremer, M., &amp; Rutzinger, M. (2020). 3D point errors and change detection accuracy of unmanned aerial vehicle laser scanning data. ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, 2, 765-772. https://doi.org/10.5194/isprs-annals-V-2-2020-765-2020</p>
+<p>Olson, D.L. and Delen D. (2008). Performance evaluation for predictive modeling. Chapter 9 in: Advanced Data Mining Techniques Springer, Berlin, Germany. https://doi.org/10.1007/978-3-540-76917-0</p>
+<p>Pflugmacher, D., Rabe, A., Peters, M., &amp; Hostert, P. (2019). Mapping pan-European land cover using Landsat spectral-temporal metrics and the European LUCAS survey. Remote Sensing of Environment, 221, 583-595. https://doi.org/10.1016/j.rse.2018.12.001</p>
+<p>Pontius Jr, R. G., &amp; Millones, M. (2011). Death to Kappa: birth of quantity disagreement and allocation disagreement for accuracy assessment. International Journal of Remote Sensing, 32(15), 4407-4429. https://doi.org/10.1080/01431161.2011.552923</p>
+<p>Purdy, L. M., Sang, Z., Beaubien, E., &amp; Hamann, A. (2023). Validating remotely sensed land surface phenology with leaf out records from a citizen science network. International Journal of Applied Earth Observation and Geoinformation, 116, 103148. https://doi.org/10.1016/j.jag.2022.103148</p>
+<p>See, L., Perger, C., Hofer, M., Weichselbaum, J., Dresel, C., &amp; Fritz, S. (2015). LACO-WIKI: an open access online portal for land cover validation. ISPRS Ann Photogramm Remote Sens Spatial Inf Sci, 2, 167-171.  https://doi.org/10.5194/isprsannals-II-3-W5-167-2015</p>
+<p>See, L., Mooney, P., Foody, G., Bastin, L., Comber, A., Estima, J., ... &amp; Rutzinger, M. (2016). Crowdsourcing, citizen science or volunteered geographic information? The current state of crowdsourced geographic information. ISPRS International Journal of Geo-Information, 5(5), 55. https://doi.org/10.3390/ijgi5050055</p>
+<p>Stehman, S. V., &amp; Foody, G. M. (2019). Key issues in rigorous accuracy assessment of land cover products. Remote Sensing of Environment, 231, 111199. https://doi.org/10.1016/j.rse.2019.05.018</p>
+<p>Weigand, M., Staab, J., Wurm, M., &amp; Taubenböck, H. (2020). Spatial and semantic effects of LUCAS samples on fully automated land use/land cover classification in high-resolution Sentinel-2 data. International Journal of Applied Earth Observation and Geoinformation, 88, 102065. https://doi.org/10.1016/j.jag.2020.102065</p>
+<p>Wheaton, J. M., Brasington, J., Darby, S. E., &amp; Sear, D. A. (2010). Accounting for uncertainty in DEMs from repeat topographic surveys: improved sediment budgets. Earth Surface Processes and Landforms, 35(2), 136-156. https://doi.org/10.1002/esp.1886</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../05_spatio_temporal_data_fusion/05_spatio-temporal_data_fusion.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Spatio-temporal data fusion">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Spatio-temporal data fusion
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../module2/module2.html" class="md-footer__link md-footer__link--next" aria-label="Next: Overview">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Overview
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+	
+    <div class="md-copyright__highlight">
+		<a href="https://erasmus-plus.ec.europa.eu/projects/search/details/2020-1-CZ01-KA203-078308" title="EU Project Page">
+			<img src="../../assets/img/flag_eu.jpg" }} alt="flag of the European Union" style="height:50px; float:left; margin-right:15px; margin-bottom:15px;">
+		</a>
+		<p style="font-family:Arial">
+			Funded by the Erasmus+ Programme<br>of the European Union.
+		</p>
+	</div><br>
+	<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+		<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+	</a>
+	<p>
+		Except when explicitly stated otherwise, the course is licensed under the 
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+		license, associated code is licensed under the
+		<a href="https://choosealicense.com/licenses/mit/">MIT</a>
+		license.
+	</p>
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.highlight", "content.code.copy", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/javascripts/quiz_evaluation.js"></script>
+      
+    
+  </body>
+</html>

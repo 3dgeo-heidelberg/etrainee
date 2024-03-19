@@ -1,0 +1,3944 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This is the second theme within module 1">
+      
+      
+      
+      
+        <link rel="prev" href="../01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.html">
+      
+      
+        <link rel="next" href="../03_time_series_analysis_based_on_classification/03_time_series_analysis_based_on_classification.html">
+      
+      
+      <link rel="icon" href="../../assets/img/logo_etrainee.svg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
+    
+    
+      
+        <title>E-TRAINEE Theme 2 - Large time series datasets in remote sensing - E-TRAINEE Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.10ba22f1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#theme-2-large-time-series-datasets-in-remote-sensing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-header__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            E-TRAINEE Course
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              E-TRAINEE Theme 2 - Large time series datasets in remote sensing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-nav__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    E-TRAINEE Course
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module0/module0.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prerequisites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Module 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principles of remote sensing time series
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Large time series datasets in remote sensing
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="02_large_time_series_datasets_in_remote_sensing.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Large time series datasets in remote sensing
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#major-earth-observation-missions-data-archives-and-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Major Earth observation missions, data archives, and access
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Major Earth observation missions, data archives, and access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#landsat-missions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Landsat missions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sentinel-2-mission" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sentinel-2 mission
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-harmonized-landsat-and-sentinel-2-hls-archive" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Harmonized Landsat and Sentinel-2 (HLS) archive
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low-spatial-resolution-missions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Low (spatial) resolution missions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commercial-satellite-imagery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commercial satellite imagery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#national-and-regional-scale-remote-sensing-data-from-aerial-platforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      National and regional scale remote sensing data from aerial platforms
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strategies-and-computing-facilities-for-large-remote-sensing-time-series-an-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategies and computing facilities for large remote sensing time series: An overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Strategies and computing facilities for large remote sensing time series: An overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-data-management-and-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Local data management and processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-performance-computing-on-a-central-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      High performance computing on a central cluster
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributed-storage-and-computing-in-the-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distributed storage and computing in the cloud
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-cubes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data cubes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data cubes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open-data-cube-approach-and-implementations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open Data Cube approach and implementations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#euro-data-cube-and-xcube" class="md-nav__link">
+    <span class="md-ellipsis">
+      Euro Data Cube and xcube
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-cubes-based-on-array-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data cubes based on array databases
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-cubes-with-otherunknown-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data cubes with other/unknown architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-tools-for-building-your-own-data-cube" class="md-nav__link">
+    <span class="md-ellipsis">
+      More tools for building your own data cube
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-with-a-data-cube-external-demos-and-tutorials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working with a data cube: External demos and tutorials
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#large-time-series-datasets-in-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Large time series datasets in Python
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Large time series datasets in Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python libraries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorials-remote-sensing-time-series-in-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutorials: Remote sensing time series in Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-access-from-spatiotemporal-asset-catalogs-stac" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data access from SpatioTemporal Asset Catalogs (STAC)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data access from SpatioTemporal Asset Catalogs (STAC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction-to-spatiotemporal-asset-catalogs-stac" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to SpatioTemporal Asset Catalogs (STAC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorials-getting-satellite-data-from-a-stac-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutorials: Getting satellite data from a STAC catalog
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#google-earth-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Google Earth Engine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Google Earth Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-javascript-code-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      The JavaScript Code Editor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-selection-of-cool-apps" class="md-nav__link">
+    <span class="md-ellipsis">
+      A selection of cool apps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-gee-with-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using GEE with Python
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openeo" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenEO
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-outlook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and outlook
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-evaluation-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-evaluation quiz
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#excercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Excercise
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_time_series_analysis_based_on_classification/03_time_series_analysis_based_on_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series analysis based on classification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_trajectory-based_analysis/04_trajectory_based_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trajectory-based analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_spatio_temporal_data_fusion/05_spatio-temporal_data_fusion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spatio-temporal data fusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reference data, validation and accuracy assessment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Module 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/module2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of multispectral imaging
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of multispectral imaging
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/01_multispectral_principles/01_multispectral_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/01_multispectral_principles/01_multispectral_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal information in satellite data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal information in satellite data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/02_temporal_information/02_temporal_information.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/02_temporal_information/02_temporal_information_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Image processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Image processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/03_image_processing/03_image_processing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/03_image_processing/03_image_processing_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Multitemporal classification
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Multitemporal classification
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/04_multitemporal_classification/04_multitemporal_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/04_multitemporal_classification/04_multitemporal_classification_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vegetation change and disturbance detection
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Vegetation change and disturbance detection
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/05_vegetation_monitoring/05_vegetation_monitoring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/05_vegetation_monitoring/05_vegetation_monitoring_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/06_cs_tundra_grasslands/06_cs_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/07_cs_forest_changes/07_cs_forest_changes.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Effects of pollution in Ore Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/08_cs_disturbance_detection/08_cs_disturbance_detection.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Forest disturbance detection (Tatra Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Module 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/module3.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of 3D/4D geographic point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of 3D/4D geographic point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/01_pointcloud_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/exercise/m3_theme1_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Programming for point cloud analysis with Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Programming for point cloud analysis with Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/02_pointcloud_programming_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/exercise/m3_theme2_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles and basic algorithms of 3D change detection and analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Principles and basic algorithms of 3D change detection and analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/03_3d_change_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/exercise/m3_theme3_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Time series analysis of 3D point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Time series analysis of 3D point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/04_3d_timeseries_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/exercise/m3_theme4_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning-based 3D/4D point cloud analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning-based 3D/4D point cloud analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/05_pointcloud_machine_learning/05_pointcloud_machine_learning.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_rockglacier/06_casestudy_rockglacier.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D change analysis at an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_sandybeach/06_casestudy_sandybeach.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series-based change analysis of sandy beach dynamics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Module 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/module4.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of imaging and laboratory spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of imaging and laboratory spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Airborne hyperspectral data acquisition and pre-processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Airborne hyperspectral data acquisition and pre-processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing_exercise_geometric.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    In situ and laboratory spectroscopy of vegetation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            In situ and laboratory spectroscopy of vegetation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_navig.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_spectra_probe_sphere_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning in imaging spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning in imaging spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal vs. spatial and spectral resolution
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal vs. spatial and spectral resolution
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/05_specific_resolution_contribution/05_specific_resolution_contribution.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/08_spectral_separability_grass/08_spectral_separability_grass.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal spectral separability of grass species (Krkonoše Mts.)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Discrimination of grass species from time series of RPAS hyperspectral imagery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/07_flood_plain_forest/07_flood_plain_forest.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal dynamics of flood-plain forests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_cloudcompare.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudCompare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_enmap_box.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EnMAP-Box
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_qgis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QGIS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_r_language.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_gee.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Earth Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Use Cases and Data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Use Cases and Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://doi.org/10.5281/zenodo.10003574" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data download
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_rockglacier_ahk.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D point clouds of an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_beach_kijkduin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4D point clouds of a sandy beach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_forests_tatras.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vegetation disturbance detection in Polish-Slovak Tatra Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_tundra_karkonosze.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_grasses_krkonose.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tundra vegetation monitoring in Krkonoše Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_ore_mts_disturbance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Forest disturbances in Ore Mountains (Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://web.natur.cuni.cz/gis/etrainee/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About the project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://forms.gle/Cz1yxJv2DDNz83j68" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback form
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#major-earth-observation-missions-data-archives-and-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Major Earth observation missions, data archives, and access
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Major Earth observation missions, data archives, and access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#landsat-missions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Landsat missions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sentinel-2-mission" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sentinel-2 mission
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-harmonized-landsat-and-sentinel-2-hls-archive" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Harmonized Landsat and Sentinel-2 (HLS) archive
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low-spatial-resolution-missions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Low (spatial) resolution missions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commercial-satellite-imagery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commercial satellite imagery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#national-and-regional-scale-remote-sensing-data-from-aerial-platforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      National and regional scale remote sensing data from aerial platforms
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strategies-and-computing-facilities-for-large-remote-sensing-time-series-an-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategies and computing facilities for large remote sensing time series: An overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Strategies and computing facilities for large remote sensing time series: An overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-data-management-and-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Local data management and processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-performance-computing-on-a-central-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      High performance computing on a central cluster
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributed-storage-and-computing-in-the-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distributed storage and computing in the cloud
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-cubes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data cubes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data cubes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open-data-cube-approach-and-implementations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open Data Cube approach and implementations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#euro-data-cube-and-xcube" class="md-nav__link">
+    <span class="md-ellipsis">
+      Euro Data Cube and xcube
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-cubes-based-on-array-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data cubes based on array databases
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-cubes-with-otherunknown-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data cubes with other/unknown architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-tools-for-building-your-own-data-cube" class="md-nav__link">
+    <span class="md-ellipsis">
+      More tools for building your own data cube
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-with-a-data-cube-external-demos-and-tutorials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working with a data cube: External demos and tutorials
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#large-time-series-datasets-in-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Large time series datasets in Python
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Large time series datasets in Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python libraries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorials-remote-sensing-time-series-in-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutorials: Remote sensing time series in Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-access-from-spatiotemporal-asset-catalogs-stac" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data access from SpatioTemporal Asset Catalogs (STAC)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data access from SpatioTemporal Asset Catalogs (STAC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction-to-spatiotemporal-asset-catalogs-stac" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to SpatioTemporal Asset Catalogs (STAC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tutorials-getting-satellite-data-from-a-stac-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tutorials: Getting satellite data from a STAC catalog
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#google-earth-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Google Earth Engine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Google Earth Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-javascript-code-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      The JavaScript Code Editor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-selection-of-cool-apps" class="md-nav__link">
+    <span class="md-ellipsis">
+      A selection of cool apps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-gee-with-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using GEE with Python
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openeo" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenEO
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-and-outlook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary and outlook
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-evaluation-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-evaluation quiz
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#excercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Excercise
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+
+                  
+
+  
+  
+
+
+<h1 id="theme-2-large-time-series-datasets-in-remote-sensing">Theme 2 - Large time series datasets in remote sensing</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Remote sensing (RS) applications are increasingly based on large time series, which have opened new possibilities for understanding land surface dynamics and human-environment interactions. The data is often too big (mainly as an effect of large extent and high resolution in space, time and other dimensions, such as spectral wavelength) to be processed with standard methods.</p>
+<p><strong>Objective</strong></p>
+<p>The objective of this theme is to overview methods and approaches to query, access and handle such large time series datasets in remote sensing. The scope ranges from improvement of processes on a single local machine to efficiently querying and downloading the data you need from huge archives and to scalability of entire workflows using distributed computing on high-performance clusters and cloud infrastructure. Data-wise, the focus is on medium resolution satellite data but 3D point clouds, typically acquired from airborne and terrestrial platforms, are also touched briefly.</p>
+<p>At the end of this theme, you will</p>
+<ul>
+<li>know several of the most important remote sensing missions and public archives hosting remote sensing time series data</li>
+<li>be able to search and download such open data efficiently; the focus here is on time series of optical images with medium spatial resolution from<ul>
+<li>the NASA/USGS Landsat program</li>
+<li>the Copernicus Sentinel-2 mission</li>
+</ul>
+</li>
+<li>have an overview of the possibilities currently available for big data management and processing in remote sensing</li>
+</ul>
+<p>Working through the tutorials and exercises of this theme you will try some convenient methods to access and start working with large remote sensing time series. This includes various state-of-the-art approaches, such as Spatio-Temporal Asset Catalogs (STAC) or the Google Earth Engine (GEE) which enables you to utilize cloud storage and computing infrastructure.</p>
+<h2 id="major-earth-observation-missions-data-archives-and-access">Major Earth observation missions, data archives, and access</h2>
+<p>This section overviews a selection of the most important global Earth observation missions and the resulting data products along with their spatial, spectral and temporal properties (see also the respective sections in <a href="https://3dgeo-heidelberg.github.io/etrainee/module2/01_multispectral_principles/01_multispectral_principles.html#selected-sensor-characteristics">Theme 1</a> and <a href="https://3dgeo-heidelberg.github.io/etrainee/module2/02_temporal_information/02_temporal_information.html#temporal-resolution-of-selected-sensors">Theme 2</a> of the second E-TRAINEE Module). A few examples for public data archives of national or regional remote sensing data are also presented. Furthermore, the main possibilities for accessing this data are outlined (see also <a href="https://3dgeo-heidelberg.github.io/etrainee/module2/01_multispectral_principles/01_multispectral_principles.html#multispectral-satellite-data-archives">this section</a> in Module 2, with links to additional archives). A searchable and comprehensive collection of satellites and sensors is provided in the <a href="https://calval.cr.usgs.gov/apps/compendium">Land Remote Sensing Satellites Online Compendium</a>.</p>
+<h3 id="landsat-missions">Landsat missions</h3>
+<p>The <a href="https://landsat.gsfc.nasa.gov/">Landsat program</a>, jointly run by the NASA and the USGS, provides the longest and most continuous time series of Earth observation images. Starting with the launch of Landsat 1 in 1972, a series of satellite missions have produced millions of images covering a time period where major anthropogenic and natural changes of the Earth's surface took place. The revisit period of a single Landsat is 16 days (18 days for L1-3). Whereas the use of Landsat time series had long been limited by data charges and access, the consolidation of all data into a centralized and open archive (at a time when also computational ressources and storage improved rapidly) have marked a new era of Earth observation (<a href="https://doi.org/10.1126/science.320.5879.1011a">Woodcock et al. 2008</a>, <a href="https://doi.org/10.1016/j.rse.2015.11.032">Wulder et al. 2016</a>). Hence, Landsat data have been used in numerous applications and scientific studies on long-term ecosystem monitoring, human-environment interactions and other topics (<a href="https://doi.org/10.1016/j.rse.2019.02.015">Wulder et al. 2019</a>).</p>
+<p><img src="media/Landsat_timeline.jpg" alt="Landsat missions timeline" title="Timeline of Landsat satellite missions" width="800"></p>
+<p><em>Timeline of Landsat satellite missions (figure by <a href="https://svs.gsfc.nasa.gov/11433">NASA's Scientific Visualization Studio</a>).</em></p>
+<p>Although continuity and interoperability is a priority of the program, the technology employed by the Landsat missions has undergone considerable improvements over the decades. Based on sensor similarities, the missions and their data can be grouped into L1-3, L4-5, L7, and L8-9. Landsat 8 and 9 (launched in 2013 and 2021, respectively) feature 11 spectral bands with spatial resolutions ranging from 15 m (panchromatic) to 30 m (VNIR and SWIR) and 100 m (thermal; resampled to 30 m for delivery). The successior mission <a href="https://landsat.gsfc.nasa.gov/satellites/landsat-next/">Landsat Next has been announced</a> to improve on temporal, spectral and spatial resolution.</p>
+<p><strong>Data products and access</strong></p>
+<p>Global Landsat data has been reprocessed by the USGS and archived into different <a href="https://www.usgs.gov/landsat-missions/landsat-collections">Collections</a> and processing levels:</p>
+<ul>
+<li>Landsat <a href="https://www.usgs.gov/landsat-missions/landsat-collection-2">Collection 2</a> is currently the collection processed with state-of-the-art algorithms and auxiliary data, with its products of Level-1 and Level-2 being available for download from <a href="https://earthexplorer.usgs.gov/">EarthExplorer</a></li>
+<li><a href="https://www.usgs.gov/landsat-missions/landsat-collection-2-level-1-data">Level-1 data</a> for all Landsat sensors 1-9 since 1972 are delivered as Digital Numbers (DN) in an unsigned 16-bit integer format. DN can be converted to Top of Atmosphere (TOA) reflectance or radiance using the radiometric scaling factors provided in each scene metadata file.</li>
+<li><a href="https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products">Level-2 data</a> contains surface reflectances and land surface temperatures along with <a href="https://www.usgs.gov/core-science-systems/nli/landsat/landsat-surface-reflectance-quality-assessment">Quality Assessment (QA) masks</a> and is currently available for Landsat 4-9 (i.e. from 1982 on) in <a href="https://www.usgs.gov/landsat-missions/landsat-collection-2">Collection 2</a>. These products are generated from Level-1 inputs that meet the &lt;76 degrees Solar Zenith Angle constraint (i.e. no processing of images taken with low sun angles) and include the required auxiliary data inputs to generate a scientifically viable product.</li>
+<li>For the United States, Landsat Collection 2 also contains <a href="https://doi.org/10.5066/P960F8OC">ARD</a> (analysis-ready data), with TOA refelctances/brightness temperatures and surface reflectances/temperatures as well as pixel-level quality assessment data gridded in Albers projection and distributed as tiles of 5,000 x 5,000 30-m pixels.</li>
+<li>Frome the above products the USGS is deriving a few <a href="https://www.usgs.gov/landsat-missions/landsat-science-products">Level-3 science products</a> (currently on-demand?) that represent biophysical properties of the Earth's surface, such as Dynamic Surface Water Extent, Fractional Snow Covered Area, Burned Area, or Provisional Actual Evapotranspiration.</li>
+</ul>
+<p><img src="media/Example_of_the_Landsat_8_Collection_2_products_s.png" title="Example of the Landsat 8 Collection 2 products" width="800"></p>
+<p><em>Landsat 8 Collection 2 products for an area over the Sapta Koshi River in Bairawa, Nepal (path 140 row 41) acquired on May 3, 2013. Left: Level-1 top of atmosphere reflectance (TOA) image. Center: Atmospherically corrected surface reflectance (SR) image. Right: Level-2 surface temperature (ST [K]) image (figure by M. A. Bouchard, <a href="https://www.usgs.gov/media/images/example-landsat-8-collection-2-products">USGS (2013)</a>).</em></p>
+<p><img src="media/DSWE_Omaha.gif" title="Dynamic Surface Water Extent - Omaha, Nebraska" width="600"></p>
+<p><em>An animation of the Omaha area (Nebraska, USA) that shows spring flooding rendered first in a Landsat 8 Operational Land Imager (OLI) false color composite, and second by the Landsat Level-3 Dynamic Surface Water Extent (DSWE) product. (figure by <a href="https://www.usgs.gov/media/images/dynamic-surface-water-extent-omaha-nebraska">Earth Resources Observation and Science (EROS) Center (2019)</a>).</em></p>
+<p>You can <strong>inspect Landsat images</strong> with RGB natural color, a range of other band combinations (composites) and a few different indices (band ratios) in the <a href="https://landsatlook.usgs.gov/explore">LandsatLook</a> viewer.</p>
+<p>As shown in this <a href="https://www.usgs.gov/landsat-missions/landsat-data-access">overview page</a>, there are several options for <strong>downloading Landsat data</strong>:</p>
+<ul>
+<li><a href="https://usgs.gov/ee">EarthExplorer</a> with a graphical user interface (GUI)</li>
+<li><a href="https://eebulk.cr.usgs.gov/">EE Bulk Download Web Application (BDWA)</a>: Web-based tool useful for downloading large quantities of Landsat Collection 2 products with limited user interaction.</li>
+<li>The <a href="https://espa.cr.usgs.gov/">The EROS Science Processing Architecture On Demand Interface</a> produces Landsat Surface Reflectance-derived Spectral Indices on demand and includes options for reprojection and spatial sub-setting (https://www.usgs.gov/media/files/eros-science-processing-architecture-demand-interface-user-guide).</li>
+<li>The <a href="https://pypi.org/project/landsatxplore/">landsatexplore</a> package provides an interface to the EarthExplorer portal to search and download Landsat Collections scenes through a command-line interface or a Python API.</li>
+<li>If you need to download a lot of scenes, see <a href="https://blogs.fu-berlin.de/reseda/landsat-big-data-download/#3">this description</a> of how to create a file list and use it to download the scenes listed.</li>
+<li>Landsat ARD (analysis-ready data) can be accessed and visualized via the AppEEARS API (see this <a href="https://git.earthdata.nasa.gov/projects/LPDUR/repos/landsat-ard-appeears-api/browse">Jupyter Notebook Python Tutorial</a>)</li>
+<li>Landsat Collection 2 Level-1 and Level-2 global scene-based data products and Landsat Collection 2 ARD are hosted on the <a href="https://www.usgs.gov/landsat-missions/landsat-commercial-cloud-data-access">Amazon Web Services (AWS) cloud platform</a> in a Simple Storage Service (S3) requester pays bucket, and can be accessed via the SpatioTemporal Asset Catalog (STAC) API (as shown in <a href="https://gallery.pangeo.io/repos/pangeo-data/landsat-8-tutorial-gallery/landsat8.html">this tutorial</a> and in <a href="https://www.matecdev.com/posts/landsat-sentinel-aws-s3-python.html">this post</a>).</li>
+</ul>
+<h3 id="sentinel-2-mission">Sentinel-2 mission</h3>
+<p><a href="https://www.copernicus.eu/en">Copernicus</a> is the European Union's Earth Observation Programme. It includes, among others, the <a href="https://www.esa.int/Applications/Observing_the_Earth/Earth_observing_missions">Sentinel missions</a>, a series of (currently) seven space missions dedicated to radar and multi-spectral imaging for land, ocean and atmosphere observation, each comprising a constellation of two satellites. Among these missions we focus on Sentinel-2, with its two satellites (Sentinel-2A/B) acquiring optical images for land monitoring services (e.g. land cover change, vegetation state, water or snow extent etc.) since 2015 and 2017, respectively. Important for time series analysis, the revisit period of the two satellites together is 5 days at the equator, and shorter at higher latitudes. Unfortunately, the true temporal resolution of useful data can be heavily impaired by clouds.</p>
+<p>The multi-spectral instrument (MSI) onboard each Sentinel-2 features 13 spectral bands in the visible-to-near infrared (VNIR) and short wave infrared (SWIR) ranges. In addition to the four VNIR bands at 10-m resolution, coarser resolution bands (20/60 m) are available for vegetation monitoring in the so-called <em>red-edge</em> (<a href="https://doi.org/10.1080/01431168308948546">Horler et al. 1983</a>), and for snow, ice and cloud discrimination as well as for aerosols, water vapour and cirrus cloud detection. In the examples of this theme we will work with the VNIR bands (2, 3, 4, and 8) and the SWIR-1 band.</p>
+<p><img src="media/Sentinel-2_bands.jpg" alt="S-2 bands overview" title="Sentinel-2 bands overview" width="700"></p>
+<p><em>Sentinel-2 bands overview (figure by <a href="https://docs.dea.ga.gov.au/notebooks/DEA_products/DEA_Sentinel2_Surface_Reflectance.html">Digital Earth Australia</a>, reused from <a href="https://www.esa.int/">ESA</a>).</em></p>
+<p><strong>Data products and access</strong></p>
+<p>The easiest way to look at Sentinel-2 imagery (and often also other free satellite data) is through one of the online viewers, such as</p>
+<ul>
+<li><a href="http://apps.sentinel-hub.com/sentinel-playground">Sentinel Playground</a></li>
+<li><a href="https://www.sentinel-hub.com/explore/eobrowser/">Sentinel Hub EO Browser</a></li>
+</ul>
+<p>The core products generated from the raw Sentinel-2 data correspond to two processing levels:</p>
+<ul>
+<li><a href="https://doi.org/10.5270/S2_-742ikth">Level-1C</a>: Top-of-atmosphere reflectances in cartographic geometry, i.e. radiometrically and geometrically corrected (including orthorectification) but without correction of atmospheric effects.</li>
+<li><a href="https://doi.org/10.5270/S2_-znk9xsj">Level-2A</a>: This is the product typically used for analysis. It contains surface reflectances in cartographic geometry (UTM/WGS84) as well as a <a href="https://sentinel.esa.int/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm">scene classification map and cloud masks</a>. It can either be generated from Level-1C data on the user side with the <a href="http://step.esa.int/main/snap-supported-plugins/sen2cor/">sen2cor</a> processor from ESA's SNAP Toolbox or directly obtained from the Copernicus Open Access Hub.</li>
+</ul>
+<p>The <a href="https://scihub.copernicus.eu/">Copernicus Open Access Hub</a> (also called "SciHub") is currently considered the primary access point for Sentinel data. After registration, users can search for available images and download them as ZIP-compressed archives in a folder structure called SAFE (Standard Archive Format for Europe). Each SAFE archive contains a 110 x 110 km tile with the corresponding rasters in JPEG2000 format.</p>
+<p>The Copernicus Open Accces Hub offers two options</p>
+<ul>
+<li>a web browser graphical user interface (<a href="https://scihub.copernicus.eu/dhus">GUI</a>)</li>
+<li>an Application Programming Interface <a href="https://scihub.copernicus.eu/twiki/do/view/SciHubWebPortal/APIHubDescription?TWIKISID=bcd1a0dff42315102f9f72addfd29375">API</a>, which can be used for automatic search and download via <a href="https://scihub.copernicus.eu/userguide/BatchScripting">batch scripting</a> or using dedicated packages for R (<a href="https://sen2r.ranghetti.info/">sen2R</a>, <a href="https://doi.org/10.1016/j.cageo.2020.104473">Ranghetti et al. 2020</a>) or Python (<a href="https://sentinelsat.readthedocs.io/en/stable/">Sentinelsat</a>). See also <a href="https://un-spider.org/links-and-resources/data-sources/batch-download-sentinel">this description</a> for bulk downloading with a lightweight tool (<a href="https://aria2.github.io/">aria2</a>) from the command line.</li>
+</ul>
+<p>Sentinel data filtering and retrieval via SciHub is possible using Python and the <a href="https://sentinelsat.readthedocs.io/en/stable/api_overview.html">Sentinelsat</a> package. In GRASS GIS the i.sentinel add-on is available and uses Sentinelsat as a backend.</p>
+<p>As of June 2022 downloading longer S-2 time series from the SciHub does not seem to be an ideal option (amongst others because the rolling download archive contains only data of the last month, older data has to be transferred from the long-term archive to the download archive, triggered by a first download request before it can be downloaded by a second request). So we do not detail this here.</p>
+<p>Currently, the <a href="https://dataspace.copernicus.eu/">Copernicus Data Space Ecosystem</a> is being developed. It has been announced to replace the SciHub and provide the "next level of data processing and distribution infrastructure" in the course of 2023.
+As soon as this is operational, we will briefly overview it here and link to the key options it provides for Copernicus data access. <!--Check the status of these developments and revise this section accordingly!--></p>
+<p><img src="media/SciHub_GUI.PNG" title="The Copernicus Open Access Hub GUI" width="600"></p>
+<p><em>Browser-based graphical user interface of the Copernicus Open Accesss Hub, useful mainly for downloading one or a few scenes.</em></p>
+<p>Furthermore, Copernicus data are distributed by several national mirrors, and by partial mirrors (integrating specific Sentinel data (products or geographic coverages) into their platforms). In addition, Sentinel data can be obtained via several free or paid versions of Copernicus Data and Information Access Services (DIAS), such as <a href="https://mundiwebservices.com/data">Mundi</a> or <a href="https://eodag.readthedocs.io/en/stable/getting_started_guide/register.html">CREODIAS</a>.</p>
+<p>A comprehensive (<em>but a bit outdated!?</em>) list of tools and access options for Sentinel data, including mirrors and DIAS, is provided at <a href="https://github.com/Fernerkundung/awesome-sentinel">Awesome Sentinel</a>. With all these possibilities for data access one can easily get lost long before starting the actual analysis. Therefore, <a href="https://eodag.readthedocs.io/en/stable/index.html">EODAG</a> (Earth Observation Data Access Gateway) can be an interesting service, which is offered by the French CS Group. It has a command line tool and a Python package for searching and downloading remotely sensed images with a unified API for more than 10 providers, with more than 50 different product types (Sentinel-1, Sentinel-2, Sentinel-3, Landsat, etc.). As the providers typically require their users to register to their service, you need to <a href="https://eodag.readthedocs.io/en/stable/getting_started_guide/configure.html#configure">edit a YAML configuration file</a> where you supply your set of <a href="https://eodag.readthedocs.io/en/stable/getting_started_guide/register.html">user credentials for each provider</a> before using EODAG for downloading satellite data.</p>
+<p>Finally, cloud providers (such as Amazon Web Services (<a href="https://registry.opendata.aws/tag/satellite-imagery/">AWS</a>) or <a href="https://cloud.google.com/storage/docs/public-datasets">Google Cloud Storage</a>) are hosting various collections of Earth observation data. Tools like <a href="https://www.r-bloggers.com/2021/06/downloading-sentinel-2-archives-from-google-cloud-with-sen2r/">sen2R</a> and GRASS GIS <a href="https://grass.osgeo.org/grass78/manuals/addons/i.sentinel.download.html">i.sentinel.download</a> are increasingly adding these sources to their download options. If such data collections are combined with a powerful cloud computing infrastructure as well as basic and advanced processing algorithms, this opens interesting possibilities for large scale analysis (as detailed <a href="02_large_time_series_datasets_in_remote_sensing.html#distributed-storage-and-computing-in-the-cloud">below</a>).</p>
+<h3 id="the-harmonized-landsat-and-sentinel-2-hls-archive">The Harmonized Landsat and Sentinel-2 (HLS) archive</h3>
+<p>For many time series applications the temporal resolution of a single archive (i.e. either Landsat or Sentinel) alone is not enough, and it is therefore necessary to combine the data from the Landsat and the Sentinel missions. Since the two original archives contain differences in terms of data structure and content (related to sensor characteristics and data management), the user has to perform sophisticated preprocessing steps to make the data consistent and ready to use in a joint analysis.</p>
+<p>For some applications this effort can now be omitted with NASA EOSDIS Land Processes DAAC having released a <a href="https://lpdaac.usgs.gov/news/release-of-harmonized-landsat-and-sentinel-2-hls-version-20/">Harmonized Landsat and Sentinel-2 (HLS) archive</a>. These HLS products provide consistent surface reflectance (SR) and top of atmosphere (TOA) brightness data from the Landsat 8 OLI and the Sentinel-2 MSI at 30 m resolution with global observations of the land every 2–3 days (<a href="https://doi.org/10.1016/j.rse.2018.09.002">Claverie et al. 2018</a>). Preprocessing steps performed by the HLS project to create seamless products from both sensors (OLI and MSI) include</p>
+<ul>
+<li>atmospheric correction</li>
+<li>masking of cloud and cloud shadows</li>
+<li>spatial co-registration, common gridding and tiling</li>
+<li>illumination and view angle normalization</li>
+<li>spectral bandpass adjustment</li>
+</ul>
+<p align="center">
+    <img src="media/HLS_timeline.png" title="HLS Virtual Constellation timeline" width="600">
+</p>
+
+<p><em>Timeline of the Landsat/Sentinel-2 Virtual Constellation, contributing to the Harmonized Landsat and Sentinel-2 (HLS) archive with consistent surface reflectance at improved temporal resolution (figure by <a href="https://www.earthdata.nasa.gov/esds/harmonized-landsat-sentinel-2">HLS Science Team/NASA EarthData</a>). See also <a href="https://svs.gsfc.nasa.gov/4745">this animation</a> of the different satellites with orbits and data swaths.</em></p>
+<p>You can download HLS products through NASA's <a href="https://search.earthdata.nasa.gov/search?q=hls&amp;ok=hls">Earthdata Search</a> or use the following ressources to get started:</p>
+<ul>
+<li><a href="https://lpdaac.usgs.gov/documents/768/HLS_Quick_Guide_v011.pdf">HLS Quick Guide</a></li>
+<li>Jupyter Notebook Tutorials with HLS data<ul>
+<li>in <a href="https://git.earthdata.nasa.gov/projects/LPDUR/repos/hls-tutorial/browse">Python</a></li>
+<li>in <a href="https://git.earthdata.nasa.gov/projects/LPDUR/repos/hls_tutorial_r/browse">R</a></li>
+</ul>
+</li>
+<li>HLS subsetting, processing, and exporting reformatted data <a href="https://git.earthdata.nasa.gov/projects/LPDUR/repos/hls-super-script/browse">Python script</a></li>
+</ul>
+<h3 id="low-spatial-resolution-missions">Low (spatial) resolution missions</h3>
+<p>While Landsat and Sentinel-2 data are, due to their spatial resolution of a few decametres, often used for land use and land cover monitoring, lower resolution data is often not suitable for mapping discrete objects (like land parcels). However, for continental scale monitoring of more continuous phenomena (such as sea and land surface temperature, vegetation phenology, or snow cover) spatial resolutions of several hundred meters are often sufficient. Missions dedicated to such applications typically prioritize higher resolutions in the spectral and temporal domains (i.e. more bands and shorter revisit time).</p>
+<p>The main missions in this context are the Moderate Resolution Imaging Spectroradimeter (<a href="https://modis.gsfc.nasa.gov/">MODIS</a>) and its predecessor and successor missions <a href="https://www.earthdata.nasa.gov/sensors/avhrr">AVHRR</a> and <a href="https://lpdaac.usgs.gov/data/get-started-data/collection-overview/missions/s-npp-nasa-viirs-overview/">VIIRS</a>, respectively. Moreover, the <a href="https://sentinels.copernicus.eu/web/sentinel/missions/sentinel-3">Sentinel-3 mission</a> is an important initiative in low-spatial, high-temporal resolution Earth Observation. The Sentinel-3 mission is intensively discussed - also in comparison with similar missions named above - in a series of posts (<a href="https://imagico.de/blog/sentinel-3-a-first-look-at-the-data-part-1/">1</a>, <a href="https://imagico.de/blog/sentinel-3-a-first-look-at-the-data-part-2/">2</a>, <a href="https://imagico.de/blog/en/sentinel-3-a-first-look-at-the-data-part-3/">3</a>) of the <a href="https://imagico.de/blog/en/">imagico.de</a> blog by <a href="https://imagico.de/blog/en/">Hormann (2016)</a>.</p>
+<p>These two lessons on using MODIS data with Python are provided by the <a href="http://www.colorado.edu/earthlab">Earth Lab at University of Colorado, Boulder</a>:</p>
+<ul>
+<li><a href="https://www.earthdatascience.org/courses/use-data-open-source-python/multispectral-remote-sensing/modis-data-in-python/download-modis-hdf4-data/">How to find and download MODIS products from the USGS Earth Explorer website</a></li>
+<li><a href="https://www.earthdatascience.org/courses/use-data-open-source-python/multispectral-remote-sensing/modis-data-in-python/">Working with MODIS data in Python</a></li>
+</ul>
+<h3 id="commercial-satellite-imagery">Commercial satellite imagery</h3>
+<p>In addition to the satellite imagery acquired by public organizations which are accessible as open data, there are a number of commercial providers for satellite imagery. Their imagery has often a very high spatial resolution but is acquired on-demand, i.e. acquisitions of specific areas are tasked upon request by paying clients (in contrast to e.g. Sentinels and Landsats capturing most of the Earth surface in a fixed schedule defined by their orbits and sensor orientations).</p>
+<p><a href="https://www.spymesat.com/">SpyMeSat</a> provides a smartphone app and a web interface for Earth observation satellite overpass notifications (when is your point of interest captured by which satellite system), options for purchasing the imagery from leading providers, and management and observation of tasking requests (for taking new imagery on-demand).</p>
+<h3 id="national-and-regional-scale-remote-sensing-data-from-aerial-platforms">National and regional scale remote sensing data from aerial platforms</h3>
+<p>Aerial remote sensing data (mostly orthophotos and airborne laser scanning data) is typically acquired at frequencies of several years. Private companies are usually contracted by the public authorities to acquire and process the data and to deliver a specified product.
+These products are usually distributed on a regional/national basis by the respective public authorities, often via web services and sometimes (and increasingly) with a query and download platform, e.g.:</p>
+<p><strong>Autonomous Province of South Tyrol - Bolzano (Italy)</strong></p>
+<p>A comprehensive set of public geodata covering the Autonomous Province of South Tyrol - Bolzano (Italy) can be searched and downloaded via the <a href="http://geokatalog.buergernetz.bz.it/geokatalog/">GeoKatalog</a> under a <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0 1.0 license</a>. Amongst others, the archive comprises RGB and color-infrared orthophotos and ALS point clouds from different campaigns. Spatial subsets can be defined (by a box, a polygon, a place or a map tile) and then downloaded in a chosen coordinate reference system. Links to the respective Web Mapping Services (WMS) can be obtained from the same application.</p>
+<p><strong>Tyrol (Austria)</strong></p>
+<p>In the federal state of Tyrol (Austria; Land Tirol - data.gv.at), multitemporal orthophotos, digital terrain models (DTM) from airborne laser scanning (and derivatives, such as shaded relief or slope gradient rasters), and some other geodata are provided as WMS, WCS, WFS, and WMTS (see <a href="https://www.tirol.gv.at/sicherheit/geoinformation/geodaten/orthofotos/">this website</a> and <a href="https://gis.tirol.gv.at/statisch/AnleitungGeodatendienste.pdf">this document</a> for instructions and links to the services). While these services are very convenient for displaying (background) maps, download capabilities are limited (to subsets of raster DTMs and vector data).</p>
+<p>Download of data (under a <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license) is possible at two applications for <a href="https://tirol.gv.at/dop">recent RGB orthophotos</a> (0.2 m resolution) and for <a href="http://www.tirol.gv.at/als">airborne laser scanning data</a> (1-m DTM, DSM, and contours) from the latest acquisition.</p>
+<p>An overview of data acquisition campaigns for orthophotos and airborne laser scanning is provided at <a href="https://lba.tirol.gv.at/public/karte.xhtml">this application</a>, as a possibility to search for available datasets in a specific area. The data (including RGB/CIR orthophotos, 0.5-m elevation models, and ALS point clouds) could then be ordered from the <a href="https://www.tirol.gv.at/sicherheit/geoinformation/geodaten/laserscandaten/">Geoinformation Department</a> at the Office of the Federal Government of Tyrol.</p>
+<p><strong>Switzerland</strong></p>
+<p>The <a href="https://plugins.qgis.org/plugins/swissgeodownloader/">Swiss Geodownloader</a> plugin for QGIS allows you to download Swiss open geodata (such as the swissALTI3D digital elevation model or Swisstopo maps). You can search for datasets, filter files by extent, timestamp or file type and add the geodata directly to QGIS.</p>
+<p><strong>USA</strong></p>
+<p>In the continental USA, the <a href="https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/">National Agriculture Imagery Program (NAIP)</a> acquires aerial imagery at 1 m resolution during the agricultural growing seasons every three years. The following notebooks demonstrate the access of NAIP orthophotos using Microsoft cloud services:</p>
+<ul>
+<li><a href="https://planetarycomputer.microsoft.com/dataset/naip#Example-Notebook">Accessing NAIP data with the Microsoft Planetary Computer STAC API</a></li>
+<li><a href="https://planetarycomputer.microsoft.com/dataset/naip#Blob-Storage-Notebook">Accessing NAIP data on Microsoft Azure</a></li>
+</ul>
+<p><strong>New Zealand</strong></p>
+<p>For New Zealand a rich archive of national and regional geospatial data is available from the <a href="https://data.linz.govt.nz/">Land Information New Zealand (LINZ)</a> data service.</p>
+<p><strong>OpenAerialMap</strong></p>
+<p><a href="https://openaerialmap.org/">OpenAerialMap</a> is a platform for openly licensed imagery, where you can browse for available imagery in a map viewer or share your own images. It contains both imagery from occupied aircraft and from unoccupied aircraft/drones.</p>
+<!--As of 2022-05 it seems to contain (almost) no multitemporal imagery or it is difficult to filter for this. So let's probably delete this section ...*]-->
+
+<h2 id="strategies-and-computing-facilities-for-large-remote-sensing-time-series-an-overview">Strategies and computing facilities for large remote sensing time series: An overview</h2>
+<p>In remote sensing analyses covering a single or a few points in time the data sets can already be quite large, depending on the extent and resolution (a single Sentinel-2 scene for instance has more than 1 GB). If we move to time series of remote sensing data, our data sets can easily grow huge, meaning that we need dedicated tools for management and analysis.</p>
+<p>This section gives a short overview of the strategies commonly used for processing large remote sensing data. This includes:  </p>
+<ul>
+<li>Approaches to handle (moderately large) datasets and processing tasks on a single, local machine (laptop, desktop computer/workstation)</li>
+<li>Processing on a high-performance computing (HPC) cluster</li>
+<li>Cloud computing</li>
+</ul>
+<h3 id="local-data-management-and-processing">Local data management and processing</h3>
+<p>Clearly, the possibilities for processing large time series of remote sensing data locally on your laptop and even on more powerful workstations are limited. Nevertheless, there are ways to make ideal use of the available ressources or to reduce the data amount and the processing to what is really needed (without necessarily sacrificing too much in terms of accuracy or completeness of the outcome). Some considerations for local data management and processing in the context of remote sensing time series include:</p>
+<ul>
+<li><em>Tiling</em> and <em>virtual data sets</em> (rasters or point clouds): E.g., using GDAL you can create Virtual Rasters that do not copy the original raster data but reference them in a rather small XML file (normally with the extension .vrt) specifiying, e.g., that multiple bands compose a multi-band raster. See the documentation of the <a href="https://gdal.org/drivers/raster/vrt.html">GDAL Virtual Format</a>. In QGIS this is possible with the <a href="https://plugins.qgis.org/plugins/vrtbuilderplugin/">Virtual Raster Builder</a> plugin or via the standard save or export file dialogs.</li>
+<li><em>Data formats</em> (NetCDF, HDF5, Parquet, Zarr, ...), see e.g. <a href="https://vaex.io/docs/faq.html#What-is-the-optimal-file-format-to-use-with-vaex?">here</a></li>
+<li>For vector data it may be worth investigating the relatively new <em><a href="https://geoparquet.org/">Geoparquet</a> format</em>, that adds interoperable geospatial types (Point, Line, Polygon) to Apache Parquet.</li>
+<li><em>Point cloud thinning</em>, i.e. keeping only a subset of the points. The motivation can be to ease processing (reduce data) or to homogenize the point density. Various algorithms and tools for thinning are available, e.g. in <a href="https://saga-gis.sourceforge.io/saga_tool_doc/2.2.0/pointcloud_tools_9.html">SAGA GIS</a>, <a href="https://pdal.io/en/latest/workshop/exercises/analysis/thinning/thinning.html">PDAL</a>, or <a href="https://www.cloudcompare.org/doc/wiki/index.php/Edit%5CSubsample">CloudCompare</a>.</li>
+<li>Such a subset of a larger point cloud is sometimes referred to as <em>core points</em>, and it can make sense to perform certain processing steps only for these core points (e.g. for distance calculation with the M3C2 method (<a href="https://doi.org/10.1016/j.isprsjprs.2013.04.009">Lague et al. 2013</a>) in <a href="https://www.cloudcompare.org/doc/wiki/index.php/M3C2_(plugin)">CloudCompare</a>).</li>
+<li>Keep in mind that not all applications need 64-bit precision, so you might save memory by changing the <em>data type</em> to one that is sufficient for the specific dataset (e.g. 32-bit (float32)). Satellite imagery level 2 products (e.g. Landsat and Sentinel-2) often come with a scaling factor applied to surface reflectance (e.g., multiplied by 10000) to store integers instead of floating point values.</li>
+<li><em>Dimensionality reduction</em> (e.g. by a Principal Components Analysis (PCA))</li>
+<li><em>Parallelization</em> of processing tasks</li>
+<li><em>Out-of-core</em> solutions where only those parts of the data are read into memory that are currently needed</li>
+</ul>
+<h3 id="high-performance-computing-on-a-central-cluster">High performance computing on a central cluster</h3>
+<p>High Performance Compute (HPC) systems are large networks of multicore processors. They make it possible to run programs which require more ressources than those available with a single workstation. Such applications include:</p>
+<ul>
+<li>Parallel computations on many CPUs</li>
+<li>Parallel computations with large demand of memory</li>
+<li>Computations with extensive temporary disk space usage</li>
+</ul>
+<p>In other words: Why use a HPC?</p>
+<ul>
+<li>Parallelization - run many small tasks at the same time; it is important that your code is designed for parallel computing to actually make use of it</li>
+<li>Run a very large task that requires a lot of computational power or RAM</li>
+</ul>
+<p>Typical examples for parallel computing would be a sensitivity/parameter study with many runs of a program, a task that is performed for many spatial or temporal subsets of the data (pixel time series or tiles/chunks, as long as no interaction between these subsets is required). In many RS projects with high computational demand the input data is huge. Thus, you should first consider if and how your data can be transferred from its archive to the HPC infrastructure.</p>
+<p>Academic research cluster facilities can be divided into institutional (university-based) infrastracture, national collaborations and international/supranational collaborations. Examples maintained at university level are:</p>
+<ul>
+<li><a href="https://www.uibk.ac.at/zid/systeme/hpc-systeme/leo4/">LEO4</a> HPC infrastructure of the University of Innsbruck (A), consisting of 50 nodes with a total of 1452 cores and 8.4 TB of memory. An introduction for LEO4 users is provided <a href="https://www.uibk.ac.at/zid/mitarbeiter/fink/hpc-introduction-using-uibk.pdf">here</a>.</li>
+<li><a href="https://crib.utwente.nl/">CRIB</a>, the platform of the Univesity of Twente (NL) for parallel, distributed, or GPU-assisted computing capabilities for (big) geospatial data analysis.</li>
+</ul>
+<p>While institutional clusters are usually quite well accessible for staff (and often also for students of the institution) the computing ressources established through national and supranational collaborations can typically be used only after (peer-reviewed) application. Examples are:</p>
+<ul>
+<li><a href="http://vsc.ac.at/">Vienna Scientific Cluster (VSC)</a>, a collaboration of several Austrian universities that provides HPC resources and corresponding services to their users</li>
+<li><a href="http://www.prace-ri.eu/">Partnership for Advanced Computing in Europe (PRACE)</a></li>
+</ul>
+<p>The way how you actually connect to the HPC system, set up your software environment, and submit your computing tasks (<em>jobs</em>) to be scheduled and distributed depends on the specific HPC system. Therefore, we do not go into the details here and encourage you to look into the instructions provided by the system administrator.</p>
+<h3 id="distributed-storage-and-computing-in-the-cloud">Distributed storage and computing in the cloud</h3>
+<p>If the data to be processed is huge, it becomes impractical to transfer the data (including unnecessary parts of it) to the computing ressource. Then, it rather makes sense to ship the requests with processing instructions for the computer to the data and run the processes there on dedicated, shared hardware, as it is done in <em>cloud computing</em>.</p>
+<p><strong>Cloud computing</strong> is the "on-demand availability of computer system resources, especially data storage (cloud storage) and computing power, without direct active management by the user" (<a href="https://en.wikipedia.org/wiki/Cloud_computing">Wikipedia</a>). Providers deliver cloud computing services (such as storage, data, software and computing power) via the internet to their users, who pay for the services they use (or use a limited amount of ressources for free). Read more about the general concepts of cloud computing <a href="https://azure.microsoft.com/en-us/overview/what-is-cloud-computing/">here</a>.</p>
+<p><img src="media/cloud_computing_wikipedia.png" title="Cloud computing concept" width="600"></p>
+<p><em>Concepts of cloud computing, where networked user elements access the services, hardware and software managed by a provider in a system that can be thought of as an amorphous cloud (figure by <a href="https://en.wikipedia.org/wiki/Cloud_computing">Johnston 2009/Wikipedia</a>/ <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>).</em></p>
+<p>For remote sensing and geospatial cloud computing, prominent providers of such services are:</p>
+<ul>
+<li>Google with its <a href="02_large_time_series_datasets_in_remote_sensing.html#google-earth-engine">Google Earth Engine (GEE)</a></li>
+<li>Amazon with its <a href="https://aws.amazon.com/earth/">Amazon Web Services (AWS)</a></li>
+<li>Microsoft with its <a href="https://planetarycomputer.microsoft.com/">Microsoft Planetary Computer (MPC)</a>, for details see e.g. <a href="https://www.itc.nl/research/research-facilities/labs-resources/itc-big-geodata/events/2021/10/96690/big-geodata-talks-microsoft-planetary-computer">this talk</a> or the Planetary Computer <a href="https://github.com/microsoft/PlanetaryComputerExamples/tree/main/tutorials">tutorials repository</a></li>
+</ul>
+<p>Despite the impressive benefits of cloud computing services in terms of available computing power, you have to expect limitations due to computing ressources allocated to a user by the specific service. This may require some kind of sampling or another kind of workaround (see e.g. <a href="https://doi.org/10.1111/gcb.14919">Anderson et al. 2020</a> or <a href="https://doi.org/10.1016/j.jag.2021.102446">Yang et el. 2021</a>). So far, especially the Google Earth Engine has been extensively used to study land surface processes and human-environment interactions. Examples include:</p>
+<ul>
+<li>Forest monitoring: Detection and analysis of tree cover change on a global scale, see <a href="https://doi.org/10.1126/science.1244693">Hansen et al. 2013</a> and the <a href="https://globalforestwatch.org/">Global Forest Watch (GFW)</a> online platform providing maps of forest change, monthly and weekly deforestation alerts as well as data showing the dominant drivers of tree cover loss</li>
+<li>Climate change related greening trends in sparsely vegetated ecosystems: <a href="https://doi.org/10.1111/gcb.14919">Anderson et al. 2020</a> used data from the Landsat archive to study trends and patterns of greening in the Hindu Kush Himalaya</li>
+<li>National-scale monitoring of agricultural practices and use intensities: <a href="https://doi.org/10.1016/j.agee.2018.02.012">Stumpf et al. 2018</a> mapped annual grass-/cropland distributions, and <a href="https://doi.org/10.1016/j.ecolind.2020.106201">Stumpf et al. 2020</a> differentiated grassland management practices (mowing or grazing) and use intensities across Switzerland based on Landsat time series metrics. Together with a database from field survey programs this revealed the effects of landuse practices on key ecosystem parameters such as soil organic carbon and plant diversity.</li>
+</ul>
+<p>To make access of geospatial data from clouds and other web-based services more efficient, specific <em>cloud-native data formats</em> have been specified:</p>
+<ul>
+<li><a href="https://www.cogeo.org/">Cloud-optimized GeoTIFFs (COGs)</a> are essentially regular GeoTIFFs with a special internal structure that makes it possible to download only parts of them (blocks) or lower-resolution versions (overviews).</li>
+<li><a href="https://zarr.dev/">Zarr</a> is a cloud-native format for the storage of large multidimensional arrays. Watch <a href="https://www.youtube.com/watch?v=KiiKvXzhyMs">this video</a> to learn more about Zarr.</li>
+<li>For point clouds the <a href="https://copc.io/">Cloud Optimized Point Cloud (COPC)</a> format has recently been developed. A COPC file is a LAZ 1.4 file that stores chunks of point data organized in a clustered octree. Read the blog post about <a href="https://mapscaping.com/cloud-optimized-point-clouds-in-qgis/">COPC in QGIS</a>. Sample COPC datasets can be seen in <a href="https://viewer.copc.io/?copc=https://s3.amazonaws.com/hobu-lidar/autzen-classified.copc.laz">this viewer</a> or downloaded <a href="https://github.com/PDAL/data/blob/master/autzen/autzen-classified.copc.laz">here</a> and <a href="https://github.com/PDAL/data/blob/master/autzen/autzen-classified.copc.laz">here</a>. A point cloud dataset from the USGS 3D Elevation Program can be accessed via the <a href="https://planetarycomputer.microsoft.com/dataset/3dep-lidar-copc">Microsoft Planetary Computer</a>.</li>
+</ul>
+<h2 id="data-cubes">Data cubes</h2>
+<p>Although proposed already in the 1990s (<a href="https://doi.org/10.1007%2F978-3-642-77811-7_19">Baumann et al. 1993</a>), <em>data cubes</em> have recently emerged as a powerful approach for the management and analytics of multi-dimensional EO data (more correctly: "hyper-rectangles" (<a href="https://r-spatial.org/book/06-Cubes.html">Pebesma and Bivand 2023</a>). The data cubes are based on gridded spatio-temporal data with spatial (e.g. latitude and longitude) and time dimensions creating a three-dimensional cube of data. Various thematic data parameters (e.g. spectral bands) can be represented by additional dimensions of the data cube. A data cube can be deployed on various scales and infrastructures: from local workstations for use in smaller projects to large scale (cloud) back-ends serving a wider user community (<a href="https://doi.org/10.1080/20964471.2022.2099236">Sudmanns et al. 2022</a>).</p>
+<p>There are various data cube initiatives which share the intention to facilitate access and processing of big geo-spatial data for users. By providing Analysis-Ready-Data (ARD) structured uniformly (in a common grid) and indexed by their dimensions (as opposed to a sensor and provider dependent structure) they reduce the burden of data search, handling and pre-processing. For practical implementation of a data cube, however, there are various approaches and technologies around, which we try to grasp in the following.</p>
+<p><img src="media/stars_5d_data_cube.png" title="Data cube with five dimensions" width="500"></p>
+<p><em>Data cube with five dimensions: latitude, longitude, time, spectral band, and sensor (figure by <a href="https://r-spatial.github.io/stars/">Pebesma 2023/r-spatial</a>/ <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>).</em></p>
+<h3 id="open-data-cube-approach-and-implementations">Open Data Cube approach and implementations</h3>
+<p><a href="https://www.opendatacube.org/">Open Data Cube (ODC)</a> is an open source geospatial data management and analysis software project that helps you harness the power of satellite data. At its core, ODC is a set of Python libraries and PostgreSQL database that helps you work with geospatial raster data. The Open Data Cube can be deployed on HPC, cloud, and local installations and accessed via a Python API which loads the data as xarray objects. Check out the <a href="https://datacube-core.readthedocs.io/en/latest/">ODC manual</a> or the <a href="https://github.com/ceos-seo/data_cube_notebooks">ODC Notebooks</a>.</p>
+<p><img src="media/odc_ecosystem.png" title="ODC ecosystem" width="600"></p>
+<p><em>The Open Data Cube ecosystem (figure by <a href="https://www.opendatacube.org/">Open Data Cube</a>/ <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>).</em></p>
+<p>ODC projects and implementations include:</p>
+<ul>
+<li><a href="https://www.dea.ga.gov.au/about">Digital Earth Australia</a> - A platform to make satellite data and its derivatives accessible and manageable for Australian purposes. This concept has evolved into the Open Data Cube (ODC), a not-for-profit open source project and community developing.
+    Check out the <a href="https://www.dea.ga.gov.au/developers/sandbox">DEA Sandbox</a>, a learning and analysis environment created as an introduction to Digital Earth Australia and the Open Data Cube, or have a look at the notebooks by <a href="https://doi.org/10.26186/145234">Krause et al. 2021</a>.</li>
+<li><a href="http://sdc.unepgrid.ch/">Swiss Data Cube</a> (<a href="https://doi.org/10.1038/s41597-021-01076-6">Chatenoux et al. 2021</a>) - 
+    The Swiss Data Cube was one of the first adopters of the Data Cube system for a national scale platform. It includes data from Landsat, and Sentinel-1 and -2 over Switzerland, as well as products related to urbanization, cloud free mosaics, and snow cover (from https://www.opendatacube.org/overview).</li>
+<li><a href="https://www.digitalearthafrica.org/">Digital Earth Africa</a> deploys the Africa Regional Data Cube. For more information see <a href="https://www.youtube.com/watch?v=tEeT5VH7qVc&amp;t=1s">this video</a>, try the <a href="https://www.digitalearthafrica.org/platform-resources/platform/#sandbox">Sandbox</a> and see the <a href="https://docs.digitalearthafrica.org/en/latest/">documentation</a>.</li>
+</ul>
+<h3 id="euro-data-cube-and-xcube">Euro Data Cube and xcube</h3>
+<p><em>Euro Data Cube</em></p>
+<p>The <a href="https://eurodatacube.com/">Euro Data Cube</a> (EDC) is operated by a consortium of private Earth observation companies and cloud providers and supported by the European Space Agency. The EDC is offered as a <a href="https://eurodatacube.com/marketplace/infra/edc_eoxhub_workspace">subscription-based, paid service</a>. Its main objective is to provide a data archive and computing platform for commercial applications, including the possibility for companies to develop applications on top of EDC and sell it to their customers. However, a (small) trial is available for free and researchers may apply for a free account - check out the <a href="https://earth.esa.int/web/guest/pi-community/apply-for-data/ao-s">announcements of opportunity</a> and the <a href="https://eurodatacube.com/support?faq=free-account">FAQ</a>. A good impression of various variables relevant for Earth System Science (such as gross primary productivity, fractional snow cover, ...) with map views at coarse resolutions (of &gt;20 km) and temporal point profiles is provided by <a href="https://edc-viewer.brockmann-consult.de/">this</a> variant of the EDC. All further information can be found in the official <a href="https://eurodatacube.com/documentation">documentation</a>. There are different options for access and analysis of the EDC, including a <a href="https://eurodatacube.com/documentation/qgis">QGIS plugin</a> and <em>xcube</em>.</p>
+<p><em>xcube</em></p>
+<p><a href="https://xcube.readthedocs.io/en/latest/">xcube</a> is an open-source Python package and toolkit used for the Euro Data Cube. It helps to create self-contained data cubes that can be published in the cloud and it offers customizable analysis and processing based on Python's xarray.</p>
+<p><a href="https://xcube.readthedocs.io/en/latest/plugins.html#available-plugins">Plugins</a> for xcube add support for the <a href="https://www.sentinel-hub.com/">Sentinel Hub</a> Cloud API, the <a href="https://climate.esa.int/en/odp/">ESA Climate Change Initiative</a> Open Data Portal, or the Copernicus <a href="https://cds.climate.copernicus.eu/">Climate Data Store</a>.</p>
+<h3 id="data-cubes-based-on-array-databases">Data cubes based on array databases</h3>
+<p>An alternative approach to data cubes is based on array databases (<a href="https://doi.org/10.1007/978-3-319-72434-8_14">Baumann et al. 2019</a>). The pioneering implementation of an array database management system is <a href="http://www.rasdaman.org/">rasdaman</a> ("raster data manager"), featuring</p>
+<ul>
+<li>support of the <em>Coverage</em> data model for multi-dimensional raster data and related Open Geospatial Consortium (OGC) web service standards, most notably <em>Web Coverage Service (WCS)</em> and <em>Web Coverage Processing Service (WCPS)</em>, as explained <a href="https://earthserver.eu/wcs/">here</a></li>
+<li>the query language <a href="http://www.rasdaman.org/wiki/Features#Querylanguage"><em>rasql</em></a></li>
+<li>server-side tiled storage in a relational database with spatial indexing</li>
+<li>tile streaming</li>
+<li>dynamic scheduling of processes on a rasdaman server installation</li>
+<li>client APIs for C++ (<em>raslib</em>), Java (<em>rasj</em>) and Python (<a href="https://pypi.org/project/rasdapy/"><em>rasdapy</em></a>)</li>
+</ul>
+<p>These demos show how to use Coverages by connecting to the rasdaman service endpoint via QGIS or Python:</p>
+<ul>
+<li><a href="https://standards.rasdaman.org/demo_qgis.html">QGIS</a></li>
+<li><a href="https://standards.rasdaman.com/demo_jupyter.html">Python</a> (Jupyter Notebook)</li>
+</ul>
+<p>The <a href="https://earthserver.eu/">EarthServer</a> federation is an initiative that uses this data cube approach to share and unify spatio-temporal data from multiple large-scale Earth data providers. The federation members include research centers, supercomputing centers, companies, and agencies.</p>
+<h3 id="data-cubes-with-otherunknown-architecture">Data cubes with other/unknown architecture</h3>
+<p>Further implementations and prototypes of a data cube include:</p>
+<ul>
+<li>Germany's Copernicus Data and Exploitation Platform <a href="https://code-de.org/de/">CODE-DE</a> (<a href="https://doi.org/10.1080/20964471.2019.1692297">Storch et al. 2019</a>) amongst other services hosts two data cubes, one based on the <a href="https://docs.sentinel-hub.com/api/latest/">Sentinel Hub</a> software by Sinergise, and one based on the <a href="https://force-eo.readthedocs.io/en/latest/about.html">FORCE</a> software by David Frantz (<a href="https://doi.org/10.3390/rs11091124">2019</a>).</li>
+<li>The Earth System Data Lab (<a href="https://earthsystemdatalab.net/">ESDL</a>) follows a data cube approach with a multivariate focus. It prioritizes efficient exploitation of multiple data streams for a joint analysis over efficiency with a high-resolution data stream (<a href="https://doi.org/10.5194/esd-11-201-2020">Mahecha et al. 2020</a>). Analyses can be deployed in the ESDL with Python or Julia and via user-defined functions (UDFs).</li>
+<li>The Brasil Data Cube (<a href="https://doi.org/10.3390/rs13132428">Simoes et al. 2021</a>) is implemented using the R programming language and the SITS package.</li>
+<li>The <a href="https://acube.eodc.eu/">Austrian Data Cube</a> (ACube) is run by the Earth Observation Data Centre for Water Resources Monitoring (EODC) and provides pre-processed Sentinel-1 &amp; -2 data. The ACube can be accessed throught an application programming interface (API) or via WMS/WCS Geoserver (e.g. with QGIS). (<em>?)</em></li>
+<li>The Austrian semantic EO data cube <a href="https://www.sen2cube.at/">Sen2Cube</a> is a prototype(?) for a semantically enriched, web-based data cube (<a href="https://doi.org/10.3390/rs13234807">Sudmanns et al. 2021</a>).</li>
+<li>The <a href="https://www.semantixcube.net/">SemantiX project</a> aims to retrieve Essential Climate Variables (ECVs) from AVHHR data (1981-today) and Sentinel-3 data(2016-today) covering the entire European Alps. The ECVs are made publicly available via a data cube and a smartphone app.</li>
+</ul>
+<h3 id="more-tools-for-building-your-own-data-cube">More tools for building your own data cube</h3>
+<p>If you want to build your own data cube:</p>
+<ul>
+<li><a href="https://github.com/appelmar/gdalcubes">gdalcubes</a> - Earth observation data cubes from GDAL image collections. The library is written in C++ and includes a basic command line interface and an R package. A Python package is planned for the future.</li>
+<li><a href="https://github.com/appelmar/gdalcubes_R">gdalcubes_R</a> - A package for creating and analyzing Earth observation data cubes in R (limitations: no vector data support, only 4 D; opposed to starspackage).</li>
+<li><a href="https://r-spatial.github.io/stars/">stars</a> - An R package for spatiotemporal arrays, raster and vector data cubes.</li>
+<li><a href="https://github.com/e-sensing/sits">SITS</a> - An R package for satellite image time series analysis and machine learning based classification of image time series obtained from data cubes (<a href="https://doi.org/10.3390/rs13132428">Simoes et al. 2021</a>, <a href="https://e-sensing.github.io/sitsbook/">Camara et al. 2023</a>).</li>
+</ul>
+<h3 id="working-with-a-data-cube-external-demos-and-tutorials">Working with a data cube: External demos and tutorials</h3>
+<p>If you want to try working with data cubes, check out these external ressources:</p>
+<ul>
+<li><a href="https://www.opendatacube.org/sandbox">Open Data Cube Sandbox</a>, which is a JupyterHub Python notebook server with individual work spaces and with global Landsat 8 data indexed</li>
+<li><a href="https://github.com/ceos-seo/data_cube_notebooks/blob/master/docs/notebooks_overview.md">This</a> collection of notebooks covering, e.g., <a href="https://github.com/ceos-seo/data_cube_notebooks/blob/master/notebooks/landslides/Landslide_Identification_SLIP.ipynb">landslide detection</a> and <a href="https://github.com/ceos-seo/data_cube_notebooks/blob/master/notebooks/machine_learning/Uruguay_Random_Forest/Random_Forests_Uruguay.ipynb">machine learning</a></li>
+<li><a href="https://github.com/ceos-seo/odc-colab">ODC-Colab</a> - This aims at a demonstration of Open Data Cubes within Google Colab and performs an automated setup of an ODC environment with GEE data.</li>
+</ul>
+<h2 id="large-time-series-datasets-in-python">Large time series datasets in Python</h2>
+<p>Clearly, automatisation of workflows by scripting your processing pipelines is key to any successful working with large datasets, especially when scientific criteria such as reproducibility and objectivity are important. Compared to clicking your way through a graphical user interface (GUI) of a specialized GIS/remote sensing software, this is much more efficient and enables you to flexibly customize the processing exactly to your needs. In this context, the Python ecosystem provides a rich set of tools and interfaces to data and computing platforms and is, thus, the preferred choice for many professional applications. </p>
+<h3 id="python-libraries">Python libraries</h3>
+<p>Some Python libraries you might find useful for the management and analysis of (large) remote sensing data sets (including remote sensing time series):</p>
+<ul>
+<li><a href="https://numba.pydata.org/">Numba</a>: You may accelerate your code with Numba, which translates Python functions into optimized machine code at runtime.</li>
+<li>
+<p>Scale your Python workflows (whether they are based on arrays or on dataframes) by dynamic task scheduling, parallel computing and lazy evaluation using <a href="https://docs.dask.org/">Dask</a>. This library extends the size of convenient datasets from “fits in memory” to “fits on disk” and can be useful both on a single machine and in distributed environments (clusters with 100s of cores). Further reading in <a href="https://www.manning.com/books/data-science-with-python-and-dask">Daniel (2019)</a>.</p>
+</li>
+<li>
+<p>Handling tabular (column-oriented) data:</p>
+<ul>
+<li><a href="https://pandas.pydata.org/">Pandas</a> and its DataFrames are a popular choice in data science and can also be useful in remote sensing applications (when data is not array-like but tabular, e.g. image objects, sample points, ...). However, it is neither  specifically made for geodata nor for very large datasets.</li>
+<li><a href="https://geopandas.org/en/stable/">GeoPandas</a> extends the capabilities of pandas by possibilities for spatial operations, making it ideal for vector geodata. Recent efforts included performance improvements and support for storing geospatial vector data (point, line, polygon) efficiently according to the <a href="https://github.com/opengeospatial/geoparquet">GeoParquet</a> specification.</li>
+<li><a href="https://dask-geopandas.readthedocs.io/en/latest/">Dask-Geopandas</a> merges the geospatial capabilities of GeoPandas and scalability of Dask. Thus, it can be an interesting option if you have large GeoDataFrames that either do not comfortably fit in memory or require expensive computation that can be easily parallelised.</li>
+<li><a href="https://github.com/holoviz/spatialpandas">Spatialpandas</a> is developed for vectorized spatial and geometric operations on DataFrames using numba (with support for Parquet and Dask).</li>
+<li>
+<p><a href="https://modin.readthedocs.io/en/stable/">Modin</a> provides a convenient way to speed up pandas code by parallelization (without changes in your existing pandas code). It uses Ray or Dask internally to schedule the computations on multiple cores (which pandas normally does not do). Moreover, it supports out-of-core processing to prevent pandas from running out of memory.</p>
+</li>
+<li>
+<p><a href="https://vaex.io/docs/index.html">Vaex</a> is a library developed for large tabular datasets (that otherwise tend to raise memory errors). With its memory mapping and lazy reading capabilities, Vaex works well with file formats like HDF5, Apache Arrow and Apache Parquet. It has a focus on</p>
+<ul>
+<li>Visualization: Histograms, density plots and 3D volume rendering.</li>
+<li>Exploration: Calculate statistics (such as mean, sum, count, standard deviation etc.) on an N-dimensional grid with up to a billion (10<sup>9</sup>) objects/rows per second.</li>
+<li>Machine learning with <a href="https://vaex.io/docs/tutorial_ml.html">vaex.ml</a>: So far with data transformers, wrappers to ML libraries (Scikit-Learn, xgboost) and a performant KMeans implementation.</li>
+</ul>
+</li>
+<li>
+<p><a href="https://docs.dask.org/en/stable/dataframe.html">dask.dataframe</a> is a large parallel DataFrame composed of many smaller pandas DataFrames, split along the index. It is a more flexible option than Dask-Geopandas but lacks the convenient implementation of geospatial functionality.</p>
+</li>
+<li>In summary: Small data: use Pandas. Out of memory error: move to vaex. Crazy amount of data (many TB) that will never fit onto 1 computer: dask.dataframe (as recommended <a href="https://news.ycombinator.com/item?id=21682910">here</a>)</li>
+</ul>
+</li>
+<li>
+<p>Handling array data:</p>
+<ul>
+<li><a href="https://docs.xarray.dev/en/stable/">xarray</a> (<a href="https://doi.org/10.5334/jors.148">Hoyer and Hamman 2017</a>) is a package for labelled multi-dimensional arrays and integrates tightly with Dask (see <a href="https://examples.dask.org/xarray.html">this example</a>). <a href="https://rasterio.readthedocs.io/en/latest/">Rasterio</a> (a library for geospatial raster data access) extends the general purpose Xarray library to <a href="https://corteva.github.io/rioxarray/stable/">Rioxarray</a>, with improved geospatial capabilities.</li>
+<li>The <a href="https://satpy.readthedocs.io/en/stable/">Satpy</a> library also builds on xarray and is made to conveniently handle satellite data, i.e. to import various formats, create composites, perform atmospheric corrections and visual enhancements.</li>
+<li>The <a href="https://scitools-iris.readthedocs.io/en/latest/index.html">Iris</a> library can be seen as an alternative to xarray, with a focus on keeping metadata (such as information on units following the <a href="http://cfconventions.org/">CF conventions</a>) while working with multi-dimensional Earth Science data (e.g. meteorological and oceanographic data).</li>
+<li><a href="https://geoxarray.github.io/latest/">Geoxarray</a> is intended as a library for simple utilities and wrappers around common geospatial data workflows. (As of 2023-03 it is still in pre-alpha state/without a release, but let's keep an eye on this.)</li>
+<li><a href="https://rasterframes.io/index.html">RasterFrames</a> is a data model and processing software system developed by Astraea, Inc.. It organizes raster data in <a href="https://spark.apache.org/docs/latest/sql-programming-guide.html">Spark</a> DataFrames and has a focus on scalability of Earth observation data analytics.</li>
+</ul>
+</li>
+<li>
+<p>Spectral indices: The <a href="https://spyndex.readthedocs.io/en/latest/">Spyndex</a> package is specialized on computing a wide range of spectral indices for arrays and dataframes together with pandas, geopandas, xarrays and dask.</p>
+</li>
+<li><a href="https://eoreader.readthedocs.io/en/latest/">EOReader</a> is a package for reading (your locally stored) data from optical and SAR constellations, loading and stacking bands, clouds, DEM and spectral indices in a sensor-agnostic way. (Comparable to what eemont does compared to the raw GEE Python API) it simplifies these tasks as compared to rasterio/rioxarray:</li>
+</ul>
+<p><img src="media/EOReader_simplifications.png" title="EOReader simplifications overview" width="600"></p>
+<p><em>EOReader simplifications overview (figure by <a href="https://sertit.unistra.fr/">ICube-SERTIT</a>/<a href="https://eoreader.readthedocs.io/en/latest/notebooks/why_eoreader.html">EOReader documentation</a>/ <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>).</em></p>
+<h3 id="tutorials-remote-sensing-time-series-in-python">Tutorials: Remote sensing time series in Python</h3>
+<p>Some of the tools listed above are demonstrated in the following notebooks:</p>
+<ul>
+<li>
+<p><a href="PC_explore_v02.html">Large point clouds in Python tutorial</a>, providing a couple of hints for handling and exploring large point clouds efficiently in Python (so far not time-series specific). Use sample data provided or try with your own point cloud.</p>
+</li>
+<li>
+<p>External ressources:</p>
+<ul>
+<li><a href="https://pangeo.io/packages.html#why-xarray-and-dask">Why Xarray and Dask?</a> (Pangeo)</li>
+<li><a href="https://gallery.pangeo.io/repos/pangeo-data/pangeo-tutorial-gallery/dask.html">Parallel computations on dataframes and arrays using Dask</a> (Pangeo tutorial)</li>
+<li><a href="https://carpentries-incubator.github.io/geospatial-python/11-parallel-raster-computations/index.html">Parallel raster computations using Dask</a> (Carpentries Incubator tutorial)</li>
+</ul>
+</li>
+</ul>
+<h3 id="data-access-from-spatiotemporal-asset-catalogs-stac">Data access from SpatioTemporal Asset Catalogs (STAC)</h3>
+<h4 id="introduction-to-spatiotemporal-asset-catalogs-stac">Introduction to SpatioTemporal Asset Catalogs (STAC)</h4>
+<p>The <a href="https://stacspec.org/">SpatioTemporal Asset Catalog (STAC) specification</a> enables online search and discovery of geospatial assets (i.e. specifc data products) by providing a common language to describe a range of geospatial information, so it can more easily be indexed and discovered. A 'spatiotemporal asset' is any file that represents information about the Earth captured in a certain space and time.</p>
+<p>When analyzing optical imagery, in many cases you need only certain spectral bands covering your area-of-interest, instead of entire scenes. An important advantage of accessing a STAC server is that you can constrain the download to the specific data you actually need, not only in terms of Earth observation mission, sensor and time period, but also in terms of bands and spatial coverage.</p>
+<p>Watch <a href="https://www.youtube.com/watch?v=Ugazf5bWsGE">this video</a> to learn more about STAC. A list of STAC APIs and catalogs is provided on the <a href="https://stacindex.org/catalogs">STAC Index</a> website. QGIS users can access data from several endpoints via the <a href="https://stac-utils.github.io/qgis-stac-plugin/">QGIS STAC API plugin</a>).</p>
+<p align="center">
+    <img src="media/QGIS_STAC_API_Browser_v02.png" title="QGIS STAC API Browser" width="35%">
+    &nbsp;
+    <img src="media/QGIS_STAC_API_results_footprint_v01.png" title="QGIS STAC API results and item footprint" width="60%">
+</p>
+
+<p><em>The QGIS STAC API Browser, the search results, and footprint of one item (a Landsat 9 scene) loaded to the map canvas.</em></p>
+<p><img src="media/QGIS_STAC_API_add_asset_as_layer.png" title="QGIS STAC API results and item footprint" width="800"></p>
+<p><em>One asset (Surface Temperature Band) of the STAC item (Landsat 9 scene) found is loaded as a layer to the QGIS map canvas.</em></p>
+<h4 id="tutorials-getting-satellite-data-from-a-stac-catalog">Tutorials: Getting satellite data from a STAC catalog</h4>
+<p><a href="T2_Sentinel_STAC_v03.html">This ETRAINEE notebook</a> illustrates how to query and download Sentinel-2 satellite imagery from the Amazon Web Service (AWS) cloud using the pystac-client library. Furthermore, it shows how to work with the data using the xarray library and how to perform tasks like subsetting, cloud masking, spectral index calculation, temporal aggregation, and trend analysis. A few simple processing steps let you explore the development of the Normalized Difference Vegetation Index (NDVI) in spring and summer, including e.g. the seasonal greening of mountain grasslands.</p>
+<p>More (external) Python Jupyter Notebooks:</p>
+<ul>
+<li><a href="https://stacspec.org/en/tutorials/reading-stac-planetary-computer/">Access Landsat data from Microsoft Planetary Computer</a></li>
+<li><a href="https://stacspec.org/en/tutorials/access-sentinel-2-data-aws/">Access Sentinel 2 Data from AWS (1)</a>, including visualization of asset footprints</li>
+<li><a href="https://carpentries-incubator.github.io/geospatial-python/05-access-data/index.html">Access Sentinel 2 Data from AWS (2)</a></li>
+<li><a href="https://github.com/Element84/geo-notebooks/blob/main/notebooks/odc-landsat.ipynb">Access Landsat data from AWS</a>, a rendered version is <a href="https://nbviewer.org/gist/rsignell-usgs/8cc1d3b8832cd89f984f75db761eaf59">here</a></li>
+</ul>
+<h2 id="google-earth-engine">Google Earth Engine</h2>
+<p>Earth Engine is a service offered by Google for analysis and visualization of geospatial datasets, based on data storage and computing on a large cloud (<a href="https://doi.org/10.1016/j.rse.2017.06.031">Gorelick et al. 2017</a>, <a href="https://doi.org/10.1109/JSTARS.2020.3021052">Amani et al. 2020</a>, <a href="https://doi.org/10.1016/j.isprsjprs.2020.04.001">Tamiminia et al. 2020</a>, ). The Google Earth Engine (GEE) is free to use for research, education, and nonprofit use after <a href="https://signup.earthengine.google.com/#!/">signing up</a> for access to the service.</p>
+<p>There are different ways to use GEE:</p>
+<ul>
+<li>the JavaScript Code Editor used in a web browser</li>
+<li>an Earth Engine client library for Python</li>
+<li>an Earth Engine client library for R (rgee; <a href="https://doi.org/10.21105/joss.02272">Aybar et al. 2020</a>), which wraps the Earth Engine Python API</li>
+<li>a <a href="https://developers.google.com/earth-engine/guides/command_line">command line tool</a></li>
+<li>via QGIS with the <a href="http://qgis-ee-plugin.appspot.com/">GEE Plugin</a> or the <a href="https://geetimeseriesexplorer.readthedocs.io/en/latest/index.html">GEE Timeseries Explorer</a></li>
+</ul>
+<h3 id="the-javascript-code-editor">The JavaScript Code Editor</h3>
+<p>The "standard" way of using GEE is via its JavaScript <a href="https://code.earthengine.google.com/">Code Editor</a> in a web browser, which is introduced <a href="https://developers.google.com/earth-engine/guides/getstarted">here</a> and <a href="https://developers.google.com/earth-engine/tutorials/community/beginners-cookbook">here</a>. In this editor you can simply run one of the many scripts already available (in the <em>Scripts</em> tab in the left pane) or develop your own code for a custom analysis. The results are displayed in the map pane or in the <em>Inspector</em> and <em>Console</em> tabs in the right pane.</p>
+<p><img src="media/GEE_browser_overview.png" title="Google Earth Engine Overview" width="600"></p>
+<p><em>The Google Earth Engine has a web browser based graphical user interface (figure by <a href="https://developers.google.com/earth-engine/tutorials/community/beginners-cookbook">Google Developers</a>/ <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</em></p>
+<p>To get a quick impression of the data archive and the computational power of GEE, for example, click <a href="https://code.earthengine.google.com/?scriptPath=Examples%3AImage%20Collection%2FAnimated%20Thumbnail">this link</a>, You will find a script that creates an animated thumbnail of a 1-year time series with MODIS NDVI composites over Australia and Tasmania. In the Code Editor, simply click <em>Run</em> and you should see something like this added to the map pane:</p>
+<p><img src="media/GEE_MODIS_NDVI_animation_australia.gif" title="Google Earth Engine MODIS NDVI thumbnail animation" width="300"></p>
+<p><em>One year of MODIS NDVI over Australia and Tasmania (Created with <a href="https://code.earthengine.google.com/?scriptPath=Examples%3AImage%20Collection%2FAnimated%20Thumbnail">Google Earth Engine</a>).</em></p>
+<p>A comprehensive online course with well-structured material is provided by Ujaval Gandhi at the <a href="https://courses.spatialthoughts.com/end-to-end-gee.html">Spatial Thoughts</a> website. It is focused on the JavaScript Code Editor but contains also an introduction to the Python API.</p>
+<h3 id="a-selection-of-cool-apps">A selection of cool apps</h3>
+<p>There is a growing variety of easy to use apps based on the Google Earth Engine and developed by the remote sensing community using the <a href="https://developers.google.com/earth-engine/guides/app_engine_intro">Google App Engine</a>. Some of the apps make requests to the Earth Engine backend using a service account, thus allowing anyone to use the app without logging in or being a registered GEE user. Other apps use client-side authentication, meaning that you need to sign up with your own account to use the app. A few examples are listed in the following:</p>
+<ul>
+<li>Landsat time series animations for any rectangular area on Earth can be created quite easily by <a href="https://github.com/jdbcode/Snazzy-EE-TS-GIF">these two GEE apps</a>. First, the <a href="https://emaprlab.users.earthengine.app/view/lt-gee-time-series-animator">EE-TS-GIF app</a> creates a GIF from a smoothed Landsat time series with a choice of three bands. The output of this can be further enriched by annotating years and adding a context map through using the <a href="https://jstnbraaten.shinyapps.io/snazzy-ee-ts-gif/">Snazzy-EE-TS-GIF app</a>.</li>
+<li><a href="https://github.com/jdbcode/ee-rgb-timeseries">GEE JavaScript module to color time series chart points as stretched 3-band RGB</a></li>
+<li><a href="https://jstnbraaten.users.earthengine.app/view/landsat-timeseries-explorer">Annual cloud-free Landsat composite time series app</a></li>
+<li><a href="https://jstnbraaten.users.earthengine.app/view/eo-timeseries-explorer">Sentinel-2 and Landsat-8 image time series app</a></li>
+<li>Snow monitors (created with the method described in <a href="https://doi.org/10.1088/1748-9326/ac9e6a">Gascoin et al. 2022</a>) for <a href="https://labo.obs-mip.fr/multitemp/apps/alps-snow-monitor/">the Alps</a>, <a href="https://labo.obs-mip.fr/multitemp/pyrenees-snow-monitor/">the Pyrenees</a>, <a href="https://labo.obs-mip.fr/multitemp/western-usa-snow-monitor/">the Western USA</a>, and the <a href="https://labo.obs-mip.fr/multitemp/sierra-nevada-snow-monitor/">Sierra Nevada (Spain)</a></li>
+</ul>
+<h3 id="using-gee-with-python">Using GEE with Python</h3>
+<p>The <a href="https://developers.google.com/earth-engine/guides/python_install">Earth Engine Python client</a> is a library called <code>ee</code>. To do the tutorials and excercises of this module we recommend to set up the environment with the <code>m1_etrainee.yml</code> file which contains the <code>ee</code> package and some related ones.</p>
+<p>Other helpful Python packages for GEE include <em>geemap</em>, <em>eemont</em> and <em>wxee</em>. <a href="https://geemap.org/"><em>geemap</em></a> is a Python package by <a href="https://doi.org/10.21105/joss.02305">Wu (2020)</a>, developed for interactive mapping with Google Earth Engine (GEE) within a Jupyter-based environment. Using GEE with Python becomes even more convenient with the <a href="https://eemont.readthedocs.io/en/latest/"><em>eemont</em></a> package by <a href="https://doi.org/10.21105/joss.03168">Montero et al. (2021)</a>. The eemont package extends the GEE Python API with pre-processing and processing tools for the most used satellite platforms by adding utility methods for different Earth Engine Objects that are friendly with the Python method chaining. It facilitates for instance cloud masking, calculation of spectral indices, extraction of time series by region and other tasks. For time series processing, <em>eemont</em> combines well with the <a href="https://wxee.readthedocs.io/en/latest/index.html"><em>wxee</em></a> package, which integrates the data catalog and processing power of Google Earth Engine with the flexibility of xarray.</p>
+<p>An introduction to the GEE Python API is provided in <a href="T2_GEE_s2cloudless_v03_export_time_series.html">this E-TRAINEE notebook</a>, which illustrates how to query the Sentinel-2 collection for a defined region and time period, mask clouds efficiently (optionally calculate also the NDVI) - all in the cloud - and then get the resulting time series on your local harddrive. This gives you the flexibility to run subsequent analyses with your preferred software (e.g. the scientific Python stack or R). More tutorials using GEE and some Python packages extending this are waiting for you in the next themes. <a href="https://developers.google.com/earth-engine/tutorials/community/intro-to-python-api-guiattard">This external example</a> provides a very good introduction to the GEE Python API, working on a time series of MODIS landcover and land surface temperature.</p>
+<h2 id="openeo">OpenEO</h2>
+<p>Another interesting initiative targeting large remote sensing time series with cloud computing and the data cube concept is <a href="https://openeo.org/">openEO</a>. This project develops an open application programming interface (API) that allows you to connect clients for R, Python and JavaScript to big Earth observation cloud back-ends in a simple and unified way. With this openEO API you can run a selection of defined processes on the cloud infrastructure. The processes available are depending on the back-end; they cover mostly data download, handling and basic processing steps (aggregations, resampling, filters, math, pixel operations, NDVI, ...). Currently, openEO features</p>
+<ul>
+<li>Three official client libraries for <a href="https://open-eo.github.io/openeo-r-client">R</a>, <a href="https://open-eo.github.io/openeo-python-client/">Python</a>, and <a href="https://open-eo.github.io/openeo-js-client/latest/">JavaScript</a></li>
+<li>A <a href="https://editor.openeo.org/">web-based editor</a> - Supports visual modelling of your algorithms and a simplified JavaScript based access to the openEO workflows and providers.</li>
+<li>A <a href="https://plugins.qgis.org/plugins/openeo-qgis-plugin-master/">QGIS plugin</a></li>
+</ul>
+<p>See <a href="https://hub.openeo.org/">this list</a> for known openEO providers (back-ends) and their services, including the <a href="https://openeo.cloud/">openEO Platform</a>. To dive into the openEO functionality see the <a href="https://openeo.org/documentation/1.0/">documentation</a> and the <a href="https://openeo.org/documentation/1.0/cookbook/">cookbook</a> therein, or try the <a href="https://openeo.org/documentation/1.0/python/#full-example">full example</a> on retrieving monthly mean Sentinel-1 backscatter data with Python and the Google Earth Engine back-end.</p>
+<p><img src="media/openEO_API.png" title="Concept of the openEO API" width="800"></p>
+<p><em>Concept of the openEO API (figure by <a href="https://doi.org/10.3390/rs13061125">Schramm et al. 2021</a>/ <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</em></p>
+<h2 id="summary-and-outlook">Summary and outlook</h2>
+<p>Accessing and handling large remote sensing time series data or selected parts of them can be a major obstacle for anyone starting to use that in his work. Hence, this theme has introduced the most important data sources and tools needed as a prerequisite for any more advanced analysis. For further reading on recent and anticipated future development and trends in the area of big remote sensing data see, e.g., <a href="https://doi.org/10.1080/20964471.2022.2099236">Sudmanns et al. 2022</a>, <a href="https://doi.org/10.1080/17538947.2022.2115567">Xu et al. 2022</a> and <a href="https://doi.org/10.1080/20964471.2022.2094953">Backeberg et al. 2022</a>.</p>
+<h2 id="self-evaluation-quiz">Self-evaluation quiz</h2>
+<form name="quiz" action="" method="post" onsubmit="evaluate_quiz(); return false">
+
+<!--Question 1-->
+<label for="q_01">
+Optical satellite data from the Landsat program: Which statements are correct?
+</label><br>
+<input type="checkbox" name="q_01">To map recent land cover changes in small-structured agricultural systems, Landsat-9 data is ideal, because it can provide vegetation indices at the highest spatial and temporal resolution.<br>
+<input type="checkbox" name="q_01">The long period of relatively continuous observation across large parts of the Earth is one of the biggest strengths of the Landsat archive.<br>
+<input type="checkbox" name="q_01">To ensure continuity, all Landsat satellites used exactly the same sensor.<br>
+<input type="checkbox" name="q_01">Level-1 Landsat data from Landsat Collection 1 is the best choice for any remote sensing time series analysis.<br>
+<div hidden id="correct_q_01">The long period of relatively continuous observation across large parts of the Earth is one of the biggest strengths of the Landsat archive.</div>
+<output id="output_q_01"></output><br><br>
+
+<!--Question 2-->
+<label for="q_02">
+Which of these statements about data cubes are correct?
+</label><br>
+<input type="checkbox" name="q_02">Data cubes always have three dimensions.<br>
+<input type="checkbox" name="q_02">Observations and derivatives of different variables and even from multiple different remote sensing systems can be managed in a well-structured form by a data cube.<br>
+<input type="checkbox" name="q_02">Data cubes can be deployed on a local machine but most commonly they are hosted on larger (cluster/cloud) infrastructure to serve more users.<br>
+<div hidden id="correct_q_02">Observations and derivatives of different variables and even from multiple different remote sensing systems can be managed in a well-structured form by a data cube.&Data cubes can be deployed on a local machine but most commonly they are hosted on larger (cluster/cloud) infrastructure to serve more users.</div>
+<output id="output_q_02"></output><br><br>
+
+<!--Question 3-->
+<label for="q_03">
+True or false: Clouds are not a problem for monitoring crop growth or snow cover with Sentinel-2 time series because very good cloud removal algorithms exist, and they can reveal the ground under cloud cover.
+</label><br>
+<input type="radio" name="q_03">True
+<input type="radio" name="q_03">False<br>
+<div hidden id="correct_q_03">False</div>
+<output id="output_q_03"></output><br><br>
+
+<input type="submit" value="Submit" style="font-size:14pt"><br><br>
+
+<output id="output_overall">
+</output>
+</form>
+
+<h2 id="excercise">Excercise</h2>
+<p><strong>Search and load Landsat data to QGIS via a STAC API</strong></p>
+<p>The goal of this excercise is learn how to search and load Landsat data of selected scenes from large archives of cloud providers to QGIS. Try to accomplish the following tasks using QGIS and the STAC API Plugin:</p>
+<ol>
+<li>Install the (<a href="https://stac-utils.github.io/qgis-stac-plugin/#quick-installation">QGIS STAC API Plugin</a>) and read the <a href="https://stac-utils.github.io/qgis-stac-plugin/">documentation</a>.</li>
+<li>Connect to a STAC API and search for Landsat scenes of a specific time period (e.g. July 2022) covering an area of your choice (e.g. your university's city). For the different Landsat sensors, how many scenes do you find?<br />
+(<em>Hint:</em> AWS/EarthSearch and Microsoft Planetary Computer make their STAC APIs available without authentication (as of 03/2023))</li>
+<li>Select a scene for further use, preferably one with little cloud cover. Load the footprint of the scene to your map canvas (along with a background map, e.g. Open Street Map).</li>
+<li>Add selected bands (e.g. red, green, blue bands) as layers to the map canvas (<em>Hint:</em> To directly downolad the assets, set download folder under <em>Settings</em>).</li>
+<li>Create a composite Virtual Raster (VRT) out of the selected bands.</li>
+<li>Clip VRT to a relatively small area-of-interest (AOI) polygon.</li>
+<li>Save the clipped VRT as GeoTiff (RGB composite for the AOI in the bands' native resolution).</li>
+</ol>
+<p align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7bkkgNWe2b8?si=nYydt8wG0tlXWMPn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
+
+<h2 id="references">References</h2>
+<p>Amani, M., Ghorbanian, A., Ahmadi, S. A., Kakooei, M., Moghimi, A., Mirmazloumi, S. M., ... &amp; Brisco, B. (2020). Google earth engine cloud computing platform for remote sensing big data applications: A comprehensive review. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 13, 5326-5350. https://doi.org/10.1109/JSTARS.2020.3021052</p>
+<p>Backeberg, B., Šustr, Z., Fernández, E., Donchyts, G., Haag, A., Oonk, J. R., ... &amp; Chatzikyriakou, C. (2022). An open compute and data federation as an alternative to monolithic infrastructures for big Earth data analytics. Big Earth Data, 1-19. https://doi.org/10.1080/20964471.2022.2094953</p>
+<p>Baumann, P. (1993). Language Support for Raster Image Manipulation in Databases. In: Graphics Modeling and Visualization in Science and Technology (pp. 236-245). https://doi.org/10.1007%2F978-3-642-77811-7_19</p>
+<p>Baumann, P., Misev, D., Merticariu, V., Huu, B.P. (2019). Datacubes: Towards Space/Time Analysis-Ready Data. In: Döllner, J., Jobst, M., Schmitz, P. (eds). Service-Oriented Mapping. Lecture Notes in Geoinformation and Cartography. Springer, Cham. https://doi.org/10.1007/978-3-319-72434-8_14</p>
+<p>Daniel, J. (2019). Data Science with Python and Dask.  ISBN 9781617295607, 296 p., https://www.manning.com/books/data-science-with-python-and-dask</p>
+<p>Gascoin, S., Monteiro, D., &amp; Morin, S. (2022). Reanalysis-based contextualization of real-time snow cover monitoring from space. Environmental Research Letters, 17(11), 114044. https://doi.org/10.1088/1748-9326/ac9e6a</p>
+<p>Gorelick, N., Hancher, M., Dixon, M., Ilyushchenko, S., Thau, D., &amp; Moore, R. (2017). Google Earth Engine: Planetary-scale geospatial analysis for everyone. Remote sensing of Environment, 202, 18-27. https://doi.org/10.1016/j.rse.2017.06.031</p>
+<p>Hansen, M. C., Potapov, P. V., Moore, R., Hancher, M., Turubanova, S. A., Tyukavina, A., ... &amp; Townshend, J. (2013). High-resolution global maps of 21st-century forest cover change. Science, 342(6160), 850-853.</p>
+<p>Horler, D. N. H., DOCKRAY, M., &amp; Barber, J. (1983). The red edge of plant leaf reflectance. International Journal of Remote Sensing, 4(2), 273-288 https://doi.org/10.1080/01431168308948546</p>
+<p>Hoyer, S., &amp; Hamman, J. (2017). xarray: ND labeled arrays and datasets in Python. Journal of Open Research Software, 5(1). https://doi.org/10.5334/jors.148</p>
+<p>Krause, C., Dunn, B., Bishop-Taylor, R., Adams, C., Burton, C., Alger, M., Chua, S., Phillips, C., Newey, V., Kouzoubov, K., Leith, A., Ayers, D., Hicks, A., DEA Notebooks contributors (2021). Digital Earth Australia notebooks and tools repository. Geoscience Australia, Canberra. https://doi.org/10.26186/145234</p>
+<p>Lewis, A., Oliver, S., Lymburner, L., Evans, B., Wyborn, L., Mueller, N., ... &amp; Wang, L. W. (2017). The Australian geoscience data cube—foundations and lessons learned. Remote Sensing of Environment, 202, 276-292. https://doi.org/10.1016/j.rse.2017.03.015</p>
+<p>Li, J., &amp; Roy, D. P. (2017). A global analysis of Sentinel 2A, Sentinel 2B and Landsat 8 data revisit intervals and implications for terrestrial monitoring. Remote Sensing, 9 (9). https://doi.org/10.3390/rs9090902</p>
+<p>Mahecha, M. D., Gans, F., Brandt, G., Christiansen, R., Cornell, S. E., Fomferra, N., ... &amp; Reichstein, M. (2020). Earth system data cubes unravel global multivariate dynamics. Earth System Dynamics, 11(1), 201-234. https://doi.org/10.5194/esd-11-201-2020</p>
+<p>Montero, D., (2021). eemont: A Python package that extends Google Earth Engine. Journal of Open Source Software, 6(62), 3168, https://doi.org/10.21105/joss.03168</p>
+<p>Pebesma, E.; Bivand, R. (2023). Spatial Data Science: With Applications in R (1st ed.). 314 pages. Chapman and Hall/CRC. https://doi.org/10.1201/9780429459016</p>
+<p>Ranghetti, L., Boschetti, M., Nutini, F., &amp; Busetto, L. (2020). “sen2r”: An R toolbox for automatically downloading and preprocessing Sentinel-2 satellite data. Computers &amp; Geosciences, 139, 104473. https://doi.org/10.1016/j.cageo.2020.104473</p>
+<p>Schramm, M., Pebesma, E., Milenković, M., Foresta, L., Dries, J., Jacob, A., ... &amp; Reiche, J. (2021). The openEO API – Harmonising the use of Earth Observation cloud services using virtual data cube functionalities. Remote Sensing, 13(6), 1125. https://doi.org/10.3390/rs13061125</p>
+<p>Simoes, R., Camara, G., Queiroz, G., Souza, F., Andrade, P. R., Santos, L., Carvalho, A., &amp; Ferreira, K. (2021). Satellite Image Time Series Analysis for Big Earth Observation Data. Remote Sensing, 13(13), 2428. https://doi.org/10.3390/rs13132428</p>
+<p>Storch, T., Reck, C., Holzwarth, S., Wiegers, B., Mandery, N., Raape, U., Strobl, C., Volkmann, R., Böttcher, M., Hirner, A., Senft, J., Plesia, N., Kukuk, T., Meissl, S., Felske, J.-R., Heege, T.,Keuck, V., Schmidt, M., &amp; Staudenrausch, H. (2019). Insights into CODE-DE Germany’s Copernicus data and exploitation platform. Big Earth Data, 3(4), 338–361. https://doi.org/10.1080/20964471.2019.1692297</p>
+<p>Strobl, P., Baumann, P., Lewis, A., Szantoi, Z., Killough, B., Purss, M., Craglia, M., Nativi, S., Held, A., &amp; Dhu, T. (2017). The six faces of the data cube. Proc. of the 2017 Conference on Big Data from Space (BIDS' 2017), 28th - 30th Nov 2017, Toulouse (France). https://doi.org/10.2760/383579</p>
+<p>Sudmanns, M., Augustin, H., Killough, B., Giuliani, G., Tiede, D., Leith, A., ... &amp; Lewis, A. (2022). Think global, cube local: an Earth Observation Data Cube’s contribution to the Digital Earth vision. Big Earth Data, 1-29. https://doi.org/10.1080/20964471.2022.2099236</p>
+<p>Tamiminia, H., Salehi, B., Mahdianpari, M., Quackenbush, L., Adeli, S., &amp; Brisco, B. (2020). Google Earth Engine for geo-big data applications: A meta-analysis and systematic review. ISPRS Journal of Photogrammetry and Remote Sensing, 164, 152-170. https://doi.org/10.1016/j.isprsjprs.2020.04.001</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Principles of remote sensing time series">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Principles of remote sensing time series
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../03_time_series_analysis_based_on_classification/03_time_series_analysis_based_on_classification.html" class="md-footer__link md-footer__link--next" aria-label="Next: Time series analysis based on classification">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Time series analysis based on classification
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+	
+    <div class="md-copyright__highlight">
+		<a href="https://erasmus-plus.ec.europa.eu/projects/search/details/2020-1-CZ01-KA203-078308" title="EU Project Page">
+			<img src="../../assets/img/flag_eu.jpg" }} alt="flag of the European Union" style="height:50px; float:left; margin-right:15px; margin-bottom:15px;">
+		</a>
+		<p style="font-family:Arial">
+			Funded by the Erasmus+ Programme<br>of the European Union.
+		</p>
+	</div><br>
+	<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+		<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+	</a>
+	<p>
+		Except when explicitly stated otherwise, the course is licensed under the 
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+		license, associated code is licensed under the
+		<a href="https://choosealicense.com/licenses/mit/">MIT</a>
+		license.
+	</p>
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.highlight", "content.code.copy", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/javascripts/quiz_evaluation.js"></script>
+      
+    
+  </body>
+</html>

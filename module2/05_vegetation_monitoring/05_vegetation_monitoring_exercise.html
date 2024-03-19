@@ -1,0 +1,3969 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This is the exercise in the fifth theme within the Satellite Multispectral Images Time Series Analysis module.">
+      
+      
+      
+      
+        <link rel="prev" href="05_vegetation_monitoring.html">
+      
+      
+        <link rel="next" href="../06_cs_tundra_grasslands/06_cs_tundra_grasslands.html">
+      
+      
+      <link rel="icon" href="../../assets/img/logo_etrainee.svg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
+    
+    
+      
+        <title>Vegetation change and disturbance detection - Exercise - E-TRAINEE Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.10ba22f1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vegetation-change-and-disturbance-detection-exercise" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-header__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            E-TRAINEE Course
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Vegetation change and disturbance detection - Exercise
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-nav__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    E-TRAINEE Course
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module0/module0.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prerequisites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Module 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/module1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principles of remote sensing time series
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Large time series datasets in remote sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/03_time_series_analysis_based_on_classification/03_time_series_analysis_based_on_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series analysis based on classification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/04_trajectory-based_analysis/04_trajectory_based_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trajectory-based analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/05_spatio_temporal_data_fusion/05_spatio-temporal_data_fusion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spatio-temporal data fusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reference data, validation and accuracy assessment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Module 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of multispectral imaging
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of multispectral imaging
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_multispectral_principles/01_multispectral_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_multispectral_principles/01_multispectral_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal information in satellite data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal information in satellite data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_temporal_information/02_temporal_information.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_temporal_information/02_temporal_information_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Image processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Image processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_image_processing/03_image_processing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_image_processing/03_image_processing_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Multitemporal classification
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Multitemporal classification
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_multitemporal_classification/04_multitemporal_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_multitemporal_classification/04_multitemporal_classification_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vegetation change and disturbance detection
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Vegetation change and disturbance detection
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05_vegetation_monitoring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="05_vegetation_monitoring_exercise.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-forest-disturbance-mapping-in-tatras-using-landtrendr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise - Forest disturbance mapping in Tatras using LandTrendr
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic preparation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic preparation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imagery-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Imagery data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-landtrendr-in-google-earth-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 1 - LandTrendr in Google Earth Engine
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-processing-landtrendr-results-in-rstudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 2 - Processing LandTrendr results in RStudio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-additional-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional additional tasks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional additional tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiple-parameter-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple parameter testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#landtrendr-ui-web-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      LandTrendr UI web application
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-and-software-credits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data and software credits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data and software credits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source code
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_cs_tundra_grasslands/06_cs_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_cs_forest_changes/07_cs_forest_changes.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Effects of pollution in Ore Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_cs_disturbance_detection/08_cs_disturbance_detection.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Forest disturbance detection (Tatra Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Module 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/module3.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of 3D/4D geographic point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of 3D/4D geographic point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/01_pointcloud_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/exercise/m3_theme1_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Programming for point cloud analysis with Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Programming for point cloud analysis with Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/02_pointcloud_programming_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/exercise/m3_theme2_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles and basic algorithms of 3D change detection and analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Principles and basic algorithms of 3D change detection and analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/03_3d_change_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/exercise/m3_theme3_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Time series analysis of 3D point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Time series analysis of 3D point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/04_3d_timeseries_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/exercise/m3_theme4_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning-based 3D/4D point cloud analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning-based 3D/4D point cloud analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/05_pointcloud_machine_learning/05_pointcloud_machine_learning.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_rockglacier/06_casestudy_rockglacier.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D change analysis at an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_sandybeach/06_casestudy_sandybeach.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series-based change analysis of sandy beach dynamics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Module 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/module4.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of imaging and laboratory spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of imaging and laboratory spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Airborne hyperspectral data acquisition and pre-processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Airborne hyperspectral data acquisition and pre-processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing_exercise_geometric.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    In situ and laboratory spectroscopy of vegetation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            In situ and laboratory spectroscopy of vegetation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_navig.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_spectra_probe_sphere_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning in imaging spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning in imaging spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal vs. spatial and spectral resolution
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal vs. spatial and spectral resolution
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/05_specific_resolution_contribution/05_specific_resolution_contribution.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/08_spectral_separability_grass/08_spectral_separability_grass.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal spectral separability of grass species (Krkonoše Mts.)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Discrimination of grass species from time series of RPAS hyperspectral imagery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/07_flood_plain_forest/07_flood_plain_forest.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal dynamics of flood-plain forests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_cloudcompare.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudCompare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_enmap_box.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EnMAP-Box
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_qgis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QGIS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_r_language.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_gee.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Earth Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Use Cases and Data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Use Cases and Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://doi.org/10.5281/zenodo.10003574" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data download
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_rockglacier_ahk.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D point clouds of an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_beach_kijkduin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4D point clouds of a sandy beach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_forests_tatras.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vegetation disturbance detection in Polish-Slovak Tatra Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_tundra_karkonosze.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_grasses_krkonose.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tundra vegetation monitoring in Krkonoše Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_ore_mts_disturbance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Forest disturbances in Ore Mountains (Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://web.natur.cuni.cz/gis/etrainee/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About the project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://forms.gle/Cz1yxJv2DDNz83j68" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback form
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-forest-disturbance-mapping-in-tatras-using-landtrendr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise - Forest disturbance mapping in Tatras using LandTrendr
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic preparation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic preparation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imagery-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Imagery data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-landtrendr-in-google-earth-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 1 - LandTrendr in Google Earth Engine
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-processing-landtrendr-results-in-rstudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part 2 - Processing LandTrendr results in RStudio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-additional-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional additional tasks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional additional tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiple-parameter-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple parameter testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#landtrendr-ui-web-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      LandTrendr UI web application
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-and-software-credits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data and software credits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data and software credits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source code
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+
+                  
+
+  
+  
+
+
+<h1 id="vegetation-change-and-disturbance-detection-exercise">Vegetation change and disturbance detection - Exercise</h1>
+<h2 id="exercise-forest-disturbance-mapping-in-tatras-using-landtrendr">Exercise - Forest disturbance mapping in Tatras using LandTrendr</h2>
+<p>In this exercise, you’ll delve into <strong>vegetation disturbance</strong> detection using <a href="https://doi.org/10.1016/j.rse.2010.07.008">LandTrendr algorithm</a> and its products. Employing the <a href="https://emapr.github.io/LT-GEE/index.html">Google Earth Engine implementation</a> of this tool, along with the R programming language, you’ll extract valuable data about the vegetation status in the Tatra Mountains from Landsat imagery.</p>
+<p>It’s important to understand that vegetation monitoring boasts a wide range of tools and algorithms for its implementation. The method showcased here is just one of many possibilities. Building upon the techniques and insights you gain here, we hope you’ll be equipped to extend your research, adapting to various input data, algorithms, and tools.</p>
+<h2 id="basic-preparation">Basic preparation</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>This exercise will consist of two parts. The first part will be conducted in the Google Earth Engine platform using JavaScript based Code Editor. If you are unfamiliar with this tool, we strongly recommend acquainting yourself with introductory tutorials, which are available and linked in <a href="../../software/software_gee.html">GEE software introduction in this Course</a>. Throughout this exercise, we’ll utilize a blend of built-in functions, custom functions and functions from external resources to complete various tasks. We will supply necessary links and explanations in the relevant sections. For general reference documentation see <a href="https://developers.google.com/earth-engine/apidocs">GEE API reference website</a>.</p>
+<p>The second part will use R and RStudio. You can access environment setup tutorial for the whole Module 2 here: <a href="../../software/software_r_language.html">R environment setup tutorial</a>. After following the setup guide you should have all the necessary packages installed.</p>
+<h3 id="data">Data</h3>
+<p>Download data provided through <a href="https://zenodo.org/records/10003575">Zenodo</a>.</p>
+<h4 id="imagery-data">Imagery data</h4>
+<p>The imagery supplied for this exercise consists of Landsat satellite imagery time series. The data preparation process is described in the <strong><a href="../03_image_processing/03_image_processing_exercise.html#processing-pipeline-2">Module 2 Theme 3 exercise Pipeline 2</a></strong>. We’ll use indices time series that you can access through Google Assets.</p>
+<h4 id="reference-data">Reference data</h4>
+<p>For this exercise, 100 reference points have been earmarked to validate the outcomes derived using LandTrendr. These points were randomly spread out across the research area. Each point was assessed based on chips (method of producing chips is presented in <strong><a href="../02_temporal_information/02_temporal_information_exercise.html">Theme 2 exercise</a></strong>). The attribute table from the point layer was extracted and will be used in the second part of the exercise as a validation dataset. In table rows there are consecutive reference points recorded and in columns there are subsequent years from 1985 (the first possible disturbance observation) to 2022. In cases where no disturbance was identified, the corresponding cell was marked with a “0”. Conversely, if a disturbance was evident, the cell was marked with a “1”.</p>
+<p>To validate our results, we’ll extract values from LandTrendr’s outputs for each point. Subsequently, we’ll juxtapose this extracted data against the validation table to ensure accuracy and reliability.</p>
+<p><center></p>
+<p><img src="media_exercise/val_table.jpg" title="Validation table" alt="Validation table" width="800"/></p>
+<p><i>Validation table.</i>
+</center></p>
+<h2 id="part-1-landtrendr-in-google-earth-engine">Part 1 - LandTrendr in Google Earth Engine</h2>
+<p>In this part of the exercise we’ll use the Google Earth Engine implementation of the LandTrendr algorithm. You can read about this tool on this website <a href="https://emapr.github.io/LT-GEE/index.html">https://emapr.github.io/LT-GEE/index.html</a> and in this article:</p>
+<ul>
+<li>Kennedy RE, Yang Z, Gorelick N, Braaten J, Cavalcante L, Cohen WB, Healey S. Implementation of the LandTrendr Algorithm on Google Earth Engine. Remote Sensing. 2018; 10(5):691.<a href="https://doi.org/10.3390/rs10050691">https://doi.org/10.3390/rs10050691</a></li>
+</ul>
+<p>To start with, let’s load the data. For the purpose of this exercise we’ll use two spectral indices time series images we prepared in <strong><a href="../03_image_processing/03_image_processing_exercise.html#processing-pipeline-2">Module 2 Theme 3 exercise Pipeline 2</a></strong>: <strong>NBR</strong> and <strong>NDMI</strong>. If you exported them to your own Google Earth Engine assets you can change the path in the script below to match your output folder. Otherwise, you can access data stored in <code>etrainee-module2</code> project.</p>
+<pre><code class="language-javascript">// Import image data
+var nbr = ee.Image(&quot;projects/etrainee-module2/assets/nbr&quot;);
+var ndmi = ee.Image(&quot;projects/etrainee-module2/assets/ndmi&quot;);
+
+print(nbr);
+</code></pre>
+<p>You should be able to see a multiband NBR image in the console.</p>
+<p><center></p>
+<p><img src="media_exercise/nbr_data.jpg" title="NBR" alt="NBR" width="500"/></p>
+<p></center></p>
+<p>We’ll also add two vector files: Tatras <strong>Area of Interest</strong> and <strong>forest mask</strong> based on 1984 and 2022 spatial extent of forests.</p>
+<pre><code class="language-javascript">// Define Area of Interest (AOI)
+var AOI = ee.FeatureCollection(&quot;projects/etrainee-module2/assets/aoi_tatras&quot;);
+// Define forest mask
+var forestMask = ee.FeatureCollection(&quot;projects/etrainee-module2/assets/tatras_forest_mask&quot;);
+</code></pre>
+<p>For the first part we’ll produce LandTrendr algorithm results using <strong>NBR</strong> index. To proceed we need to prepare the multiband image in accordance with LandTrendr requirements. The input data to the LandTrendr algorithm should be an <code>ImageCollection</code>. Each subsequent image should contain one band with that year’s spectral index and be named the same (i.e. <code>NBR</code>). Each image should also have time property assigned.</p>
+<p>Most spectral indices must also be multiplied by <strong><em>-1</em></strong> before submitting it to the LandTrendr algorithm. Explanation can be found <a href="https://emapr.github.io/LT-GEE/lt-gee-requirements.html#image-collection">here</a>:</p>
+<blockquote>
+<p>Two really important steps in image collection building include 1) masking cloud and cloud shadow pixels during annual image compositing and to <strong>2) ensure that the spectral band or index that is to be segmented is oriented so that vegetation loss is represented by a positive delta. For instance, NBR in its native orientation results in a negative delta when vegetation is lost from one observation to the next. In this case, NBR must be multiplied by -1 before being segmented. Conversely, if Landsat TM band 5 (SWIR) is selected for segmentation, inversion of the spectral values is not required, since natively, vegetation loss is represented by a positive delta.</strong></p>
+</blockquote>
+<pre><code class="language-javascript">var image = nbr;
+var imageName = 'nbr';
+
+
+image = image.multiply(-1);
+
+// Extract band names from image
+var bands = image.bandNames();
+print(bands);
+
+// Make a list of bands from Image
+var list = bands.map(function(n) { return image.select([n]) });
+
+// Create ImageCollection from list
+var collection = ee.ImageCollection.fromImages(list);
+
+// Define a function to rename each band to the same name and add time property
+var renameAndSetTime = function(img) {
+  // Get the band names from the image
+  var bandNames = img.bandNames();
+
+  // Extract the year from the band name 'bYYYY_NBR'.
+  // This will give &quot;YYYY&quot; as a string.
+  var yearString = ee.String(bandNames.get(0)).slice(1, 5); 
+
+  // Convert the year string to a number
+  var year = ee.Number.parse(yearString);
+
+  // Rename the band to 'NBR'
+  // 0 represents the first (and only) band of the image
+  var renamedImg = img.select([0]).rename('NBR');  
+
+  // Set the system:time_start property
+  var date = ee.Date.fromYMD(year, 7, 1);
+  return renamedImg.set('system:time_start', date.millis());
+};
+
+// Map the function over your ImageCollection
+var processedCollection = collection.map(renameAndSetTime);
+
+print(processedCollection);
+</code></pre>
+<p>The resulting collection should look like this in the console.</p>
+<p><center></p>
+<p><img src="media_exercise/processed_col.jpg" title="Processed collection" alt="Processed collection" width="500"/></p>
+<p></center></p>
+<p>We are now ready for another step, which is running LandTrendr algorithm. In the following code sections we’ll be orchestrating a sequence of operations that will allow us to yield results as exportable imagery. We’ll then move to RStudio, where we’ll assess the results.</p>
+<p>Initiating our process, it’s imperative to lay out a list of parameters we aim to evaluate. LandTrendr has several parameters, which can influence the output of the algorithm. For the purpose of this exercise we’ll set arbitrary values for seven of them and we’ll test the results with a range of values for <em>spikeThreshold</em> parameter, which is defined as <em>threshold for dampening the spikes (1.0 means no dampening)</em>. This, in essence, acts as a filter to control the sensitivity of detecting sudden, short-lived changes in the data series.</p>
+<pre><code class="language-javascript">// List of  thresholds to test
+var spikeThreshold = [0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+
+// List of  thresholds as strings (to be used in exporting part)
+var spikeThresholdStr = [&quot;03&quot;, &quot;04&quot;, &quot;05&quot;, &quot;06&quot;, &quot;07&quot;, &quot;08&quot;, &quot;09&quot;, &quot;1&quot;];
+</code></pre>
+<p>Let’s unpack the upcoming code block step by step to ensure comprehension:</p>
+<ul>
+<li>We’ll iterate in a loop for each element of <code>spikeThreshold</code> list</li>
+<li>In each loop we’ll set LandTrendr parameters, updating <code>spikeThreshold</code> each time</li>
+<li>We’ll run the LandTrendr algorithm and extract the outputs needed for further steps</li>
+<li>Levereging the structure of LandTrendr outputs we’ll extract vertex images and fitted values images. We’ll end up with two multiband images per iteration.</li>
+<li>We’ll mask the resulting images with forest mask</li>
+<li>Finally, each iteration will yield two export ready multiband images</li>
+</ul>
+<p>The number of iterations, and consequently, the exported images depends on the number of values present in the <code>spikeThreshold</code> list. This framework allows for a rigorous evaluation of how varying the <code>spikeThreshold</code> value impacts the final results.</p>
+<pre><code class="language-javascript">for (var i=0 ; i&lt;spikeThreshold.length; i++){
+
+  // Set LandTrendr parameters
+  var runParams = { 
+    timeSeries: processedCollection,
+    maxSegments:            5,
+    spikeThreshold:         spikeThreshold[i],
+    vertexCountOvershoot:   3,
+    preventOneYearRecovery: true,
+    recoveryThreshold:      0.25,
+    pvalThreshold:          0.05,
+    bestModelProportion:    0.75,
+    minObservationsNeeded:  6
+  };
+
+  // Add processedCollection to parameters
+  runParams.timeSeries = processedCollection;
+
+  // Run LandTrendr algorithm
+  var LTresult = ee.Algorithms.TemporalSegmentation.LandTrendr(runParams);
+
+  // Select the results
+  var lt = LTresult.select(&quot;LandTrendr&quot;);
+
+  // Set start and end year
+  var startYear = 1984;
+  var endYear = 2022;
+
+  // Function to extract vertex images
+  var isVertex = ee.Image(
+    ee.List.sequence(startYear, endYear)
+      .iterate(
+        function (year, acc) {
+          year = ee.Number(year);
+          var years = lt.arraySlice(0, 0, 1);
+          var isVertex = lt
+            .arrayMask(years.eq(year));
+          isVertex = isVertex
+            .updateMask(isVertex.arrayLength(1)) 
+            .arraySlice(0, 3, 4)
+            .arrayGet([0, 0])
+            .unmask(0)
+            .byte()
+            .rename(year.format('%d'));
+          return ee.Image(acc).addBands(isVertex);
+        },
+        ee.Image([])
+      )
+  );
+
+
+  isVertex = isVertex.reproject({crs: 'EPSG:32634', scale: 30});
+  isVertex = isVertex.clip(forestMask).unmask(0).short();
+
+
+  Export.image.toDrive({
+    image: isVertex, 
+    description: imageName+&quot;_ver_&quot;+spikeThresholdStr[i], 
+    region: AOI, 
+    folder: 'theme5_landtrendr',
+    scale: 30, 
+    crs: 'EPSG:32634', 
+    maxPixels: 1e13
+  });
+
+
+  // Function to extract fitted values images
+  var fittedValues = ee.Image(
+    ee.List.sequence(startYear, endYear)
+      .iterate(
+        function (year, acc) {
+          year = ee.Number(year);
+          var years = lt.arraySlice(0, 0, 1);
+          var isVertex = lt
+            .arrayMask(years.eq(year));
+          isVertex = isVertex
+            .updateMask(isVertex.arrayLength(1)) // Mask if no matching year
+            .arraySlice(0, 2, 3)
+            .arrayGet([0, 0])
+            .unmask(0) // Assum no vertex when no data for year
+            .rename(year.format('%d'));
+          return ee.Image(acc).addBands(isVertex);
+        },
+        ee.Image([])
+      )
+  );
+
+  fittedValues = fittedValues.reproject({crs: 'EPSG:32634', scale: 30});
+  fittedValues = fittedValues.clip(forestMask).unmask(0).float();
+
+
+  Export.image.toDrive({
+    image: fittedValues, 
+    description: imageName+&quot;_fv_&quot;+spikeThresholdStr[i], 
+    region: AOI, 
+    folder: 'theme5_landtrendr',
+    scale: 30, 
+    crs: 'EPSG:32634', 
+    maxPixels: 1e13
+  });
+
+
+}
+</code></pre>
+<p>After successfully running this part of the script you should be able to see 16 images waiting to be exported.</p>
+<p><center></p>
+<p><img src="media_exercise/export_ready.jpg" title="Export ready" alt="Export ready" width="600"/></p>
+<p></center></p>
+<p>Export each image to your Google Drive. You can change the folder to which the results will be exported. From your Google Drive folder download the images to your local hard drive.</p>
+<p><strong>After you queued images for download you can repeat the steps above to prepare LandTrendr outputs usng NDMI as input. For the next part of the exercise we’ll want to have additional 16 NDMI products exported to local hard drive.</strong></p>
+<p><strong>Change these lines and rerun the whole script to proceed with NDMI part:</strong></p>
+<pre><code class="language-javascript">var image = ndmi;
+var imageName = 'ndmi';
+
+ ...
+
+  // Rename the band to 'NDMI'
+  var renamedImg = img.select([0]).rename('NDMI'); 
+</code></pre>
+<h2 id="part-2-processing-landtrendr-results-in-rstudio">Part 2 - Processing LandTrendr results in RStudio</h2>
+<p>After successfully downloading all the necessary results move them to <code>theme_5_exercise/data_exercise</code> folder. We supplied them in our Zenodo data package just in case something went wrong during part 1. You can replace them if you managed to successfully complete part 1.</p>
+<p>Create a new script inside <code>theme_5_exercise</code> folder. You can name it <code>theme_5_exercise.R</code>. Start with loading required packages.</p>
+<pre><code class="language-r"># raster I/o
+library(terra) 
+
+# vector I/0
+library(sf) 
+
+# reading .xlsx files
+library(readxl) 
+
+# writing.xlsx files
+library(writexl) 
+
+# tabular data manipulation
+library(dplyr) 
+</code></pre>
+<p>Next let’s read input data for this exercise. We’ll start with NBR rasters.</p>
+<pre><code class="language-r"># List vertices raster paths
+verts_rasters &lt;- list.files(path=&quot;theme_5_exercise/data_exercise&quot;, 
+                            pattern='nbr_ver', 
+                            full.names = TRUE)
+# List fitted values raster paths
+fv_rasters &lt;- list.files(path=&quot;theme_5_exercise/data_exercise&quot;, 
+                         pattern='nbr_fv', 
+                         full.names = TRUE)
+
+# Get names of rasters 
+verts_names &lt;- list.files(path=&quot;theme_5_exercise/data_exercise&quot;, 
+                          pattern='nbr_ver')
+fv_names &lt;- list.files(path=&quot;theme_5_exercise/data_exercise&quot;, 
+                       pattern='nbr_ver')
+
+# Read vertices and fitted values rasters to lists
+verts_rasters_list &lt;- lapply(verts_rasters, rast)
+fv_rasters_list &lt;- lapply(fv_rasters, rast)
+
+# Rename lists elements
+names(verts_rasters_list) &lt;- verts_names
+names(fv_rasters_list) &lt;- fv_names
+</code></pre>
+<p>Now read validation points dataset.</p>
+<pre><code class="language-r"># Read validation points
+val_points &lt;- st_read(&quot;theme_5_exercise/data_exercise/T5_points.shp&quot;)
+</code></pre>
+<p>The outputs you’ve gotten from LandTrendr consist of raw <strong>vertices</strong> and their corresponding <strong>fitted values</strong>. Vertices in LandTrendr represent breakpoints in the time series of a given pixel, indicating significant changes in its trajectory, while fitted values are smoother curves representing predicted values based on the observed data. We are interested in only those breakpoints (vertices) which point towards a decrease or disturbance in vegetation. To isolate these, it’s imperative to measure the <strong>magnitude of change</strong> between each segment’s start and end points. This magnitude is essentially the difference (delta) between the end vertex’s fitted value and the start vertex’s fitted value for a given segment. For indices such as NBR and NDMI (multiplied by -1 before submitting them to LandTrendr), a significant positive delta is a strong indicator of vegetation disturbance or stress. Through a loop mechanism, for every pair of vertex-fitted values images we’ve exported, the code calculates the magnitudes of change. The results will be structured as matrices, with each cell indicating the magnitude of vegetation change at the start vertex’s position.</p>
+<pre><code class="language-r"># Empty list for storing the results
+magnitudes_list &lt;- list()
+
+# For each par of vertices-fitted values images
+for (r in seq(1:length(verts_rasters_list))) {
+
+  # Read appropriate rasters
+  vertices &lt;- verts_rasters_list[[r]]
+  fitted_values &lt;- fv_rasters_list[[r]]
+
+  # Extract values for 100 validation points
+  vert_pts &lt;- extract(vertices, val_points) %&gt;%
+    select(2:40)
+  vals_pts &lt;- extract(fitted_values, val_points) %&gt;%
+    select(2:40)
+
+  # Prepare empty output matrix
+  output &lt;- matrix(data = NA, nrow = 100, ncol = 39)
+
+  # For each row(point)
+  for (row in 1:nrow(vert_pts)) {
+
+    # Get only pixel values for that row(point)
+    vertices_pixel &lt;- vert_pts[row, ]
+    fitted_values_pixel &lt;- vals_pts[row, ]
+
+    # Check for the occurence of vertices
+    vertex_indices &lt;- which(vertices_pixel == 1)
+
+    # Prepare empty vector for magnitude calculation results
+    magnitude_of_change &lt;- rep(NA, length(vertices_pixel))
+
+    # Calculate magnitudes
+    for (i in 1:(length(vertex_indices) - 1)) {
+
+      start_index &lt;- vertex_indices[i]
+      end_index &lt;- vertex_indices[i + 1]
+
+      difference &lt;- fitted_values_pixel[1, end_index] - fitted_values_pixel[1, start_index]
+      magnitude_of_change[end_index] &lt;- difference
+    }
+
+    # Insert magnitude values to the matching row in empty output matrix
+    output[row,] &lt;- magnitude_of_change
+    # Insert temporary 0 value to the first column
+    output[row, 1] &lt;- 0
+
+    # Check the occurrences of magnitude 
+    mag_indices &lt;- which(!is.na(output[row, ]))
+
+    # Prepare empty vector for the moved values
+    moved_row &lt;- rep(NA, 39)
+
+    # Move magnitude values one vertex position backwards
+    for (i in 2:length(mag_indices)) {
+
+      val &lt;- output[row, mag_indices[i]]
+      moved_row[mag_indices[i-1]] &lt;- val
+
+    }
+
+    # Replace the row in output with a moved row
+    output[row,] &lt;- moved_row
+
+
+  }
+
+  # Copy output values
+  output_mask_loss &lt;- output
+
+  # Retain only positive magnitudes indicating vegetation loss
+  output_mask_loss[output_mask_loss &lt; 0] &lt;- NA
+
+  # Add the magnitude matrix to list storing the results
+  magnitudes_list[[r]] &lt;- output_mask_loss
+
+}
+</code></pre>
+<p>Run <code>View(magnitude_list[[1]])</code> in the console so you can visually inspect an example matrix from the list of matrices derived from the LandTrendr results. Each matrix contains the magnitudes of vegetation loss/disturbance across the validation points.</p>
+<p><center></p>
+<p><img src="media_exercise/magnitudes.jpg" title="Magnitude result" alt="Magnitude result" width="600"/></p>
+<p></center></p>
+<p>So far we’ve acquired a matrix with magnitudes of loss/disturbance events for each of the eight NBR LandTrendr results we downloaded. We now want to test the impact of different magnitude thresholds on the final accuracy of the algorithm. You’ll be testing 80 thresholds, ranging from 0 (no change) to 0.8 (significant change). For each threshold value, you’ll mask (or filter out) all vertices with magnitude below the given threshold. The reason for masking these vertices is to exclude potential “false positives” from the analysis. After applying the threshold, the filtered result is then compared to a validation table. This table contains manually verified data against which the LandTrendr results are compared to determine accuracy. In order to construct a table corresponding to the validation one we will need to shift vertices one year forwards. This is necessary, because the year of detection of disturbance event is the first year after end vertex of segment with positive delta.</p>
+<p>To streamline this process, it’s recommended to prepare a vector containing all the threshold values to test. Furthermore, a function can be created to systematically apply each threshold to the matrices, mask out irrelevant vertices, and then compare the results against the validation table.</p>
+<pre><code class="language-r"># Magnitude thresholds
+thresholds &lt;- seq(0, 0.8, by = 0.01)
+
+# Function to apply magnitude threshold
+apply_magnitude_threshold &lt;- function(mag_mat, threshold) {
+
+  output_mask_loss_th &lt;- mag_mat
+
+  # mask vertices below threshold
+  output_mask_loss_th[output_mask_loss_th &lt; threshold] &lt;- NA
+
+  # no change  - NAs to 0
+  output_mask_loss_th[is.na(output_mask_loss_th)] &lt;- 0
+
+  # change/vertex - above 0 to 1
+  output_mask_loss_th[output_mask_loss_th &gt; 0] &lt;- 1
+
+  # Shift vertices so that they represent year of detection
+  output_mask_loss_shift &lt;- output_mask_loss_th[, 1:38]
+  colnames(output_mask_loss_shift) &lt;- c(1985:2022)
+
+  return(output_mask_loss_shift)
+
+}
+</code></pre>
+<p>Prepare a list of names to be able to differentiate results of each test.</p>
+<pre><code class="language-r"># Prepare list of threshold scenario names
+# replace &quot;.&quot; with &quot;_&quot;
+names_list &lt;- paste0(&quot;Threshold_&quot;, 
+                     gsub(&quot;\\.&quot;, &quot;_&quot;, abs(thresholds))) 
+</code></pre>
+<p>We want to calculate statistics for each iteration. The function below calculates several basic statistics derived from confusion matrix.</p>
+<pre><code class="language-r"># Prepare a function to calculate statistics
+calculate_confusion_matrix_stats &lt;- function(matrix, validation_matrix, set_name) {
+
+  # Calculate TP, FP, TN, FN
+  TP &lt;- sum(matrix == 1 &amp; validation_matrix == 1)
+  FP &lt;- sum(matrix == 1 &amp; validation_matrix == 0)
+  TN &lt;- sum(matrix == 0 &amp; validation_matrix == 0)
+  FN &lt;- sum(matrix == 0 &amp; validation_matrix == 1)
+
+  # Calculate the metrics
+  Accuracy &lt;- (TP + TN) / (TP + FP + FN + TN)
+  Precision &lt;- TP / (TP + FP)
+  Sensitivity &lt;- TP / (TP + FN)
+  Specificity &lt;- TN / (TN + FP)
+  F1_Score &lt;- 2 * (Sensitivity * Precision) / (Sensitivity  + Precision)
+
+  # Create a data frame with the confusion matrix stats
+  stats &lt;- data.frame(Set = set_name, TP, FP, TN, FN, Accuracy, Precision, 
+                      Sensitivity, Specificity, F1_Score)
+
+  return(stats)
+}
+</code></pre>
+<p>We are now ready to read validation table and prepare the results. We’ll save each result to a separate <code>.xlsx</code> file.</p>
+<pre><code class="language-r"># Read validation table
+val_table &lt;- read_xlsx(&quot;theme_5_exercise/data_exercise/T5_validation_table.xlsx&quot;) %&gt;%
+  select(2:39)
+
+# Prepare  a storage for results
+results_list &lt;- list()
+
+# For each matrix in magnitudes_list
+for (l in seq(1, length(magnitudes_list))) {
+
+  # Calculate matrices with each threshold applied
+  thresholds_results &lt;- lapply(thresholds, apply_magnitude_threshold, 
+                               mag_mat = magnitudes_list[[l]])
+  thresholds_results &lt;- setNames(thresholds_results, names_list)
+
+  # Calculate accuracy statistics
+  stats_list &lt;- lapply(seq_along(thresholds_results), 
+                function(i) calculate_confusion_matrix_stats(thresholds_results[[i]],
+                            val_table, names(thresholds_results)[i]))
+
+  # construct one data frame with accuracy statistics
+  stats_df &lt;- do.call(rbind, stats_list)
+
+  # add the constructed data frame to the list of results
+  results_list[[l]] &lt;- stats_df
+
+  # save the data frame with results to .xlsx file
+  write_xlsx(stats_df, paste0(&quot;theme_5_exercise/results/&quot;, 
+                               verts_names[l], 
+                               &quot;.xlsx&quot;))
+
+}
+</code></pre>
+<p>Inspect the results.</p>
+<p><center></p>
+<p><img src="media_exercise/nbr_example_result.jpg" title="Example result" alt="Example result" width="600"/></p>
+<p></center></p>
+<p>In the showcased results, we observe data specific to a scenario where the <code>spikeThreshold</code> was set to <strong>0.7</strong>. Notably, the maximum <strong>F1</strong> statistic achieved was <strong>0.5</strong> for a magnitude threshold of <strong>0.14</strong>. Analyzing this further, the LandTrendr algorithm aligned with our validation dataset on <strong>30</strong> occasions, denoting True Positives. However, it also flagged <strong>21</strong> vertices not found in our validation data, indicating False Positives. Additionally, the algorithm missed detecting <strong>39</strong> disturbance events that were indeed present in our validation dataset, resulting in False Negatives. To get a comprehensive understanding, it’s crucial to juxtapose these findings with outcomes from other <code>spikeThreshold</code> and magnitude change threshold combinations.</p>
+<p>Once you’ve made your comparisons and drawn your conclusions, you can delve into the subsequent task: applying the aforementioned methodologies to NDMI.</p>
+<hr />
+<p><em>TASK: Compare the results of LandTrendr results thresholding for NBR and NDMI indices. Repeat the steps shown above for NDMI. Start with replacing the input data rasters. Then follow the rest of the workflow to produce a set of accuracy tables</em></p>
+<pre><code class="language-r"># List vertices raster paths
+verts_rasters &lt;- list.files(path=&quot;theme_5_exercise/data_exercise&quot;, 
+                            pattern='ndmi_ver', 
+                            full.names = TRUE)
+# List fitted values raster paths
+fv_rasters &lt;- list.files(path=&quot;theme_5_exercise/data_exercise&quot;, 
+                         pattern='ndmi_fv', 
+                         full.names = TRUE)
+
+# Get names of rasters 
+verts_names &lt;- list.files(path=&quot;theme_5_exercise/data_exercise&quot;, 
+                          pattern='ndmi_ver')
+fv_names &lt;- list.files(path=&quot;theme_5_exercise/data_exercise&quot;, 
+                       pattern='ndmi_ver')
+</code></pre>
+<hr />
+<p>The comparable result (<code>spikeThreshold</code> equal to <strong>0.7</strong>) for NDMI should look like this:</p>
+<p><center></p>
+<p><img src="media_exercise/ndmi_example_result.jpg" title="Example result" alt="Example result" width="600"/></p>
+<p></center></p>
+<p>Inspect other results and compare them to NBR achieved statistics.</p>
+<h2 id="optional-additional-tasks">Optional additional tasks</h2>
+<h3 id="multiple-parameter-testing">Multiple parameter testing</h3>
+<p>As mentioned before you can test multiple LandTrendr parameter values to compare the results. This code below shows an example on how to implement more loops in the beggining of the Google Earth Engine code.</p>
+<pre><code class="language-javascript">
+var maxSegments=[6, 7, 8];
+var spikeThreshold=[0.75, 0.8, 0.85];
+var vertexCountOvershoot=[3, 4, 5];
+var recoveryThreshold=[0.75, 0.8];
+var pValueTreshold=[0.05, 0.1];
+var bestModelProportion=[0.75, 0.8];
+var minObservationsNeeded=[6];
+
+for(var x = 0 ; x&lt;maxSegments.length; x++){
+    for (var y = 0 ;y&lt;spikeThreshold.length; y++){
+        for (var z = 0;z&lt;vertexCountOvershoot.length; z++){
+            for (var a = 0 ;a&lt;recoveryThreshold.length;a++){
+                for (var b = 0; b&lt;pValueTreshold.length;b++){
+                    for (var c = 0; c&lt;bestModelProportion.length;c++){
+                        for (var d = 0; d&lt;minObservationsNeeded.length;d++){
+
+                          var runParams = {
+                            timeSeries: processedCollection,
+                            maxSegments:            maxSegments[x],
+                            spikeThreshold:         spikeThreshold[y],
+                            vertexCountOvershoot:   vertexCountOvershoot[z],
+                            preventOneYearRecovery: true,
+                            recoveryThreshold:      recoveryThreshold[a],
+                            pvalThreshold:          pValueTreshold[b],
+                            bestModelProportion:    bestModelProportion[c],
+                            minObservationsNeeded:  minObservationsNeeded[d],
+                          };
+
+                          // ...
+                          // ... the rest of the code
+                          // ...
+
+</code></pre>
+<h3 id="landtrendr-ui-web-application">LandTrendr UI web application</h3>
+<p>You can check how the application and algorithm works using <a href="https://emapr.github.io/LT-GEE/ui-applications.html#ui-landtrendr-change-mapper">UI LandTrendr Change Mapper</a> (direct link to the GEEapp here: <a href="https://emaprlab.users.earthengine.app/view/lt-gee-change-mapper">https://emaprlab.users.earthengine.app/view/lt-gee-change-mapper</a>).</p>
+<p>Play around with different settings and parameters. This app uses LandTrendr based method of preparing multitemporal input datasets (medoid compositing). Indices values are also multiplied by 1000, so equivalent of magnitude filter 0.14 in our case would be 140 in the GEE app.</p>
+<p>This is the result you should see when running the app in Tatra Mountains using parameters we used in our exercise. The map presents the newest disturbance vertex with magnitude of over 140.</p>
+<p><center></p>
+<p><img src="media_exercise/gee_app.jpg" title="Example result" alt="Example result" width="800"/></p>
+<p></center></p>
+<h2 id="data-and-software-credits">Data and software credits</h2>
+<h3 id="data_1">Data</h3>
+<p>Landsat 4, 5, 7, 8 and 9 imagery courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a>/ <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a> processed in and downloaded from <a href="https://doi.org/10.1016/j.rse.2017.06.031">Google Earth Engine by Gorelick et al., 2017</a></p>
+<h3 id="software">Software</h3>
+<ul>
+<li>QGIS Development Team (2022). <em>QGIS Geographic Information System. Open Source Geospatial Foundation Project</em>. <a href="http://qgis.osgeo.org">http://qgis.osgeo.org</a></li>
+<li>R Core Team (2023). <em>R: A language and environment for statistical computing</em>. R Foundation for Statistical Computing, Vienna, Austria. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</li>
+<li>Hijmans R (2023). <em>terra: Spatial Data Analysis</em>. R package version 1.7-39, <a href="https://CRAN.R-project.org/package=terra">https://CRAN.R-project.org/package=terra</a></li>
+<li>Kennedy, R.E., Yang, Z., Gorelick, N., Braaten, J., Cavalcante, L., Cohen, W.B., Healey, S. (2018). Implementation of the LandTrendr Algorithm on Google Earth Engine. Remote Sensing. 10, 691.<a href="https://doi.org/10.3390/rs10050691">https://doi.org/10.3390/rs10050691</a></li>
+<li>Ooms J (2023). <em>writexl: Export Data Frames to Excel ‘xlsx’ Format</em>. R package version 1.4.2, <a href="https://CRAN.R-project.org/package=writexl">https://CRAN.R-project.org/package=writexl</a>.</li>
+<li>Pebesma, E., &amp; Bivand, R. (2023). <em>Spatial Data Science: With Applications in R</em>. Chapman and Hall/CRC. <a href="https://doi.org/10.1201/9780429459016">https://doi.org/10.1201/9780429459016</a></li>
+<li>Pebesma, E., 2018. <em>Simple Features for R: Standardized Support for Spatial Vector Data</em>. The R Journal 10 (1), 439-446, <a href="https://doi.org/10.32614/RJ-2018-009">https://doi.org/10.32614/RJ-2018-009</a></li>
+<li>Wickham H, François R, Henry L, Müller K, Vaughan D (2023). <em>dplyr: A Grammar of Data Manipulation</em>. R package version 1.1.2, <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a></li>
+<li>Wickham H, Bryan J (2023). <em>readxl: Read Excel Files</em>. <a href="https://readxl.tidyverse.org">https://readxl.tidyverse.org</a>, <a href="https://github.com/tidyverse/readxl">https://github.com/tidyverse/readxl</a>.</li>
+</ul>
+<h2 id="source-code">Source code</h2>
+<details>
+<summary>
+You can find the entire code used in this exercise here
+</summary>
+
+**[Google Earth Engine code](https://code.earthengine.google.com/c26bdc73c893b317e24f2158e66602a2?noload=true)**
+
+**R code**
+
+
+<pre><code class="language-r">
+library(terra) # raster I/o
+library(sf) # vector I/0
+library(readxl) # reading .xlsx files
+library(writexl) # writing.xlsx files
+library(dplyr) # tabular data manipulation
+
+
+# List vertices raster paths
+verts_rasters &lt;- list.files(path=&quot;theme_5_exercise/data_exercise&quot;, pattern='nbr_ver', full.names = TRUE)
+# List fitted values raster paths
+fv_rasters &lt;- list.files(path=&quot;theme_5_exercise/data_exercise&quot;, pattern='nbr_fv', full.names = TRUE)
+
+# Get names of rasters 
+verts_names &lt;- list.files(path=&quot;theme_5_exercise/data_exercise&quot;, pattern='nbr_ver')
+fv_names &lt;- list.files(path=&quot;theme_5_exercise/data_exercise&quot;, pattern='nbr_ver')
+
+# Read vertices and fitted values rasters to lists
+verts_rasters_list &lt;- lapply(verts_rasters, rast)
+fv_rasters_list &lt;- lapply(fv_rasters, rast)
+
+# Rename lists elements
+names(verts_rasters_list) &lt;- verts_names
+names(fv_rasters_list) &lt;- fv_names
+
+
+# Read validation points
+val_points &lt;- st_read(&quot;theme_5_exercise/data_exercise/T5_points.shp&quot;)
+
+# Empty list for storing the results
+magnitudes_list &lt;- list()
+
+# Empty list for storing the results
+magnitudes_list &lt;- list()
+
+# For each par of vertices-fitted values images
+for (r in seq(1:length(verts_rasters_list))) {
+
+  # Read appropriate rasters
+  vertices &lt;- verts_rasters_list[[r]]
+  fitted_values &lt;- fv_rasters_list[[r]]
+
+
+  # Extract values for 100 validation points
+  vert_pts &lt;- extract(vertices, val_points) %&gt;%
+    select(2:40)
+  vals_pts &lt;- extract(fitted_values, val_points) %&gt;%
+    select(2:40)
+
+
+  # Prepare empty output matrix
+  output &lt;- matrix(data = NA, nrow = 100, ncol = 39)
+
+  # For each row(point)
+  for (row in 1:nrow(vert_pts)) {
+
+    # Get only pixel values for that row(point)
+    vertices_pixel &lt;- vert_pts[row, ]
+    fitted_values_pixel &lt;- vals_pts[row, ]
+
+    # Check for the occurence of vertices
+    vertex_indices &lt;- which(vertices_pixel == 1)
+
+    # Prepare empty vector for magnitude calculation results
+    magnitude_of_change &lt;- rep(NA, length(vertices_pixel))
+
+    # Calculate magnitudes
+    for (i in 1:(length(vertex_indices) - 1)) {
+
+      start_index &lt;- vertex_indices[i]
+      end_index &lt;- vertex_indices[i + 1]
+
+      difference &lt;- fitted_values_pixel[1, end_index] - fitted_values_pixel[1, start_index]
+      magnitude_of_change[end_index] &lt;- difference
+    }
+
+    # Insert magnitude values to the matching row in empty output matrix
+    output[row,] &lt;- magnitude_of_change
+    # Insert temporary 0 value to the first column
+    output[row, 1] &lt;- 0
+
+
+    # Check the occurrences of magnitude 
+    mag_indices &lt;- which(!is.na(output[row, ]))
+
+    # Prepare empty vector for the moved values
+    moved_row &lt;- rep(NA, 39)
+
+    # Move magnitude values one vertex position backwards
+    for (i in 2:length(mag_indices)) {
+
+      val &lt;- output[row, mag_indices[i]]
+      moved_row[mag_indices[i-1]] &lt;- val
+
+    }
+
+    # Replace the row in output with a moved row
+    output[row,] &lt;- moved_row
+
+
+  }
+
+  # Copy output values
+  output_mask_loss &lt;- output
+
+  # Retain only positive magnitudes indicating vegetation loss
+  output_mask_loss[output_mask_loss &lt; 0] &lt;- NA
+
+  # Add the magnitude matrix to list storing the results
+  magnitudes_list[[r]] &lt;- output_mask_loss
+
+}
+
+
+# Magnitude thresholds
+thresholds &lt;- seq(0, 0.8, by = 0.01)
+
+
+# Function to apply magnitude threshold
+apply_magnitude_threshold &lt;- function(mag_mat, threshold) {
+
+  output_mask_loss_th &lt;- mag_mat
+
+  # mask vertices below threshold
+  output_mask_loss_th[output_mask_loss_th &lt; threshold] &lt;- NA
+
+  # no change  - NAs to 0
+  output_mask_loss_th[is.na(output_mask_loss_th)] &lt;- 0
+
+  # change/vertex - above 0 to 1
+  output_mask_loss_th[output_mask_loss_th &gt; 0] &lt;- 1
+
+  # Shift vertices so that they represent year of detection
+  output_mask_loss_shift &lt;- output_mask_loss_th[, 1:38]
+  colnames(output_mask_loss_shift) &lt;- c(1985:2022)
+
+  return(output_mask_loss_shift)
+
+}
+
+# Prepare list of threshold scenario names
+names_list &lt;- paste0(&quot;Threshold_&quot;, gsub(&quot;\\.&quot;, &quot;_&quot;, abs(thresholds))) # replace &quot;.&quot; with &quot;_&quot;
+
+# Prepare a function to calculate statistics
+calculate_confusion_matrix_stats &lt;- function(matrix, validation_matrix, set_name) {
+
+  # Calculate TP, FP, TN, FN
+  TP &lt;- sum(matrix == 1 &amp; validation_matrix == 1)
+  FP &lt;- sum(matrix == 1 &amp; validation_matrix == 0)
+  TN &lt;- sum(matrix == 0 &amp; validation_matrix == 0)
+  FN &lt;- sum(matrix == 0 &amp; validation_matrix == 1)
+
+  # Calculate the metrics
+  Accuracy &lt;- (TP + TN) / (TP + FP + FN + TN)
+  Precision &lt;- TP / (TP + FP)
+  Sensitivity &lt;- TP / (TP + FN)
+  Specificity &lt;- TN / (TN + FP)
+  F1_Score &lt;- 2 * (Sensitivity * Precision) / (Sensitivity  + Precision)
+
+  # Create a data frame with the confusion matrix stats
+  stats &lt;- data.frame(Set = set_name, TP, FP, TN, FN, Accuracy, Precision, Sensitivity, Specificity, F1_Score)
+
+  return(stats)
+}
+
+# Read validation table
+val_table &lt;- read_xlsx(&quot;theme_5_exercise/data_exercise/T5_validation_table.xlsx&quot;) %&gt;%
+  select(2:39)
+
+# Prepare  a storage for results
+results_list &lt;- list()
+
+# For each matrix in magnitudes_list
+for (l in seq(1, length(magnitudes_list))) {
+
+  # Calculate matrices with each threshold applied
+  thresholds_results &lt;- lapply(thresholds, apply_magnitude_threshold, mag_mat = magnitudes_list[[l]])
+  thresholds_results &lt;- setNames(thresholds_results, names_list)
+
+  # Calculate
+  stats_list &lt;- lapply(seq_along(thresholds_results), function(i) calculate_confusion_matrix_stats(thresholds_results[[i]], val_table, names(thresholds_results)[i]))
+
+  # one table with confusion results
+  stats_df &lt;- do.call(rbind, stats_list)
+
+  results_list[[l]] &lt;- stats_df
+
+  write_xlsx(stats_df, paste0(&quot;theme_5_exercise/results/&quot;, verts_names[l], &quot;.xlsx&quot;))
+
+}
+
+
+### NDMI
+
+# List vertices raster paths
+verts_rasters &lt;- list.files(path=&quot;theme_5_exercise/data_exercise&quot;, pattern='ndmi_ver', full.names = TRUE)
+# List fitted values raster paths
+fv_rasters &lt;- list.files(path=&quot;theme_5_exercise/data_exercise&quot;, pattern='ndmi_fv', full.names = TRUE)
+
+# Get names of rasters 
+verts_names &lt;- list.files(path=&quot;theme_5_exercise/data_exercise&quot;, pattern='ndmi_ver')
+fv_names &lt;- list.files(path=&quot;theme_5_exercise/data_exercise&quot;, pattern='ndmi_ver')
+
+
+# Read vertices and fitted values rasters to lists
+verts_rasters_list &lt;- lapply(verts_rasters, rast)
+fv_rasters_list &lt;- lapply(fv_rasters, rast)
+
+# Rename lists elements
+names(verts_rasters_list) &lt;- verts_names
+names(fv_rasters_list) &lt;- fv_names
+
+
+
+# Empty list for storing the results
+magnitudes_list &lt;- list()
+
+# For each par of vertices-fitted values images
+for (r in seq(1:length(verts_rasters_list))) {
+
+  # Read appropriate rasters
+  vertices &lt;- verts_rasters_list[[r]]
+  fitted_values &lt;- fv_rasters_list[[r]]
+
+
+  # Extract values for 100 validation points
+  vert_pts &lt;- extract(vertices, val_points) %&gt;%
+    select(2:40)
+  vals_pts &lt;- extract(fitted_values, val_points) %&gt;%
+    select(2:40)
+
+
+  # Prepare empty output matrix
+  output &lt;- matrix(data = NA, nrow = 100, ncol = 39)
+
+  # For each row(point)
+  for (row in 1:nrow(vert_pts)) {
+
+    # Get only pixel values for that row(point)
+    vertices_pixel &lt;- vert_pts[row, ]
+    fitted_values_pixel &lt;- vals_pts[row, ]
+
+    # Check for the occurence of vertices
+    vertex_indices &lt;- which(vertices_pixel == 1)
+
+    # Prepare empty vector for magnitude calculation results
+    magnitude_of_change &lt;- rep(NA, length(vertices_pixel))
+
+    # Calculate magnitudes
+    for (i in 1:(length(vertex_indices) - 1)) {
+
+      start_index &lt;- vertex_indices[i]
+      end_index &lt;- vertex_indices[i + 1]
+
+      difference &lt;- fitted_values_pixel[1, end_index] - fitted_values_pixel[1, start_index]
+      magnitude_of_change[end_index] &lt;- difference
+    }
+
+    # Insert magnitude values to the matching row in empty output matrix
+    output[row,] &lt;- magnitude_of_change
+    # Insert temporary 0 value to the first column
+    output[row, 1] &lt;- 0
+
+
+    # Check the occurrences of magnitude 
+    mag_indices &lt;- which(!is.na(output[row, ]))
+
+    # Prepare empty vector for the moved values
+    moved_row &lt;- rep(NA, 39)
+
+    # Move magnitude values one vertex position backwards
+    for (i in 2:length(mag_indices)) {
+
+      val &lt;- output[row, mag_indices[i]]
+      moved_row[mag_indices[i-1]] &lt;- val
+
+    }
+
+    # Replace the row in output with a moved row
+    output[row,] &lt;- moved_row
+
+
+  }
+
+  # Copy output values
+  output_mask_loss &lt;- output
+
+  # Retain only positive magnitudes indicating vegetation loss
+  output_mask_loss[output_mask_loss &lt; 0] &lt;- NA
+
+  # Add the magnitude matrix to list storing the results
+  magnitudes_list[[r]] &lt;- output_mask_loss
+
+}
+
+
+# Prepare  a storage for results
+results_list &lt;- list()
+
+# For each matrix in magnitudes_list
+for (l in seq(1, length(magnitudes_list))) {
+
+  # Calculate matrices with each threshold applied
+  thresholds_results &lt;- lapply(thresholds, apply_magnitude_threshold, mag_mat = magnitudes_list[[l]])
+  thresholds_results &lt;- setNames(thresholds_results, names_list)
+
+  # Calculate
+  stats_list &lt;- lapply(seq_along(thresholds_results), function(i) calculate_confusion_matrix_stats(thresholds_results[[i]], val_table, names(thresholds_results)[i]))
+
+  # one table with confusion results
+  stats_df &lt;- do.call(rbind, stats_list)
+
+  results_list[[l]] &lt;- stats_df
+
+  write_xlsx(stats_df, paste0(&quot;theme_5_exercise/results/&quot;, verts_names[l], &quot;.xlsx&quot;))
+
+}
+</code></pre>
+
+
+</details>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="05_vegetation_monitoring.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lesson">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Lesson
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../06_cs_tundra_grasslands/06_cs_tundra_grasslands.html" class="md-footer__link md-footer__link--next" aria-label="Next: Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+	
+    <div class="md-copyright__highlight">
+		<a href="https://erasmus-plus.ec.europa.eu/projects/search/details/2020-1-CZ01-KA203-078308" title="EU Project Page">
+			<img src="../../assets/img/flag_eu.jpg" }} alt="flag of the European Union" style="height:50px; float:left; margin-right:15px; margin-bottom:15px;">
+		</a>
+		<p style="font-family:Arial">
+			Funded by the Erasmus+ Programme<br>of the European Union.
+		</p>
+	</div><br>
+	<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+		<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+	</a>
+	<p>
+		Except when explicitly stated otherwise, the course is licensed under the 
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+		license, associated code is licensed under the
+		<a href="https://choosealicense.com/licenses/mit/">MIT</a>
+		license.
+	</p>
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.highlight", "content.code.copy", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/javascripts/quiz_evaluation.js"></script>
+      
+    
+  </body>
+</html>

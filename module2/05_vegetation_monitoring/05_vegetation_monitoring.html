@@ -1,0 +1,3643 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="This is the fifth theme within the Satellite Multispectral Images Time Series Analysis module.">
+      
+      
+      
+      
+        <link rel="prev" href="../04_multitemporal_classification/04_multitemporal_classification_exercise.html">
+      
+      
+        <link rel="next" href="05_vegetation_monitoring_exercise.html">
+      
+      
+      <link rel="icon" href="../../assets/img/logo_etrainee.svg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
+    
+    
+      
+        <title>Vegetation change and disturbance detection - E-TRAINEE Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.10ba22f1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vegetation-change-and-disturbance-detection" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-header__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            E-TRAINEE Course
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Vegetation change and disturbance detection
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="E-TRAINEE Course" class="md-nav__button md-logo" aria-label="E-TRAINEE Course" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_etrainee.svg" alt="logo">
+
+    </a>
+    E-TRAINEE Course
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/3dgeo-heidelberg/etrainee" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module0/module0.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prerequisites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Module 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/module1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principles of remote sensing time series
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Large time series datasets in remote sensing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/03_time_series_analysis_based_on_classification/03_time_series_analysis_based_on_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series analysis based on classification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/04_trajectory-based_analysis/04_trajectory_based_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trajectory-based analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/05_spatio_temporal_data_fusion/05_spatio-temporal_data_fusion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spatio-temporal data fusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reference data, validation and accuracy assessment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Module 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of multispectral imaging
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of multispectral imaging
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_multispectral_principles/01_multispectral_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_multispectral_principles/01_multispectral_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal information in satellite data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal information in satellite data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_temporal_information/02_temporal_information.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_temporal_information/02_temporal_information_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Image processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Image processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_image_processing/03_image_processing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_image_processing/03_image_processing_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Multitemporal classification
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Multitemporal classification
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_multitemporal_classification/04_multitemporal_classification.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_multitemporal_classification/04_multitemporal_classification_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vegetation change and disturbance detection
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Vegetation change and disturbance detection
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="05_vegetation_monitoring.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#approaches-to-change-detection-on-optical-satellite-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Approaches to change detection on optical satellite data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of changes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Types of changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#abrupt-and-gradual-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Abrupt and gradual changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seasonal-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seasonal changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vegetation-disturbance-and-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vegetation disturbance and recovery
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-series-variables-as-predictors-of-vegetation-disturbance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time series variables as predictors of vegetation disturbance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-of-changes-spectral-trajectory-in-different-time-series-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring of changes: spectral trajectory in different time series data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algorithms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-landsat-based-detection-of-trends-in-disturbance-and-recovery-landtrendr" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Landsat-based detection of Trends in Disturbance and Recovery (LandTrendr)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vegetation-change-tracker-vct" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vegetation Change Tracker (VCT)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#threshold-and-trend-based-vegetation-change-monitoring-algorithm-tvcma" class="md-nav__link">
+    <span class="md-ellipsis">
+      Threshold- and trend-based vegetation change monitoring algorithm (TVCMA)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-breaks-for-additive-season-and-trend-bfast" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Breaks for Additive Season and Trend (BFAST)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results-validation-and-accuracy-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Results validation and accuracy assessment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-vegetation-change-detection-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global vegetation change detection products
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-evaluation-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-evaluation quiz
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-references-recommended-reading-looking-up-background-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key references (recommended reading, looking up background details)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-references-cited-in-this-theme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional references cited in this theme
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next unit
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05_vegetation_monitoring_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_cs_tundra_grasslands/06_cs_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_cs_forest_changes/07_cs_forest_changes.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Effects of pollution in Ore Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_cs_disturbance_detection/08_cs_disturbance_detection.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case study: Forest disturbance detection (Tatra Mountains)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 3
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Module 3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/module3.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of 3D/4D geographic point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of 3D/4D geographic point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/01_pointcloud_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/01_pointcloud_principles/exercise/m3_theme1_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Programming for point cloud analysis with Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Programming for point cloud analysis with Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/02_pointcloud_programming_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/02_pointcloud_programming_python/exercise/m3_theme2_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles and basic algorithms of 3D change detection and analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Principles and basic algorithms of 3D change detection and analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/03_3d_change_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/03_3d_change_analysis/exercise/m3_theme3_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Time series analysis of 3D point clouds
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Time series analysis of 3D point clouds
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/04_3d_timeseries_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/04_3d_timeseries_analysis/exercise/m3_theme4_exercise1.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning-based 3D/4D point cloud analysis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning-based 3D/4D point cloud analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/05_pointcloud_machine_learning/05_pointcloud_machine_learning.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_rockglacier/06_casestudy_rockglacier.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D change analysis at an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/06_casestudy_sandybeach/06_casestudy_sandybeach.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Time series-based change analysis of sandy beach dynamics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Module 4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Module 4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/module4.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Principles of imaging and laboratory spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Principles of imaging and laboratory spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/01_spectroscopy_principles/01_spectroscopy_principles_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Airborne hyperspectral data acquisition and pre-processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Airborne hyperspectral data acquisition and pre-processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/02_aerial_acquisition_preprocessing/02_aerial_acquisition_preprocessing_exercise_geometric.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    In situ and laboratory spectroscopy of vegetation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            In situ and laboratory spectroscopy of vegetation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_navig.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/03_relating_imagery_lab_vegetation/03_spectra_probe_sphere_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Machine learning in imaging spectroscopy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            Machine learning in imaging spectroscopy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/04_time_series_specifics/04_time_series_specifics_exercise.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exercise
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Temporal vs. spatial and spectral resolution
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            Temporal vs. spatial and spectral resolution
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/05_specific_resolution_contribution/05_specific_resolution_contribution.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lesson
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Case studies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Case studies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/08_spectral_separability_grass/08_spectral_separability_grass.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal spectral separability of grass species (Krkonoše Mts.)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/06_Krkonose_tundra_grasslands/06_Krkonose_tundra_grasslands.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Discrimination of grass species from time series of RPAS hyperspectral imagery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module4/07_flood_plain_forest/07_flood_plain_forest.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seasonal dynamics of flood-plain forests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_cloudcompare.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudCompare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_enmap_box.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EnMAP-Box
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_python.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_qgis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QGIS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_r_language.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software_gee.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Earth Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Use Cases and Data
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Use Cases and Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://doi.org/10.5281/zenodo.10003574" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data download
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_rockglacier_ahk.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multitemporal 3D point clouds of an active rock glacier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_beach_kijkduin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4D point clouds of a sandy beach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_forests_tatras.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vegetation disturbance detection in Polish-Slovak Tatra Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_tundra_karkonosze.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Land cover monitoring in Karkonosze/Krkonoše Mountains (Poland/Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_grasses_krkonose.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tundra vegetation monitoring in Krkonoše Mountains
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_usecases/usecase_ore_mts_disturbance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Forest disturbances in Ore Mountains (Czechia)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://web.natur.cuni.cz/gis/etrainee/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About the project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://forms.gle/Cz1yxJv2DDNz83j68" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback form
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#approaches-to-change-detection-on-optical-satellite-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Approaches to change detection on optical satellite data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of changes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Types of changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#abrupt-and-gradual-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Abrupt and gradual changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seasonal-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seasonal changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vegetation-disturbance-and-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vegetation disturbance and recovery
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-series-variables-as-predictors-of-vegetation-disturbance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time series variables as predictors of vegetation disturbance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-of-changes-spectral-trajectory-in-different-time-series-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring of changes: spectral trajectory in different time series data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algorithms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-landsat-based-detection-of-trends-in-disturbance-and-recovery-landtrendr" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Landsat-based detection of Trends in Disturbance and Recovery (LandTrendr)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vegetation-change-tracker-vct" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vegetation Change Tracker (VCT)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#threshold-and-trend-based-vegetation-change-monitoring-algorithm-tvcma" class="md-nav__link">
+    <span class="md-ellipsis">
+      Threshold- and trend-based vegetation change monitoring algorithm (TVCMA)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-breaks-for-additive-season-and-trend-bfast" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Breaks for Additive Season and Trend (BFAST)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results-validation-and-accuracy-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Results validation and accuracy assessment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-vegetation-change-detection-products" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global vegetation change detection products
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-evaluation-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-evaluation quiz
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-references-recommended-reading-looking-up-background-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key references (recommended reading, looking up background details)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-references-cited-in-this-theme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional references cited in this theme
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next unit
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+
+
+                  
+
+  
+  
+
+
+<h1 id="vegetation-change-and-disturbance-detection">Vegetation change and disturbance detection</h1>
+<p>In <strong><a href="../02_temporal_information/02_temporal_information.html">Theme 2</a></strong>, we introduced various types of multitemporal data analysis. In this Module we put most emphasis on classification and <strong>change detection</strong>. Content of this Theme we’ll delve deeper into the latter. We will focus on different definitions of change types, explore various approaches and algorithms for detecting changes (such as disturbances or recovery) in vegetation, as well as on assessing the accuracy of the results.</p>
+<p>In this theme, you will learn about:</p>
+<ul>
+<li><strong><a href="#approaches-to-change-detection-on-optical-satellite-data">approaches to change detection on optical satellite data</a></strong></li>
+<li><strong><a href="#types-of-changes">different types of changes</a></strong></li>
+<li><strong><a href="#vegetation-disturbance-and-recovery">vegetation disturbance and recovery</a></strong></li>
+<li><strong><a href="#time-series-variables-as-predictors-of-vegetation-disturbance">time series variables as predictors of vegetation disturbance</a></strong></li>
+<li><strong><a href="#monitoring-of-changes-spectral-trajectory-in-different-time-series-data">monitoring of changes: spectral trajectory in different time series data</a></strong></li>
+<li><strong><a href="#algorithms">algorithms</a></strong></li>
+<li><strong><a href="#results-validation-and-accuracy-assessment">results validation and accuracy assessment</a></strong></li>
+<li><strong><a href="#global-vegetation-change-detection-products">global vegetation change detection products</a></strong></li>
+</ul>
+<p>This theme will conclude with:</p>
+<ul>
+<li><strong><a href="#self-evaluation-quiz">Self-evaluation quiz</a></strong></li>
+<li><strong><a href="#references">References</a></strong></li>
+</ul>
+<p>To consolidate your knowledge and test it in more practical environment complete the <strong><a href="05_vegetation_monitoring_exercise.html">Exercise</a></strong>.</p>
+<p>After finishing this theme you will:</p>
+<ul>
+<li>gain knowledge of multitemporal data analysis techniques, particularly in classification and change detection.</li>
+<li>understand various methods for change detection in optical satellite data.</li>
+<li>distinguish different types of changes (abrupt, gradual, seasonal) and their corresponding detection algorithms.</li>
+<li>grasp mathematical aspects of change detection,</li>
+<li>appreciate the role of time intervals and density in change detection studies.</li>
+<li>discover the use of time series variables in predicting vegetation disturbance and recovery patterns.</li>
+<li>learn how to use different satellite data sources for varied cases and fuse data from different sensors to enhance resolutions.</li>
+<li>understand the process of validating results and assessing accuracy in change detection studies.</li>
+<li>overview global vegetation change detection products and understand their strengths and limitations.</li>
+</ul>
+<h2 id="approaches-to-change-detection-on-optical-satellite-data">Approaches to change detection on optical satellite data</h2>
+<p>The basic categorization of automatic change detection methods includes two approaches: <strong>comparative analysis of two images</strong> (<span class="arithmatex">\(t_1\)</span> - <span class="arithmatex">\(t_2\)</span>) and <strong>simultaneous analysis of multitemporal images</strong> (<span class="arithmatex">\(t_1\)</span> <span class="arithmatex">\(t_2\)</span> … <span class="arithmatex">\(t_n\)</span>, <a href="https://doi.org/10.1080/01431168908903939">Singh, 1989</a>).</p>
+<p>The simplest methods, initially used in the analysis of changes belonging to the first group, are:</p>
+<ul>
+<li><strong>signal difference</strong> – subtracting or dividing the reflectance or index values from two images,</li>
+<li><strong>regression analysis</strong> - pixels from time <span class="arithmatex">\(t_1\)</span> are assumed to be a linear function of the time <span class="arithmatex">\(t_2\)</span> pixels,</li>
+<li>using a <strong>second PCA component</strong> from transformation performed on the two images bands,</li>
+<li><strong>comparison of classification results</strong> and <strong>simultaneous classification of two images</strong>,</li>
+<li><strong>Change Vector Analysis</strong>, which involves finding the size and direction of the change vector for each pixel between two images,</li>
+<li><strong>subtracting the background</strong>, where a reference image of the background is determined as having low values of difference, and a binary mask representing pixels of changes is created based on this,</li>
+<li><strong>hybrid methods</strong>, combining different approaches into a single change detection procedure, or combining results obtained from different methods leading to a new result.</li>
+</ul>
+<p>From mathematical point of view, the change can be extracted from the second group via (<a href="https://doi.org/10.1016/j.isprsjprs.2017.06.013">Zhu, 2017</a>):</p>
+<ul>
+<li><strong>differencing</strong> - indicating large differences in comparing images from different terms,</li>
+<li><strong>temporal segmentation</strong> - segmenting the time series into a series of straight line segments based on the residual-error and angle criterions,  </li>
+<li><strong>trajectory classification</strong> - from hypothesised trajectories representing signatures specific to different kinds of changes or from multitemporal supervised classification,  </li>
+<li><strong>statistical boundary</strong> - indicating significant departure from the statistical boundary followed by time series,  </li>
+<li><strong>regression</strong> - estimating the long-term movements or trends in time series.</li>
+</ul>
+<p>In both approaches <strong>thresholding</strong> indicating significant deviation from the predefined threshold is also listed. It is a special method which can be used after performing e.g. differencing or regression analysis. As you can see some other methods are also the same for both <span class="arithmatex">\(t_1\)</span> - <span class="arithmatex">\(t_2\)</span> and <span class="arithmatex">\(t_1\)</span> <span class="arithmatex">\(t_2\)</span> … <span class="arithmatex">\(t_n\)</span> analysis.</p>
+<p><center></p>
+<p><img src="media/landtrendr_ccdc.jpg" alt="landtrendr_ccdc" title="LandTrendr and CCDC temporal segmentation algorithms comparison" width="800"/></p>
+<p><i>Temporal segmentation of TC Wetness calculated on Landsat data (A - on all clear observations, B - annual compositions, figure by <a href="https://doi.org/10.1016/j.jag.2022.102806">Pasquarella et al., 2021</a>, modified/ <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
+</center></p>
+<p>Historically, change studies were based mainly on less frequent time intervals, e.g. one image every 3 years (e.g. <a href="https://doi.org/10.1016/S0034-4257(02)00071-8">Miller and Yool, 2002</a>). In the case of <strong>vegetation</strong>, regeneration after disturbance may take several years, so significant changes may be omitted in the analysis of images obtained at too distant dates. Nowadays, the second group of analyzes based on denser time series is commonly used, providing more detailed information for environmental monitoring. Having such a data set spanning a broad time period, there is no need to sequence pairs of images and search for single events that occurred between two dates, which would lead to the omission of valuable information (<a href="https://doi.org/10.1016/j.rse.2009.08.017">Huang et al., 2010</a>). It is more effective to search for characteristic spectral features in the entire set of spectral values of multitemporal data.</p>
+<h2 id="types-of-changes">Types of changes</h2>
+<p>The possibility to detect changes based on satellite data depends on the system capacity to account for variability at different temporal scales mentioned in <strong><a href="../02_temporal_information/02_temporal_information.html">Theme 2</a></strong>. Consequently,, three types of changes can be differentiated from time series data: <strong>abrupt, gradual and seasonal</strong>. Each type is detailed below.</p>
+<h3 id="abrupt-and-gradual-changes">Abrupt and gradual changes</h3>
+<p><strong>Abrupt</strong> refer to short-term, large magnitude changes (<a href="https://doi.org/10.1016/j.isprsjprs.2017.06.013">Zhu, 2017</a>) and can be instigated by agents such as fires, floods, hurricanes, deforestation etc. In contrast, <strong>gradual</strong> refer to long-term, small magnitude date-to-date changes. These ones can be caused by e.g. climate changes, land management or pests outbreaks.</p>
+<p><center></p>
+<p><img src="media/example_abr_grad.png" title="Example trends for two Landsat data series with abrupt (black dots) and gradual (red squares) changes occurrence. The trends show long-term changes in the vegetation index values." alt="Trends" width="600"/></p>
+<p><i>Example pixels representing gradual (red squares) and abrupt (black dots) changes occurrence (abrupt change detected in 2003, figure by course authors).</i>
+</center></p>
+<h3 id="seasonal-changes">Seasonal changes</h3>
+<p>There are also <strong>seasonal</strong> changes, driven by annual temperature and rainfall interactions that impact plant phenology or proportional cover of land cover types with different phenology of vegetation (<a href="https://doi.org/10.1016/j.rse.2009.08.014">Verbesselt et al., 2010</a>). Analysis concerning these types of changes use differences between images as consideration for detecting seasonal metric/parameter connected to the plants phase of growth in a given time, e.g. start, peak or end of the growing season.</p>
+<p><center></p>
+<p><img src="media/seasonality_parameters.png" title="Seasonality parameters: (a) beginning of season, (b) end of season, (c) length of season, (d) base value, (e) time of middle of season, (f) maximum value, (g) amplitude, (h) small integrated value, (h+i) large integrated value (Jönsson, Eklundh, 2004). The red and blue lines are filtered and original data, respectively." alt="Figure 3" width="400"/></p>
+<p><i>Seasonality parameters: (a) beginning of season, (b) end of season, (c) length of season, (d) base value, (e) time of middle of season, (f) maximum value, (g) amplitude, (h) small integrated value, (h+i) large integrated value (the red and blue lines are filtered and original data, respectively, figure by <a href="https://web.nateko.lu.se/timesat/timesat.asp">Eklundh, 2023</a>/ <a href="https://creativecommons.org/licenses/by-nc-nd/2.5/se/">CC BY-NC-ND 2.5 SE</a>).</i>
+</center></p>
+<h2 id="vegetation-disturbance-and-recovery">Vegetation disturbance and recovery</h2>
+<p>The word <strong>change</strong> can encompass both positive and negative shifts from an object’s stable state. <strong>Disturbance</strong> in the context of vegetation refers to a negative phenomenon that disrupts the steady state.</p>
+<p>When discussing disturbances it is also important to indicate the <strong>scale</strong> of analysis. At global or regional scales disturbances are generally defined as processes that lead to the significant removal of canopy leaf area and live biomass (<a href="https://doi.org/10.1016/j.tplants.2014.10.008">McDowell et al., 2015</a>). According to this definition, it isn’t necessary for entire individuals to die offf, which is a crucial point of consideration in a local scale analysis, such as a minor fire impacting individual trees. Scale is then directly related to <strong>spatial resolution</strong> of remote sensing data.</p>
+<p><center></p>
+<p><img src="media/disturbance_spatial.png" alt="Disturbance_spatial" title="Disturbance_spatial" width="200"/></p>
+<p><i>Dependence of spatial resolution on the extent of disturbance (figure by course authors).</i>
+</center></p>
+<p>The <strong>frequency of data collection</strong> also plays a critical role in quantifying terrestrial disturbances. This is particularly relevant when accounting for the speed of a disturbance event and potential <strong>recovery</strong> - a positive change in the context of such studies. For example, a wildfire signifies a fast, abrupt disturbance, whereas drought or insect infestations might represent slower disturbances.</p>
+<p><center></p>
+<p><img src="media/disturbance_temp.png" alt="Disturbance_temporal" title="Disturbance_temporal" width="500"/></p>
+<p><i>Dependence of temporal resolution on the frequency of observed disturbances/recovery (figure by course authors).</i>
+</center></p>
+<p>The third vital resolution in disturbance detection is the <strong>spectral</strong> resolution to which we refer in the <a href="#time-series-variables-as-predictors-of-vegetation-disturbance">next section</a> of this Theme.</p>
+<p>These three metrics are typically used for ecosystems stability assessment in relation to disturbance and recovery:</p>
+<ul>
+<li><strong>resistance</strong> - the ecosystem’s ability to resist disturbances,</li>
+<li><strong>resilience</strong> - the ecosystem’s ability to recover to the original state after a disturbance,</li>
+<li><strong>variability</strong> - the total variation of a system in response to environmental analysis.</li>
+</ul>
+<p>These metrics can be measured by the use of spectral index anomaly time series. You can see the example in the article of <a href="https://doi.org/10.1016/j.jag.2021.102575">Huang et al., 2021</a>, where authors use Landsat data.</p>
+<p><center></p>
+<p><img src="media/metrics.jpg" alt="Stability" title="Stability" width="500"/></p>
+<p><i>Detection of the disturbance-recovery process and measures of ecosystem stability based on spectral index anomaly time series (DM - disturbance magnitude, RT - recovery time, RR - recovery rate, RM - recovery magnitude, SD - overall temporal variability, TD and TR - time point of disturbance and recovery, respectively, figure by <a href="https://doi.org/10.1016/j.jag.2021.102575">Huang et al., 2021</a>/ <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0.</a>).</i>
+</center></p>
+<p><em>Note: we will further use the more general term</em> <strong><em>change</em></strong> <em>to represent general methodological issues related to detecting disturbance or changes. However, with an understanding of the distinctions between these terms, you will be able to apply them correctly in specific cases.</em></p>
+<h2 id="time-series-variables-as-predictors-of-vegetation-disturbance">Time series variables as predictors of vegetation disturbance</h2>
+<p>Each spectral band of satellite data carries unique information. In the case of vegetation, specific bands can help determine whether the plant is healthy or damaged. Combination of these bands, such as vegetation indices, are commonly employed to monitor vegetation disturbances and recovery. Here we can find <strong>NDVI</strong> (examples of use in: <a href="https://doi.org/10.1016/j.rse.2011.06.027">Vogelmann et al., 2012</a> or <a href="https://doi.org/10.1109/TGRS.2013.2272545">Brooks et al., 2014</a>), burned areas detection with <strong>NBR</strong> (<a href="https://doi.org/10.1016/j.rse.2009.08.017">Huang et al., 2010</a>, <a href="https://doi.org/10.1016/j.rse.2010.07.008">Kennedy et al., 2010</a>), and vegetation water content analyses with <strong>NDMI</strong> (<a href="https://doi.org/10.1016/j.rse.2015.02.012">DeVries et al., 2015</a>, <a href="https://doi.org/10.1016/j.rse.2020.112026">Ochtyra et al., 2020</a>) or <strong>TC Wetness</strong> (<a href="https://doi.org/10.1016/j.rse.2013.04.022">Griffiths et al., 2014</a>, <a href="https://doi.org/10.3390/f8070251">Oeser et al., 2017</a>). The selection of the most appropriate variable is essential for the accurate detection of the disturbance signal.</p>
+<p>There are various options to select the most relevant one. The majority of studies used an a priori selected index/band based on information found in the literature. <a href="https://doi.org/10.1016/j.rse.2017.11.015">Cohen et al., 2018</a> presented comprehensive comparison of different variables and they developed <strong>Disturbance Signal to Noise Ratio</strong> to assess their performance. Such selection can be also preceded by <strong>statistical evaluation of differences</strong> between used variables (example of such evaluation in <a href="https://doi.org/10.1016/j.rse.2020.112026">Ochtyra et al., 2020</a>).</p>
+<p>Landsat-based Tasseled Cap transformation bands were used to develop <strong>Disturbance Index (DI</strong>, <a href="https://doi.org/10.1016/j.rse.2005.05.009">Healey et al., 2005</a>). This specific derivative was designed to highlight the non-vegetated areas spectral signatures associated with stand-replacing disturbance and separate them from other forest signatures.</p>
+<p>DI is calculated by rescaled values of Brightness, Greenness, and Wetness values in a following equation:</p>
+<p>DI = B<span class="arithmatex">\(r\)</span>-(G<span class="arithmatex">\(r\)</span>+W<span class="arithmatex">\(r\)</span>),</p>
+<p>where B<span class="arithmatex">\(r\)</span>, G<span class="arithmatex">\(r\)</span>, W<span class="arithmatex">\(r\)</span> represent rescaled Brightness, Greenness, and Wetness values, which are calculated as the difference between image transformation bands and their standard deviations divided by mean values for forested pixels (extracted e.g. from land cover map), as below:</p>
+<p>B<span class="arithmatex">\(r\)</span> = (B<span class="arithmatex">\(-\)</span>B<span class="arithmatex">\(\mu\)</span>)/B<span class="arithmatex">\(\sigma\)</span></p>
+<p>G<span class="arithmatex">\(r\)</span> = (G<span class="arithmatex">\(-\)</span>G<span class="arithmatex">\(\mu\)</span>)/G<span class="arithmatex">\(\sigma\)</span></p>
+<p>W<span class="arithmatex">\(r\)</span> = (W<span class="arithmatex">\(-\)</span>W<span class="arithmatex">\(\mu\)</span>)/W<span class="arithmatex">\(\sigma\)</span></p>
+<p>where:</p>
+<p>B<span class="arithmatex">\(\mu\)</span>, G<span class="arithmatex">\(\mu\)</span>, W<span class="arithmatex">\(\mu\)</span> denote mean forest Brightness, Greenness, and Wetness,</p>
+<p>B<span class="arithmatex">\(\sigma\)</span>, G<span class="arithmatex">\(\sigma\)</span>, W<span class="arithmatex">\(\sigma\)</span> represent standard deviation of forest Brightness, Greenness, and Wetness.</p>
+<p>Disturbed areas generally high positive B<span class="arithmatex">\(r\)</span> values and low negative G<span class="arithmatex">\(r\)</span> and W<span class="arithmatex">\(r\)</span>.</p>
+<p>Another index related to disturbance detection is <a href="https://www.umt.edu/numerical-terradynamic-simulation-group/project/modis/mgdi.php">Moderate Resolution Imaging Spectrometer (MODIS) Global Disturbance Index (MGDI)</a>. Due to the low spatial resolution of MODIS it is used at more generalized (even global) scale. This index incorporates vegetation greenness and surface temperature data.</p>
+<h2 id="monitoring-of-changes-spectral-trajectory-in-different-time-series-data">Monitoring of changes: spectral trajectory in different time series data</h2>
+<p>Extracting change from time series satellite data can be complex, as it involves all sorts of changes including seasonal, gradual, and abrupt shifts. The process is further complicated by factors such as clouds, haze, aerosols, lighting differences, and geometric inconsistency. In order to detect changes as accurately as possible, it is crucial to select data with <strong>resolutions that best investigate the phenomenon under study</strong>. Then these additional factors need to be eliminated (as shown in <strong><a href="../03_image_processing/03_image_processing.html">Theme 3</a></strong>). Based on pixel values in the time series we can analyse the trend over time and the relationship between the variables. This type of analysis is referred to as <strong>spectral trajectory</strong> analysis (you can read about this more in <strong><a href="../../module1/04_trajectory-based_analysis/04_trajectory_based_analysis.html">Theme 4 of Module 1</a></strong>.</p>
+<p>To capture the stages of plant development in <strong>phenological changes</strong> detection, the highest possible temporal resolution of the inter-annual data, at most every few days, is most desirable. The spatial resolution is important here, as meteorological image data are collected for the same area even several times a day, but their pixel size (greater than 1 km) limits the extraction of vegetation alone. The spectral ranges most frequently used are visible light, near and shortwave infrared. Apart from using the original reflectance values, information from more than one band is often combined to enhance the plant properties visible in the image (commonly used index is NDVI, being a good indicator for vegetation phenology).</p>
+<p>MODIS data can outperform Landsat in phenology analysis, highlighting the importance of higher temporal resolution needed to phenological change detection, even if the spatial resolution is lower. The Sentinel-2 constellation is noteworthy here as well. It provides a relatively small pixel size, useful spectral bands as well as a quite fast revisit time thanks to double data acquisition from Sentinel-2A and Sentinel-2B twin satellites. The only limitation may be cloudiness. To improve the temporal and spatial resolution of single sensors alone they are harmonised or fused together (see <strong><a href="../03_image_processing/03_image_processing.html#data-fusion">Theme 3 of this Module</a></strong> and <strong><a href="../../module1/05_spatio_temporal_data_fusion/05_spatio-temporal_data_fusion.html">Theme 5 of Module 1</a></strong>).</p>
+<p>Very high temporal resolution is not necessary in <strong>abrupt changes</strong> detection in the long-term perspective (intra-annual). These changes can be caused by e.g. deforestation, so their sudden nature will appear as a rapid drop/increase in the reflectance or index value. High spectral resolution is then also not a crucial requirement for abrupt events detection. More important factor is that the sensor is operating on spectral bands that best show the phenomenon under study. Landsat data 16-day revisit time can be enough to indicate such drastic change.</p>
+<p>Abrupt changes often concern larger areas than gradual changes (e.g. pest gradations). Therefore very high spatial resolution is also not required. For <strong>gradual changes</strong> the measured differences between data from subsequent dates will be less pronounced so the key factors affecting the accuracy of change detection are the details in the spectral and spatial domain. A dense time series of data also allows a more detailed analysis of the trend (with a lower frequency it could be a problematic to pinpoint the actual time of change).</p>
+<p><center></p>
+<p><img src="media/ndvi_trends.png" title="NDVI trends derived from different sensors: Sentinel-2, Landsat 8 and MODIS (please note that the study area is located in the southern hemisphere)." alt="Figure 4" width="800"/></p>
+<p><i>NDVI trends derived from different sensors: Sentinel-2, Landsat 8 and MODIS (note that the study area is located in the southern hemisphere, figure by <a href="https://doi.org/10.3390/rs12244080">Kavats et al., 2020</a>/ <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
+</center></p>
+<h2 id="algorithms">Algorithms</h2>
+<p>Freely available long time series of satellite data, such as Landsat, have opened the way to the development of various change/ disturbance detection algorithms. The literature presents different approaches, highlighting their capability to detect particular change (abrupt, gradual, seasonal).</p>
+<p><strong>Table 1</strong> lists selected algorithms developed for change/disturbance detection with the information about change type possible to capture.</p>
+<div>
+
+<b>Table 1. Selected algorithms for change/ disturbance detection on satellite data.</b>
+
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Change type</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Breaks For Additive Seasonal and Trend (BFAST)</td>
+<td>abrupt, gradual, seasonal</td>
+<td><a href="https://doi.org/10.1016/j.rse.2009.08.014">Verbesselt et al., 2010</a></td>
+</tr>
+<tr>
+<td>Continuous Change Detection and Classification (CCDC)</td>
+<td>abrupt, gradual, seasonal</td>
+<td><a href="https://doi.org/10.1016/j.rse.2014.01.011">Zhu, Woodcock, 2014</a></td>
+</tr>
+<tr>
+<td>COntinuous monitoring of Land Disturbance (COLD)</td>
+<td>abrupt, gradual</td>
+<td><a href="https://doi.org/10.1016/j.rse.2019.03.009">Zhu et al., 2020</a></td>
+</tr>
+<tr>
+<td>Detecting Breakpoints and Estimating Segments in Trend (DBEST)</td>
+<td>abrupt, gradual, seasonal</td>
+<td><a href="https://doi.org/10.1016/j.rse.2014.09.010">Jamali et al., 2015</a></td>
+</tr>
+<tr>
+<td>Exponentially Weighted Moving Average Change Detection (EWMACD)</td>
+<td>abrupt</td>
+<td><a href="https://ui.adsabs.harvard.edu/abs/2014AGUFM.B51L..01B/abstract">Brooks et al., 2014</a></td>
+</tr>
+<tr>
+<td>Harmonic Analyses of NDVI Time-Series (HANTS)</td>
+<td>seasonal</td>
+<td><a href="https://doi.org/10.1016/j.rse.2015.03.018">Zhou et al., 2015</a></td>
+</tr>
+<tr>
+<td>Image Trends from Regression Analysis (ITRA)</td>
+<td>gradual</td>
+<td><a href="https://doi.org/10.1016/j.rse.2011.06.027">Vogelmann et al., 2012</a></td>
+</tr>
+<tr>
+<td>Jumps Upon Spectrum and Trend (JUST)</td>
+<td>abrupt, gradual, seasonal</td>
+<td><a href="https://doi.org/10.3390/rs12234001">Ghaderpour, Vujadinovic, 2020</a></td>
+</tr>
+<tr>
+<td>Landsat-based detection of Trends in Disturbance and Recovery (LandTrendr)</td>
+<td>abrupt, gradual</td>
+<td><a href="https://doi.org/10.1016/j.rse.2010.07.008">Kennedy et al., 2010</a></td>
+</tr>
+<tr>
+<td>MIICA (Multi-index Integrated Change Analysis)</td>
+<td>abrupt</td>
+<td><a href="https://doi.org/10.1016/j.rse.2013.01.012">Jin et al., 2013</a></td>
+</tr>
+<tr>
+<td>Phenological parameters estimation tool (PPET)</td>
+<td>seasonal</td>
+<td><a href="https://ntrs.nasa.gov/api/citations/20100033570/downloads/20100033570.pdf">McKellip et al., 2010</a></td>
+</tr>
+<tr>
+<td>Seasonal trend decomposition Loess (STL)</td>
+<td>seasonal</td>
+<td><a href="http://www.nniiem.ru/file/news/2016/stl-statistical-model.pdf">Cleveland et al., 1990</a></td>
+</tr>
+<tr>
+<td>Sub-annual change detection algorithm (SCD)</td>
+<td>abrupt</td>
+<td><a href="https://doi.org/10.3390/rs70708705">Cai, Liu, 2015</a></td>
+</tr>
+<tr>
+<td>Threshold- and trend-based vegetation change monitoring algorithm (TVCMA)</td>
+<td>abrupt, gradual</td>
+<td><a href="https://doi.org/10.1016/j.rse.2020.112026">Ochtyra et al., 2020</a></td>
+</tr>
+<tr>
+<td>TimeStats</td>
+<td>seasonal</td>
+<td><a href="https://doi.org/10.1109/jstars.2010.2051942">Udelhoven, 2011</a></td>
+</tr>
+<tr>
+<td>Time-Series Classification approach based on Change Detection (TSCCD)</td>
+<td>abrupt, gradual</td>
+<td><a href="https://doi.org/10.1016/j.isprsjprs.2019.10.003">Yan et al. 2019</a></td>
+</tr>
+<tr>
+<td>Vegetation Change Tracker (VCT)</td>
+<td>abrupt</td>
+<td><a href="https://doi.org/10.1016/j.rse.2009.08.017">Huang et al., 2010</a></td>
+</tr>
+<tr>
+<td>Vegetation Regeneration and Disturbance Estimates Through Time (VeRDET)</td>
+<td>abrupt, gradual</td>
+<td><a href="https://doi.org/10.3390/f8050166">Hughes et al., 2017</a></td>
+</tr>
+</tbody>
+</table>
+<p>The algorithms can be used as independent tools implemented in environments such as R, IDL, MATLAB, Python or Google Earth Engine. There are also programs dedicated to multitemporal analyses that use the algorithms, such as STL in <a href="https://web.nateko.lu.se/timesat/timesat.asp">TIMESAT software</a>.</p>
+<p>As you can see, most of the algorithms are able to detect abrupt changes, and some detect gradual changes, although the authors point out that this is a more challenging task. There are also robust phenological change detection algorithms, like the aforementioned BFAST dealing with all types of changes.</p>
+<p><em>Note: bearing in mind that each of them works in a different way and works better for different applications, it is valuable to</em> <strong><em>compare their performance,</em></strong> <em>such as in collective work of <a href="https://doi.org/10.3390/f8040098">Cohen et al. (2017)</a>) or to</em> <strong><em>combine several algorithms</em></strong> <em>into one polyalgorithm (as proposed by <a href="https://doi.org/10.1016/j.isprsjprs.2018.07.002">Saxena et al., (2018)</a>.</em></p>
+<p>The algorithms dealing with abrupt/gradual changes have been developed to use mainly data from the Landsat mission, though most are also being adapted to Sentinel-2. In some cases a longer time series may be required for the algorithm to work properly. Phenological changes related algorithms are typically intended for use with MODIS data, although data from the above sensors can also be used (e.g. BFAST). With the recent increase in availability of Planet data, algorithms like <strong>Thresholding Rewards and Penances algorithm</strong> (TRP, <a href="https://doi.org/10.1080/22797254.2020.1806734">Francini et al., 2020</a>) have been developed to assess forest loss in <strong>near real-time</strong>.</p>
+<p>After applying the algorithm to a time series of data, the changes detected by it can be assigned to specific phenomena (e.g. disturbance agents). It can be done by e.g. supervised classification.</p>
+<p><center></p>
+<p><img src="media/forests_method.png" alt="Forest disturbance detection" title="Forest disturbance detection" width="500"/></p>
+<p><i>Forests disturbance detection with agents attribution workflow (figure by <a href="https://doi.org/10.3390/f8070251">Oeser et al., 2017</a>/ <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
+</center></p>
+<p>In order to familiarize you with how these algorithms work (some of which you will use in the <strong><a href="05_vegetation_monitoring_exercise.html">Exercise</a></strong> and <strong><a href="../08_cs_disturbance_detection/08_cs_disturbance_detection.html">Case study 3</a></strong>, below we provide more detailed descriptions on selected ones.</p>
+<h3 id="the-landsat-based-detection-of-trends-in-disturbance-and-recovery-landtrendr">The Landsat-based detection of Trends in Disturbance and Recovery (LandTrendr)</h3>
+<p>LandTrendr (<a href="https://doi.org/10.1016/j.rse.2010.07.008">Kennedy et al., 2010)</a>) algorithm uses the segmentation method to detect abrupt changes such as forest disturbance, and, between them, gradual ones are captured thanks to the slope fitting for each segment.</p>
+<p><center></p>
+<p><img src="media/Concept_landtrendr.jpg" alt="landtrendr" title="LandTrendr pixel time series segmentation." width="500"/></p>
+<p><i>LandTrendr concept (figure by <a href="https://doi.org/10.3390/rs12182883">Mugiraneza et al., 2020</a>/ <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
+</center></p>
+<p>As the results, the year of detection with number of changes, magnitude of spectral change calculated as spectral distance between vertices, RMSE of fitted temporal segments (FTV) are provided.</p>
+<h3 id="vegetation-change-tracker-vct">Vegetation Change Tracker (VCT)</h3>
+<p>VCT (<a href="https://doi.org/10.1016/j.rse.2009.08.017">Huang et al., 2010</a>) normalizes each image into a forest likelihood measures described below, and uses the thresholding approach to detect disturbances.</p>
+<p>In the first part, <strong>forest <em>z</em>-score</strong> is calculated as follows:</p>
+<p><span class="arithmatex">\(FZ_i\)</span> = <span class="arithmatex">\(\frac{bp_i-\bar{b_i}}{SD_i}\)</span></p>
+<p>where <span class="arithmatex">\(b_i\)</span> and <span class="arithmatex">\(SD_i\)</span> are mean and standard deviation of the band <span class="arithmatex">\(i\)</span> spectral values of known forest pixels, and <span class="arithmatex">\(bp_i\)</span> is any pixel value in the image.</p>
+<p>Then, for multispectral satellite data, an <strong>integrated forest <em>z</em>-score (IFZ)</strong> value calculation is based on integration <span class="arithmatex">\(IFZ\)</span> over the spectral bands as:</p>
+<p><span class="arithmatex">\(IFZ\)</span> = <span class="arithmatex">\(\sqrt{\frac{1}{N}\displaystyle\sum_{i=1}^N(FZ_i)^2}\)</span></p>
+<p>where <em>N</em> is the number of bands. Bands from green and shortwave infrared ranges are used (in case of Landsat use the authors of VCT proved that NIR range is not used, because it is less sensitivity to non-fire disturbances than the other bands). To improve detection of fire disturbance events VCT also calculates <strong>NBR</strong> index described in more detail in <strong><a href="../01_multispectral_principles/01_multispectral_principles.html#spectral-indices">Theme 1</a></strong>.</p>
+<p>As the results, the year of disturbance, VCT land cover mask and magnitude of disturbance in spectral bands and calculated indices are provided.</p>
+<h3 id="threshold-and-trend-based-vegetation-change-monitoring-algorithm-tvcma">Threshold- and trend-based vegetation change monitoring algorithm (TVCMA)</h3>
+<p>TVCMA (<a href="https://doi.org/10.1016/j.rse.2020.112026">Ochtyra et al., 2020</a>) uses two separate approaches: <strong>thresholding</strong>, indicating where and when the disturbances occurred, and a <strong>regression</strong> analysis, presenting the general trend in the time series for each pixel. This allows for monitoring both the abrupt and gradual changes.</p>
+<p>Contrary to simple thresholding sensitive to outlier detections (which may be the result of weather anomalies or data processing inaccuracies), three <strong>logical conditions</strong> have been included to reduce the number of outliers.</p>
+<p><center></p>
+<p><img src="media/tvcma_conditions.png" alt="tvcma" title="Example of algorithm performance using predefined conditions: a) disturbance detection and b) short-term change omission" width="1000"/></p>
+<p><i>Example of algorithm performance using predefined conditions: a) disturbance detection and b) short-term change omission (figure by course authors).</i>
+</center></p>
+<p>As the results, the number of detected disturbances, the Spearman’s correlation coefficient between the modeled trend line and satellite observations, and p-values are provided.</p>
+<h3 id="the-breaks-for-additive-season-and-trend-bfast">The Breaks for Additive Season and Trend (BFAST)</h3>
+<p>BFAST (<a href="https://doi.org/10.1016/j.rse.2009.08.014">Verbesselt et al., 2010</a>) algorithm uses <strong>breakpoints</strong> to detect breaks on each individual time series component: trend, seasonal and remainders.</p>
+<p><center></p>
+<p><img src="media/bfast_lake.png" alt="seasonalbreak" title="Fitted seasonal, trend and remainder components." width="500"/></p>
+<p><i>Original data (Yt) and fitted seasonal (St), trend (Tt) and remainder (et) components for MODIS time series of a Longre Co lake in the Tibetan Plateau (figure by <a href="https://doi.org/10.3390/rs9010082">Che et al., 2017</a>, modified/ <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
+</center></p>
+<p>BFAST belongs to the statistical boundary methods, as it is based on the ordinary least squares (OLS) residuals-based MOving SUM (MOSUM) procedures for monitoring structural changes derived from both econometry and statistics (<a href="https://doi.org/10.1080/07474930500406053">Zelleis, 2005</a>). On this basis it is possible to test whether one or more breakpoints in the trend or seasonal component are occurring.</p>
+<p>BFAST <em>family</em> has nowadays extended. <strong>BFAST Monitor</strong> (<a href="https://doi.org/10.1016/j.rse.2015.02.012">DeVries et al., 2015</a>) provides additional functionality for monitoring disturbances at the end of time series, in near real-time) and <strong>BFAST Lite</strong> (<a href="https://doi.org/10.3390/rs13163308">Masiliūnas et al., 2021</a>) in comparison to regular BFAST is faster, more flexible and handles missing values in time series.</p>
+<p>The time and magnitude of change are provided as results by these algorithms.</p>
+<p>To see how to practically use BFAST in R in deforestation analysis follow this <a href="https://www.youtube.com/watch?v=GVvrHQ15q5U">video</a> by Geografif.</p>
+<h2 id="results-validation-and-accuracy-assessment">Results validation and accuracy assessment</h2>
+<p>Creation of reliable validation dataset is a time-consuming procedure but it plays a key role in assessment of time series analysis results. In <strong><a href="../02_temporal_information/02_temporal_information_exercise.html">Theme 2 exercise</a></strong> we practically demonstrated how to create a validation dataset for 33-year Landsat data series using only image compositions and indices values.</p>
+<p>Comprehensive review on accuracy evaluation you can find in <strong><a href="../../module1/06_reference_data_validation_accuracy_assessment/06_reference_data_validation_accuracy_assessment.html">Theme 6 of Module 1</a></strong>. In this section we provide some metrics that will be used in the <strong><a href="05_vegetation_monitoring_exercise.html">exercise</a></strong> and <strong><a href="../08_cs_disturbance_detection/08_cs_disturbance_detection.html">Case study 3</a></strong>.</p>
+<p>These include measures for binary results (change/no change): <strong>True Positive (TP)</strong> and <strong>True Negative (TN)</strong> rates, which refers to the number of correctly detected as changed and unachanged pixels, respectively (<a href="https://books.google.pl/books?hl=pl&amp;lr=&amp;id=2vb-LZEn8uUC&amp;oi=fnd&amp;pg=PA8&amp;dq=Advanced+Data+Mining+Techniques+OLSON+DELEN&amp;ots=zX90Zb2IsS&amp;sig=4qKHq1_3tzfRahw-QJlp9YgLmRo&amp;redir_esc=y#v=onepage&amp;q=Advanced%20Data%20Mining%20Techniques%20OLSON%20DELEN&amp;f=false">Olson and Delen, 2008</a>). On the other hand, <strong>False Positives (FP)</strong> and <strong>False Negatives (FN)</strong> indicates the number of pixels wrongly detected as changed or unchanged, respectively. Based on them, <strong>Producer (PA)</strong> and <strong>User (UA)</strong> accuracies for both changes and no-changes are calculated, as follows:</p>
+<p><span class="arithmatex">\(PA_C = \frac{TP}{TP+FN}\)</span> and <span class="arithmatex">\(PA_N = \frac{TN}{TN+FP}\)</span></p>
+<p><span class="arithmatex">\(UA_C = \frac{TP}{TN+FP}\)</span> and <span class="arithmatex">\(UA_N = \frac{TN}{TN+FN}\)</span></p>
+<p>where <span class="arithmatex">\(PA_C\)</span> and <span class="arithmatex">\(UA_C\)</span> means producer and user accuracy for change, respectively, and <span class="arithmatex">\(PA_N\)</span> and <span class="arithmatex">\(UA_N\)</span> means the same for no-change.</p>
+<p>Accuracies of detected change and no-change classes are also related to the error rates, such as <strong>ommission</strong> and <strong>commission</strong>, calculated by following: <span class="arithmatex">\(1-PA\)</span> and <span class="arithmatex">\(1-UA\)</span>, respectively.</p>
+<p>For the entire analyzed result (both changes and no-changes) the <strong>Overall Accuracy (OA)</strong> is calculated to indicate the prediction’s accuracy:</p>
+<p><span class="arithmatex">\(OA = \frac{TP+TN}{TP+TN+FP+FN}\)</span></p>
+<p>However, OA is less robust in such analyses, because, despite the detected changes, it also depends on the number of true negatives. Even with low efficiency of actual change detection, the OA value will be high, making this measure less useful than e.g. comission rate.</p>
+<p>To assess the performance of different algorithms, you can utilize these measures calculated on the same reference datasets. For a detailed analysis of how the results of different forest disturbance detection algorithms, refer to the article of <a href="https://doi.org/10.3390/f8040098">Cohen et al., 2017</a>.</p>
+<p><center></p>
+<p><img src="media/figx_comission_omission.png" alt="figx_comission_omission" title="Omission and commission rates for each of the seven map product sets" width="400"/></p>
+<p><i>Omission and commission rates for seven map product sets (figure by <a href="https://doi.org/10.3390/f8040098">Cohen et al., 2017</a>/ <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
+</center></p>
+<p>Once we deem the result satisfactory, we can calculate the area of changes (e.g. disturbances and recovery) that occurred in specific years, as well as <em>change rate</em> in units like e.g. km<sup>2</sup> per year (more information you in <a href="https://doi.org/10.3390/rs9050479">Liu et al., 2017</a>).</p>
+<h2 id="global-vegetation-change-detection-products">Global vegetation change detection products</h2>
+<p>Several global products derived from satellite-based change detection are available.</p>
+<p><a href="https://www.globalforestwatch.org/"><strong>Global Forest Watch</strong></a> is an online platform that provides data and tools for monitoring forests. The info about forest loss and gain is based on <a href="https://glad.earthengine.app/view/global-forest-change#bl=off;old=off;dl=1;lon=20;lat=10;zoom=3;"><strong>Global Forest Change (GFC)</strong> 2000-2020</a> produced by the team of <a href="https://doi.org/10.1126/science.1244693">Hansen et al., 2013</a>, as well as on land cover based on <a href="https://glad.umd.edu/dataset/GLCLUC2020"><strong>The Global 2000-2020 Land Cover and Land Use Change</strong></a>, developed by <a href="https://doi.org/10.3389/frsen.2022.856903">Potapov et al., 2022</a>. Except forests, the second one contains also built-up lands, croplands, water, perennial snow and ice layers.</p>
+<p><center></p>
+<p><img src="media/croplands.jpg" alt="croplands" title="Cropland_dynamics" width="400"/></p>
+<p><i>The example of GLCLUC2020 cropland extent and dynamics for each 1 × 1° grid cell. (A) Cropland area 2019, % cell area. (B) Net cropland area change, 2000–2019, % cell area. (C) Cropland gain 2000–2019 within forest loss 2000–2020 area, % cropland gain area within a cell. (D). Cropland loss 2000–2019 within the year 2020 built-up lands, % cropland loss area within a cell, figure by <a href="https://doi.org/10.3389/frsen.2022.856903">Potapov et al., 2022</a>/ <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
+</center></p>
+<p>There are also products that present observed phenomenas or classes in different dates, from which you can indirectly obtain the information about the changes (e.g. vegetation condition or chlorophyll content from <a href="https://earthobservatory.nasa.gov/global-maps/MOD_NDVI_M">MODIS</a> data).</p>
+<p>Remember that we have listed such multitemporal land cover products in <strong>Table 1 in <a href="../04_multitemporal_classification/04_multitemporal_classification.html#multitemporal-reference-dataset">Theme 4</a></strong>, e.g. <a href="https://www.dynamicworld.app/">Dynamic World</a>. Therefore, you can capture changes in environmental components based on the maps from specific dates.</p>
+<p>However, when utilizing such data, it is important to note that it is compiled on a global scale. You can find many examples in the literature outlining the limitations and errors for specific areas analysis. For regional or local application a very thorough and accurate approach is recommended to achieve satisfactory results.</p>
+<h2 id="self-evaluation-quiz">Self-evaluation quiz</h2>
+<p>You are now at the end of the lesson and should have a knowledge about the use of satellite data for vegetation change / disturbance detection. Use the questions below to assess your learning success:</p>
+<form name="quiz" action method="post" onsubmit="evaluate_quiz(); return false">
+<!--Question 1-->
+<label for="q_01"> <b>Question 1.</b> For detection of which change types will be the most appropriate time-series consisting of one image per year?  
+</label><br> <input type="radio" name="q_01">gradual and seasonal <input type="radio" name="q_01">abrupt and gradual <input type="radio" name="q_01">seasonal and abrupt <input type="radio" name="q_01">all of the above
+
+<div id="correct_q_01" hidden="">
+
+abrupt and gradual
+
+</div>
+
+<output id="output_q_01">
+</output>
+
+<br><br>
+
+<!--Question 2-->
+<label for="q_02"> <b>Question 2.</b> Which type of image data analysis method is not used in multitemporal change detection algorithms? </label><br> <input type="radio" name="q_02">thresholding<br> <input type="radio" name="q_02">image enhancement<br> <input type="radio" name="q_02">segmentation<br> <input type="radio" name="q_02">differencing<br>
+
+<div id="correct_q_02" hidden="">
+
+image enhancement
+
+</div>
+
+<output id="output_q_02">
+</output>
+
+<br><br>
+
+<!--Question 3-->
+<label for="q_03"> <b>Question 3.</b> Commonly used vegetation disturbance detection variables are related to: </label><br> <input type="radio" name="q_03">water content<br> <input type="radio" name="q_03">nitrogen content<br> <input type="radio" name="q_03">burn severity<br> <input type="radio" name="q_03">soil salinity<br>
+
+<div id="correct_q_03" hidden="">
+
+water content
+
+</div>
+
+<output id="output_q_03">
+</output>
+
+<br><br>
+
+<!--Question 4-->
+<label for="q_04"> <b>Question 4.</b> What data is best to detect seasonal changes in the Amazon forests between 2005 and 2023? </label><br> <input type="radio" name="q_04">Planet<br> <input type="radio" name="q_04">Landsat<br> <input type="radio" name="q_04">Sentinel-2<br> <input type="radio" name="q_04">MODIS<br>
+
+<div id="correct_q_04" hidden="">
+
+MODIS
+
+</div>
+
+<output id="output_q_04">
+</output>
+
+<br><br>
+
+<!--Question 5-->
+<label for="q_05"> <b>Question 5.</b> Gradual changes in time series are: </label><br> <input type="radio" name="q_05">short-term, small magnitude year-to-year<br> <input type="radio" name="q_05">short-term, large magnitude year-to-year<br> <input type="radio" name="q_05">long-term, small magnitude year-to-year<br> <input type="radio" name="q_05">long-term, large magnitude year-to-year<br>
+
+<div id="correct_q_05" hidden="">
+
+long-term, small magnitude year-to-year
+
+</div>
+
+<output id="output_q_05">
+</output>
+
+<br><br>
+
+<!--Question 6-->
+<label for="q_06"> <b>Question 6.</b> Which of the following algorithms will detect a pest infestation and why? </label><br> <input type="radio" name="q_06">VCT thanks to the IFt index calculation<br> <input type="radio" name="q_06">BFAST thanks to the trend component<br> <input type="radio" name="q_06">TVCMA thanks to simple thresholding<br> <input type="radio" name="q_06">LandTrendr thanks to remainder component<br>
+
+<div id="correct_q_06" hidden="">
+
+BFAST thanks to the trend component
+
+</div>
+
+<output id="output_q_06">
+</output>
+
+<br><br>
+
+<!--Question 7-->
+<label for="q_07"> <b>Question 7.</b> Change / disturbance detection algorithm result cannot be: </label><br> <input type="radio" name="q_07">the number and magnitude of changes<br> <input type="radio" name="q_07">the year of detection and error of temporal composition creation<br> <input type="radio" name="q_07">error of fitted temporal segment and calculated index<br> <input type="radio" name="q_07">correlation coefficient between the trend line and satellite data and the magnitude of spectral changes<br>
+
+<div id="correct_q_07" hidden="">
+
+the year of detection and error of temporal composition creation
+
+</div>
+
+<output id="output_q_07">
+</output>
+
+<br><br>
+
+<output id="output_overall">
+</output>
+
+<input type="submit" value="Submit" style="font-size:14pt"><br><br>
+
+</form>
+<script src="../../assets/javascripts/quiz_evaluation.js"></script>
+
+<h2 id="exercise">Exercise</h2>
+<p><a href="05_vegetation_monitoring_exercise.html">Proceed with the exercise by going to the next page below or clicking this link</a></p>
+<h2 id="references">References</h2>
+<h3 id="key-references-recommended-reading-looking-up-background-details">Key references (recommended reading, looking up background details)</h3>
+<p>Cohen, W. B., Healey, S. P., Yang, Z., Stehman, S. V., Brewer, C. K., Brooks, E. B., Gorelick, N., Huang, C., Hughes, M.J., Kennedy, R.E., Loveland, T.R., Moisen, G.G., Schroeder, T.A., Vogelmann, J.E., Woodcock, C.E., Yang, L., &amp; Zhu, Z. (2017). <em>How similar are forest disturbance maps derived from different Landsat time series algorithms?</em>. Forests, 8(4), 98. <a href="https://doi.org/10.3390/f8040098">https://doi.org/10.3390/f8040098</a></p>
+<p>Huang, C., Goward, S. N., Masek, J. G., Thomas, N., Zhu, Z., &amp; Vogelmann, J. E. (2010). <em>An automated approach for reconstructing recent forest disturbance history using dense Landsat time series stacks</em>. Remote Sensing of Environment, 114(1), 183-198. <a href="https://doi.org/10.1016/j.rse.2009.08.017">https://doi.org/10.1016/j.rse.2009.08.017</a></p>
+<p>Kennedy, R. E., Yang, Z., &amp; Cohen, W. B. (2010). D<em>etecting trends in forest disturbance and recovery using yearly Landsat time series: 1. LandTrendr—Temporal segmentation algorithms</em>. Remote Sensing of Environment, 114(12), 2897-2910. <a href="https://doi.org/10.1016/j.rse.2010.07.008">https://doi.org/10.1016/j.rse.2010.07.008</a></p>
+<p>Liu, S., Wei, X., Li, D., &amp; Lu, D. (2017). <em>Examining forest disturbance and recovery in the subtropical forest region of zhejiang province using landsat time-series data</em>. Remote Sensing, 9(5), 479. <a href="https://doi.org/10.3390/rs9050479">https://doi.org/10.3390/rs9050479</a></p>
+<p>McDowell, N. G., Coops, N. C., Beck, P. S., Chambers, J. Q., Gangodagamage, C., Hicke, J. A., … &amp; Allen, C. D. (2015). <em>Global satellite monitoring of climate-induced vegetation disturbances</em>. Trends in plant science, 20(2), 114-123. <a href="https://doi.org/10.1016/j.tplants.2014.10.008">https://doi.org/10.1016/j.tplants.2014.10.008</a></p>
+<p>Ochtyra, A., Marcinkowska-Ochtyra, A., &amp; Raczko, E. (2020). T<em>hreshold-and trend-based vegetation change monitoring algorithm based on the inter-annual multi-temporal normalized difference moisture index series: A case study of the Tatra Mountains</em>. Remote Sensing of Environment, 249, 112026. <a href="https://doi.org/10.1016/j.rse.2020.112026">https://doi.org/10.1016/j.rse.2020.112026</a></p>
+<p>Zhu, Z. (2017). <em>Change detection using landsat time series: A review of frequencies, preprocessing, algorithms, and applications</em>. ISPRS Journal of Photogrammetry and Remote Sensing, 130, 370-384. <a href="https://doi.org/10.1016/j.isprsjprs.2017.06.013">https://doi.org/10.1016/j.isprsjprs.2017.06.013</a></p>
+<h3 id="additional-references-cited-in-this-theme">Additional references cited in this theme</h3>
+<p>Brooks, E., Wynne, R. H., Thomas, V. A., Blinn, C. E., &amp; Coulston, J. (2014). <em>Exponentially Weighted Moving Average Change Detection Around the Country (and the World)</em>. In AGU Fall Meeting Abstracts (Vol. 2014, pp. B51L-01). <a href="https://ui.adsabs.harvard.edu/abs/2014AGUFM.B51L..01B/abstract">SOURCE</a></p>
+<p>Cleveland, R. B., Cleveland, W. S., McRae, J. E., &amp; Terpenning, I. (1990). <em>STL: A seasonal-trend decomposition</em>. Journal of Official Statistics, 6(1), 3-73. <a href="http://www.nniiem.ru/file/news/2016/stl-statistical-model.pdf">SOURCE</a></p>
+<p>Cohen, W. B., Yang, Z., Healey, S. P., Kennedy, R. E., &amp; Gorelick, N. (2018). <em>A LandTrendr multispectral ensemble for forest disturbance detection</em>. Remote Sensing of Environment, 205, 131-140.<a href="https://doi.org/10.1016/j.rse.2017.11.015">https://doi.org/10.1016/j.rse.2017.11.015</a></p>
+<p>Che, X., Yang, Y., Feng, M., Xiao, T., Huang, S., Xiang, Y., &amp; Chen, Z. (2017). <em>Mapping extent dynamics of small lakes using downscaling MODIS surface reflectance</em>. Remote Sensing, 9(1), 82. <a href="https://doi.org/10.3390/rs9010082">https://doi.org/10.3390/rs9010082</a></p>
+<p>DeVries, B., Verbesselt, J., Kooistra, L., &amp; Herold, M. (2015). <em>Robust monitoring of small-scale forest disturbances in a tropical montane forest using Landsat time series</em>. Remote Sensing of Environment, 161, 107-121. <a href="https://doi.org/10.1016/j.rse.2015.02.012">https://doi.org/10.1016/j.rse.2015.02.012</a></p>
+<p>Francini, S., McRoberts, R. E., Giannetti, F., Mencucci, M., Marchetti, M., Scarascia Mugnozza, G., &amp; Chirici, G. (2020).* Near-real time forest change detection using PlanetScope imagery*. European Journal of Remote Sensing, 53(1), 233-244. <a href="https://doi.org/10.1080/22797254.2020.1806734">https://doi.org/10.1080/22797254.2020.1806734</a></p>
+<p>Ghaderpour, E., &amp; Vujadinovic, T. (2020). <em>Change detection within remotely sensed satellite image time series via spectral analysis</em>. Remote Sensing, 12(23), 4001. <a href="https://doi.org/10.3390/rs12234001">https://doi.org/10.3390/rs12234001</a></p>
+<p>Griffiths, P., Kuemmerle, T., Baumann, M., Radeloff, V. C., Abrudan, I. V., Lieskovsky, J., … &amp; Hostert, P. (2014). <em>Forest disturbances, forest recovery, and changes in forest types across the Carpathian ecoregion from 1985 to 2010 based on Landsat image composites</em>. Remote Sensing of Environment, 151, 72-88. <a href="https://doi.org/10.1016/j.rse.2013.04.022">https://doi.org/10.1016/j.rse.2013.04.022</a></p>
+<p>Hansen, M. C., Potapov, P. V., Moore, R., Hancher, M., Turubanova, S. A., Tyukavina, A., … &amp; Townshend, J. (2013). <em>High-resolution global maps of 21st-century forest cover change</em>. Science, 342(6160), 850-853. <a href="https://doi.org/10.1126/science.1244693">https://doi.org/10.1126/science.1244693</a></p>
+<p>Healey, S. P., Cohen, W. B., Zhiqiang, Y., &amp; Krankina, O. N. (2005). <em>Comparison of Tasseled Cap-based Landsat data structures for use in forest disturbance detection</em>. Remote Sensing of Environment, 97(3), 301-310. <a href="https://doi.org/10.1016/j.rse.2005.05.009">https://doi.org/10.1016/j.rse.2005.05.009</a></p>
+<p>Huang, Z., Liu, X., Yang, Q., Meng, Y., Zhu, L., &amp; Zou, X. (2021). <em>Quantifying the spatiotemporal characteristics of multi-dimensional karst ecosystem stability with Landsat time series in southwest China</em>. International Journal of Applied Earth Observation and Geoinformation, 104, 102575. <a href="https://doi.org/10.1016/j.jag.2021.102575">https://doi.org/10.1016/j.jag.2021.102575</a></p>
+<p>Hughes, M. J., Kaylor, S. D., &amp; Hayes, D. J. (2017). <em>Patch-based forest change detection from Landsat time series</em>. Forests, 8(5), 166. <a href="https://doi.org/10.3390/f8050166">https://doi.org/10.3390/f8050166</a></p>
+<p>Jamali, S., Jönsson, P., Eklundh, L., Ardö, J., &amp; Seaquist, J. (2015). D<em>etecting changes in vegetation trends using time series segmentation</em>. Remote Sensing of Environment, 156, 182-195. <a href="https://doi.org/10.1016/j.rse.2014.09.010">https://doi.org/10.1016/j.rse.2014.09.010</a></p>
+<p>Jin, S., Yang, L., Danielson, P., Homer, C., Fry, J., &amp; Xian, G. (2013). <em>A comprehensive change detection method for updating the National Land Cover Database to circa 2011</em>. Remote Sensing of Environment, 132, 159-175. <a href="https://doi.org/10.1016/j.rse.2013.01.012">https://doi.org/10.1016/j.rse.2013.01.012</a></p>
+<p>Jönsson, P., &amp; Eklundh, L. (2004). <em>TIMESAT—a program for analyzing time-series of satellite sensor data</em>. Computers &amp; geosciences, 30(8), 833-845. <a href="https://doi.org/10.1016/j.cageo.2004.05.006">https://doi.org/10.1016/j.cageo.2004.05.006</a></p>
+<p>Kavats, O., Khramov, D., Sergieieva, K., &amp; Vasyliev, V. (2020). <em>Monitoring of sugarcane harvest in Brazil based on Optical and SAR data</em>. Remote Sensing, 12(24), 4080. <a href="https://doi.org/10.3390/rs12244080">https://doi.org/10.3390/rs12244080</a></p>
+<p>Kuenzer, C., Dech, S., &amp; Wagner, W. (2015). <em>Remote sensing time series</em>. Remote Sensing and Digital Image Processing, 22, 225-245. <a href="https://link.springer.com/book/10.1007/978-3-319-15967-6">source</a></p>
+<p>Masiliūnas, D., Tsendbazar, N. E., Herold, M., &amp; Verbesselt, J. (2021). <em>BFAST Lite: A lightweight break detection method for time series analysis</em>. Remote Sensing, 13(16), 3308. <a href="https://doi.org/10.3390/rs13163308">https://doi.org/10.3390/rs13163308</a></p>
+<p>McKellip, R.D., Ross, K.W., Spruce, J.P., Smoot, J.C., Ryan, R.E., Gasser, G.E., Prados, D.L., Vaughan, R.D., (2010). <em>Phenological Parameters Estimation Tool</em>. NASA Tech. Briefs, New York. <a href="https://ntrs.nasa.gov/api/citations/20100033570/downloads/20100033570.pdf">SOURCE</a></p>
+<p>Miller, J. D., &amp; Yool, S. R. (2002). <em>Mapping forest post-fire canopy consumption in several overstory types using multi-temporal Landsat TM and ETM data</em>. Remote Sensing of Environment, 82(2-3), 481-496. <a href="https://doi.org/10.1016/S0034-4257(02)00071-8">https://doi.org/10.1016/S0034-4257(02)00071-8</a></p>
+<p>Mugiraneza, T., Nascetti, A., &amp; Ban, Y. (2020). <em>Continuous monitoring of urban land cover change trajectories with landsat time series and landtrendr-google earth engine cloud computing</em>. Remote Sensing, 12(18), 2883. <a href="https://doi.org/10.3390/rs12182883">https://doi.org/10.3390/rs12182883</a></p>
+<p>Oeser, J., Pflugmacher, D., Senf, C., Heurich, M., &amp; Hostert, P. (2017). <em>Using intra-annual Landsat time series for attributing forest disturbance agents in Central Europe</em>. Forests, 8(7), 251. <a href="https://doi.org/10.3390/f8070251">https://doi.org/10.3390/f8070251</a></p>
+<p>Olson, D. L., &amp; Delen, D. (2008). <em>Advanced data mining techniques</em>. Springer Science &amp; Business Media.<a href="https://link.springer.com/book/10.1007/978-3-540-76917-0">source</a></p>
+<p>Pasquarella, V. J., Arévalo, P., Bratley, K. H., Bullock, E. L., Gorelick, N., Yang, Z., &amp; Kennedy, R. E. (2022). <em>Demystifying LandTrendr and CCDC temporal segmentation</em>. International Journal of Applied Earth Observation and Geoinformation, 110, 102806. <a href="https://doi.org/10.1016/j.jag.2022.102806">https://doi.org/10.1016/j.jag.2022.102806</a></p>
+<p>Saxena, R., Watson, L. T., Wynne, R. H., Brooks, E. B., Thomas, V. A., Zhiqiang, Y., &amp; Kennedy, R. E. (2018). <em>Towards a polyalgorithm for land use change detection</em>. ISPRS Journal of Photogrammetry and Remote Sensing, 144, 217-234. <a href="https://doi.org/10.1016/j.isprsjprs.2018.07.002">https://doi.org/10.1016/j.isprsjprs.2018.07.002</a></p>
+<p>Singh, A. (1989). <em>Review article digital change detection techniques using remotely-sensed data</em>. International Journal of Remote Sensing, 10(6), 989-1003. <a href="https://doi.org/10.1080/01431168908903939">https://doi.org/10.1080/01431168908903939</a></p>
+<p>Udelhoven, T. (2010). <em>TimeStats: A software tool for the retrieval of temporal patterns from global satellite archives</em>. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 4(2), 310-317. <a href="https://doi.org/10.1109/jstars.2010.2051942">https://doi.org/10.1109/jstars.2010.2051942</a></p>
+<p>Verbesselt, J., Hyndman, R., Newnham, G., &amp; Culvenor, D. (2010). <em>Detecting trend and seasonal changes in satellite image time series</em>. Remote sensing of Environment, 114(1), 106-115. <a href="https://doi.org/10.1016/j.rse.2009.08.014">https://doi.org/10.1016/j.rse.2009.08.014</a></p>
+<p>Vogelmann, J. E., Xian, G., Homer, C., &amp; Tolk, B. (2012). <em>Monitoring gradual ecosystem change using Landsat time series analyses: Case studies in selected forest and rangeland ecosystems</em>. Remote Sensing of Environment, 122, 92-105. <a href="https://doi.org/10.1016/j.rse.2011.06.027">https://doi.org/10.1016/j.rse.2011.06.027</a></p>
+<p>Yan, J., Wang, L., Song, W., Chen, Y., Chen, X., &amp; Deng, Z. (2019). <em>A time-series classification approach based on change detection for rapid land cover mapping</em>. ISPRS Journal of Photogrammetry and Remote Sensing, 158, 249-262. <a href="https://doi.org/10.1016/j.isprsjprs.2019.10.003">https://doi.org/10.1016/j.isprsjprs.2019.10.003</a></p>
+<p>Zhou, J., Jia, L., &amp; Menenti, M. (2015). <em>Reconstruction of global MODIS NDVI time series: Performance of Harmonic ANalysis of Time Series (HANTS)</em>. Remote Sensing of Environment, 163, 217-228. <a href="https://doi.org/10.1016/j.rse.2015.03.018">https://doi.org/10.1016/j.rse.2015.03.018</a></p>
+<p>Zhu, Z., &amp; Woodcock, C. E. (2014). <em>Continuous change detection and classification of land cover using all available Landsat data</em>. Remote sensing of Environment, 144, 152-171. <a href="https://doi.org/10.1016/j.rse.2014.01.011">https://doi.org/10.1016/j.rse.2014.01.011</a></p>
+<p>Zhu, Z., Zhang, J., Yang, Z., Aljaddani, A. H., Cohen, W. B., Qiu, S., &amp; Zhou, C. (2020). <em>Continuous monitoring of land disturbance based on Landsat time series</em>. Remote Sensing of Environment, 238, 111116. <a href="https://doi.org/10.1016/j.rse.2019.03.009">https://doi.org/10.1016/j.rse.2019.03.009</a></p>
+<p>Zeileis, A. (2005). <em>A unified approach to structural change tests based on ML scores, F statistics, and OLS residuals</em>. Econometric Reviews, 24(4), 445-466. <a href="https://doi.org/10.1080/07474930500406053">https://doi.org/10.1080/07474930500406053</a></p>
+<h2 id="next-unit">Next unit</h2>
+<p>You have finished all of themes in this module. You can now proceed with case studies:</p>
+<ul>
+<li><a href="../06_cs_tundra_grasslands/06_cs_tundra_grasslands.html">Monitoring tundra grasslands (Karkonosze)</a></li>
+<li><a href="../07_cs_forest_changes/07_cs_forest_changes.html">Effects of pollution in Ore Mountains</a></li>
+<li><a href="../08_cs_disturbance_detection/08_cs_disturbance_detection.html">Forest disturbance detection (Tatras)</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../04_multitemporal_classification/04_multitemporal_classification_exercise.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Exercise">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Exercise
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="05_vegetation_monitoring_exercise.html" class="md-footer__link md-footer__link--next" aria-label="Next: Exercise">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Exercise
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+	
+    <div class="md-copyright__highlight">
+		<a href="https://erasmus-plus.ec.europa.eu/projects/search/details/2020-1-CZ01-KA203-078308" title="EU Project Page">
+			<img src="../../assets/img/flag_eu.jpg" }} alt="flag of the European Union" style="height:50px; float:left; margin-right:15px; margin-bottom:15px;">
+		</a>
+		<p style="font-family:Arial">
+			Funded by the Erasmus+ Programme<br>of the European Union.
+		</p>
+	</div><br>
+	<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+		<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+	</a>
+	<p>
+		Except when explicitly stated otherwise, the course is licensed under the 
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+		license, associated code is licensed under the
+		<a href="https://choosealicense.com/licenses/mit/">MIT</a>
+		license.
+	</p>
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.highlight", "content.code.copy", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/javascripts/quiz_evaluation.js"></script>
+      
+    
+  </body>
+</html>
