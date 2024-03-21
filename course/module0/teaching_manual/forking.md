@@ -14,13 +14,15 @@ and without being affected by the changes made in the original project.
 
 <p align="center">
 <img src="media/fork.jpg" title="Fork" alt="Figure 1" width="600"/>
+</p>
+<p align="center">
 <img src="media/fork2.jpg" title="Fork" alt="Figure 2" width="400"/>
 </p>
 
 
 
 
-## Communication with students
+## Communicate with students
 Students can suggest changes, fix typos, give feedback, etc., either by raising **issues** on GitHub or
 by directly applying updates to branches via **pull/merge requests**. 
 
@@ -30,9 +32,9 @@ Issues and pull requests can be linked together to show the progress and automat
 <img src="media/issues.jpg" title="Issues" alt="Figure 1" width="600"/>
 </p>
 
- *Issues*
 
  
 ## Modify and update course info in markdown files
 
-## After the semester: Merge back corrections to the original etrainee repository
+## After the semester
+Merge back corrections to the original etrainee repository
