@@ -1,12 +1,3 @@
----
-title: "E-TRAINEE: Setup of online resources for teaching as a university course"
-description:
-dateCreated: 
-authors: 
-contributors: 
-estimatedTime: 
----
-
 # Setting up online resources for teaching E-TRAINEE as a university course
 
 When using the course, i.e., when teaching or training with it, 
@@ -20,6 +11,11 @@ you can do so by creating a pull request from this repository to your forked rep
 A fork is a copy of a repository. 
 Forking a repository allows you to freely experiment with changes without affecting the original project 
 and without being affected by the changes made in the original project. 
+
+<p align="center">
+<img src="media/fork.jpg" title="Fork" alt="Figure 1" width="600"/>
+<img src="media/fork2.jpg" title="Fork" alt="Figure 2" width="400"/>
+</p>
 
 
 
@@ -35,6 +31,7 @@ Issues and pull requests can be linked together to show the progress and automat
 </p>
 
  *Issues*
+
  
 ## Modify and update course info in markdown files
 
