@@ -9,7 +9,7 @@ you can do so by creating a pull request from this repository to your forked rep
 
 ## Set up the course fork
 
-1.**Create a fork** of the original etrainee respotitory, choose an appropriate name according to your needs
+1. **Create a fork** of the original etrainee respotitory, choose an appropriate name according to your needs
 as it's going to be publicly visible. A fork is a copy of a repository. 
 Forking a repository allows you to freely experiment with changes without affecting the original project 
 and without being affected by the changes made in the original project.
@@ -54,11 +54,19 @@ You can make the link visible on the repositories landing page by including it i
 <img src="media/live_pages.jpg" title="Live pages" alt="Figure 6" width="600"/>
 </p>
 
-6. It is recommended to **add protection to the main branch**
+6. It is recommended to **add protection to the main branch**. This can be done in the Settings -> Branches -> Add Branch Protection Rule -> 
+-> Branch name pattern: *main* and check *Require a pull request before merging*. You can further decide if 
+pull requests targeting a matching branch should require an approval or not. 
+
+<p>
+<p align="center">
+<img src="media/branch_protection.jpg" title="Branch protection" alt="Figure 7" width="500"/>
+</p>
 
 ## Communicate with students
 Students can suggest changes, fix typos, give feedback, etc., either by raising **issues** on GitHub or
-by directly applying updates to branches via **pull/merge requests**. 
+by directly applying updates to branches via **pull/merge requests**. Issues need to be enabled first in the 
+Settings -> General -> Features: Issues (check box).
 
 Issues and pull requests can be linked together to show the progress and automatically close the issues upon their resolution. 
 
