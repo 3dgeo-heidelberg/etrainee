@@ -22,7 +22,7 @@ First, get familiar with the use case [Forest disturbances in Ore Mountains](../
 
 ## Implementation workflow
 
-The application is implemented in GEE and can be accessed from [this link](https://dvorakjakub.users.earthengine.app/view/etrainee-oremts-dev).
+The application is implemented in GEE and can be accessed from [this link](https://et-2024.projects.earthengine.app/view/oremts).
 
 <center>
 <img src="media/img1.png" title="The GEE application Forest disturbance in Ore Mountains." alt="The GEE application Forest disturbance in Ore Mountains." width="600"/>
@@ -30,12 +30,12 @@ The application is implemented in GEE and can be accessed from [this link](https
 <i>The GEE application Forest disturbance in Ore Mountains. Figure by course authors.</i>
 </center>
 
-The methodology consists of several steps depicted in the chart below and commented in the following text. The developed [GEE script](https://code.earthengine.google.com/a50c21c9513e7202f22a025b82d8adff) can be used for other areas with similar land cover and forest composition. The respective parts of the script that need to be altered for another AOI are marked in the following text.
+The methodology consists of several steps depicted in the chart below and commented in the following text. The developed [GEE script](https://code.earthengine.google.com/081a181699eb410796a3558095619314) can be used for other areas with similar land cover and forest composition. The respective parts of the script that need to be altered for another AOI are marked in the following text.
 
 <center>
 <img src="media/img2.png" title="General workflow applied in the GEE application Forest disturbance in Ore Mountains." alt="General workflow applied in the GEE application Forest disturbance in Ore Mountains." width="600"/>
 
-<i>General workflow applied in the GEE application [Forest disturbance in Ore Mountains](https://dvorakjakub.users.earthengine.app/view/etrainee-oremts-dev). Figure by course authors.</i>
+<i>General workflow applied in the GEE application [Forest disturbance in Ore Mountains](https://et-2024.projects.earthengine.app/view/oremts). Figure by course authors.</i>
 </center>
 
 ### Data selection
