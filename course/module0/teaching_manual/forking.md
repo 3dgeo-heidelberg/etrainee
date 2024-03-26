@@ -54,8 +54,7 @@ You can make the link visible on the repositories landing page by including it i
 <img src="media/live_pages.jpg" title="Live pages" alt="Figure 6" width="600"/>
 </p>
 
-6. It is recommended to **add protection to the main branch**. This can be done in Settings -> Branches -> Add Branch Protection Rule -> 
--> Branch name pattern: *main* and check *Require a pull request before merging*. You can further decide if 
+6. It is recommended to **add protection to the main branch**. This can be done in Settings -> Branches -> Add Branch Protection Rule -> Branch name pattern: *main* and check *Require a pull request before merging*. You can further decide if 
 pull requests targeting a matching branch should require approval or not. 
 
 <p>
