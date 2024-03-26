@@ -2,9 +2,9 @@
 
 When using the course, i.e., when teaching or training with it, 
 we recommend to [fork the repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks) into your GitHub account/organization and use the latest version of the main branch. 
-This ensures that the course content is stable while updates may be merged in this repository. 
+This ensures that the course content is stable while updates may be merged into this repository. 
 If you want to integrate updates from this repository into your fork, 
-you can do so by creating a pull request from this repository to your forked repository, or use the syncing offered by GitHub.
+you can do so by creating a pull request from this repository to your forked repository, or by using the syncing offered by GitHub.
 
 
 ## Set up the course fork
@@ -28,8 +28,8 @@ and without being affected by the changes made in the original project.
 <img src="media/workflow.jpg" title="Workflow" alt="Figure 3" width="500"/>
 </p>
 
-3. Then, **run the workflow** *deploy_to_gh_pages* using the main branch. This takes some times, 
-once the workflow has finished, a green check mark will appear next to it. The workflow is an automatically triggered event, meaning everytime a change in the future is made in the main branch, the github-pages will update
+3. Then, **run the workflow** *deploy_to_gh_pages* using the main branch. This takes some time, 
+once the workflow has finished, a green check mark will appear next to it. The workflow is an automatically triggered event, meaning every time a change in the future is made in the main branch, the github-pages will update
 on  their own.
 
 <p>
@@ -54,9 +54,9 @@ You can make the link visible on the repositories landing page by including it i
 <img src="media/live_pages.jpg" title="Live pages" alt="Figure 6" width="600"/>
 </p>
 
-6. It is recommended to **add protection to the main branch**. This can be done in the Settings -> Branches -> Add Branch Protection Rule -> 
+6. It is recommended to **add protection to the main branch**. This can be done in Settings -> Branches -> Add Branch Protection Rule -> 
 -> Branch name pattern: *main* and check *Require a pull request before merging*. You can further decide if 
-pull requests targeting a matching branch should require an approval or not. 
+pull requests targeting a matching branch should require approval or not. 
 
 <p>
 <p align="center">
@@ -90,10 +90,10 @@ due to the previously defined actions.
 
 ## After the semester
 The changes in the forked repository can be transferred back to the original etrainee repository
-via pull/merge requests. It is important to not transfer the back the altered *course/index.md* 
+via pull/merge requests. It is important to not transfer back the altered *course/index.md* 
 and other course specific files, only the corrections. This can be done in several ways:
 
-1. Create a new branch in your repository from the [remote upstream](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/configuring-a-remote-repository-for-a-fork) (original etrainee repository)
+A. Create a new branch in your repository from the [remote upstream](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/configuring-a-remote-repository-for-a-fork) (original etrainee repository)
 -> **cherry-pick** and push only the specific commits to the branch -> make a pull request.
 
 ```
@@ -109,5 +109,7 @@ git cherry-pick <hash of commit>
 git push -u origin branch_name
 ```
 
-2. Create a new branch in your repository -> replace the course specific altered files with the 
+or
+
+B. Create a new branch in your repository -> replace the course specific altered files with the 
 the ones from the original etrainee repository -> make a pull request.
