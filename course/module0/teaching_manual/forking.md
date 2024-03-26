@@ -76,7 +76,20 @@ Issues and pull requests can be linked together to show the progress and automat
 
 
 ## Modify and update course info
+1. The **course website landing page** is generated from *course/index.md*. You can modify this file to contain the
+needed information such as the time schedule, topics, contact information, etc. A template that can be edited and used is provided [here](index_template.md). 
+The easiest way is to copy the content of this file. 
 
+2. You can **edit the course website structure** and select only some modules to be built by modifying *mkdocs/mkdocs.yml*
+and, e.g., deleting lines for modules not to be included. 
+
+3. **Updates and corrections** applied to the main branch of the fork are automatically posted on website 
+due to the previously defined actions. 
+
+ 
 
 ## After the semester
 Merge back corrections to the original etrainee repository
+You can do so by creating by cherry picking commits
+or by creating a new branch and then replacing the unwanted modified files (course/index.md) with 
+the original ones. 
