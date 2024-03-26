@@ -22,7 +22,7 @@ The course consists of **X selected modules of a larger e-learning course** call
 
 | #   | Date       | Topics                                                                           |
 |-----|------------|----------------------------------------------------------------------------------|
-| 00  |  | **Introduction & Organization**                                                  |
+| 00  |  |                            |
 | 01  |  |                            |
 | 02  |  |                            |
 | 03  |  |                            |

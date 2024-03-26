@@ -1,7 +1,7 @@
 # Setting up online resources for teaching E-TRAINEE as a university course
 
 When using the course, i.e., when teaching or training with it, 
-we recommend to fork the repository into your GitHub account/organization and use the latest version of the main branch. 
+we recommend to [fork the repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks) into your GitHub account/organization and use the latest version of the main branch. 
 This ensures that the course content is stable while updates may be merged in this repository. 
 If you want to integrate updates from this repository into your fork, 
 you can do so by creating a pull request from this repository to your forked repository, or use the syncing offered by GitHub.
@@ -89,7 +89,25 @@ due to the previously defined actions.
  
 
 ## After the semester
-Merge back corrections to the original etrainee repository
-You can do so by creating by cherry picking commits
-or by creating a new branch and then replacing the unwanted modified files (course/index.md) with 
-the original ones. 
+The changes in the forked repository can be transferred back to the original etrainee repository
+via pull/merge requests. It is important to not transfer the back the altered *course/index.md* 
+and other course specific files, only the corrections. This can be done in several ways:
+
+1. Create a new branch in your repository from the [remote upstream](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/configuring-a-remote-repository-for-a-fork) (original etrainee repository)
+-> **cherry-pick** and push only the specific commits to the branch -> make a pull request.
+
+```
+# set remote upstream 
+git remote add upstream https://github.com/<upstream_github_username>/<upstream_github_repo_name>.git
+# fetch changes
+git fetch --all
+# create new branch from
+git checkout -b branch_name upstream/master
+# cherry-pick commits
+git cherry-pick <hash of commit>
+# push the commit
+git push -u origin branch_name
+```
+
+2. Create a new branch in your repository -> replace the course specific altered files with the 
+the ones from the original etrainee repository -> make a pull request.
