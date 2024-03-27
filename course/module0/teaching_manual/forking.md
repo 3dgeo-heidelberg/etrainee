@@ -9,7 +9,7 @@ you can do so by creating a pull request from this repository to your forked rep
 
 ## Set up the course fork
 
-1. **Create a fork** of the original etrainee respotitory, choose an appropriate name according to your needs
+1. **Create a fork** of the original etrainee repository, choose an appropriate name according to your needs
 as it's going to be publicly visible. A fork is a copy of a repository. 
 Forking a repository allows you to freely experiment with changes without affecting the original project 
 and without being affected by the changes made in the original project.
