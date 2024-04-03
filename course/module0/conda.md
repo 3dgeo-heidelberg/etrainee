@@ -7,11 +7,19 @@ contributors: TBA
 estimatedTime: 30 minutes
 ---
 
-<!--Create a Python Anaconda Mamba question mark figure!-->
-
 # Conda
 
 To install the general-purpose programming language Python and to manage its versions along with all packages extending it (make it useful for our specific purposes) we use the package management system [Conda](https://conda.io/). Conda quickly installs, runs, and updates packages and their dependencies. Conda easily creates, saves, loads, and switches between environments on your local computer. It was created for Python programs but it can package and distribute software for any language.
+
+<p align="center">
+    <img src="toolbox_media/snakes.png" title="Figure created partly with DALL-E 3 / CC BY 4.0" width="300">
+</p>
+
+<p align="center">
+<i>
+Figure created partly with DALL-E 3 /  <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+</i>
+</p>
 
 ## Conda distributions
 
