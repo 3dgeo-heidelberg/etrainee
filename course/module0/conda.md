@@ -15,12 +15,6 @@ To install the general-purpose programming language Python and to manage its ver
     <img src="toolbox_media/snakes.png" title="Figure created partly with DALL-E 3 / CC BY 4.0" width="300">
 </p>
 
-<p align="center">
-<i>
-Figure created partly with DALL-E 3 /  <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
-</i>
-</p>
-
 ## Conda distributions
 
 *Anaconda* is a popular distribution of Conda, which has lots of software and extensions preinstalled (e.g., Python with numerous packages, ...). While this may sound nice you will probably not need all this software and, instead, you might want to install other packages or specific versions.
