@@ -17,8 +17,8 @@ profile_default/
 ipython_config.py
 
 # Python module specific
-.polyscope.ini
-imgui.ini
+*.polyscope.ini
+*imgui.ini
 
 # Anaconda environments
 .env

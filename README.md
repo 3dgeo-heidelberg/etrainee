@@ -42,7 +42,7 @@ The full course website is then generated in a directory called `site`.
 ## Usage and development of the course
 
 * The latest version of the course is always available in the **main branch** of this repository. Updates to the course are made in **feature branches** or forks (see below) and merged into the main branch when ready. Therefore, the main branch may be ahead of the latest release version.
-* When using the course, i.e., when teaching or training with it, we recommend to **fork the repository** into your GitHub account/organization and use the latest version of the main branch. This ensures that the course content is stable while updates may be merged in this repository. If you want to integrate updates from this repository into your fork, you can do so by **creating a pull request** from this repository to your forked repository, or use the syncing offered by GitHub. 
+* When using the course, i.e., when teaching or training with it, we recommend to **fork the repository** into your GitHub account/organization and use the latest version of the main branch. This ensures that the course content is stable while updates may be merged in this repository. If you want to integrate updates from this repository into your fork, you can do so by **creating a pull request** from this repository to your forked repository, or use the syncing offered by GitHub. For more information, please refer to the [manual](course/module0/teaching_manual/forking.md) on Setting up online resources for teaching E-TRAINEE as a university course.
 * Updates or corrections of the course material in this repository can be made by **creating a pull request** from your forked repository to this repository. The pull request will be reviewed and merged into the main branch if accepted.
 * **Reviewing and releases** of the course are performed by the E-TRAINEE team. The latest release version of the course is tagged in the repository.
 
@@ -56,9 +56,9 @@ Please cite E-TRAINEE when using it in your teaching or training, and reference 
 
 E-TRAINEE Development Team. {year} ETRAINEE - E-learning course on Time Series Analysis in Remote Sensing for Understanding Human-Environment Interactions. https://doi.org/10.5281/zenodo.8402924
 
-The development team has also presented the course here:
+The course was also presented in the form of a conference paper at the ISPRS Geospatial Week 2023:
 
-Potůčková, Albrechtová, Anders, Červená, Dvořák, Gryguc, Höfle, Hunt, Lhotáková, Marcinkowska-Ochtyra, Mayr, Neuwirthová, Ochtyra, Rutzinger, Šedová, Šrollerů, Kupková (2023): E-TRAINEE: Open E-Learning Course on Time Series Analysis in Remote Sensing , Int. Arch. Photogramm. Remote Sens. Spatial Inf. Sci. (in print) [draft version](ETrainee_ISPRS_GeoSpatialWeek_DRAFT.pdf)
+Potůčková, M., Albrechtová, J., Anders, K., Červená, L., Dvořák, J., Gryguc, K., Höfle, B., Hunt, L., Lhotáková, Z., Marcinkowska-Ochtyra, A., Mayr, A., Neuwirthová, E., Ochtyra, A., Rutzinger, M., Šedová, A., Šrollerů, A., and Kupková, L. (2023): E-TRAINEE: Open E-Learning course on Time Series Analysis in Remote Sensing. The International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences. Vol. XLVIII-1/W2-2023, pp. 989-996. [https://doi.org/10.5194/isprs-archives-XLVIII-1-W2-2023-989-2023](https://doi.org/10.5194/isprs-archives-XLVIII-1-W2-2023-989-2023)
 
 ## License
 Except when explicitly stated otherwise, the course is licensed under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license, associated code is licensed under the [MIT](https://choosealicense.com/licenses/mit/) license.
