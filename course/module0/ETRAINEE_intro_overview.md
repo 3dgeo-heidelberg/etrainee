@@ -9,7 +9,7 @@ estimatedTime: 5.0 hrs (for the entire toolbox intro)
 
 # Toolbox overview
 
-Before starting the course let's "unpack our toolbox" to ensure that we have the necessary digital working environment ready. This means we introduce the different **software components used in E-TRAINEE** (*so far mainly in Module 1*). Thereby, we cover installation and some basic methods of
+Before starting the course let's "unpack our toolbox" to ensure that we have the necessary digital working environment ready. This means we introduce the different **software components used in E-TRAINEE Module 1** (and partly also in other Modules). Thereby, we cover installation and some basic methods of
 
 * [Visual Studio Code](./vscode.md) (code editor)
 * [Conda](./conda.md) (package management system)
