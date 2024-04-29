@@ -37,17 +37,17 @@ Open VSCode and install the Python and Jupyter extensions for VSCode, see [here]
 
 ## Command line essentials
 
-In VSCode, there is a command line ("terminal", "prompt"), usually at the bottom. This can be a Windows *PowerShell* or the "classic" *cmd* command prompt. Some commands related to navigation in your directory (folder) structure will be useful:
+In VSCode, there is a command line ("terminal", "prompt", "shell"), usually at the bottom. This can be a Windows *PowerShell* or the "classic" *cmd* command prompt or "Bash" (Unix shell). For a comprehensive overview of commands see the [Windows Commands Reference](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cmd) or the [Guide to Unix commands](https://en.wikibooks.org/wiki/Guide_to_Unix/Commands). Some commands related to navigation in your directory (folder) structure will be useful (here for Windows; Unix commands in *italic* if they differ):
 
 | Command | Operation |
 | ------- | --------- |
-| dir | List files and subdirectories in the current directory. |
+| dir (*Unix: ls*) | List files and subdirectories in the current directory. |
 | tree | Displays the directory structure of a path or of the disk. |
 | cd FOLDER_NAME | "Change directory": Move to a folder within your current folder. |
 | cd PATH_TO_YOUR_FOLDER_AND_NAME | Move to a folder at any path. |
 | cd .. | Move to parent directory (i.e. one level up). |
 
-Use these commands to move to your working directory, where you save your scripts (*Hint*: Try the 'Tab' key to auto-complete folder or file names.).
+Use these commands to move to your working directory, where you save your scripts (*Hint*: Try the 'Tab' key to auto-complete folder or file names).
 
 Some other useful commands are related to file handling:
 
@@ -57,9 +57,7 @@ Some other useful commands are related to file handling:
 | rd DIRECTORY /s | Deletes a directory including all its files. |
 | copy FILE FOLDER | Copies one or more files from one location to another. |
 | rename SRC DES | Renames files or directories. |
-| del FILE | Delete one or more files. |
-
-For a full overview of commands see the [Windows Commands Reference](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cmd).
+| del FILE (*Unix: rm FILE*) | Delete one or more files. |
 
 ### Next: Conda
 
