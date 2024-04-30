@@ -9,12 +9,12 @@ estimatedTime: 5.0 hrs (for the entire toolbox intro)
 
 # Toolbox overview
 
-Before starting the course let's "unpack our toolbox" to ensure that we have the necessary digital working environment ready. This means we introduce the different **software components used in E-TRAINEE** (*so far mainly in Module 1*). Thereby, we cover installation and some basic methods of
+Before starting the course let's "unpack our toolbox" to ensure that we have the necessary digital working environment ready. This means we introduce the different **software components used in E-TRAINEE Module 1** (and partly also in other Modules). Thereby, we cover installation and some basic methods of
 
 * [Visual Studio Code](./vscode.md) (code editor)
 * [Conda](./conda.md) (package management system)
 * [Jupyter Notebooks](./jupyter.ipynb) (interactive computing), with some Python fundamentals (programming language)
-* [GeoPython](./geopython.ipynb) (a quickstart to geographic data handling in Python)
+* [GeoPython](./geopandas.ipynb) (a quickstart to geographic data handling in Python)
 
 ## Background and objective
 <!--*SHORTEN OR SKIP THIS!*-->
@@ -24,7 +24,7 @@ The **objective** of this introduction to the E-TRAINEE course is to provide you
 * Program code can be run by executing either "normal" scripts (e.g. ```*.py``` files) or code cells within interactive **Jupyter Notebooks** (```*.ipynb```) with text explanations as well as graphics and other output in between.
 * Jupyter Notebook documents can be edited and run in various web-based or desktop applications, such as [JupyterLab](https://jupyterlab.readthedocs.io/en/latest/), [JupyterHub](https://jupyterhub.readthedocs.io/en/latest), [Jupyter Desktop](https://github.com/jupyterlab/jupyterlab-desktop), or **Visual Studio Code**, etc..
 * Data can be processed with a variety of graphical user interface software or command line tools or by scripting in a programming language such as R, **Python**, JavaScript, or Julia.
-* GeoPython: For handling geographic data in Python, there are different packages available but some of them introduce unnecessary complexity (e.g., newer packages simplify things), are no longer well-maintained, or are tailored to rather specific tasks.
+* GeoPython: For handling geographic data in Python, we focus on the packages **GeoPandas**, **rasterio** and **xarray**. There are other packages available but some of them introduce unnecessary complexity, are no longer well-maintained, or are tailored to rather specific tasks.
 
 Out of this variety, we *selected a set of tools* that makes up a tested and proven *digital working environment*. We hope that, by using a such a recommended, uniform environment for all course participants, you will (i) encounter less software-related problems, (ii) get more helpful, more specific instructions, (iii) learn an approach that enables you to set up and customize your working environment also for follow-up tasks (such as your MSc thesis, where you may need to install additional or different packages). A concise, step-by-step guide will show you how to make the components of this environment interact, so you don't need to search the endless resources of the web, and you have a condensed resource to look things up in case you forget something.
 

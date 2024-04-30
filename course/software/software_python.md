@@ -23,5 +23,6 @@ conda env create -f etrainee_m3.yml
 ```
 
 
-## Getting started 
-Basic knowledge of programming and Python are required in this course. If you are new to Python, check the resources given in the [pre-module](../module0/module0.md#programming-in-python).
+## Getting started
+
+Basic knowledge of programming and Python are required in this course. If you are new to Python, check the resources given in the [pre-module](../module0/module0.md#programming-in-python). If you are already familiar with some Python basics but not with Conda and environments, with Jupyter Notebooks, and with geodata processing in Python then we recommend to go through the [Toolbox intro](../module1/toolbox_intro/ETRAINEE_intro_overview.md) at the beginning of Module 1.
