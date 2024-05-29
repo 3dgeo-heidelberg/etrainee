@@ -49,10 +49,10 @@ Field spectroradiometers measure reflectance at various hierarchical levels depe
 However, the reflectance measurements with CP or IS are not interchangeable. The main reason is the difference between geometry of the light source and the sensor, providing specific advantages regarding speed, laboriousness, and field operability of the spectra collection. The radiation quantity measured by the CP is usually termed in the literature as bidirectional reflectance factor (BRF) as the light source and sensor geometry is fixed in stable directional position to each other (*Figure 3A* ). The radiation quantity acquired by the IS is called directional-hemispherical reflectance factor (DHRF) for having the directional light source and having the reflected or transmitted radiation integrated from the whole hemisphere (*Figure 3B* ). There are several studies focused on the comparison of those two types of spectral quantities [Potůčková et al., 2016a](#references)), or between DHRF acquired by two types of integrating spheres ([Hovi et al., 2020](#references)).
 
 <p align="center">
-<img src="media/t03_02_fig3.jpg" title="Bidirectional and Directional-Hemispherical reflectance factors" alt="Figure 3" width="600"/>
+<img src="media/t03_02_fig3.png" title="Bidirectional and Directional-Hemispherical reflectance factors" alt="Figure 3" width="600"/>
 </p>
 
-*Figure 3. Two most commonly measured reflectance quantities A) Bidirectional Reflectance Factor by the contact probe or leaf clip and B) Directional-Hemispherical reflectance factor by the integrating sphere. (Figure modified from [Schaepman-Strub et al. 2006](https://doi.org/10.1016/j.rse.2006.03.002) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))*
+*Figure 3. Two most commonly measured reflectance quantities A) Bidirectional Reflectance Factor by the contact probe or leaf clip and B) Directional-Hemispherical reflectance factor by the integrating sphere. (Figure by the authors).*
 
 
 ## Spectral reflectance acquisition with the spectroradiometer ASD FieldSpec®
@@ -306,9 +306,10 @@ On the other hand, the reflectance (BRF) measured by the contact probe is much f
 
 <!--Question 1-->
 <label for="q_01">
-On a very short movie (18 s) two ways of spectra expression are shown. There are two groups of measured samples represented by spectral curves. Explain the format of the spectra (mind the units) and guess what type of samples they represent.
-<br> <p style="background-color:yellow;">Add video here</p>
-</label><br>
+In a very short movie (18 s) two ways of spectra expression are shown. There are two groups of measured samples represented by spectral curves. Explain the format of the spectra (mind the units) and guess what type of samples they represent.
+<p align="left">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4AZFObJZ7dA?si=Bz0XJGps6j644t1X" frameborder="0" allowfullscreen>
+</iframe></p>
 <textarea rows = "5" cols = "50" name = "q_01"></textarea><br>
 <div hidden id="correct_q_01">First the spectral data are expressed as relative reflectance (no units) indicated by the right Y axis. Mind the axis maximum slightly above the value 1.0; later the spectra are visualized as digital numbers (DN), arbitrary units related to the radiation intensity converted to electric signal. The group of samples with higher values in all wavelengths in both formats correspond to samples of highly reflective Spectralon panel, which correspond to the 100% reflectance (value 1.0). The second group of samples with lower values in DN and reflectance as well corresponds to some vegetation samples. The shape of the spectra expressed as reflectance shows characteristic features: low reflectance in blue and red, peak in green (resulting from chlorophyll absorption), sharp increase in the red edge, NIR plateau and distinctive water absorption bands in the SWIR.</div>
 <output id="output_q_01"/></output><br><br>

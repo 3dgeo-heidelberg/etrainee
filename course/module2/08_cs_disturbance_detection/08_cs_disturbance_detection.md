@@ -1,225 +1,192 @@
-Case study: Forest disturbance detection (Tatras)
+---
+title: "Case study: Forest disturbance detection (Tatra Mountains)"
+description: "This is the third case study within the Satellite Multispectral Images Time Series Analysis module."
+dateCreated: 2023-08-31
+authors: Krzysztof Gryguc, Adrian Ochtyra
+contributors: Edwin Raczko
+estimatedTime: "3 hours"
+output: 
+  github_document:
+    pandoc_args: "--wrap=none"
+---
+
+Case study: Forest disturbance detection (Tatra Mountains)
 ================
 
-## Case study: Forest disturbance detection (Tatra Mountains)
+The Tatra Mountains are a unique and ecologically significant area. Monitoring forest changes there is critical to understanding environmental shifts and potential threats. The aim of this case study is to assess **vegetation (forests) changes** in Tatra Mountains area. If you’ve gone through **[Theme 5 exercise](../05_vegetation_monitoring/05_vegetation_monitoring_exercise.md)** you’ll notice the similarit in topics.
 
-The aim of this case study is similar as in Theme 5 exercise but this time we will use the **Threshold and trend-based vegetation change monitoring algorithm (TVCMA)** instead of the LandTrendr (see the first three paragraphs of [Theme 5 exercise](../05_vegetation_monitoring/05_vegetation_monitoring_exercise.md). TVCMA was developed in R language for that reason we will use scripts in R. We will use the same dataset, only one difference is related to raster file structure due to different requirements for input data preparation for both algorithms. We will use part of the capabilities of TVCMA which are related to detection of time and location of forest disturbance events based on thresholding and logical rules.
+However, in this case study we’re adopting a different approach. This time we we’ll use **Threshold and trend-based vegetation change monitoring algorithm (TVCMA)** instead of the LandTrendr. TVCMA was developed in R language. Our work will be conducted in RStudio environment. If you haven’t already done this, refer to this tutorial regarding the environment setup: [R environment setup tutorial](../../software/software_r_language.md). We will use the image datasets and validation table prepared and described earlier in **[Theme 3 exercise](../03_image_processing/03_image_processing_exercise.md#processing-pipeline-2)** and **[Theme 5 exercies](../05_vegetation_monitoring/05_vegetation_monitoring_exercise.md)**. We’ll use essential features of TVCMA, which are related to detection of time and location of forest disturbance events based on thresholding and logical rules.
+
+Our workflow is divided into the following key steps:
+
+1.  **Extraction of spectral indices values using reference data points**: this initial step involves extracting spectral values from our image datasets, forming the foundation for the subsequent stages of our analysis.
+2.  **Applying the TVCMA algorithm to various variables (indices) and threshold values**: the core analysis part.
+3.  **Accuracy assessment and best model selection**: after acquiring the results we’ll be able to assess and select best performing combination of spectral index & threshold.
+4.  **Calculation of forest disturbance maps presenting detected events in the Tatra Mountains**: in this part, we’ll create spatial visual representations of the detected forest disturbances.
+
+<center>
+
+<img src="media/cs3_flowchart.png" title="Case study 3 scheme of procedure" alt="Scheme" width="600"/>
+
+<i>Case Study 3 scheme of procedure.</i>
+</center>
+
+## Study area and data
 
 Before you continue, get familiar with the use case (if you did it before in Theme 5 you can skip this step): **[Use case: Vegetation disturbance detection in Polish-Slovak Tatra Mountains](../../data_usecases/usecase_forest_tatras.md)**.
 
-… and read the paper accompanying the use case: Ochtyra, A., Marcinkowska-Ochtyra, A., & Raczko, E. (2020). Threshold and trend-based vegetation change monitoring algorithm based on the inter-annual multi-temporal normalized difference moisture index series: A case study of the Tatra Mountains. Remote Sensing of Environment, 249, 112026. <https://doi.org/10.1016/j.rse.2020.112026>
+… and read the paper accompanying the use case:
 
-Our work will be divided on three main parts:
+Ochtyra, A., Marcinkowska-Ochtyra, A., & Raczko, E. (2020). *Threshold and trend-based vegetation change monitoring algorithm based on the inter-annual multi-temporal normalized difference moisture index series: A case study of the Tatra Mountains*. Remote Sensing of Environment, 249, 112026. <https://doi.org/10.1016/j.rse.2020.112026>
 
-1.  Extraction of values tested variables time series using reference data points.
+Download data provided through [Zenodo](https://zenodo.org/records/10003575).
 
-2.  Testing of a variety of variables and threshold values with accuracy assessment.
+### Imagery data
 
-3.  Calculation of resulting rasters presenting detected disturbance events.
+The image data supplied for this exercise consist of Landsat satellite imagery time series. The data preparation process is described in the **[Module 2 Theme 3 exercise Pipeline 2](../03_image_processing/03_image_processing_exercise.md#processing-pipeline-2)**. We’ll use indices time series that you can access in the `case_study_3/data_exercise` folder.
+
+### Reference data
+
+For this exercise, 100 reference points have been chosen to perform the assessment of TVCMA. These points were randomly spread out across the research area. Each point was assessed based on chips (method of producing chips is presented in **[Theme 2 exercise](../02_temporal_information/02_temporal_information_exercise.md)**). The attribute table from the point layer was extracted and will be used in the second part of the exercise as a validation dataset. In table rows there are consecutive reference points recorded and in columns there are subsequent years from 1985 (the first possible disturbance observation) to 2022. In cases where no disturbance was identified, the corresponding cell was marked with a “0”. Conversely, if a disturbance was evident, the cell was marked with a “1”.
+
+<center>
+
+<img src="media/val_table.jpg" title="Validation table" alt="Validation table" width="800"/>
+
+<i>Validation table.</i>
+</center>
+
+The validation process will involve overlaying the extracted TVCMA disturbance points on validation disturbance events and calculating confusion matrix statistics.
 
 ## Getting started
 
 ### Environment preparation: loading required libraries and data
 
-To start with, we want to load necessary libraries and data and set up some initial variables, which we will use further down the line. Firstly, load required libraries into the environment: rgdal, raster, dplyr, sf, readxl, and writexl. Functions included in these packages will be used further in this case study.
+To start with, we want to load necessary libraries and data and set up some initial variables, which we will use further down the line. Firstly, load required libraries into the environment: `terra`, `sf`, `dplyr`, `readxl`, `writexl` and `tools`. Functions included in these packages will be used further in this case study.
 
 ``` r
-library(rgdal) # spatial data processing
-library(raster) # raster processing
-library(dplyr) #    
-library(readxl) # 
-library(writexl) # 
+# raster I/o and processing
+library(terra) 
+
+# vector I/O and processing
+library(sf) 
+
+# tabular data manipulation
+library(dplyr) 
+
+# reading .xlsx files
+library(readxl) 
+
+# writing .xlsx files
+library(writexl) 
+
+# miscellaneous tools
+library(tools)
 ```
 
-Now we can start with loading up the required data. We will start with the raster data which are a time series of vegetation indices and products Tasseled Cap transformation calculated on Landsat cloud-free composites from 1984 to 2022 prepared in [Theme 3 exercise, pipeline 2](../03_image_processing/03_image_processing_exercise.md#processing-pipeline-2).
+We can move to loading up the required data. We will start with the raster data which are time series of vegetation indices and products of Tasseled Cap transformation calculated on Landsat cloud-free composites from 1984 to 2022 prepared in **[Theme 3 exercise, pipeline 2](../03_image_processing/03_image_processing_exercise.md#processing-pipeline-2)**. Data can be found in a package provided through [Zenodo](https://zenodo.org/record/8402925). We’ll load 8 multiband rasters to a list and name them appropriately.
 
 ``` r
-ndvi <- brick("F:/ETR/rmd/dane_cs3/_final_v1/img_data/NDVI_revised.tif")
-nbr <- brick("F:/ETR/rmd/dane_cs3/_final_v1/img_data/NBR_revised.tif")
-nbr2 <- brick("F:/ETR/rmd/dane_cs3/_final_v1/img_data/NBR2_revised.tif")
-ndmi <- brick("F:/ETR/rmd/dane_cw5/data/doy/NDMI_filled.tif")
-ndwi <- brick("F:/ETR/rmd/dane_cs3/_final_v1/img_data/NDWI_revised.tif")
-tcb <- brick("F:/ETR/rmd/dane_cs3/_final_v1/img_data/TCB_revised.tif")
-tcg <- brick("F:/ETR/rmd/dane_cs3/_final_v1/img_data/TCG_revised.tif")
-tcw <- brick("F:/ETR/rmd/dane_cs3/_final_v1/img_data/TCW_revised.tif")
+# load relative paths to .tif files
+# the first file is forest mask, which we want to load separately
+indices_list <- list.files("case_study_3/data_exercise/", 
+                           pattern = "*.tif", 
+                           full.names = TRUE)[2:9]
+
+# load images as terra rast objects
+indices_imgs <- lapply(indices_list, terra::rast)
+
+# get indices names
+indices_names <- file_path_sans_ext(list.files("case_study_3/data_exercise/", 
+                                               pattern = "*.tif")[2:9])
+
+# rename loaded images
+names(indices_imgs) <- indices_names
 ```
 
-Note: you can prepare your own time series of variables which you would like to test
-
-Now we will upload vector layer data which contains 100 reference points. It will be used for extraction values from rasters loaded in the previous step.
+After we’ve loaded image data, we can now can also read in 100 reference/validation points.
 
 ``` r
-pkt <- st_read("F:/ETR/rmd/dane_cw5/punkty_100/punkty_100.shp")
+# read reference points
+points <- st_read("case_study_3/data_exercise/CS3_points.shp")
 ```
 
-Next we go to values extraction from all prepared time series.
+To have all the data needed later we’ll also load validation table at this moment. We’ll get rid of the redundant `id` column.
 
 ``` r
-ndvi_vals <- extract(ndvi, pkt, df = TRUE) %>%
-  select(2:40)
-
-colnames(ndvi_vals) <- c("NDVI_1984", "NDVI_1985", "NDVI_1986", "NDVI_1987", "NDVI_1988", "NDVI_1989", "NDVI_1990",
-                         "NDVI_1991",
-                         "NDVI_1992", "NDVI_1993", "NDVI_1994", "NDVI_1995", "NDVI_1996", "NDVI_1997", "NDVI_1998", "NDVI_1999",
-                         "NDVI_2000", "NDVI_2001", "NDVI_2002", "NDVI_2003", "NDVI_2004", "NDVI_2005", "NDVI_2006", "NDVI_2007",
-                         "NDVI_2008", "NDVI_2009", "NDVI_2010", "NDVI_2011", "NDVI_2012", "NDVI_2013", "NDVI_2014",
-                         "NDVI_2015", "NDVI_2016", "NDVI_2017", "NDVI_2018",  "NDVI_2019",  "NDVI_2020", "NDVI_2021", "NDVI_2022")
-
-
-ndmi_vals <- extract(ndmi, pkt, df = TRUE) %>%
-  select(2:40)
-colnames(ndmi_vals) <- c("NDMI_1984", "NDMI_1985", "NDMI_1986", "NDMI_1987", "NDMI_1988", "NDMI_1989", "NDMI_1990",
-                         "NDMI_1991",
-                         "NDMI_1992", "NDMI_1993", "NDMI_1994", "NDMI_1995", "NDMI_1996", "NDMI_1997", "NDMI_1998", "NDMI_1999", 
-                         "NDMI_2000", "NDMI_2001", "NDMI_2002", "NDMI_2003", "NDMI_2004", "NDMI_2005", "NDMI_2006", "NDMI_2007", 
-                         "NDMI_2008", "NDMI_2009", "NDMI_2010", "NDMI_2011", "NDMI_2012", "NDMI_2013", "NDMI_2014", 
-                         "NDMI_2015", "NDMI_2016", "NDMI_2017", "NDMI_2018",  "NDMI_2019",  "NDMI_2020", "NDMI_2021", "NDMI_2022")
-
-ndwi_vals <- extract(ndwi, pkt, df = TRUE) %>%
-  select(2:40)
-colnames(ndwi_vals) <- c("NDWI_1984", "NDWI_1985", "NDWI_1986", "NDWI_1987", "NDWI_1988", "NDWI_1989", "NDWI_1990",
-                         "NDWI_1991",
-                         "NDWI_1992", "NDWI_1993", "NDWI_1994", "NDWI_1995", "NDWI_1996", "NDWI_1997", "NDWI_1998", "NDWI_1999", 
-                         "NDWI_2000", "NDWI_2001", "NDWI_2002", "NDWI_2003", "NDWI_2004", "NDWI_2005", "NDWI_2006", "NDWI_2007", 
-                         "NDWI_2008", "NDWI_2009", "NDWI_2010", "NDWI_2011", "NDWI_2012", "NDWI_2013", "NDWI_2014", 
-                         "NDWI_2015", "NDWI_2016", "NDWI_2017", "NDWI_2018",  "NDWI_2019",  "NDWI_2020", "NDWI_2021", "NDWI_2022")
-
-
-nbr_vals <- extract(nbr, pkt, df = TRUE) %>%
-  select(2:40)
-
-colnames(nbr_vals) <- c("NBR_1984", "NBR_1985", "NBR_1986", "NBR_1987", "NBR_1988", "NBR_1989", "NBR_1990",
-                         "NBR_1991",
-                         "NBR_1992", "NBR_1993", "NBR_1994", "NBR_1995", "NBR_1996", "NBR_1997", "NBR_1998", "NBR_1999",
-                         "NBR_2000", "NBR_2001", "NBR_2002", "NBR_2003", "NBR_2004", "NBR_2005", "NBR_2006", "NBR_2007",
-                         "NBR_2008", "NBR_2009", "NBR_2010", "NBR_2011", "NBR_2012", "NBR_2013", "NBR_2014",
-                         "NBR_2015", "NBR_2016", "NBR_2017", "NBR_2018",  "NBR_2019",  "NBR_2020", "NBR_2021", "NBR_2022")
-
-
-nbr2_vals <- extract(nbr2, pkt, df = TRUE) %>%
-  select(2:40)
-
-colnames(nbr2_vals) <- c("NBR2_1984", "NBR2_1985", "NBR2_1986", "NBR2_1987", "NBR2_1988", "NBR2_1989", "NBR2_1990",
-                        "NBR2_1991",
-                        "NBR2_1992", "NBR2_1993", "NBR2_1994", "NBR2_1995", "NBR2_1996", "NBR2_1997", "NBR2_1998", "NBR2_1999",
-                        "NBR2_2000", "NBR2_2001", "NBR2_2002", "NBR2_2003", "NBR2_2004", "NBR2_2005", "NBR2_2006", "NBR2_2007",
-                        "NBR2_2008", "NBR2_2009", "NBR2_2010", "NBR2_2011", "NBR2_2012", "NBR2_2013", "NBR2_2014",
-                        "NBR2_2015", "NBR2_2016", "NBR2_2017", "NBR2_2018",  "NBR2_2019",  "NBR2_2020", "NBR2_2021", "NBR2_2022")
-
-
-tcg_vals <- extract(tcg, pkt, df = TRUE) %>%
-  select(2:40)
-
-colnames(tcg_vals) <- c("TCG_1984", "TCG_1985", "TCG_1986", "TCG_1987", "TCG_1988", "TCG_1989", "TCG_1990",
-                        "TCG_1991",
-                        "TCG_1992", "TCG_1993", "TCG_1994", "TCG_1995", "TCG_1996", "TCG_1997", "TCG_1998", "TCG_1999", 
-                        "TCG_2000", "TCG_2001", "TCG_2002", "TCG_2003", "TCG_2004", "TCG_2005", "TCG_2006", "TCG_2007", 
-                        "TCG_2008", "TCG_2009", "TCG_2010", "TCG_2011", "TCG_2012", "TCG_2013", "TCG_2014", 
-                        "TCG_2015", "TCG_2016", "TCG_2017", "TCG_2018",  "TCG_2019",  "TCG_2020", "TCG_2021", "TCG_2022")
-
-tcb_vals <- extract(tcb, pkt, df = TRUE) %>%
-  select(2:40)
-
-colnames(tcb_vals) <- c("TCB_1984", "TCB_1985", "TCB_1986", "TCB_1987", "TCB_1988", "TCB_1989", "TCB_1990",
-                        "TCB_1991",
-                        "TCB_1992", "TCB_1993", "TCB_1994", "TCB_1995", "TCB_1996", "TCB_1997", "TCB_1998", "TCB_1999", 
-                        "TCB_2000", "TCB_2001", "TCB_2002", "TCB_2003", "TCB_2004", "TCB_2005", "TCB_2006", "TCB_2007", 
-                        "TCB_2008", "TCB_2009", "TCB_2010", "TCB_2011", "TCB_2012", "TCB_2013", "TCB_2014", 
-                        "TCB_2015", "TCB_2016", "TCB_2017", "TCB_2018",  "TCB_2019",  "TCB_2020", "TCB_2021", "TCB_2022")
-
-
-tcw_vals <- extract(tcw, pkt, df = TRUE) %>%
-  select(2:40)
-
-colnames(tcw_vals) <- c("TCW_1984", "TCW_1985", "TCW_1986", "TCW_1987", "TCW_1988", "TCW_1989", "TCW_1990",
-                        "TCW_1991",
-                        "TCW_1992", "TCW_1993", "TCW_1994", "TCW_1995", "TCW_1996", "TCW_1997", "TCW_1998", "TCW_1999", 
-                        "TCW_2000", "TCW_2001", "TCW_2002", "TCW_2003", "TCW_2004", "TCW_2005", "TCW_2006", "TCW_2007", 
-                        "TCW_2008", "TCW_2009", "TCW_2010", "TCW_2011", "TCW_2012", "TCW_2013", "TCW_2014", 
-                        "TCW_2015", "TCW_2016", "TCW_2017", "TCW_2018",  "TCW_2019",  "TCW_2020", "TCW_2021", "TCW_2022")
+# read validation table
+val_table <- read_xlsx("case_study_3/data_exercise/CS3_validation_table.xlsx") %>%
+  select(2:39)
 ```
 
-After values extraction we will bind all columns with data to one table to have one dataset for testing.
+Finally, we’ll use forest mask in the final parts of the exercise. Our focus is detection disturbances in the forested areas, so this mask will reduce visual changes in, for example, crops in the disturbance maps.
 
 ``` r
-pkt2 <- bind_cols(pkt, ndvi_vals, nbr_vals, nbr2_vals, ndmi_vals, ndwi_vals, tcb_vals, tcg_vals, tcw_vals)
+# read forest mask raster
+forest_mask <- rast("case_study_3/data_exercise/CS3_forest_mask.tif")
 ```
 
-Last step of this part will be saving a vector layer with extracted values.
+### Reference values extraction
+
+TVCMA algorithm needs spectral indices values to apply sets of rules to them to indicate the disturbance events. We want to extract these values for all time series rasters we loaded. We’ll use `terra::extract` function and apply it to the `points` layer to produce a list containing extracted values for each index.
 
 ``` r
-st_write(pkt2, "F:/ETR/rmd/dane_cs3/_final_v1/points_100_values.shp")
+# extract indices values to points
+indices_values <- lapply(indices_imgs, terra::extract, y = points, ID = FALSE)
 ```
 
-Now we have a vector file of reference data with extracted values from our variables, such prepared data we will use in the second main step.
+This is the result of that function. Each data frame contains 100 rows (one per point) with 39 columns (one per year from 1984 to 2022).
 
-## Testing variables utility, model optimization and accuracy assessment
+<center>
 
-In this step we will focus on searching for the best variable and threshold value for forest disturbance detection. In the begining we will upload a previously prepared vector layer.
+<img src="media/extracted_values.jpg" title="Extracted values" alt="Validation table" width="400"/>
+
+</center>
+
+We can create a single spatial points file, with attribute table populated with extracted values. In order to do that we’ll bind the columns from all extracted data frames and then bind these columns to the attribute table of `points` shapefile.
 
 ``` r
-input_data <- st_read("F:/ETR/rmd/dane_cs3/_final_v1/vect_data/CS3_points_with_raster_values.shp")
+# bind columns to point layer
+points_all_values <- bind_cols(points, do.call(bind_cols, indices_values))
 ```
 
-Now we will divide the table with the variables values to receive new tables containing values of each variable separately, this allows us to test the performance of the algorithm on each dataset individually.
+We can save the results to shapefile.
+
+    # save shapefile with extracted values
+    st_write(points_all_values, "case_study_3/results/CS3_points_indices_values.shp")
+
+You may see this warning.
 
 ``` r
-ndvi_data <- input_data %>%
-  st_drop_geometry() %>%
-  select(2:40)
-
-
-nbr_data <- input_data %>%
-  st_drop_geometry() %>%
-  select(41:79)
-
-
-nbr2_data <- input_data %>%
-  st_drop_geometry() %>%
-  select(80:118)
-
-
-ndmi_data <- input_data %>%
-  st_drop_geometry() %>%
-  select(119:157)
-
-ndwi_data <- input_data %>%
-  st_drop_geometry() %>%
-  select(158:196)
-
-tcb_data <- input_data %>%
-  st_drop_geometry() %>%
-  select(197:235)
-
-tcg_data <- input_data %>%
-  st_drop_geometry() %>%
-  select(236:274)
-
-tcw_data <- input_data %>%
-  st_drop_geometry() %>%
-  select(275:313)
+# Warning message:
+#   In CPL_write_ogr(obj, dsn, layer, driver, as.character(dataset_options),  :
+#                      GDAL Message 1: Creating a 256th field, but some DBF readers might only support 255 fields
 ```
 
-For accuracy assessment we need to upload the table containing information about years of disturbances occurrence. In rows are recorded subsequent reference points, in columns are recorded subsequent years, if disturbance was not observed „0” value was assigned in the proper cell, if disturbance was observed „1” value was assigned in proper cell.
+To make sure the data is saved correctly, save the points to geopackage.
 
 ``` r
-validation_data <- read_excel("F:/ETR/rmd/dane_cs3/_final_v1/warstwa_walidacyjna.xlsx")
+# save geopackage with extracted values
+st_write(points_all_values, "case_study_3/results/CS3_points_indices_values.gpkg")
 ```
 
-Here we fix which variable we will use in the testing phase. Each variable needs to be set separately. In this example we have chosen NDVI.
+## Analysis
+
+We are now ready to advance to the analysis part of this Case Study. We’ve acquired a dataset on which we can apply TVCMA conditions to indicate disturbance events. In short, TVCMA checks three conditions in order to classify a point as a disturbance event. **[You can see a visualised example in Theme 5 Lesson](../05_vegetation_monitoring/05_vegetation_monitoring.md#threshold--and-trend-based-vegetation-change-monitoring-algorithm-tvcma)**.
+
+### TVCMA conditions function
+
+We’ll prepare a function which will take two inputs. The first one `ind` is a data frame with 100 rows and 39 columns representing extracted values for one index. The second argument `threshold` is the numerical value which is used to assess whether the conditions are met (resulting in a `TRUE` value) or not (`FALSE` value).
 
 ``` r
-Validation_data <- validation_data  %>%
-  .[, 2:39]
-```
-
-Now we will use a function which is an implementation of TVCMA in R and it will be proceeded on a time series of extracted variable values for each reference point separately. Thus we can optimize threshold value to receive the best results without need to use the whole raster series. This allows us on faster processing. After we select best variable and threshold value we will use proper raster time series to generate disturbances maps in the third main step of this case study. The function contains logical rules that have to be met to mark a given pixel in a given year as a detected disturbance. Note that the basic set of rules takes into account four dates (observations) from time series: actually analysed observation, the one following and two preceding. In case of the second and the last observations it obviously can not be done for that reason sets of rules for them are modified properly.
-
-``` r
+# function to check TVCMA conditions on values in a data frame
 apply_tvcma_conditions_points <- function(ind, threshold) {
   
+  # prepare a result matrix with dimensions matching input data frame
   res <- matrix(data = FALSE, nrow = nrow(ind), ncol = ncol(ind))
   
+  # loop to check TVCMA conditions for years from third (in this case 1986)
+  # to second to last (2021)
   for (i in 1:nrow(ind)) {
     for (j in 3:(ncol(ind) - 1)) {
       if (threshold >= 0) {
@@ -231,9 +198,10 @@ apply_tvcma_conditions_points <- function(ind, threshold) {
         cond_2 <- (ind[i, j + 1] - ind[i, j - 1]) < threshold
         cond_3 <- (ind[i, j] - ind[i, j - 2]) < threshold
       }
-     res[i, j] <- cond_1 & cond_2 & cond_3
+      res[i, j] <- cond_1 & cond_2 & cond_3
     }
-    # For the second observation, it should meet cond_1 and cond_2
+    
+    # for the second observation (1985), check conditions 1 and 2
     if (threshold >= 0) {
       cond_1_second <- (ind[i, 2] - ind[i, 1]) > threshold
       cond_2_second <- (ind[i, 3] - ind[i, 1]) > threshold
@@ -243,7 +211,7 @@ apply_tvcma_conditions_points <- function(ind, threshold) {
     }
     res[i, 2] <- cond_1_second & cond_2_second
     
-    # For the last observation, it should meet cond_1 and cond_3
+    # For the last observation (2022), check conditions 1 and 3
     if (threshold >= 0) {
       cond_1_last <- (ind[i, ncol(ind)] - ind[i, ncol(ind) - 1]) > threshold
       cond_3_last <- (ind[i, ncol(ind)] - ind[i, ncol(ind) - 2]) > threshold
@@ -254,46 +222,24 @@ apply_tvcma_conditions_points <- function(ind, threshold) {
     res[i, ncol(ind)] <- cond_1_last & cond_3_last
   }
   
-  # Remove the first column from resulting matrix
+  
+  # Remove the first column (1984) from resulting matrix 
+  # because no conditions can be applied to the first year in time series
   res <- res[,2:ncol(res)]
   
+  # return the resulting 1/0 data frame
   return(res)
 }
 ```
 
-After we add the function we go to automatization of testing threshold values. Here we can specify in which values range it will be tested and with which step.
+### Accuracy statistics function
+
+We want to test two main variables to assess the performance of TVCMA: input spectral index and threshold. To calculate statistics for each pair we can prepare a function (similar to that in **[Theme 5 exercise](../05_vegetation_monitoring/05_vegetation_monitoring_exercise.md)** where we assessed LandTrendr results.)
 
 ``` r
-thresholds <- seq(-0.005, -0.02, by = -0.001)
-```
-
-To choose the best variable and threshold value we will create a table with accuracy assessment results where each row will be containing results for one threshold value. To make selection easy, in the table each record will be named which include information about used threshold value.
-
-``` r
-names_list <- paste0("Threshold_", gsub("\\.", "_", abs(thresholds))) # replace "." with "_"
-
-
-# Check threshold 
-
-results <- setNames(lapply(thresholds, apply_tvcma_conditions_points, ind = tcg_data), names_list)
-```
-
-To calculate accuracy metrics in the beginning we need to count numbers of True Positives, False Positives, True Negatives and False Negatives. To do it we will compare the reference table with the resulting table for each tested threshold value. As it was mentioned before in the reference table, the date of disturbance occurrence is marked as “1” and the rest of dates are marked as “0”. The algorithm produces results in the same manner so we can check according to the cell values of both tables, e.g. in reference data for a given point in a given was marked “1” and when the resulting table also shows “1” it means that is True Positive.
-
-``` r
-# Function to calculate confusion matrix stats
+# prepare a function to calculate statistics
 calculate_confusion_matrix_stats <- function(matrix, validation_matrix, set_name) {
-  # Calculate TP, FP, TN, FN
-  TP <- sum(matrix == 1 & validation_matrix == 1)
-  FP <- sum(matrix == 1 & validation_matrix == 0)
-  TN <- sum(matrix == 0 & validation_matrix == 0)
-  FN <- sum(matrix == 0 & validation_matrix == 1)
-```
-
-Now we can calculate several accuracy metrics to select the best model.
-
-``` r
-calculate_confusion_matrix_stats <- function(matrix, validation_matrix, set_name) {
+  
   # Calculate TP, FP, TN, FN
   TP <- sum(matrix == 1 & validation_matrix == 1)
   FP <- sum(matrix == 1 & validation_matrix == 0)
@@ -306,62 +252,169 @@ calculate_confusion_matrix_stats <- function(matrix, validation_matrix, set_name
   Sensitivity <- TP / (TP + FN)
   Specificity <- TN / (TN + FP)
   F1_Score <- 2 * (Sensitivity * Precision) / (Sensitivity  + Precision)
-Now we create a data frame to save the confusion matrices.
-
-# Create a data frame with the confusion matrix stats
+  
+  # Create a data frame with the confusion matrix stats
   stats <- data.frame(Set = set_name, TP, FP, TN, FN, Accuracy, Precision, Sensitivity, Specificity, F1_Score)
   
   return(stats)
 }
 ```
 
-We would like to calculate accuracy metrics for each threshold value which we are testing…
+### Applying functions to data
+
+We have prepared necessary data and functions to progress the analysis.
+
+One additional issue we haven’t considered so far is the direction of change indicating disturbances. In order to detect a disturbance with spectral index values we need to know what is the sign (positive or negative) of delta if the disturbance occurs. Let’s consider as an example NDVI. If NDVI pixel value in 1985 is `0.8` and in 1986 is `0.3` then delta is equal to `-0.5`. That means that disturbances can be detected when delta is negative. On the other hand, indices like NDWI or TCB behave the other way round - positive delta indicates disturbance. In our case these are the lists of positive and negative delta indices.
 
 ``` r
-# Calculate confusion matrix for each threshold tested
-stats_list <- lapply(seq_along(results), function(i) calculate_confusion_matrix_stats(results[[i]], validation_data, names(results)[i]))
+# direction of index delta when considering disturbances
+pos_indices <- c("NDWI", "TCB")
+neg_indices <- c("NBR", "NBR2", "NDMI", "NDVI", "TCG", "TCW")
 ```
 
-… bind the results in one table…
+For these two groups we also want to prepare a set of thresholds we’ll test. Each time we’ll consider 50 thresholds with increments of 0.01 each time.
 
 ``` r
-# one table with confusion results
-stats_df <- do.call(rbind, stats_list)
+pos_thresholds <- seq(0.01, 0.5, by = 0.01)
+neg_thresholds <- seq(-0.01, -0.5, by = -0.01)
 ```
 
-… and save them as an .xlsx file.
+We are finally ready to run TVCMA algorithm and calculate the accuracy results. In the code below we’ll prepare an empty list to store the results separately per index. Each loop will produce an element - accuracy table with 50 rows (one per each threshold) - that will be added to `results_list`. Each accuracy table will also be separately exported to `.xlsx` file.
+
+    # prepare empty results list
+    results_list <- list()
+
+    # loop through indices_values 
+    for (i in seq(1, length(indices_values))) {
+      
+      # select values for one index
+      ind = indices_values[[i]]
+      
+      # get the name of the index
+      ind_name <- names(indices_values)[i]
+      
+      # check whether to apply positive or negative thresholds
+      if ((ind_name %in% pos_indices) == TRUE) {
+        
+        thresholds <- pos_thresholds
+        
+      } else {
+        
+        thresholds <- neg_thresholds
+      }
+       
+      # prepare a names list for each row in the resulting table containing threshold
+      # value with "." replaced by "_"
+      names_list <- paste0("Threshold_", gsub("\\.", "_", thresholds)) 
+      
+      # apply the functions where conditions are checked for each threshold value
+      # in other words: take index values and for each threshold value in the 
+      # thresholds list check the conditions in apply_tvcma_conditions_points
+      thresholds_results <- lapply(thresholds, 
+                                   apply_tvcma_conditions_points, 
+                                   ind = ind)
+      
+      # set names for each separate result
+      thresholds_results <- setNames(thresholds_results, names_list)
+      
+      # apply calculate_confusion_matrix_stats for each result
+      # each time take separate result (one result for one threshold tested)
+      # calculate the statistics by comparing the result to validation table
+      stats_list <- lapply(seq_along(thresholds_results), 
+                           function(i) calculate_confusion_matrix_stats(
+                             matrix = thresholds_results[[i]],
+                             validation_matrix = val_table,
+                             set_name = names(thresholds_results)[i]))
+      
+      # bind all the results for one index together
+      # 50 rows, one per threshold, containing calculated statistics
+      stats_df <- do.call(rbind, stats_list)
+      
+      # save the results to .xlsx file
+      write_xlsx(stats_df, paste0("case_study_3/results/", ind_name, "_th_min_", min(thresholds), "_max_", max(thresholds), ".xlsx"))
+      
+      # add the table for one index to a list
+      results_list[[i]] <- stats_df
+      
+    }
+
+### Accuracy assessment
+
+In your `results` folder you should now be able to see 8 `.xlsx` files. Each file should contain 50 rows with data (+ 1 heading row). See the example below.
+
+<center>
+
+<img src="media/results_table.jpg" title="Example results table" alt="Example results table" width="400"/>
+
+</center>
+
+The goal of our Case Study is to indicate the best spectral index and threshold combination to detect disturbance events with the highest accuracy. We can do that based on the achieved accuracy metrics. For the purpose of our Case Study we’ll choose *F1* as a measure to choose the best combination. Take a couple of minutes to assess the results and come back to the contents to see if your assessment is in line with our findings.
+
+<details>
+<summary>
+The highest F1 was measured for…
+</summary>
+
+NDMI with threshold `0.09`. With F1 value equal to `0.65` this combination allowed us to correctly identify **42** cases of disturbances (True Positive, TP). Our results falsely indicate **17** disturbance events (False Positive, FP). There were also **27** disturbances events omitted in the TVCMA results, which were present in our validation dataset (False Negative, FN).
+
+</details>
+
+If you’ve evaluated the results you can proceed to the next part of the Case Study.
+
+## Disturbance mapping
+
+With the best performing index and threshold identified we can calculate disturbance maps for each year in the analysed time series.
+
+First, we want to set the threshold and choose index to apply the calculations to.
+
+<details>
+<summary>
+Set the best performing threshold to <b><i>threshold</b></i> variable and best performing image (index) data to <b><i>multiband_raster</b></i> variable.
+</summary>
 
 ``` r
-write_xlsx(stats_df, "F:/ETR/rmd/dane_cs3/_final_v1/res/tcg_-0005_-002_-0001_confusion_matrix_stats.xlsx")
+# best index image data
+multiband_raster <- indices_imgs$NDMI
+
+# best threshold
+threshold <- -0.09
 ```
 
-When you finally test all variables and selected thresholds, compare results and choose the best one based on accuracy metrics. The third and the last step will be disturbance maps producing. In the beginning we load a time series of previously selected variables…
+</details>
+
+Next up we’ll prepare an array to store the results. We’ll set the dimensions of the array to be equal to input images, except number of layers, which needs to be shorter by one, since we cannot indicate disturbances for the first year in the series. We’ll produce disturbance maps from 1985 to 2022. At the start the 1193x2255x38 array will be populated with zeroes.
 
 ``` r
-multiband_raster <- brick("F:/ETR/rmd/dane_cw5/data/doy/NDMI_filled.tif")
+# empty array to store the results
+result_array <- array(0, dim = c(nrow(multiband_raster), 
+                                 ncol(multiband_raster), 
+                                 nlyr(multiband_raster) - 1))
 ```
 
-… and we will set a chosen threshold.
+We are now ready to start calculating maps of disturbances based on TVCMA algorithm using NDMI and 0.09 threshold value as inputs. The input raster must be open for reading in order for us to be able to extract values from it. In a loop we’ll apply TVCMA conditions for each row of the input image. Results for each row (value 1 for detected disturbance, value 0 for no disturbance) will be pasted into `results_array`.
+
+This process may take a couple minutes to finish. Observe the progress printing in the console.
 
 ``` r
-threshold <- -0.05
-```
+# open a file for reading
+readStart(multiband_raster)
 
-We need to create an array to save the results.
-
-``` r
-result_array <- array(0, dim = c(nrow(multiband_raster), ncol(multiband_raster), nlayers(multiband_raster) - 1))
-```
-
-Now we will use algorithm conditions to produce maps.
-
-``` r
+# for each row in input image
 for (i in 1:nrow(multiband_raster)) {
-    print(i)
-  row_values <- getValuesBlock(multiband_raster, row = i, nrows = 1, col = 1, ncols = ncol(multiband_raster))
-
-  results <- rep(NA, ncol(multiband_raster) * (nlayers(multiband_raster) - 1))
   
+  # extract raster values from the image row 
+  # each row contains 2255 x 39 values
+  row_values <- readValues(multiband_raster, 
+                           row = i, 
+                           nrows = 1, 
+                           col = 1, 
+                           ncols = ncol(multiband_raster), 
+                           mat = TRUE)
+                           
+  # prepare empty vector to store the TVCMA result for one row
+  results <- rep(NA, ncol(multiband_raster) * (nlyr(multiband_raster) - 1))
+  
+  # apply TVCMA conditions to extracted raster values
   for (k in 1:nrow(row_values)) {
     
     values <- row_values[k, ]
@@ -392,45 +445,141 @@ for (i in 1:nrow(multiband_raster)) {
     results[(((k - 1) * (val_len - 1)) + 1):(k * (val_len - 1))] <- result
     
   }
-```
-
-…
-
-``` r
-  n_layers_minus_one <- nlayers(multiband_raster) - 1
   
+  # number of output layers (38)
+  n_layers_minus_one <- nlyr(multiband_raster) - 1
+  
+  # insert TVCMA results to result array
   for (j in 1:ncol(multiband_raster)) {
     
     index_start <- (j - 1) * n_layers_minus_one + 1
     index_end <- j * n_layers_minus_one
     result_array[i, j, ] <- results[index_start:index_end]
   }
+  
+  # print progress
+  print(paste0("Row: ", i, "/", nrow(multiband_raster)))
+  
 }
-
-result_brick <- brick(result_array,
-                      xmn = xmin(multiband_raster),
-                      xmx = xmax(multiband_raster),
-                      ymn = ymin(multiband_raster),
-                      ymx = ymax(multiband_raster),
-                      crs = crs(multiband_raster)
-)
+# close a file from reading
+readStop(multiband_raster)
 ```
 
-In the end we will save the resulting rasters as a multiband raster file where each band presents detected disturbances in a certain year from the analysed time series, obviously without the first one for which we cannot detect disturbance using this algorithm.
+The result of this loop is an array populated with values 0 (no disturbance) and 1 (disturbance). Our goal is to create a multiband raster to indicate the spatial distribution of detected disturbances. We can achieve that by transforming an array into raster with coordinate reference system. We will also rename the bands to match years of detection of disturbances.
 
 ``` r
-writeRaster(result_brick, "ndmi_-005_full_fix.tif")
+# transform array into raster with coordinate reference system
+results_img <- rast(result_array,
+                    extent = ext(multiband_raster),
+                    crs = crs(multiband_raster))
+                    
+                    
+# name the bands
+names(results_img) <- as.character(paste0("TVCMA_", seq(1985, 2022)))
 ```
+
+Once that’s done we can also mask the resulting image with forest mask. This will limit the area of analysis to mainly forests with some patches of other land cover classes also present (mainly to show that they are volatile and sensitive to TVCMA algorithm, i.e. lake in the SW part of the image).
+
+``` r
+# mask the results with forest mask
+results_img <- mask(results_img, forest_mask)
+```
+
+To conclude the Case Study we can export the multiband image in a couple variants.
+
+First, let’s export the image ‘as is’, so the disturbances are marked with pixel value 1 and no disturbances are 0. The masked areas have ‘NA’ pixel values.
+
+``` r
+# write 1/0 TVCMA image
+writeRaster(results_img, 
+            filename = "case_study_3/results/TVCMA_NDMI_th_-0.09_1_0.tif",
+            datatype = "INT1U")
+```
+
+This is the result after loading it to QGIS. This image shows disturbances in yellow detected in 2005 and no disturbances in purple.
+
+<center>
+
+<img src="media/tvcma_ndmi_10.png" title="TVCMA results 2005 1/0" alt="TVCMA results 2005 1/0" width="800"/>
+
+</center>
+
+We can change the 0 values to NA for pixels where no disturbances were detected to get a clearer view of areas where some negative change occurred.
+
+``` r
+# write 1/NA TVCMA image
+results_img_1_na <- subst(results_img, from = 0, to = NA,
+                         filename = "case_study_3/results/TVCMA_NDMI_th_-0.09_1_NA.tif",
+                         datatype = "INT1U")
+```
+
+<center>
+
+<img src="media/tvcma_ndmi_1na.png" title="TVCMA results 2005 1/NA" alt="TVCMA results 2005 1/NA" width="800"/>
+
+</center>
+
+Finally, we can prepare two single band images presenting the earliest and latest detected disturbance for each pixel. In order to do that we’ll reclassify values indicating disturbance - **1** - in each band to year of detection value. This will allow us to use `min` and `max` functions to extract minimum (earliest) and maximum (latest) disturbance year for each pixel.
+
+``` r
+# get year of detection 
+yod <- seq(1985, 2022)
+
+# iterate over each band and replace values of 1 with the year of detection value
+results_yod <- lapply(1:length(yod), function(i) {
+  band <- results_img_1_na[[i]]
+  band <- band * yod[i]
+  return(band)
+})
+
+# make a raster out of year of detection list
+results_yod_rast <- rast(results_yod)
+
+
+# create a raster showing the earliest detected disturbance
+results_earliest <- min(results_yod_rast, na.rm = TRUE)
+
+writeRaster(results_earliest, 
+            filename = "case_study_3/results/TVCMA_NDMI_th_-0.09_earliest.tif",
+            datatype = "INT2U")
+
+
+
+# create a raster showing the latest detected disturbance 
+results_latest <- max(results_yod_rast, na.rm = TRUE)
+
+
+writeRaster(results_latest, 
+            filename = "case_study_3/results/TVCMA_NDMI_th_-0.09_latest.tif",
+            datatype = "INT2U")
+```
+
+<center>
+
+<img src="media/tvcma_ndmi_earliest.jpg" title="TVCMA results earliest" alt="TVCMA results earliest" width="800"/>
+
+<i>Year of earliest detected disturbance</i>
+</center>
+<center>
+
+<img src="media/tvcma_ndmi_latest.jpg" title="TVCMA results latest" alt="TVCMA results latest" width="800"/>
+
+<i>Year of earliest latest disturbance</i>
+</center>
 
 ## Discussion
 
-## Points to discuss:
+Points to discuss:
 
-- 
-- 
-- 
+- comparison of usefulness of each variable/index in disturbance detection based on accuracy metrics
+- finer best threshold tuning after establishing the overall valid range of thresholds
+- what is the possible reason of False Negatives occurrence
+- what is the possible reason of False Positives occurrence
+- compare disturbance maps with image composites for corresponding years and think about its correctness
 
 ## References
+
+Ochtyra, A., Marcinkowska-Ochtyra, A., & Raczko, E. (2020). Threshold and trend-based vegetation change monitoring algorithm based on the inter-annual multi-temporal normalized difference moisture index series: A case study of the Tatra Mountains. Remote Sensing of Environment, 249, 112026. <https://doi.org/10.1016/j.rse.2020.112026>
 
 ### Other case studies
 
@@ -444,3 +593,354 @@ writeRaster(result_brick, "ndmi_-005_full_fix.tif")
 - [Image processing workflow](../03_image_processing/03_image_processing.md)
 - [Multitemporal classification of vegetation types](../04_multitemporal_classification/04_multitemporal_classification.md)
 - [Vegetation monitoring and disturbance detection](../05_vegetation_monitoring/05_vegetation_monitoring.md)
+
+### Data
+
+Landsat 4, 5, 7, 8 and 9 imagery courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits) processed in and downloaded from [Google Earth Engine by Gorelick et al., 2017](https://doi.org/10.1016/j.rse.2017.06.031)
+
+### Software
+
+- QGIS Development Team (2022). *QGIS Geographic Information System. Open Source Geospatial Foundation Project*. <http://qgis.osgeo.org>
+- R Core Team (2023). *R: A language and environment for statistical computing*. R Foundation for Statistical Computing, Vienna, Austria. <https://www.R-project.org/>.
+- Hijmans R (2023). *terra: Spatial Data Analysis*. R package version 1.7-39, <https://CRAN.R-project.org/package=terra>
+- Ooms J (2023). *writexl: Export Data Frames to Excel ‘xlsx’ Format*. R package version 1.4.2, <https://CRAN.R-project.org/package=writexl>.
+- Pebesma, E., & Bivand, R. (2023). *Spatial Data Science: With Applications in R*. Chapman and Hall/CRC. <https://doi.org/10.1201/9780429459016>
+- Pebesma, E., 2018. *Simple Features for R: Standardized Support for Spatial Vector Data*. The R Journal 10 (1), 439-446, <https://doi.org/10.32614/RJ-2018-009>
+- Wickham H, François R, Henry L, Müller K, Vaughan D (2023). *dplyr: A Grammar of Data Manipulation*. R package version 1.1.2, <https://CRAN.R-project.org/package=dplyr>
+- Wickham H, Bryan J (2023). *readxl: Read Excel Files*. <https://readxl.tidyverse.org>, <https://github.com/tidyverse/readxl>.
+
+## Source code
+
+<details>
+<summary>
+You can find the entire code used in this exercise here
+</summary>
+
+``` r
+# raster I/o and processing
+library(terra) 
+
+# vector I/O and processing
+library(sf) 
+
+# tabular data manipulation
+library(dplyr) 
+
+# reading .xlsx files
+library(readxl) 
+
+# writing .xlsx files
+library(writexl) 
+
+# miscellaneous tools
+library(tools)
+
+# load relative paths to .tif files
+indices_list <- list.files("case_study_3/data_exercise/", 
+                           pattern = "*.tif", 
+                           full.names = TRUE)[2:9]
+
+# load images as terra rast objects
+indices_imgs <- lapply(indices_list, terra::rast)
+
+# get indices names
+indices_names <- file_path_sans_ext(list.files("case_study_3/data_exercise/", 
+                                               pattern = "*.tif")[2:9])
+
+# rename loaded images
+names(indices_imgs) <- indices_names
+
+# read validation points
+points <- st_read("case_study_3/data_exercise/CS3_points.shp")
+
+# read validation table
+val_table <- read_xlsx("case_study_3/data_exercise/CS3_validation_table.xlsx") %>%
+  select(2:39)
+
+# read fprest mask raster
+forest_mask <- rast("case_study_3/data_exercise/CS3_forest_mask.tif")
+
+
+# extract indices values to points
+indices_values <- lapply(indices_imgs, terra::extract, y = points, ID = FALSE)
+
+# bind columns to point layer
+points_all_values <- bind_cols(points, do.call(bind_cols, indices_values))
+
+# save shapefile with extracted values
+st_write(points_all_values, "case_study_3/results/CS3_points_indices_values.shp")
+
+# Warning message:
+#   In CPL_write_ogr(obj, dsn, layer, driver, as.character(dataset_options),  :
+#                      GDAL Message 1: Creating a 256th field, but some DBF readers might only support 255 fields
+
+# save geopackage with extracted values
+st_write(points_all_values, "case_study_3/results/CS3_points_indices_values.gpkg")
+
+
+# function to check TVCMA conditions on values in a data frame
+apply_tvcma_conditions_points <- function(ind, threshold) {
+  
+  # prepare a result matrix with dimensions matching input data frame
+  res <- matrix(data = FALSE, nrow = nrow(ind), ncol = ncol(ind))
+  
+  # loop to check TVCMA conditions for years from third (in this case 1986)
+  # to second to last (2021)
+  for (i in 1:nrow(ind)) {
+    for (j in 3:(ncol(ind) - 1)) {
+      if (threshold >= 0) {
+        cond_1 <- (ind[i, j] - ind[i, j - 1]) > threshold
+        cond_2 <- (ind[i, j + 1] - ind[i, j - 1]) > threshold
+        cond_3 <- (ind[i, j] - ind[i, j - 2]) > threshold
+      } else {
+        cond_1 <- (ind[i, j] - ind[i, j - 1]) < threshold
+        cond_2 <- (ind[i, j + 1] - ind[i, j - 1]) < threshold
+        cond_3 <- (ind[i, j] - ind[i, j - 2]) < threshold
+      }
+      res[i, j] <- cond_1 & cond_2 & cond_3
+    }
+    
+    # for the second observation (1985), check conditions 1 and 2
+    if (threshold >= 0) {
+      cond_1_second <- (ind[i, 2] - ind[i, 1]) > threshold
+      cond_2_second <- (ind[i, 3] - ind[i, 1]) > threshold
+    } else {
+      cond_1_second <- (ind[i, 2] - ind[i, 1]) < threshold
+      cond_2_second <- (ind[i, 3] - ind[i, 1]) < threshold
+    }
+    res[i, 2] <- cond_1_second & cond_2_second
+    
+    # For the last observation (2022), check conditions 1 and 3
+    if (threshold >= 0) {
+      cond_1_last <- (ind[i, ncol(ind)] - ind[i, ncol(ind) - 1]) > threshold
+      cond_3_last <- (ind[i, ncol(ind)] - ind[i, ncol(ind) - 2]) > threshold
+    } else {
+      cond_1_last <- (ind[i, ncol(ind)] - ind[i, ncol(ind) - 1]) < threshold
+      cond_3_last <- (ind[i, ncol(ind)] - ind[i, ncol(ind) - 2]) < threshold
+    }
+    res[i, ncol(ind)] <- cond_1_last & cond_3_last
+  }
+  
+  
+  # Remove the first column (1984 for which it is not possible to check any
+  # conditions) from resulting matrix
+  res <- res[,2:ncol(res)]
+  
+  # return the resulting 0/1 data frame
+  return(res)
+}
+
+
+# prepare a function to calculate statistics
+calculate_confusion_matrix_stats <- function(matrix, validation_matrix, set_name) {
+  
+  # Calculate TP, FP, TN, FN
+  TP <- sum(matrix == 1 & validation_matrix == 1)
+  FP <- sum(matrix == 1 & validation_matrix == 0)
+  TN <- sum(matrix == 0 & validation_matrix == 0)
+  FN <- sum(matrix == 0 & validation_matrix == 1)
+  
+  # Calculate the metrics
+  Accuracy <- (TP + TN) / (TP + FP + FN + TN)
+  Precision <- TP / (TP + FP)
+  Sensitivity <- TP / (TP + FN)
+  Specificity <- TN / (TN + FP)
+  F1_Score <- 2 * (Sensitivity * Precision) / (Sensitivity  + Precision)
+  
+  # Create a data frame with the confusion matrix stats
+  stats <- data.frame(Set = set_name, TP, FP, TN, FN, Accuracy, Precision, Sensitivity, Specificity, F1_Score)
+  
+  return(stats)
+}
+
+
+# direction of index delta when considering disturbances
+pos_indices <- c("NDWI", "TCB")
+neg_indices <- c("NBR", "NBR2", "NDMI", "NDVI", "TCG", "TCW")
+
+
+pos_thresholds <- seq(0.01, 0.5, by = 0.01)
+neg_thresholds <- seq(-0.01, -0.5, by = -0.01)
+
+
+
+# prepare empty results list
+results_list <- list()
+
+# loop through indices_values 
+for (i in seq(1, length(indices_values))) {
+  
+  # select values for one index
+  ind = indices_values[[i]]
+  
+  # get the name of the index
+  ind_name <- names(indices_values)[i]
+  
+  # check whether to apply positive or negative thresholds
+  if ((ind_name %in% pos_indices) == TRUE) {
+    
+    thresholds <- pos_thresholds
+    
+  } else {
+    
+    thresholds <- neg_thresholds
+  }
+  
+  # prepare a names list to be applied for each result 
+  # name is containing threshold value with "." replaced by "_"
+  names_list <- paste0("Threshold_", gsub("\\.", "_", thresholds)) 
+  
+  # apply the functions where conditions are checked for each threshold value
+  # in other words: take index values and for each threshold value in the 
+  # thresholds list check the conditions in apply_tvcma_conditions_points
+  thresholds_results <- lapply(thresholds, 
+                               apply_tvcma_conditions_points, 
+                               ind = ind)
+  
+  # set names for each separate result
+  thresholds_results <- setNames(thresholds_results, names_list)
+  
+  # apply calculate_confusion_matrix_stats for each result
+  # each time take separate result (one result for one threshold tested)
+  # calculate the statistics by comparing the result to validation table
+  stats_list <- lapply(seq_along(thresholds_results), 
+                       function(i) calculate_confusion_matrix_stats(
+                         matrix = thresholds_results[[i]],
+                         validation_matrix = val_table,
+                         set_name = names(thresholds_results)[i]))
+  
+  # bind all the results for one index together
+  # 50 rows, one per threshold, containing calculated statistics
+  stats_df <- do.call(rbind, stats_list)
+  
+  # save the results to .xlsx file
+  write_xlsx(stats_df, paste0("case_study_3/results/", ind_name, "_th_min_", min(thresholds), "_max_", max(thresholds), ".xlsx"))
+  
+  # add the table for one index to a list
+  results_list[[i]] <- stats_df
+  
+}
+
+
+
+multiband_raster <- indices_imgs$NDMI
+threshold <- -0.09
+
+# empty array to store the results
+result_array <- array(0, dim = c(nrow(multiband_raster), ncol(multiband_raster), nlyr(multiband_raster) - 1))
+
+# open a file for reading
+readStart(multiband_raster)
+# for each row in input image
+for (i in 1:nrow(multiband_raster)) {
+  
+  # extract raster values from the image row 
+  # each row contains 2255 x 39 values
+  row_values <- readValues(multiband_raster, row = i, nrows = 1, col = 1, ncols = ncol(multiband_raster), mat = TRUE)
+  
+  # prepare empty vector to store the TVCMA result
+  results <- rep(NA, ncol(multiband_raster) * (nlyr(multiband_raster) - 1))
+  
+  # apply TVCMA conditions to extracted raster values
+  for (k in 1:nrow(row_values)) {
+    
+    values <- row_values[k, ]
+    val_len <- length(values)
+    
+    if (threshold >= 0) {
+      
+      cond_1 <- (values[3:((val_len) - 1)] - values[2:(val_len - 2)]) > threshold
+      cond_2 <- (values[4:(val_len)] - values[2:(val_len - 2)]) > threshold
+      cond_3 <- (values[3:((val_len) - 1)] - values[1:(val_len - 3)]) > threshold
+      
+      r1 <- cond_1 & cond_2 & cond_3
+      r2 <- (values[2] - values[1]) > threshold & (values[3] - values[1]) > threshold
+      r3 <- (values[val_len] - values[val_len - 1]) > threshold & (values[val_len] - values[val_len - 2]) > threshold
+      
+    } else {
+      
+      cond_1 <- (values[3:((val_len) - 1)] - values[2:(val_len - 2)]) < threshold
+      cond_2 <- (values[4:(val_len)] - values[2:(val_len - 2)]) < threshold
+      cond_3 <- (values[3:((val_len) - 1)] - values[1:(val_len - 3)]) < threshold
+      
+      r1 <- cond_1 & cond_2 & cond_3
+      r2 <- (values[2] - values[1]) < threshold & (values[3] - values[1]) < threshold
+      r3 <- (values[val_len] - values[val_len - 1]) < threshold & (values[val_len] - values[val_len - 2]) < threshold
+    }
+    
+    result <- c(r2, r1, r3)
+    results[(((k - 1) * (val_len - 1)) + 1):(k * (val_len - 1))] <- result
+    
+  }
+  
+  # number of output layers (38)
+  n_layers_minus_one <- nlyr(multiband_raster) - 1
+  
+  # insert TVCMA results to result array
+  for (j in 1:ncol(multiband_raster)) {
+    
+    index_start <- (j - 1) * n_layers_minus_one + 1
+    index_end <- j * n_layers_minus_one
+    result_array[i, j, ] <- results[index_start:index_end]
+  }
+  
+  # print progress
+  print(paste0("Row: ", i, "/", nrow(multiband_raster)))
+  
+}
+# close a file from reading
+readStop(multiband_raster)
+
+
+# transform array into raster with coordinate reference system
+results_img <- rast(result_array,
+                    extent = ext(multiband_raster),
+                    crs = crs(multiband_raster))
+
+# name the bands
+names(results_img) <- as.character(paste0("TVCMA_", seq(1985, 2022)))
+
+# mask the results with forest mask
+results_img <- mask(results_img, forest_mask)
+
+# write 1/0 TVCMA image
+writeRaster(results_img, 
+            filename = "case_study_3/results/TVCMA_NDMI_th_-0.09_1_0.tif",
+            datatype = "INT1U")
+
+# write 1/NA TVCMA image
+results_img_1_na <- subst(results_img, from = 0, to = NA,
+                         filename = "case_study_3/results/TVCMA_NDMI_th_-0.09_1_NA.tif",
+                         datatype = "INT1U")
+
+# get year of detection 
+yod <- seq(1985, 2022)
+
+# iterate over each band and replace values of 1 with the year of detection value
+results_yod <- lapply(1:length(yod), function(i) {
+  band <- results_img_1_na[[i]]
+  band <- band * yod[i]
+  return(band)
+})
+
+# make a raster out of year of detection list
+results_yod_rast <- rast(results_yod)
+
+# create a raster showing the latest detected disturbance 
+results_latest <- max(results_yod_rast, na.rm = TRUE)
+
+
+writeRaster(results_latest, 
+            filename = "case_study_3/results/TVCMA_NDMI_th_-0.09_latest.tif",
+            datatype = "INT2U")
+
+# create a raster showing the earliest detected disturbance
+results_earliest <- min(results_yod_rast, na.rm = TRUE)
+
+writeRaster(results_earliest, 
+            filename = "case_study_3/results/TVCMA_NDMI_th_-0.09_earliest.tif",
+            datatype = "INT2U")
+
+```
+
+</details>

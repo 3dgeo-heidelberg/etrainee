@@ -24,16 +24,19 @@ You should be familiar with the following concepts or methods:
 * Probability, probability distribution
 
 * Errors in measurements (types and propagation)
-
-* Accuracy, precision and their measures
-
+  
 * Least squares fitting
 
 * Regression
 
 * ANOVA
 
-* Principal component analysis (PCA)
+The following freely accessible resources provide introduction to statistics and explanation of above concepts:
+
+Probability and statistics - [online E-Book](http://wiki.stat.ucla.edu/socr/index.php/EBook#Format)
+
+Online Statistics Education: A Multimedia Course of Study (http://onlinestatbook.com/). Project Leader: David M. Lane, Rice University.
+
 
 ## Geoinformation Systems (GIS)
 

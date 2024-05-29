@@ -19,7 +19,7 @@ series of remote sensing data. It consists of the following Modules:
 
 
 <center>
-<img src="assets/img/course_structure.jpg" alt="Course structure" width="100%">
+<img src="assets/img/course_structure.png" alt="Course structure" width="90%">
 </center>
 
 
@@ -41,8 +41,9 @@ studies, ecology, geology, and other potential users dealing with remote sensing
 such as practitioners of national environmental and conservation agencies.
 
 
+[Project partners](https://web.natur.cuni.cz/gis/etrainee/partners.html)
 
-[Project news](http://web.natur.cuni.cz/gis/etrainee/news.html)
+[Project news](https://web.natur.cuni.cz/gis/etrainee/news.html)
 
 <center>
 <img src="assets/img/uni_logos.png" alt="University logo" title="University logo" width="700" style="margin: 40px 0px 50px 0px;">

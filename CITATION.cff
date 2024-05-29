@@ -23,6 +23,19 @@ abstract: >-
 
 license: CC-BY-SA-4.0
 
+preferred-citation:
+  type: generic
+  authors:
+  - name: E-TRAINEE Development Team
+  doi: "10.5281/zenodo.8402924"
+  url: 'https://3dgeo-heidelberg.github.io/etrainee'
+  repository-code: 'https://github.com/3dgeo-heidelberg/etrainee'
+  title: >-
+    E-TRAINEE - E-learning course on Time Series Analysis in
+    Remote Sensing for Understanding Human-Environment
+    Interactions
+  license: CC-BY-SA-4.0
+
 references:
   - authors:
       - family-names: Potůčková
@@ -65,13 +78,15 @@ references:
         given-names: M.
         orcid: "https://orcid.org/0000-0001-6628-4681"
       - family-names: Šedová
-        given-names: A.	
+        given-names: A.
       - family-names: Šrollerů
-        given-names: A.	
+        given-names: A.
       - family-names: Kupková
         given-names: L.
         orcid: "https://orcid.org/0000-0002-0270-0516"
     journal: "ISPRS Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences"
-    title: "E-TRAINEE: Open e-learning course on time series analysis in remote sensing"
+    title: "E-TRAINEE: Open E-learning course on Time Series Analysis in Remote Sensing"
     type: article
     year: 2023
+    doi: "10.5194/isprs-archives-XLVIII-1-W2-2023-989-2023"
+    url: 'https://doi.org/10.5194/isprs-archives-XLVIII-1-W2-2023-989-2023'

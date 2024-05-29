@@ -1,23 +1,23 @@
 ---
-title: "Vegetation change and disturbance detection"
-description: "This is the fifth theme within the Satellite Multispectral Images Time Series Analysis module."
-dateCreated: 2021-04-06
-authors: Adrian Ochtyra, Adriana Marcinkowska-Ochtyra
-contributors: 
+title: "Vegetation change and disturbance detection - Exercise"
+description: This is the exercise in the fifth theme within the Satellite Multispectral Images Time Series Analysis module.
+dateCreated: 2023-08-31
+authors: Adrian Ochtyra, Krzysztof Gryguc
+contributors: Aram Takmadżan
 estimatedTime: "1.5 hours"
 output: 
   github_document:
     pandoc_args: "--wrap=none"
 ---
 
-Vegetation change and disturbance detection
+Vegetation change and disturbance detection - Exercise
 ================
 
-## Exercise - Multitemporal classification of land cover in Karkonosze Mountains region
+## Exercise - Forest disturbance mapping in Tatras using LandTrendr
 
-In this exercise, you’ll delve into **vegetation disturbance** detection using [LandTrendr algorithm](https://doi.org/10.1016/j.rse.2010.07.008) and its products. Employing the [Google Earth Engine implementation](https://emapr.github.io/LT-GEE/index.html) of this tool, along with the R programming language, you’ll extract pertinent data about the vegetation status in the Tatra Mountains from Landsat imagery.
+In this exercise, you’ll delve into **vegetation disturbance** detection using [LandTrendr algorithm](https://doi.org/10.1016/j.rse.2010.07.008) and its products. Employing the [Google Earth Engine implementation](https://emapr.github.io/LT-GEE/index.html) of this tool, along with the R programming language, you’ll extract valuable data about the vegetation status in the Tatra Mountains from Landsat imagery.
 
-It’s important to understand that vegetation monitoring boasts a myriad of tools and algorithms for its implementation. The method showcased here is just one of the myriad possibilities. Building upon the techniques and insights you gain here, we hope you’ll be equipped to extend your research, adapting to various input data, algorithms, and tools.
+It’s important to understand that vegetation monitoring boasts a wide range of tools and algorithms for its implementation. The method showcased here is just one of many possibilities. Building upon the techniques and insights you gain here, we hope you’ll be equipped to extend your research, adapting to various input data, algorithms, and tools.
 
 ## Basic preparation
 
@@ -29,17 +29,17 @@ The second part will use R and RStudio. You can access environment setup tutoria
 
 ### Data
 
-Download data provided through [Zenodo](https://zenodo.org/record/8402925).
+Download data provided through [Zenodo](https://zenodo.org/records/10003575).
 
 #### Imagery data
 
-The imagery supplied for this exercise consists of Landsat satellite imagery time series. The data preparation process is described in the [Module 2 Theme 3 exercise Pipeline 2](../03_image_processing/03_image_processing_exercise.md#processing-pipeline-2). We’ll use indices time series that you can access through Google Assets.
+The imagery supplied for this exercise consists of Landsat satellite imagery time series. The data preparation process is described in the **[Module 2 Theme 3 exercise Pipeline 2](../03_image_processing/03_image_processing_exercise.md#processing-pipeline-2)**. We’ll use indices time series that you can access through Google Assets.
 
 #### Reference data
 
-For this exercise, 100 reference points have been earmarked to validate the outcomes derived using LandTrendr. These points were randomly spread out across the research area. Each point was assessed based on chips (method of producing chips is presented in [Theme 2 exercise](../02_temporal_information/02_temporal_information_exercise.md)). The attribute table from the point layer was extracted and will be used in the second part of the exercise as a validation dataset. In table rows there are consecutive reference points recorded and in columns there are subsequent years from 1985 (the first possible disturbance observation) to 2022. In cases where no disturbance was identified, the corresponding cell was marked with a “0.” Conversely, if a disturbance was evident, the cell was marked with a “1.”
+For this exercise, 100 reference points have been earmarked to validate the outcomes derived using LandTrendr. These points were randomly spread out across the research area. Each point was assessed based on chips (method of producing chips is presented in **[Theme 2 exercise](../02_temporal_information/02_temporal_information_exercise.md)**). The attribute table from the point layer was extracted and will be used in the second part of the exercise as a validation dataset. In table rows there are consecutive reference points recorded and in columns there are subsequent years from 1985 (the first possible disturbance observation) to 2022. In cases where no disturbance was identified, the corresponding cell was marked with a “0”. Conversely, if a disturbance was evident, the cell was marked with a “1”.
 
-To validate our results, we’ll source the requisite data from LandTrendr’s outputs for each point. Subsequently, we’ll juxtapose this extracted data against the validation table to ensure accuracy and reliability.
+To validate our results, we’ll extract values from LandTrendr’s outputs for each point. Subsequently, we’ll juxtapose this extracted data against the validation table to ensure accuracy and reliability.
 
 <center>
 
@@ -48,14 +48,15 @@ To validate our results, we’ll source the requisite data from LandTrendr’s o
 <i>Validation table.</i>
 </center>
 
-### Part 1 - Landtrendr in Google Earth Engine
+## Part 1 - LandTrendr in Google Earth Engine
 
-In this part of the exercise we’ll use the Google Earth Engine implementation of the LandTrendr algorithm. You can read about this tool on this website <https://emapr.github.io/LT-GEE/index.html> and in this article [Kennedy RE, Yang Z, Gorelick N, Braaten J, Cavalcante L, Cohen WB, Healey S. Implementation of the LandTrendr Algorithm on Google Earth Engine. Remote Sensing. 2018; 10(5):691.](https://doi.org/10.3390/rs10050691).
+In this part of the exercise we’ll use the Google Earth Engine implementation of the LandTrendr algorithm. You can read about this tool on this website <https://emapr.github.io/LT-GEE/index.html> and in this article:
 
-To start with, let’s load the data. For the purpose of this exercise we’ll use two spectral indices time series images we prepared in [Module 2 Theme 3 exercise Pipeline 2](../03_image_processing/03_image_processing_exercise.md#processing-pipeline-2): **NBR** and **NDMI**. If you exported them to your own Google Earth Engine assets you can change the path in the script below to match your output folder.
+- Kennedy RE, Yang Z, Gorelick N, Braaten J, Cavalcante L, Cohen WB, Healey S. Implementation of the LandTrendr Algorithm on Google Earth Engine. Remote Sensing. 2018; 10(5):691.<https://doi.org/10.3390/rs10050691>
+
+To start with, let’s load the data. For the purpose of this exercise we’ll use two spectral indices time series images we prepared in **[Module 2 Theme 3 exercise Pipeline 2](../03_image_processing/03_image_processing_exercise.md#processing-pipeline-2)**: **NBR** and **NDMI**. If you exported them to your own Google Earth Engine assets you can change the path in the script below to match your output folder. Otherwise, you can access data stored in `etrainee-module2` project.
 
 ``` javascript
-
 // Import image data
 var nbr = ee.Image("projects/etrainee-module2/assets/nbr");
 var ndmi = ee.Image("projects/etrainee-module2/assets/ndmi");
@@ -67,11 +68,11 @@ You should be able to see a multiband NBR image in the console.
 
 <center>
 
-<img src="media_exercise/nbr_data.jpg" title="NBR" alt="NBR" width="400"/>
+<img src="media_exercise/nbr_data.jpg" title="NBR" alt="NBR" width="500"/>
 
 </center>
 
-We’ll also add two vector files: Tatras Area of Interest and forest mask produced based on 1984 and 2022 forest range.
+We’ll also add two vector files: Tatras **Area of Interest** and **forest mask** based on 1984 and 2022 spatial extent of forests.
 
 ``` javascript
 // Define Area of Interest (AOI)
@@ -80,14 +81,13 @@ var AOI = ee.FeatureCollection("projects/etrainee-module2/assets/aoi_tatras");
 var forestMask = ee.FeatureCollection("projects/etrainee-module2/assets/tatras_forest_mask");
 ```
 
-For the first part we’ll produce the results using **NBR** index. To proceed we need to prepare the multiband image in accordance with LandTrendr requirements. The input data to the LandTrendr algorithm should be an `ImageCollection`. Each subsequent image should contain one band with that year’s spectral index and be named the saem (i.e. ‘NBR’). Each image should also have time property assigned.
+For the first part we’ll produce LandTrendr algorithm results using **NBR** index. To proceed we need to prepare the multiband image in accordance with LandTrendr requirements. The input data to the LandTrendr algorithm should be an `ImageCollection`. Each subsequent image should contain one band with that year’s spectral index and be named the same (i.e. `NBR`). Each image should also have time property assigned.
 
-Most spectral indices must also be multiplied by -1 before submitting it to the LandTrendr algorithm. Explanation can be found [here](https://emapr.github.io/LT-GEE/lt-gee-requirements.html#image-collection):
+Most spectral indices must also be multiplied by ***-1*** before submitting it to the LandTrendr algorithm. Explanation can be found [here](https://emapr.github.io/LT-GEE/lt-gee-requirements.html#image-collection):
 
 > Two really important steps in image collection building include 1) masking cloud and cloud shadow pixels during annual image compositing and to **2) ensure that the spectral band or index that is to be segmented is oriented so that vegetation loss is represented by a positive delta. For instance, NBR in its native orientation results in a negative delta when vegetation is lost from one observation to the next. In this case, NBR must be multiplied by -1 before being segmented. Conversely, if Landsat TM band 5 (SWIR) is selected for segmentation, inversion of the spectral values is not required, since natively, vegetation loss is represented by a positive delta.**
 
 ``` javascript
-
 var image = nbr;
 var imageName = 'nbr';
 
@@ -109,14 +109,16 @@ var renameAndSetTime = function(img) {
   // Get the band names from the image
   var bandNames = img.bandNames();
 
-  // Extract the year from the band name 'bYYYY_NBR'. This will give "YYYY" as a string.
+  // Extract the year from the band name 'bYYYY_NBR'.
+  // This will give "YYYY" as a string.
   var yearString = ee.String(bandNames.get(0)).slice(1, 5); 
 
   // Convert the year string to a number
   var year = ee.Number.parse(yearString);
 
   // Rename the band to 'NBR'
-  var renamedImg = img.select([0]).rename('NBR');  // 0 represents the first (and only) band of the image
+  // 0 represents the first (and only) band of the image
+  var renamedImg = img.select([0]).rename('NBR');  
 
   // Set the system:time_start property
   var date = ee.Date.fromYMD(year, 7, 1);
@@ -133,11 +135,11 @@ The resulting collection should look like this in the console.
 
 <center>
 
-<img src="media_exercise/processed_col.jpg" title="Processed collection" alt="Processed collection" width="400"/>
+<img src="media_exercise/processed_col.jpg" title="Processed collection" alt="Processed collection" width="500"/>
 
 </center>
 
-Now we are ready for another step, which is producing LandTrendr results. In the following code sections we’ll be orchestrating a sequence of operations that will allow us to yield exportable imagery. We’ll then move to RStudio, where we’ll assess the results.
+We are now ready for another step, which is running LandTrendr algorithm. In the following code sections we’ll be orchestrating a sequence of operations that will allow us to yield results as exportable imagery. We’ll then move to RStudio, where we’ll assess the results.
 
 Initiating our process, it’s imperative to lay out a list of parameters we aim to evaluate. LandTrendr has several parameters, which can influence the output of the algorithm. For the purpose of this exercise we’ll set arbitrary values for seven of them and we’ll test the results with a range of values for *spikeThreshold* parameter, which is defined as *threshold for dampening the spikes (1.0 means no dampening)*. This, in essence, acts as a filter to control the sensitivity of detecting sudden, short-lived changes in the data series.
 
@@ -145,7 +147,7 @@ Initiating our process, it’s imperative to lay out a list of parameters we aim
 // List of  thresholds to test
 var spikeThreshold = [0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
 
-// Saveable strings with thresholds
+// List of  thresholds as strings (to be used in exporting part)
 var spikeThresholdStr = ["03", "04", "05", "06", "07", "08", "09", "1"];
 ```
 
@@ -158,7 +160,7 @@ Let’s unpack the upcoming code block step by step to ensure comprehension:
 - We’ll mask the resulting images with forest mask
 - Finally, each iteration will yield two export ready multiband images
 
-The number of iterations, and consequently, the exported images, will be contingent on the number of values present in the `spikeThreshold` list. This framework allows for a rigorous evaluation of how varying the `spikeThreshold` \`value impacts the final results.
+The number of iterations, and consequently, the exported images depends on the number of values present in the `spikeThreshold` list. This framework allows for a rigorous evaluation of how varying the `spikeThreshold` value impacts the final results.
 
 ``` javascript
 for (var i=0 ; i<spikeThreshold.length; i++){
@@ -276,7 +278,7 @@ After successfully running this part of the script you should be able to see 16 
 
 Export each image to your Google Drive. You can change the folder to which the results will be exported. From your Google Drive folder download the images to your local hard drive.
 
-**After you queued images for download you can repeat the steps above to prepare also NDMI datasets. For the next part of the exercise we’ll want to have additional 16 NDMI products exported to local hard drive.**
+**After you queued images for download you can repeat the steps above to prepare LandTrendr outputs usng NDMI as input. For the next part of the exercise we’ll want to have additional 16 NDMI products exported to local hard drive.**
 
 **Change these lines and rerun the whole script to proceed with NDMI part:**
 
@@ -290,31 +292,46 @@ var imageName = 'ndmi';
   var renamedImg = img.select([0]).rename('NDMI'); 
 ```
 
-### Part 2 - Processing Landtrendr results in RStudio
+## Part 2 - Processing LandTrendr results in RStudio
 
-After successfully downloading all the necessary results move them to `theme_5_exercise/data_exercise` folder. We supplied them in our initial package just in case something went wrong during part 1. You can replace them safely.
+After successfully downloading all the necessary results move them to `theme_5_exercise/data_exercise` folder. We supplied them in our Zenodo data package just in case something went wrong during part 1. You can replace them if you managed to successfully complete part 1.
 
 Create a new script inside `theme_5_exercise` folder. You can name it `theme_5_exercise.R`. Start with loading required packages.
 
 ``` r
-library(terra) # raster I/o
-library(sf) # vector I/0
-library(readxl) # reading .xlsx files
-library(writexl) # writing.xlsx files
-library(dplyr) # tabular data manipulation
+# raster I/o
+library(terra) 
+
+# vector I/0
+library(sf) 
+
+# reading .xlsx files
+library(readxl) 
+
+# writing.xlsx files
+library(writexl) 
+
+# tabular data manipulation
+library(dplyr) 
 ```
 
 Next let’s read input data for this exercise. We’ll start with NBR rasters.
 
 ``` r
 # List vertices raster paths
-verts_rasters <- list.files(path="theme_5_exercise/data_exercise", pattern='nbr_ver', full.names = TRUE)
+verts_rasters <- list.files(path="theme_5_exercise/data_exercise", 
+                            pattern='nbr_ver', 
+                            full.names = TRUE)
 # List fitted values raster paths
-fv_rasters <- list.files(path="theme_5_exercise/data_exercise", pattern='nbr_fv', full.names = TRUE)
+fv_rasters <- list.files(path="theme_5_exercise/data_exercise", 
+                         pattern='nbr_fv', 
+                         full.names = TRUE)
 
 # Get names of rasters 
-verts_names <- list.files(path="theme_5_exercise/data_exercise", pattern='nbr_ver')
-fv_names <- list.files(path="theme_5_exercise/data_exercise", pattern='nbr_ver')
+verts_names <- list.files(path="theme_5_exercise/data_exercise", 
+                          pattern='nbr_ver')
+fv_names <- list.files(path="theme_5_exercise/data_exercise", 
+                       pattern='nbr_ver')
 
 # Read vertices and fitted values rasters to lists
 verts_rasters_list <- lapply(verts_rasters, rast)
@@ -332,10 +349,9 @@ Now read validation points dataset.
 val_points <- st_read("theme_5_exercise/data_exercise/T5_points.shp")
 ```
 
-The outputs you’ve gotten from LandTrendr consist of raw **vertices** and their corresponding **fitted values**. Vertices in LandTrendr represent breakpoints in the time series of a given pixel, indicating significant changes in its trajectory, while fitted values are smoother curves representing predicted values based on the observed data. We are interested in only those breakpoints (vertices) which point towards a decrease or disturbance in vegetation. To isolate these, it’s imperative to measure the **magnitude of change** between each segment’s start and end points. This magnitude is essentially the difference (delta) between the end vertex’s fitted value and the start vertex’s fitted value for a given segment. For indices such as NBR and NDMI (multiplied by -1 before submitting them to LandTrendr), a positive delta is a strong indicator of vegetation disturbance or stress. Through a loop mechanism, for every pair of vertex-fitted values images we’ve exported, the code calculates the magnitudes of change. The results will be structured as matrices, with each cell indicating the magnitude of vegetation change at the start vertex’s position.
+The outputs you’ve gotten from LandTrendr consist of raw **vertices** and their corresponding **fitted values**. Vertices in LandTrendr represent breakpoints in the time series of a given pixel, indicating significant changes in its trajectory, while fitted values are smoother curves representing predicted values based on the observed data. We are interested in only those breakpoints (vertices) which point towards a decrease or disturbance in vegetation. To isolate these, it’s imperative to measure the **magnitude of change** between each segment’s start and end points. This magnitude is essentially the difference (delta) between the end vertex’s fitted value and the start vertex’s fitted value for a given segment. For indices such as NBR and NDMI (multiplied by -1 before submitting them to LandTrendr), a significant positive delta is a strong indicator of vegetation disturbance or stress. Through a loop mechanism, for every pair of vertex-fitted values images we’ve exported, the code calculates the magnitudes of change. The results will be structured as matrices, with each cell indicating the magnitude of vegetation change at the start vertex’s position.
 
 ``` r
-
 # Empty list for storing the results
 magnitudes_list <- list()
 
@@ -415,7 +431,7 @@ for (r in seq(1:length(verts_rasters_list))) {
 }
 ```
 
-Using View(magnitude_list\[\[1\]\]), you can visually inspect an example matrix from the list of matrices derived from the LandTrendr results. Each matrix contains the magnitudes of vegetation loss/disturbance across the validation points.
+Run `View(magnitude_list[[1]])` in the console so you can visually inspect an example matrix from the list of matrices derived from the LandTrendr results. Each matrix contains the magnitudes of vegetation loss/disturbance across the validation points.
 
 <center>
 
@@ -423,14 +439,13 @@ Using View(magnitude_list\[\[1\]\]), you can visually inspect an example matrix 
 
 </center>
 
-So far we’ve acquired a matrix with magnitudes of loss/disturbance events for each of the eight LandTrendr results we downloaded. We now want to test the impact of different magnitude thresholds on the final accuracy of the algorithm. You’ll be testing 80 thresholds, ranging from 0 (no change) to 0.8 (significant change). For each threshold value, you’ll mask (or filter out) all vertices whose magnitude is below the given threshold. The reason for masking these vertices is to exclude potential “false positives” from the analysis.After applying the threshold, the filtered result is then compared to a validation table. This validation table contains ground truth data or manually verified data against which the LandTrendr results are compared to determine accuracy. In order to achieve table comparable with validation one we will need to shift vertices one year forwards, because the year of detection of disturbance event is the first year after end vertex of segment with positive delta.
+So far we’ve acquired a matrix with magnitudes of loss/disturbance events for each of the eight NBR LandTrendr results we downloaded. We now want to test the impact of different magnitude thresholds on the final accuracy of the algorithm. You’ll be testing 80 thresholds, ranging from 0 (no change) to 0.8 (significant change). For each threshold value, you’ll mask (or filter out) all vertices with magnitude below the given threshold. The reason for masking these vertices is to exclude potential “false positives” from the analysis. After applying the threshold, the filtered result is then compared to a validation table. This table contains manually verified data against which the LandTrendr results are compared to determine accuracy. In order to construct a table corresponding to the validation one we will need to shift vertices one year forwards. This is necessary, because the year of detection of disturbance event is the first year after end vertex of segment with positive delta.
 
-To automate and streamline this process, it’s recommended to prepare a vector containing all the threshold values to test. Furthermore, a function can be created to systematically apply each threshold to the matrices, mask out irrelevant vertices, and then compare the results against the validation table.
+To streamline this process, it’s recommended to prepare a vector containing all the threshold values to test. Furthermore, a function can be created to systematically apply each threshold to the matrices, mask out irrelevant vertices, and then compare the results against the validation table.
 
 ``` r
 # Magnitude thresholds
 thresholds <- seq(0, 0.8, by = 0.01)
-
 
 # Function to apply magnitude threshold
 apply_magnitude_threshold <- function(mag_mat, threshold) {
@@ -455,12 +470,13 @@ apply_magnitude_threshold <- function(mag_mat, threshold) {
 }
 ```
 
-Prepare a list of names to recognize the results of each test.
+Prepare a list of names to be able to differentiate results of each test.
 
 ``` r
-
 # Prepare list of threshold scenario names
-names_list <- paste0("Threshold_", gsub("\\.", "_", abs(thresholds))) # replace "." with "_"
+# replace "." with "_"
+names_list <- paste0("Threshold_", 
+                     gsub("\\.", "_", abs(thresholds))) 
 ```
 
 We want to calculate statistics for each iteration. The function below calculates several basic statistics derived from confusion matrix.
@@ -483,7 +499,8 @@ calculate_confusion_matrix_stats <- function(matrix, validation_matrix, set_name
   F1_Score <- 2 * (Sensitivity * Precision) / (Sensitivity  + Precision)
   
   # Create a data frame with the confusion matrix stats
-  stats <- data.frame(Set = set_name, TP, FP, TN, FN, Accuracy, Precision, Sensitivity, Specificity, F1_Score)
+  stats <- data.frame(Set = set_name, TP, FP, TN, FN, Accuracy, Precision, 
+                      Sensitivity, Specificity, F1_Score)
   
   return(stats)
 }
@@ -503,18 +520,25 @@ results_list <- list()
 for (l in seq(1, length(magnitudes_list))) {
   
   # Calculate matrices with each threshold applied
-  thresholds_results <- lapply(thresholds, apply_magnitude_threshold, mag_mat = magnitudes_list[[l]])
+  thresholds_results <- lapply(thresholds, apply_magnitude_threshold, 
+                               mag_mat = magnitudes_list[[l]])
   thresholds_results <- setNames(thresholds_results, names_list)
   
-  # Calculate
-  stats_list <- lapply(seq_along(thresholds_results), function(i) calculate_confusion_matrix_stats(thresholds_results[[i]], val_table, names(thresholds_results)[i]))
+  # Calculate accuracy statistics
+  stats_list <- lapply(seq_along(thresholds_results), 
+                function(i) calculate_confusion_matrix_stats(thresholds_results[[i]],
+                            val_table, names(thresholds_results)[i]))
   
-  # one table with accuracy statistics
+  # construct one data frame with accuracy statistics
   stats_df <- do.call(rbind, stats_list)
   
+  # add the constructed data frame to the list of results
   results_list[[l]] <- stats_df
   
-  write_xlsx(stats_df, paste0("theme_5_exercise/results/", verts_names[l], ".xlsx"))
+  # save the data frame with results to .xlsx file
+  write_xlsx(stats_df, paste0("theme_5_exercise/results/", 
+                               verts_names[l], 
+                               ".xlsx"))
   
 }
 ```
@@ -527,28 +551,34 @@ Inspect the results.
 
 </center>
 
-In the showcased results, we observe data specific to a scenario where the `spikeThreshold` was set at **0.7**. Notably, the maximum **F1** statistic achieved was **0.5** at a magnitude threshold of **0.14**. Analyzing this further, the LandTrendr algorithm aligned with our validation dataset on **30** occasions, denoting True Positives. However, it also flagged **21** vertices not found in our validation data, indicating False Positives. Additionally, the algorithm missed detecting **39** disturbance events that were indeed present in our validation dataset, resulting in False Negatives. To get a comprehensive understanding, it’s crucial to juxtapose these findings with outcomes from other `spikeThreshold` and magnitude change threshold combinations.
+In the showcased results, we observe data specific to a scenario where the `spikeThreshold` was set to **0.7**. Notably, the maximum **F1** statistic achieved was **0.5** for a magnitude threshold of **0.14**. Analyzing this further, the LandTrendr algorithm aligned with our validation dataset on **30** occasions, denoting True Positives. However, it also flagged **21** vertices not found in our validation data, indicating False Positives. Additionally, the algorithm missed detecting **39** disturbance events that were indeed present in our validation dataset, resulting in False Negatives. To get a comprehensive understanding, it’s crucial to juxtapose these findings with outcomes from other `spikeThreshold` and magnitude change threshold combinations.
 
 Once you’ve made your comparisons and drawn your conclusions, you can delve into the subsequent task: applying the aforementioned methodologies to NDMI.
 
 ------------------------------------------------------------------------
 
-*TASK: Compare the results of LandTrendr results thresholding for NBR and NDMI indices. Repeat the steps shown above for NDMI. Start with replacing the input data rasters*
+*TASK: Compare the results of LandTrendr results thresholding for NBR and NDMI indices. Repeat the steps shown above for NDMI. Start with replacing the input data rasters. Then follow the rest of the workflow to produce a set of accuracy tables*
 
 ``` r
 # List vertices raster paths
-verts_rasters <- list.files(path="theme_5_exercise/data_exercise", pattern='ndmi_ver', full.names = TRUE)
+verts_rasters <- list.files(path="theme_5_exercise/data_exercise", 
+                            pattern='ndmi_ver', 
+                            full.names = TRUE)
 # List fitted values raster paths
-fv_rasters <- list.files(path="theme_5_exercise/data_exercise", pattern='ndmi_fv', full.names = TRUE)
+fv_rasters <- list.files(path="theme_5_exercise/data_exercise", 
+                         pattern='ndmi_fv', 
+                         full.names = TRUE)
 
 # Get names of rasters 
-verts_names <- list.files(path="theme_5_exercise/data_exercise", pattern='ndmi_ver')
-fv_names <- list.files(path="theme_5_exercise/data_exercise", pattern='ndmi_ver')
+verts_names <- list.files(path="theme_5_exercise/data_exercise", 
+                          pattern='ndmi_ver')
+fv_names <- list.files(path="theme_5_exercise/data_exercise", 
+                       pattern='ndmi_ver')
 ```
 
 ------------------------------------------------------------------------
 
-The comparable result for NDMI should look like this:
+The comparable result (`spikeThreshold` equal to **0.7**) for NDMI should look like this:
 
 <center>
 
@@ -606,7 +636,7 @@ You can check how the application and algorithm works using [UI LandTrendr Chang
 
 Play around with different settings and parameters. This app uses LandTrendr based method of preparing multitemporal input datasets (medoid compositing). Indices values are also multiplied by 1000, so equivalent of magnitude filter 0.14 in our case would be 140 in the GEE app.
 
-This is the result you should see when running the app in Tatry Mountains using parameters we used in our exercise. The map presents the newest disturbance vertex with magnitude of over 140.
+This is the result you should see when running the app in Tatra Mountains using parameters we used in our exercise. The map presents the newest disturbance vertex with magnitude of over 140.
 
 <center>
 
@@ -618,10 +648,11 @@ This is the result you should see when running the app in Tatry Mountains using 
 
 ### Data
 
-Landsat 5, 7 and 8 imagery courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits) processed in and downloaded from [Google Earth Engine by Gorelick et al., 2017](https://doi.org/10.1016/j.rse.2017.06.031)
+Landsat 4, 5, 7, 8 and 9 imagery courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits) processed in and downloaded from [Google Earth Engine by Gorelick et al., 2017](https://doi.org/10.1016/j.rse.2017.06.031)
 
 ### Software
 
+- QGIS Development Team (2022). *QGIS Geographic Information System. Open Source Geospatial Foundation Project*. <http://qgis.osgeo.org>
 - R Core Team (2023). *R: A language and environment for statistical computing*. R Foundation for Statistical Computing, Vienna, Austria. <https://www.R-project.org/>.
 - Hijmans R (2023). *terra: Spatial Data Analysis*. R package version 1.7-39, <https://CRAN.R-project.org/package=terra>
 - Kennedy, R.E., Yang, Z., Gorelick, N., Braaten, J., Cavalcante, L., Cohen, W.B., Healey, S. (2018). Implementation of the LandTrendr Algorithm on Google Earth Engine. Remote Sensing. 10, 691.<https://doi.org/10.3390/rs10050691>

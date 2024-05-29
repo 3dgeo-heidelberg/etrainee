@@ -42,7 +42,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 txtfiles = glob(os.path.join(
-    'T_1_point_profiles', 'profile*.txt')           # profiles in directory /T_1-1_point_profiles/
+    'T_1_point_profiles', 'profile*.txt'))           # profiles in directory /T_1-1_point_profiles/
 
 # read all point profiles (*.txt) into a dataframe and add it to a list
 df_list= []                                           # create empty list to store dataframes
