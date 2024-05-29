@@ -44,13 +44,20 @@ The following skills and background knowledge are required for this module:
 
 ## Software
 
-For the practical parts of this module (excercises and tutorials), you will need the software listed below. Follow the links to the individual software or tools, for help in setting them up.
+For the practical parts of this module (excercises and tutorials), you will need:
 
-* [QGIS](../software/software_qgis.md)
-* [Python](../software/software_python.md)
-    * To install the packages needed for the tutorials and excercises we recommend the package and environment management system [Conda](https://docs.conda.io/en/latest/)
-    *  You can use the `etrainee_m1.yml` file to install the packages listed therein into a fresh Python environment. The yaml file can be downloaded here: <a href=../assets/python_envs/etrainee_m1.yml download>etrainee_m1.yml</a>.
-* To reproduce the examples that are using [Google Earth Engine](https://earthengine.google.com/), a registered user account for this service is required (create one [here](https://earthengine.google.com/signup/), if you don't have one).
+* [QGIS](../software/software_qgis.md) - In some of the Module 1 excercises, the graphical user interface of QGIS is used for visualization of data or for digitizing polygons (used to label training samples).
+* [Google Earth Engine](https://earthengine.google.com/) - For several tutorials and excercises of Module 1, a registered user account for this service is required (create one [here](https://earthengine.google.com/signup/), if you don't have one).
+* [Python](../software/software_python.md) - You can use the package and environment management system [Conda](https://docs.conda.io/en/latest/) and the `etrainee_m1.yml` file to install the packages needed for the tutorials and excercises into a fresh Python environment. The yaml file can be downloaded here: <a href=../assets/python_envs/etrainee_m1.yml download>etrainee_m1.yml</a>.
+
+
+## Toolbox intro
+
+Before you start with [Theme 1](./01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.md) of Module 1, we recommend that you go through the **[Toolbox intro](./toolbox_intro/ETRAINEE_intro_overview.md)**. There, you will learn how to
+
+* set up your working environment with **Python** and all required packages
+* create, modify and run interactive **Jupyter Notebooks** containing Python code
+* use Python for basic processing steps and visualization of **geospatial data**
 
 
 ## Practical parts of this module (overview)
@@ -100,4 +107,7 @@ Copernicus Sentinel data courtesy of the [European Space Agency - ESA](https://w
 
 
 ### Start the module
-... by proceeding to the first theme on [Principles of remote sensing time series](01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.md).
+
+... by proceeding to the [Toolbox intro](./toolbox_intro/ETRAINEE_intro_overview.md) or (if you are already familiar with Conda, Jupyter Notebooks and GeoPython) skip this and
+
+... go directly to the first theme on [Principles of remote sensing time series](01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.md).
