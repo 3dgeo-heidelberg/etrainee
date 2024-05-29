@@ -14,7 +14,7 @@ Before starting the course let's "unpack our toolbox" to ensure that we have the
 * [Visual Studio Code](./vscode.md) (code editor)
 * [Conda](./conda.md) (package management system)
 * [Jupyter Notebooks](./jupyter.ipynb) (interactive computing), with some Python fundamentals (programming language)
-* [GeoPython](./geopandas.ipynb) (a quickstart to geographic data handling in Python)
+* GeoPython - A quickstart to geographic data handling in Python: Vector data with [GeoPandas](./geopandas.ipynb), raster data with [rasterio](./rasterio.ipynb), and multidimensional raster data with [xarray](./xarray.ipynb).
 
 ## Background and objective
 <!--*SHORTEN OR SKIP THIS!*-->
