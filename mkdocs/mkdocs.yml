@@ -1,5 +1,5 @@
 site_name: E-TRAINEE Course
-repo_url: https://github.com/a-mayr/etrainee
+repo_url: https://github.com/3dgeo-heidelberg/etrainee
 docs_dir: ../course
 site_dir: ../site
 
@@ -41,9 +41,9 @@ nav:
         - 'Visual Studio Code': 'module1/toolbox_intro/vscode.md'
         - 'Manage software packages and environments': 'module1/toolbox_intro/conda.md'
         - 'Jupyter Notebooks': 'module1/toolbox_intro/jupyter.ipynb'
-        - 'Vector data with GeoPandas' : 'module1/toolbox_intro/geopandas.ipynb'
-        - 'Raster data pt. 1: rasterio' : 'module1/toolbox_intro/rasterio.ipynb'
-        - 'Raster data pt. 2: xarray' : 'module1/toolbox_intro/xarray.ipynb'
+        - 'Vector data with GeoPandas': 'module1/toolbox_intro/geopandas.ipynb'
+        - 'Raster data with rasterio': 'module1/toolbox_intro/rasterio.ipynb'
+        - 'Raster data with xarray': 'module1/toolbox_intro/xarray.ipynb'
     - 'Principles of remote sensing time series': 'module1/01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.md'
     - 'Large time series datasets in remote sensing': 'module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.md'
     - 'Time series analysis based on classification': 'module1/03_time_series_analysis_based_on_classification/03_time_series_analysis_based_on_classification.md'
