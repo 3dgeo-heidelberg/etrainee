@@ -111,3 +111,13 @@ Introduction to the R language and statistical analysis:
 
 Instructions on how to import and export data using R and respective packages:  
 [https://cran.r-project.org/doc/manuals/r-release/R-data.html](https://cran.r-project.org/doc/manuals/r-release/R-data.html)
+
+
+Friendly introduction to R programming and using R to analysing data can be found in these books:
+
+['Hands-On Programming with R' by Garrett Grolemund](https://rstudio-education.github.io/hopr/)
+
+['R for Data Science (2e)' by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund](https://r4ds.hadley.nz/)
+
+['Geocomputation with R' by Robin Lovelace, Jakub Nowosad and Jannes Muenchow](https://r.geocompx.org/)
+
