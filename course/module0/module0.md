@@ -102,7 +102,7 @@ The links for each software lead to descriptions and (where required) specific i
 
 * [CloudCompare](../software/software_cloudcompare.md) (direct download and installation from the website)
 
-* Google Earth Engine
+* [Google Earth Engine](../software/software_gee.md)
 
 
 ### Programming
