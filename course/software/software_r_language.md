@@ -30,13 +30,13 @@ We recommend installing everything with default settings.
 
 ***Note: If you encounter any errors during each of installation steps you may need to temporarily disable your firewall or anti-virus software.***
 
-Module 2 contents use R version 4.3.1 "Beagle Scouts". Choose files appropriate for your operating system here [https://cran.r-project.org/](https://cran.r-project.org/). For Windows version use this link to download installer: [https://cran.r-project.org/bin/windows/base/R-4.3.1-win.exe](https://cran.r-project.org/bin/windows/base/R-4.3.1-win.exe).
+Module 2 contents use R version 4.3.1 "Beagle Scouts". Choose files appropriate for your operating system here [https://cran.r-project.org/](https://cran.r-project.org/). For Windows version use this link to download installer: [https://cran.r-project.org/bin/windows/base/R-4.3.1-win.exe](https://cran.r-project.org/bin/windows/base/old/4.3.1/R-4.3.1-win.exe).
 
 
 If you use R on Windows some packages may need RTools software. Download and install version 4.3 of RTools from this website: [https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html](https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html)
 
 
-A recommended way to setup working environment in RStudio is to use [renv (short for reproducible environment) package](https://github.com/rstudio/renv). Project created using these instructions will contain appropriate versions of packages used to develop and run scripts in Module 2.
+A recommended way to setup working environment in RStudio is to use [renv (short for reproducible environment) package](https://rstudio.github.io/renv/). Project created using these instructions will contain appropriate versions of packages used to develop and run scripts in Module 2.
 
 **Instructions**
 
