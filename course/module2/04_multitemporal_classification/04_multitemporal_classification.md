@@ -410,7 +410,7 @@ Interdonato, R., Ienco, D., Gaetano, R., & Ose, K. (2019). DuPLO: A DUal view Po
 
 Kluczek, M., Zagajewski, B., & Kycko, M. (2022). *Airborne HySpex hyperspectral versus multitemporal Sentinel-2 images for mountain plant communities mapping*. Remote Sensing, 14(5), 1209. <https://doi.org/10.3390/rs14051209>
 
-Kohavi, R. (1995, August). *A study of cross-validation and bootstrap for accuracy estimation and model selection*. In Ijcai (Vol. 14, No. 2, pp. 1137-1145).
+Kohavi, R. (1995, August). *A study of cross-validation and bootstrap for accuracy estimation and model selection*. In Ijcai (Vol. 14, No. 2, pp. 1137-1145). [source](https://www.ijcai.org/Proceedings/95-2/Papers/016.pdf)
 
 Kollert, A., Bremer, M., Löw, M., & Rutzinger, M. (2021). *Exploring the potential of land surface phenology and seasonal cloud free composites of one year of Sentinel-2 imagery for tree species mapping in a mountainous region*. International Journal of Applied Earth Observation and Geoinformation, 94, 102208. <https://doi.org/10.1016/j.jag.2020.102208>
 
