@@ -8,6 +8,11 @@ You can register to use Google Earth Engine on this website: [https://code.earth
 
 Create the personal cloud project to access Code Editor.
 
+
+If prompted follow the steps as described below:
+
+Register a Noncommercial or Commercial Cloud project > Unpaid usage / Project type: Academia & Research or No affiliation > Create a new Google Cloud Project for this course / Set Project-ID and optionally Project Name > Continue to summary.
+
 ## Getting started 
 
 We recommend the following introductory material to familiarize yourself with GEE.

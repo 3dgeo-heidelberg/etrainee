@@ -42,7 +42,7 @@ The use case is featured in the following parts of the course:
 
 - [Exercise: Image processing (Module 2, Theme 3)](../module2/03_image_processing/03_image_processing_exercise.md)
 - [Exercise: Multitemporal classification (Module 2, Theme 4)](../module2/04_multitemporal_classification/04_multitemporal_classification_exercise.md)
-- [Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains (Module 2, Case Study 1)](../module2/06_cs_tundra_grasslands/06_cs_tundra_grasslands.md)
+- [Case study: Monitoring tundra grasslands (Karkonosze/Krkonoše Mountains) (Module 2, Case Study 1)](../module2/06_cs_tundra_grasslands/06_cs_tundra_grasslands.md)
 
 ## References
 

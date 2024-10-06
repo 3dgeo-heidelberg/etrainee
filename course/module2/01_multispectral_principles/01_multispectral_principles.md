@@ -389,7 +389,7 @@ Henrich, V., Götze, E., Jung, A., Sandow, C., Thürkow, D., & Gläßer, C. (200
 
 Hotelling, H. (1933). *Analysis of a complex of statistical variables into principal components*. Journal of Educational Psychology, 24(6), 417. <https://doi.org/10.1037/h0071325>
 
-Kauth, R. J., & Thomas, G. S. (1976). *The Tasseled Cap—A Graphic Description of the Spectral-Temporal Development of Agricultural Crops as Seen by Landsat*. LARS: Proceedings of the Symposium on Machine Processing of Remotely Sensed Data, West Lafayette, IN: Purdue University, 4B-41-4B-51. [source](http://docs.lib.purdue.edu/lars_symp?utm_source=docs.lib.purdue.edu%2Flars_symp%2F159&utm_medium=PDF&utm_campaign=PDFCoverPages)
+Kauth, R. J., & Thomas, G. S. (1976). *The Tasseled Cap—A Graphic Description of the Spectral-Temporal Development of Agricultural Crops as Seen by Landsat*. LARS: Proceedings of the Symposium on Machine Processing of Remotely Sensed Data, West Lafayette, IN: Purdue University, 4B-41-4B-51. [source](https://docs.lib.purdue.edu/lars_symp/159/)
 
 Landgrebe, D. A. (2003). *Signal theory methods in multispectral remote sensing* (Vol. 24). John Wiley & Sons. <https://doi.org/10.1002/0471723800>
 

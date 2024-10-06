@@ -102,7 +102,7 @@ The links for each software lead to descriptions and (where required) specific i
 
 * [CloudCompare](../software/software_cloudcompare.md) (direct download and installation from the website)
 
-* Google Earth Engine
+* [Google Earth Engine](../software/software_gee.md)
 
 
 ### Programming
@@ -138,6 +138,10 @@ Below, we provide links to tutorials and resources where you can obtain the requ
 #### Programming in Python
 If you are new to Python, you might look into this tutorial on [Python Code Fundamentals](https://www.earthdatascience.org/courses/intro-to-earth-data-science/python-code-fundamentals/) by [Earth Lab](https://www.earthdatascience.org/).
 
-Advanced tutorials or material can be found among the following resources:
+Advanced tutorials or material can be found among the following resources:  
 * Online course on [Practical Python Programming](https://dabeaz-course.github.io/practical-python/) by David Beazley
 * Online course/textbook on [Use Data for Earth and Environmental Science in Open Source Python](https://www.earthdatascience.org/courses/use-data-open-source-python/) by [Earth Lab](https://www.earthdatascience.org/)
+
+
+#### Programming in R
+If you are new to R you can check out recommended tutorials and books [here](../software/software_r_language.md#getting-started-external-material)

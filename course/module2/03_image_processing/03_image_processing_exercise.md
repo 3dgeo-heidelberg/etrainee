@@ -486,7 +486,7 @@ function renameBands(image) {
 }
 
 // Add dates to bands names
-var s2FilteredColNdviRenamed = s2FilteredColNdvi.map(renameBandsYear);
+var s2FilteredColNdviRenamed = s2FilteredColNdvi.map(renameBands);
 print(s2FilteredColNdviRenamed);
 ```
 
@@ -630,7 +630,7 @@ function fillGaps (img) {
   tempCol = tempCol.toBands();
   
   // Select the bands with original band names from the newly created image
-  fixedBandNamesImg = tempCol.select(tempCol.bandNames(), bandNames);
+  var fixedBandNamesImg = tempCol.select(tempCol.bandNames(), bandNames);
   
   // Reproject the image to its original projection
   var filledGapsImg = fixedBandNamesImg.reproject(proj);
@@ -1278,7 +1278,8 @@ var bandNames = oneImage.bandNames();
 
 // Map over band names to remove prefix
 var newBandNames = bandNames.map(function(name) {
-    return ee.String(name).split('_').slice(1).join('_');
+    var y = ee.String(name).split('_').slice(1).join('_');
+    return ee.String('b').cat(y);
 });
 
 // Rename the bands

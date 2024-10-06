@@ -192,7 +192,7 @@ Radiometric normalization is necessary for e.g. PlanetScope data due to the dif
 
 ## Overview of tools and algorithms used with satellite multispectral image/time series processing
 
-Most of the processing steps applied to the multitemporal imagery data are identical with those used in single image preparation workflow. Some - like composites or harmonization - are specific for datasets with temporal dimension. Different types of tools are present in many resources like closed software, open platforms or extensions, libraries and packages expanding the base capabilities of programming languages, software or platforms. Here is a sample of different tools and algorithms commonly used in processing of multispectral imagery. This selection contains only applications used during **data preparation**. Data analysis is a whole other collection, parts of which can be found in contents of **[Theme 4](../04_multitemporal_classification/04_multitemporal_classification.md)** and **[Theme 5](../05_vegetation_monitoring/05_vegetation_monitoring.md)**. Strictly code-based tools are extensions of Google Earth Engine JavaScript and R. More examples of Python based algorithms can be found in **[Theme 2 of Module 1](../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.md)**+.
+Most of the processing steps applied to the multitemporal imagery data are identical with those used in single image preparation workflow. Some - like composites or harmonization - are specific for datasets with temporal dimension. Different types of tools are present in many resources like closed software, open platforms or extensions, libraries and packages expanding the base capabilities of programming languages, software or platforms. Here is a sample of different tools and algorithms commonly used in processing of multispectral imagery. This selection contains only applications used during **data preparation**. Data analysis is a whole other collection, parts of which can be found in contents of **[Theme 4](../04_multitemporal_classification/04_multitemporal_classification.md)** and **[Theme 5](../05_vegetation_monitoring/05_vegetation_monitoring.md)**. Strictly code-based tools are extensions of Google Earth Engine JavaScript and R. More examples of Python based algorithms can be found in **[Theme 2 of Module 1](../../module1/02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.md)**.
 
 ### Satellite/sensor processors
 
@@ -243,7 +243,7 @@ Instrument Data Processing (IDP)
 The processing from Level-0 up to Level-1C is performed by IDP functionality of the Copernicus Ground Segment. Level-0 and Level-1A products are Copernicus Ground Segment internal products not made available to users.
 </dd>
 <dd>
-<b>SOURCES</b>: <a href="https://sentinels.copernicus.eu/web/sentinel/missions/sentinel-2/ground-segment/core-ground-segment/systematic-processing-and-reprocessing-services">Copernicus Ground Segment description</a>, <a href="https://sentinel.esa.int/documents/247904/685211/sentinel-2_user_handbook">Sentinel-2 User Handbook</a>, <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-0-algorithms-products">Level-0 Processing Overview</a>, <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-1a-algorithms-products">Level-1A Processing Overview</a>, <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-1b/algorithm-overview">Level-1B Algorithm Overview</a>, <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-1c/algorithm-overview">Level-1C Algorithm Overview</a>
+<b>SOURCES</b>: <a href="https://sentiwiki.copernicus.eu/web/copernicus-operations">Copernicus Ground Segment description</a>, <a href="https://sentinel.esa.int/documents/247904/685211/sentinel-2_user_handbook">Sentinel-2 User Handbook</a>, <a href="https://sentiwiki.copernicus.eu/web/s2-processing#S2Processing-L0AlgorithmsS2-Processing-L0-Algorithmstrue">Level-0 Algorithms Overview</a>, <a href="https://sentiwiki.copernicus.eu/web/s2-processing#S2Processing-L1AAlgorithmsS2-Processing-L1A-Algorithmstrue">Level-1A Algorithms Overview</a>, <a href="https://sentiwiki.copernicus.eu/web/s2-processing#S2Processing-L1BAlgorithmsS2-Processing-L1B-Algorithmstrue">Level-1B Algorithms Overview</a>, <a href="https://sentiwiki.copernicus.eu/web/s2-processing#S2Processing-L1CAlgorithmsS2-Processing-L1C-Algorithmstrue">Level-1C Algorithms Overview</a>
 </dd>
 <dt>
 Sen2Cor / Sentinel-2 Toolbox functionalities
@@ -252,7 +252,7 @@ Sen2Cor / Sentinel-2 Toolbox functionalities
 Each observation from the Level-1C, is processed by the European Space Agency (ESA) through the Sen2Cor algorithm. The Level-2A operational processor generates, from algorithms of scene classification and atmospheric correction, BOA reflectance products.
 </dd>
 <dd>
-<b>SOURCES</b>: <a href="https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm-overview">Level-2A Algorithm Overview</a>, <a href="http://step.esa.int/main/snap-supported-plugins/sen2cor/">Sen2Cor processor</a>, <a href="https://sentinel.esa.int/web/sentinel/toolboxes/sentinel-2">The Sentinel-2 Toolbox</a>, <a href="https://doi.org/10.3390/rs9060584">Paper with detailed processing description (Gascon et al., 2017)</a>
+<b>SOURCES</b>: <a href="https://sentiwiki.copernicus.eu/web/s2-processing#S2Processing-L2AAlgorithmsS2-Processing-L2A-Algorithmstrue">Level-2A Algorithms Overview</a>, <a href="https://sentiwiki.copernicus.eu/web/sentinels-toolboxes#SentinelsToolboxes-Sentinel-2ToolboxGI-S2-Toolbox">The Sentinel-2 Toolbox</a>, <a href="https://doi.org/10.3390/rs9060584">Paper with detailed processing description (Gascon et al., 2017)</a>
 </dd>
 </dl>
 </li>
@@ -343,12 +343,6 @@ Aims to produce harmonised/fused surface reflectance imagery with higher periodi
 
 <dl>
 <dt>
-<a href="https://cran.r-project.org/web/packages/ASIP/index.html">ASIP: Automated Satellite Image Processing</a>
-</dt>
-<dd>
-Primary applications: atmospheric corrections, derivatives calculation.
-</dd>
-<dt>
 <a href="https://cran.r-project.org/web/packages/gdalcubes/index.html">gdalcubes: Earth Observation Data Cubes from Satellite Image Collections</a>
 </dt>
 <dd>
@@ -373,7 +367,7 @@ Processing of Landsat or other multispectral satellite imagery. Includes relativ
 Basic MODIS download and processing functionalities.
 </dd>
 <dt>
-<a href="https://cran.r-project.org/web/packages/MODIStsp/vignettes/MODIStsp.html">MODIStsp: Find, Download and Process MODIS Land Products Data</a>
+<a href="https://github.com/ropensci/MODIStsp?tab=readme-ov-file">MODIStsp: Find, Download and Process MODIS Land Products Data</a>
 </dt>
 <dd>
 Creation of time series of rasters derived from MODIS Land Products data.
@@ -385,13 +379,13 @@ Creation of time series of rasters derived from MODIS Land Products data.
 Binding package for calling Google Earth Engine API from within R
 </dd>
 <dt>
-<a href="https://docs.ropensci.org/rsat/">rsat: Dealing with Multiplatform Satellite Images</a>
+<a href="https://cloud.r-project.org/web/packages/rsat/index.html">rsat: Dealing with Multiplatform Satellite Images</a>
 </dt>
 <dd>
 Various functions, including gap filling, cloud masking and smoothing.
 </dd>
 <dt>
-<a href="http://bleutner.github.io/RStoolbox/rstbx-docu/RStoolbox.html">RStoolbox: A Collection of Remote Sensing Tools</a>
+<a href="https://cloud.r-project.org/web/packages/RStoolbox/index.html">RStoolbox: A Collection of Remote Sensing Tools</a>
 </dt>
 <dd>
 Corrections, coregistering, derivatives calculation.
@@ -407,6 +401,12 @@ Contains functions which are useful for handling, manipulating, and visualizing 
 </dt>
 <dd>
 Contains Sen2cor processing algorithm, as well as functions to mask cloudy pixels and compute derivaties.
+</dd>
+<dt>
+<a href="https://github.com/ranghetti/sen2rts">sen2rts: Build and Analyse Sentinel-2 Time Series</a>
+</dt>
+<dd>
+Library which helps to extract and manage time series from Sentinel-2 archives created with the package sen2r.
 </dd>
 </dl>
 
