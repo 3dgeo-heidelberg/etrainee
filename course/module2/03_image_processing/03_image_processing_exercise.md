@@ -1278,7 +1278,8 @@ var bandNames = oneImage.bandNames();
 
 // Map over band names to remove prefix
 var newBandNames = bandNames.map(function(name) {
-    return ee.String(name).split('_').slice(1).join('_');
+    var y = ee.String(name).split('_').slice(1).join('_');
+    return ee.String('b').cat(y);
 });
 
 // Rename the bands
