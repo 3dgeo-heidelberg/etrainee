@@ -710,6 +710,9 @@ pixel_reference <- merge(pixel_reference, reference_class,
 
 pixel_reference <- select(pixel_reference, -fraction) %>%
   relocate(ID, class)
+  
+saveRDS(pixel_reference,
+        file = "theme_4_exercise/data_exercise/pixel_reference.RDS") 
 
 colnames(pixel_reference)
 
@@ -742,6 +745,8 @@ model_rf <- randomForest(train_data[ , 3:length(train_data)], as.factor(train_da
                          importance = TRUE,
                          do.trace = 50)
 
+saveRDS(model_rf,
+        file = "theme_4_exercise/results/model_rf.RDS") 
 
 model_rf
 
