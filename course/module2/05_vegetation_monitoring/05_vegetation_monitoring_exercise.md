@@ -72,7 +72,7 @@ You should be able to see a multiband NBR image in the console.
 
 </center>
 
-We’ll also add two vector files: Tatras **Area of Interest** and **forest mask** based on 1984 and 2022 spatial extent of (combination of both extents).
+We’ll also add two vector files: Tatras **Area of Interest** and **forest mask** based on 1984 and 2022 spatial extent of forests (combination of both extents).
 
 ``` javascript
 // Define Area of Interest (AOI)
