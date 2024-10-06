@@ -1,0 +1,3 @@
+# Environment Yaml files 
+
+This directory contains the Yaml files for Modules 1, 3 and 4. In addition, there is the env_config.yaml, which defines the environment name in the yaml file. The goal is to create a merged environment yaml file which can be used for all three modules. This can be done with running `conda-merge etrainee_m1.yml etrainee_m3.yml etrainee_m4.yml env_config.yml > etrainee.yml` in the conda prompt. This has to be redone manually each time the single modules are modified. The resulting `etrainee.yml` has to be uploaded in this folder, so it is always up-to-date. The etrainee.yml can then be downloaded with a link on the course site.
