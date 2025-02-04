@@ -1,7 +1,6 @@
 name: etrainee_m4
 channels:
   - conda-forge
-  - defaults
 dependencies:
   - anyio=3.7.0
   - argon2-cffi=21.3.0
@@ -64,8 +63,6 @@ dependencies:
   - idna=3.4
   - importlib-metadata=6.7.0
   - importlib-resources=5.12.0
-  - importlib_metadata=6.7.0
-  - importlib_resources=5.12.0
   - intel-openmp=2023.1.0
   - ipykernel=6.14.0
   - ipython=8.4.0
@@ -187,7 +184,6 @@ dependencies:
   - python-fastjsonschema=2.17.1
   - python-json-logger=2.0.7
   - python_abi=3.9
-  - pytorch=1.12.1
   - pytz=2023.3
   - pywin32=304
   - pywinpty=2.0.10
@@ -216,7 +212,6 @@ dependencies:
   - tk=8.6.12
   - toml=0.10.2
   - tomli=2.0.1
-  - torchvision=0.13.1
   - tornado=6.3.2
   - tqdm=4.65.0
   - traitlets=5.9.0
@@ -250,6 +245,8 @@ dependencies:
     - jsonpatch==1.33
     - jsonpointer==2.4
     - networkx==3.1
+    - torch==1.12.1
+    - torchvision==0.13.1
     - torchnet==0.0.4
     - visdom==0.2.4
     - etrainee_m4_utils
