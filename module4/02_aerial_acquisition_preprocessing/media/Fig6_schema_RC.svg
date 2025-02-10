@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="1085px" height="650px" viewBox="64.5 34.5 1085 650" enable-background="new 64.5 34.5 1085 650" xml:space="preserve">
+<g>
+	<rect x="1.769" y="-0.5" fill="#FFFFFF" width="1280" height="720"/>
+	<rect x="792.269" y="315" fill="none" stroke="#000000" stroke-miterlimit="8" width="189" height="83"/>
+	<rect x="566.269" y="209" fill="none" stroke="#000000" stroke-miterlimit="8" width="189" height="83"/>
+	<rect x="815.269" y="550" fill="#FFFF00" stroke="#000000" stroke-miterlimit="8" width="151" height="60"/>
+	<rect x="127.269" y="232" fill="#FFFFCC" stroke="#000000" stroke-miterlimit="8" width="144" height="60"/>
+	<rect x="581.269" y="444" fill="#FFFF66" stroke="#000000" stroke-miterlimit="8" width="151" height="60"/>
+	<path fill="#DAE3F3" stroke="#000000" stroke-miterlimit="8" d="M573.269,332.667c0-9.757,7.91-17.667,17.667-17.667h131.666
+		c9.757,0,17.667,7.91,17.667,17.667v70.666c0,9.757-7.91,17.667-17.667,17.667H590.936c-9.757,0-17.667-7.91-17.667-17.667V332.667
+		z"/>
+	<path fill="#DAE3F3" stroke="#000000" stroke-miterlimit="8" d="M346.269,226.667c0-9.757,7.91-17.667,17.667-17.667h123.666
+		c9.757,0,17.667,7.91,17.667,17.667v70.666c0,9.757-7.91,17.667-17.667,17.667H363.936c-9.757,0-17.667-7.91-17.667-17.667V226.667
+		z"/>
+	<rect x="346.269" y="337" fill="#FFFF99" stroke="#000000" stroke-miterlimit="8" width="151" height="61"/>
+	<path fill="#DAE3F3" stroke="#000000" stroke-miterlimit="8" d="M807.269,437.667c0-9.757,7.91-17.667,17.667-17.667h138.666
+		c9.757,0,17.667,7.91,17.667,17.667v70.666c0,9.757-7.91,17.667-17.667,17.667H824.936c-9.757,0-17.667-7.91-17.667-17.667V437.667
+		z"/>
+	<text transform="matrix(1 0 0 1 601.1179 242.5)" font-family="'ArialMT'" font-size="21">Atm. models,</text>
+	<text transform="matrix(1 0 0 1 581.5379 267.5)" font-family="'ArialMT'" font-size="21">ground meas., …</text>
+	<text transform="matrix(1 0 0 1 391.7839 255.5)" font-family="'ArialMT'" font-size="21">Sensor</text>
+	<text transform="matrix(1 0 0 1 377.0379 280.5)" font-family="'ArialMT'" font-size="21">calibration</text>
+	<text transform="matrix(1 0 0 1 372.2039 362.5)" font-family="'ArialMT'" font-size="21">At</text>
+	<text transform="matrix(1 0 0 1 392.3709 362.5)" font-family="'ArialMT'" font-size="21">-</text>
+	<text transform="matrix(1 0 0 1 399.5379 362.5)" font-family="'ArialMT'" font-size="21">sensor</text>
+	<text transform="matrix(1 0 0 1 377.0379 387.5)" font-family="'ArialMT'" font-size="21">radiance</text>
+	<text transform="matrix(1 0 0 1 593.2879 362.5)" font-family="'ArialMT'" font-size="21">Atmospheric</text>
+	<text transform="matrix(1 0 0 1 605.7079 387.5)" font-family="'ArialMT'" font-size="21">correction</text>
+	<text transform="matrix(1 0 0 1 615.7839 469.5)" font-family="'ArialMT'" font-size="21">Surface</text>
+	<text transform="matrix(1 0 0 1 611.7039 494.5)" font-family="'ArialMT'" font-size="21">radiance</text>
+	<text transform="matrix(1 0 0 1 844.7839 453.5)" font-family="'ArialMT'" font-size="21">Solar and</text>
+	<text transform="matrix(1 0 0 1 834.7039 478.5)" font-family="'ArialMT'" font-size="21">topographic</text>
+	<text transform="matrix(1 0 0 1 843.5379 504.5)" font-family="'ArialMT'" font-size="21">correction</text>
+	<text transform="matrix(1 0 0 1 847.6179 574.5)" font-family="'Arial-BoldMT'" font-size="21">Surface</text>
+	<text transform="matrix(1 0 0 1 830.3709 599.5)" font-family="'Arial-BoldMT'" font-size="21">reflectance</text>
+	<rect x="331.269" y="118" fill="none" stroke="#000000" stroke-miterlimit="8" width="189" height="68"/>
+	<text transform="matrix(1 0 0 1 354.5379 146.5)" font-family="'ArialMT'" font-size="21">Calibration gain</text>
+	<text transform="matrix(1 0 0 1 352.5639 171.5)" font-family="'ArialMT'" font-size="21">and offset coef.</text>
+	<text transform="matrix(1 0 0 1 837.3709 348.5)" font-family="'ArialMT'" font-size="21">Solar angle,</text>
+	<text transform="matrix(1 0 0 1 853.8709 373.5)" font-family="'ArialMT'" font-size="21">DEM, …</text>
+	<text transform="matrix(1 0 0 1 143.6209 272.5)" font-family="'Arial-BoldMT'" font-size="21">Image DNs</text>
+	<path d="M422.769,186v16.333h-1V186H422.769z M426.269,201l-4,8l-4-8H426.269z"/>
+	<path d="M657.769,292v16.333h-1V292H657.769z M661.269,307l-4,8l-4-8H661.269z"/>
+	<path d="M891.769,398v16.333h-1V398H891.769z M895.269,413l-4,8l-4-8H895.269z"/>
+	<path d="M422.769,315v15.333h-1V315H422.769z M426.269,329l-4,8l-4-8H426.269z"/>
+	<path d="M657.769,421v16.333h-1V421H657.769z M661.269,436l-4,8l-4-8H661.269z"/>
+	<path d="M891.769,527v16.333h-1V527H891.769z M895.269,542l-4,8l-4-8H895.269z"/>
+	<path d="M800.602,473.5l-68.333,0v1l68.333,0V473.5z M799.269,478l8-4l-8-4V478z"/>
+	<path d="M566.602,367.5l-69.333,0v1l69.333,0V367.5z M565.269,372l8-4l-8-4V372z"/>
+	<path d="M339.602,261.5l-68.333,0v1l68.333,0V261.5z M338.269,266l8-4l-8-4V266z"/>
+</g>
+</svg>
