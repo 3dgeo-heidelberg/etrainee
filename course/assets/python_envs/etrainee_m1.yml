@@ -1,7 +1,6 @@
 name: etrainee_m1
 channels:
   - conda-forge
-  - defaults
 dependencies:
   - affine=2.4.0
   - aiofiles=22.1.0
