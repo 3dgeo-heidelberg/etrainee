@@ -92,6 +92,7 @@ The development team has been led by Dr. Markéta Potůčková and it consists o
 |---|:---:|:---:|
 | Prof. Bernhard Höfle   | [web](https://www.geog.uni-heidelberg.de/gis/hoefle.html)  | [ORCID](https://orcid.org/0000-0001-5849-1461)  |
 | Dr. Katharina Anders   | [web](https://www.geog.uni-heidelberg.de/gis/anders.html)  | [ORCID](https://orcid.org/0000-0001-5698-7041)  |
+| Hannah Weiser          | [web](https://www.geog.uni-heidelberg.de/gis/weiser.html)  | [ORCID](https://orcid.org/0000-0003-3256-7311)  |
 | Sina Antonia Zumstein  |   |   |
 </details>
 
