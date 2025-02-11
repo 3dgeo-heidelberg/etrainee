@@ -2,7 +2,7 @@ name: etrainee_m3
 channels:
   - conda-forge
 dependencies:
-  - python=3.9
+  - python=3.12
   - pip
   - polyscope
   - matplotlib
@@ -21,7 +21,6 @@ dependencies:
   - tqdm
   - shapely
   - jupyter_contrib_nbextensions
+  - helios=2
   - pip:
     - py4dgeo
-
-
