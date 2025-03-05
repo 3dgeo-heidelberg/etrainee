@@ -19,5 +19,6 @@ dependencies:
   - ca-certificates
   - openssl
   - libgdal-jp2openjpeg
-	- contextily
-	- matplotlib-scalebar
+  - certifi
+  - contextily
+  - matplotlib-scalebar
