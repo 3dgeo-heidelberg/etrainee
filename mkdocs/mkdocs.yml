@@ -1,5 +1,5 @@
-site_name: E-TRAINEE Course Innsbruck 2025
-repo_url: https://github.com/a-mayr/etrainee-innsbruck-2025
+site_name: E-TRAINEE Course
+repo_url: https://github.com/3dgeo-heidelberg/etrainee
 docs_dir: ../course
 site_dir: ../site
 
