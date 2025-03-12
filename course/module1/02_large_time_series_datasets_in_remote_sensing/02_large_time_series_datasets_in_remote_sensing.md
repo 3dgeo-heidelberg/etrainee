@@ -25,7 +25,16 @@ At the end of this theme, you will
 	* the Copernicus Sentinel-2 mission
 * have an overview of the possibilities currently available for big data management and processing in remote sensing
 
+You will also be able to:
+
+* compare the specificities of different Earth Observation missions
+* choose adapted Earth Observation missions depending on the application
+* list strategies to ease large dataset analysis on a local computer
+* describe what a data cube is
+* name cloud computing solutions for RS and geospatial data
+
 Working through the tutorials and exercises of this theme you will try some convenient methods to access and start working with large remote sensing time series. This includes various state-of-the-art approaches, such as Spatio-Temporal Asset Catalogs (STAC) or the Google Earth Engine (GEE) which enables you to utilize cloud storage and computing infrastructure.
+
 
 
 ##	Major Earth observation missions, data archives, and access

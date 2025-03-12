@@ -3,7 +3,7 @@ title: "E-TRAINEE: Airborne hyperspectral data acquisition and pre-processing"
 description: "This is the second theme within the Airborne Imaging Spectroscopy Time Series Analysis module."
 dateCreated: 2023-10-30
 authors: Marketa Potuckova
-contributors: 
+contributors: Alex Srolleru, Adela Sedova
 estimatedTime: 
 ---
 
@@ -89,7 +89,7 @@ Due to the dynamic development in this field, a list of the existing software to
 *Figure 3. A general workflow for flight mission planning. Figure by course authors.*
 
 The parameters of the platforms and sensors that are provided in the respective technical data sheets are either pre-defined by a software provider or can be set by the user. 
-The flight mission planning applications contain graphic tools for drawing an area of interest. Importing a **.kmz* file is usually also possible. 
+The flight mission planning applications contain graphic tools for drawing an area of interest. Importing a *.kmz* file is usually also possible. 
 Further settings comprise flight-specific parameters such as altitude above the mean sea level and above the ground, GSD, image overlaps, platform velocity, etc. (cf. *Figure 4*). 
 Mutually dependent parameters (e.g., GSD and the flying height above the ground) are automatically adjusted after one of them is set up. 
 Based on the setup parameters, a flight route is automatically planned and visualised. 
@@ -295,7 +295,7 @@ The GCPs were signalised and measured with a GNSS/RTK receiver with an accuracy 
 
 Due to tge noise present in data and large data volumes, it is practical to carry out further pre-processing steps of radiometrically and geometrically corrected HS imagery before their use for time series statistical analysis or classification. 
 
-### Spectra smoothening and denoising
+### Spectra smoothing and denoising
 
 Spectral curves collected with an airborne HS sensor contain a relatively high amount of noise due to narrow bandwidth, remaining errors from radiometric correction, etc. ([Vaiphasa, 2006](#references)). 
 The collected spectrum $s_{0} (\lambda)$ can be then expressed as the sum of true signal $s_{t} (\lambda)$ and noise $n (\lambda)$:
@@ -306,13 +306,13 @@ The true signal can be estimated by convolution:
 
 $${\widehat s_{t}} (\lambda) = s_{0} (\lambda) *g (\lambda)$$
 
-where ${\widehat s}_{t}$ is the estimation of the true signal and $g (\lambda)$ is a convolutional, in our case smoothening filter.
+where ${\widehat s}_{t}$ is the estimation of the true signal and $g (\lambda)$ is a convolutional, in our case smoothing filter.
 
 One possibility of signal smoothing is the **moving average** method, when the given spectral value is replaced with a mean or median of *L = 2k+1* neighbouring values, where *k* is the number of preceding and following values, respectively, of the evaluated value. 
 *Figure 14* gives an example of a spectrum smoothed with a mean and a median filter of length *L = 5*. 
 
 <p align="center">
-<img src="media/Fig14.jpg" title="Spectra smoothening." alt="Figure 14" width="400"/>
+<img src="media/Fig14.jpg" title="Spectra smoothing." alt="Figure 14" width="400"/>
 </p>
 
 *Figure 14. Example of spectrum smoothing using mean and median filters with the size of the convolution window L = 5. The original spectrum of tufted hairgrass was measured with a Nano-Hyperspec® line camera in June 2020. Figure by course authors.*
@@ -322,7 +322,7 @@ The **Savitzky-Golay filter** discussed in [Module 1](../../module1/01_principle
 Averaging of neighbouring bands followed by subsampling is applied when both data denoising and reduction are desired. Such procedure was used for the HS dataset from the Krkonoše Mts. tundra ([see the dataset description](../../data_usecases/usecase_grasses_krkonose.md)) and *Figure 15*.
 
 <p align="center">
-<img src="media/Fig15.jpg" title="Spectra smoothening 2." alt="Figure 15" width="400"/>
+<img src="media/Fig15.jpg" title="Spectra smoothing 2." alt="Figure 15" width="400"/>
 </p>
 
 *Figure 15. Example of spectrum smoothing using a median filter with the size of the convolution window  L= 5 followed by sampling using the step size 5. The original spectrum of tufted hairgrass was measured with a Nano-Hyperspec® line camera in June 2020. It contained 270 bands that were reduced to 54 bands, taking a median of 5 neighbouring measurements. Figure by course authors.*

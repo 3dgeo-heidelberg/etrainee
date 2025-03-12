@@ -17,12 +17,15 @@ With the increasing availability of remote sensing time series, such classificat
 
 **Objectives**
 
-The objectives of this theme are to
+At the end of this theme you will be able to:
 
-* understand the principles of automated classification of remote sensing data
+* describe the principles of automated classification of remote sensing data
+* explain the differences between supervised and unsupervised classification, and between rule-based and machine learning-based classification
+* name popular classification algorithms
+* describe the use of features in classification
 * overview the main approaches to multitemporal classification vs. classification based on temporal information
-* understand how these approaches can be implemented (shown in tutorials for simplified use cases)
-* get an idea of exemplary applications (from the scientific literature)
+* explain how these approaches can be implemented (shown in tutorials for simplified use cases)
+* give examples of applications (from the scientific literature)
 
 
 ## Theoretical background and approaches to automated classification in remote sensing

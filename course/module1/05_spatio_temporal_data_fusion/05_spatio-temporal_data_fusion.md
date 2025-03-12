@@ -22,6 +22,15 @@ The objectives of the **theoretical part** of this theme are to
 * Overview some popular data type combinations and typical or innovative methods to fuse RSTS data
 <!--* Get to know some use cases where the benefits of multi-modal data are leveraged by data fusion-->
 
+In particular, after completing the theoretical part of this theme, you will be able to:
+
+* Explain the limitations of single source RS data for environmental monitoring applications
+* Define data fusion and its two goals
+* Explain the pre-processing steps necessary to fuse different data sources
+* Describe the three levels of data fusion and their differences
+* Cite popular data type combinations and fusion methods
+
+
 In the **practical parts** of the theme, one possible way to combine multi-modal data for observing human-environment interactions is illustrated in a [tutorial Notebook](#tutorial-sentinel-1-2-surface-water-monitoring). There, you will learn how to jointly analyse Sentinel-1 and Sentinel-2 data for monitoring the extent of a water surface at the example of the Grand Ethiopian Rennaissance Dam (GERD). Afterwards there is an [excercise](#excercise-flood-mapping-with-sentinel-1-and-sentinel-2-data), where this approach is used as a basis for flood mapping.
 
 ## Theory and concepts for spatio-temporal fusion of remote sensing time series

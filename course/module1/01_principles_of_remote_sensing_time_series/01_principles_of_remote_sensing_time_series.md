@@ -16,6 +16,16 @@ This theme provides general knowledge about the principles of remote sensing tim
 
 At the end of this theme, you will know concepts and typical properties of time series data in general and how to look at these properties. Further, you will understand how remote sensing time series are acquired, and what needs to be considered generally when using them. Finally, you will explore exemplary data and perform some first analysis steps using Python.
 
+After completing this theme you will be able to:
+
+* Name and define the typical properties of time series data
+* Explain how to evaluate these properties
+* List the different remote sensing platforms and differentiate between the two main types of sensors
+* Compare remote sensing systems in terms of data properties
+* List examples of contents of remote sensing time series
+* Describe the structure of remote sensing times series
+* Present typical remote sensing time series pre-processing steps
+
 
 ## Time series principles
 

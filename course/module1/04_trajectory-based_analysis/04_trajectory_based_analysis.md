@@ -13,13 +13,16 @@ estimatedTime: 2.0 hrs
 
 **Objectives**
 
-The objectives of this theme are to
+At the end of this theme you will be able to:
 
-* overview different ways how land surface change can be studied with remote sensing
-* understand the concept of trajectories of a remotely sensed variable along the time dimension
-* overview the main approaches to an analysis of such trajectories
-* understand how a trajectory-based analysis can be implemented (shown in tutorials for simplified use cases)
-* get an idea of exemplary applications of a trajectory-based view on remote sensing time series (from the scientific literature)
+* Define change detection
+* Cite the advantages of remote sensing time series for change detection and analysis compared to multitemporal remote sensing data
+* Explain the differences of pre- and post-classification change detection
+* Give examples of change characteristics
+* Describe the concept of trajectories of a remotely sensed variable along the time dimension
+* Cite the main approaches to an analysis of such trajectories and their implementation steps
+* Explain how land surface change can be studied with remote sensing
+* Describe examples of applications of a trajectory-based view on remote sensing time series (from the scientific literature)
 
 
 **Concept**

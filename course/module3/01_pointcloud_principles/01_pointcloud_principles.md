@@ -15,13 +15,23 @@ In this theme, you will learn about 3D/4D point cloud data, fundamental point cl
 * [Point Cloud Model and Fundamental Operations](#point-cloud-model-and-fundamental-operations)
 * [Data Management of 4D Point Clouds](#data-management-of-4d-point-clouds)
 
+The aim is to understand a broad set of topics required for analyzing topographic change in point cloud time series. You will apply this knowledge in the exercise, and require it for all subsequent themes.
+
 The theme will conclude with:
 
 * [Self-evaluation quiz](#self-evaluation-quiz)
 * [Exercise](#exercise)
 * [References](#references)
 
-Afterwards, you will understand a broad set of topics required for analyzing topographic change in point cloud time series. You will apply this knowledge in the exercise, and require it for all subsequent themes.
+At the end of this theme, you will be able to:
+
+* Explain the importance of 3D/4D point clouds in geography
+* Name examples of application fields in environmental and geosciences
+* Characterize geographic 3D/4D Point Clouds, notably their temporal properties (multitemporal and 4D)
+* Explain the point cloud model and fundamental operations in 3D space and time
+* Remember central practices of data management of 4D point clouds
+* Handle multitemporal 3D point clouds in open-source graphical software (CloudCompare) [exercise]
+* Perform simple analysis with standard tools (manual clipping, point measurement, neighborhood features) [exercise]
 
 
 ## Introduction to Geographic 3D/4D Point Clouds
@@ -129,7 +139,7 @@ An alternative strategy for generating point clouds is **virtual laser scanning 
 * **Method development**: In 3D/4D point cloud analysis, we are often developing methods to extract certain features describing our objects or surface processes of interest. Real point cloud data to calibrate algorithms and validate results are costly to acquire and not error free. Here, VLS can be used to generate data with perfectly know reference values, e.g., if synthetic changes are applied to a virtual scene in case of 4D applications.
 * **Generation of training data for machine learning algorithms**: Recently, several methods for deep learning on point clouds have been presented. However, such methods require immense amounts of training data to achieve acceptable performance. We present how VLS can be used to generate training data in machine learning classifiers, and how different sensor settings influence the classification results.
 
-A pioneer study using **4D VLS point cloud** for change detection is presented by [Winiwarter et al. (2022a)](#references). In this study, VLS point clouds of different ALS acquisition settings are generated to evaluate at which flight altitude a specific target change can be detected using an available analysis method. This consideration has high practical relevance, since it supports decision making of stakeholders, for example, in the context of natural hazard management. 
+A pioneer study using **4D VLS point cloud** for change detection is presented by [Winiwarter et al. (2022c)](#references). In this study, VLS point clouds of different ALS acquisition settings are generated to evaluate at which flight altitude a specific target change can be detected using an available analysis method. This consideration has high practical relevance, since it supports decision making of stakeholders, for example, in the context of natural hazard management. 
 
  VLS data can be acquired using the scientific open source software HELIOS++ ([Winiwarter et al., 2022b](#references)). HELIOS++ is implemented in C++ for optimized runtimes, and provides bindings in Python to allow integration into scripting environments (e.g., GIS plugins, Jupyter Notebooks). A variety of model types to represent 3D scenes are supported: terrain models, voxel models, and mesh models. As platforms, four options are currently supported: airplane, multicopter, ground vehicle and static tripod. In the figure below, a schematic diverging laser beam and its corresponding waveform (magenta) is shown being emitted from the airplane and interacting with a mesh model tree and the rasterized ground surface.
 
@@ -167,7 +177,7 @@ Typical **attributes** for LiDAR point clouds (i.e. acquired via laser scanning)
 
 
 
-Point clouds can be used to derive other data models or GIS layers as result of analysis. The most common derivative of point clouds are **rasters**. They can be 2D projections of any attribute information onto raster cells. Also the geometric information can be gridded to represent the topography. Deriving, for example, a Digital Terrain Model (DTM) from point clouds results in a 2.5D represenation of the topography: 2D raster locations with elevation values. This typically entails decisions for a fixed resolution and interpolation of data, e.g. when gridding the terrain in a DTM ([Pfeifer & Mandlburger, 2008](#references)). The unorganized nature of the point cloud allows to have different point spacing within a scene, i.e. a denser representation of the terrain by 3D points in some parts than in others. In contrast, a rasterized terrain representation either has exactly one value or no value (NoData) per cell:
+Point clouds can be used to derive other data models or GIS layers as result of analysis. The most common derivative of point clouds are **rasters**. They can be 2D projections of any attribute information onto raster cells. Also the geometric information can be gridded to represent the topography. Deriving, for example, a Digital Terrain Model (DTM) from point clouds results in a 2.5D representation of the topography: 2D raster locations with elevation values. This typically entails decisions for a fixed resolution and interpolation of data, e.g. when gridding the terrain in a DTM ([Pfeifer & Mandlburger, 2008](#references)). The unorganized nature of the point cloud allows to have different point spacing within a scene, i.e. a denser representation of the terrain by 3D points in some parts than in others. In contrast, a rasterized terrain representation either has exactly one value or no value (NoData) per cell:
 
 <center>
 <img src="media/m3_theme1_pc_raster.png" alt="pc_vs_raster" title="Point cloud vs. raster representation of terrain" width="500">
@@ -239,6 +249,7 @@ D = {k+1 \over {4 \over 3} \pi r{^3}_{kNN}}
 $$
 
 By calculating the point density like this for every point in a point cloud, we can tell for the entire point cloud how many points are contained within a radius of, e.g., 1.0 m, in a certain area of the scene. This information can also be used to identify isolated points and removing outliers. A common method for this is the *statistical outlier removal* (SOR; [Rusu & Cousins, 2011](#references)). A selection of further useful point cloud features to be derived from the spatial neighborhood are:
+
 * **normal vectors**
 * **principal components on local point distribution**
 * **the local surface roughness**
@@ -339,7 +350,7 @@ A smaller radius (0.25 m) yields lower roughness values here, as the planes can 
 
 Transformation of point cloud data is another fundamental task in many analysis. 3D coordinates of points need to be transformed, for example, to register the data in coordinate reference systems (i.e., georeferencing). Transformation is further used to improve the co-registration between datasets, particularly multitemporal point clouds. There is a dedicated section on [alignment for 3D change analysis](../03_3d_change_analysis/03_3d_change_analysis.ipynb) in the corresponding theme on principles of 3D change analysis. Here, we get familiar with some principles:
 
-In general, transformation can be split into three components: **translation, rotation, and scaling**. Translation regards the shift of the coordinates in X, Y, and/or Z direction. Rotation is conducted around the X-, Y-, and/or Z-axis respectively. applying a rotation, it is crucial to know what the rotation center of the point cloud is. Without any prior translation, the rotation center is at the origin (0, 0, 0) of the Cartesian coordinate system. Translation and rotation represent a **rigid transformation**, whereas additional scaling would represent **affine transformation**. Scaling is usually not applied LiDAR measurements, which are accurate in (relative) metric space. Scaling may be required for photogrammetric data, which inherently contain no information on absolute measures in the scene. 
+In general, transformation can be split into three components: **translation, rotation, and scaling**. Translation regards the shift of the coordinates in X, Y, and/or Z direction. Rotation is conducted around the X-, Y-, and/or Z-axis respectively. Applying a rotation, it is crucial to know what the rotation center of the point cloud is. Without any prior translation, the rotation center is at the origin (0, 0, 0) of the Cartesian coordinate system. Translation and rotation represent a **rigid transformation**, whereas additional scaling would represent **affine transformation**. Scaling is usually not applied LiDAR measurements, which are accurate in (relative) metric space. Scaling may be required for photogrammetric data, which inherently contain no information on absolute measures in the scene. 
 
 <center>
 <img src="media/m3_theme1_transformation.png" alt="transformation" title="Components of transformation representing rigid and affine transformation" width="450">
@@ -612,5 +623,6 @@ Made it through the quiz? Then you are ready for the exercise, where you will be
 * Williams, J. G., Rosser, N. J., Hardy, R. J., Brain, M. J. & Afana, A. A. (2018). Optimising 4-D surface change detection: an approach for capturing rockfall magnitude–frequency. Earth Surface Dynamics, 6, pp. 101–119. doi: [10.5194/esurf-6-101-2018](https://doi.org/10.5194/esurf-6-101-2018).
 * Winiwarter, L., Anders, K., Schröder, D. & Höfle, B. (2022a). Full 4D Change Analysis of Topographic Point Cloud Time Series using Kalman Filtering. Earth Surface Dynamics, Discussion (preprint). doi: [10.5194/esurf-2021-103](https://doi.org/10.5194/esurf-2021-103).
 * Winiwarter, L., Pena, A. M. E., Weiser, H., Anders, K., Sanchez, J. M., Searle, M. & Höfle, B. (2022b). Virtual laser scanning with HELIOS++: A novel take on ray tracing-based simulation of topographic full-waveform 3D laser scanning. Remote Sensing of Environment, 269. doi: [10.1016/j.rse.2021.112772](https://doi.org/10.1016/j.rse.2021.112772).
+* Winiwarter, L., Anders, K., Schröder, D. & Höfle, B. (2022c): Virtual Laser Scanning of Dynamic Scenes Created From Real 4D Topographic Point Cloud Data. ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, V-2-2022, pp. 79-86. doi: [10.5194/isprs-annals-V-2-2022-79-2022](https://doi.org/10.5194/isprs-annals-V-2-2022-79-2022).
 
 

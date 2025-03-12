@@ -43,3 +43,6 @@ venv.bak/
 .Rhistory
 .Rproj.user
 etrainee.Rproj
+
+# local storage files
+.DS_Store
