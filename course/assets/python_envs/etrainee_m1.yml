@@ -18,3 +18,7 @@ dependencies:
   - seaborn
   - ca-certificates
   - openssl
+  - libgdal-jp2openjpeg
+  - certifi
+  - contextily
+  - matplotlib-scalebar
