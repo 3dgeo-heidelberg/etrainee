@@ -126,13 +126,6 @@ To avoid observer/surveyor bias, data at each sample location should be acquired
 
 A key issue of field observations and measurements is the recording of their position, which can often be achieved by (differentially corrected) Global Navigation Satellite System (GNSSS) measurements. To facilitate re-locating the exact locations for repeat measurements, consider marking them physically (in addition to recording the GNSS position). In general, a thorough documentation following a pre-designed protocol is important, and (geotagged) photographs of the sample site are recommended. Often, a mobile GIS (e.g. [QField](https://qfield.org/), a mobile app version of QGIS) is an ideal tool for these tasks.
 
-<center>
-<img src="media/qfield.png" title="QField mobile app used for the collection of observations and metadata and for navigation" width="250">
-
-<i>QField app on a smartphone used for the collection of observations and metadata and for navigation to sample locations.</i>
-</center>
-<!--Any nice images for reference data collection? -->
-
 
 ### Remotely sensed reference data
 
