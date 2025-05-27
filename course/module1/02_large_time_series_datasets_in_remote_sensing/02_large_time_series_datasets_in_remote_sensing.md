@@ -450,9 +450,9 @@ Some Python libraries you might find useful for the management and analysis of (
 
 Some of the tools listed above are demonstrated in the following **tutorials** (external ressources):
 
-	* [Why Xarray and Dask?](https://pangeo.io/packages.html#why-xarray-and-dask) (Pangeo)
-	* [Parallel computations on dataframes and arrays using Dask](https://gallery.pangeo.io/repos/pangeo-data/pangeo-tutorial-gallery/dask.html) (Pangeo tutorial)
-	* [Parallel raster computations using Dask](https://carpentries-incubator.github.io/geospatial-python/11-parallel-raster-computations/index.html) (Carpentries Incubator tutorial)
+* [Why Xarray and Dask?](https://pangeo.io/packages.html#why-xarray-and-dask) (Pangeo)
+* [Parallel computations on dataframes and arrays using Dask](https://gallery.pangeo.io/repos/pangeo-data/pangeo-tutorial-gallery/dask.html) (Pangeo tutorial)
+* [Parallel raster computations using Dask](https://carpentries-incubator.github.io/geospatial-python/11-parallel-raster-computations/index.html) (Carpentries Incubator tutorial)
 
 
 ### Data access from SpatioTemporal Asset Catalogs (STAC)
