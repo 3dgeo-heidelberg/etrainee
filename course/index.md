@@ -12,7 +12,7 @@ The course consists of **two selected modules of a larger e-learning course** ca
 
 ## Contact
 
-> Prof. Dr. Bernhard Höfle (<https://www.geog.uni-heidelberg.de/gis/hoefle_en.html>)
+> Prof. Dr. Bernhard Höfle (<https://www.geog.uni-heidelberg.de/en/people-at-the-institute/prof-dr-bernhard-hofle>)
 
 ## Dates and Topics
 
