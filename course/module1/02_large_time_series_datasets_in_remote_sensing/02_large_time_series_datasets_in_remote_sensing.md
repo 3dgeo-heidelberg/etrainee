@@ -448,13 +448,8 @@ Some Python libraries you might find useful for the management and analysis of (
 *EOReader simplifications overview (figure by [ICube-SERTIT](https://sertit.unistra.fr/)/[EOReader documentation](https://eoreader.readthedocs.io/en/latest/notebooks/why_eoreader.html)/ [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)).*
 
 
-### Tutorials: Remote sensing time series in Python
+Some of the tools listed above are demonstrated in the following **tutorials** (external ressources):
 
-Some of the tools listed above are demonstrated in the following notebooks:
-
-* [Large point clouds in Python tutorial](./PC_explore_v02.ipynb), providing a couple of hints for handling and exploring large point clouds efficiently in Python (so far not time-series specific). Use sample data provided or try with your own point cloud.
-
-* External ressources:
 	* [Why Xarray and Dask?](https://pangeo.io/packages.html#why-xarray-and-dask) (Pangeo)
 	* [Parallel computations on dataframes and arrays using Dask](https://gallery.pangeo.io/repos/pangeo-data/pangeo-tutorial-gallery/dask.html) (Pangeo tutorial)
 	* [Parallel raster computations using Dask](https://carpentries-incubator.github.io/geospatial-python/11-parallel-raster-computations/index.html) (Carpentries Incubator tutorial)
@@ -485,7 +480,7 @@ Watch [this video](https://www.youtube.com/watch?v=Ugazf5bWsGE) to learn more ab
 
 #### Tutorials: Getting satellite data from a STAC catalog
 
-[This ETRAINEE notebook](./T2_Sentinel_STAC_v03.ipynb) illustrates how to query and download Sentinel-2 satellite imagery from the Amazon Web Service (AWS) cloud using the pystac-client library. Furthermore, it shows how to work with the data using the xarray library and how to perform tasks like subsetting, cloud masking, spectral index calculation, temporal aggregation, and trend analysis. A few simple processing steps let you explore the development of the Normalized Difference Vegetation Index (NDVI) in spring and summer, including e.g. the seasonal greening of mountain grasslands.
+[This ETRAINEE notebook](./T2_Sentinel_STAC_v03.ipynb) illustrates how to query and download Sentinel-2 satellite imagery from a cloud archive using the *pystac-client* library. Furthermore, it shows how to work with the data using the *xarray* library and how to perform tasks like subsetting, cloud masking, spectral index calculation, temporal aggregation, and trend analysis. A few simple processing steps let you explore the development of the Normalized Difference Vegetation Index (NDVI) in spring and summer, including e.g. the seasonal greening of mountain grasslands.
 
 More (external) Python Jupyter Notebooks:
 
@@ -497,7 +492,7 @@ More (external) Python Jupyter Notebooks:
 
 ## Google Earth Engine
 
-Earth Engine is a service offered by Google for analysis and visualization of geospatial datasets, based on data storage and computing on a large cloud ([Gorelick et al. 2017](https://doi.org/10.1016/j.rse.2017.06.031), [Amani et al. 2020](https://doi.org/10.1109/JSTARS.2020.3021052), [Tamiminia et al. 2020](https://doi.org/10.1016/j.isprsjprs.2020.04.001), ). The Google Earth Engine (GEE) is free to use for research, education, and nonprofit use after [signing up](https://signup.earthengine.google.com/#!/) for access to the service.
+Earth Engine is a service offered by Google for analysis and visualization of geospatial datasets, based on data storage and computing on a large cloud ([Gorelick et al. 2017](https://doi.org/10.1016/j.rse.2017.06.031), [Amani et al. 2020](https://doi.org/10.1109/JSTARS.2020.3021052), [Tamiminia et al. 2020](https://doi.org/10.1016/j.isprsjprs.2020.04.001)). The Google Earth Engine (GEE) is free to use for research, education, and nonprofit use after [signing up](https://signup.earthengine.google.com/#!/) for access to the service.
 
 There are different ways to use GEE:
 
@@ -533,14 +528,12 @@ There is a growing variety of easy to use apps based on the Google Earth Engine 
 * [GEE JavaScript module to color time series chart points as stretched 3-band RGB](https://github.com/jdbcode/ee-rgb-timeseries)
 * [Annual cloud-free Landsat composite time series app](https://jstnbraaten.users.earthengine.app/view/landsat-timeseries-explorer)
 * [Sentinel-2 and Landsat-8 image time series app](https://jstnbraaten.users.earthengine.app/view/eo-timeseries-explorer)
-* Snow monitors (created with the method described in [Gascoin et al. 2022](https://doi.org/10.1088/1748-9326/ac9e6a)) for [the Alps](https://labo.obs-mip.fr/multitemp/apps/alps-snow-monitor/), [the Pyrenees](https://labo.obs-mip.fr/multitemp/pyrenees-snow-monitor/), [the Western USA](https://labo.obs-mip.fr/multitemp/western-usa-snow-monitor/), and the [Sierra Nevada (Spain)](https://labo.obs-mip.fr/multitemp/sierra-nevada-snow-monitor/)
+* Snow monitors (created with the method described in [Gascoin et al. 2022](https://doi.org/10.1088/1748-9326/ac9e6a)) for [the Alps](https://labo.obs-mip.fr/multitemp/apps/alps-snow-monitor/) and for [the Pyrenees](https://labo.obs-mip.fr/multitemp/pyrenees-snow-monitor/)
 
 
 ### Using GEE with Python
 
-The [Earth Engine Python client](https://developers.google.com/earth-engine/guides/python_install) is a library called `ee`. To do the tutorials and excercises of this module we recommend to set up the environment with the `m1_etrainee.yml` file which contains the `ee` package and some related ones.
-
-Other helpful Python packages for GEE include *geemap*, *eemont* and *wxee*. [*geemap*](https://geemap.org/) is a Python package by [Wu (2020)](https://doi.org/10.21105/joss.02305), developed for interactive mapping with Google Earth Engine (GEE) within a Jupyter-based environment. Using GEE with Python becomes even more convenient with the [*eemont*](https://eemont.readthedocs.io/en/latest/) package by [Montero et al. (2021)](https://doi.org/10.21105/joss.03168). The eemont package extends the GEE Python API with pre-processing and processing tools for the most used satellite platforms by adding utility methods for different Earth Engine Objects that are friendly with the Python method chaining. It facilitates for instance cloud masking, calculation of spectral indices, extraction of time series by region and other tasks. For time series processing, *eemont* combines well with the [*wxee*](https://wxee.readthedocs.io/en/latest/index.html) package, which integrates the data catalog and processing power of Google Earth Engine with the flexibility of xarray.
+The [Earth Engine Python client](https://developers.google.com/earth-engine/guides/python_install) is a library called `ee`. Other helpful Python packages for GEE include *geemap*, *eemont* and *wxee*. [*geemap*](https://geemap.org/) is a Python package by [Wu (2020)](https://doi.org/10.21105/joss.02305), developed for interactive mapping with Google Earth Engine (GEE) within a Jupyter-based environment. Using GEE with Python becomes even more convenient with the [*eemont*](https://eemont.readthedocs.io/en/latest/) package by [Montero et al. (2021)](https://doi.org/10.21105/joss.03168). The eemont package extends the GEE Python API with pre-processing and processing tools for the most used satellite platforms by adding utility methods for different Earth Engine Objects that are friendly with the Python method chaining. It facilitates for instance cloud masking, calculation of spectral indices, extraction of time series by region and other tasks. For time series processing, *eemont* combines well with the [*wxee*](https://wxee.readthedocs.io/en/latest/index.html) package, which integrates the data catalog and processing power of Google Earth Engine with the flexibility of xarray. If you have set up your environment with the `m1_etrainee.yml` file you have these packages already installed.
 
 An introduction to the GEE Python API is provided in [this E-TRAINEE notebook](./T2_GEE_s2cloudless_v03_export_time_series.ipynb), which illustrates how to query the Sentinel-2 collection for a defined region and time period, mask clouds efficiently (optionally calculate also the NDVI) - all in the cloud - and then get the resulting time series on your local harddrive. This gives you the flexibility to run subsequent analyses with your preferred software (e.g. the scientific Python stack or R). More tutorials using GEE and some Python packages extending this are waiting for you in the next themes. [This external example](https://developers.google.com/earth-engine/tutorials/community/intro-to-python-api-guiattard) provides a very good introduction to the GEE Python API, working on a time series of MODIS landcover and land surface temperature.
 

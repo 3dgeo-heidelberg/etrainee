@@ -91,7 +91,6 @@ In case you want to explore further topics and methods, there are more tutorials
     * Tutorial 4: [Exploring and processing a Sentinel-2 time series using the GRASS GIS temporal framework](./01_principles_of_remote_sensing_time_series/T1_GRASS_raster_time_series.md)
 * Theme 2
     * Tutorial 2: [Google Earth Engine (GEE) in Python](./02_large_time_series_datasets_in_remote_sensing/T2_GEE_s2cloudless_v03_export_time_series.ipynb), showing how to use the GEE cloud computing environment and its Python API for accessing, cloud-masking and downloading a Sentinel-2 time series.
-    * Tutorial 3: [Large point clouds in Python](./02_large_time_series_datasets_in_remote_sensing/PC_explore_v02.ipynb), providing a couple of hints for handling and exploring large point clouds efficiently in Python (so far not time-series specific).
     * Excercise: [Search and load Landsat data to QGIS via a STAC API](./02_large_time_series_datasets_in_remote_sensing/02_large_time_series_datasets_in_remote_sensing.md#excercise)
 * Theme 3
     * Tutorial 2 with excercise:
