@@ -1,7 +1,7 @@
 ---
 title: "Conda"
 description: "This quick guide to package management with Conda is part of the introduction to the E-TRAINEE course which sets the prerequisites for starting with Module 1."
-dateCreated: 2023-11-06
+dateCreated: 2025-05-27
 authors: Andreas Mayr
 contributors: TBA
 estimatedTime: 30 minutes
@@ -31,7 +31,7 @@ To install the general-purpose programming language Python and to manage its ver
 
 ## Miniforge installation
 
-Go to the [Miniforge download website](https://github.com/conda-forge/miniforge#miniforge3) and download the installer fitting your operating system (Windows, Linux, Mac OS and) and architecture (most probably `x86_64` is the right one).
+Go to the [Miniforge download website](https://conda-forge.org/download/) and download the installer fitting your operating system (Windows, Linux, Mac OS) and architecture.
 
 * On **Windows** just download and execute the installer manually (double-click the `.exe` file), follow the instructions on the screen and accept the default settings (recommendations). Avoid installing in a directory with special characters and spaces in the name.
 * If you are on **Linux or Mac Os**, follow the procedure described [here](https://github.com/conda-forge/miniforge#unix-like-platforms-mac-os--linux).
@@ -103,20 +103,20 @@ To set up an environment with Python and the packages required for the course, t
 **Option 1:** Use the YAML requirements file provided for the course. This file defines the environment with all required packages (versions fixed, builds not fixed for cross-platform compatibility). Just download the Module 1 [requirements file](https://3dgeo-heidelberg.github.io/etrainee/assets/python_envs/etrainee_m1.yml) from the E-TRAINEE GitHub, save it in your working directory and run this command:
 
 ```
-conda env create -f etrainee_m1.yml --name etrainee_m1
+mamba env create -f etrainee_m1.yml --name etrainee_m1
 ```
 
-You can also open the YAML file in a text editor and have a look at its content. [Here](https://3dgeo-heidelberg.github.io/etrainee/assets/python_envs/), you find also requirements files for the other E-TRAINEE modules and one for the entire course.
+You can also open the YAML file in a text editor and have a look at its content. [Here](https://3dgeo-heidelberg.github.io/etrainee/assets/python_envs/), you find also requirements files for the other E-TRAINEE modules.
 
 **Option 2:** Run the following commands (in the Conda/Miniforge prompt or in a VSCode terminal with Conda recognized):
 
 ```
 mamba create -n etrainee_m1 python=3.10
 mamba activate etrainee_m1
-mamba install ipykernel earthengine-api eemont geemap pygis wxee scikit-learn stackstac xarrayutils hvplot datashader xmovie laspy vaex seaborn
+mamba install ipykernel earthengine-api eemont geemap pygis wxee scikit-learn stackstac xarrayutils hvplot dgif seaborn
 ```
 
-*Note*: This will install >480 packages, with a total download volume of >780 MB.
+*Note*: This will install c. 500 packages, with a total download volume of >600 MB.
 
 If you need to install additional packages, you can usually do this with `mamba install <package_name>`. If a specific package is not available on the Conda channels (e.g., conda-forge), you might have to use `pip install <package_name>` or install from source.
 
@@ -127,7 +127,7 @@ If you need to install additional packages, you can usually do this with `mamba 
 You can also use Conda in a terminal (prompt) in Visual Studio Code (instead of the Miniforge prompt) to manage packages and environments. 
 And, importantly, you will be able to select one of your environments as a 'kernel' which is used to run Python code. 
 
-If Conda is not recognized in VSCode, open VSCode by entering ``code` in the Miniforge prompt. For other solutions see e.g. [this article](https://medium.com/analytics-vidhya/efficient-way-to-activate-conda-in-vscode-ef21c4c231f2).
+If Conda is not recognized in VSCode, open VSCode by entering ``code`` in the Miniforge prompt. For other solutions see e.g. [this article](https://medium.com/analytics-vidhya/efficient-way-to-activate-conda-in-vscode-ef21c4c231f2).
 
 #### Creating and running a Python script
 
