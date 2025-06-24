@@ -461,7 +461,7 @@ Data acquisition > Co-registration > Change detection and quantification > Uncer
 
 <!--Question 5--> 
 <label for="q_05">
-What useful metadate or supplementary files should be provided with 4D point clouds? Name at least 3.
+What useful metadata or supplementary files should be provided with 4D point clouds? Name at least 3.
 </label><br>
 <textarea rows = "5" cols = "50" name = "q_05"></textarea><br>
 
