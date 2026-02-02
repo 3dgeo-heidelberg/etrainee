@@ -27,7 +27,7 @@ Our workflow is divided into the following key steps:
 <center>
 
 <img src="media/cs3_flowchart.png" title="Case study 3 scheme of procedure" alt="Scheme" width="600"/>
-
+<br>
 <i>Case Study 3 scheme of procedure.</i>
 </center>
 

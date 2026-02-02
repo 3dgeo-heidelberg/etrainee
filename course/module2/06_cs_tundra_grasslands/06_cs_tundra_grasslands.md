@@ -153,7 +153,7 @@ We now have all the data we need to proceed. We will start with classifying sing
 <center>
 
 <img src="media/cs1_flowchart.png" title="Case study 1 scheme of procedure" alt="Scheme" width="600"/>
-
+<br>
 <i>Case study 1 scheme of procedure.</i>
 </center>
 

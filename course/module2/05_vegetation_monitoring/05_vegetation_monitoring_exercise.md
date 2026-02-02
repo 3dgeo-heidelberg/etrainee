@@ -669,9 +669,9 @@ Landsat 4, 5, 7, 8 and 9 imagery courtesy of [the U.S. Geological Survey](https:
 You can find the entire code used in this exercise here
 </summary>
 
-**[Google Earth Engine code](https://code.earthengine.google.com/c26bdc73c893b317e24f2158e66602a2?noload=true)**
+<b><a href="https://code.earthengine.google.com/c26bdc73c893b317e24f2158e66602a2?noload=true">Google Earth Engine code</a></b>
 
-**R code**
+<b>R code</b>
 
 ``` r
 

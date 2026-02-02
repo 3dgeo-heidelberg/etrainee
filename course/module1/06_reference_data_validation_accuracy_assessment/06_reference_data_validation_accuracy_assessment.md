@@ -101,7 +101,7 @@ When looking for reference data, you can search public archives hosted by govern
 <center>
 <img src="media/LUCAS_overview.png" title="Land Use/Cover Area frame Survey and harmonisation of datasets" width="700">
 
-<i>Schematic overview of the LUCAS initiative and harmonisation of datasets (figure by [d'Andrimont et al. 2020](https://doi.org/10.1038/s41597-020-00675-z)/ [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)).</i>
+<i>Schematic overview of the LUCAS initiative and harmonisation of datasets (figure by <a href="https://doi.org/10.1038/s41597-020-00675-z">d'Andrimont et al. 2020</a> / <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 
