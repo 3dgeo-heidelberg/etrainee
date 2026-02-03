@@ -26,7 +26,7 @@ The application is implemented in GEE and can be accessed from [this link](https
 
 <center>
 <img src="media/img1.png" title="The GEE application Forest disturbance in Ore Mountains." alt="The GEE application Forest disturbance in Ore Mountains." width="600"/>
-
+<br>
 <i>The GEE application Forest disturbance in Ore Mountains. Figure by course authors.</i>
 </center>
 

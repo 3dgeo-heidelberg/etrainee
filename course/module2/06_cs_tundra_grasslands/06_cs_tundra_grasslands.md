@@ -236,7 +236,7 @@ plot(varImp(model)) # plot predictors apparent importance
 <center>
 
 <img src="media/varimp_all.png" title="Variable importance." alt="Variable importance" width="600"/>
-
+<br>
 <i>Variable importance.</i>
 </center>
 
@@ -537,7 +537,7 @@ In this case study we use the area under **ROC (Receiver Operator Characteristic
 <center>
 
 <img src="media/roc.png" title="ROC curve generated for grasslands class." alt="ROC curve" width="600"/>
-
+<br>
 <i>ROC curve generated for grasslands class.</i>
 </center>
 

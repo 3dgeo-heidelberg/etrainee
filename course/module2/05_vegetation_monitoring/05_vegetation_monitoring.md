@@ -89,7 +89,7 @@ The possibility to detect changes based on satellite data depends on the system 
 <center>
 
 <img src="media/example_abr_grad.png" title="Example trends for two Landsat data series with abrupt (black dots) and gradual (red squares) changes occurrence. The trends show long-term changes in the vegetation index values." alt="Trends" width="600"/>
-
+<br>
 <i>Example pixels representing gradual (red squares) and abrupt (black dots) changes occurrence (abrupt change detected in 2003, figure by course authors).</i>
 </center>
 

@@ -67,8 +67,8 @@ If we are processing images for rugged terrain we also need to perform **topogra
 <center>
 
 <img src="media/fig2_topo_corr.jpg" title="Sentinel-2 data L1C product before and after topographic correction (Karkonosze Mountains area, RGB composite from 10.10.2021)." alt="Sentinel-2 data" width="600"/>
-
-<i>Sentinel-2 data L1C product, before and after topographic correction (Karkonosze Mountains area, RGB composite from 10.10.2021. Figure by course authors, source of image: [European Space Agency - ESA](https://dataspace.copernicus.eu/)/ [Terms of use](https://dataspace.copernicus.eu/terms-and-conditions)).</i>
+<br>
+<i>Sentinel-2 data L1C product, before and after topographic correction (Karkonosze Mountains area, RGB composite from 10.10.2021. Figure by course authors, source of image: <a href="https://dataspace.copernicus.eu/">European Space Agency - ESA</a> / <a href="https://dataspace.copernicus.eu/terms-and-conditions">Terms of use</a>).</i>
 </center>
 
 Another key factor which should be considered during satellite image processing is impact of direction of incident irradiance and sensor viewing angle. Both of these are expressed by azimuth and zenith angles and described by **Bidirectional Reflectance Distribution Function (BRDF)**.
@@ -76,8 +76,8 @@ Another key factor which should be considered during satellite image processing 
 <center>
 
 <img src="media/BRDF.png" title="Bidirectional Reflectance Distribution Function concept." alt="BRDF" width="600"/>
-
-<i>Left: Bidirectional Reflectance Distribution Function concept (figure by [Commons Wikimedia](https://commons.wikimedia.org/wiki/Category:Bidirectional_reflectance_distribution_function#/media/File:BRDF_Diagram.png)/ [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)), right: the example of BRDF as pattern seen on the grass of a golf course after mowing (figure by [Pixabay](https://pixabay.com/photos/golf-golf-course-green-grass-787473/)).</i>
+<br>
+<i>Left: Bidirectional Reflectance Distribution Function concept (figure by <a href="https://commons.wikimedia.org/wiki/Category:Bidirectional_reflectance_distribution_function#/media/File:BRDF_Diagram.png">Commons Wikimedia</a>/ <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>), right: the example of BRDF as pattern seen on the grass of a golf course after mowing (figure by <a href="https://pixabay.com/photos/golf-golf-course-green-grass-787473/">Pixabay</a>).</i>
 </center>
 
 **Geometric matching** of images is a key element of monitoring changes, its absence will result in the detection of false changes that do not result from changes in object features, but from image shifts. Imagery geometry errors can be systematic and random ([Lillesand et al., 2015](https://www.wiley.com/en-us/Remote+Sensing+and+Image+Interpretation,+7th+Edition-p-9781118343289)). The first results from the rotation of the Earth or distortion of the optical system and are relatively easy to correct using an appropriate mathematical model. Random errors result from changes in the height of the orbit and tilts of the optical axis from the vertical and rotation of the platform. They can be corrected on the basis of recorded data concerning the path of the platform’s movement (**parametric methods**) or with the use of ground control points (GCPs) and Digital Terrain Model (DTM, **non-parametric methods**).

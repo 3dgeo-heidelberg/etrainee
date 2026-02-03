@@ -206,7 +206,7 @@ With a high degree of probability one can assume that a time series data analysi
 <center>
 
 <img src="media/probability_classification.gif" title="Probability of pixels being correctly classified on multitemporal images." alt="Probability of pixels being correctly classified on multitemporal images" width="600"/>
-
+<br>
 <i>Probability of pixels being correctly classified on multitemporal images (figure by <a href="http://www.tric.u-tokai.ac.jp/ISPRScom8/TC8/TC8_CD/headline/TS-11/W08L23_20100308050524.pdf">Koukoulas, 2010</a>, modified / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 

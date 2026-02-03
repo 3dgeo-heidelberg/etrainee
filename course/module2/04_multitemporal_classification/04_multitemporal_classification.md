@@ -224,7 +224,7 @@ When we have a reference sample set, we can split it in various proportions **it
 <center>
 
 <img src="media/crossval.png" title="cross-validation vs bootstrapping illustration." alt="cross-validation vs bootstrapping" width="700"/>
-
+<br>
 <i>10-fold cross-validation vs bootstrapping illustration (figure by S. Rashchka <a href="https://rasbt.github.io/mlxtend/user_guide/evaluate/bootstrap_point632_score/">bootstrap_point632_score</a>, modified / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 

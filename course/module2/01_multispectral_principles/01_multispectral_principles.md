@@ -102,7 +102,7 @@ Spectral indices can be dedicated to various objects and their characteristics. 
 <center>
 
 <img src="media/indices.png" title="Example spectral indices applications." alt="spectral indices" width="400"/>
-
+<br>
 <i>Example spectral indices applications (figure by course authors).</i>
 </center>
 
@@ -139,7 +139,7 @@ Interestingly, both NDMI and NBR make use of NIR and SWIR bands and the general 
 <center>
 
 <img src="media/nbr_ndmi.png" title="Difference between NDMI and NBR indices" alt="Difference" width="600"/>
-
+<br>
 <i>Difference between the formulas in NDMI and NBR indices (figure by course authors).</i>
 </center>
 
