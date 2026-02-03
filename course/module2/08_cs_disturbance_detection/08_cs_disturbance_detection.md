@@ -33,7 +33,7 @@ Our workflow is divided into the following key steps:
 
 ## Study area and data
 
-Before you continue, get familiar with the use case (if you did it before in Theme 5 you can skip this step): **[Use case: Vegetation disturbance detection in Polish-Slovak Tatra Mountains](../../data_usecases/usecase_forest_tatras.md)**.
+Before you continue, get familiar with the use case (if you did it before in Theme 5 you can skip this step): **[Use case: Vegetation disturbance detection in Polish-Slovak Tatra Mountains](../../data_usecases/usecase_forests_tatras.md)**.
 
 … and read the paper accompanying the use case:
 
