@@ -57,6 +57,8 @@ For this module, you will need the software listed below. Follow the links to th
 
 In the research-oriented case studies, this module uses [multitemporal 3D point clouds of an active rock glacier](../data_usecases/usecase_rockglacier_ahk.md) and [4D point clouds of a sandy beach](../data_usecases/usecase_beach_kijkduin.md).
 
+These datasets are also included in ["A survey of publicly available multi-temporal point cloud datasets"](https://doi.org/10.1016/j.isprsjprs.2025.11.003) by Wegen et al. (2026).
+
 
 ### Start the module
 ... by proceeding to the first theme on [Principles of 3D/4D geographic point clouds](01_pointcloud_principles/01_pointcloud_principles.md).
