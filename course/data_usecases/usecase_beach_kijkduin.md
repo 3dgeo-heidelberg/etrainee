@@ -17,7 +17,7 @@ During this period, a terrestrial laser scanner (Riegl VZ-2000) was mounted on t
 
 <center>
 <img src="media/usecase_kijkduin_overview.png" alt="Kijkduin overview" title="Overview of Kijkduin study area and data" width="700">
-
+<br>
 <i>Study area and data of terrestrial laser scanning observation at Kijkduin beach, The Netherlands. The point cloud (left) is colored by RGB for visualization, showing the dune area with a path way down to the beach. The overlay shows possible changes due to sand transport when comparing to epochs. The aerial image (right) shows the observed beach area and the laser scanner position (triangle) on the building roof (see photo). Figure by K. Anders. Data source: Sander Vos (point cloud, cf. <a href="#references">Vos et al., 2017</a>) and Het Waterschapshuis (2017) (aerial photo, provided by <a href="https://www.pdok.nl/copyright">pdok.nl</a>) / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
@@ -25,7 +25,7 @@ The dataset consists of 4,082 point clouds hourly between 11 November 2016 and 2
 
 <center>
 <img src="media/usecase_kijkduin_dataview.png" alt="Kijkduin overview" title="Overview of Kijkduin study area and data" width="700">
-
+<br>
 <i>View of scans acquired at standard (left part of map) and high (right part of map) resolution, and time series of height change on the beach at one location extracted from the point cloud time series. Figure by K. Anders, modified from <a href="https://doi.org/10.1038/s41597-022-01291-9">Vos et al. (2022)</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and <a href="https://doi.org/10.5194/isprs-annals-IV-2-W5-317-2019">Anders et al. (2019)</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</i>
 </center>
 
