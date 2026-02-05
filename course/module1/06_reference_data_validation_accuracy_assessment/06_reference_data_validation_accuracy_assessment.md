@@ -61,7 +61,7 @@ Some key principles of validation and accuracy analysis are
 
 <center>
 <img src="media/train_test_split.png" title="splitting a dataset for training and validation - Single split vs. cross-validation" width="500">
-
+<br>
 <i>Two possibilities of (randomly) splitting a dataset for training and validation (testing). a) Single split (here as a 60/40 split). b) Cross-validation (CV) with k-folds (here with k = 5) and averaging the output of k runs for modelling and validation.</i>
 </center>
 
@@ -211,7 +211,7 @@ The following figure illustrates this for a binary classification. The two class
 
 <center>
 <img src="media/confusion_matrix_01.png" title="The confusion matrix" width="500">
-
+<br>
 <i>Confusion matrix for binary classification.</i>
 </center>
 
