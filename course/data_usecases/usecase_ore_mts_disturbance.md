@@ -20,8 +20,8 @@ The Ore Mountains (Krušné hory, Das Erzgebirge, 50.40N, 12.97E) is about 130 k
 
 <center>
 <img src="media/usecase_ore_mts.png" title="Location of the Ore mountains study area." alt="Location of the Ore mountains study area" width="600"/>
-
-<i>Location of the Ore mountains study area. (figure by [Kupková et al., 2018](https://iopscience.iop.org/article/10.1088/1748-9326/aadd2c), [CC BY 3.0 DEED](https://creativecommons.org/licenses/by/3.0/))</i>
+<br>
+<i>Location of the Ore mountains study area (figure by <a href="https://iopscience.iop.org/article/10.1088/1748-9326/aadd2c">Kupková et al., 2018</a>, <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0 DEED</a>).</i>
 </center>
 
 The Case study will use Landsat Collection 2, Level 2 images from 1984 till 2023. The open archive of Landsat images provided by the US Geological Survey will be accessed vie Google Earth Engine tools.

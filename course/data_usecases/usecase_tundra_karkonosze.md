@@ -26,8 +26,8 @@ The area is located in Polish and Czech Karkonosze/Krkonoše Mountains within th
 <center>
 
 <img src="media/usecase_tundra_karkonosze.png" title="Subalpine and alpine vegetation." alt="Karkonosze tundra usecase" width="600"/>
-
-<i>Subalpine and alpine vegetation in Karkonosze/Krkonoše Mts. (figure by [Wakulińska and Marcinkowska-Ochtyra 2020](https://doi.org/10.3390/rs12172696), modified/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<br>
+<i>Subalpine and alpine vegetation in Karkonosze/Krkonoše Mts. (figure by <a href="https://doi.org/10.3390/rs12172696">Wakulińska and Marcinkowska-Ochtyra 2020</a>, modified/ <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 In this course, we will use **multitemporal Sentinel-2 data** and **reference data** in the following configurations:

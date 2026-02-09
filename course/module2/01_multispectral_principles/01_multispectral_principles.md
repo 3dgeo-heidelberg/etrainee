@@ -58,7 +58,7 @@ Optical remote sensing is based on specific parts of the electromagnetic spectru
 
 <img src="media/ms_data_concept.png" title="The example of selected Landsat 9 OLI-2 spectral bands (acquired 5.06.2022)." alt="MS data concept" width="800"/>
 
-<i>The example of selected Landsat OLI2 spectral bands (acquired 5.06.2022, figure by course authors, Landsat 9 [courtesy of the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits)).</i>
+<i>The example of selected Landsat OLI2 spectral bands (acquired 5.06.2022, figure by course authors, Landsat 9 <a href="https://www.usgs.gov/">courtesy of the U.S. Geological Survey</a> / <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a>).</i>
 </center>
 
 The satellite multispectral data gathering process is based on three interrelated fundamental parameters: **spatial** and **spectral** resolution and **signal-to-noise (S/N) ratio**. The power level of energy in each pixel is divided into the spectral bands. The finer the spatial and spectral resolution, the less power is left to overcome the system sensor noise. This is where the S/N ratio comes into play. The primary objective of remote sensing is to maximize the S/N ratio, ensuring that the recorded signal significantly surpasses the noise, thereby enhancing the quality of the data collected.
@@ -77,7 +77,7 @@ Plotting three selected spectral bands together allows for the creation of an **
 
 <img src="media/ms_data_concept_curve.png" title="Multispectral data concept: left: Landsat 9 OLI-2 natural and false colours RGB compositions (a) - 432 and b) 543 bands used), right: spectral curves for selected land cover classes (Note: the reflectance values for specific objects are from a particular time, not general)." alt="Multispectral data concept" width="800"/>
 
-<i>Multispectral data concept: left: Landsat OLI2 natural and false colours RGB compositions (a) 432 and b) 543 bands used), right: spectral curves for selected land cover classes (NOTE: the reflectance values for specific objects are from a particular time, not general. Figure by course authors, Landsat 9 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits)).</i>
+<i>Multispectral data concept: left: Landsat OLI2 natural and false colours RGB compositions (a) 432 and b) 543 bands used), right: spectral curves for selected land cover classes (NOTE: the reflectance values for specific objects are from a particular time, not general. Figure by course authors, Landsat 9 courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a> / <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a>).</i>
 </center>
 
 In multispectral data, the number of bands and their width are crucial factors. Generally, this type of data includes 3 to 10 discrete and rather broad bands (distinguishing them from hyperspectral data, which can include hundreds of very narrow bands, see **[Theme 1 of Module 4](../../module4/01_spectroscopy_principles/01_spectroscopy_principles.md)**). The figure below presents the comparison of bandwidths of several Landsat sensors as well as a comparison of multi- and hyperspectral characteristics of healthy plant.
@@ -102,7 +102,7 @@ Spectral indices can be dedicated to various objects and their characteristics. 
 <center>
 
 <img src="media/indices.png" title="Example spectral indices applications." alt="spectral indices" width="400"/>
-
+<br>
 <i>Example spectral indices applications (figure by course authors).</i>
 </center>
 
@@ -139,7 +139,7 @@ Interestingly, both NDMI and NBR make use of NIR and SWIR bands and the general 
 <center>
 
 <img src="media/nbr_ndmi.png" title="Difference between NDMI and NBR indices" alt="Difference" width="600"/>
-
+<br>
 <i>Difference between the formulas in NDMI and NBR indices (figure by course authors).</i>
 </center>
 
@@ -166,8 +166,8 @@ Another transformation is **Principal Component Analysis** (PCA, [Hotelling, 193
 <center>
 
 <img src="media/PCA.png" title="First PCA bands RGB composition (right) and principal components from Landsat 9 OLI-2 (acquired 5.06.2022). You can note that PC7 contains more noise than information." alt="Figure 7" width="500"/>
-
-<i>First PCA bands RGB composition (right) and principal components from Landsat OLI2 (acquired 5.06.2022). You can note that PC7 contains more noise than information (figure by course authors, Landsat 9 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits)).</i>
+<br>
+<i>First PCA bands RGB composition (right) and principal components from Landsat OLI2 (acquired 5.06.2022). You can note that PC7 contains more noise than information (figure by course authors, Landsat 9 courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a> / <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a>).</i>
 </center>
 
 ## Selected sensor characteristics
@@ -218,7 +218,7 @@ Individual mission differences in technical parameters, which are presented in T
 <center>
 
 <img src="media/proscons.png" title="Advantages and limitations" alt="Advantages and limitations" width="500"/>
-
+<br>
 <i>Advantages and limitations of satellite multispectral imaging (figure by course authors).</i>
 </center>
 

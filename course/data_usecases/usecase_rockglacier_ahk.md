@@ -16,7 +16,7 @@ The active tongue‐shaped, bouldery talus rock glacier is being extensively mon
 
 <center>
 <img src="media/usecase_ahk_uav.png" alt="AHK overview" title="Overview of AHK study area and data" width="700">
-
+<br>
 <i>Study area rock glacier Äußeres Hochebenkar (Ötztal Alps, Austria) seen from the opposite side of the valley in 2021. The rock glacier is situated in a NW‐oriented glacial cirque, surrounded by the near‐vertical slopes of Hangerer (left) and Hochebenkamm (right). 
 (a) - (c) Cross-sections of different types of point clouds acquired at the lower tongue area of the rock glacier. Figure by V. Zahs.</i>
 </center>

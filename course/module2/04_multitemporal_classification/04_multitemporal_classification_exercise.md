@@ -164,7 +164,7 @@ If everything proceeded as expected, there should be 4066 rows in the resulting 
 <center>
 
 <img src="media_exercise/misaligned_polygon.jpg" title="Polygon id == 2 visible misalignment in relation to image pixel mesh" alt="polygon misalignment" width="600"/>
-
+<br>
 <i>Polygon id == 2 visible misalignment in relation to image pixel mesh.</i>
 </center>
 
@@ -354,7 +354,7 @@ tune
 <center>
 
 <img src="media_exercise/mtry_tuning.png" title="mtry tuning" alt="mtry tuning" width="500"/>
-
+<br>
 <i>mtry parameter tuning.</i>
 </center>
 
@@ -559,7 +559,7 @@ varImpPlot(model_rf, type = 1, n.var = 30)
 <center>
 
 <img src="media_exercise/var_imp_plot.png" title="variable importance" alt="variable importance" width="600"/>
-
+<br>
 <i>Variable importance plot.</i>
 </center>
 

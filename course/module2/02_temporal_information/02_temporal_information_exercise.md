@@ -39,7 +39,7 @@ Please note that due to cloud cover during certain periods, selected images (14 
 
 <img src="media_exercise/exercise_tatra_mountains_1984_2016.png" title="Tatra Mountains 1984-2016" alt="Point 1" width="800"/>
 
-<i>Left: Landsat 5 TM 31.07.1984, RGB 321; right: Landsat 8 OLI 8.09.2016, RGB 432. Landsat imagery courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits)</i>
+<i>Left: Landsat 5 TM 31.07.1984, RGB 321; right: Landsat 8 OLI 8.09.2016, RGB 432. Landsat imagery courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a> / <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a></i>
 </center>
 
 The preprocessing of images resulted in 30 multiband images, each containing six bands corresponding to Landsat 5 bands 1-5, and 7. These bands were subsequently used to calculate spectral indices. For this exercise, you will be utilizing 30-layer raster bricks of bands 4 (NIR), 3 (Red), and 2 (Green) for displaying image chips data, along with vector data with reference points. These points have assigned attributes denoting the year of detected change, change agent, and time series values of three spectral indices: NDVI, NDMI, and NBR.

@@ -67,8 +67,8 @@ If we are processing images for rugged terrain we also need to perform **topogra
 <center>
 
 <img src="media/fig2_topo_corr.jpg" title="Sentinel-2 data L1C product before and after topographic correction (Karkonosze Mountains area, RGB composite from 10.10.2021)." alt="Sentinel-2 data" width="600"/>
-
-<i>Sentinel-2 data L1C product, before and after topographic correction (Karkonosze Mountains area, RGB composite from 10.10.2021. Figure by course authors, source of image: [European Space Agency - ESA](https://dataspace.copernicus.eu/)/ [Terms of use](https://dataspace.copernicus.eu/terms-and-conditions)).</i>
+<br>
+<i>Sentinel-2 data L1C product, before and after topographic correction (Karkonosze Mountains area, RGB composite from 10.10.2021. Figure by course authors, source of image: <a href="https://dataspace.copernicus.eu/">European Space Agency - ESA</a> / <a href="https://dataspace.copernicus.eu/terms-and-conditions">Terms of use</a>).</i>
 </center>
 
 Another key factor which should be considered during satellite image processing is impact of direction of incident irradiance and sensor viewing angle. Both of these are expressed by azimuth and zenith angles and described by **Bidirectional Reflectance Distribution Function (BRDF)**.
@@ -76,8 +76,8 @@ Another key factor which should be considered during satellite image processing 
 <center>
 
 <img src="media/BRDF.png" title="Bidirectional Reflectance Distribution Function concept." alt="BRDF" width="600"/>
-
-<i>Left: Bidirectional Reflectance Distribution Function concept (figure by [Commons Wikimedia](https://commons.wikimedia.org/wiki/Category:Bidirectional_reflectance_distribution_function#/media/File:BRDF_Diagram.png)/ [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)), right: the example of BRDF as pattern seen on the grass of a golf course after mowing (figure by [Pixabay](https://pixabay.com/photos/golf-golf-course-green-grass-787473/)).</i>
+<br>
+<i>Left: Bidirectional Reflectance Distribution Function concept (figure by <a href="https://commons.wikimedia.org/wiki/Category:Bidirectional_reflectance_distribution_function#/media/File:BRDF_Diagram.png">Commons Wikimedia</a>/ <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>), right: the example of BRDF as pattern seen on the grass of a golf course after mowing (figure by <a href="https://pixabay.com/photos/golf-golf-course-green-grass-787473/">Pixabay</a>).</i>
 </center>
 
 **Geometric matching** of images is a key element of monitoring changes, its absence will result in the detection of false changes that do not result from changes in object features, but from image shifts. Imagery geometry errors can be systematic and random ([Lillesand et al., 2015](https://www.wiley.com/en-us/Remote+Sensing+and+Image+Interpretation,+7th+Edition-p-9781118343289)). The first results from the rotation of the Earth or distortion of the optical system and are relatively easy to correct using an appropriate mathematical model. Random errors result from changes in the height of the orbit and tilts of the optical axis from the vertical and rotation of the platform. They can be corrected on the basis of recorded data concerning the path of the platform’s movement (**parametric methods**) or with the use of ground control points (GCPs) and Digital Terrain Model (DTM, **non-parametric methods**).
@@ -89,8 +89,8 @@ Automatic process of unwanted areas such as clouds, shadows and seasonal snow ma
 <center>
 
 <img src="media/fig4_clouds.jpg" title="Low stratus clouds framing iceberg A-56 drifted in the South Atlantic Ocean." alt="Stratus" width="400"/>
-
-<i>Low stratus clouds framing iceberg A-56 drifted in the South Atlantic Ocean ([VIIRS NASA figure by J. Schmaltz, LANCE/EOSDIS Rapid Response](https://www.earthdata.nasa.gov/learn/find-data/near-real-time/rapid-response)/ [Terms of use](https://www.earthdata.nasa.gov/learn/use-data/data-use-policy), source: [NASA Earth Observatory](https://earthobservatory.nasa.gov/images/88136/clouds-frame-iceberg-a-56)/ [Terms of use](https://earthobservatory.nasa.gov/image-use-policy)).</i>
+<br>
+<i>Low stratus clouds framing iceberg A-56 drifted in the South Atlantic Ocean (<a href="https://www.earthdata.nasa.gov/learn/find-data/near-real-time/rapid-response">VIIRS NASA figure by J. Schmaltz, LANCE/EOSDIS Rapid Response</a> / <a href="https://www.earthdata.nasa.gov/learn/use-data/data-use-policy">Terms of use</a>, source: <a href="https://earthobservatory.nasa.gov/images/88136/clouds-frame-iceberg-a-56">NASA Earth Observatory</a> / <a href="https://earthobservatory.nasa.gov/image-use-policy">Terms of use</a>).</i>
 </center>
 
 Using the information about the percentage coverage with clouds we can **filter** metadata or **mask** the images (we will show you both approaches in the **[Exercise](03_image_processing_exercise.md)**). The first one means that we can automatically choose the date that has the least cloud coverage within our specific area of interest and time range. The second one is oriented on excluding the areas covered by clouds by equalizing pixel values into binary flags (clouds occurrence and no-occurence). In this process the assumption is that clouds differ from the underlying Earth surface in terms of spectral characteristics and they are brighter and colder than these other areas. Commonly used approaches is the selection of cloud **probability threshold** for defining cloud/non-cloud masks. One of the most popular algorithms is [Fmask](https://github.com/GERSL/Fmask) ([Zhu, Woodcock, 2012](https://doi.org/10.1016/j.rse.2011.10.028)) which uses all spectral bands, NDVI and Normalized Difference Snow Index (NDSI), initially developed for Landsat TM and ETM+; with further improvements for next Landsat sensors or Sentinel-2 with additional Cirrus bands and the application to cloud shadow and snow detection ([Qiu et al., 2019](https://doi.org/10.1016/j.rse.2019.05.024)). **Machine and deep learning** are also the approaches to the unwanted areas detection, e.g. [s2cloudless](https://github.com/sentinel-hub/sentinel2-cloud-detector) algorithm uses gradient boosting classification method trained on global coverage training dataset. It can be used both for single-date and multitemporal data processing, however, there are also special algorithms dedicated to the latter. In general, in multitemporal data use, clouds can be considered ‘anomalies’ contrary to clear pixels in time series. Here we can find e.g. [multiTemporal mask (Tmask)](https://github.com/GERSL/Tmask) that firstly fits a time series model of each single pixel using remaining clear pixels from Fmask product, and then compares model estimates with time series observations to detect pixels of clouds and shadows omitted in Fmask ([Zhu, Woodcock, 2014](https://doi.org/10.1016/j.rse.2014.06.012)). Of course, there are still many other algorithms, dedicated to specific sensors as well as more universal, and the choice of the best one for our needs must fit the specificity of our area and data (you can see the comparative works, in e.g. [Foga et al., 2017](https://doi.org/10.1016/j.rse.2017.03.026), [Tarrio et al., 2020](https://doi.org/10.1016/j.srs.2020.100010), and [Skakun et al., 2022](https://doi.org/10.1016/j.rse.2022.112990)).
@@ -98,8 +98,8 @@ Using the information about the percentage coverage with clouds we can **filter*
 <center>
 
 <img src="media/fig5_masked_clouds.jpg" title="Examples of cloud masking by various algorithms over the Sentinel-2 scene." alt="cloud masks" width="600"/>
-
-<i>Examples of cloud masking by various algorithms over the Sentinel-2 scene (figure by [Skakun et al., 2022](https://doi.org/10.1016/j.rse.2022.112990)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<br>
+<i>Examples of cloud masking by various algorithms over the Sentinel-2 scene (figure by <a href="https://doi.org/10.1016/j.rse.2022.112990">Skakun et al., 2022</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 In this work the performance of existing clouds masking methods was evaluated using independent datasets concerning clouds occurrence by assessing detection accuracy. Generally, today data providers develop layers regarding data quality including masks of clouds, shadows and snow/ice (e.g. for Sentinel-2 – **s2cloudless** and Landsat – **CFmask** algorithms were selected as one of the most reliable and suitable for application over the entire archives). You will use them in the **[Exercise in this theme](03_image_processing_exercise.md)**.
@@ -111,8 +111,9 @@ The big advantage of satellite data is the global range of their acquisition. De
 <center>
 
 <img src="media/fig6_sentinel_revisit.jpg" title="Example of Sentinel-2 satellite revisit frequency due to the overlap between adjacent orbits." alt="Figure 6" width="600"/>
-
-<i>Example of Sentinel-2 satellite revisit frequency due to the overlap between adjacent orbits (figure by P. Lacroix, [European Space Agency - ESA](https://sentinels.copernicus.eu/web/sentinel/user-guides/sentinel-2-msi/revisit-coverage)/ [Terms of use](https://sentinels.copernicus.eu/web/sentinel/terms-conditions)).</i>
+<br>
+<!-- TODO: sentinels.copernicus.eu link below is broken - is there another link / a new page? -->
+<i>Example of Sentinel-2 satellite revisit frequency due to the overlap between adjacent orbits (figure by P. Lacroix, <a href="https://sentinels.copernicus.eu/web/sentinel/user-guides/sentinel-2-msi/revisit-coverage">European Space Agency - ESA</a> / <a href="https://sentinels.copernicus.eu/web/sentinel/terms-conditions">Terms of use</a>).</i>
 </center>
 
 Coverage of some areas with satellite data can be reduced by sensor’s errors, seasonal snow or clouds and shadows mentioned above, etc., making interpretation difficult. Diverse algorithms for missing data reconstruction divided into spatial-, spectral-, temporal-based and hybrid methods groups are proposed in remote sensing literature ([Shen et al., 2015](https://doi.org/10.1109/mgrs.2015.2441912)). As we mainly focus on temporal aspects in this course, we will present more deeply those.
@@ -120,8 +121,8 @@ Coverage of some areas with satellite data can be reduced by sensor’s errors, 
 <center>
 
 <img src="media/gap_errors.png" title="Examples of missing information in Landsat satellite data: (a) partial cover, (b) permanent ETM+ SLC-off error, (c) random TM registration error, (d) clouds with shadows, (e) topographic shadows." alt="missing data" width="600"/>
-
-<i>Examples of missing information in satellite data: (a) partial cover, (b) random TM registration error, (c) permanent ETM+ SLC-off error, (d) clouds with shadows, (e) topographic shadows (figure by course authors, sources of images: (a), (b): Landsat 5 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits)), (c): Landsat 7 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits), (d), (e): Landsat 8 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits)).</i>
+<br>
+<i>Examples of missing information in satellite data: (a) partial cover, (b) random TM registration error, (c) permanent ETM+ SLC-off error, (d) clouds with shadows, (e) topographic shadows (figure by course authors, sources of images: (a), (b): Landsat 5 courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a> / <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a>), (c): Landsat 7 courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a> / <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a>, (d), (e): Landsat 8 courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a> / <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a>).</i>
 </center>
 
 One of the solution of this uncompleted satellite data problem in multitemporal analysis is integration of data from different terms of data acquisition into **gap-free compositions**. Purely statistical approaches use mean, median or medoid (value closest to median from the actual observations) values of unmasked pixels to fill the missing pixel with numerical value. There are many other established approaches to perform this and majority of them follow ‘the best available pixel’ strategy ([Zhu, 2017](https://doi.org/10.1016/j.isprsjprs.2017.06.013)). One is the highest NDVI value presented below.
@@ -129,7 +130,7 @@ One of the solution of this uncompleted satellite data problem in multitemporal 
 <center>
 
 <img src="media/fig8_composition.png" title="Concept of creating time composites from three different dates images based on the highest NDVI value." alt="concept of time composites" width="600"/>
-
+<br>
 <i>Concept of creating time composites from three different dates images based on the highest NDVI value (figure by course authors).</i>
 </center>
 
@@ -140,8 +141,8 @@ Another strategy to provide gap-free composites is generating synthetic images b
 <center>
 
 <img src="media/com_synt.gif" title="Composite and synthetic Landsat time series data example." alt="composite" width="600"/>
-
-<i>Composite and synthetic time series data example (Landsat courtesy of [the U.S. Geological Survey](https://www.usgs.gov/media/images/composite-imagery-v-synthetic-imagery)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits)).</i>
+<br>
+<i>Composite and synthetic time series data example (Landsat courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a> / <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a>).</i>
 </center>
 
 Since we have dense time series data or we want to analyze seasonal variations an important step could be noise reduction by the use of **smoothing / filtering** methods (see **[Theme 1 in Module 1](../../module1/01_principles_of_remote_sensing_time_series/01_principles_of_remote_sensing_time_series.md)**). They are used for the single points of a time series, where the assumption is that these are chronological and display regular fluctuations ([Shen et al., 2015](https://doi.org/10.1109/mgrs.2015.2441912)). There are three approaches to perform such filtering, depending on the way they handle time series data:
@@ -169,8 +170,8 @@ For example, freely available MODIS data provides daily global observations allo
 <center>
 
 <img src="media/fig11_sentinel_planetscope.jpg" title="Sentinel-2 and PlanetScope spectral resolution and wavelength range (Latte, Lejeune, 2020)." alt="Sentinel-2 and PlanetScope" width="600"/>
-
-<i>Sentinel-2 and PlanetScope spectral resolution and wavelength range (figure by [Latte, Lejeune, 2020](https://doi.org/10.3390/rs12152366)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<br>
+<i>Sentinel-2 and PlanetScope spectral resolution and wavelength range (figure by <a href="https://doi.org/10.3390/rs12152366">Latte, Lejeune, 2020</a>/ <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 In this module we focus only on optical data for whom the main ‘Achilles’ heel’ is cloud coverage. If you want to work in an area regularly covered with clouds or where you study rapid changes and there is no room for gaps or creating compositions, you may consider fusion of optical with **Synthetic Aperture Radar** (SAR) data where this inconvenience might be mitigated (several examples can be found [here](https://medium.com/sentinel-hub/data-fusion-combine-satellite-datasets-to-unlock-new-possibilities-26356c481169)).
@@ -186,8 +187,8 @@ Radiometric normalization is necessary for e.g. PlanetScope data due to the dif
 <center>
 
 <img src="media/fig12_normalization.jpg" title="PlanetScope data normalization effect (on the right) based on Sentinel-2 data (Latte and Lejeune, 2020)." alt="Normalization" width="300"/>
-
-<i>PlanetScope data normalization effect (on the right) based on Sentinel-2 data (figure by [Latte, Lejeune, 2020](https://doi.org/10.3390/rs12152366)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<br>
+<i>PlanetScope data normalization effect (on the right) based on Sentinel-2 data (figure by <a href="https://doi.org/10.3390/rs12152366">Latte, Lejeune, 2020</a>/ <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 ## Overview of tools and algorithms used with satellite multispectral image/time series processing

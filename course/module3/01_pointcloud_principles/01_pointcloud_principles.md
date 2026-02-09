@@ -50,8 +50,8 @@ Analysis of surface or structural dynamics in 3D/4D geodata provides information
 
 <center>
 <img src="media/m3_theme1_analysis_domains_examples.png" alt="Examples of 4D analysis domains" title="Examples domains for change analysis in 3D geodata" width="700">
-
-<i>Examples of different domains supported by change analysis of surface or structure dynamics in 3D/4D point clouds. Figures by K. Anders (left, middle) and [Wang et al. (2022)](https://doi.org/10.1016/j.jag.2022.102781) / [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) (right).</i>
+<br>
+<i>Examples of different domains supported by change analysis of surface or structure dynamics in 3D/4D point clouds. Figures by K. Anders (left, middle) and <a href="https://doi.org/10.1016/j.jag.2022.102781">Wang et al. (2022)</a> / <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a> (right).</i>
 </center>
 
 
@@ -67,8 +67,8 @@ The figure below illustrates the additional information that can be obtained fro
 
 <center>
 <img src="media/m3_theme1_beach_bitemporal_4d.png" alt="temporal surface information & time series" title="Multitemporal vs. 4D surface information" width="600">
-
-<i>Temporal surface information in bitemporal change representation (map on the left) and as near-continuous time series at a location in 4D point clouds (right). Figure by K. Anders, modified after [Anders et al. (2019)](https://doi.org/10.5194/isprs-annals-IV-2-W5-317-2019).</i>
+<br>
+<i>Temporal surface information in bitemporal change representation (map on the left) and as near-continuous time series at a location in 4D point clouds (right). Figure by K. Anders, modified after <a href="https://doi.org/10.5194/isprs-annals-IV-2-W5-317-2019">Anders et al. (2019)</a>.</i>
 </center>
 
 
@@ -78,7 +78,7 @@ This section gives a brief overview on concepts of change in multitemporal and 4
 
 Using topographic 3D point clouds, we are typically looking for changes in the geometry of the surface or objects. In general, a change analysis requires the following typical series of steps:
 
-1. **Data acquisition**: Acquiring 3D/4D point clouds for the observation of surface dynamics includes considerations of typical aspects such as the geometric accuracy, spatial resolution and coverage (choice of sensors, platforms, and survey strategy). Regarding monitoring applications, an additional important consideration is the temporal resolution, i.e. acquisition frequency, with respect to the observed phenomena. An overview of different modes of point cloud acquisition will be given [in the following section](#point-cloud-acquisition).
+1. **Data acquisition**: Acquiring 3D/4D point clouds for the observation of surface dynamics includes considerations of typical aspects such as the geometric accuracy, spatial resolution and coverage (choice of sensors, platforms, and survey strategy). Regarding monitoring applications, an additional important consideration is the temporal resolution, i.e. acquisition frequency, with respect to the observed phenomena. An overview of different modes of point cloud acquisition will be given [in the following section](#point-cloud-acquisition). [Wegen et al. (2026)](#references) provide a comprehensive survey of publicly available multitemporal point cloud datasets, assessing them based on 30 characteristics that include acquisition mode, scan interval and data representation.
 2. **Co-registration**: Epochs in multitemporal 3D/4D datasets need to be aligned in a common coordinate reference frame to enable change measurements. This can be solved by accurate georeferencing of acquired data, but often additional fine alignment is applied to further increase the detectability of 'real' change, opposed to small offsets between surface positions in the point cloud. 
 3. **Change detection and quantification**: This step is the core of any change analysis. Depending on the geographic setting and types of input data, there are various approaches to change analysis, and different methods using point clouds and rasterized data. Specific approaches and algorithms will be introduced in [Theme 3](../03_3d_change_analysis/03_3d_change_analysis.ipynb). 
 4. **Uncertainty assessment**: Assessment of uncertainties associated to change detection and quantification is essential to interpret and communicate results. Different components contributing to uncertainty in change analysis and how to quantify them are part of [Theme 3](../03_3d_change_analysis/03_3d_change_analysis.ipynb).
@@ -91,8 +91,8 @@ To further familiarize yourself with approaches and applications of 3D change an
 
 <center>
 <img src="media/m3_theme1_opentopo_differencing.png" alt="OpenTopo, hillshade & vertical differences" title="Result of on-demand topographic differencing in OpenTopography showing the hillshades of terrain elevation for each LiDAR survey (left and middle), and resulting vertical differences (right)" width="800">
-
-<i>Result of on-demand topographic differencing in OpenTopography showing the hillshades of terrain elevation for each LiDAR survey (left and middle), and resulting vertical differences (right). Data: White Sands National Monument, NM: LiDAR Survey of Dune Fields (Sept 2009). Lidar data acquisition and processing completed by the National Center for Airborne Laser Mapping ([NCALM](http://www.ncalm.org)). NCALM funding provided by NSF's Division of Earth Sciences, Instrumentation and Facilities Program (EAR-1043051). Distributed by [OpenTopography](https://doi.org/10.5069/G9ZK5DMD) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).</i>
+<br>
+<i>Result of on-demand topographic differencing in OpenTopography showing the hillshades of terrain elevation for each LiDAR survey (left and middle), and resulting vertical differences (right). Data: White Sands National Monument, NM: LiDAR Survey of Dune Fields (Sept 2009). Lidar data acquisition and processing completed by the National Center for Airborne Laser Mapping (<a href="http://www.ncalm.org">NCALM</a>). NCALM funding provided by NSF's Division of Earth Sciences, Instrumentation and Facilities Program (EAR-1043051). Distributed by <a href="https://doi.org/10.5069/G9ZK5DMD">OpenTopography</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</i>
 </center>
 
 The remainder of this theme will focus on basic principles of point clouds acquisition and processing for change analysis or monitoring in general.
@@ -120,14 +120,14 @@ Automatic TLS has become possible with the availability of programmable laser sc
 
 <center>
 <img src="media/m3_theme1_atls_systems_examples.png" alt="atls_examples" title="Examples of automatic TLS for 4D point cloud acquisition" width="800">
-
-<i>Selected examples of automatic TLS for 4D point cloud acquisition in different geographic settings. Figures by [Kromer et al. (2017)](https://doi.org/10.5194/esurf-5-293-2017) / [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/), [Campos et al. (2021)](https://doi.org/10.3389/fpls.2020.606752) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), [Stumvoll et al. (2020)](https://doi.org/10.1007/s10064-019-01632-w) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), [Williams et al. (2018)](https://doi.org/10.5194/esurf-6-101-2018) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), [Winiwarter et al. (2022a)](https://doi.org/10.5194/esurf-2021-103) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), [Vos et al. (2022)](https://doi.org/10.1038/s41597-022-01291-9) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), and [Voordendag et al. (2021)](https://doi.org/10.5194/isprs-annals-V-2-2021-153-2021) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). </i>
+<br>
+<i>Selected examples of automatic TLS for 4D point cloud acquisition in different geographic settings. Figures by <a href="https://doi.org/10.5194/esurf-5-293-2017">Kromer et al. (2017)</a> / <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>, <a href="https://doi.org/10.3389/fpls.2020.606752">Campos et al. (2021)</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, <a href="https://doi.org/10.1007/s10064-019-01632-w">Stumvoll et al. (2020)</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, <a href="https://doi.org/10.5194/esurf-6-101-2018">Williams et al. (2018)</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, <a href="https://doi.org/10.5194/esurf-2021-103">Winiwarter et al. (2022a)</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, <a href="https://doi.org/10.1038/s41597-022-01291-9">Vos et al. (2022)</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, and <a href="https://doi.org/10.5194/isprs-annals-V-2-2021-153-2021">Voordendag et al. (2021)</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. </i>
 </center>
 
 <center>
 <img src="media/m3_theme1_timelapse_photo_systems_examples.png" alt="photo_examples" title="Examples of time-lapse photogrammetry for 4D point cloud acquisition" width="300">
-
-<i>Example of automatic time-lapse photogrammetry for 4D point cloud acquisition for rockfall monitoring. Figure by [Kromer et al. (2019)](https://doi.org/10.3390/rs11161890) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).</i>
+<br>
+<i>Example of automatic time-lapse photogrammetry for 4D point cloud acquisition for rockfall monitoring. Figure by <a href="https://doi.org/10.3390/rs11161890">Kromer et al. (2019)</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</i>
 </center>
 
 
@@ -145,8 +145,8 @@ A pioneer study using **4D VLS point cloud** for change detection is presented b
 
 <center>
 <img src="media/m3_theme1_helios++.png" alt="helios++" title="Virtual laser scanning with HELIOS++" width="600">
-
-<i>Schematic concept of virtual laser scanning with HELIOS++, showcasing platforms (tripod, car, UAV, airplane) and 3D object models (mesh, point cloud, voxels, raster) composing a scene. Figure by [Winiwarter et al. (2022b)](https://doi.org/10.1016/j.rse.2021.112772) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).</i>
+<br>
+<i>Schematic concept of virtual laser scanning with HELIOS++, showcasing platforms (tripod, car, UAV, airplane) and 3D object models (mesh, point cloud, voxels, raster) composing a scene. Figure by <a href="https://doi.org/10.1016/j.rse.2021.112772">Winiwarter et al. (2022b)</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</i>
 </center>
 
 In this module, you will learn to create VLS point clouds with HELIOS++ for your own analyses ([exercise in Theme 2](../02_pointcloud_programming_python/exercise/m3_theme2_exercise1.ipynb)). For alternative implementations of LiDAR simulation and their specific purposes and differences, see the detailed literature review in [Winiwarter et al. (2022b)](#references)
@@ -160,19 +160,19 @@ A point cloud is an unorganized set of **points in three-dimensional cartesian s
 <center>
 <img src="media/m3_theme1_pointcloud_model.png" alt="pointcloud_model" title="Visualization of point cloud model" width="400">
 </center>
-
+<br>
 <center>
 <img src="media/m3_theme1_pointcloud_model_list.png" alt="pointcloud_model_table" title="Point cloud model in ascii table" width="400">
-
-<i>Visual and tabular representation of a 3D point cloud with three coordinates (XYZ) and attributes classification (ID), LiDAR backscatter (Intensity), and true color (RGB). Figure by K. Anders, modified after [Ghamisi et al. (2019)](https://doi.org/10.1109/MGRS.2018.2890023).</i>
+<br>
+<i>Visual and tabular representation of a 3D point cloud with three coordinates (XYZ) and attributes classification (ID), LiDAR backscatter (Intensity), and true color (RGB). Figure by K. Anders, modified after <a href="https://doi.org/10.1109/MGRS.2018.2890023">Ghamisi et al. (2019)</a>.</i>
 </center>
 
 Typical **attributes** for LiDAR point clouds (i.e. acquired via laser scanning) are the LiDAR intensity and information on multiple returns. LiDAR measurements do not include color information, but RGB information can be added from images that are taken in addition to scanning ([Ghamisi et al., 2019](#references)). This step belongs to the concept of [data fusion](#multisource-and-multitemporal-data-fusion). Point clouds which are acquired with photogrammetric techniques directly contain RGB as attribute from the original photographs, which are used for 3D reconstruction through dense image matching ([Westoby et al., 2012](#references)).
 
 <center>
 <img src="media/m3_theme1_pointcloud_model_fusion.png" alt="Fusion" title="Fusion of photographic data with a LiDAR point cloud" width="800">
-
-<i>Fusion of photographic data with a LiDAR point cloud by assigning color values as RGB attributes to the point cloud. Figure by K. Anders, modified after [Ghamisi et al. (2019)](https://doi.org/10.1109/MGRS.2018.2890023).</i>
+<br>
+<i>Fusion of photographic data with a LiDAR point cloud by assigning color values as RGB attributes to the point cloud. Figure by K. Anders, modified after <a href="https://doi.org/10.1109/MGRS.2018.2890023">Ghamisi et al. (2019)</a>.</i>
 </center>
 
 
@@ -181,7 +181,7 @@ Point clouds can be used to derive other data models or GIS layers as result of 
 
 <center>
 <img src="media/m3_theme1_pc_raster.png" alt="pc_vs_raster" title="Point cloud vs. raster representation of terrain" width="500">
-
+<br>
 <i>Comparison of terrain representation as point cloud and raster. Figure by course authors.</i>
 </center>
 
@@ -189,7 +189,7 @@ The geometry of full 3D objects, such as trees, cannot be represented in rasters
 
 <center>
 <img src="media/m3_theme1_terrain_surface_objects.png" alt="terrain, surface & object structure" title="Representation of terrain, surface and object structure in point cloud data" width="800">
-
+<br>
 <i>Representation of terrain, surface and object structure in 3D point clouds. Figure by course authors.</i>
 </center>
 
@@ -219,7 +219,7 @@ For a horizontal plane, this means that all points whose XY coordinate is within
 
 <center>
 <img src="media/m3_theme1_neigh_cylindrical.png" alt="cylindrical_neighborhood" title="Cylindrical neighborhood with fixed distance" width="500">
-
+<br>
 <i>Cylindrical point cloud neighborhood of a 3D point (black) with a fixed 2D distance of radius r in a schematic view from the side (left) and above (right). Figure by course authors.</i>
 </center>
 
@@ -230,7 +230,7 @@ The size of kNN neighborhoods can be highly different within a neighborhood, dep
 
 <center>
 <img src="media/m3_theme1_neigh_knn.png" alt="knn_neighborhood" title="kNN neighborhood with fixed number of neighbors" width="500">
-
+<br>
 <i>Point cloud neighborhood around a 3D search point (black) with a fixed number of k nearest neighbors in 2D (left) and 3D (right). When considering the 3D Euclidian distance, the point neighborhood may change, because a point may have a vertically large distance compared to another point which is horizontally further away (indicated by the red connection lines). Figure by course authors.</i>
 </center>
 
@@ -264,8 +264,8 @@ The spatial-temporal neighborhood is used in an approach for 4D point cloud proc
 
 <center>
 <img src="media/m3_theme1_kromer_etal_2015_edt.png" alt="spatiotemporal neighborhood" title="combination of spherical spatial neighborhoods and temporal window neighborhood" width="800">
-
-<i>Spherical spatial neighborhoods (left) and temporal window neighborhood (right) are combined to a spatiotemporal neighborhood (middle) to perform noise filtering in 4D point clouds, with number of neighbors NN, reference point cloud T<sub>ref</sub> and temporal window T<sub>step</sub>. Figure modified from [Kromer et al. (2015)](https://doi.org/10.3390/rs71013029) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).</i>
+<br>
+<i>Spherical spatial neighborhoods (left) and temporal window neighborhood (right) are combined to a spatiotemporal neighborhood (middle) to perform noise filtering in 4D point clouds, with number of neighbors NN, reference point cloud T<sub>ref</sub> and temporal window T<sub>step</sub>. Figure modified from <a href="https://doi.org/10.3390/rs71013029">Kromer et al. (2015)</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</i>
 </center>
 
 
@@ -278,7 +278,7 @@ So if you think of a surface in a scene which is sampled by a 3D point cloud and
 
 <center>
 <img src="media/m3_theme1_normalvector.png" alt="normalvector" title="Schematic of normal vector of a tangent plane" width="500">
-
+<br>
 <i>Normal vector of a tangent plane fit to a set of 3D points, which are sampled on a surface in the scene. Figure by course authors.</i>
 </center>
 
@@ -296,8 +296,8 @@ with $n_x$, $n_y$, $n_z$ representing the normal vector, and $d$ representing th
 
 <center>
 <img src="media/m3_theme1_plane_equation_hessian.png" alt="plane_equation" title="Plane parameters according to Hessian normal form" width="350">
-
-<i>Definition of a plane with parameters according to the Hessian normal form. Figure by [Quartl](https://commons.wikimedia.org/w/index.php?curid=31080804) / [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.en).</i>
+<br>
+<i>Definition of a plane with parameters according to the Hessian normal form. Figure by <a href="https://commons.wikimedia.org/w/index.php?curid=31080804">Quartl</a> / <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC BY-SA 3.0</a>.</i>
 </center>
 
 As surfaces in point clouds scenes are rarely perfectly planar, a simple least-squares plane fit is not robust to outliers or edges, where part of the neighboring points strongly deviate from the actual planar surface. Robust local regression planes can be derived by considering outliers using weighting of points based on their residual distances, and excluding outliers from the final plane adjustment ([Dorninger & Nothegger, 2007](#references)).
@@ -308,7 +308,7 @@ In the context of the local regression plane, there is more information to be ob
 
 <center>
 <img src="media/m3_theme1_pca.png" alt="pca" title="Schematic of principal components for two sets of 3D points" width="600">
-
+<br>
 <i>Schematic of principal components for two sets of 3D point. Figure by course authors.</i>
 </center>
 
@@ -330,7 +330,7 @@ For all geometric operations and features, it is important to bear in mind that 
 
 <center>
 <img src="media/m3_theme1_roughness.png" alt="roughness" title="Schematic of scale-dependent roughness" width="500">
-
+<br>
 <i>Scale-dependent roughness where the local plane fit depends on the size of the spatial neighborhood. Figure by course authors.</i>
 </center>
 
@@ -339,7 +339,7 @@ The following figure shows how different radii affect the derived roughness of a
 
 <center>
 <img src="media/m3_theme1_roughness_for_different_radius.png" alt="computed roughness" title="Schematic of scale-dependent roughness for different radius" width="1000"> 
-
+<br>
 <i>Roughness derived for radii r of 0.25 m, 5 m and 10 m (left to right) for an area of a rock glacier point cloud, derived as standard deviation of residual distances of points to a local plane fit. Figure by course authors.</i>
 </center>
 
@@ -354,7 +354,7 @@ In general, transformation can be split into three components: **translation, ro
 
 <center>
 <img src="media/m3_theme1_transformation.png" alt="transformation" title="Components of transformation representing rigid and affine transformation" width="450">
-
+<br>
 <i>Components of transformation representing rigid and affine transformation. Figure by course authors.</i>
 </center>
 
@@ -369,8 +369,8 @@ In practice, 4D data is often made accessible by appending the observed variable
 
 <center>
 <img src="media/m3_theme1_pointcloud_time_attributes.png" alt="point cloud time attributes" title="Point cloud model with attributes over time" width="400">
-
-<i>Point cloud model with XYZ coordinates and attributes of a variable A for each point in time t of T epochs in the point cloud time series. Figure by K. Anders, modified after [Ghamisi et al. (2019)](https://doi.org/10.1109/MGRS.2018.2890023).</i>
+<br>
+<i>Point cloud model with XYZ coordinates and attributes of a variable A for each point in time t of T epochs in the point cloud time series. Figure by K. Anders, modified after <a href="https://doi.org/10.1109/MGRS.2018.2890023">Ghamisi et al. (2019)</a>.</i>
 </center>
 
 ### Metadata and Supplementary Datasets
@@ -618,6 +618,7 @@ Made it through the quiz? Then you are ready for the exercise, where you will be
 * Voordendag, A. B., Goger, B., Klug, C., Prinz, R., Rutzinger, M. & Kaser, G. (2021). Automated and permanent long-range terrestrial laser scanning in a high mountain environment: Setup and first results. ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, V-2-2021, pp. 153-160. doi: [10.5194/isprs-annals-V-2-2021-153-2021](https://doi.org/10.5194/isprs-annals-V-2-2021-153-2021).
 * Vos, S., Anders, K., Kuschnerus, M., Lindenberg, R., Höfle, B., Aarnikhof, S. & Vries, S. (2022). A high-resolution 4D terrestrial laser scan dataset of the Kijkduin beach-dune system, The Netherlands.  Scientific Data, 9:191. doi: [10.1038/s41597-022-01291-9](https://doi.org/10.1038/s41597-022-01291-9).
 * Wang, D., Puttonen, E., & Casella, E. (2022). PlantMove: A tool for quantifying motion fields of plant movements from point cloud time series. International Journal of Applied Earth Observation and Geoinformation, 110, pp. 102781. doi: [10.1016/j.jag.2022.102781](https://doi.org/10.1016/j.jag.2022.102781).
+* Wegen, O., Scheibel, W., Richter, R., & Döllner, J. (2026). A survey of publicly available multi-temporal point cloud datasets. ISPRS Journal of Photogrammetry and Remote Sensing, 231, 815–836. doi: [10.1016/j.isprsjprs.2025.11.003](https://doi.org/10.1016/j.isprsjprs.2025.11.003)
 * Weinmann, M., Jutzi, B., Hinz, S., & Mallet, C. (2015). Semantic point cloud interpretation based on optimal neighborhoods, relevant features and efficient classifiers. ISPRS Journal of Photogrammetry and Remote Sensing, 105, pp. 286-304. doi: [10.1016/j.isprsjprs.2015.01.016](https://doi.org/10.1016/j.isprsjprs.2015.01.016).
 * Westoby, M. J., Brasington, J., Glasser, N. F., Hambrey, M. J., & Reynolds, J. M. (2012). ‘Structure-from-Motion’ photogrammetry: A low-cost, effective tool for geoscience applications. Geomorphology, 179, pp. 300-314. doi: 10.1016/j.geomorph.2012.08.021.
 * Williams, J. G., Rosser, N. J., Hardy, R. J., Brain, M. J. & Afana, A. A. (2018). Optimising 4-D surface change detection: an approach for capturing rockfall magnitude–frequency. Earth Surface Dynamics, 6, pp. 101–119. doi: [10.5194/esurf-6-101-2018](https://doi.org/10.5194/esurf-6-101-2018).

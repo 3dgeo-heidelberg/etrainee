@@ -153,7 +153,7 @@ We now have all the data we need to proceed. We will start with classifying sing
 <center>
 
 <img src="media/cs1_flowchart.png" title="Case study 1 scheme of procedure" alt="Scheme" width="600"/>
-
+<br>
 <i>Case study 1 scheme of procedure.</i>
 </center>
 
@@ -236,7 +236,7 @@ plot(varImp(model)) # plot predictors apparent importance
 <center>
 
 <img src="media/varimp_all.png" title="Variable importance." alt="Variable importance" width="600"/>
-
+<br>
 <i>Variable importance.</i>
 </center>
 
@@ -537,7 +537,7 @@ In this case study we use the area under **ROC (Receiver Operator Characteristic
 <center>
 
 <img src="media/roc.png" title="ROC curve generated for grasslands class." alt="ROC curve" width="600"/>
-
+<br>
 <i>ROC curve generated for grasslands class.</i>
 </center>
 

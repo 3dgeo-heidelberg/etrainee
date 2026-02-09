@@ -26,7 +26,7 @@ The application is implemented in GEE and can be accessed from [this link](https
 
 <center>
 <img src="media/img1.png" title="The GEE application Forest disturbance in Ore Mountains." alt="The GEE application Forest disturbance in Ore Mountains." width="600"/>
-
+<br>
 <i>The GEE application Forest disturbance in Ore Mountains. Figure by course authors.</i>
 </center>
 
@@ -34,8 +34,8 @@ The methodology consists of several steps depicted in the chart below and commen
 
 <center>
 <img src="media/img2.png" title="General workflow applied in the GEE application Forest disturbance in Ore Mountains." alt="General workflow applied in the GEE application Forest disturbance in Ore Mountains." width="600"/>
-
-<i>General workflow applied in the GEE application [Forest disturbance in Ore Mountains](https://et-2024.projects.earthengine.app/view/oremts). Figure by course authors.</i>
+<br>
+<i>General workflow applied in the GEE application <a href="https://et-2024.projects.earthengine.app/view/oremts">Forest disturbance in Ore Mountains</a>. Figure by course authors.</i>
 </center>
 
 ### Data selection
@@ -72,8 +72,8 @@ The Landsat Collection 2 images contain a [Surface Reflectance Cloud Quality Ass
 
 <center>
 <img src="media/img3.png" title="Landsat Collection 2 Pixel Quality Assessment Bit Index." alt="Landsat Collection 2 Pixel Quality Assessment Bit Index." width="600"/>
-
-<i>Landsat Collection 2 Pixel Quality Assessment Bit Index. Source:  [U.S. Geological Survey](https://www.usgs.gov/media/images/landsat-collection-2-pixel-quality-assessment-bit-index) / [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits)</i>
+<br>
+<i>Landsat Collection 2 Pixel Quality Assessment Bit Index. Source:  <a href="https://www.usgs.gov/media/images/landsat-collection-2-pixel-quality-assessment-bit-index">U.S. Geological Survey</a> / <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a></i>
 </center>
 
 In the applied workflow this information is used and pixels with value 1 in the respective SR_Cloud_QA bits (1, 3, 4) are added to the cloud mask. Notice that the mask was extended of pixels containing snow that might remain at the top of the Ore mountains at the end of spring.
@@ -201,7 +201,7 @@ Following Kupková et al., 2018, based on analysis of the IFZ time series areas 
 <center>
 <img src="media/img4.png" title="Area of stable forest" alt="Area of stable forest" width="600"/>
 <img src="media/img5.png" title="Deforestation followed by afforestation" alt="Deforestation followed by afforestation" width="600"/>
-
+<br>
 <i>Application of IFZ for evaluation of forest change. The upper charts show area of a stable forest with IFZ < 3 in the whole time span; notice an outlier value in the year 1985. The lower chart depicts forest changes from stable forest between 1984 and 1995 with IFZ<3, through its disturbance between 1996 to 2012 with IFZ > 3, to forest recovery starting from 2013. The change is considered if IFZ goes over the threshold (in this case TIFZ = 3) for a period longer than 3 years to avoid variations in surface reflectance time series due to imperfections in atmospheric correction. Figure by course authors.</i>
 </center>
 
@@ -209,7 +209,7 @@ The DI reacts on the fact that that recently cleared or declining forest exhibit
 
 <center>
 <img src="media/img6.png" title="Example of area of a minimal change (stable forest) and improved forest condition (afforestation)." alt="Example of area of a minimal change (stable forest) and improved forest condition (afforestation)." width="600"/>
-
+<br>
 <i>Example of area of a minimal change (stable forest) and improved forest condition (afforestation). Figure by course authors.</i>
 </center>
 

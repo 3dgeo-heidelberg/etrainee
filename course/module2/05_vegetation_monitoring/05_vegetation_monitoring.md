@@ -73,7 +73,7 @@ In both approaches **thresholding** indicating significant deviation from the pr
 
 <img src="media/landtrendr_ccdc.jpg" alt="landtrendr_ccdc" title="LandTrendr and CCDC temporal segmentation algorithms comparison" width="800"/>
 
-<i>Temporal segmentation of TC Wetness calculated on Landsat data (A - on all clear observations, B - annual compositions, figure by [Pasquarella et al., 2021](https://doi.org/10.1016/j.jag.2022.102806), modified/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<i>Temporal segmentation of TC Wetness calculated on Landsat data (A - on all clear observations, B - annual compositions, figure by <a href="https://doi.org/10.1016/j.jag.2022.102806">Pasquarella et al., 2021</a>, modified / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 Historically, change studies were based mainly on less frequent time intervals, e.g. one image every 3 years (e.g. [Miller and Yool, 2002](https://doi.org/10.1016/S0034-4257(02)00071-8)). In the case of **vegetation**, regeneration after disturbance may take several years, so significant changes may be omitted in the analysis of images obtained at too distant dates. Nowadays, the second group of analyzes based on denser time series is commonly used, providing more detailed information for environmental monitoring. Having such a data set spanning a broad time period, there is no need to sequence pairs of images and search for single events that occurred between two dates, which would lead to the omission of valuable information ([Huang et al., 2010](https://doi.org/10.1016/j.rse.2009.08.017)). It is more effective to search for characteristic spectral features in the entire set of spectral values of multitemporal data.
@@ -89,7 +89,7 @@ The possibility to detect changes based on satellite data depends on the system 
 <center>
 
 <img src="media/example_abr_grad.png" title="Example trends for two Landsat data series with abrupt (black dots) and gradual (red squares) changes occurrence. The trends show long-term changes in the vegetation index values." alt="Trends" width="600"/>
-
+<br>
 <i>Example pixels representing gradual (red squares) and abrupt (black dots) changes occurrence (abrupt change detected in 2003, figure by course authors).</i>
 </center>
 
@@ -100,8 +100,8 @@ There are also **seasonal** changes, driven by annual temperature and rainfall i
 <center>
 
 <img src="media/seasonality_parameters.png" title="Seasonality parameters: (a) beginning of season, (b) end of season, (c) length of season, (d) base value, (e) time of middle of season, (f) maximum value, (g) amplitude, (h) small integrated value, (h+i) large integrated value (Jönsson, Eklundh, 2004). The red and blue lines are filtered and original data, respectively." alt="Figure 3" width="400"/>
-
-<i>Seasonality parameters: (a) beginning of season, (b) end of season, (c) length of season, (d) base value, (e) time of middle of season, (f) maximum value, (g) amplitude, (h) small integrated value, (h+i) large integrated value (the red and blue lines are filtered and original data, respectively, figure by [Eklundh, 2023](https://web.nateko.lu.se/timesat/timesat.asp)/ [CC BY-NC-ND 2.5 SE](https://creativecommons.org/licenses/by-nc-nd/2.5/se/)).</i>
+<br>
+<i>Seasonality parameters: (a) beginning of season, (b) end of season, (c) length of season, (d) base value, (e) time of middle of season, (f) maximum value, (g) amplitude, (h) small integrated value, (h+i) large integrated value (the red and blue lines are filtered and original data, respectively, figure by <a href="https://web.nateko.lu.se/timesat/timesat.asp">Eklundh, 2023</a> / <a href="https://creativecommons.org/licenses/by-nc-nd/2.5/se/">CC BY-NC-ND 2.5 SE</a>).</i>
 </center>
 
 ## Vegetation disturbance and recovery
@@ -113,7 +113,7 @@ When discussing disturbances it is also important to indicate the **scale** of a
 <center>
 
 <img src="media/disturbance_spatial.png" alt="Disturbance_spatial" title="Disturbance_spatial" width="200"/>
-
+<br>
 <i>Dependence of spatial resolution on the extent of disturbance (figure by course authors).</i>
 </center>
 
@@ -122,7 +122,7 @@ The **frequency of data collection** also plays a critical role in quantifying t
 <center>
 
 <img src="media/disturbance_temp.png" alt="Disturbance_temporal" title="Disturbance_temporal" width="500"/>
-
+<br>
 <i>Dependence of temporal resolution on the frequency of observed disturbances/recovery (figure by course authors).</i>
 </center>
 
@@ -139,8 +139,8 @@ These metrics can be measured by the use of spectral index anomaly time series. 
 <center>
 
 <img src="media/metrics.jpg" alt="Stability" title="Stability" width="500"/>
-
-<i>Detection of the disturbance-recovery process and measures of ecosystem stability based on spectral index anomaly time series (DM - disturbance magnitude, RT - recovery time, RR - recovery rate, RM - recovery magnitude, SD - overall temporal variability, TD and TR - time point of disturbance and recovery, respectively, figure by [Huang et al., 2021](https://doi.org/10.1016/j.jag.2021.102575)/ [CC BY-NC-ND 4.0.](https://creativecommons.org/licenses/by-nc-nd/4.0/)).</i>
+<br>
+<i>Detection of the disturbance-recovery process and measures of ecosystem stability based on spectral index anomaly time series (DM - disturbance magnitude, RT - recovery time, RR - recovery rate, RM - recovery magnitude, SD - overall temporal variability, TD and TR - time point of disturbance and recovery, respectively, figure by <a href="https://doi.org/10.1016/j.jag.2021.102575">Huang et al., 2021</a>/ <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0.</a>).</i>
 </center>
 
 *Note: we will further use the more general term* ***change*** *to represent general methodological issues related to detecting disturbance or changes. However, with an understanding of the distinctions between these terms, you will be able to apply them correctly in specific cases.*
@@ -191,7 +191,7 @@ Abrupt changes often concern larger areas than gradual changes (e.g. pest grada
 
 <img src="media/ndvi_trends.png" title="NDVI trends derived from different sensors: Sentinel-2, Landsat 8 and MODIS (please note that the study area is located in the southern hemisphere)." alt="Figure 4" width="800"/>
 
-<i>NDVI trends derived from different sensors: Sentinel-2, Landsat 8 and MODIS (note that the study area is located in the southern hemisphere, figure by [Kavats et al., 2020](https://doi.org/10.3390/rs12244080)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<i>NDVI trends derived from different sensors: Sentinel-2, Landsat 8 and MODIS (note that the study area is located in the southern hemisphere, figure by <a href="https://doi.org/10.3390/rs12244080">Kavats et al., 2020</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 ## Algorithms
@@ -240,8 +240,8 @@ After applying the algorithm to a time series of data, the changes detected by i
 <center>
 
 <img src="media/forests_method.png" alt="Forest disturbance detection" title="Forest disturbance detection" width="500"/>
-
-<i>Forests disturbance detection with agents attribution workflow (figure by [Oeser et al., 2017](https://doi.org/10.3390/f8070251)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<br>
+<i>Forests disturbance detection with agents attribution workflow <a href="https://doi.org/10.3390/f8070251">figure by Oeser et al., 2017</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 In order to familiarize you with how these algorithms work (some of which you will use in the **[Exercise](05_vegetation_monitoring_exercise.md)** and **[Case study 3](../08_cs_disturbance_detection/08_cs_disturbance_detection.md)**, below we provide more detailed descriptions on selected ones.
@@ -253,8 +253,8 @@ LandTrendr ([Kennedy et al., 2010)](https://doi.org/10.1016/j.rse.2010.07.008)) 
 <center>
 
 <img src="media/Concept_landtrendr.jpg" alt="landtrendr" title="LandTrendr pixel time series segmentation." width="500"/>
-
-<i>LandTrendr concept (figure by [Mugiraneza et al., 2020](https://doi.org/10.3390/rs12182883)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<br>
+<i>LandTrendr concept (figure by <a href="https://doi.org/10.3390/rs12182883">Mugiraneza et al., 2020</a>/ <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 As the results, the year of detection with number of changes, magnitude of spectral change calculated as spectral distance between vertices, RMSE of fitted temporal segments (FTV) are provided.
@@ -299,8 +299,8 @@ BFAST ([Verbesselt et al., 2010](https://doi.org/10.1016/j.rse.2009.08.014)) alg
 <center>
 
 <img src="media/bfast_lake.png" alt="seasonalbreak" title="Fitted seasonal, trend and remainder components." width="500"/>
-
-<i>Original data (Yt) and fitted seasonal (St), trend (Tt) and remainder (et) components for MODIS time series of a Longre Co lake in the Tibetan Plateau (figure by [Che et al., 2017](https://doi.org/10.3390/rs9010082), modified/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<br>
+<i>Original data (Yt) and fitted seasonal (St), trend (Tt) and remainder (et) components for MODIS time series of a Longre Co lake in the Tibetan Plateau (figure by <a href="https://doi.org/10.3390/rs9010082">Che et al., 2017</a>, modified / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 BFAST belongs to the statistical boundary methods, as it is based on the ordinary least squares (OLS) residuals-based MOving SUM (MOSUM) procedures for monitoring structural changes derived from both econometry and statistics ([Zelleis, 2005](https://doi.org/10.1080/07474930500406053)). On this basis it is possible to test whether one or more breakpoints in the trend or seasonal component are occurring.
@@ -338,8 +338,8 @@ To assess the performance of different algorithms, you can utilize these measure
 <center>
 
 <img src="media/figx_comission_omission.png" alt="figx_comission_omission" title="Omission and commission rates for each of the seven map product sets" width="400"/>
-
-<i>Omission and commission rates for seven map product sets (figure by [Cohen et al., 2017](https://doi.org/10.3390/f8040098)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<br>
+<i>Omission and commission rates for seven map product sets (figure by <a href="https://doi.org/10.3390/f8040098">Cohen et al., 2017</a>/ <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 Once we deem the result satisfactory, we can calculate the area of changes (e.g. disturbances and recovery) that occurred in specific years, as well as *change rate* in units like e.g. km<sup>2</sup> per year (more information you in [Liu et al., 2017](https://doi.org/10.3390/rs9050479)).
@@ -353,8 +353,8 @@ Several global products derived from satellite-based change detection are availa
 <center>
 
 <img src="media/croplands.jpg" alt="croplands" title="Cropland_dynamics" width="400"/>
-
-<i>The example of GLCLUC2020 cropland extent and dynamics for each 1 × 1° grid cell. (A) Cropland area 2019, % cell area. (B) Net cropland area change, 2000–2019, % cell area. (C) Cropland gain 2000–2019 within forest loss 2000–2020 area, % cropland gain area within a cell. (D). Cropland loss 2000–2019 within the year 2020 built-up lands, % cropland loss area within a cell, figure by [Potapov et al., 2022](https://doi.org/10.3389/frsen.2022.856903)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<br>
+<i>The example of GLCLUC2020 cropland extent and dynamics for each 1 × 1° grid cell. (A) Cropland area 2019, % cell area. (B) Net cropland area change, 2000–2019, % cell area. (C) Cropland gain 2000–2019 within forest loss 2000–2020 area, % cropland gain area within a cell. (D). Cropland loss 2000–2019 within the year 2020 built-up lands, % cropland loss area within a cell, figure by <a href="https://doi.org/10.3389/frsen.2022.856903">Potapov et al., 2022</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 There are also products that present observed phenomenas or classes in different dates, from which you can indirectly obtain the information about the changes (e.g. vegetation condition or chlorophyll content from [MODIS](https://earthobservatory.nasa.gov/global-maps/MOD_NDVI_M) data).
