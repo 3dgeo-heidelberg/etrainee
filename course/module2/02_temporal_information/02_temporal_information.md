@@ -54,7 +54,7 @@ There are numerous reasons why satellite data, acquired on a continuous basis, i
 
 <img src="media/exp_real.png" title="Expectations vs reality when searching satellite data" alt="Expectations vs reality" width="700"/>
 
-<i>Expectations vs reality when searching satellite data (figure by course authors, sources of images from the upper left to the lower right: Sentinel-2 [European Space Agency - ESA](https://dataspace.copernicus.eu/)/ [Terms of use](https://dataspace.copernicus.eu/terms-and-conditions), [Image © 2022 Planet Labs PBC](https://www.planet.com)/[CC BY-NC 2.0](https://creativecommons.org/licenses/by-nc/2.0/), Landsat 5 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits)), Landsat 7 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits), Landsat 8 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits), Landsat 4 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits)).</i>
+<i>Expectations vs reality when searching satellite data (figure by course authors, sources of images from the upper left to the lower right: Sentinel-2 <a href="https://dataspace.copernicus.eu/">European Space Agency - ESA</a> / <a href="https://dataspace.copernicus.eu/terms-and-conditions">Terms of use</a>, <a href="https://www.planet.com">Image © 2022 Planet Labs PBC</a > / <a href="https://creativecommons.org/licenses/by-nc/2.0/">CC BY-NC 2.0</a>, Landsat 5 courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a> / <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a>, Landsat 7 courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a> / <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a>, Landsat 8 courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a> / <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a>, Landsat 4 courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a> / <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a>).</i>
 </center>
 
 Another significant advantage of satellite data is that it captures the **temporal variation** of objects and landscapes. Objects may appear or disappear, or look entirely different across various seasons or years. This ability can help us detect such phenomena without the need for on-site exploration. For instance, how else but through satellite imagery could we identify a newly formed tiny island in a distant ocean? Or observe the decrease in the number of cars on the streets and parking lots after the 2020 lockdown announcement due to COVID-19? Satellite data provides a powerful tool for monitoring changes on Earth’s surface over time.
@@ -63,7 +63,7 @@ Another significant advantage of satellite data is that it captures the **tempor
 
 <img src="media/examples_sat.png" title="Examples of satellite data usage" alt="Examples of satellite data usage" width="700"/>
 
-<i>Examples of satellite data usage. A: Landsat data help in new island detection in Tonga, figure by L. Dauphin ([NASA Earth Observatory](https://earthobservatory.nasa.gov/images/150368/home-reef-erupts)/ [Terms of use](https://earthobservatory.nasa.gov/image-use-policy), [Map data ©2023 Google](https://maps.google.com)/ [Terms of use](https://www.google.com/intl/en_pl/help/terms_maps/)), B: PlanetScope data in the views of Downtown Johannesburg, before (top image) and during (bottom image) lockdown ([Image © 2019/2020 Planet Labs PBC](https://www.planet.com/gallery/#!/post/downtown-johannesburg-on-lockdown)/[CC BY-NC 2.0](https://creativecommons.org/licenses/by-nc/2.0/)).</i>
+<i>Examples of satellite data usage. A: Landsat data help in new island detection in Tonga, figure by L. Dauphin (<a href="https://earthobservatory.nasa.gov/images/150368/home-reef-erupts">NASA Earth Observatory</a> / <a href="https://earthobservatory.nasa.gov/image-use-policy">Terms of use</a>, <a href="https://maps.google.com">Map data ©2023 Google</a> / <a href="https://www.google.com/intl/en_pl/help/terms_maps/">Terms of use</a>), B: PlanetScope data in the views of Downtown Johannesburg, before (top image) and during (bottom image) lockdown (<a href="https://www.planet.com/gallery/#!/post/downtown-johannesburg-on-lockdown">Image © 2019/2020 Planet Labs PBC</a> / <a href="https://creativecommons.org/licenses/by-nc/2.0/">CC BY-NC 2.0</a>).</i>
 </center>
 
 These and many other examples underscore the undeniable benefits of satellite data. The processing and utilization of such data, which enables us to observe Earth’s changes, are covered in this module and its subsequent themes.
@@ -78,7 +78,7 @@ Overview of temporal resolution of selected satellite sensors is presented below
 
 <img src="media/temporal_resolution.png" title="Temporal resolution and lifetime of selected satellite missions" alt="Temporal resolution and lifetime of selected satellite missions" width="1080"/>
 
-<i>Temporal resolution and lifetime of selected satellite missions (figure by course authors, information derived from [eoPortal](https://www.eoportal.org/satellite-missions) / [terms and conditions](https://www.eoportal.org/terms-and-conditions).</i>
+<i>Temporal resolution and lifetime of selected satellite missions (figure by course authors, information derived from <a href="https://www.eoportal.org/satellite-missions">eoPortal</a> / <a href="https://www.eoportal.org/terms-and-conditions">terms and conditions</a>).</i>
 </center>
 
 ## Temporal categories of time series data
@@ -94,8 +94,8 @@ Based on these categories, satellite data can be characterized as either **long*
 <center>
 
 <img src="media/timeseries.png" title="Long and dense time series data examples." alt="Long and dense time series data examples" width="600"/>
-
-<i>Long and dense time series data examples (figure by course authors, source of Sentinel-2 image: [European Space Agency - ESA](https://dataspace.copernicus.eu/)/ [Terms of use](https://dataspace.copernicus.eu/terms-and-conditions)).</i>
+<br>
+<i>Long and dense time series data examples (figure by course authors, source of Sentinel-2 image: <a href="https://dataspace.copernicus.eu/">European Space Agency - ESA</a> / <a href="https://dataspace.copernicus.eu/terms-and-conditions">Terms of use</a>).</i>
 </center>
 
 Another way to divide this data is into **online** and **offline** categories ([Zhu, 2017](https://doi.org/10.1016/j.isprsjprs.2017.06.013)). The online approach assumes that time series data are arriving at a specific rate, facilitating analyses in near real-time or on an ongoing basis. In contrast, the offline approach operates under the assumption that the time series data already exist.
@@ -106,7 +106,7 @@ For managing large collections of satellite images modeled as multidimensional s
 
 <img src="media/EO_data_cube.png" title="EO data cubes concept and the relation to time series" alt="EO datacube" width="1080"/>
 
-<i>EO data cubes concept and the relation to time series (figure by [Simoes et al., 2021](https://doi.org/10.3390/rs13132428)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<i>EO data cubes concept and the relation to time series (figure by <a href="https://doi.org/10.3390/rs13132428">Simoes et al., 2021</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 ## Time series components and temporal dimensions in environmental analysis
@@ -120,8 +120,8 @@ As introduced in **[Theme 1 of Module 1](../../module1/01_principles_of_remote_s
 <center>
 
 <img src="media/components.JPG" title="Three components of a time series: trend, seasonal and residual components, all jointly forming the original time series" alt="Time series components" width="500"/>
-
-<i>Three components of a time series: trend, seasonal and residual components, all jointly forming the original time series (figure by [Kuenzer et al., 2015](https://link.springer.com/book/10.1007/978-3-319-15967-6)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<br>
+<i>Three components of a time series: trend, seasonal and residual components, all jointly forming the original time series (figure by <a href="https://link.springer.com/book/10.1007/978-3-319-15967-6">Kuenzer et al., 2015</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 Depending on the study aim, certain components will be of special interest. For instance, long-term trends may be crucial for climate analysis (e.g., snow cover duration, land surface temperature, etc.), while the seasonal component may be more relevant for phenological analysis of plants (such as determining the start and end of the growing season). For crisis management involving natural hazards, fires, etc., short-term fluctuations can be paramount.
@@ -142,8 +142,8 @@ Based on aforementioned time series categories, components and dimensions, tempo
 <center>
 
 <img src="media/temporal_analysis.png" title="Temporal analysis on satellite time series data" alt="Types of temporal analysis" width="500"/>
-
-<i>Temporal analysis on satellite time series data (figure by [Gómez et al., 2016](https://doi.org/10.1016/j.isprsjprs.2016.03.008), modified/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<br>
+<i>Temporal analysis on satellite time series data (figure by <a href="https://doi.org/10.1016/j.isprsjprs.2016.03.008">Gómez et al., 2016</a>, modified / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 In case of the classification category we can consider two kinds of products obtained. First, a base map representing reference date conditions for a single term is created. Then, this base map can be updated or backdated with change information derived from the time series (see **part A** in the figure below). The use of a multitemporal dataset in one land cover model aims to improve the accuracy relative to results from a single term (see **part B**).
@@ -151,8 +151,8 @@ In case of the classification category we can consider two kinds of products obt
 <center>
 
 <img src="media/time_series.png" title="Time series data based classification." alt="Time series classification" width="500"/>
-
-<i>Time series data based classification (figure by [Gómez et al., 2016](https://doi.org/10.1016/j.isprsjprs.2016.03.008), modified / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<br>
+<i>Time series data based classification (figure by <a href="https://doi.org/10.1016/j.isprsjprs.2016.03.008">Gómez et al., 2016</a>, modified / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 A key step in change detection is the direct comparison of two or more images acquired at different dates. Images can be analysed using an algorithm based on selected remote sensing variables, such as single spectral bands, vegetation indices, the biophysical parameters of vegetation, etc., or based on a post-classification image. The result is a map of changes showing their direction or magnitude.
@@ -168,8 +168,8 @@ Satellite data time series can comprise of spectral bands presented in raw digit
 <center>
 
 <img src="media/variables.png" title="Example variables used in satellite time series data analysis" alt="Time series based variables" width="600"/>
-
-<i>Example variables used in satellite time series data analysis (figure by [Kuenzer et al., 2015](https://link.springer.com/book/10.1007/978-3-319-15967-6), modified / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<br>
+<i>Example variables used in satellite time series data analysis (figure by <a href="https://link.springer.com/book/10.1007/978-3-319-15967-6">Kuenzer et al., 2015</a>, modified / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 **Geophysical** variables can be defined by a physical unit, e.g. top-of-the-atmosphere reflectance (TOA), surface reflectance (SR) or Leaf Area Index (LAI). **Index** variables are unitless and include spectral indices or Tasseled Cap Transformation bands. Based on these variables, statistics such as minimum, maximum, mean, standard deviation, variability, anomalies, and trends can be calculated.
@@ -206,8 +206,8 @@ With a high degree of probability one can assume that a time series data analysi
 <center>
 
 <img src="media/probability_classification.gif" title="Probability of pixels being correctly classified on multitemporal images." alt="Probability of pixels being correctly classified on multitemporal images" width="600"/>
-
-<i>Probability of pixels being correctly classified on multitemporal images (figure by [Koukoulas, 2010](http://www.tric.u-tokai.ac.jp/ISPRScom8/TC8/TC8_CD/headline/TS-11/W08L23_20100308050524.pdf), modified/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<br>
+<i>Probability of pixels being correctly classified on multitemporal images (figure by <a href="http://www.tric.u-tokai.ac.jp/ISPRScom8/TC8/TC8_CD/headline/TS-11/W08L23_20100308050524.pdf">Koukoulas, 2010</a>, modified / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 To start with, every analysis should be preceded by thorough **input data assessment** in terms of factors that could potentially influence the results. These factors may include sun and atmospheric effects on imagery, terrain topography and stage of the phenological cycle ([Song, Woodcock, 2003](https://doi.org/10.1109/tgrs.2003.818367)). Furthermore, errors and omissions on the processing stage (such as different types of corrections, harmonisation, transformations etc.) can also affect the degree of accuracy in detecting changes, their causes and therefore the final appearance of the post-processing image. Finally, attributing any given pixel with *Change* or *No Change* label is usually preceded by e.g. thresholding or trajectory classification (more on that topic can be found in **[Theme 5](../05_vegetation_monitoring/05_vegetation_monitoring.md#approaches-to-change-detection-on-optical-satellite-data)**). Such methods, however, are limited by their lack of robustness over different research areas and obliviousness to rate and severity of changes.

@@ -61,7 +61,7 @@ Some key principles of validation and accuracy analysis are
 
 <center>
 <img src="media/train_test_split.png" title="splitting a dataset for training and validation - Single split vs. cross-validation" width="500">
-
+<br>
 <i>Two possibilities of (randomly) splitting a dataset for training and validation (testing). a) Single split (here as a 60/40 split). b) Cross-validation (CV) with k-folds (here with k = 5) and averaging the output of k runs for modelling and validation.</i>
 </center>
 
@@ -101,7 +101,7 @@ When looking for reference data, you can search public archives hosted by govern
 <center>
 <img src="media/LUCAS_overview.png" title="Land Use/Cover Area frame Survey and harmonisation of datasets" width="700">
 
-<i>Schematic overview of the LUCAS initiative and harmonisation of datasets (figure by [d'Andrimont et al. 2020](https://doi.org/10.1038/s41597-020-00675-z)/ [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)).</i>
+<i>Schematic overview of the LUCAS initiative and harmonisation of datasets (figure by <a href="https://doi.org/10.1038/s41597-020-00675-z">d'Andrimont et al. 2020</a> / <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 
@@ -211,7 +211,7 @@ The following figure illustrates this for a binary classification. The two class
 
 <center>
 <img src="media/confusion_matrix_01.png" title="The confusion matrix" width="500">
-
+<br>
 <i>Confusion matrix for binary classification.</i>
 </center>
 

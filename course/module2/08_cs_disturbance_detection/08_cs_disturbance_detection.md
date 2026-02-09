@@ -27,13 +27,13 @@ Our workflow is divided into the following key steps:
 <center>
 
 <img src="media/cs3_flowchart.png" title="Case study 3 scheme of procedure" alt="Scheme" width="600"/>
-
+<br>
 <i>Case Study 3 scheme of procedure.</i>
 </center>
 
 ## Study area and data
 
-Before you continue, get familiar with the use case (if you did it before in Theme 5 you can skip this step): **[Use case: Vegetation disturbance detection in Polish-Slovak Tatra Mountains](../../data_usecases/usecase_forest_tatras.md)**.
+Before you continue, get familiar with the use case (if you did it before in Theme 5 you can skip this step): **[Use case: Vegetation disturbance detection in Polish-Slovak Tatra Mountains](../../data_usecases/usecase_forests_tatras.md)**.
 
 … and read the paper accompanying the use case:
 

@@ -87,7 +87,7 @@ A unique way to have data from the field for local scale analysis, without being
 
 <img src="media/kelps.png" title="The example of citizen science project." alt="Zooniverse" width="1000"/>
 
-<i>The example of utilization of citizen science data. Left: The [Zooniverse](https://Zooniverse.org) platform in which citizen scientists indicate kelp canopy locations for the [Floating Forests](https://www.zooniverse.org/projects/zooniverse/floating-forests) project, right: giant kelp classification result based on Landsat data (figure by [Houskeeper et al., 2022](https://doi.org/10.1371/journal.pone.0257933)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<i>The example of utilization of citizen science data. Left: The <a href="https://Zooniverse.org">Zooniverse</a> platform in which citizen scientists indicate kelp canopy locations for the <a href="https://www.zooniverse.org/projects/zooniverse/floating-forests">Floating Forests</a> project, right: giant kelp classification result based on Landsat data (figure by <a href="https://doi.org/10.1371/journal.pone.0257933">Houskeeper et al., 2022</a>/ <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 Regardless of whether we use field data or existing maps/databases, it is useful to apply **simple change detection** to exclude possible changes between analysed dates, especially when using data from several years. This can be achieved by calculating difference between spectral index values of the actual and previous years (for instance pixels with absolute differences of NDVI ≤0.05 flagged as ‘change’; [Immitzer et al., 2019](https://doi.org/10.3390/rs11222599)) or to apply some disturbance detection related algorithm like e.g. [LandTrendr](https://geotrendr.ceoas.oregonstate.edu/landtrendr/), see **[Theme 5](../05_vegetation_monitoring/05_vegetation_monitoring.md)**. Such information can be important in developing a reference set for classification that is to point to the same constant objects. For the construction of multitemporal reference dataset, especially when using a wider time range for classification, a **time series visualisation tool** such as [TimeSync](https://www.fs.usda.gov/pnw/tools/timesync-landsat-time-series-visualization-and-data-collection-tool) or the one you learned in an exercise in **[Theme 2](../02_temporal_information/02_temporal_information.md)** may be also useful (you will use it to develop your own reference data set in the exercise at the end).
@@ -111,8 +111,8 @@ Another approach is presented in **Time-Weighted Dynamic Time Warping** algorith
 <center>
 
 <img src="media/twdtw.png" title="TWDTW" alt="TWDTW" width="500"/>
-
-<i>The matches of the ‘soybean’ class pattern in time series using TWDTW on MODIS data (solid black line - long-term time series, the colored lines - temporal patterns; gray dashed lines - the respective matching points (figure by [Maus et al., 2019](https://doi.org/10.18637/jss.v088.i05)/ [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)).</i>
+<br>
+<i>The matches of the ‘soybean’ class pattern in time series using TWDTW on MODIS data (solid black line - long-term time series, the colored lines - temporal patterns; gray dashed lines - the respective matching points (figure by <a href="https://doi.org/10.18637/jss.v088.i05">Maus et al., 2019</a>/ <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>)).</i>
 </center>
 
 *Note: Since this module mainly focuses on data with medium spatial resolution, we present the described algorithms in a pixel-based, not object-based approach. The latter would be more justified using high-resolution data, however you can find also examples on its use with e.g. Sentinel-2 (article about the use of different segmentation methods for delineation of field boundaries by [Watkins and Van Niekerk, 2019](https://doi.org/10.1016/j.compag.2019.02.009)).*
@@ -171,7 +171,7 @@ Creating the optimal spectro-temporal dataset for specific purpose can be done i
 <center>
 
 <img src="media/classification_datasets.png" title="Time-series datasets used for selection of the best term of data acquisition for classification (A - three single-date datasets, B - multitemporal dataset in each possible terms combination, C - the best variables selected from multitemporal dataset)." alt="Figure 2" width="640"/>
-
+<br>
 <i>Time-series datasets used for selection of the best term of data acquisition for classification (A - three single-date datasets, B - multitemporal dataset in each possible terms combination, C - the best variables selected from multitemporal dataset, figure by course authors).</i>
 </center>
 
@@ -202,7 +202,7 @@ Feature selection approaches can be distinguished into three groups ([Li et al.,
 
 <img src="media/varimp.png" title="Aggregated feature importance derived from tree species Sentinel-2 classification result from 2015-2017." alt="Figure 5" width="640"/>
 
-<i>Aggregated feature importance derived from tree species Sentinel-2 classification result from 2015-2017 by the use of variable importance in Random Forest (figure by [Immitzer et al., 2019](https://doi.org/10.3390/rs11222599), modified/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<i>Aggregated feature importance derived from tree species Sentinel-2 classification result from 2015-2017 by the use of variable importance in Random Forest (figure by <a href="https://doi.org/10.3390/rs11222599">Immitzer et al., 2019</a>, modified / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 Feature selection methods can be divided into **unsupervised** and **supervised**. The first one select representative bands based on the original image characteristics, while the second one use label information to assess the quality of particular bands.
@@ -224,8 +224,8 @@ When we have a reference sample set, we can split it in various proportions **it
 <center>
 
 <img src="media/crossval.png" title="cross-validation vs bootstrapping illustration." alt="cross-validation vs bootstrapping" width="700"/>
-
-<i>10-fold cross-validation vs bootstrapping illustration (figure by S. Rashchka [bootstrap_point632_score](https://rasbt.github.io/mlxtend/user_guide/evaluate/bootstrap_point632_score/), modified/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<br>
+<i>10-fold cross-validation vs bootstrapping illustration (figure by S. Rashchka <a href="https://rasbt.github.io/mlxtend/user_guide/evaluate/bootstrap_point632_score/">bootstrap_point632_score</a>, modified / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 If you are interested in details on differences within such iterative methods, you can read the article of [Lyons et al., 2018](https://doi.org/10.1016/j.rse.2018.02.026) and test their [code in R](https://github.com/mitchest/rs-accuracy-variance) where three methods were compared (each of them proved that a single split into training/validation data often gives inaccurate or misleading results).
@@ -235,8 +235,8 @@ The example of comparison of bootstrapping and cross-validation on PlanetScope d
 <center>
 
 <img src="media/cros_boot.png" title="CV vs bootstrap" alt="CV vs bootstrap" width="540"/>
-
-<i>Overall accuracies obtained for two classifiers (SVM and RF) using cross-validation and bootstrapping in mapping complex gully systems in wet and dry seasons (figure by [Phinzi et al., 2021](https://doi.org/10.3390/rs13152980)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<br>
+<i>Overall accuracies obtained for two classifiers (SVM and RF) using cross-validation and bootstrapping in mapping complex gully systems in wet and dry seasons (figure by <a href="https://doi.org/10.3390/rs13152980">Phinzi et al., 2021</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 When using such methods we have the information about the distribution of the obtained classification accuracies so that we can calculate mean, median, standard deviation, minimum, maximum value etc. What’s more, you can compare which of the distinguished classes are more or less stable in terms of the accuracy obtained, which proves that they are easier or more difficult to identify. This shows a lot about the variability of classified objects, in multitemporal classification - over time (see the example below where F1 accuracies for grassland Natura 2000 habitats were calculated 100 times).
@@ -244,8 +244,8 @@ When using such methods we have the information about the distribution of the ob
 <center>
 
 <img src="media/habitats_acc.png" title="Habitats CNNs" alt="Habitats CNNs" width="540"/>
-
-<i>Boxplots presenting F1 accuracies obtained 100 times with CNNs for Natura 2000 habitats classification on Sentinel-2 time series data (6210 code - semi-natural dry grasslands and scrubland facies on calcareous substrates, 6410 code - Molinia meadows on calcareous, peaty, or clay silt-laden soils, 6510 code - lowland hay meadows, figure by [Marcinkowska-Ochtyra et al., 2023](https://doi.org/10.3390/rs15051388)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<br>
+<i>Boxplots presenting F1 accuracies obtained 100 times with CNNs for Natura 2000 habitats classification on Sentinel-2 time series data (6210 code - semi-natural dry grasslands and scrubland facies on calcareous substrates, 6410 code - Molinia meadows on calcareous, peaty, or clay silt-laden soils, 6510 code - lowland hay meadows, figure by <a href="https://doi.org/10.3390/rs15051388">Marcinkowska-Ochtyra et al., 2023</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 As you can see above, commonly used measures in accuracy assessment are ([Congalton, 1991](https://doi.org/10.1016/0034-4257(91)90048-B), [Van Rijsbergen, 1977](https://doi.org/10.1108/eb026637)):

@@ -104,7 +104,7 @@ The process of creating the synthetically mixed spectra as training data from th
 
 <div align="center">
 
-<i>Regression based-unmixing workflow (Figure by Janz et al. 2023/ <a href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0</a>)</i>
+<i>Regression based-unmixing workflow (Figure by Janz et al. 2023 / <a href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0</a>)</i>
 
 </div>
 

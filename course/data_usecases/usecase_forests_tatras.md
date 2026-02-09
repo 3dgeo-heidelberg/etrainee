@@ -28,8 +28,8 @@ Strong winds and bark beetle (*Ips typographus \[L.\]*) outbreaks are the primar
 <center>
 
 <img src="media/usecase_tatras.png" title="Tatra Mountains." alt="Tatra Mountains usecase" width="600"/>
-
-<i>Tatra Mountains (red squares in the thumbnail on the left indicate Landsat scenes location, figure by course authors, Landsat 8 courtesy of [the U.S. Geological Survey](https://www.usgs.gov/)/ [Terms of use](https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits)) and the effects of: (A) bark beetle outbreak (photo by A. Ochtyra) and (B) bora wind (photo by [Falťan et al., 2020](https://doi.org/10.3390/f11121259)/ [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).</i>
+<br>
+<i>Tatra Mountains (red squares in the thumbnail on the left indicate Landsat scenes location, figure by course authors, Landsat 8 courtesy of <a href="https://www.usgs.gov/">the U.S. Geological Survey</a> / <a href="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits">Terms of use</a>) and the effects of: (A) bark beetle outbreak (photo by A. Ochtyra) and (B) bora wind (photo by <a href="https://doi.org/10.3390/f11121259">Falťan et al., 2020</a> / <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</i>
 </center>
 
 ## Use case in the course

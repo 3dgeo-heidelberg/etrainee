@@ -37,7 +37,7 @@ In this exercise you will be working with four types of land cover:
 
 <center>
 <img src="media/lh_map_clip.png" alt="Map" title="Map of the area with numbered ROIs" width="600">
-
+<br>
 <i>Map of the area with numbered ROIs</i>
 </center>
 
@@ -112,7 +112,7 @@ screenshots of the histograms. Similar information can be found in the "Metadata
 
 <center>
 <img src="media/enmap_box/09_image_statistics.png" alt="Image statistics" title="Image statistics" width="400"> 
-
+<br>
 <i>Image statistics</i>
 </center>
 
@@ -143,7 +143,7 @@ delete selected rows in the table. In the editing mode, profiles can be renamed,
 
 <center>
 <img src="media/enmap_box/14_add_profiles.png" alt="Add profiles to the plot" title="Add profiles to the plot" width="400"> 
-
+<br>
 <i>Add profiles</i>
 </center>
 
@@ -173,7 +173,7 @@ Is it possible to distinguish between subclasses? Which wavelength ranges might 
 
 <center>
 <img src="media/enmap_box/16_spectral_curves_classes.png" alt="Spectral curves for two classes" title="Spectral curves for two classes" width="600">
-
+<br>
 <i>Spectral curves for scree and mountain pine</i>
 </center>
 
@@ -206,7 +206,7 @@ In which month are the spectral curves of one class most similar to the others?
 ```  
 <center>
 <img src="media/enmap_box/17_visualizations_months_mountain_pine.png" alt="Mountain Pine in four months" title="Mountain Pine in four months" width="600">
-
+<br>
 <i>Mountain pine in June, July, August, and September</i>
 </center>
 
