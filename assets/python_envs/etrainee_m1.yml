@@ -1,0 +1,24 @@
+name: etrainee_m1
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - ipykernel
+  - earthengine-api
+  - eemont
+  - geemap
+  - pygis
+  - wxee
+  - scikit-learn
+  - stackstac
+  - xarrayutils
+  - hvplot
+  - datashader
+  - seaborn
+  - ca-certificates
+  - openssl
+  - libgdal-jp2openjpeg
+  - certifi
+  - contextily
+  - matplotlib-scalebar
+  - geogif

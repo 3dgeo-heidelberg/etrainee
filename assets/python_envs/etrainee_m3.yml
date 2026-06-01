@@ -1,0 +1,25 @@
+name: etrainee_m3
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - polyscope
+  - matplotlib
+  - geopandas
+  - pyogrio
+  - numpy
+  - jupyter
+  - ipython
+  - python-pdal
+  - rasterio
+  - laspy
+  - scipy
+  - ipyleaflet
+  - pyproj
+  - scikit-learn
+  - tqdm
+  - shapely
+  - helios=2
+  - pip:
+    - py4dgeo
