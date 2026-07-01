@@ -4,7 +4,6 @@ channels:
 dependencies:
   - python=3.12
   - pip
-  - polyscope
   - matplotlib
   - geopandas
   - pyogrio
@@ -12,7 +11,6 @@ dependencies:
   - jupyter
   - ipython
   - python-pdal
-  - rasterio
   - laspy
   - scipy
   - ipyleaflet
@@ -20,6 +18,9 @@ dependencies:
   - scikit-learn
   - tqdm
   - shapely
-  - helios=2
+  - conda-forge/label/helios_dev::helios=3.0.0a2
   - pip:
     - py4dgeo
+    - polyscope
+    - rasterio
+
