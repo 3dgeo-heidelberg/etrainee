@@ -129,7 +129,7 @@ Ideally, you also have some experience with:
 
 The following resources provide introductions to programming regarding above concepts:
 
-* Downey, A.B. (2015): Think Python - How to Think Like a Computer Scientist. O‘Reilly. (open source): https://greenteapress.com/wp/think-python-2e
+* Downey, A.B. (2015): Think Python - How to Think Like a Computer Scientist. O‘Reilly. (open source): [https://greenteapress.com/wp/think-python-2e](https://greenteapress.com/wp/think-python-2e)
 * [Coursera](https://www.coursera.org/) is a platform that offers a variety of online courses
 
 Below, we provide links to tutorials and resources where you can obtain the required skills using [Python](#programming-in-python) and/or [R](#programming-in-r).
@@ -138,7 +138,8 @@ Below, we provide links to tutorials and resources where you can obtain the requ
 #### Programming in Python
 If you are new to Python, you might look into this tutorial on [Python Code Fundamentals](https://www.earthdatascience.org/courses/intro-to-earth-data-science/python-code-fundamentals/) by [Earth Lab](https://www.earthdatascience.org/).
 
-Advanced tutorials or material can be found among the following resources:  
+Advanced tutorials or material can be found among the following resources:
+
 * Online course on [Practical Python Programming](https://dabeaz-course.github.io/practical-python/) by David Beazley
 * Online course/textbook on [Use Data for Earth and Environmental Science in Open Source Python](https://www.earthdatascience.org/courses/use-data-open-source-python/) by [Earth Lab](https://www.earthdatascience.org/)
 
